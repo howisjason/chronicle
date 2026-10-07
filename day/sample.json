@@ -8,24 +8,104 @@
       "title": "THE DAY THE BRAIN CELL WENT LIVE",
       "startAt": "2026-10-07T06:00:00+07:00",
       "audio": null,
-      "gaps": { "firstLeadMs": 1000, "leadMs": 200, "holdMs": 600 },
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
       "sources": [
-        { "kind": "commit", "repo": "braincell", "text": "braincell: deploy to Netlify, our-one-brain-cell.netlify.app (7 Oct 2026)" },
-        { "kind": "commit", "repo": "braincell", "text": "braincell v4b: the grader's findings fixed (7 Oct 2026)" },
-        { "kind": "commit", "repo": "braincell", "text": "braincell v4c: the re-grade's finding fixed (7 Oct 2026)" },
-        { "kind": "commit", "repo": "braincell", "text": "braincell: finished; the design mockups go, the tests stand without the gift notes (7 Oct 2026)" }
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell: deploy to Netlify, our-one-brain-cell.netlify.app (7 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell v4b: the grader's findings fixed (7 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell v4c: the re-grade's finding fixed (7 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell: finished; the design mockups go, the tests stand without the gift notes (7 Oct 2026)"
+        }
       ],
       "lines": [
-        { "speaker": "narrator", "text": "Chiang Mai. The seventh of October. A single brain cell, built by one man, is about to meet the world.", "emotion": "dry", "action": "none", "source": 0 },
-        { "speaker": "march", "text": "One brain cell. That is the whole name of the thing. I love it.", "emotion": "happy", "action": "point", "source": 0 },
-        { "speaker": "narrator", "text": "Before it could go live, a grader read the fourth version and found things to fix.", "emotion": "dry", "action": "none", "source": 1 },
-        { "speaker": "march", "text": "He fixed them. Then a second grader read it again and found one more.", "emotion": "surprised", "action": "none", "source": 2 },
-        { "speaker": "narrator", "text": "He fixed that one too. Version four, letter c. Then the deploy.", "emotion": "neutral", "action": "none", "source": 2 },
-        { "speaker": "march", "text": "A deploy at the end of a day like that feels like a door opening.", "emotion": "happy", "action": "none", "source": 0 },
-        { "speaker": "narrator", "text": "By nightfall the design mockups were gone and the tests stood on their own. He wrote one word in the log: finished.", "emotion": "dry", "action": "none", "source": 3 },
-        { "speaker": "march", "text": "Finished. Say it again, it sounds even better the second time.", "emotion": "happy", "action": "point", "source": 3 },
-        { "speaker": "narrator", "text": "That was the seventh. The record is below. Nothing here was invented.", "emotion": "neutral", "action": "none", "source": 3 },
-        { "speaker": "march", "text": "And this is the stand-in voice. The real one comes later. Please forgive the beeps.", "emotion": "dry", "action": "facepalm", "source": 3 }
+        {
+          "speaker": "narrator",
+          "text": "The seventh of October. A single brain cell, built by one man, is about to meet the world.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "One brain cell. That is the whole name of the thing. I love it.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "Before it could go live, a grader read it and found things to fix.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "He fixed them. Then a second grader read it again and found one more.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "narrator",
+          "text": "He fixed that one too. Version four, letter c. Then the deploy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "march",
+          "text": "A deploy at the end of a day like that feels like a door opening.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "By the last commit the design mockups were gone and the tests stood on their own. The message began with one word: finished.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3
+        },
+        {
+          "speaker": "march",
+          "text": "Finished. Say it again, it sounds even better the second time.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3
+        },
+        {
+          "speaker": "narrator",
+          "text": "That was the seventh. The record is below. Nothing here was invented.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3
+        },
+        {
+          "speaker": "march",
+          "text": "And this is the stand-in voice. The real one comes later. Please forgive the beeps.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 3
+        }
       ]
     }
   ]
