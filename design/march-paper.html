@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>March, paper cut-out (design candidate)</title>
+<style>
+  /* The page around her copies chronicle/index.html's stage so the candidate is judged in
+     place. Only #march and window.marchMouth are the contract. */
+  html, body { margin: 0; background: #0b0b10; color: #e8e8f0; font-family: Georgia, "Times New Roman", serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 1rem; box-sizing: border-box; }
+  #stage { position: relative; margin: 1rem 0; background: #14141c; border-radius: 12px; padding: 1rem;
+    display: grid; grid-template-columns: 140px 1fr; gap: 1rem; align-items: center; }
+  #march { position: relative; width: 140px; height: 180px; }
+  #march canvas, #march .grp { position: absolute; left: 0; top: 0; }
+  #march .grp { width: 140px; height: 180px; }
+  #march-caption { min-height: 4.5em; line-height: 1.5; font-size: 1.05rem; color: #ffd9ec; }
+  /* the test strip, not part of #march */
+  #strip { margin-top: 1.5rem; font-size: .8rem; color: #9a9ab0; }
+  #strip p { margin: .4rem 0; }
+  #strip button { font: inherit; padding: .35em .7em; margin: .15em; background: #2a2a38; color: #e8e8f0; border: 1px solid #444; border-radius: 6px; }
+  #strip button[data-on="1"] { background: #c9b26b; color: #0b0b10; border-color: #c9b26b; }
+</style>
+</head>
+<body>
+<main>
+  <div id="stage">
+    <div id="march" data-mood="neutral" data-action="none" aria-label="March, paper cut-out figure"></div>
+    <div id="march-caption">A caption would sit here, beside her, the way the player lays it out.</div>
+  </div>
+
+  <div id="strip">
+    <p>mood: <span id="moods"></span></p>
+    <p>action: <span id="actions"></span></p>
+    <p>mouth: <button id="talk">talk</button> <span id="mouths"></span></p>
+  </div>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ---------------------------------------------------------------- the paper recipe
+     Lifted from braincell/art.js: hand-cut edge (noise displacement), paper fibre (noise
+     multiplied in), soft drop shadow beneath. Each piece is drawn ONCE into a canvas at
+     the phone's real pixel size; after that only CSS transforms and visibility change,
+     because SVG filters re-run on every frame otherwise and a phone cannot keep up. */
+  function paperFilter(id, o) {
+    const { ef = .05, es = 3.2, ff = '.9 .45', fa = .2, fo = 3, dx = 1, dy = 3, bl = 2.4, op = .34, sd = 3, base = .82 } = o;
+    return `<filter id="${id}" x="-25%" y="-25%" width="150%" height="155%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="${ef}" numOctaves="3" seed="${sd}" result="en"/>
+    <feDisplacementMap in="SourceGraphic" in2="en" scale="${es}" xChannelSelector="R" yChannelSelector="G" result="cut"/>
+    <feTurbulence type="fractalNoise" baseFrequency="${ff}" numOctaves="${fo}" seed="${sd + 4}" result="fn"/>
+    <feColorMatrix in="fn" type="matrix" values="${fa} 0 0 0 ${base}  ${fa} 0 0 0 ${base}  ${fa} 0 0 0 ${base}  0 0 0 0 1" result="fib"/>
+    <feBlend in="cut" in2="fib" mode="multiply" result="t0"/>
+    <feComposite in="t0" in2="cut" operator="in" result="tex"/>
+    ${op > 0 ? `<feGaussianBlur in="cut" stdDeviation="${bl}" result="b"/>
+    <feOffset in="b" dx="${dx}" dy="${dy}" result="o"/>
+    <feFlood flood-color="#120810" flood-opacity="${op}"/>
+    <feComposite in2="o" operator="in" result="sh"/>
+    <feMerge><feMergeNode in="sh"/><feMergeNode in="tex"/></feMerge>` : ''}
+  </filter>`;
+  }
+  const DEFS = `<defs>
+    ${paperFilter('p1', { dy: 1.2, dx: .5, bl: 1, op: .38, sd: 5, es: 2.2 })}
+    ${paperFilter('p2', { dy: 2.2, dx: 1, bl: 1.8, op: .42, sd: 9, es: 2.6 })}
+    ${paperFilter('p3', { dy: 3.6, dx: 1.4, bl: 2.6, op: .48, sd: 13, es: 3 })}
+    ${paperFilter('ink', { op: .25, dy: .8, dx: .3, bl: .6, es: 1.2, fa: .08, base: .96, sd: 3 })}
+  </defs>`;
+
+  const g = (filter, inner) => `<g filter="url(#${filter})">${inner}</g>`;
+  const P = (d, fill, x = '') => `<path d="${d}" fill="${fill}" ${x}/>`;
+  const E = (cx, cy, rx, ry, fill, x = '') => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${fill}" ${x}/>`;
+  const C = (cx, cy, r, fill, x = '') => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" ${x}/>`;
+  const R = (x, y, w, h, fill, x2 = '') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" ${x2}/>`;
+  const L = (d, stroke, w, x = '') => `<path d="${d}" fill="none" stroke="${stroke}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${x}/>`;
+
+  // her colours: pink hair with a cooler shade and a warm highlight, one blue accent
+  const HAIR = '#f7a6c8', HAIR2 = '#e283ae', HAIR3 = '#ffd3e4';
+  const SKIN = '#ffe8da', BLUSH = '#f9a3b4';
+  const WHITE = '#fbf6f1', PINK = '#f27fae', PINK2 = '#f9b8d0';
+  const BLUE = '#6fb6f0', BLUE2 = '#2f6cb8', INK = '#2b2233', LIP = '#c4466f', MOUTH = '#8e2a50';
+
+  /* ---------------------------------------------------------------- the pieces
+     All in the 140 x 180 box of the figure. box: where the canvas sits (with room for the
+     cut edge and the shadow). pivot: what it swings around. */
+  const EY = 77, EL = 56, ER = 84; // eye line and the two eye centres
+
+  const pieces = {
+    // the back of the bob, behind everything, curling in under the chin line
+    hairBack: {
+      svg: g('p3', P('M20,78 C18,44 40,16 70,16 C100,16 122,44 120,78 C120,102 112,120 98,124 L42,124 C28,120 20,102 20,78 Z', HAIR)
+        + P('M24,84 C26,104 34,118 44,124 L36,124 C26,118 22,104 24,84 Z', HAIR2) + P('M116,84 C114,104 106,118 96,124 L104,124 C114,118 118,104 116,84 Z', HAIR2)),
+      box: [10, 8, 120, 124],
+    },
+    // neck and the white top with a pink sailor collar, a blue ribbon and a pink hem
+    body: {
+      svg: g('p2', R(62, 98, 16, 22, SKIN) + P('M38,120 C44,112 56,108 63,110 L70,118 L77,110 C84,108 96,112 102,120 L106,182 L34,182 Z', WHITE))
+        + g('p1', P('M54,112 L70,128 L86,112 L84,118 L70,134 L56,118 Z', PINK) + P('M36,166 L104,166 L105,182 L35,182 Z', PINK2))
+        + g('p1', P('M70,127 L62,122 L63,131 Z M70,127 L78,122 L77,131 Z', BLUE) + C(70, 127, 2.2, BLUE2)),
+      box: [26, 92, 90, 96],
+      pivot: [70, 182],
+    },
+    // her small camera, on a strap round her neck
+    camera: {
+      svg: L('M64,118 L60,134 M76,118 L80,134', '#8a7a86', 1.6)
+        + g('p1', R(57, 132, 26, 17, WHITE, 'rx="3"') + R(57, 132, 26, 5, PINK, 'rx="2"') + C(70, 142, 5.5, '#3a3344') + C(70, 142, 3.4, BLUE) + C(69, 141, 1.2, '#fff') + C(79, 136, 1.6, '#ffd27a')),
+      box: [50, 112, 40, 44],
+      pivot: [70, 118],
+    },
+    // the face: a soft paper oval with a little chin, pink cheeks
+    face: {
+      svg: g('p2', P('M40,70 C40,44 52,36 70,36 C88,36 100,44 100,70 C100,90 90,108 70,110 C50,108 40,90 40,70 Z', SKIN))
+        + E(50, 90, 6, 3.6, BLUSH, 'opacity=".75"') + E(90, 90, 6, 3.6, BLUSH, 'opacity=".75"'),
+      box: [32, 28, 76, 90],
+    },
+    // the fringe over the forehead with its cut points, the locks down the sides, the clip
+    hairFront: {
+      svg: g('p2', P('M24,74 C22,34 44,14 70,14 C96,14 118,34 116,74 L110,76 C108,60 106,52 102,46 L98,62 L92,44 L86,60 L80,42 L72,58 L64,42 L56,58 L50,44 L44,60 L40,48 C34,54 30,62 30,76 Z', HAIR)
+        + P('M24,74 C22,84 24,96 32,106 C38,98 38,84 36,72 Z', HAIR) + P('M116,74 C118,84 116,96 108,106 C102,98 102,84 104,72 Z', HAIR))
+        + P('M46,24 C56,18 84,18 96,24 C84,22 58,22 46,24 Z', HAIR3, 'opacity=".9"')
+        + g('p1', `<g transform="rotate(-28 100 38)">${R(92, 35, 16, 5, BLUE, 'rx="2.5"')}${R(92, 41, 10, 4, BLUE, 'rx="2"')}</g>`),
+      box: [14, 6, 112, 108],
+    },
+    // the left arm (viewer's left): a pink puffed sleeve, the arm, a mitten hand
+    armL: {
+      svg: g('p1', L('M44,122 L35,160', SKIN, 9) + E(35, 163, 7.5, 8.5, SKIN) + C(44, 121, 9.5, PINK2) + C(44, 121, 6.5, WHITE)),
+      box: [20, 104, 36, 72],
+      pivot: [44, 121],
+    },
+    // the right arm, with one finger out so the point reads as a point
+    armR: {
+      svg: g('p1', L('M96,122 L105,160', SKIN, 9) + C(105, 162, 7, SKIN) + L('M105,163 L109,173', SKIN, 4.5) + C(96, 121, 9.5, PINK2) + C(96, 121, 6.5, WHITE)),
+      box: [84, 104, 36, 78],
+      pivot: [96, 121],
+    },
+  };
+
+  // the eyes, one cut-out per mood (brows included) plus the blink
+  const eye = (cx, inner) => inner(cx);
+  const both = fn => eye(EL, fn) + eye(ER, fn);
+  const iris = (cx, k = 1) => E(cx, EY + 1, 6.6 * k, 8.6 * k, BLUE2) + E(cx, EY + 2, 5 * k, 6.6 * k, BLUE) + E(cx, EY + 2.4, 2.7 * k, 3.6 * k, INK)
+    + C(cx - 2.6, EY - 2.5, 2.1, '#fff') + C(cx + 2.2, EY + 5, 1.1, '#fff');
+  const lash = (cx, lift = 0) => L(`M${cx - 9},${EY - 3 - lift} C${cx - 6},${EY - 13 - lift} ${cx + 6},${EY - 13 - lift} ${cx + 9},${EY - 3 - lift}`, INK, 3);
+  const brow = (cx, y, curve = 3) => L(`M${cx - 8},${y} Q${cx},${y - curve} ${cx + 8},${y}`, INK, 2.2);
+  const EYEBOX = [38, 50, 64, 42];
+  const eyes = {
+    neutral: both(cx => iris(cx) + lash(cx) + brow(cx, 62)),
+    happy: both(cx => L(`M${cx - 8},${EY + 2} Q${cx},${EY - 9} ${cx + 8},${EY + 2}`, INK, 3) + brow(cx, 60)),
+    // half-lidded: the lid is a skin-coloured strip over the top of the eye, the brow flat
+    dry: both(cx => `<clipPath id="lid${cx}"><rect x="${cx - 12}" y="${EY + 1}" width="24" height="16"/></clipPath><g clip-path="url(#lid${cx})">${iris(cx)}</g>` + L(`M${cx - 9},${EY + 1} L${cx + 9},${EY + 1}`, INK, 3) + L(`M${cx - 8},65 L${cx + 8},64`, INK, 2.2)),
+    surprised: both(cx => iris(cx, 1.25) + lash(cx, 3) + brow(cx, 56, 5)),
+    blink: both(cx => L(`M${cx - 8},${EY} Q${cx},${EY + 4} ${cx + 8},${EY}`, INK, 2.6) + brow(cx, 62)),
+  };
+  for (const k in eyes) pieces['eyes_' + k] = { svg: g('ink', eyes[k]), box: EYEBOX };
+
+  // the mouths: three for talking, and a flat closed one for the dry mood
+  const MOUTHBOX = [54, 84, 32, 26];
+  const mouths = {
+    closed: L('M62,95 Q70,101 78,95', LIP, 2.2),
+    closedDry: L('M63,97 L77,96', LIP, 2.2),
+    half: E(70, 97.5, 5.2, 3.6, MOUTH) + E(70, 99, 3, 1.6, '#f28ba8'),
+    open: P('M61,93 Q70,91 79,93 Q79,107 70,108 Q61,107 61,93 Z', MOUTH) + E(70, 104.5, 4.2, 2.4, '#f28ba8') + P('M64,93.5 L76,93.5 L75,96 L65,96 Z', '#fff'),
+  };
+  for (const k in mouths) pieces['mouth_' + k] = { svg: g('ink', mouths[k]), box: MOUTHBOX };
+
+  /* ---------------------------------------------------------------- rasterizing
+     Each piece becomes one canvas at box size, drawn at the device pixel ratio. */
+  const dpr = Math.min(window.devicePixelRatio || 1, 3);
+  function raster(piece) {
+    const [x, y, w, h] = piece.box;
+    const pw = Math.ceil(w * dpr), ph = Math.ceil(h * dpr);
+    const src = `<svg xmlns="http://www.w3.org/2000/svg" width="${pw}" height="${ph}" viewBox="${x} ${y} ${w} ${h}">${DEFS}${piece.svg}</svg>`;
+    const url = URL.createObjectURL(new Blob([src], { type: 'image/svg+xml' }));
+    const c = document.createElement('canvas');
+    c.width = pw; c.height = ph;
+    c.style.cssText = `left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
+    if (piece.pivot) c.style.transformOrigin = `${piece.pivot[0] - x}px ${piece.pivot[1] - y}px`;
+    const img = new Image();
+    img.onload = () => { try { c.getContext('2d').drawImage(img, 0, 0, pw, ph); } catch (e) { /* an empty piece beats a crash */ } URL.revokeObjectURL(url); };
+    img.onerror = () => { console.warn('raster failed', piece.box); URL.revokeObjectURL(url); };
+    img.src = url;
+    return c;
+  }
+
+  /* ---------------------------------------------------------------- building her
+     Layers, bottom to top: the back hair (moves with the head but sits behind the body),
+     the body with the camera and the right arm, the head (face, eyes, mouth, fringe), and
+     the left arm on top so a facepalm lands on the face. */
+  const root = document.getElementById('march');
+  const grp = (parent, pivot) => { const d = document.createElement('div'); d.className = 'grp'; d.style.transformOrigin = `${pivot[0]}px ${pivot[1]}px`; parent.appendChild(d); return d; };
+  const cv = {};
+  const add = (parent, k) => { cv[k] = raster(pieces[k]); parent.appendChild(cv[k]); return cv[k]; };
+
+  const NECK = [70, 108], HIP = [70, 182];
+  add(root, 'hairBack').style.transformOrigin = `${NECK[0] - 10}px ${NECK[1] - 8}px`;
+  const bodyG = grp(root, HIP);
+  add(bodyG, 'body'); add(bodyG, 'camera'); add(bodyG, 'armR');
+  const headG = grp(root, NECK);
+  add(headG, 'face');
+  for (const k in eyes) add(headG, 'eyes_' + k);
+  for (const k in mouths) add(headG, 'mouth_' + k);
+  add(headG, 'hairFront');
+  const bodyG2 = grp(root, HIP); // the left arm, breathing with the body but above the head
+  add(bodyG2, 'armL');
+
+  /* ---------------------------------------------------------------- the life
+     One clock. Springs for the arms and the head (they overshoot and settle, the way
+     paper on a pin would); a slow breath; a blink now and then. Only transforms and
+     visibility change per frame. */
+  const spring = (v, vel, target, k, c, dt) => { const a = -k * (v - target) - c * vel; vel += a * dt; v += vel * dt; return [v, vel]; };
+  const S = { aL: 0, vL: 0, aR: 0, vR: 0, hy: 0, vhy: 0, hr: 0, vhr: 0, cam: 0, vcam: 0 };
+  let mood = 'neutral', action = 'none', mouth = 'closed', blinkUntil = 0, nextBlink = 2.5;
+  let shownEyes = '', shownMouth = '';
+
+  // what each action asks of the arms and the head
+  const POSE = {
+    none: { L: 0, R: 0, hr: 0 },
+    point: { L: 0, R: -98, hr: 4 },
+    facepalm: { L: -178, R: 0, hr: -11 },
+  };
+
+  function show(kind, name) {
+    const cur = kind === 'eyes' ? shownEyes : shownMouth;
+    if (cur === name) return;
+    if (cur) cv[kind + '_' + cur].style.visibility = 'hidden';
+    cv[kind + '_' + name].style.visibility = 'visible';
+    if (kind === 'eyes') shownEyes = name; else shownMouth = name;
+  }
+  for (const k in eyes) cv['eyes_' + k].style.visibility = 'hidden';
+  for (const k in mouths) cv['mouth_' + k].style.visibility = 'hidden';
+
+  function readState() {
+    const m = root.dataset.mood, a = root.dataset.action;
+    if (m !== mood && m in eyes) { mood = m; S.vhy = m === 'surprised' ? -90 : -45; S.vcam += 60; } // a little bob when the mood turns
+    if (a !== action && a in POSE) { action = a; S.vcam += 40; }
+  }
+  new MutationObserver(readState).observe(root, { attributes: true, attributeFilter: ['data-mood', 'data-action'] });
+
+  // the contract: the player calls this about 25 times a second while she talks
+  window.marchMouth = state => { if (state in mouths) mouth = state; };
+
+  let last = performance.now(), T = 0;
+  function frame(now) {
+    const dt = Math.min(.05, (now - last) / 1000); last = now; T += dt;
+    const pose = POSE[action];
+    [S.aL, S.vL] = spring(S.aL, S.vL, pose.L, 70, 6.5, dt);
+    [S.aR, S.vR] = spring(S.aR, S.vR, pose.R, 70, 6.5, dt);
+    [S.hy, S.vhy] = spring(S.hy, S.vhy, 0, 160, 9, dt);
+    [S.hr, S.vhr] = spring(S.hr, S.vhr, pose.hr, 90, 7, dt);
+    [S.cam, S.vcam] = spring(S.cam, S.vcam, 0, 120, 4, dt);
+
+    const breath = Math.sin(T * 1.5);
+    const headRot = S.hr + 1.6 * Math.sin(T * .55);
+    const headTy = S.hy - 1.3 * breath;
+    const head = `translate(0,${headTy.toFixed(2)}px) rotate(${headRot.toFixed(2)}deg)`;
+    headG.style.transform = head;
+    cv.hairBack.style.transform = head;
+    const body = `scale(1,${(1 + .012 * breath).toFixed(4)})`;
+    bodyG.style.transform = body; bodyG2.style.transform = body;
+    cv.armL.style.transform = `rotate(${(S.aL + 2.4 * Math.sin(T * .9)).toFixed(2)}deg)`;
+    cv.armR.style.transform = `rotate(${(S.aR + 2.4 * Math.sin(T * .9 + 1.2)).toFixed(2)}deg)`;
+    cv.camera.style.transform = `rotate(${(S.cam * .25 + .8 * Math.sin(T * .9 + .6)).toFixed(2)}deg)`;
+
+    // the blink: not while she is already squinting with joy
+    if (T > nextBlink) { blinkUntil = T + .13; nextBlink = T + 2.5 + Math.random() * 3.5; }
+    show('eyes', T < blinkUntil && mood !== 'happy' ? 'blink' : mood);
+    show('mouth', mood === 'dry' && mouth === 'closed' ? 'closedDry' : mouth);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ---------------------------------------------------------------- query params and the test strip */
+  const q = new URLSearchParams(location.search);
+  if (q.get('mood')) root.dataset.mood = q.get('mood');
+  if (q.get('action')) root.dataset.action = q.get('action');
+  if (q.get('mouth')) window.marchMouth(q.get('mouth'));
+  readState();
+  if (q.has('still')) nextBlink = 1e9; // for a screenshot with the eyes open
+
+  const btn = (parent, label, on) => { const b = document.createElement('button'); b.textContent = label; b.onclick = on; parent.appendChild(b); return b; };
+  const mark = (parent, label) => { for (const b of parent.children) b.dataset.on = b.textContent === label ? '1' : '0'; };
+  const moodsEl = document.getElementById('moods'), actsEl = document.getElementById('actions'), mouthsEl = document.getElementById('mouths');
+  for (const m of ['neutral', 'happy', 'dry', 'surprised']) btn(moodsEl, m, () => { root.dataset.mood = m; mark(moodsEl, m); });
+  for (const a of ['none', 'point', 'facepalm']) btn(actsEl, a, () => { root.dataset.action = a; mark(actsEl, a); });
+  for (const s of ['closed', 'half', 'open']) btn(mouthsEl, s, () => { stopTalk(); window.marchMouth(s); mark(mouthsEl, s); });
+  mark(moodsEl, root.dataset.mood); mark(actsEl, root.dataset.action); mark(mouthsEl, mouth);
+  let talkTimer = 0, talkStep = 0;
+  const talkBtn = document.getElementById('talk');
+  function stopTalk() { if (talkTimer) { clearInterval(talkTimer); talkTimer = 0; talkBtn.dataset.on = '0'; window.marchMouth('closed'); mark(mouthsEl, 'closed'); } }
+  talkBtn.onclick = () => {
+    if (talkTimer) return stopTalk();
+    talkBtn.dataset.on = '1'; mark(mouthsEl, '');
+    const cycle = ['closed', 'half', 'open', 'half', 'open', 'closed'];
+    talkTimer = setInterval(() => window.marchMouth(cycle[talkStep++ % cycle.length]), 80);
+  };
+})();
+</script>
+</main>
+</body>
+</html>

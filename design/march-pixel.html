@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>March, pixel candidate</title>
+<!--
+  MARCH, CANDIDATE 1: a Game Boy-era sprite, drawn by code every frame.
+  A 70 x 90 grid of art pixels, shown at 2 CSS px each (140 x 180, the box the
+  chronicle page gives her). The figure is the braincell/frog method: soft shapes
+  (balls and tubes) melted into a height field, lit by a lamp at the upper left,
+  the light cut into four flat bands per material with a checker only at the seam
+  between bands, inked where it meets the background and where hair or a hand
+  crosses something lower. The face, the hair clip and the camera are stamped on
+  top last. No image files, no image model, no sound, no network.
+
+  THE CONTRACT (driven by chronicle/player.js):
+    <div id="march" data-mood="neutral|happy|dry|surprised" data-action="none|point|facepalm">
+    window.marchMouth('closed'|'half'|'open')   ~25 times a second while she talks
+  Idle life with nothing called: breathing, a blink now and then, hair sway.
+  ?mood=&action=&mouth= in the address set the start state (for screenshots).
+-->
+<style>
+  html, body { margin: 0; background: #0b0b10; color: #e8e8f0; font-family: Georgia, "Times New Roman", serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 1rem; box-sizing: border-box; }
+  #stage { position: relative; margin: 1rem 0; background: #14141c; border-radius: 12px;
+    padding: 1rem; display: grid; grid-template-columns: 140px 1fr; gap: 1rem; align-items: center; }
+  #march { width: 140px; height: 180px; position: relative; }
+  #march canvas { display: block; width: 140px; height: 180px; image-rendering: pixelated; image-rendering: crisp-edges; }
+  #march-caption { min-height: 4.5em; line-height: 1.5; font-size: 1.05rem; color: #ffd9ec; }
+  /* the test strip: not part of #march */
+  #strip { margin-top: 1.5rem; font: 13px/1.6 -apple-system, "Helvetica Neue", Arial, sans-serif; color: #9a9ab0; }
+  #strip div { margin: 0.4rem 0; }
+  #strip button { font: inherit; padding: 0.25em 0.7em; margin: 0 0.3em 0.3em 0; background: #1c1c26; color: #e8e8f0;
+    border: 1px solid #444; border-radius: 6px; }
+  #strip button.on { border-color: #c9b26b; color: #c9b26b; }
+</style>
+</head>
+<body>
+<main>
+  <div id="stage">
+    <div id="march" data-mood="neutral" data-action="none" aria-label="March, pixel figure"><canvas id="march-canvas" width="70" height="90"></canvas></div>
+    <div id="march-caption">Okay so, he opened the laptop at seven and the first thing he did was NOT the thing.</div>
+  </div>
+  <div id="strip">
+    <div>mood: <button data-mood="neutral">neutral</button><button data-mood="happy">happy</button><button data-mood="dry">dry</button><button data-mood="surprised">surprised</button></div>
+    <div>action: <button data-action="none">none</button><button data-action="point">point</button><button data-action="facepalm">facepalm</button></div>
+    <div>mouth: <button data-mouth="closed">closed</button><button data-mouth="half">half</button><button data-mouth="open">open</button> <button id="talk">talk</button></div>
+  </div>
+</main>
+
+<script>
+(() => {
+  'use strict';
+  const W = 70, H = 90;
+  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  // ---------- the palette: four-step ramps, each with a hue shift toward purple in shadow ----------
+  const HAIR  = ['#ffd6ec', '#ffa6d4', '#ec6cab', '#b0407f'].map(hex);
+  const SKIN  = ['#fff4e8', '#ffdfc8', '#f3b89d', '#c9846f'].map(hex);
+  const WHITE = ['#ffffff', '#efeaf7', '#cfc4e0', '#a394b8'].map(hex);
+  const PINK  = ['#ffb8d9', '#ff8fc5', '#df5f9b', '#a83b78'].map(hex);
+  const INK = hex('#2a1830'), EYEW = hex('#ffffff'), IRIS = hex('#3f86e6'), IRISD = hex('#1e4fa8'), IRISL = hex('#8cc4ff');
+  const CLIP = hex('#56aaff'), CLIPL = hex('#c2e3ff'), MOUTH = hex('#9c2f55'), TONGUE = hex('#ef6f8c'), CHEEK = hex('#ff9fb6');
+  const CAM = hex('#5d5e72'), CAML = hex('#9a9bb0'), CAMD = hex('#3a3a4c');
+  const RAMP = { 1: SKIN, 2: HAIR, 3: WHITE, 4: SKIN, 5: WHITE };     // material -> ramp (4 = hand, 5 = sleeve: both ride on top)
+  const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+  const lerp = (a, b, t) => a + (b - a) * t;
+  // flat bands with a checker only in a thin seam where one band meets the next (the sprite rule)
+  const shadeBand = (d, x, y, seam = 0.12) => { d = clamp(d, 0, 3); const f = Math.floor(d), r = d - f;
+    if (f >= 3) return 3; return r < 0.5 - seam / 2 ? f : r > 0.5 + seam / 2 ? f + 1 : f + (((x + y) & 1) ? 1 : 0); };
+  const LIGHT = (() => { const l = [-0.5, -0.7, 0.6], n = Math.hypot(...l); return l.map(v => v / n); })();
+
+  // ---------- soft shapes ----------
+  const smax = (a, b, k) => { const h = Math.max(k - Math.abs(a - b), 0) / k; return Math.max(a, b) + h * h * k * 0.25; };
+  function ball(px, py, cx, cy, rx, ry, rz) {
+    const qx = (px - cx) / rx, qy = (py - cy) / ry, q = Math.sqrt(qx * qx + qy * qy);
+    return q < 1 ? rz * Math.sqrt(1 - q * q) : -(q - 1) * Math.min(rx, ry);
+  }
+  function tube(px, py, x1, y1, x2, y2, r1, r2) {
+    const dx = x2 - x1, dy = y2 - y1, L = dx * dx + dy * dy || 1;
+    const t = clamp(((px - x1) * dx + (py - y1) * dy) / L, 0, 1);
+    const ex = px - x1 - t * dx, ey = py - y1 - t * dy, d = Math.sqrt(ex * ex + ey * ey), r = r1 + (r2 - r1) * t;
+    return d < r ? Math.sqrt(r * r - d * d) : r - d;
+  }
+  // the fringe: pointed tufts along the bottom edge of the bangs
+  const bang = x => { const u = ((x - 20) / 7) % 2; return 21 + 4 * (1 - Math.abs((u + 2) % 2 - 1)); };
+
+  // ---------- the figure, in rest units (70 x 90, y down). Returns height; sets MAT ----------
+  let MAT = 0;
+  function field(x, y, P) {
+    const head = ball(x, y, 35, 34, 16.5, 16, 13);
+    const neck = tube(x, y, 35, 44, 35, 56, 4.5, 5);
+    const skin = smax(head, neck, 4);
+    let body = tube(x, y, 35, 58, 35, 104, 11, 15.5);
+    body = smax(body, ball(x, y, 35, 60.5, 16, 6, 7), 5);                       // shoulders
+    let h, m;
+    if (body > skin) { h = body; m = 3; } else { h = skin; m = 1; }
+    if (h <= 0) m = 0;
+    // hair: a cap plus two side locks, cut away over the face below the fringe
+    const sw = P.sway;
+    let hair = ball(x, y, 35, 28, 19.5, 18, 15);
+    hair = smax(hair, tube(x, y, 16.5 + sw, 30, 16 + sw * 2, 46, 5.5, 5), 4);
+    hair = smax(hair, tube(x, y, 53.5 + sw, 30, 54 + sw * 2, 46, 5.5, 5), 4);
+    // the face window: the hair is cut away inside the head's own oval, below the fringe,
+    // so the bob frames a round face instead of a square one
+    if (hair > 0 && y > bang(x) && ((x - 35) / 13.2) ** 2 + ((y - 35) / 16.5) ** 2 < 1) hair = 0;
+    if (hair > 0) { h = Math.max(h, 0) + 2 + hair * 0.5; m = 2; }
+    // arms ride on top of whatever is under them
+    for (const a of [P.armL, P.armR]) {
+      let s = tube(x, y, a.S[0], a.S[1], a.E[0], a.E[1], 4.2, 3.6);
+      s = smax(s, tube(x, y, a.E[0], a.E[1], a.Hd[0], a.Hd[1], 3.6, 3.1), 2);
+      let hand = ball(x, y, a.Hd[0], a.Hd[1], a.hr, a.hr, a.hr * 0.9);
+      for (const f of a.fingers) hand = smax(hand, tube(x, y, a.Hd[0], a.Hd[1], f[0], f[1], 1.7, 1.3), 1.5);
+      if (hand > 0) { h = Math.max(h, 0) + 1.5 + hand * 0.7; m = 4; }
+      else if (s > 0) { h = Math.max(h, 0) + 1.5 + s * 0.7; m = 5; }
+    }
+    MAT = m;
+    return h;
+  }
+
+  // ---------- state ----------
+  const el = document.getElementById('march');
+  const st = { t: 0, breath: 0, blink: 0, blinkT: -1, nextBlink: 3, mouth: 'closed', aL: 0, aLv: 0, aR: 0, aRv: 0, sway: 0 };
+  window.marchMouth = s => { st.mouth = (s === 'open' || s === 'half') ? s : 'closed'; };
+
+  function update(dt) {
+    st.t += dt;
+    st.breath = Math.sin(st.t * 2 * Math.PI * 0.28);
+    st.sway = Math.sin(st.t * 1.1) * 0.5;
+    st.nextBlink -= dt;
+    if (st.nextBlink <= 0 && st.blinkT < 0) st.blinkT = 0;
+    if (st.blinkT >= 0) { st.blinkT += dt; const k = st.blinkT;
+      st.blink = k < 0.06 ? k / 0.06 : k < 0.12 ? 1 : Math.max(0, 1 - (k - 0.12) / 0.07);
+      if (k > 0.2) { st.blinkT = -1; st.blink = 0; st.nextBlink = 2.5 + 4 * Math.random(); } }
+    // the arms chase their pose on a spring, so a point or a facepalm swings in and settles
+    const act = el.dataset.action, tL = act === 'facepalm' ? 1 : 0, tR = act === 'point' ? 1 : 0;
+    st.aLv += (-160 * (st.aL - tL) - 16 * st.aLv) * dt; st.aL += st.aLv * dt;
+    st.aRv += (-160 * (st.aR - tR) - 16 * st.aRv) * dt; st.aR += st.aRv * dt;
+  }
+
+  function pose() {
+    const L = clamp(st.aL, 0, 1.15), R = clamp(st.aR, 0, 1.15);
+    const lp = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
+    const armL = { S: [24, 59], E: lp([21, 72], [13, 54], L), Hd: lp([20, 84], [29, 39], L), hr: lerp(3.6, 5, L),
+      fingers: L > 0.5 ? [[26, 33], [30, 32], [34, 34]] : [] };
+    const armR = { S: [46, 59], E: lp([49, 72], [57, 51], R), Hd: lp([50, 84], [62, 41], R), hr: lerp(3.6, 3.8, R),
+      fingers: R > 0.5 ? [[66, 32]] : [] };
+    return { armL, armR, sway: st.sway };
+  }
+
+  // ---------- drawing ----------
+  const canvas = document.getElementById('march-canvas'), ctx = canvas.getContext('2d');
+  const small = document.createElement('canvas'); small.width = W; small.height = H;
+  const sctx = small.getContext('2d'), img = sctx.createImageData(W, H);
+  const WW = W + 2, hf = new Float32Array(WW * (H + 2)), mat = new Uint8Array(WW * (H + 2)), inF = new Uint8Array(W * H);
+
+  function render() {
+    const d = img.data; d.fill(0);
+    const put = (x, y, c) => { x = Math.round(x); y = Math.round(y); if (x < 0 || y < 0 || x >= W || y >= H) return; const k = (y * W + x) * 4; d[k] = c[0]; d[k + 1] = c[1]; d[k + 2] = c[2]; d[k + 3] = 255; };
+    const scy = 1 + 0.012 * st.breath, scx = 1 - 0.006 * st.breath, bob = -0.4 * st.breath;
+    const toRest = (x, y) => [35 + (x - 35) / scx, 90 + (y - 90 - bob) / scy];
+    const S = (u, v) => [35 + (u - 35) * scx, 90 + (v - 90) * scy + bob];
+    const P = pose(), hs = Math.min(scx, scy);
+    // 1) the height field at every pixel centre (one pixel of margin for the normals)
+    for (let j = 0; j < H + 2; j++) for (let i = 0; i < WW; i++) {
+      const [u, v] = toRest(i - 1 + 0.5, j - 1 + 0.5);
+      hf[j * WW + i] = field(u, v, P) * hs; mat[j * WW + i] = MAT;
+    }
+    inF.fill(0);
+    // 2) shade: a normal from the neighbours, the lamp at the upper left, four bands per material
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const k = (y + 1) * WW + x + 1, h = hf[k], M = mat[k]; if (h <= 0 || !M) continue;
+      inF[y * W + x] = 1;
+      const nx = -(hf[k + 1] - hf[k - 1]) * 0.5, ny = -(hf[k + WW] - hf[k - WW]) * 0.5, nl = Math.sqrt(nx * nx + ny * ny + 1);
+      const diff = clamp((nx * LIGHT[0] + ny * LIGHT[1] + LIGHT[2]) / nl, 0, 1);
+      let dk = (1 - diff) * 2.6 - (M === 2 ? 0.15 : -0.1);
+      if (M === 1 || M === 4) dk *= 0.78;                                      // skin stays bright
+      let ramp = RAMP[M];
+      const [u, v] = toRest(x + 0.5, y + 0.5);
+      if (M === 3) {                                                            // the outfit: white, a pink sailor collar, a pink hem
+        const collar = v > 56 && v < 66 && Math.abs(u - 35) > (v - 56) * 0.9 + 2;
+        const ribbon = v > 58 && v < 64 && Math.abs(u - 35) < 1.6;
+        if (collar || ribbon || v > 85) ramp = PINK;
+        if (v > 55 && v < 57 && Math.abs(u - 35) < 6) ramp = PINK;             // the neckline edge
+      }
+      if (M === 5) { const [su, sv] = [u, v]; if (sv > 76 && Math.abs(su - 35) > 12) ramp = PINK; }   // pink cuffs
+      let s = shadeBand(dk, x, y);
+      if (M === 1 && v < bang(u) + 1.6 && v > 18) s = Math.max(s, 1);                 // the fringe's shadow on the forehead
+      // ink where hair, a hand or a sleeve stands above a different, lower material
+      const edge = n => mat[n] !== M && hf[n] < h - 0.8;
+      if ((M === 2 || M === 4 || M === 5) && (edge(k - 1) || edge(k + 1) || edge(k - WW) || edge(k + WW))) { put(x, y, INK); continue; }
+      put(x, y, ramp[s]);
+    }
+    // 3) the ink line: every empty pixel touching the figure
+    const isIn = (x, y) => x >= 0 && y >= 0 && x < W && y < H && inF[y * W + x];
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++)
+      if (!isIn(x, y) && (isIn(x - 1, y) || isIn(x + 1, y) || isIn(x, y - 1) || isIn(x, y + 1))) put(x, y, INK);
+
+    // 4) stamps: the hair clip, the camera on its strap, the face
+    const mood = el.dataset.mood || 'neutral';
+    { const [cx, cy] = S(23 + st.sway, 21);                                     // a small blue clip on her left side of the fringe
+      for (let i = 0; i < 4; i++) put(cx + i, cy + 1, CLIP);
+      put(cx + 1, cy, CLIP); put(cx + 2, cy, CLIPL); put(cx + 1, cy + 2, CLIP); put(cx + 2, cy + 2, CLIP); put(cx, cy, CLIPL); }
+    // the camera hangs on a strap from the neck, resting on her chest
+    { const [cx, cy] = S(47, 72);
+      for (let i = 0; i < 11; i++) { const [sx, sy] = S(36.5 + i * 0.95, 57.5 + i * 1.2); put(sx, sy, INK); }
+      for (let y = -2; y <= 2; y++) for (let x = -4; x <= 4; x++) put(cx + x, cy + y, y === -2 ? CAML : y === 2 ? CAMD : CAM);
+      for (let x = -5; x <= 5; x++) { put(cx + x, cy - 3, INK); put(cx + x, cy + 3, INK); }
+      for (let y = -2; y <= 2; y++) { put(cx - 5, cy + y, INK); put(cx + 5, cy + y, INK); }
+      put(cx - 1, cy, INK); put(cx + 1, cy, INK); put(cx, cy - 1, INK); put(cx, cy + 1, INK); put(cx, cy, IRISL);   // the lens
+      put(cx + 3, cy - 1, PINK[1]); put(cx - 3, cy - 4, CAM); put(cx - 2, cy - 4, CAM); }                             // button, hump
+
+    // the face
+    const faceHidden = st.aL > 0.5;                                                // the facepalm hand covers her left eye
+    const blush = mood === 'happy' ? 1.6 : 1.1;
+    for (const chx of [25.5, 44.5]) { const [cx, cy] = S(chx, 42.5);
+      for (let y = -1; y <= 1; y++) for (let x = -2; x <= 2; x++) if (Math.abs(x) + Math.abs(y) * 1.5 < blush + 0.4 && ((x + y) & 1) === 0) put(cx + x, cy + y, CHEEK); }
+    const lid = Math.max(st.blink, mood === 'dry' ? 0.45 : 0);
+    for (const side of [-1, 1]) {
+      if (side === -1 && faceHidden) continue;
+      const [ex, ey] = S(35 + side * 6.5, 37);
+      const [bx, by] = S(35 + side * 6.5, mood === 'surprised' ? 27 : 29.5);
+      // brows
+      if (mood === 'dry') { for (let i = -3; i <= 3; i++) put(bx + i, by + 1 + (side === -1 ? (i > 0 ? -1 : 0) : (i < 0 ? -1 : 0)), INK); }
+      else { for (let i = -3; i <= 3; i++) put(bx + i, by + (Math.abs(i) > 1 ? 1 : 0), INK); }
+      if (mood === 'happy') {                                                   // eyes squeezed shut into happy arcs
+        for (const [a, b] of [[-3, 1], [-2, 0], [-1, -1], [0, -1], [1, -1], [2, 0], [3, 1], [-3, 2], [3, 2]]) { put(ex + a, ey + b, INK); }
+        continue;
+      }
+      const ry = mood === 'surprised' ? 5.5 : 4.5, rx = 3.5, ir = mood === 'surprised' ? 2.2 : 2.8;
+      for (let y = -6; y <= 6; y++) for (let x = -4; x <= 4; x++) {
+        const qx = x / rx, qy = (y + 0.3) / ry, q = qx * qx + qy * qy;
+        if (q > 1.35) continue;
+        const X = ex + x, Y = ey + y;
+        if (q > 1) { if (y <= 0) put(X, Y, INK); else if (y > 3 && Math.abs(x) < 3) put(X, Y, SKIN[2]); continue; }   // lashes above, a soft line below
+        if (y < -ry + lid * 2 * ry) { put(X, Y, SKIN[1]); continue; }         // the lid coming down
+        const ix = x / ir, iy = (y - 0.6) / (ir * 1.25), iq = ix * ix + iy * iy;
+        if (iq < 1) { const px = x / 1.3, py = (y - 0.6) / 1.8;
+          if (px * px + py * py < 1) put(X, Y, IRISD); else put(X, Y, y < -1 ? IRISD : (y > 1 && iq > 0.5 ? IRISL : IRIS)); }
+        else put(X, Y, EYEW);
+      }
+      if (lid < 0.9) { put(ex - 1, ey - 2, EYEW); put(ex - 2, ey - 2, EYEW); put(ex - 1, ey - 1, EYEW); put(ex + 1, ey + 2, EYEW); }   // the glint
+      if (lid > 0.1) { const ly = Math.round(ey - ry + lid * 2 * ry); for (let x = -3; x <= 3; x++) put(ex + x, ly - 1, INK); }
+      if (y => 0) { for (let x = -1; x <= 1; x++) put(ex + x, ey - ry - 1, INK); }                     // thicker lash at the top
+    }
+    // the mouth: closed shape by mood; half or open while she talks
+    { const [mx, my] = S(35, 47);
+      const m = st.mouth;
+      if (m === 'closed') {
+        if (mood === 'happy') for (let u = -4; u <= 4; u++) put(mx + u, my - (Math.abs(u) > 2 ? 1 : 0) - (Math.abs(u) > 3 ? 1 : 0) + 1, INK);
+        else if (mood === 'dry') for (let u = -3; u <= 2; u++) put(mx + u, my + (u > 1 ? -1 : 0), INK);
+        else if (mood === 'surprised') { for (const [a, b] of [[-1, -1], [0, -1], [1, 0], [1, 1], [0, 2], [-1, 2], [-2, 1], [-2, 0]]) put(mx + a, my + b, INK); put(mx - 1, my, MOUTH); put(mx, my, MOUTH); put(mx - 1, my + 1, MOUTH); put(mx, my + 1, MOUTH); }
+        else for (let u = -2; u <= 2; u++) put(mx + u, my - (Math.abs(u) > 1 ? 1 : 0), INK);
+      } else {
+        const wide = mood === 'happy' ? 4 : mood === 'dry' ? 2.5 : mood === 'surprised' ? 2.6 : 3;
+        const tall = m === 'open' ? (mood === 'surprised' ? 3.6 : 3) : 1.6;
+        for (let y = -5; y <= 5; y++) for (let x = -5; x <= 5; x++) {
+          const q = (x / wide) ** 2 + ((y - 0.3) / tall) ** 2;
+          if (q < 1) put(mx + x, my + y, m === 'open' && y > tall * 0.45 ? TONGUE : MOUTH);
+          else if (q < 1.9 && (x / (wide + 1)) ** 2 + ((y - 0.3) / (tall + 1)) ** 2 < 1) put(mx + x, my + y, INK);
+        }
+      }
+    }
+
+    sctx.putImageData(img, 0, 0);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(small, 0, 0, canvas.width, canvas.height);
+  }
+
+  function layout() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(140 * dpr); canvas.height = Math.round(180 * dpr);
+    ctx.imageSmoothingEnabled = false;
+  }
+  addEventListener('resize', layout); layout();
+
+  // ---------- start state from the address, for screenshots ----------
+  const q = new URLSearchParams(location.search);
+  if (q.get('mood')) el.dataset.mood = q.get('mood');
+  if (q.get('action')) el.dataset.action = q.get('action');
+  if (q.get('mouth')) window.marchMouth(q.get('mouth'));
+  if (q.get('action')) { st.aL = el.dataset.action === 'facepalm' ? 1 : 0; st.aR = el.dataset.action === 'point' ? 1 : 0; }
+
+  // ---------- the loop ----------
+  let last = performance.now();
+  function frame(now) { const dt = Math.min(0.1, (now - last) / 1000); last = now; update(dt); render(); requestAnimationFrame(frame); }
+  requestAnimationFrame(frame);
+  window.__march = st;
+
+  // ---------- the test strip (outside #march) ----------
+  const strip = document.getElementById('strip');
+  const mark = () => { for (const b of strip.querySelectorAll('button')) {
+    b.classList.toggle('on', (b.dataset.mood && b.dataset.mood === el.dataset.mood) || (b.dataset.action && b.dataset.action === el.dataset.action) || (b.dataset.mouth && b.dataset.mouth === st.mouth) || (b.id === 'talk' && !!talking)); } };
+  let talking = null, tf = 0;
+  strip.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.mood) el.dataset.mood = b.dataset.mood;
+    if (b.dataset.action) el.dataset.action = b.dataset.action;
+    if (b.dataset.mouth) { if (talking) { clearInterval(talking); talking = null; } window.marchMouth(b.dataset.mouth); }
+    if (b.id === 'talk') {
+      if (talking) { clearInterval(talking); talking = null; window.marchMouth('closed'); }
+      else talking = setInterval(() => { tf++; window.marchMouth(['half', 'open', 'half', 'closed'][tf & 3]); }, 40);
+    }
+    mark();
+  });
+  setInterval(mark, 200); mark();
+})();
+</script>
+</body>
+</html>

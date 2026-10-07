@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>March, watercolour (design candidate)</title>
+<style>
+  /* The page copies the chronicle stage so the figure is judged in its real box. */
+  html, body { margin: 0; background: #0b0b10; color: #e8e8f0; font-family: Georgia, "Times New Roman", serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 1rem; box-sizing: border-box; }
+  #stage { position: relative; margin: 1rem 0; background: #14141c; border-radius: 12px;
+    padding: 1rem; display: grid; grid-template-columns: 140px 1fr; gap: 1rem; align-items: center; }
+  #march { width: 140px; height: 180px; position: relative; display: block; }
+  #march canvas { position: absolute; left: 0; top: 0; width: 140px; height: 180px; display: block; }
+  #march-caption { min-height: 4.5em; line-height: 1.5; font-size: 1.05rem; color: #ffd9ec; }
+  /* the test strip: not part of #march */
+  #strip { font-size: 0.8rem; color: #9a9ab0; line-height: 2; }
+  #strip button { font: inherit; font-size: 0.8rem; padding: 0.15em 0.6em; margin: 0 0.2em 0.2em 0;
+    background: #1c1c26; color: #e8e8f0; border: 1px solid #444; border-radius: 4px; }
+  #strip button.on { border-color: #c9b26b; color: #c9b26b; }
+  #strip span.k { letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.7rem; margin-right: 0.4em; }
+</style>
+</head>
+<body>
+<main>
+  <div id="stage">
+    <div id="march" data-mood="neutral" data-action="none" aria-label="March, painted by code"></div>
+    <div id="march-caption">Here is where my words go, next to me, while I talk.</div>
+  </div>
+  <div id="strip">
+    <div><span class="k">mood</span><button data-mood="neutral">neutral</button><button data-mood="happy">happy</button><button data-mood="dry">dry</button><button data-mood="surprised">surprised</button></div>
+    <div><span class="k">action</span><button data-action="none">none</button><button data-action="point">point</button><button data-action="facepalm">facepalm</button></div>
+    <div><span class="k">mouth</span><button id="talk">talk</button> <span id="perf"></span></div>
+  </div>
+</main>
+<script>
+/* ============================================================================
+   MARCH, A WATERCOLOUR STORYBOOK FIGURE, PAINTED BY CODE
+   No image files, no image model, no fonts fetched. The method follows
+   creature-lab/5-watercolour.html, but with drawn shapes instead of a height
+   field, because hair, eyes and an outfit need edges the clay method cannot
+   give at 140 x 180:
+     * every part is a hand-placed closed curve (Catmull-Rom through a few
+       points), sampled into a polygon;
+     * a WASH is that polygon with its edge pushed about by noise, filled with
+       multiply blending, twice (two see-through glazes, a little off each
+       other, so they darken where they overlap), with a darker pooled rim;
+     * the washes are printed slightly up-left of the INK, as in a picture
+       book; the ink is a ribbon whose width wobbles and breaks, and its points
+       are re-jittered 9 times a second (line boil);
+     * a cold-press PAPER GRAIN canvas is made once and multiplied on top.
+   Speed: the still parts (hair, head, outfit, camera) are washed once into an
+   offscreen canvas. Only the eyes, mouth and arms are re-washed, and only when
+   they change or the boil ticks; the visible canvas just composes three
+   pictures per frame (paper, figure with the breath transform, grain).
+   ============================================================================ */
+(() => {
+'use strict';
+const W = 140, H = 180;
+const root = document.getElementById('march');
+const DPR = Math.min(3, devicePixelRatio || 1);
+const mk = () => { const c = document.createElement('canvas'); c.width = W * DPR; c.height = H * DPR; return c; };
+const view = mk(); root.appendChild(view);
+const vctx = view.getContext('2d');
+const paper = mk(), grain = mk(), fig = mk();
+
+// ---------------------------------------------------------------- noise ----
+let seed = 7;
+const rnd = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
+const NT = new Float32Array(65536); for (let i = 0; i < 65536; i++) NT[i] = rnd();
+function vn(x, y) {
+  const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+  const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+  const x0 = xi & 255, y0 = (yi & 255) << 8, x1 = (x0 + 1) & 255, y1 = ((yi + 1) & 255) << 8;
+  const a = NT[y0 + x0], b = NT[y0 + x1], c = NT[y1 + x0], d = NT[y1 + x1];
+  return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+}
+const ss = (a, b, x) => { let t = (x - a) / (b - a); t = t < 0 ? 0 : t > 1 ? 1 : t; return t * t * (3 - 2 * t); };
+const lerp = (a, b, t) => a + (b - a) * t;
+
+// ------------------------------------------------------------- palette ----
+const PAPER = '#f8f2e5';
+const C = {
+  hair: 'rgba(243,160,196,0.62)', hairDeep: 'rgba(204,96,150,0.5)', hairDark: 'rgba(150,70,120,0.45)',
+  skin: 'rgba(250,220,200,0.7)', skinShade: 'rgba(222,160,140,0.5)', blush: 'rgba(240,130,140,0.4)',
+  cloth: 'rgba(214,210,228,0.42)', clothShade: 'rgba(160,150,190,0.45)', trim: 'rgba(240,140,180,0.7)',
+  blue: 'rgba(86,150,226,0.8)', blueDeep: 'rgba(40,86,170,0.7)', iris: 'rgba(96,170,235,0.9)', irisDeep: 'rgba(36,80,170,0.75)',
+  mouth: 'rgba(190,80,110,0.85)', tongue: 'rgba(235,130,150,0.7)', camera: 'rgba(120,130,150,0.7)', cameraDark: 'rgba(60,66,86,0.7)',
+};
+const INK = 'rgba(66,42,60,';
+
+// ------------------------------------------------------------- curves ----
+// Catmull-Rom through control points -> polygon. A point may carry a third
+// value 1 to make it sharp (a hair tip): the curve passes it with a corner.
+function sample(pts, closed, per = 6) {
+  const n = pts.length, out = [];
+  const get = i => pts[closed ? (i % n + n) % n : Math.max(0, Math.min(n - 1, i))];
+  const segs = closed ? n : n - 1;
+  for (let i = 0; i < segs; i++) {
+    const p0 = get(i - 1), p1 = get(i), p2 = get(i + 1), p3 = get(i + 2);
+    const sharp1 = p1[2] === 1, sharp2 = p2[2] === 1;
+    for (let s = 0; s < per; s++) {
+      const t = s / per, t2 = t * t, t3 = t2 * t;
+      if (sharp1 || sharp2) { out.push([lerp(p1[0], p2[0], t), lerp(p1[1], p2[1], t)]); continue; }
+      out.push([
+        0.5 * (2 * p1[0] + (-p0[0] + p2[0]) * t + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * t2 + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * t3),
+        0.5 * (2 * p1[1] + (-p0[1] + p2[1]) * t + (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * t2 + (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * t3)]);
+    }
+  }
+  if (!closed) out.push([pts[n - 1][0], pts[n - 1][1]]);
+  return out;
+}
+function ellipse(cx, cy, rx, ry, n = 28, k = 0) {       // k: squash of the lower half (0 round)
+  const out = [];
+  for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2, s = Math.sin(a); out.push([cx + Math.cos(a) * rx, cy + s * ry * (s > 0 ? 1 - k : 1)]); }
+  return out;
+}
+function tube(x1, y1, x2, y2, r1, r2, n = 7) {           // a sausage with round ends
+  const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L, out = [];
+  const a0 = Math.atan2(ny, nx);
+  for (let i = 0; i <= n; i++) { const a = a0 + Math.PI * i / n; out.push([x1 + Math.cos(a) * r1, y1 + Math.sin(a) * r1]); }
+  for (let i = 0; i <= n; i++) { const a = a0 + Math.PI + Math.PI * i / n; out.push([x2 + Math.cos(a) * r2, y2 + Math.sin(a) * r2]); }
+  return out;
+}
+function path(c, p, closed) { c.beginPath(); c.moveTo(p[0][0], p[0][1]); for (let i = 1; i < p.length; i++) c.lineTo(p[i][0], p[i][1]); if (closed) c.closePath(); }
+function wob(p, amp, sd) { return p.map(([x, y]) => [x + (vn(x * 0.11 + sd, y * 0.11) - 0.5) * amp, y + (vn(x * 0.11, y * 0.11 + sd + 3) - 0.5) * amp]); }
+
+// ---------------------------------------------------------------- wash ----
+// opts: opaque (paper under it, so it covers what is behind), rim (pooled edge),
+// off (registration offset), layers.
+function wash(c, p, col, o = {}) {
+  const sd = o.seed || 0, amp = o.amp == null ? 2.2 : o.amp, off = o.off == null ? 1 : o.off;
+  c.save(); c.translate(-1.1 * off, -0.8 * off);
+  if (o.opaque) { c.globalCompositeOperation = 'source-over'; c.fillStyle = PAPER; path(c, wob(p, amp, sd), true); c.fill(); }
+  c.globalCompositeOperation = 'multiply';
+  const layers = o.layers == null ? 2 : o.layers;
+  for (let L = 0; L < layers; L++) {
+    const q = wob(p, amp, sd + L * 5.3);
+    c.save(); c.translate(L * 0.9, L * -0.6);
+    c.globalAlpha = L ? 0.55 : 1;
+    c.fillStyle = col; path(c, q, true); c.fill();
+    if (o.rim !== false && L === 0) { c.strokeStyle = col; c.lineWidth = 1.6; c.lineJoin = 'round'; c.globalAlpha = 0.5; c.stroke(); }
+    c.restore();
+  }
+  c.restore();
+}
+// a lift-out: paper lifted back off a wash (a hair shine, an eye highlight)
+function lift(c, p, a = 0.6, sd = 0) {
+  c.save(); c.globalCompositeOperation = 'source-over'; c.globalAlpha = a; c.fillStyle = PAPER; path(c, wob(p, 1.4, sd), true); c.fill(); c.restore();
+}
+
+// ----------------------------------------------------------------- ink ----
+// A ribbon: its width wobbles, breaks now and then, and its points jitter with
+// the boil seed. A closed path is inked as a loop.
+let boil = 0;
+function ink(c, p, closed, w, o = {}) {
+  const sd = o.seed || 0, a = o.alpha == null ? 0.88 : o.alpha, br = o.breaks == null ? 1 : o.breaks;
+  const q = closed ? p.concat([p[0], p[1]]) : p, n = q.length, L = [], R = [];
+  const bz = boil * 2.17;
+  for (let i = 0; i < n; i++) {
+    const pa = q[Math.max(0, i - 1)], pb = q[Math.min(n - 1, i + 1)];
+    let tx = pb[0] - pa[0], ty = pb[1] - pa[1]; const tl = Math.hypot(tx, ty) || 1; tx /= tl; ty /= tl;
+    const jx = (vn(q[i][0] * 0.3 + bz, q[i][1] * 0.3) - 0.5) * 0.9, jy = (vn(q[i][0] * 0.3, q[i][1] * 0.3 + bz + 9) - 0.5) * 0.9;
+    const x = q[i][0] + jx, y = q[i][1] + jy;
+    let ww = w * (0.5 + 1.0 * vn(i * 0.27 + sd * 1.7, bz * 0.3 + 2));
+    const gap = vn(i * 0.09 + sd * 3.1, bz * 0.2 + 7);
+    ww *= 1 - br * ss(0.72, 0.8, gap);                          // broken in places
+    if (ww < 0.08) ww = 0.08;
+    L.push([x - ty * ww / 2, y + tx * ww / 2]); R.push([x + ty * ww / 2, y - tx * ww / 2]);
+  }
+  c.save(); c.globalCompositeOperation = 'multiply'; c.fillStyle = INK + a + ')';
+  c.beginPath(); c.moveTo(L[0][0], L[0][1]);
+  for (let i = 1; i < n; i++) c.lineTo(L[i][0], L[i][1]);
+  for (let i = n - 1; i >= 0; i--) c.lineTo(R[i][0], R[i][1]);
+  c.closePath(); c.fill(); c.restore();
+}
+
+// --------------------------------------------------------- the shapes ----
+// Rest coordinates, 140 x 180, head centre about (70,74).
+const S = {};
+S.hairBack = sample([[70, 26], [98, 32], [113, 56], [116, 88], [110, 116], [94, 123], [70, 119], [46, 123], [30, 116], [24, 88], [27, 56], [42, 32]], true);
+S.head = sample([[70, 38], [96, 48], [104, 72], [98, 98], [80, 114], [70, 117], [60, 114], [42, 98], [36, 72], [44, 48]], true);
+S.neck = sample([[60, 104], [80, 104], [82, 132], [58, 132]], true);
+S.body = sample([[70, 120], [92, 125], [108, 134], [118, 152], [122, 180], [18, 180], [22, 152], [32, 134], [48, 125]], true);
+S.collar = sample([[50, 124], [70, 142], [90, 124], [98, 130], [70, 154], [42, 130]], true);
+S.bodyShade = sample([[94, 128], [110, 138], [118, 156], [120, 180], [100, 180], [98, 156], [90, 140]], true);
+S.bow = sample([[70, 143], [80, 138], [84, 146], [74, 148], [70, 152], [66, 148], [56, 146], [60, 138]], true);
+// front hair: the bob's front with a fringe of strands over the forehead
+S.bangs = sample([[26, 104], [24, 70], [30, 44], [50, 28], [70, 25], [90, 28], [110, 44], [116, 70], [114, 104, 1], [108, 106, 1], [106, 76], [102, 60],
+  [96, 78, 1], [90, 68], [84, 84, 1], [77, 70], [70, 88, 1], [63, 70], [57, 84, 1], [49, 68], [43, 78, 1], [38, 68], [34, 80], [32, 106, 1]], true, 5);
+S.bangShadow = sample([[36, 72], [44, 66], [52, 78], [60, 70], [68, 84], [76, 70], [84, 80], [92, 68], [100, 76], [103, 84], [96, 86], [86, 90], [76, 92], [66, 92], [56, 90], [44, 88], [38, 84]], true);
+S.hairShine = sample([[40, 40], [56, 32], [72, 30], [92, 36], [86, 42], [70, 38], [54, 41]], true);
+S.hairLow = sample([[26, 90], [34, 106], [46, 122], [70, 118], [94, 122], [108, 106], [115, 90], [110, 112], [94, 123], [70, 119], [46, 123], [30, 112]], true);
+S.clip = sample([[44, 46], [58, 40], [60, 45], [46, 52]], true);
+S.clip2 = sample([[46, 52], [60, 46], [62, 50], [48, 57]], true);
+S.camBody = sample([[82, 156], [104, 156], [106, 158], [106, 172], [82, 172], [80, 170], [80, 158]], true);
+S.camLens = ellipse(94, 164, 5, 5, 20);
+S.camIn = ellipse(94, 164, 2.5, 2.5, 14);
+S.camTop = sample([[86, 153], [98, 153], [99, 157], [85, 157]], true);
+S.strap = sample([[62, 144], [70, 158], [82, 166]], false);
+S.sideL = sample([[28, 60], [34, 44], [40, 72], [36, 100], [30, 100]], true);
+S.sideR = sample([[112, 60], [106, 44], [100, 72], [104, 100], [110, 100]], true);
+
+// -------------------------------------------------- the still parts ----
+// Each part is washed and then inked at once, so a part in front hides the
+// lines of the part behind it (the fringe hides the skull's line).
+function paintStill(c) {
+  wash(c, S.hairBack, C.hair, { opaque: true, seed: 1, amp: 2.8 });
+  wash(c, S.hairLow, C.hairDeep, { seed: 2, amp: 3, rim: false });
+  ink(c, S.hairBack, true, 1.5, { seed: 1 });
+  wash(c, S.neck, C.skin, { opaque: true, seed: 3 });
+  wash(c, S.neck, C.skinShade, { seed: 4, layers: 1, rim: false });
+  ink(c, S.neck, true, 0.9, { seed: 3, breaks: 1.5 });
+  wash(c, S.body, C.cloth, { opaque: true, seed: 5, amp: 2.4 });
+  wash(c, S.bodyShade, C.clothShade, { seed: 6, layers: 1, rim: false });
+  ink(c, S.body, true, 1.4, { seed: 4 });
+  wash(c, S.collar, C.trim, { seed: 7 });
+  ink(c, S.collar, true, 0.9, { seed: 5 });
+  wash(c, tube(62, 144, 82, 166, 1.2, 1.2, 3), C.cameraDark, { seed: 8, layers: 1, rim: false, amp: 0.6 });
+  ink(c, S.strap, false, 0.7, { seed: 7, alpha: 0.6 });
+  wash(c, S.camBody, C.camera, { opaque: true, seed: 9, amp: 1.2 });
+  wash(c, S.camTop, C.cameraDark, { seed: 10, amp: 1, layers: 1 });
+  wash(c, S.camLens, C.cameraDark, { seed: 11, amp: 0.8 });
+  wash(c, S.camIn, C.blue, { seed: 12, amp: 0.5, layers: 1 });
+  lift(c, ellipse(92, 162, 1.2, 1.2, 8), 0.9);
+  ink(c, S.camBody, true, 1.0, { seed: 8 }); ink(c, S.camLens, true, 0.9, { seed: 9 }); ink(c, S.camTop, true, 0.7, { seed: 10 });
+  wash(c, S.bow, C.blue, { seed: 13, amp: 1.4 });
+  ink(c, S.bow, true, 0.8, { seed: 6 });
+  wash(c, S.head, C.skin, { opaque: true, seed: 14, amp: 2.4 });
+  // cheeks: a soft bloom, pink pooled into damp paper
+  c.save(); c.globalCompositeOperation = 'multiply';
+  for (const x of [47, 93]) {
+    const g = c.createRadialGradient(x, 95, 0, x, 95, 9);
+    g.addColorStop(0, 'rgba(240,130,140,0.45)'); g.addColorStop(0.6, 'rgba(240,140,145,0.2)'); g.addColorStop(1, 'rgba(240,140,145,0)');
+    c.fillStyle = g; c.beginPath(); c.ellipse(x, 95, 9, 6, 0, 0, 7); c.fill();
+  }
+  c.restore();
+  wash(c, S.bangShadow, C.skinShade, { seed: 15, layers: 1, rim: false, amp: 2 });
+  ink(c, S.head, true, 1.3, { seed: 2 });
+  ink(c, [[70, 94], [72, 97]], false, 0.8, { seed: 17, alpha: 0.6, breaks: 0 });      // the nose: one small tick
+  wash(c, S.bangs, C.hair, { opaque: true, seed: 16, amp: 2.2 });
+  // strands: a few deeper pink ribbons through the fringe
+  for (const [x0, x1, s] of [[48, 44, 21], [62, 60, 22], [78, 80, 23], [94, 98, 24], [36, 32, 25], [106, 110, 26]]) {
+    wash(c, tube(x0, 36, x1, 74, 1.3, 0.4, 3), C.hairDeep, { seed: s, layers: 1, rim: false, amp: 0.8 });
+  }
+  wash(c, S.sideL, C.hairDeep, { seed: 27, layers: 1, rim: false, amp: 2 });
+  wash(c, S.sideR, C.hairDeep, { seed: 28, layers: 1, rim: false, amp: 2 });
+  lift(c, S.hairShine, 0.55, 29);
+  ink(c, S.bangs, true, 1.3, { seed: 11 });
+  for (const [x0, x1, s] of [[52, 49, 14], [70, 70, 15], [88, 91, 16]]) ink(c, [[x0, 34], [x0 + (x1 - x0) * 0.5, 50], [x1, 64]], false, 0.6, { seed: s, alpha: 0.5, breaks: 2 });
+  wash(c, S.clip, C.blue, { opaque: true, seed: 30, amp: 0.8 });
+  wash(c, S.clip2, C.blueDeep, { opaque: true, seed: 31, amp: 0.8 });
+  ink(c, S.clip, true, 0.8, { seed: 12 }); ink(c, S.clip2, true, 0.8, { seed: 13 });
+}
+
+// ------------------------------------------------------------ the life ----
+const A = { t: 0, breath: 0, lid: 0, blinkT: -1, nextBlink: 2.5, look: [0, 0], lookT: [0, 0], lookIn: 2, sway: 0 };
+const arms = {                     // shoulder is fixed; elbow and hand are sprung toward the pose
+  L: { sx: 32, sy: 138, ex: 20, ey: 162, hx: 36, hy: 178, tex: 20, tey: 162, thx: 36, thy: 178, vex: 0, vey: 0, vhx: 0, vhy: 0 },
+  R: { sx: 108, sy: 138, ex: 120, ey: 162, hx: 104, hy: 178, tex: 120, tey: 162, thx: 104, thy: 178, vex: 0, vey: 0, vhx: 0, vhy: 0 },
+};
+const POSE = {
+  none: { L: [20, 162, 36, 178], R: [120, 162, 104, 178] },
+  point: { L: [20, 162, 36, 178], R: [118, 140, 124, 112] },
+  facepalm: { L: [30, 150, 56, 88], R: [120, 162, 104, 178] },
+};
+let mood = 'neutral', action = 'none', mouth = 'closed', dirty = true, lastInk = -1;
+let facepalmT = 0;                 // how far the hand has arrived (eyes squeeze a little)
+
+function spring(a, dt) {
+  for (const [p, v, t] of [['ex', 'vex', 'tex'], ['ey', 'vey', 'tey'], ['hx', 'vhx', 'thx'], ['hy', 'vhy', 'thy']]) {
+    const acc = (a[t] - a[p]) * 160 - a[v] * 16;
+    a[v] += acc * dt; a[p] += a[v] * dt;
+    if (Math.abs(a[v]) > 0.05 || Math.abs(a[t] - a[p]) > 0.05) dirty = true;
+  }
+}
+function update(dt) {
+  A.t += dt;
+  A.breath = Math.sin(A.t * Math.PI * 2 / 3.8);
+  A.sway = Math.sin(A.t * 0.45) * 0.5 + Math.sin(A.t * 0.13) * 0.3;
+  // blink
+  A.nextBlink -= dt;
+  if (A.nextBlink < 0 && A.blinkT < 0) { A.blinkT = 0; A.nextBlink = 2 + Math.random() * 4; }
+  if (A.blinkT >= 0) { A.blinkT += dt; const b = A.blinkT / 0.22; A.lid = b < 0.5 ? ss(0, 0.5, b) : 1 - ss(0.5, 1, b); if (b >= 1) { A.blinkT = -1; A.lid = 0; } dirty = true; }
+  // gaze drifts now and then
+  A.lookIn -= dt;
+  if (A.lookIn < 0) { A.lookIn = 1.5 + Math.random() * 3; A.lookT = [(Math.random() - 0.5) * 1.6, (Math.random() - 0.5) * 0.8]; }
+  for (let i = 0; i < 2; i++) { const d = A.lookT[i] - A.look[i]; if (Math.abs(d) > 0.01) { A.look[i] += d * Math.min(1, dt * 6); dirty = true; } }
+  // arms
+  const P = POSE[action] || POSE.none;
+  arms.L.tex = P.L[0]; arms.L.tey = P.L[1]; arms.L.thx = P.L[2]; arms.L.thy = P.L[3];
+  arms.R.tex = P.R[0]; arms.R.tey = P.R[1]; arms.R.thx = P.R[2]; arms.R.thy = P.R[3];
+  spring(arms.L, dt); spring(arms.R, dt);
+  const fp = action === 'facepalm' ? 1 : 0;
+  if (Math.abs(fp - facepalmT) > 0.01) { facepalmT += (fp - facepalmT) * Math.min(1, dt * 5); dirty = true; }
+}
+
+// ----------------------------------------------------- the moving parts ----
+function drawArm(c, a, side, hand) {
+  const sd = side ? 1 : -1;
+  const sleeve = ellipse(a.sx, a.sy + 2, 10, 9, 20);
+  const upper = tube(a.sx, a.sy + 4, a.ex, a.ey, 6.5, 5.6);
+  const fore = tube(a.ex, a.ey, a.hx, a.hy, 5.6, 5);
+  wash(c, upper, C.cloth, { opaque: true, seed: 40 + side, amp: 1.6, rim: false });
+  ink(c, upper, true, 1.1, { seed: 90 + side });
+  wash(c, sleeve, C.cloth, { opaque: true, seed: 44 + side, amp: 1.8 });
+  wash(c, sample([[a.sx + sd * 4, a.sy - 4], [a.sx + sd * 9, a.sy + 2], [a.sx + sd * 6, a.sy + 9], [a.sx + sd * 2, a.sy + 6]], true), C.clothShade, { seed: 45 + side, layers: 1, rim: false, amp: 1 });
+  ink(c, sleeve, true, 1.1, { seed: 92 + side });
+  wash(c, fore, C.skin, { opaque: true, seed: 42 + side, amp: 1.6 });
+  wash(c, tube(a.ex, a.ey, a.hx, a.hy, 2.2, 1.6, 3), C.skinShade, { seed: 49, layers: 1, rim: false, amp: 1, off: -1.2 });
+  ink(c, fore, true, 1.1, { seed: 94 + side });
+  if (hand === 'point') {
+    const dx = a.hx - a.ex, dy = a.hy - a.ey, L = Math.hypot(dx, dy) || 1, ux = dx / L, uy = dy / L;
+    const fist = ellipse(a.hx - ux * 1, a.hy - uy * 1, 6.5, 6, 16);
+    const finger = tube(a.hx + ux * 3, a.hy + uy * 3, a.hx + ux * 13, a.hy + uy * 13, 2.3, 1.8, 4);
+    wash(c, fist, C.skin, { opaque: true, seed: 46, amp: 1.2 }); ink(c, fist, true, 1.1, { seed: 96 });
+    wash(c, finger, C.skin, { opaque: true, seed: 47, amp: 0.8 }); ink(c, finger, true, 1.0, { seed: 97 });
+  } else if (hand === 'facepalm') {
+    // the palm sits over the near eye; four fingers fan up toward the fringe
+    const px = a.hx, py = a.hy;
+    const palm = sample([[px - 9, py - 2], [px - 6, py - 10], [px + 4, py - 12], [px + 11, py - 6], [px + 12, py + 4], [px + 6, py + 11], [px - 4, py + 11], [px - 10, py + 6]], true);
+    wash(c, palm, C.skin, { opaque: true, seed: 48, amp: 1.4 });
+    wash(c, ellipse(px + 2, py + 4, 7, 5, 14), C.skinShade, { seed: 53, layers: 1, rim: false, amp: 1.5 });
+    ink(c, palm, true, 1.1, { seed: 98 });
+    for (let i = 0; i < 4; i++) {
+      const bx = px - 7 + i * 5.6, by = py - 8 + (i === 0 ? 2 : i === 3 ? 1 : 0);
+      const len = i === 0 ? 10 : i === 3 ? 10.5 : 13;
+      const ang = -Math.PI / 2 + (i - 1.5) * 0.17;
+      const f = tube(bx, by, bx + Math.cos(ang) * len, by + Math.sin(ang) * len, 2.4, 2.0, 4);
+      wash(c, f, C.skin, { opaque: true, seed: 50 + i, amp: 0.7 });
+      ink(c, f, true, 1.0, { seed: 100 + i });
+    }
+  } else {
+    const hnd = ellipse(a.hx, a.hy, 5.5, 5, 16);
+    wash(c, hnd, C.skin, { opaque: true, seed: 46 + side, amp: 1.2 }); ink(c, hnd, true, 1.1, { seed: 96 + side });
+  }
+}
+function eyeCurves(cx, cy, rx, ry, lid) {
+  const top = [], bot = [], n = 14;
+  for (let i = 0; i <= n; i++) {
+    const x = -1 + 2 * i / n, s = Math.sqrt(Math.max(0, 1 - x * x));
+    const ty = cy - ry * s, by = cy + ry * 0.78 * s;
+    top.push([cx + x * rx, lerp(ty, by, lid)]); bot.push([cx + x * rx, by]);
+  }
+  return { top, bot };
+}
+function drawEyes(c) {
+  const squeeze = facepalmT * 0.5;
+  for (const sd of [-1, 1]) {
+    const cx = 70 + sd * 15 + A.look[0] * 0.6, cy = 84 + A.look[1] * 0.4;
+    const rx = 8, ryBase = mood === 'surprised' ? 11.5 : mood === 'dry' ? 9.5 : 10, ry = ryBase;
+    if (mood === 'happy') {                                         // closed, curved up: ^
+      const arc = [[cx - rx, cy + 1], [cx - rx * 0.5, cy - ry * 0.45], [cx, cy - ry * 0.55], [cx + rx * 0.5, cy - ry * 0.45], [cx + rx, cy + 1]];
+      ink(c, sample(arc, false, 5), false, 2.4, { seed: 60 + sd, breaks: 0 });
+      continue;
+    }
+    const lidBase = mood === 'dry' ? 0.42 : mood === 'surprised' ? -0.08 : 0.05;
+    const lid = Math.max(lidBase, A.lid * 1.05, squeeze);
+    const e = eyeCurves(cx, cy, rx, ry, Math.min(1, lid));
+    const region = e.top.concat(e.bot.slice().reverse());
+    if (lid < 0.97) {
+      c.save(); path(c, region, true); c.clip();
+      c.globalCompositeOperation = 'source-over'; c.fillStyle = PAPER; c.fillRect(cx - rx - 2, cy - ry - 2, rx * 2 + 4, ry * 2 + 4);
+      // a cool shade under the upper lid
+      wash(c, eyeCurves(cx, cy, rx, ry, 0).top.concat([[cx + rx, cy - ry * 0.2], [cx, cy - ry * 0.1], [cx - rx, cy - ry * 0.2]]), 'rgba(170,180,210,0.45)', { layers: 1, rim: false, amp: 1, off: 0 });
+      const ir = mood === 'surprised' ? 0.62 : 0.8, icx = cx + A.look[0] * 1.3, icy = cy + 1.5 + A.look[1] * 1;
+      const iris = ellipse(icx, icy, rx * ir, ry * ir * 0.95, 20);
+      wash(c, iris, C.iris, { seed: 62 + sd, amp: 0.9, off: 0.6 });
+      wash(c, ellipse(icx, icy - ry * 0.25, rx * ir * 0.95, ry * ir * 0.55, 16), C.irisDeep, { seed: 64 + sd, layers: 1, rim: false, amp: 0.8, off: 0 });
+      const pr = mood === 'surprised' ? 0.3 : 0.42;
+      c.globalCompositeOperation = 'multiply'; c.fillStyle = INK + '0.9)'; c.beginPath(); c.ellipse(icx, icy + 0.5, rx * ir * pr, ry * ir * pr * 1.1, 0, 0, 7); c.fill();
+      lift(c, ellipse(icx - rx * 0.32, icy - ry * 0.36, 2.2, 2.6, 10), 0.95);
+      lift(c, ellipse(icx + rx * 0.3, icy + ry * 0.3, 1.1, 1.1, 8), 0.85);
+      c.restore();
+      ink(c, iris, true, 0.6, { seed: 66 + sd, alpha: 0.6, breaks: 0.5 });
+    }
+    // lashes: a heavy upper line that thickens at the outer corner, a light lower one
+    ink(c, e.top, false, 2.3, { seed: 68 + sd, breaks: 0 });
+    ink(c, e.bot.slice(3, 12), false, 0.7, { seed: 70 + sd, alpha: 0.55, breaks: 0.5 });
+    const oc = e.top[sd < 0 ? 0 : 14];
+    ink(c, [[oc[0], oc[1]], [oc[0] + sd * 2.5, oc[1] - 2.2]], false, 1.3, { seed: 72 + sd, breaks: 0 });
+  }
+  // brows
+  for (const sd of [-1, 1]) {
+    const cx = 70 + sd * 15;
+    let b;
+    if (mood === 'happy') b = [[cx - 8, 68], [cx, 63], [cx + 8, 67]];
+    else if (mood === 'surprised') b = [[cx - 8, 64], [cx, 59], [cx + 8, 63]];
+    else if (mood === 'dry') b = [[cx - 8, 69], [cx, 68.5], [cx + 8, 70 - sd * 1.5]];
+    else b = [[cx - 8, 69], [cx, 66], [cx + 8, 68]];
+    if (sd > 0) b = b.map(p => [cx - (p[0] - cx), p[1]]).reverse();
+    ink(c, sample(b, false, 6), false, 1.5, { seed: 74 + sd, breaks: 0 });
+  }
+}
+function drawMouth(c) {
+  const cx = 70 + A.look[0] * 0.3, cy = 104;
+  const wide = mood === 'happy' ? 7 : mood === 'surprised' ? 3.5 : mood === 'dry' ? 5 : 4.5;
+  const open = mouth === 'open' ? 1 : mouth === 'half' ? 0.5 : 0;
+  const curl = mood === 'happy' ? 3 : mood === 'dry' ? -0.6 : mood === 'surprised' ? 0 : 1;
+  if (open === 0) {
+    const line = [[cx - wide, cy - curl * 0.6], [cx, cy + curl * 0.6], [cx + wide, cy - curl * 0.6]];
+    ink(c, sample(line, false, 6), false, 1.2, { seed: 80, breaks: 0 });
+    return;
+  }
+  const h = (mood === 'surprised' ? 6.5 : 5.5) * open, w = wide * (mood === 'surprised' ? 1 + open * 0.3 : 1);
+  const shape = sample([[cx - w, cy - curl * 0.5], [cx - w * 0.5, cy - h * 0.35 - curl * 0.2], [cx + w * 0.5, cy - h * 0.35 - curl * 0.2], [cx + w, cy - curl * 0.5],
+    [cx + w * 0.55, cy + h * 0.9], [cx, cy + h * 1.1], [cx - w * 0.55, cy + h * 0.9]], true, 5);
+  wash(c, shape, C.mouth, { opaque: true, seed: 81, amp: 0.8, off: 0.5 });
+  if (open > 0.7) wash(c, ellipse(cx, cy + h * 0.75, w * 0.5, h * 0.3, 12), C.tongue, { seed: 82, layers: 1, rim: false, amp: 0.5, off: 0 });
+  lift(c, sample([[cx - w * 0.7, cy - curl * 0.4], [cx, cy - h * 0.2], [cx + w * 0.7, cy - curl * 0.4], [cx, cy + 0.6]], true, 4), 0.9 * (open > 0.6 ? 1 : 0.6), 83);
+  ink(c, shape, true, 1.1, { seed: 84, breaks: 0.3 });
+}
+
+// ------------------------------------------------------ the figure pass ----
+function paintFigure() {
+  const c = fig.getContext('2d'); c.setTransform(DPR, 0, 0, DPR, 0, 0); c.clearRect(0, 0, W, H);
+  paintStill(c);
+  drawEyes(c); drawMouth(c);
+  drawArm(c, arms.R, 1, action === 'point' && arms.R.hy < 140 ? 'point' : 'rest');
+  const near = Math.hypot(arms.L.hx - 56, arms.L.hy - 88) < 14;
+  drawArm(c, arms.L, 0, action === 'facepalm' && near ? 'facepalm' : 'rest');
+}
+
+// ------------------------------------------------- paper and the grain ----
+function buildPaper() {
+  const c = paper.getContext('2d'); c.setTransform(DPR, 0, 0, DPR, 0, 0);
+  c.fillStyle = PAPER; c.fillRect(0, 0, W, H);
+  // a soft, uneven wash of warm light around her, like the page she is painted on
+  const g = c.createRadialGradient(70, 90, 20, 70, 90, 110);
+  g.addColorStop(0, 'rgba(255,250,240,0)'); g.addColorStop(1, 'rgba(228,214,200,0.3)');
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+  c.save(); c.globalCompositeOperation = 'multiply';
+  c.fillStyle = 'rgba(244,228,236,0.45)'; path(c, wob(ellipse(70, 100, 62, 76, 40), 5, 77), true); c.fill();
+  c.restore();
+  // the card's edge, torn
+  c.save(); c.globalCompositeOperation = 'destination-in';
+  c.fillStyle = '#000'; path(c, wob(sample([[6, 6], [134, 5], [136, 174], [5, 176]], true, 14), 3.5, 99), true); c.fill();
+  c.restore();
+  const gc = grain.getContext('2d'), w = grain.width, h = grain.height, img = gc.createImageData(w, h), d = img.data, s = 1 / DPR;
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    const X = x * s, Y = y * s;
+    const bump = vn(X * 0.32, Y * 0.32) * 0.6 + vn(X * 0.9 + 50, Y * 0.9 + 20) * 0.4;
+    const fib = vn(X * 0.05 + 3, Y * 1.4) * vn(X * 1.4, Y * 0.05 + 9);
+    const sp = NT[(x * 7 + y * 131) & 65535];
+    const gg = 1 - 0.1 * bump - 0.04 * fib - (sp > 0.985 ? 0.06 : 0);
+    const k = (y * w + x) * 4; d[k] = 255 * gg; d[k + 1] = 255 * gg * 0.995; d[k + 2] = 255 * gg * 0.985; d[k + 3] = 255;
+  }
+  gc.putImageData(img, 0, 0);
+}
+
+// ---------------------------------------------------------------- loop ----
+let last = performance.now(), ms = 0, perfEl = document.getElementById('perf');
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  const t0 = performance.now();
+  const m = root.dataset.mood || 'neutral', a = root.dataset.action || 'none';
+  if (m !== mood || a !== action) { mood = m; action = a; dirty = true; }
+  update(dt);
+  const bt = Math.floor(now / 111);                      // the line boil, 9 a second
+  if (bt !== lastInk) { lastInk = bt; boil = bt; dirty = true; }
+  if (dirty) { paintFigure(); dirty = false; }
+  vctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  vctx.globalCompositeOperation = 'source-over';
+  vctx.clearRect(0, 0, W, H);
+  vctx.drawImage(paper, 0, 0, W, H);
+  vctx.save();
+  const b = A.breath;
+  vctx.translate(70 + A.sway * 0.6, 180); vctx.rotate(A.sway * 0.004); vctx.scale(1 - 0.004 * b, 1 + 0.009 * b); vctx.translate(-70, -180);
+  vctx.drawImage(fig, 0, 0, W, H);
+  vctx.restore();
+  // the grain stays on the paper: it does not breathe with her
+  vctx.globalCompositeOperation = 'multiply'; vctx.drawImage(grain, 0, 0, W, H);
+  vctx.globalCompositeOperation = 'destination-in'; vctx.drawImage(paper, 0, 0, W, H);
+  ms = ms * 0.9 + (performance.now() - t0) * 0.1;
+  if (perfEl && (bt & 3) === 0) perfEl.textContent = ms.toFixed(1) + ' ms';
+  requestAnimationFrame(frame);
+}
+
+// ------------------------------------------------------- the contract ----
+window.marchMouth = (state) => { const s = state === 'open' || state === 'half' ? state : 'closed'; if (s !== mouth) { mouth = s; dirty = true; } };
+
+const q = new URLSearchParams(location.search);
+if (q.get('mood')) root.dataset.mood = q.get('mood');
+if (q.get('action')) root.dataset.action = q.get('action');
+if (q.get('mouth')) window.marchMouth(q.get('mouth'));
+if (q.has('mood') || q.has('action')) {                // screenshots: land the arms at once
+  const P = POSE[root.dataset.action] || POSE.none;
+  Object.assign(arms.L, { ex: P.L[0], ey: P.L[1], hx: P.L[2], hy: P.L[3] });
+  Object.assign(arms.R, { ex: P.R[0], ey: P.R[1], hx: P.R[2], hy: P.R[3] });
+  facepalmT = root.dataset.action === 'facepalm' ? 1 : 0;
+}
+
+buildPaper();
+requestAnimationFrame(frame);
+
+// ------------------------------------------------------- the test strip ----
+const strip = document.getElementById('strip');
+const mark = () => { for (const b of strip.querySelectorAll('button[data-mood]')) b.classList.toggle('on', b.dataset.mood === root.dataset.mood);
+  for (const b of strip.querySelectorAll('button[data-action]')) b.classList.toggle('on', b.dataset.action === root.dataset.action); };
+strip.addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.mood) root.dataset.mood = b.dataset.mood;
+  if (b.dataset.action) root.dataset.action = b.dataset.action;
+  mark();
+});
+let talkTimer = null, talkN = 0;
+document.getElementById('talk').addEventListener('click', (e) => {
+  if (talkTimer) { clearInterval(talkTimer); talkTimer = null; window.marchMouth('closed'); e.target.classList.remove('on'); return; }
+  e.target.classList.add('on');
+  talkTimer = setInterval(() => { talkN++; window.marchMouth(['half', 'open', 'half', 'closed'][(talkN >> 1) & 3]); }, 40);
+});
+mark();
+})();
+</script>
+</body>
+</html>
