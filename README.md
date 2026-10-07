@@ -29,4 +29,4 @@ A channel that tells one person's days as chapters of an epic. The person is J (
 
 ## Status
 
-Being built, one step at a time. Step 1: the repo and a stand-by page.
+Being built, one step at a time. Steps 1 and 2 are in: the repo, and the player with a hand-written sample chapter, placeholder March and a stand-in blip voice. Run the timing tests with `node --test`.
