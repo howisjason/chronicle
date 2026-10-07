@@ -69,7 +69,8 @@ Output ONLY one JSON object: {{"title": "...", "sources": [{{"kind": "commit|day
 - About 18 lines. Speakers: narrator, march. Emotions: neutral, happy, dry, surprised. Actions: none, point, facepalm; the narrator's action is always none.
 - sources: one entry per inbox item used, its text copied WORD FOR WORD from the inbox. Every line has a source index.
 - Never invent an event. The telling may make the day feel big; it never says he did a thing he did not do.
-- A number in a line must appear in its source; prefer no numbers. No names of people other than J. No clients, money, health, visa, family.
+- NO NUMBERS AT ALL: no digits and no number words (not one, two, three, first, second, twice, a pair, a dozen). Say 'again', 'another', 'more' instead.
+- Tell events only in the order the record gives; never say what came first unless the source says it. No names of people other than J. No clients, money, health, visa, family.
 - Short sentences, plain words. One or two sentences a line.
 
 # March
@@ -119,7 +120,7 @@ def one_segment(day):
     user = (f"The inbox:\n{INBOX_TEXT}\n\nAlready told today (titles): {titles}\n"
             f"Inbox items already used: {used}\nThe last two lines on air: {json.dumps(tail)}\n\n{ask_for}")
     feedback = ''
-    for attempt in range(3):
+    for attempt in range(4):
         seg = as_json(ask(WRITER, user + feedback, f'write#{attempt}'))
         n = len(day['segments']) + 1
         prev_end = day_end(day)
@@ -133,13 +134,28 @@ def one_segment(day):
         ok, out = validate()
         if not ok:
             feedback = f'\n\nYour last try was refused by the checker. Fix these and write it again:\n{out}'
+            print(f'station: try {attempt + 1} refused by the checker: {out[:300]}', flush=True)
             continue
         verdict = ask(read('station/truth-check.md'), f'The chapter:\n{json.dumps(seg, ensure_ascii=False)}\n\nThe inbox:\n{INBOX_TEXT}', f'truth#{attempt}')
         if verdict.strip() == 'CLEAN':
             return trial
+        # Cut the flagged lines rather than rewrite: a cut can only remove a
+        # claim, never add one, so it needs no second truth check. Rewrites
+        # kept trading one small stretch for another (8 Oct 2026, four tries).
+        import re
+        bad = {int(m) for m in re.findall(r'line (\d+)', verdict)}
+        kept = [l for i, l in enumerate(seg['lines']) if i not in bad]
+        if bad and len(kept) >= 12:
+            seg['lines'] = kept
+            trial = dict(day, segments=day['segments'] + [seg])
+            json.dump(trial, open(DAY, 'w'), indent=1, ensure_ascii=False)
+            if validate()[0]:
+                print(f'station: cut {len(bad)} flagged line(s): {verdict[:300]}', flush=True)
+                return trial
+        print(f'station: try {attempt + 1} flagged by the truth check: {verdict[:300]}', flush=True)
         feedback = f'\n\nA fresh reader flagged these lines against the record. Rewrite or cut them:\n{verdict}'
     json.dump(day, open(DAY, 'w'), indent=1, ensure_ascii=False)  # put the day back as it was
-    return f'three tries refused; last finding: {feedback.strip()[:400]}'
+    return f'four tries refused; last finding: {feedback.strip()[:400]}'
 
 
 def publish(n_new):

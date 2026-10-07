@@ -13,4 +13,4 @@ Do not flag:
 - feeling, meaning and colour that stay on the right side of the record ("it felt like a door opening" about a deploy that happened);
 - the two voices talking to each other.
 
-Answer with one line per flagged line: `<segment id> line <index>: <what the source does not support>`. If nothing is flagged, answer exactly: `CLEAN`. "CLEAN" is an acceptable answer; you are not asked to find something.
+Answer with one line per flagged line: `<segment id> line <index>: ` (lines counted from 0, as in the `lines` list) `<what the source does not support>`. If nothing is flagged, answer exactly: `CLEAN`. "CLEAN" is an acceptable answer; you are not asked to find something.
