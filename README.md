@@ -29,4 +29,4 @@ A channel that tells one person's days as chapters of an epic. The person is J (
 
 ## Status
 
-Being built, one step at a time. Steps 1 and 2 are in: the repo, and the player with a hand-written sample chapter, placeholder March and a stand-in blip voice. Run the timing tests with `node --test`.
+Being built, one step at a time. Steps 1 to 4 are in: the repo, the player, the checker, and the voice (`station/setup.sh`, `station/voice.py`, MP3 playback in the player). Until Kokoro has run, chapters ship with `audio: null` and the page uses a stand-in blip voice. Run the timing tests with `node --test`.

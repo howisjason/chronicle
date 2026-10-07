@@ -1,8 +1,9 @@
 // player.js: draws the page from timing.js's answer, fifty times a second.
 // It knows nothing about time itself: it asks locate() where the day is and
 // paints that. The stand-in voice is a blip per typed letter (WebAudio needs
-// one tap before it may make a sound, hence the button). Real MP3s land in
-// step 4; until then segment.audio is null.
+// one tap before it may make a sound, hence the button). When a segment has an
+// MP3 (segment.audio), that plays instead, started at the segment's offset on
+// the clock; the gaps are baked into the file.
 import { locate } from './timing.js';
 
 const $ = (id) => document.getElementById(id);
@@ -52,8 +53,19 @@ function blip(speaker) {
   o.start();
   o.stop(audioCtx.currentTime + 0.04);
 }
+const voice = new Audio();
+let voiceSrc = '';
+// Keep the MP3 on the clock: right file, right position, playing.
+function syncVoice(segment, msIntoSegment) {
+  if (!audioCtx || !segment.audio) { if (!voice.paused) voice.pause(); return; }
+  if (voiceSrc !== segment.audio) { voiceSrc = segment.audio; voice.src = segment.audio; }
+  const want = msIntoSegment / 1000;
+  if (voice.readyState > 0 && Math.abs(voice.currentTime - want) > 0.4) voice.currentTime = want;
+  if (voice.paused) voice.play().catch(() => {});
+}
 $('sound').addEventListener('click', () => {
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  voice.play().catch(() => {});
   $('sound').hidden = true;
 });
 
@@ -66,8 +78,9 @@ function tick() {
   const key = `${segment.id}:${lineIndex}`;
   if (key !== lastLineKey) { lastLineKey = key; lastTyped = -1; }
   const shown = line.text.slice(0, typed);
+  syncVoice(segment, at.msIntoSegment);
   if (typed !== lastTyped) {
-    if (phase === 'speak' && line.text[typed - 1] && line.text[typed - 1] !== ' ') blip(line.speaker);
+    if (!segment.audio && phase === 'speak' && line.text[typed - 1] && line.text[typed - 1] !== ' ') blip(line.speaker);
     lastTyped = typed;
   }
   $('title').textContent = segment.title;
