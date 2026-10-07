@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#07060f">
+<title>March, at night</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #07060f; overflow: hidden; touch-action: none;
+    -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+    font-family: ui-monospace, Menlo, monospace; color: #8a86a8; }
+  /* #march is the box the page gives her: 140x180 CSS px there. Here it fills the screen
+     at a whole-number scale so each art pixel stays square. The canvas fills whatever box it gets. */
+  #march { position: absolute; left: 0; top: 0; width: 128px; height: 160px; }
+  #march canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; image-rendering: crisp-edges; }
+  #strip { position: fixed; left: 0; right: 0; bottom: 0; padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    font-size: 11px; letter-spacing: .04em; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; background: #07060f; }
+  #strip button { font: inherit; color: #c9c4e6; background: #1a1730; border: 1px solid #2a2547; border-radius: 4px; padding: 2px 7px; }
+  #strip button[data-on="1"] { background: #3a2a4a; color: #ffd6e8; border-color: #7a3a66; }
+  #strip span { opacity: .8; }
+</style>
+</head>
+<body>
+<div id="march" data-mood="neutral" data-action="none" aria-label="March, drawn by code"><canvas id="c"></canvas></div>
+<div id="strip"></div>
+<script>
+/* ============================================================================
+   MARCH AT NIGHT: a chibi March drawn entirely by code, every frame, in the
+   abyss engine turned warm. No image files, no model, no fonts, no sound.
+
+   - Her body is a HEIGHT FIELD of soft shapes (a big round head, a hair ball
+     with a face cut out of it, a small body, a hand that comes up for the
+     facepalm or the peace sign), melted together with a smooth max;
+   - normals are read off that field and she is lit by TWO lights in the room,
+     a warm desk lamp up-left and a cool teal camera on her chest plus a cool
+     screen down-right, in linear units; then every pixel of the whole picture
+     is snapped to 31 dark, hue-shifted colours through a 4x4 Bayer dither, so
+     the lamp's glow on the wall and the camera's halo come out as pixel rings;
+   - her two side locks are verlet ropes hung from her head, so they lag her
+     and sway on their own;
+   - the room (wall, window, shelf, plant, lamp, screen) is drawn ONCE at start
+     and copied in each frame; only the glow on top of it moves.
+
+   The contract the page's player drives: the #march root carries data-mood
+   (neutral, happy, dry, surprised) and data-action (none, point, facepalm);
+   window.marchMouth(closed|half|open) is called ~25 times a second while she
+   talks. ?mood=&action=&mouth= set them for a screenshot.
+   ============================================================================ */
+(() => {
+  'use strict';
+
+  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255);
+  const lin = h => hex(h).map(v => v * v);                      // display = sqrt(linear)
+  const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+  const smax = (a, b, k) => { const h = Math.max(k - Math.abs(a - b), 0) / k; return Math.max(a, b) + h * h * k * 0.25; };
+  function ball(px, py, cx, cy, rx, ry, rz) {
+    const qx = (px - cx) / rx, qy = (py - cy) / ry, q = Math.sqrt(qx * qx + qy * qy);
+    return q < 1 ? rz * Math.sqrt(1 - q * q) : -(q - 1) * (rx < ry ? rx : ry);
+  }
+  function tube(px, py, x1, y1, x2, y2, r1, r2) {
+    const dx = x2 - x1, dy = y2 - y1, L = dx * dx + dy * dy || 1e-6;
+    const t = clamp(((px - x1) * dx + (py - y1) * dy) / L, 0, 1);
+    const ex = px - x1 - t * dx, ey = py - y1 - t * dy, d = Math.sqrt(ex * ex + ey * ey), r = r1 + (r2 - r1) * t;
+    return d < r ? Math.sqrt(r * r - d * d) : r - d;
+  }
+  const mulberry32 = a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+  // ---------- the palette: 34 colours, dark and hue-shifted ----------
+  // room blacks lean violet; the lamp's ramp runs brown -> amber -> cream; her pink
+  // ramp turns violet in shadow; the jacket's ramp turns blue-grey; teal for the camera.
+  const PALHEX = [
+    '#07060f', '#0d0b1a', '#151227', '#1f1a36', '#2a2347',
+    '#3a2a26', '#6b4630', '#a86d3c', '#e0a058', '#ffd48a', '#fff2c8',
+    '#4a2443', '#7a3a66', '#b25a8c', '#e085b2', '#f5b0d0', '#ffd6e8',
+    '#2e2c48', '#5a5a80', '#9a9ab8', '#d6d6e6', '#f4f2ff',
+    '#0f3a3e', '#1f6e6e', '#3fb3a8', '#8ff0e0', '#dffff8',
+    '#1f3a8a', '#4a78d8', '#8ab4ff',
+    '#b07a6a', '#f0bca6', '#ffe0cc',
+    '#ffffff',
+  ];
+  const PAL = PALHEX.map(hex), NP = PAL.length, PALB = new Uint8Array(NP * 3);
+  PAL.forEach((c, i) => { for (let j = 0; j < 3; j++) PALB[i * 3 + j] = Math.round(c[j] * 255); });
+  const LUT = new Uint8Array(64 * 64 * 64);
+  {
+    const pr = PAL.map(c => c[0]), pg = PAL.map(c => c[1]), pb = PAL.map(c => c[2]);
+    for (let r = 0; r < 64; r++) for (let g = 0; g < 64; g++) for (let b = 0; b < 64; b++) {
+      const R = (r + 0.5) / 64, G = (g + 0.5) / 64, B = (b + 0.5) / 64;
+      let best = 0, bd = 1e9;
+      for (let i = 0; i < NP; i++) {
+        const dr = R - pr[i], dg = G - pg[i], db = B - pb[i], d = dr * dr * 0.9 + dg * dg * 1.25 + db * db * 0.8;
+        if (d < bd) { bd = d; best = i; }
+      }
+      LUT[(r << 12) | (g << 6) | b] = best;
+    }
+  }
+  const QN = 8192, DITHER = 0.055, QT = new Uint8Array(16 * QN);
+  const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+  for (let c = 0; c < 16; c++) {
+    const off = ((BAYER[c] + 0.5) / 16 - 0.5) * DITHER;
+    for (let i = 0; i < QN; i++) QT[c * QN + i] = clamp(Math.floor((Math.sqrt(i / (QN - 1)) + off) * 64), 0, 63);
+  }
+
+  // ---------- grid, canvas, buffers ----------
+  const W = 128, H = 160, N = W * H;
+  const root = document.getElementById('march'), cv = document.getElementById('c'), ctx = cv.getContext('2d');
+  cv.width = W; cv.height = H;
+  const img = ctx.createImageData(W, H);
+  const C = new Float32Array(N * 3);        // the picture, linear light
+  const G = new Float32Array(N * 3);        // this frame's glow (lights thrown on the room)
+  const BGB = new Float32Array(N * 3);      // the room, drawn once
+  const LAMPG = new Float32Array(N * 3);    // the lamp's glow on the room, drawn once, scaled by the flicker
+  const HF = new Float32Array(N), TF = new Float32Array(N), MAT = new Uint8Array(N);
+  const M_SKIN = 1, M_HAIR = 2, M_JACKET = 3, M_COLLAR = 4, M_CAM = 5, M_HAND = 6, M_SLEEVE = 7, M_CUFF = 8;
+
+  // she stands here (head centre), the lamp here, the screen here
+  const BX0 = 62, BY0 = 80;
+  const LAMP = { x: 21, y: 34, z: 46 }, SCREEN = { x: 112, y: 126, z: 10 };
+  // the window: a rectangle of night, top right
+  const WIN = { x0: 86, y0: 12, x1: 120, y1: 58 };
+
+  function splat(buf, x, y, R, r, g, b) {
+    const x0 = Math.max(0, Math.floor(x - R)), x1 = Math.min(W - 1, Math.ceil(x + R));
+    const y0 = Math.max(0, Math.floor(y - R)), y1 = Math.min(H - 1, Math.ceil(y + R)), iR2 = 1 / (R * R);
+    for (let py = y0; py <= y1; py++) {
+      const dy = py + 0.5 - y, dy2 = dy * dy;
+      for (let px = x0; px <= x1; px++) {
+        const dx = px + 0.5 - x, q = (dx * dx + dy2) * iR2;
+        if (q >= 1) continue;
+        let f = 1 - q; f = f * f * f;
+        const k = (py * W + px) * 3; buf[k] += r * f; buf[k + 1] += g * f; buf[k + 2] += b * f;
+      }
+    }
+  }
+  const setPx = (x, y, r, g, b) => { x |= 0; y |= 0; if (x < 0 || y < 0 || x >= W || y >= H) return; const k = (y * W + x) * 3; C[k] = r; C[k + 1] = g; C[k + 2] = b; };
+  const addPx = (x, y, r, g, b) => { x |= 0; y |= 0; if (x < 0 || y < 0 || x >= W || y >= H) return; const k = (y * W + x) * 3; C[k] += r; C[k + 1] += g; C[k + 2] += b; };
+  const mulPx = (x, y, m) => { x |= 0; y |= 0; if (x < 0 || y < 0 || x >= W || y >= H) return; const k = (y * W + x) * 3; C[k] *= m; C[k + 1] *= m; C[k + 2] *= m; };
+
+  // ---------- the room, drawn once ----------
+  function fillRect(buf, x0, y0, x1, y1, c) { for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) { const k = (y * W + x) * 3; buf[k] = c[0]; buf[k + 1] = c[1]; buf[k + 2] = c[2]; } }
+  function buildRoom() {
+    const wallT = lin('#1a1530'), wallB = lin('#0a0814');
+    for (let y = 0; y < H; y++) { const v = y / H; for (let x = 0; x < W; x++) { const k = (y * W + x) * 3; for (let c = 0; c < 3; c++) BGB[k + c] = (wallT[c] + (wallB[c] - wallT[c]) * v) * 0.9; } }
+    // the desk: a dark plane from y=132, with a slightly lighter front edge
+    fillRect(BGB, 0, 132, W, H, lin('#0d0b1a'));
+    fillRect(BGB, 0, 132, W, 134, lin('#2a2347'));
+    // the window: night sky, a frame, two bars
+    fillRect(BGB, WIN.x0 - 2, WIN.y0 - 2, WIN.x1 + 2, WIN.y1 + 2, lin('#2a2347'));
+    const skyT = lin('#162044'), skyB = lin('#0b1026');
+    for (let y = WIN.y0; y < WIN.y1; y++) { const v = (y - WIN.y0) / (WIN.y1 - WIN.y0); for (let x = WIN.x0; x < WIN.x1; x++) { const k = (y * W + x) * 3; for (let c = 0; c < 3; c++) BGB[k + c] = skyT[c] + (skyB[c] - skyT[c]) * v; } }
+    const mx = (WIN.x0 + WIN.x1) >> 1, my = (WIN.y0 + WIN.y1) >> 1;
+    fillRect(BGB, mx, WIN.y0, mx + 2, WIN.y1, lin('#1f1a36'));
+    fillRect(BGB, WIN.x0, my, WIN.x1, my + 2, lin('#1f1a36'));
+    // a thin moon in the top-right pane, and a few far city lights along the bottom
+    for (const [dx, dy] of [[0, -1], [1, 0], [1, 1], [0, 2], [-1, 2]]) { const k = ((WIN.y0 + 9 + dy) * W + WIN.x1 - 9 + dx) * 3; const c = lin('#d6d6e6'); BGB[k] = c[0]; BGB[k + 1] = c[1]; BGB[k + 2] = c[2]; }
+    const rnd = mulberry32(99);
+    for (let i = 0; i < 9; i++) { const x = WIN.x0 + 1 + Math.floor(rnd() * (WIN.x1 - WIN.x0 - 2)), y = WIN.y1 - 2 - Math.floor(rnd() * 5); const k = (y * W + x) * 3; const c = lin(rnd() < 0.5 ? '#6b4630' : '#3a2a26'); BGB[k] += c[0]; BGB[k + 1] += c[1]; BGB[k + 2] += c[2]; }
+    // the shelf, left, with four book spines
+    fillRect(BGB, 4, 70, 40, 73, lin('#2a2347'));
+    const spines = ['#4a2443', '#1f3a8a', '#0f3a3e', '#6b4630', '#2e2c48'];
+    let sx = 7; spines.forEach((s, i) => { const w = 4 + (i % 2); fillRect(BGB, sx, 70 - 9 - (i % 3), sx + w, 70, lin(s)); sx += w + 1; });
+    // the lamp: a shade (a trapezoid), a thin stem, a round base on the desk
+    for (let y = 24; y < 40; y++) { const hw = 6 + (y - 24) * 0.75; fillRect(BGB, Math.round(LAMP.x - hw), y, Math.round(LAMP.x + hw), y + 1, lin(y > 37 ? '#a86d3c' : '#3a2a26')); }
+    fillRect(BGB, LAMP.x - 1, 40, LAMP.x + 1, 132, lin('#151227'));
+    fillRect(BGB, LAMP.x - 7, 130, LAMP.x + 7, 132, lin('#1f1a36'));
+    // the plant: a pot and a silhouette of leaves, bottom left, in front of the lamp stem
+    fillRect(BGB, 4, 118, 20, 132, lin('#151227'));
+    fillRect(BGB, 3, 116, 21, 118, lin('#1f1a36'));
+    const leaf = lin('#0d0b1a');
+    for (const [cx, cy, rx, ry] of [[12, 104, 9, 12], [4, 100, 6, 9], [21, 98, 6, 10], [12, 90, 4, 7]]) {
+      for (let y = cy - ry; y <= cy + ry; y++) for (let x = cx - rx; x <= cx + rx; x++) { if (x < 0 || y < 0 || x >= W) continue; const qx = (x - cx) / rx, qy = (y - cy) / ry; if (qx * qx + qy * qy < 1) { const k = (y * W + x) * 3; BGB[k] = leaf[0]; BGB[k + 1] = leaf[1]; BGB[k + 2] = leaf[2]; } }
+    }
+    // the screen: a laptop lid, bottom right, a cool rectangle that glows
+    fillRect(BGB, 98, 114, 126, 132, lin('#151227'));
+    fillRect(BGB, 100, 116, 124, 130, lin('#1f3a8a'));
+    fillRect(BGB, 102, 118, 122, 128, lin('#4a78d8'));
+    for (let y = 119; y < 127; y += 2) fillRect(BGB, 104, y, 104 + 6 + (y % 3) * 4, y + 1, lin('#8ab4ff'));
+    fillRect(BGB, 96, 132, 128, 134, lin('#2a2347'));
+    // the lamp's warm glow on the wall and the desk, once; scaled by the flicker each frame
+    LAMPG.fill(0);
+    splat(LAMPG, LAMP.x, LAMP.y + 4, 70, 0.060, 0.030, 0.010);
+    splat(LAMPG, LAMP.x, LAMP.y + 2, 30, 0.14, 0.075, 0.025);
+    splat(LAMPG, LAMP.x, LAMP.y, 12, 0.30, 0.18, 0.07);
+    // the cone under the shade, brighter: the wall right below the lamp
+    for (let y = 40; y < 132; y++) { const spread = 8 + (y - 40) * 0.55; for (let x = Math.max(0, Math.round(LAMP.x - spread)); x < Math.min(W, Math.round(LAMP.x + spread)); x++) { const f = (1 - Math.abs(x + 0.5 - LAMP.x) / spread) * (1 - (y - 40) / 92); const k = (y * W + x) * 3; LAMPG[k] += 0.030 * f; LAMPG[k + 1] += 0.016 * f; LAMPG[k + 2] += 0.005 * f; } }
+  }
+
+  // ---------- her state ----------
+  const A = {
+    t: 0, bx: BX0, by: BY0, sx: 1, sy: 1, tilt: 0,
+    blink: 0, blinkT: -1, nextBlink: 3,
+    pupX: 0, pupY: 0, lookX: 0, lookY: 0, nextLook: 2,
+    wide: 0, flash: 0, flick: 0, star: 0, starX: 0, starY: 0,
+    mouth: 'closed', mouthK: 0,
+    point: 0, palm: 0,                       // how far each action has come up, 0..1
+    sweat: 0,
+  };
+  let locks = [], motes = [], drops = [], sparks = [];
+  function makeRope(n, seg, side) {
+    const r = { n, seg, side, x: new Float32Array(n), y: new Float32Array(n), px: new Float32Array(n), py: new Float32Array(n), rx: new Float32Array(n), ry: new Float32Array(n) };
+    let x = 0, y = 0;
+    for (let i = 0; i < n; i++) { r.rx[i] = x; r.ry[i] = y; const f = i / n, ang = side * (0.55 - 0.9 * f); x += Math.sin(ang) * seg; y += Math.cos(ang) * seg; }
+    return r;
+  }
+  function toScreen(u, v) {
+    const dx = u * A.sx, dy = v * A.sy, c = Math.cos(A.tilt), s = Math.sin(A.tilt);
+    return [A.bx + dx * c - dy * s, A.by + dx * s + dy * c];
+  }
+  const anchorOf = r => toScreen(r.side * 23, 0);
+  function init() {
+    locks = [makeRope(7, 3.1, -1), makeRope(7, 3.1, 1)];
+    for (const r of locks) { const [ax, ay] = anchorOf(r); for (let i = 0; i < r.n; i++) { r.x[i] = r.px[i] = ax + r.rx[i]; r.y[i] = r.py[i] = ay + r.ry[i]; } }
+    const rnd = mulberry32(7); motes = [];
+    for (let i = 0; i < 26; i++) motes.push({ x: rnd() * W, y: rnd() * 132, z: 0.4 + rnd() * 0.8, vx: 0, vy: 0, ph: rnd() * 6.28 });
+    drops = []; for (let i = 0; i < 7; i++) drops.push({ x: WIN.x0 + rnd() * (WIN.x1 - WIN.x0), y: WIN.y0 + rnd() * (WIN.y1 - WIN.y0), v: 14 + rnd() * 10 });
+  }
+
+  function stepRope(r, dt) {
+    const [ax, ay] = anchorOf(r), t = A.t;
+    r.x[0] = ax; r.y[0] = ay;
+    const damp = Math.exp(-2.2 * dt);
+    for (let i = 1; i < r.n; i++) {
+      const f = i / (r.n - 1);
+      const ox = r.rx[i] + Math.sin(t * 1.1 + r.side * 1.7 - i * 0.5) * 1.4 * f * f, oy = r.ry[i];
+      const tx = ax + ox, ty = ay + oy, k = 14 * (1 - 0.6 * f);
+      const vx = (r.x[i] - r.px[i]) * damp, vy = (r.y[i] - r.py[i]) * damp;
+      r.px[i] = r.x[i]; r.py[i] = r.y[i];
+      r.x[i] += vx + k * (tx - r.x[i]) * dt * dt;
+      r.y[i] += vy + (k * (ty - r.y[i]) + 9) * dt * dt;
+    }
+    for (let i = 1; i < r.n; i++) {
+      const dx = r.x[i] - r.x[i - 1], dy = r.y[i] - r.y[i - 1], d = Math.sqrt(dx * dx + dy * dy) || 1e-6, m = r.seg / d;
+      const nx = r.x[i - 1] + dx * m, ny = r.y[i - 1] + dy * m;
+      r.px[i] += (nx - r.x[i]) * 0.85; r.py[i] += (ny - r.y[i]) * 0.85; r.x[i] = nx; r.y[i] = ny;
+    }
+  }
+
+  const MOODS = { neutral: 1, happy: 1, dry: 1, surprised: 1 }, ACTIONS = { none: 1, point: 1, facepalm: 1 };
+  function mood() { const m = root.dataset.mood; return MOODS[m] ? m : 'neutral'; }
+  function action() { const a = root.dataset.action; return ACTIONS[a] ? a : 'none'; }
+
+  function update(dt) {
+    A.t += dt; const t = A.t;
+    const br = Math.sin(t * 2 * Math.PI * 0.2);
+    A.sx = 1 + 0.012 * br; A.sy = 1 - 0.015 * br;
+    A.bx = BX0 + Math.sin(t * 0.37) * 0.8;
+    A.by = BY0 + Math.sin(t * 0.74 + 1) * 0.6 + br * 0.5;
+    A.tilt = Math.sin(t * 0.37 + 0.5) * 0.035;
+    A.wide *= Math.exp(-2.5 * dt); A.flash *= Math.exp(-22 * dt); A.flick *= Math.exp(-6 * dt); A.star *= Math.exp(-1.6 * dt);
+    // blink
+    A.nextBlink -= dt;
+    if (A.nextBlink <= 0 && A.blinkT < 0 && A.wide < 0.3) A.blinkT = 0;
+    if (A.blinkT >= 0) { A.blinkT += dt; const k = A.blinkT; A.blink = k < 0.07 ? k / 0.07 : k < 0.15 ? 1 : Math.max(0, 1 - (k - 0.15) / 0.1); if (k > 0.26) { A.blinkT = -1; A.blink = 0; A.nextBlink = 2.5 + 4 * Math.random(); } }
+    // an idle glance, now and then
+    A.nextLook -= dt;
+    if (A.nextLook <= 0) { A.lookX = (Math.random() * 2 - 1) * 0.9; A.lookY = (Math.random() * 2 - 1) * 0.5; A.nextLook = 1.5 + Math.random() * 3; if (Math.random() < 0.35) { A.lookX = 0; A.lookY = 0; } }
+    const e = 1 - Math.exp(-8 * dt); A.pupX += (A.lookX - A.pupX) * e; A.pupY += (A.lookY - A.pupY) * e;
+    // the actions come up and go down
+    const act = action(), ea = 1 - Math.exp(-9 * dt);
+    A.point += ((act === 'point' ? 1 : 0) - A.point) * ea; A.palm += ((act === 'facepalm' ? 1 : 0) - A.palm) * ea;
+    A.sweat += ((mood() === 'dry' ? 1 : 0) - A.sweat) * ea;
+    // the mouth: eases toward the state it was told
+    const target = A.mouth === 'open' ? 1 : A.mouth === 'half' ? 0.5 : 0;
+    A.mouthK += (target - A.mouthK) * (1 - Math.exp(-28 * dt));
+    // ropes
+    const n = Math.ceil(dt / (1 / 120)), h = dt / n;
+    for (let s = 0; s < n; s++) for (const r of locks) stepRope(r, h);
+    // dust drifting in the lamp's light
+    for (const m of motes) {
+      m.vx *= Math.exp(-1.5 * dt); m.vy *= Math.exp(-1.5 * dt);
+      m.x += (m.vx + Math.sin(t * 0.4 + m.ph) * 1.2 * m.z) * dt; m.y += (m.vy - 1.3 * m.z + Math.cos(t * 0.3 + m.ph) * 0.6) * dt;
+      if (m.y < -2) { m.y = 131; m.x = Math.random() * W; } if (m.y > 133) m.y = -1; if (m.x < -2) m.x = W + 1; if (m.x > W + 2) m.x = -1;
+    }
+    for (const d of drops) { d.y += d.v * dt; if (d.y > WIN.y1) { d.y = WIN.y0; d.x = WIN.x0 + Math.random() * (WIN.x1 - WIN.x0); } }
+    for (const s of sparks) { s.a += dt; s.x += s.vx * dt; s.y += s.vy * dt; s.vy += 6 * dt; }
+    sparks = sparks.filter(s => s.a < 0.9);
+  }
+
+  // ---------- drawing ----------
+  const ALB = {
+    skin: lin('#ffe4d6'), hair: lin('#ff9ed0'), jacket: lin('#eeeaf6'), collar: lin('#3d66d6'), cam: lin('#3fb3a8'), cuff: lin('#4a78d8'),
+  };
+  let LI = 1, CI = 1, CX = 0, CY = 0;
+  const perf = { n: 0, sum: 0, worst: 0, last: 0 };
+
+  function render() {
+    const t = A.t;
+    // the lamp flickers a little; the camera breathes; a tap flashes it
+    LI = 0.92 + 0.05 * Math.sin(t * 7.3) * Math.sin(t * 2.1) + 0.03 * Math.sin(t * 23.7);
+    [CX, CY] = toScreen(-1, 25);
+    CI = (0.8 + 0.2 * Math.sin(t * 2.4)) * (1 + 14 * A.flash);
+    const SI = 0.9 + 0.1 * Math.sin(t * 0.9);
+    // the room plus this frame's glow
+    G.fill(0);
+    splat(G, CX, CY, 26, 0.012 * CI, 0.045 * CI, 0.042 * CI);
+    splat(G, CX, CY, 9, 0.04 * CI, 0.14 * CI, 0.13 * CI);
+    splat(G, SCREEN.x, SCREEN.y - 4, 34, 0.010 * SI, 0.020 * SI, 0.045 * SI);
+    for (let i = 0; i < N * 3; i += 3) { C[i] = BGB[i] + LAMPG[i] * LI + G[i]; C[i + 1] = BGB[i + 1] + LAMPG[i + 1] * LI + G[i + 1]; C[i + 2] = BGB[i + 2] + LAMPG[i + 2] * LI + G[i + 2]; }
+    // rain on the window
+    for (const d of drops) { const x = d.x | 0; const y = d.y | 0; addPx(x, y, 0.02, 0.03, 0.06); addPx(x, y - 1, 0.01, 0.015, 0.03); }
+    // dust, lit where the lamp reaches
+    for (const m of motes) { const x = m.x | 0, y = m.y | 0; if (x < 0 || y < 0 || x >= W || y >= H) continue; const k = (y * W + x) * 3; const lit = (LAMPG[k] * LI * 3 + G[k + 1] * 2 + 0.004) * m.z * (0.6 + 0.4 * Math.sin(t * 2 + m.ph)); C[k] += lit * 0.9; C[k + 1] += lit * 0.7; C[k + 2] += lit * 0.5; }
+
+    // ---------- her height field ----------
+    HF.fill(-1000); MAT.fill(0);
+    const ca = Math.cos(-A.tilt), sa = Math.sin(-A.tilt), isx = 1 / A.sx, isy = 1 / A.sy;
+    const bx0 = Math.max(1, Math.floor(A.bx - 44)), bx1 = Math.min(W - 2, Math.ceil(A.bx + 44));
+    const by0 = Math.max(1, Math.floor(A.by - 34)), by1 = Math.min(H - 2, Math.ceil(A.by + 46));
+    // where the hands are this frame: hidden behind the body, coming up for an action
+    const pp = A.point, pa = A.palm;
+    const handP = { x: 4 + (27 - 4) * pp, y: 30 + (-8 - 30) * pp, r: 1 + 4.2 * pp };
+    const handF = { x: -4 + (-8 + 4) * pa, y: 30 + (1 - 30) * pa, r: 1 + 5.6 * pa };
+    for (let y = by0; y <= by1; y++) for (let x = bx0; x <= bx1; x++) {
+      const dx = x + 0.5 - A.bx, dy = y + 0.5 - A.by;
+      const u = (dx * ca - dy * sa) * isx, v = (dx * sa + dy * ca) * isy;
+      // the head, and the hair ball with the face cut out of it
+      const head = ball(u, v, 0, 0, 21, 20, 19);
+      let hair = ball(u, v, 0, -4, 28, 24, 22);
+      const face = ball(u, v, 0, 9, 12.5, 11.5, 10);
+      hair = Math.min(hair, -face * 1.6 + 3);
+      hair = smax(hair, ball(u, v, -10, -4, 8, 7.5, 8), 3);              // the fringe: three soft bumps over the forehead
+      hair = smax(hair, ball(u, v, 1, -6, 8.5, 7.5, 8), 3);
+      hair = smax(hair, ball(u, v, 11, -3, 7.5, 7, 8), 3);
+      hair = smax(hair, ball(u, v, 0, -14, 22, 10, 9), 4);              // the crown, rounding the top
+      let h = smax(head, hair, 3), m = hair > head ? M_HAIR : M_SKIN;
+      // the body: a small jacket, a collar band
+      const body = ball(u, v, 0, 27, 15, 13, 11);
+      if (body > h) { h = body; m = (v < 22 && Math.abs(u) < 8 - (v - 16) * 0.5) ? M_COLLAR : M_JACKET; }
+      else if (body > -1.5 && h < 0) { h = body; m = M_JACKET; }
+      // the peace-sign arm: a sleeve up the side, a hand, two fingers
+      if (pp > 0.02) {
+        const sl = tube(u, v, 13, 27, handP.x - 2, handP.y + 4, 4.2, 3.6 * pp + 0.3);
+        if (sl > h) { h = sl; m = v < handP.y + 7 ? M_CUFF : M_SLEEVE; }
+        let hd = ball(u, v, handP.x, handP.y, handP.r, handP.r * 0.95, handP.r + 1);
+        hd = smax(hd, tube(u, v, handP.x - 1.5, handP.y - 1, handP.x - 3.5, handP.y - 11 * pp, 1.8, 1.5), 1.5);
+        hd = smax(hd, tube(u, v, handP.x + 1.5, handP.y - 1, handP.x + 4, handP.y - 10.5 * pp, 1.8, 1.5), 1.5);
+        if (hd > 0) { const hh = hd + 10 * pp; if (hh > h) { h = hh; m = M_HAND; } }
+      }
+      // the facepalm: a hand over one eye, the sleeve behind it
+      if (pa > 0.02) {
+        const sl = tube(u, v, -13, 27, handF.x - 2, handF.y + 5, 3.8, 3.2 * pa + 0.3);
+        if (sl > h) { h = sl; m = v < handF.y + 9 ? M_CUFF : M_SLEEVE; }
+        const hd = ball(u, v, handF.x, handF.y, handF.r, handF.r * 0.9, handF.r * 0.8);
+        if (hd > 0) { const hh = hd + 14 * pa; if (hh > h) { h = hh; m = M_HAND; } }
+      }
+      const i = y * W + x; HF[i] = h; MAT[i] = m;
+    }
+    // the side locks: tubes along the ropes, melting into the hair
+    TF.fill(-1000);
+    let tb = [1e9, 1e9, -1e9, -1e9];
+    for (const r of locks) for (let i = 0; i < r.n - 1; i++) {
+      const f0 = i / (r.n - 1), f1 = (i + 1) / (r.n - 1), r1 = 1.6 + 2.4 * (1 - f0), r2 = 1.6 + 2.4 * (1 - f1);
+      const x0 = Math.max(1, Math.floor(Math.min(r.x[i], r.x[i + 1]) - r1 - 1)), x1 = Math.min(W - 2, Math.ceil(Math.max(r.x[i], r.x[i + 1]) + r1 + 1));
+      const y0 = Math.max(1, Math.floor(Math.min(r.y[i], r.y[i + 1]) - r1 - 1)), y1 = Math.min(H - 2, Math.ceil(Math.max(r.y[i], r.y[i + 1]) + r1 + 1));
+      tb = [Math.min(tb[0], x0), Math.min(tb[1], y0), Math.max(tb[2], x1), Math.max(tb[3], y1)];
+      for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) { const h = tube(x + 0.5, y + 0.5, r.x[i], r.y[i], r.x[i + 1], r.y[i + 1], r1, r2), j = y * W + x; if (h > TF[j]) TF[j] = h; }
+    }
+    for (let y = tb[1]; y <= tb[3]; y++) for (let x = tb[0]; x <= tb[2]; x++) {
+      const i = y * W + x, tv = TF[i]; if (tv < -50) continue;
+      const hv = HF[i], mm = MAT[i];
+      if (mm === M_HAIR) { HF[i] = smax(hv, tv + 4, 3); continue; }              // the lock grows out of the hair
+      const m = smax(hv, tv + 4, 2.5);
+      if (m > 0 && tv + 4 > hv) MAT[i] = M_HAIR;
+      HF[i] = m;
+    }
+    const cx0 = Math.max(1, Math.min(bx0, tb[0])), cy0 = Math.max(1, Math.min(by0, tb[1])), cx1 = Math.min(W - 2, Math.max(bx1, tb[2])), cy1 = Math.min(H - 2, Math.max(by1, tb[3]));
+
+    // ---------- shading: the lamp warm from up-left, the camera and screen cool ----------
+    const LZ = LAMP.z, fl = 1 + 2.5 * A.flash;
+    for (let y = cy0; y <= cy1; y++) for (let x = cx0; x <= cx1; x++) {
+      const i = y * W + x, h = HF[i]; if (h <= 0) continue;
+      const k = i * 3, m = MAT[i];
+      const hl = Math.max(HF[i - 1], -1.5), hr = Math.max(HF[i + 1], -1.5), hu = Math.max(HF[i - W], -1.5), hd = Math.max(HF[i + W], -1.5);
+      let nx = (hl - hr) * 0.5, ny = (hu - hd) * 0.5;
+      const nl = 1 / Math.sqrt(nx * nx + ny * ny + 1); nx *= nl; ny *= nl; const nz = nl;
+      const alb = m === M_HAIR ? ALB.hair : m === M_JACKET || m === M_SLEEVE ? ALB.jacket : m === M_COLLAR || m === M_CUFF ? ALB.collar : m === M_CAM ? ALB.cam : ALB.skin;
+      // the lamp
+      let lx = LAMP.x - x - 0.5, ly = LAMP.y - y - 0.5, lz = LZ - h;
+      let ld = Math.sqrt(lx * lx + ly * ly + lz * lz); lx /= ld; ly /= ld; lz /= ld;
+      let ndl = nx * lx + ny * ly + nz * lz; const q = ld / 90, att = LI * 1.1 / (1 + q * q);
+      const dif = (ndl > -0.15 ? (ndl + 0.15) / 1.15 : 0) * att;
+      const hz = lz + 1, hn = 1 / Math.sqrt(lx * lx + ly * ly + hz * hz);
+      let sp = (nx * lx + ny * ly + nz * hz) * hn; sp = sp > 0 ? sp : 0; let s8 = sp * sp; s8 *= s8; s8 *= s8; const s16 = s8 * s8;
+      const spec = s16 * s8 * att * (m === M_HAIR ? 0.5 : m === M_SKIN || m === M_HAND ? 0.25 : 0.15);
+      // the camera, close and cool
+      let cxl = CX - x - 0.5, cyl = CY - y - 0.5, czl = 6 - h; const cd = Math.sqrt(cxl * cxl + cyl * cyl + czl * czl) + 0.01;
+      let ndc = (nx * cxl + ny * cyl + nz * czl) / cd; const qc = cd / 11, attc = CI / (1 + qc * qc);
+      const difc = (ndc > 0 ? ndc : 0) * attc;
+      // the screen, far and cool, from down-right
+      let sxl = SCREEN.x - x - 0.5, syl = SCREEN.y - y - 0.5, szl = SCREEN.z - h; const sd = Math.sqrt(sxl * sxl + syl * syl + szl * szl);
+      let nds = (nx * sxl + ny * syl + nz * szl) / sd; const qs = sd / 60, atts = SI / (1 + qs * qs);
+      const difs = (nds > 0 ? nds : 0) * atts;
+      // a cold rim, so her silhouette parts from the dark wall even on the shadow side
+      const e1 = 1 - nz, rim = e1 * Math.sqrt(e1) * 0.05;
+      let r = alb[0] * (0.020 + dif * 0.95 + difc * 0.12 + difs * 0.10) + spec * 1.0 + rim * 0.6;
+      let g = alb[1] * (0.018 + dif * 0.80 + difc * 0.42 + difs * 0.22) + spec * 0.9 + rim * 0.9;
+      let b = alb[2] * (0.030 + dif * 0.62 + difc * 0.42 + difs * 0.46) + spec * 0.85 + rim * 1.1;
+      if (m === M_HAIR) { const str = 0.85 + 0.15 * Math.sin((x - A.bx) * 0.9 + (y - A.by) * 0.35); r *= str; g *= str; b *= str; }  // soft strands in the pink
+      C[k] = r * fl; C[k + 1] = g * fl; C[k + 2] = b * fl;
+    }
+    // ink around her silhouette, and a crease where a part sits in front of another
+    for (let y = cy0; y <= cy1; y++) for (let x = cx0; x <= cx1; x++) {
+      const i = y * W + x, h = HF[i], k = i * 3;
+      if (h <= 0) { if (HF[i - 1] > 0 || HF[i + 1] > 0 || HF[i - W] > 0 || HF[i + W] > 0) { C[k] *= 0.18; C[k + 1] *= 0.15; C[k + 2] *= 0.22; } continue; }
+      const m = MAT[i];
+      if ((HF[i - 1] > h + 2.5 && MAT[i - 1] !== m) || (HF[i + 1] > h + 2.5 && MAT[i + 1] !== m) || (HF[i - W] > h + 2.5 && MAT[i - W] !== m) || (HF[i + W] > h + 2.5 && MAT[i + W] !== m)) { C[k] *= 0.4; C[k + 1] *= 0.35; C[k + 2] *= 0.45; }
+    }
+
+    // ---------- the things on top: the camera, the face ----------
+    drawCamera(t);
+    drawFace(t);
+    for (const s of sparks) { const I = (1 - s.a / 0.9) * 0.9; setPx(s.x, s.y, I, I * 0.9, I * 0.5); if (I > 0.5) for (const [ox, oy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) addPx(s.x + ox, s.y + oy, I * 0.3, I * 0.25, I * 0.1); }
+
+    // ---------- to the palette, through the dither ----------
+    const D = img.data, QM = QN - 1;
+    for (let y = 0; y < H; y++) {
+      const row = (y & 3) << 2;
+      for (let x = 0; x < W; x++) {
+        const i = y * W + x, k = i * 3, base = (row | (x & 3)) * QN;
+        let r = C[k] * QM, g = C[k + 1] * QM, b = C[k + 2] * QM;
+        r = r <= 0 ? 0 : r >= QM ? QM : r | 0; g = g <= 0 ? 0 : g >= QM ? QM : g | 0; b = b <= 0 ? 0 : b >= QM ? QM : b | 0;
+        const p = LUT[(QT[base + r] << 12) | (QT[base + g] << 6) | QT[base + b]] * 3, o = i << 2;
+        D[o] = PALB[p]; D[o + 1] = PALB[p + 1]; D[o + 2] = PALB[p + 2]; D[o + 3] = 255;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+  }
+
+  function drawCamera(t) {
+    // a small teal rectangle on a strap, hung on her chest; its lens is dark with one bright pixel
+    const [x, y] = toScreen(-1, 25); const xi = Math.round(x), yi = Math.round(y);
+    const I = CI;
+    for (let dy = -3; dy <= 3; dy++) for (let dx = -5; dx <= 4; dx++) {
+      const edge = Math.abs(dy) === 3 || dx === -5 || dx === 4;
+      const f = edge ? 0.35 : 1;
+      setPx(xi + dx, yi + dy, 0.03 * I * f, 0.22 * I * f, 0.20 * I * f);
+    }
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) setPx(xi + 1 + dx, yi + dy, 0.004, 0.012, 0.014);
+    setPx(xi, yi - 1, 0.6, 1.0, 1.0);                                      // the lens catches the lamp
+    setPx(xi - 3, yi - 2, 0.3 * I, 0.9 * I, 0.85 * I);                     // the little light that says it is on
+    for (let dy = -4; dy >= -8; dy--) { setPx(xi - 4 + (dy + 4) * 0.4, yi + dy, 0.004, 0.003, 0.008); setPx(xi + 4 - (dy + 4) * 0.4, yi + dy, 0.004, 0.003, 0.008); }   // the strap
+  }
+
+  function drawFace(t) {
+    const md = mood(), wide = A.wide;
+    const [lx, ly] = toScreen(-8, 3), [rx, ry] = toScreen(8, 3);
+    const open = 1 - A.blink;
+    // which eye is covered by the facepalm hand
+    const covered = (x, y) => { const i = (y | 0) * W + (x | 0); return MAT[i] === M_HAND; };
+    const eye = (ex, ey, side) => {
+      const xi = Math.round(ex), yi = Math.round(ey);
+      if (md === 'surprised') {                                          // star eyes: a bright plus with a white heart
+        for (const [dx, dy] of [[0, -2], [0, -1], [0, 0], [0, 1], [0, 2], [-2, 0], [-1, 0], [1, 0], [2, 0]]) if (!covered(xi + dx, yi + dy)) setPx(xi + dx, yi + dy, 1.0, 0.85, 0.35);
+        for (const [dx, dy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) if (!covered(xi + dx, yi + dy)) setPx(xi + dx, yi + dy, 0.5, 0.4, 0.15);
+        if (!covered(xi, yi)) setPx(xi, yi, 1, 1, 1);
+        return;
+      }
+      if (md === 'happy' && side === 1) {                                // the wink: a closed eye curved up like a smile
+        for (const [dx, dy] of [[-2, 0], [-1, -1], [0, -1], [1, -1], [2, 0]]) if (!covered(xi + dx, yi + dy)) setPx(xi + dx, yi + dy, 0.02, 0.012, 0.02);
+        return;
+      }
+      const o = Math.max(open, wide * 0.5);
+      const tall = md === 'dry' ? 2 : o < 0.2 ? 0 : o < 0.6 ? 2 : (wide > 0.5 ? 5 : 4);
+      if (tall === 0) { for (let dx = -2; dx <= 2; dx++) if (!covered(xi + dx, yi)) setPx(xi + dx, yi, 0.02, 0.012, 0.02); return; }
+      const top = yi - (tall >> 1) + (md === 'dry' ? 1 : 0), bot = top + tall - 1;
+      const px = Math.round(A.pupX * 1.2), py = Math.round(A.pupY * 0.8);
+      for (let y = top; y <= bot; y++) for (let dx = -2; dx <= 2; dx++) {
+        const x = xi + dx; if (covered(x, y)) continue;
+        const inner = Math.abs(dx) <= 1;
+        if (y === top && md !== 'dry') { setPx(x, y, 0.02, 0.012, 0.02); continue; }                       // the lash line
+        if (!inner) { setPx(x, y, 0.55, 0.52, 0.6); continue; }                                            // the white
+        if (dx === px && y === top + 1 + (tall > 2 ? 1 : 0) + py) { setPx(x, y, 0.01, 0.012, 0.05); continue; }  // the pupil
+        setPx(x, y, 0.05, 0.14, 0.75);                                                                      // blue iris
+      }
+      if (md === 'dry') { for (let dx = -2; dx <= 2; dx++) if (!covered(xi + dx, top - 1)) setPx(xi + dx, top - 1, 0.02, 0.012, 0.02); }   // the half lid
+      if (tall > 2 && !covered(xi - 1, top + 1)) setPx(xi - 1, top + 1, 1, 1, 1);                           // the highlight, up-left toward the lamp
+    };
+    eye(lx, ly, -1); eye(rx, ry, 1);
+    // brows, only when they say something
+    if (md === 'dry') for (const [ex, ey] of [[lx, ly], [rx, ry]]) { const xi = Math.round(ex), yi = Math.round(ey) - 4; for (let dx = -2; dx <= 1; dx++) if (!covered(xi + dx, yi)) mulPx(xi + dx, yi, 0.35); }
+    if (md === 'surprised') for (const [ex, ey] of [[lx, ly], [rx, ry]]) { const xi = Math.round(ex), yi = Math.round(ey) - 5; for (let dx = -1; dx <= 1; dx++) if (!covered(xi + dx, yi)) mulPx(xi + dx, yi, 0.4); }
+    // blush, two soft spots
+    for (const [u, v] of [[-13, 9], [13, 9]]) { const [x, y] = toScreen(u, v); if (!covered(x, y)) { addPx(x, y, 0.12, 0.02, 0.05); addPx(x + 1, y, 0.08, 0.012, 0.03); } }
+    // a sweat drop, sliding down beside the dry face
+    if (A.sweat > 0.5) { const [x, y] = toScreen(16, -2 + ((t * 2.5) % 6)); setPx(x, y, 0.2, 0.5, 0.9); setPx(x, y - 1, 0.1, 0.25, 0.5); }
+    // the mouth: shape from the mood, how open from marchMouth
+    const [mx, my] = toScreen(0, 11); const xi = Math.round(mx), yi = Math.round(my);
+    const k = A.mouthK, dark = [0.03, 0.008, 0.015], red = [0.35, 0.04, 0.08];
+    const rows = k < 0.25 ? 1 : k < 0.75 ? 3 : 4;
+    const setM = (x, y, c) => { if (!covered(x, y)) setPx(x, y, c[0], c[1], c[2]); };
+    if (md === 'happy') {
+      const hw = 4;
+      for (let r = 0; r < rows; r++) { const w = hw - (r > 1 ? r - 1 : 0); for (let dx = -w; dx <= w; dx++) { if (Math.abs(dx) === hw && r > 0) continue; setM(xi + dx, yi + r, r >= 1 && r < rows - 1 && rows > 2 ? red : dark); } }
+      setM(xi - hw, yi - 1, dark); setM(xi + hw, yi - 1, dark);
+      if (rows === 1) { setM(xi - hw, yi, [0.1, 0.07, 0.08]); setM(xi + hw, yi, [0.1, 0.07, 0.08]); }
+      else for (let dx = -2; dx <= 2; dx++) setM(xi + dx, yi, [0.6, 0.55, 0.6]);   // teeth
+    } else if (md === 'dry') {
+      const rr = Math.min(rows, 3);
+      for (let r = 0; r < rr; r++) for (let dx = -2; dx <= 2; dx++) setM(xi + dx, yi + 1 + r, r === 1 && rr === 3 ? red : dark);
+    } else if (md === 'surprised') {
+      const rr = rows + 1, hw = rows > 2 ? 2 : rows > 1 ? 1 : 0;
+      for (let r = 0; r < rr; r++) for (let dx = -hw; dx <= hw; dx++) setM(xi + dx, yi - 1 + r, (r > 0 && r < rr - 1 && hw > 0 && dx === 0) ? red : dark);
+    } else {
+      for (let r = 0; r < rows; r++) for (let dx = -2; dx <= 2; dx++) { if (Math.abs(dx) === 2 && (r === 0 || r === rows - 1) && rows > 1) continue; setM(xi + dx, yi + r, r >= 1 && r < rows - 1 ? red : dark); }
+    }
+  }
+
+  // ---------- the tap: several small things at once ----------
+  function toArt(ev) { const r = cv.getBoundingClientRect(); return [(ev.clientX - r.left) / r.width * W, (ev.clientY - r.top) / r.height * H]; }
+  function tap(x, y) {
+    A.wide = 1; A.flash = 1; A.blinkT = -1; A.blink = 0; A.nextBlink = 2;
+    A.lookX = clamp((x - A.bx) / 40, -1, 1); A.lookY = clamp((y - A.by) / 40, -1, 1); A.nextLook = 1.2;
+    for (const r of locks) for (let i = 2; i < r.n; i++) { r.px[i] -= r.side * 0.35 * (i / r.n); r.py[i] += 0.2 * (i / r.n); }   // the locks flick out
+    for (const m of motes) { const mx = m.x - x, my = m.y - y, md = Math.sqrt(mx * mx + my * my) + 3; if (md < 40) { m.vx += mx / md * 25 * (1 - md / 40); m.vy += my / md * 25 * (1 - md / 40); } }
+    const [sx, sy] = toScreen(24, -22);
+    for (let i = 0; i < 3; i++) sparks.push({ x: sx + (Math.random() - 0.5) * 8, y: sy + (Math.random() - 0.5) * 6, vx: (Math.random() - 0.5) * 14, vy: -8 - Math.random() * 8, a: 0 });
+  }
+  root.addEventListener('pointerdown', ev => { const [x, y] = toArt(ev); tap(x, y); });
+  window.marchMouth = state => { A.mouth = state === 'open' || state === 'half' ? state : 'closed'; };
+
+  // ---------- the test strip, outside #march ----------
+  const q = new URLSearchParams(location.search);
+  if (q.get('mood')) root.dataset.mood = q.get('mood'); if (q.get('action')) root.dataset.action = q.get('action'); if (q.get('mouth')) window.marchMouth(q.get('mouth'));
+  const strip = document.getElementById('strip'), ms = document.createElement('span');
+  const group = (label, opts, get, set) => { const s = document.createElement('span'); s.textContent = label + ' '; strip.appendChild(s); opts.forEach(o => { const b = document.createElement('button'); b.textContent = o; b.onclick = () => set(o); b.dataset.k = o; strip.appendChild(b); }); return () => strip.querySelectorAll('button').forEach(b => { if (opts.includes(b.dataset.k)) b.dataset.on = b.dataset.k === get() ? '1' : '0'; }); };
+  const lits = [
+    group('mood', Object.keys(MOODS), () => mood(), v => { root.dataset.mood = v; }),
+    group('action', Object.keys(ACTIONS), () => action(), v => { root.dataset.action = v; }),
+    group('mouth', ['closed', 'half', 'open', 'talk'], () => talking ? 'talk' : A.mouth, v => { talking = v === 'talk'; if (!talking) window.marchMouth(v); }),
+  ];
+  strip.appendChild(ms);
+  let talking = false, talkN = 0;
+  setInterval(() => { if (talking) { talkN++; window.marchMouth(['open', 'half', 'open', 'closed', 'half'][talkN % 5]); } }, 40);
+
+  function layout() {
+    const vw = innerWidth, vh = innerHeight - strip.offsetHeight;
+    const SC = Math.max(1, Math.floor(Math.min(vw / W, vh / H)));
+    root.style.width = W * SC + 'px'; root.style.height = H * SC + 'px';
+    root.style.left = Math.floor((vw - W * SC) / 2) + 'px'; root.style.top = Math.floor((vh - H * SC) / 2) + 'px';
+  }
+
+  // ---------- the loop ----------
+  buildRoom(); init(); layout();
+  addEventListener('resize', layout);
+  window.__march = { perf, A };
+  let last = performance.now(), tick = 0;
+  function frame(now) {
+    const dt = Math.min(0.1, Math.max(0, (now - last) / 1000)); last = now;
+    const t0 = performance.now();
+    update(dt); render();
+    const d = performance.now() - t0; perf.last = d;
+    if (A.t > 0.5) { perf.n++; perf.sum += d; perf.worst = Math.max(perf.worst, d); }
+    if ((tick++ & 15) === 0) { ms.textContent = ' ' + (perf.n ? (perf.sum / perf.n).toFixed(1) : d.toFixed(1)) + ' ms/frame'; lits.forEach(f => f()); }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
