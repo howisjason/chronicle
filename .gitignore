@@ -6,3 +6,4 @@ inbox/
 station/models/
 node_modules/
 .DS_Store
+station/.venv/
