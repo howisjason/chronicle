@@ -2033,6 +2033,124 @@
           "audioMs": 3152
         }
       ]
+    },
+    {
+      "id": "2026-10-08-15",
+      "title": "MARCH FINDS HER VOICE",
+      "startAt": "2026-10-08T03:03:19.381+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-15.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "March speaks in her own voice: march_voice.py adopted whole from the shelved body (his ask, 8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "design: three March candidates (pixel, paper, watercolour) with phone screenshots, for J's pick (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "design: a fourth March, cel-shaded from her real references (8 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "March has a voice of her own now. He asked for it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3392
+        },
+        {
+          "speaker": "march",
+          "text": "Taken whole from the shelved body. Not a new one.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3069
+        },
+        {
+          "speaker": "narrator",
+          "text": "Three candidates first. Pixel, paper and watercolour.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4139
+        },
+        {
+          "speaker": "march",
+          "text": "Each came with phone screenshots, for his pick.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2862
+        },
+        {
+          "speaker": "march",
+          "text": "Pixel, paper, watercolour. Three ways to be drawn.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3063
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then a fourth. Cel-shaded, from her real references.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3733
+        },
+        {
+          "speaker": "march",
+          "text": "A fourth! Drawn from my real references.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2838
+        },
+        {
+          "speaker": "narrator",
+          "text": "Her voice came off a shelf. Now it is hers.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3179
+        },
+        {
+          "speaker": "march",
+          "text": "A voice and a look. Both hers.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2416
+        },
+        {
+          "speaker": "narrator",
+          "text": "Three looks, and each one a step closer.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2816
+        },
+        {
+          "speaker": "march",
+          "text": "She speaks in her own voice. That was his ask.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2852
+        }
+      ]
     }
   ]
 }
