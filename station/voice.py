@@ -23,9 +23,12 @@ from datetime import datetime, timedelta
 import numpy as np
 
 RATE = 24000
-# The narrator is a stock voice for now (J picks). March is NOT a stock voice:
-# station/march_voice.py is her, tuned with J in the body era; see its header.
-VOICES = {'narrator': 'bm_george'}
+# Neither voice is a stock voice. March is station/march_voice.py, tuned with J
+# in the body era (see its header). The narrator is J's pick from seventeen
+# candidates (8 Oct 2026): Onyx's throat wearing Lewis's movement, built the
+# same way hers is (Kokoro's 256-number style splits at 128: timbre first,
+# rhythm and pitch second), at speed 0.92.
+NARRATOR_TIMBRE, NARRATOR_DONOR, NARRATOR_SPEED = 'am_onyx', 'bm_lewis', 0.92
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import march_voice  # noqa: E402
 MODEL = os.path.join('station', 'models', 'kokoro-v1.0.onnx')
@@ -40,14 +43,23 @@ DEFAULT_GAPS = {'firstLeadMs': 1000, 'leadMs': 200, 'holdMs': 600}
 
 
 _march_style = None
+_narrator_style = None
+def narrator_style(pipeline):
+    timbre = pipeline.get_voice_style(NARRATOR_TIMBRE)
+    donor = pipeline.get_voice_style(NARRATOR_DONOR)
+    return np.concatenate([timbre[:, :, :128], donor[:, :, 128:]], axis=-1)
+
+
 def speak_kokoro(pipeline, speaker, text):
-    global _march_style
+    global _march_style, _narrator_style
     if speaker == 'march':
         if _march_style is None:
             _march_style = march_voice.build_style(pipeline)
         samples, rate = march_voice.speak(pipeline, _march_style, text)
     else:
-        samples, rate = pipeline.create(text, voice=VOICES[speaker], speed=1.0, lang='en-us')
+        if _narrator_style is None:
+            _narrator_style = narrator_style(pipeline)
+        samples, rate = pipeline.create(text, voice=_narrator_style, speed=NARRATOR_SPEED, lang='en-us')
     assert rate == RATE, f'voice: Kokoro gave {rate} Hz, expected {RATE}'
     return np.asarray(samples, dtype=np.float32)
 

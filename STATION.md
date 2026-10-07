@@ -43,11 +43,13 @@ Rules while writing:
 
 Run `node station/validate.mjs day/<date>.json`. It refuses the file on any finding and prints each one. Fix the lines and run it again until it prints `OK`. Never change the checker to make a chapter pass.
 
+**Save first.** The moment the checker prints `OK`, commit `day/<date>.json` and push it to `main` (the remote and credential notes of step 6 apply here too). The page can play an unvoiced day with blips, and a run that is cut off later loses nothing. Push again after the truth check's fixes.
+
 Then the truth check: start a fresh subagent (Haiku 5.5 is enough) with the text of `station/truth-check.md` as its instructions, followed by the chapter JSON and the whole inbox text. It answers `CLEAN` or a list of flagged lines. For each flagged line, rewrite it inside the record or cut it, then run the checker again. Run the truth check again after fixes. A chapter is not voiced until it comes back `CLEAN`.
 
 ## 5. Voice
 
-If setup succeeded: `python3 station/voice.py day/<date>.json --budget 480`, again and again until it prints `voice: 0 left`. Each run voices the segments that have no audio yet, for about eight minutes, then stops (the one-command wall is ten minutes); it makes one MP3 per segment under `audio/<date>/`, writes each segment's `audio` path and each line's real `audioMs` back into the JSON, and when all are voiced re-chains every `startAt` from the real lengths. Then run the checker once more.
+If setup succeeded: `python3 station/voice.py day/<date>.json --budget 480`, again and again until it prints `voice: 0 left`, and after EACH run commit `day/<date>.json` and `audio/<date>` and push, so every voiced segment is saved as it is made. Each run voices the segments that have no audio yet, for about eight minutes, then stops (the one-command wall is ten minutes); it makes one MP3 per segment under `audio/<date>/`, writes each segment's `audio` path and each line's real `audioMs` back into the JSON, and when all are voiced re-chains every `startAt` from the real lengths. Then run the checker once more.
 
 ## 6. Publish
 
