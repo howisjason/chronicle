@@ -14,7 +14,7 @@ Usage: python3 mac/station.py [YYYY-MM-DD] [MINUTES_AHEAD] [--once]
 Needs the inbox from mac/gather.sh. Logs each call's cost to inbox/<date>/costs.tsv
 (the inbox is never committed).
 """
-import json, os, subprocess, sys, time
+import hashlib, json, os, subprocess, sys, time
 from datetime import datetime, timedelta, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,10 +26,15 @@ GAPS = {'firstLeadMs': 1000, 'leadMs': 200, 'holdMs': 600}
 
 args = [a for a in sys.argv[1:] if not a.startswith('--')]
 ONCE = '--once' in sys.argv
+# --lab writes text only into a private copy of the day (never voiced, never
+# pushed) so versions can be read side by side before anything airs.
+LAB = '--lab' in sys.argv
+PLANNER = 'claude-sonnet-5-5'  # plans the day's scenes once per run; depth where it pays
 DATE = args[0] if args else datetime.now(TZ).date().isoformat()
 AHEAD = int(args[1]) if len(args) > 1 else 20
-DAY = f'day/{DATE}.json'
 INBOX = f'inbox/{DATE}'
+DAY = f'{INBOX}/lab-day.json' if LAB else f'day/{DATE}.json'
+ARC = f'{INBOX}/{"lab-" if LAB else ""}arc.json'
 
 
 def read(p, default=''):
@@ -39,10 +44,10 @@ def read(p, default=''):
         return default
 
 
-def ask(system, user, label):
+def ask(system, user, label, model=MODEL):
     """One plain model call. Returns its text; logs its cost."""
     r = subprocess.run(
-        ['claude', '-p', '--model', MODEL, '--effort', EFFORT, '--system-prompt', system,
+        ['claude', '-p', '--model', model, '--effort', EFFORT, '--system-prompt', system,
          '--tools', '', '--strict-mcp-config', '--setting-sources', '',
          '--no-session-persistence', '--output-format', 'json'],
         input=user, capture_output=True, text=True, timeout=300)
@@ -64,21 +69,13 @@ def as_json(text):
 INBOX_TEXT = ('## commits\n' + read(f'{INBOX}/commits.md') + '\n## day-note\n' + read(f'{INBOX}/day-note.md')
               + '\n## notes\n' + read(f'{INBOX}/notes.md'))
 
-WRITER = f"""You write ONE segment of a channel that tells J's real day as an epic, as data.
-Output ONLY one JSON object: {{"title": "...", "sources": [{{"kind": "commit|day-note|note", "repo": "...", "text": "..."}}], "lines": [{{"speaker": "...", "text": "...", "emotion": "...", "action": "...", "source": 0}}]}}
-- About 18 lines. Speakers: narrator, march. Emotions: neutral, happy, dry, surprised. Actions: none, point, facepalm; the narrator's action is always none.
-- sources: one entry per inbox item used, its text copied WORD FOR WORD from the inbox. Every line has a source index.
-- Never invent an event. The telling may make the day feel big; it never says he did a thing he did not do.
-- NO NUMBERS AT ALL: no digits and no number words (not one, two, three, first, second, twice, a pair, a dozen). Say 'again', 'another', 'more' instead.
-- Tell events only in the order the record gives; never say what came first unless the source says it. No names of people other than J. No clients, money, health, visa, family.
-- Short sentences, plain words. One or two sentences a line.
+WRITER = '\n\n'.join([read('station/writer.md'), '# March\n' + read('station/march.md'),
+                       '# The narrator\n' + read('station/narrator.md'), '# Forbidden\n' + read('forbidden.md')])
 
-# March
-{read('station/march.md')}
-# The narrator
-{read('station/narrator.md')}
-# Forbidden
-{read('forbidden.md')}"""
+PLAN_SHEET = f"""You plan the day's chapter for a channel that tells J's real day as an epic. Read the writer's sheet below, then split the inbox into SCENES: each one moment with a fight or a turn or a feeling, told close. Order them so the day has an arc: a strong opening scene, the hardest fight in the middle, an ending with meaning. Use only what the inbox shows. Skip routine items that carry no story; merge small related ones into one scene.
+Output ONLY JSON: {{"scenes": [{{"moment": "...", "fight": "...", "turn": "...", "quote": "J's exact words from the inbox, or empty", "meaning": "...", "callback": "an earlier scene this one can echo, or empty", "items": ["the exact inbox lines or day-note paragraphs this scene uses"]}}]}}
+
+{read('station/writer.md')}"""
 
 
 def load_day():
@@ -118,17 +115,33 @@ def one_segment(day):
         raise
 
 
+def plan(day):
+    """The day's arc, made once by the planner and reused; made again only when
+    the inbox has grown and every planned scene is told."""
+    key = hashlib.sha1(INBOX_TEXT.encode()).hexdigest()
+    arc = json.load(open(ARC)) if os.path.exists(ARC) else None
+    if arc and (arc['next'] < len(arc['scenes']) or arc['key'] == key):
+        return arc
+    used, titles, _ = told(day)
+    out = as_json(ask(PLAN_SHEET, f"The inbox:\n{INBOX_TEXT}\n\nAlready told today (titles): {titles}\n"
+                      f"Inbox items already used, do not plan them again: {used}", 'plan', PLANNER))
+    arc = {'key': key, 'next': 0, 'scenes': out['scenes']}
+    json.dump(arc, open(ARC, 'w'), indent=1, ensure_ascii=False)
+    return arc
+
+
 def _one_segment(day):
     used, titles, tail = told(day)
-    new = [l for l in INBOX_TEXT.splitlines() if l.strip() and not l.startswith('##') and not any(l.strip('- ').strip() in u or u in l for u in used)]
-    quiet = not new
+    arc = plan(day)
+    quiet = arc['next'] >= len(arc['scenes'])
     if quiet and day['segments'] and day['segments'][-1].get('quiet'):
         return 'nothing new, and the last segment was already a quiet one'
-    ask_for = ('Nothing in the inbox is new. Write a QUIET segment: on one of the notes, or a short beat that says '
-               'plainly the day has been quiet and looks back on one thing already told, in new words.' if quiet
-               else 'Write the next segment, about inbox items NOT already told.')
+    scene = None if quiet else arc['scenes'][arc['next']]
+    ask_for = ('Nothing in the inbox is new. Write a QUIET scene: on one of the notes, or a short beat that '
+               'looks back on one thing already told, in new words.' if quiet
+               else f'Write this scene, the next in the day\'s arc:\n{json.dumps(scene, ensure_ascii=False)}')
     user = (f"The inbox:\n{INBOX_TEXT}\n\nAlready told today (titles): {titles}\n"
-            f"Inbox items already used: {used}\nThe last two lines on air: {json.dumps(tail)}\n\n{ask_for}")
+            f"The last two lines on air: {json.dumps(tail, ensure_ascii=False)}\n\n{ask_for}")
     feedback = ''
     for attempt in range(4):
         seg = as_json(ask(WRITER, user + feedback, f'write#{attempt}'))
@@ -148,7 +161,7 @@ def _one_segment(day):
             continue
         verdict = ask(read('station/truth-check.md'), f'The chapter:\n{json.dumps(seg, ensure_ascii=False)}\n\nThe inbox:\n{INBOX_TEXT}', f'truth#{attempt}')
         if verdict.strip() == 'CLEAN':
-            return trial
+            return done(trial, arc, quiet)
         # Cut the flagged lines rather than rewrite: a cut can only remove a
         # claim, never add one, so it needs no second truth check. Rewrites
         # kept trading one small stretch for another (8 Oct 2026, four tries).
@@ -161,11 +174,24 @@ def _one_segment(day):
             json.dump(trial, open(DAY, 'w'), indent=1, ensure_ascii=False)
             if validate()[0]:
                 print(f'station: cut {len(bad)} flagged line(s): {verdict[:300]}', flush=True)
-                return trial
+                return done(trial, arc, quiet)
         print(f'station: try {attempt + 1} flagged by the truth check: {verdict[:300]}', flush=True)
         feedback = f'\n\nA fresh reader flagged these lines against the record. Rewrite or cut them:\n{verdict}'
     json.dump(day, open(DAY, 'w'), indent=1, ensure_ascii=False)  # put the day back as it was
     return f'four tries refused; last finding: {feedback.strip()[:400]}'
+
+
+def done(trial, arc, quiet):
+    if not quiet:
+        arc['next'] += 1
+        json.dump(arc, open(ARC, 'w'), indent=1, ensure_ascii=False)
+    return trial
+
+
+def show(seg):
+    print(f'\n== {seg["title"]} ==')
+    for l in seg['lines']:
+        print(f'{l["speaker"].upper():9} {l["text"]}')
 
 
 def publish(n_new):
@@ -182,18 +208,28 @@ def publish(n_new):
 def main():
     if not os.path.exists(f'{INBOX}/commits.md'):
         sys.exit(f'station: no inbox for {DATE}; run mac/gather.sh first')
-    subprocess.run(['git', 'pull', '-q', '--rebase', '--autostash'], check=True)
+    if LAB:
+        if not os.path.exists(DAY):
+            json.dump(json.load(open(f'day/{DATE}.json')) if os.path.exists(f'day/{DATE}.json') else
+                      {'date': DATE, 'tz': 'Asia/Bangkok', 'segments': []}, open(DAY, 'w'))
+    else:
+        subprocess.run(['git', 'pull', '-q', '--rebase', '--autostash'], check=True)
     made = 0
     while True:
         day = load_day()
         end = day_end(day)
-        if end and end > datetime.now(TZ) + timedelta(minutes=AHEAD):
+        if not LAB and end and end > datetime.now(TZ) + timedelta(minutes=AHEAD):
             print(f'station: ahead of the clock; the day ends {end:%H:%M}'); break
         result = one_segment(day)
         if isinstance(result, str):
             print(f'station: stopped, {result}'); break
-        publish(1)
         made += 1
+        if LAB:
+            show(result['segments'][-1])
+            if made >= int(os.environ.get('LAB_N', '1')):
+                break
+            continue
+        publish(1)
         print(f'station: segment {made} on air, "{result["segments"][-1]["title"]}"', flush=True)
         if ONCE:
             break

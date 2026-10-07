@@ -7,8 +7,9 @@
 # privacy mistake can happen, so it is short and readable, and it copies ONLY
 # what the channel plan's allow-list names (8 Oct 2026, J's confirm):
 #   commits.md   commit messages from the public-safe repos, nothing else
-#   day-note.md  a short note of the day, written by one small Haiku call from
-#                the day's session transcripts, under forbidden.md
+#   day-note.md  the day as moments with his own words, written by one Sonnet
+#                call from the day's session transcripts (station/day-note.md),
+#                under forbidden.md
 #   notes.md     vault notes tagged #onair, whole
 # Nothing from growth-op, march-brain or personal ever enters, not even counts.
 set -euo pipefail
@@ -68,12 +69,13 @@ for f in files:
         out.append('=== a session ===\n' + '\n\n'.join(turns)[:15000])
 print('\n\n'.join(out)[:90000])
 PY
+# Sonnet 5.5: the note is the day's whole story material, written once a day,
+# so depth is worth it here (J's model rule, 7 Oct 2026: Sonnet for deep work).
 {
-  echo "Write the day note for $PREV: what J built, learned, decided, tried and failed at that day, in plain words (VOA Learning English), 120 to 250 words, in his words where his words are not about forbidden things. It will be read on a public channel. Say only what the session text below shows happened; never guess, never add. Mention no AI model names and no prices."
+  echo "Write the day note for $PREV. Follow this sheet:"; cat station/day-note.md
   echo; echo "THE FORBIDDEN LIST, absolute:"; cat forbidden.md
-  echo; echo "Also forbidden: the names of any projects or people that are not clearly public work (when unsure, describe the thing, do not name it)."
   echo; echo "SESSION TEXT:"; cat "$OUT/sessions.txt"
-} | claude -p --model claude-haiku-5-5 > "$OUT/day-note.md"
+} | claude -p --model claude-sonnet-5-5 --tools "" --strict-mcp-config --setting-sources "" --no-session-persistence > "$OUT/day-note.md"
 rm -f "$OUT/sessions.txt"
 fi
 
