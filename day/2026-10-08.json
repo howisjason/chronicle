@@ -2151,6 +2151,101 @@
           "audioMs": 2852
         }
       ]
+    },
+    {
+      "id": "2026-10-08-16",
+      "title": "OPTIONS THAT LOOK THE SAME",
+      "startAt": "2026-10-08T03:04:03.340+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-16.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "day-note",
+          "text": "Not every try worked."
+        },
+        {
+          "kind": "day-note",
+          "text": "Three design options came back looking almost the same, because the same instructions were sent to each builder."
+        },
+        {
+          "kind": "day-note",
+          "text": "J's reaction was, \"How am I supposed to pick what design style I like if all three are the same?\""
+        },
+        {
+          "kind": "day-note",
+          "text": "The lesson is now saved as a note, so future sessions read it before they make options to choose from."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Not every try worked. The day note says so plainly.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3648
+        },
+        {
+          "speaker": "march",
+          "text": "Three design options came back almost the same. That was the trouble.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4108
+        },
+        {
+          "speaker": "narrator",
+          "text": "Why? The same instructions went to each builder.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3072
+        },
+        {
+          "speaker": "march",
+          "text": "How am I supposed to pick what design style I like if all three are the same? That was his question.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5754
+        },
+        {
+          "speaker": "narrator",
+          "text": "A fair question. Hard to answer from three copies.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3520
+        },
+        {
+          "speaker": "march",
+          "text": "So the lesson is now a saved note. Future sessions read it first.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4175
+        },
+        {
+          "speaker": "narrator",
+          "text": "Read it before making options. A small rule, but a sharp one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4480
+        },
+        {
+          "speaker": "march",
+          "text": "Not every try worked. Good to say so out loud.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3025
+        }
+      ]
     }
   ]
 }
