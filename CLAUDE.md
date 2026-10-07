@@ -76,7 +76,7 @@ invented line with the real inbox; it flagged exactly that line on 8 Oct 2026.
 ## The look (step 8, open)
 
 Six candidates in `design/` were rejected by J (pixel, paper, watercolour, cel,
-lit-anime). The brief that stands: like the creature lab (`Projects/creature-lab/`,
+lit-anime), and clay was refused before it was drawn: he does not like clay. The brief that stands: like the creature lab (`Projects/creature-lab/`,
 shots in its `shots/`) and the brain cell, simple shapes, few colours, a scene
 with its own life, charm from light; her vibe from the references, never her
 detail. Playbook: `personal/context/obsidian/🌱 Brain Dump/Code-drawn creatures -
