@@ -2479,6 +2479,167 @@
           "audioMs": 3648
         }
       ]
+    },
+    {
+      "id": "2026-10-08-20",
+      "title": "THE BRANCH COMES HOME",
+      "startAt": "2026-10-08T05:36:15.277+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-20.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "Merge remote-tracking branch 'origin/voice-wip'"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle step 5: the Mac's gatherer and fire line; voice.py budgets, skips and re-chains; Haiku 5.5 as the writer (8 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Late at night, a voice branch joined the main line.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3456
+        },
+        {
+          "speaker": "march",
+          "text": "A branch is a separate copy of the work, kept apart until it is ready.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4367
+        },
+        {
+          "speaker": "narrator",
+          "text": "The record shows the join, and nothing more about what was in it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4011
+        },
+        {
+          "speaker": "march",
+          "text": "Then I will not guess. Glad it came home, though.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2875
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then came the next step, the Mac's gatherer and fire line.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3755
+        },
+        {
+          "speaker": "march",
+          "text": "A gatherer, and a fire line. Sounds like camp.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2902
+        },
+        {
+          "speaker": "narrator",
+          "text": "The voice part got budgets, meaning a set limit, plus skips and re-chains.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4928
+        },
+        {
+          "speaker": "march",
+          "text": "Budgets, skips, re-chains. All of them in the voice file.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3254
+        },
+        {
+          "speaker": "narrator",
+          "text": "The record does not say how well they work. Only that they are in.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4203
+        },
+        {
+          "speaker": "march",
+          "text": "And the writer changed too. Haiku is the writer now.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3200
+        },
+        {
+          "speaker": "narrator",
+          "text": "A small Haiku model now writes the words.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3200
+        },
+        {
+          "speaker": "march",
+          "text": "Small model, big job. I like the sound of that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3090
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the whole record for this part of the day.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3115
+        },
+        {
+          "speaker": "march",
+          "text": "Quiet, but it counts. Every join is a step.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2805
+        },
+        {
+          "speaker": "narrator",
+          "text": "The branch came home, and the next step went in.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3072
+        },
+        {
+          "speaker": "march",
+          "text": "Good work, quietly done. I'll take it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2680
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the record. Over to you, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2987
+        }
+      ]
     }
   ]
 }
