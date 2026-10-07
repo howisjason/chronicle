@@ -2246,6 +2246,89 @@
           "audioMs": 3025
         }
       ]
+    },
+    {
+      "id": "2026-10-08-17",
+      "title": "THE TOY, PLAYED",
+      "startAt": "2026-10-08T03:04:42.322+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-17.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "day-note",
+          "text": "J played with the toy and liked it, but could not yet say what felt off."
+        },
+        {
+          "kind": "day-note",
+          "text": "The session ended with a written handoff."
+        },
+        {
+          "kind": "day-note",
+          "text": "A new session will compare the original ideas with what the toy does now and decide what to change."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "He played with the toy. He liked it. He could not yet say what felt off.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4651
+        },
+        {
+          "speaker": "march",
+          "text": "Liked it, and still unsure what is wrong. An honest review.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3541
+        },
+        {
+          "speaker": "narrator",
+          "text": "The session ended with a written handoff, for the next session.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3733
+        },
+        {
+          "speaker": "march",
+          "text": "A new session will compare the original ideas with what the toy does now.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4347
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then it decides what to change. A fine plan for a toy.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4032
+        },
+        {
+          "speaker": "march",
+          "text": "Playing it was the test. He played it, and he liked it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3024
+        },
+        {
+          "speaker": "narrator",
+          "text": "So the story pauses at a toy that works, and has not yet found its feeling.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4907
+        }
+      ]
     }
   ]
 }
