@@ -73,11 +73,21 @@ plant a wrong number, a missing source and forbidden words and watch each
 refused). The truth check is exercised by handing a fresh Haiku a planted
 invented line with the real inbox; it flagged exactly that line on 8 Oct 2026.
 
-## The look (step 8, open)
+## The look (step 8): pixel people, like PNN (J's call, 8 Oct 2026, 5:05am)
 
-Six candidates in `design/` were rejected by J (pixel, paper, watercolour, cel,
-lit-anime), and clay was refused before it was drawn: he does not like clay. The brief that stands: like the creature lab (`Projects/creature-lab/`,
-shots in its `shots/`) and the brain cell, simple shapes, few colours, a scene
-with its own life, charm from light; her vibe from the references, never her
-detail. Playbook: `personal/context/obsidian/🌱 Brain Dump/Code-drawn creatures -
-playbook.md`.
+**Decided: copy PNN's own pixel-art people** (the teardown in his vault: `PNN teardown -
+how pnn.watch works (7 Oct 2026).md`). The ideas and the look, never PNN's code. J closed
+the design search after about fifteen attempts across two sessions; do not reopen it, do not
+propose another style, and spend as few tokens on the look as the job allows. The rest of
+the channel matters more.
+
+What was tried and rejected (never propose again): pixel-room and lit-pixel chibis, felt
+paper, watercolour, cel, lit-anime, clay, a skin-coloured ball with anime eyes, March as a
+creature or snowflake, vector mochi figures (train, sticker, journal, device, sky), and
+per-frame shaded versions (WebGL vinyl, lit pixel, glow). Their files sit untracked in
+`design/` as a record; delete them freely.
+
+**How options are made, if J ever asks for designs again:** each option differs in what he
+is choosing, and each is a finished world built by its own helper over several screenshot
+rounds beside the reference. Look at every shot before sending it. A quick hand sketch on a
+plain card is the failure.
