@@ -72,7 +72,7 @@ INBOX_TEXT = ('## commits\n' + read(f'{INBOX}/commits.md') + '\n## day-note\n' +
 WRITER = '\n\n'.join([read('station/writer.md'), '# March\n' + read('station/march.md'),
                        '# The narrator\n' + read('station/narrator.md'), '# Forbidden\n' + read('forbidden.md')])
 
-PLAN_SHEET = f"""You plan the day's chapter for a channel that tells J's real day as an epic. Read the writer's sheet below, then split the inbox into SCENES: each one moment with a fight or a turn or a feeling, told close. Order them so the day has an arc: a strong opening scene, the hardest fight in the middle, an ending with meaning. Use only what the inbox shows. Skip routine items that carry no story; merge small related ones into one scene.
+PLAN_SHEET = f"""You plan the day's chapter for a channel that tells J's real day as an epic. Read the writer's sheet below, then split the inbox into SCENES: each one moment with a fight or a turn or a feeling, told close. Order them so the day has an arc: a strong opening scene, the hardest fight in the middle, an ending with meaning. Use only what the inbox shows. RANK BY DRAMA: scenes with J's own words, a real fight, a failure or a turn come first and get the most room. Machinery with no fight in it (code changes, settings, files) is merged into one short scene near the end, or skipped. Never plan a scene whose only content is a technical change.
 Output ONLY JSON: {{"scenes": [{{"moment": "...", "fight": "...", "turn": "...", "quote": "J's exact words from the inbox, or empty", "meaning": "...", "callback": "an earlier scene this one can echo, or empty", "items": ["the exact inbox lines or day-note paragraphs this scene uses"]}}]}}
 
 {read('station/writer.md')}"""
@@ -167,6 +167,22 @@ def _one_segment(day):
         # kept trading one small stretch for another (8 Oct 2026, four tries).
         import re
         bad = {int(m) for m in re.findall(r'(?m)^\S+ line (\d+):', verdict)}
+        # Repair first: the writer rewrites only the flagged lines, keeping the
+        # talk flowing. A plain cut left March answering a question nobody
+        # asked (lab, 8 Oct 2026). The repair is checked again like a new try.
+        try:
+            fixed = as_json(ask(WRITER, f"The inbox:\n{INBOX_TEXT}\n\nThis segment:\n{json.dumps(seg, ensure_ascii=False)}\n\n"
+                                f"A fresh reader flagged these lines (counted from 0):\n{verdict}\n\nRewrite ONLY those lines so they "
+                                "claim nothing the inbox does not show, and adjust a neighbouring line only if the talk would not "
+                                "flow. Return the whole segment JSON.", f'repair#{attempt}'))
+            seg2 = dict(seg, lines=fixed['lines'])
+            trial2 = dict(day, segments=day['segments'] + [seg2])
+            json.dump(trial2, open(DAY, 'w'), indent=1, ensure_ascii=False)
+            if validate()[0] and ask(read('station/truth-check.md'), f'The chapter:\n{json.dumps(seg2, ensure_ascii=False)}\n\nThe inbox:\n{INBOX_TEXT}', f'truth-repair#{attempt}').strip() == 'CLEAN':
+                print(f'station: repaired {len(bad)} flagged line(s)', flush=True)
+                return done(trial2, arc, quiet)
+        except (ValueError, KeyError):
+            pass
         kept = [l for i, l in enumerate(seg['lines']) if i not in bad]
         if bad and len(kept) >= 12:
             seg['lines'] = kept
@@ -178,7 +194,10 @@ def _one_segment(day):
         print(f'station: try {attempt + 1} flagged by the truth check: {verdict[:300]}', flush=True)
         feedback = f'\n\nA fresh reader flagged these lines against the record. Rewrite or cut them:\n{verdict}'
     json.dump(day, open(DAY, 'w'), indent=1, ensure_ascii=False)  # put the day back as it was
-    return f'four tries refused; last finding: {feedback.strip()[:400]}'
+    if not quiet:  # skip a scene that can never pass, so it cannot stall the day
+        arc['next'] += 1
+        json.dump(arc, open(ARC, 'w'), indent=1, ensure_ascii=False)
+    return f'four tries refused, scene skipped; last finding: {feedback.strip()[:400]}'
 
 
 def done(trial, arc, quiet):

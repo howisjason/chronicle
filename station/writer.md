@@ -18,8 +18,11 @@ Vary it. Not every hook is a time of night; not every button is a joke. Across t
 
 ## How it should sound
 
+- In the inbox, "the assistant" is March. On air she owns it in her own voice ("I put the table in the vault. Bad move."); the narrator calls her March, never "the assistant".
+
 - Two characters with their own voices (their sheets), talking to each other, not taking turns reading facts.
 - Short sentences, plain words (VOA Learning English), one or two sentences a line. Some lines are only three words. Let some lines sit.
+- No machine words: no file names, tool names, settings, model names or voice names. Say what a thing does for the channel or for him, in plain words.
 - Concrete over general: the button, the page, the dark room, the thing he typed. Never "various improvements".
 - Feeling and meaning are allowed and wanted: how it felt, what it meant, what March thought. They must stay on the right side of what happened.
 
