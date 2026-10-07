@@ -34,7 +34,7 @@
         },
         {
           "speaker": "march",
-          "text": "It went because it was J's call. He asked a second opinion, and that opinion agreed.",
+          "text": "It went because it was J's call. A blind second opinion agreed with it.",
           "emotion": "dry",
           "action": "point",
           "source": 0
@@ -246,7 +246,7 @@
         },
         {
           "speaker": "narrator",
-          "text": "The page now ends with his face, and the words beside it say whose it is.",
+          "text": "The page now closes with J's own smiling photo.",
           "emotion": "neutral",
           "action": "none",
           "source": 0
@@ -441,7 +441,7 @@
         },
         {
           "speaker": "narrator",
-          "text": "The narrator speaks only from the record it was handed. That is written down now.",
+          "text": "The two character sheets are written down now.",
           "emotion": "dry",
           "action": "none",
           "source": 0
@@ -569,7 +569,7 @@
         },
         {
           "speaker": "narrator",
-          "text": "The voice was not yet proven. Proof came in the next commit.",
+          "text": "The voice was not yet tested with Kokoro.",
           "emotion": "neutral",
           "action": "none",
           "source": 0
@@ -1652,7 +1652,7 @@
         },
         {
           "speaker": "march",
-          "text": "It used up usage after every reply. Turning it off was a small call, and he made it.",
+          "text": "It used up usage after every reply. Turning it off was a small call.",
           "emotion": "neutral",
           "action": "point",
           "source": 1
