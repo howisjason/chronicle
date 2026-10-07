@@ -1,0 +1,1670 @@
+{
+  "date": "2026-10-08",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-08-01",
+      "title": "THE CARD COMES OFF",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "howisjason.com",
+          "text": "Remove the notes-to-videos card: it matched none of the four problems the page fixes, and a cold reader could not see its value (J's call, 7 Oct 2026, after a blind second opinion agreed)"
+        },
+        {
+          "kind": "commit",
+          "repo": "howisjason.com",
+          "text": "Lighter page: icon badges on the headings, one intro sentence cut, How I work cut to four, a play-button cover on the video, his face at the closing ask, the assistant card centred beside the phone (J's review, 7 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "On 7 October, the page lost a card. It was a card about turning notes into videos.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "It went because it was J's call. He asked a second opinion, and that opinion agreed.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The card matched none of the four problems the page was built to fix. A cold reader could not see its value.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A cold reader is a person who has never seen the work before.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the page got lighter. Icon badges went onto the headings.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Small badges. Small wins still count, and I count them.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "One intro sentence was cut. How I work was cut down to four points.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Four is a good number for a list. Anything more starts to look like a lecture.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The video got a play-button cover. A reader sees it and knows what to press.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "The assistant card sits centred beside the phone now.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "All of this went through his review, and the page changed because of it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Cutting is harder than adding. He did it on purpose.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A page with less on it is easier to read. That is the whole idea of the change.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "I will say it once. I would have kept the card. Then I read why it went, and I go with his call.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The closing ask is next, and that is where the photo goes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-02",
+      "title": "THE CLOSING PHOTO",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "howisjason.com",
+          "text": "Closing photo: J's own smiling photo replaces the video frame (his pick, 7 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "howisjason.com",
+          "text": "Closing photo's description no longer says it comes from the video"
+        },
+        {
+          "kind": "commit",
+          "repo": "howisjason.com",
+          "text": "Closing photo: J's whole photo inside the circle, not a tight crop (his catch, 7 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Next, the closing photo. The video frame had been used there before.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "J's own smiling photo went in. He picked it himself.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A video frame is a still taken from a video. This time the picture is of him.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The description under it was fixed too. It no longer says the photo comes from the video.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then came a catch. The photo was cropped too tight.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "march",
+          "text": "He caught it himself. Good eyes.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2
+        },
+        {
+          "speaker": "narrator",
+          "text": "The circle now holds his whole photo, not a tight slice of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "march",
+          "text": "A face at the close is a good way to end a page. People like to meet the one who made it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A description has to match its picture. A wrong one is a small mistake that sticks.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "The photo was his pick. The page now says what the photo really is.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A few small fixes on one page, all in one day.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "march",
+          "text": "Right words, right picture. That is what a reader expects.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The page now ends with his face, and the words beside it say whose it is.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A tight crop cuts people out of their own picture. He wanted all of it. Fair.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the end of the page work. The day moves on to the station.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-03",
+      "title": "A STATION IS SEEDED",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle step 1: the repo seeded, with a stand-by page (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle step 2: the player, timing.js with tests, a sample chapter (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle: three sample lines pulled back to what their sources say (8 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Now the other project. The station is a chronicle, and it began with a repo that was seeded.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Step one is a page that waits. It says stand by until there is a day to show.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A station with nothing to show still needs a sign on the door.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Step two is the player. It is the part that plays the chapter in the page.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The timing code has tests. A sample chapter came with it, so the player had something to play.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Then three sample lines were pulled back. Pulled back to what their sources say.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "narrator",
+          "text": "Three lines were pulled back. Each one now says only what its source says.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "march",
+          "text": "A line in a chapter must point at a source. The sample lines were made to match theirs.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "narrator",
+          "text": "A timing file has tests, so a change to it can be checked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Step two is done, with tests. I like a thing that can prove it works.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The repo was seeded, and the page was ready to wait.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Waiting is a job too. The stand-by page does it well.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The station is one of the projects in the record today.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-04",
+      "title": "THE CHECKER AND THE TWO SHEETS",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle step 3: the station sheet whole, the checker with tests, the truth check, the two character sheets (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle: 2026-10-07, 1 segment(s)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Step three is the big one. The station sheet was written whole, and the checker came with tests.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A checker is the thing that says no. It refuses a chapter when the chapter is wrong.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A truth check is a second reader. It checks the lines against the record.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Two character sheets too. One for the narrator, and one for me.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The narrator speaks only from the record it was handed. That is written down now.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The day file for 2026-10-07 was written. It had one segment.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "One segment is a short day.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "A day with one segment is a quiet day. It still counts.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The checker has tests, so its refusals can be trusted.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A check that can refuse is a check that means something.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-05",
+      "title": "THE VOICE, UNTESTED",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "voice: setup.sh, voice.py, MP3 playback in the player (untested with Kokoro)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "README: steps 1 to 3 are in (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "Merge remote-tracking branch 'origin/voice-wip'"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "The voice came next. There was a setup script, a voice script, and MP3 playback in the player.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Untested. The commit says so in plain words. The voice had not been tried with Kokoro yet.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "MP3 is the sound file type. The player can now play one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Then the README got its steps. Steps one to three are in.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the voice branch was merged in.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "march",
+          "text": "A merge joins separate lines of work into one. The voice work was joined to the rest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "narrator",
+          "text": "A README is the page a reader sees first about a project. This one now says what is in.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Untested is an honest word. I like an honest word on a sound file.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The voice was not yet proven. Proof came in the next commit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Steps one to three in one README. That is a proper map.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-06",
+      "title": "A VOICE FROM A RELEASE",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle step 4: the voice through kokoro-onnx from a GitHub release; the publish step knows the remote (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle: 2026-10-07, 1 segment(s)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Step four is the voice itself. It runs through kokoro-onnx, from a GitHub release.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The voice comes from a release on GitHub. That is a file we can name.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The publish step also knows the remote now. It knows where to send the day.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Then one more day file was written. One segment, dated 2026-10-07 again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The station wrote its file again. It is the same kind of file as before.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "A release is a finished pack of files. This one holds the model for the voice.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "Step four is in, and the sound comes after it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Another day file, written by the station. I like a station that keeps its word.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The release is on GitHub, and the station can reach it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The voice is a new part, so it is the part to watch.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-07",
+      "title": "THE FIRE LINE",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle step 5: the Mac's gatherer and fire line; voice.py budgets, skips and re-chains; Haiku 5.5 as the writer (8 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Step five is the next piece. It has a gatherer on the Mac, and a fire line.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A fire line is a line that sets something off. I like the name of it.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The voice script now has budgets. A budget says how long a run may work.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "It also skips what is already voiced, and it re-chains the start times.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "Re-chains means the start times are set again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The station now names its writer. That is the model that writes the lines.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The station has its gatherer, its voice and its writer. Each part has one job.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Five steps are in now, and I like that.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "Step five is in. The sheet has more to do, and the station does it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-08",
+      "title": "THREE, THEN SIX, THEN NINE",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell: three candidate brain cell designs (pocket console, glowing neuron, empty head) and a menu page"
+        },
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell: six truly different designs (crank, clay, printed plate, ink-wash, relic, silk); menu lists all nine"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Now the braincell toy. It began with three candidate designs for a brain cell.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A pocket console. A glowing neuron. An empty head. Those were the three.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A menu page came with them, so a person could choose between the three.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Then the designs grew. Six truly different designs came next.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "A crank, a clay one, a printed plate, an ink-wash, a relic and silk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Truly is doing a lot of work in that commit. Six designs that are truly different is a big ask.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The first set was three.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Then it became six, and the menu held nine.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nine on one menu. The menu shows all of them at once.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Three sounds small. The next commit made it bigger.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-09",
+      "title": "FOURTEEN CREATURES IN ONE ARCHIVE",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "creature-lab",
+          "text": "creature-lab: one archive page for all 14 creatures (J's ask, 7 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "The creature lab got a page of its own. It holds fourteen creatures.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "One archive page for all of them. That was J's ask.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "An archive is a place where old things are kept in order.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "One page, all the creatures. A visitor can see the lot in one go.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "It was a request from J, on the same day as the other work.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Fourteen is a good number to keep in one place.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The creatures are the small side of the day. The toy is the big side.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A page that keeps things is a page that lasts.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-10",
+      "title": "THREE ROOMS",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell: the three room mockups (sketchbook, paper cut-out, cosy pixel); J picked paper cut-out (7 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Three rooms came next. Each one was a mock-up of the room the toy would sit in.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A sketchbook room. A paper cut-out room. A cosy pixel room. Three looks at one idea.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "And J picked the paper cut-out. He made that call on 7 October.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The paper cut-out won. I like that the room looks cut from paper.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A paper cut-out is a picture cut out by hand and laid on another. Simple, and easy to read.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Sketchbook and pixel were not wrong. They were just not his pick.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A pick is a choice from a set. The set had three in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Three rooms, one picked. Next, the paper room becomes a real toy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-11",
+      "title": "A PAPER TOY",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell v2: the paper diorama toy, built from the v2 plan (7 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell v2: the grader's findings fixed (7 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "The paper room became a paper diorama toy. That is the v2 build, from the v2 plan.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A diorama is a small world you can look into. This one is made of paper.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "It was built from a plan that was written first. Plans first, toys second.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A toy is for playing with. That is the point.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the grader's findings were fixed. A grader is a reader who checks work against a plan.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Findings are the things a grader found wrong. Fixing them is the honest part.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "Someone else read the work and found things. Then the work was fixed.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "A grader that finds nothing is either lucky or lazy. This one found things.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The paper toy was the second build.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-12",
+      "title": "THE V3 SPEC",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell: the v3 spec as decided with J (7 Oct 2026, 4:30 to 5:15am)"
+        },
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell v3a: one voice, taps that build up, carry it around, her window, news, visible rares, two real moods (7 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Now a spec for version three. It was decided with J, between half past four and a quarter past five in the morning.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A spec is a plan with the decisions written down. This one was decided in the early morning.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "Version 3a was built to one voice.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Taps that build up, and a thing you can carry around.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "Her window. News. Rares you can see. And two real moods.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Two real moods, not a fake one. I like that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The spec was not a guess. It was decided with J.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Decided, then written. Good order.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "Rare things can be seen now. That is new in this version.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Carry it around, build up taps, and see the rares. That is a fun list.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-13",
+      "title": "THE V4 ROUNDS",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell v4a: the last round from the v4 plan (7 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell v4b: the grader's findings fixed (7 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell v4c: the re-grade's finding fixed (7 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Version four came in rounds. The first was v4a, the last round from the v4 plan.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The last round from a plan is not the last change. Watch for the fixes.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the grader's findings were fixed in v4b. A grader again, another look.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Findings fixed. That is the honest loop, and we are in it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then v4c. The re-grade found one thing, and that thing was fixed.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "march",
+          "text": "A re-grade is the same check, run again after the fix. It is the check that proves the fix.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "narrator",
+          "text": "A finding that was fixed stays fixed only if someone looks again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "march",
+          "text": "Rounds of fixes, with a grader in the loop.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "narrator",
+          "text": "The version four plan was carried out in rounds.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The grader looked, the findings were fixed, and the build was checked again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-14",
+      "title": "ONLINE",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell: deploy to Netlify, our-one-brain-cell.netlify.app (7 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell: finished; the design mockups go, the tests stand without the gift notes (7 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "braincell",
+          "text": "braincell: the review writer says its source note is gone (7 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Then the toy went online. It was deployed to Netlify on 7 October.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "A toy online is a toy anyone can open.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The design mockups went, and the tests stayed. The commit says finished.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Finished is a good word for a day's work.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The review writer says its source note is gone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "march",
+          "text": "A source note gone is a thing to notice. The review writer says it noticed.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2
+        },
+        {
+          "speaker": "narrator",
+          "text": "Online is the point where other people might see it. That is new.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-15",
+      "title": "BUILT FROM A PLAN, CHECKED BY A STRANGER",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "day-note",
+          "text": "On 7 October, J's small interactive toy was built from a written plan and put online for testing. It has room drawings, tap reactions, and lines that appear as it is used."
+        },
+        {
+          "kind": "day-note",
+          "text": "The build was checked before it was called done. A test browser ran 49 automatic checks, and all of them passed with no errors. A fresh reviewer, who had not built the toy, graded it against the plan and found one real bug: a line could be cut off after the app sat open for a long time. The fix was made, and the reviewer checked it too."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "On 7 October, J's small interactive toy was built from a written plan.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "It has room drawings, tap reactions, and lines that appear as it is used.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The toy was put online for testing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The build was checked before anyone called it done. That is the order I like.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "A test browser ran 49 automatic checks. All of them passed with no errors.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "49 checks, no errors. I enjoy a clean run.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "A fresh reviewer had not built the toy. That reviewer graded it against the plan.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "A reviewer who did not build it is a useful kind of reader. They have no stake in the build.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The reviewer found one real bug.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "A line could be cut off after the app sat open for a long time. That is a real bug to catch.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The fix was made. The reviewer then checked the fix too.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "A bug found, fixed, and checked again. That is how a plan survives contact with a toy.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "The build was checked before it was called done.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "Built from a plan, then put online.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-16",
+      "title": "THREE THAT LOOKED ALIKE",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "day-note",
+          "text": "Not every try worked. Three design options came back looking almost the same, because the same instructions were sent to each builder. J's reaction was, \"How am I supposed to pick what design style I like if all three are the same?\" The lesson is now saved as a note, so future sessions read it before they make options to choose from."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Not every try worked. Three design options came back looking almost the same.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The cause was simple. The same instructions went to each builder.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "J said, \"How am I supposed to pick what design style I like if all three are the same?\"",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "That is a fair thing to say. The same instructions went to every builder.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The lesson is now saved as a note.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Future sessions will read the note before they make options. That is a good habit.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A lesson that is written down can be read again. A lesson in someone's head cannot.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "I am glad it was noticed in time to be written down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08-17",
+      "title": "J PLAYED, AND THE DAY CLOSED",
+      "startAt": "2026-10-08T06:00:00+07:00",
+      "audio": null,
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "day-note",
+          "text": "J played with the toy and liked it, but could not yet say what felt off. The session ended with a written handoff. A new session will compare the original ideas with what the toy does now and decide what to change."
+        },
+        {
+          "kind": "day-note",
+          "text": "The day also cut a cost. A suggestion feature in the coding tool, which used up usage after every reply, was turned off."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "J played with the toy. He liked it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "He liked it, and he could not yet say what felt off. Both things can be true together.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "Liking a thing is not the same as knowing what to change in it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "The session ended with a written handoff. Nothing was left in a head.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A new session will compare the original ideas with the toy as it is now.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "Then it will decide what to change. That is a job for a fresh mind.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "A handoff is a note from one session to the next.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "march",
+          "text": "I like that the toy has a next step, even before it has a verdict.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0
+        },
+        {
+          "speaker": "narrator",
+          "text": "The day also cut a cost. A suggestion feature in the coding tool was turned off.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1
+        },
+        {
+          "speaker": "march",
+          "text": "It used up usage after every reply. Turning it off was a small call, and he made it.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1
+        },
+        {
+          "speaker": "narrator",
+          "text": "Small calls add up over a day of work.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1
+        }
+      ]
+    }
+  ]
+}
