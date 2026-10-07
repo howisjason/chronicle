@@ -1,4 +1,4 @@
-> **Stamped 2026-10-08 04:09 · 51f32e6** — true as of this commit; anything after it is unaccounted for.
+> **Stamped 2026-10-08 04:18 · 5b1e17c** — true as of this commit; anything after it is unaccounted for.
 
 # HANDOFF — chronicle
 
@@ -6,7 +6,7 @@ This is the first baton for this repo; it closes the build night of 8 Oct 2026 (
 
 ## The one job next
 
-Two design agents were still drawing when this session ended: `design/march-pixel-room.html` (the Game Boy frog's method, in colour, a chibi March in a tiny cozy room) and `design/march-night.html` (the deep-sea creature's method turned warm: a chibi March in a dark room lit by a lamp and her camera's glow, palette-snapped, rope hair). A clay one was started and stopped at 4:08am on his word: he does not like clay; never propose it again. Their shots land in `design/shots/march-pixel-room-*.png` and `march-night-*.png`. The one job is to look at both beside `creature-lab/shots/1-gameboy.png` and `3-abyss.png`, send J the shots, and take his verdict; if he picks one, wire it into `index.html` and `player.js` in place of the placeholder figure (the contract: `#march` with `data-mood` and `data-action`, `window.marchMouth(state)`), and run the headless probe to prove the mouth still follows the captions. If he rejects both, do not start a seventh without a new brief from him; the five rejections are listed in the manual with his words.
+Both design agents finished before this session ended (shots committed, 4:17am), so the next session starts at the verdict. They were: `design/march-pixel-room.html` (the Game Boy frog's method, in colour, a chibi March in a tiny cozy room) and `design/march-night.html` (the deep-sea creature's method turned warm: a chibi March in a dark room lit by a lamp and her camera's glow, palette-snapped, rope hair). A clay one was started and stopped at 4:08am on his word: he does not like clay; never propose it again. Their shots land in `design/shots/march-pixel-room-*.png` and `march-night-*.png`. The one job is to look at both beside `creature-lab/shots/1-gameboy.png` and `3-abyss.png`, send J the shots, and take his verdict; if he picks one, wire it into `index.html` and `player.js` in place of the placeholder figure (the contract: `#march` with `data-mood` and `data-action`, `window.marchMouth(state)`), and run the headless probe to prove the mouth still follows the captions. If he rejects both, do not start a seventh without a new brief from him; the five rejections are listed in the manual with his words.
 
 Before that, read for context, whole: the plan note; `CLAUDE.md`, `README.md`, `STATION.md`, `station/march.md`, `station/narrator.md`; the creatures playbook; her references (`~/Downloads/March7th.jpg`, `March7thSquare.jpg`, `march-body/assets/march7th/textures/texture_00.png`, `texture_01.png`); the six rejected shots in `design/shots/`. His own book loads at every waking.
 
