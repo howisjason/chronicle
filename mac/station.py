@@ -153,7 +153,7 @@ def _one_segment(day):
         # claim, never add one, so it needs no second truth check. Rewrites
         # kept trading one small stretch for another (8 Oct 2026, four tries).
         import re
-        bad = {int(m) for m in re.findall(r'line (\d+)', verdict)}
+        bad = {int(m) for m in re.findall(r'(?m)^\S+ line (\d+):', verdict)}
         kept = [l for i, l in enumerate(seg['lines']) if i not in bad]
         if bad and len(kept) >= 12:
             seg['lines'] = kept
