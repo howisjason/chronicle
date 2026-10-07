@@ -29,4 +29,4 @@ A channel that tells one person's days as chapters of an epic. The person is J (
 
 ## Status
 
-Being built, one step at a time. Steps 1 and 2 are in: the repo, and the player with a hand-written sample chapter, placeholder March and a stand-in blip voice. Run the timing tests with `node --test`.
+Being built, one step at a time. Steps 1 to 3 are in: the repo, the player with placeholder March and a stand-in blip voice, the station sheet, the checker, the truth check, and the first chapter (7 Oct 2026) written by a cloud session. No voices yet. Run the tests with `node --test timing.test.mjs station/validate.test.mjs`.
