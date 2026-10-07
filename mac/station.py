@@ -181,7 +181,7 @@ def _one_segment(day):
             if validate()[0] and ask(read('station/truth-check.md'), f'The chapter:\n{json.dumps(seg2, ensure_ascii=False)}\n\nThe inbox:\n{INBOX_TEXT}', f'truth-repair#{attempt}').strip() == 'CLEAN':
                 print(f'station: repaired {len(bad)} flagged line(s)', flush=True)
                 return done(trial2, arc, quiet)
-        except (ValueError, KeyError):
+        except (ValueError, KeyError, RuntimeError, subprocess.TimeoutExpired):
             pass
         kept = [l for i, l in enumerate(seg['lines']) if i not in bad]
         if bad and len(kept) >= 12:
