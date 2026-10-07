@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 """voice.py: turns a day's chapters into one MP3 per segment.
 
-Usage: python3 station/voice.py day/<date>.json
+Usage: python3 station/voice.py day/<date>.json [--budget SECONDS]
        VOICE_BACKEND=tone python3 station/voice.py day/<date>.json   (test stand-in, no model)
+
+Segments that already have audio are skipped, and --budget stops after that
+many seconds of work (the cloud's one-command wall is ten minutes), so the
+station runs this in a loop until it prints "0 left". When every segment is
+voiced, startAt is re-chained from the real lengths: the first segment keeps
+its start, each later one starts when the one before it ends.
 
 For each segment it speaks every line (narrator and March have their own Kokoro
 voice; the model is the ONNX build fetched by setup.sh from a GitHub release,
@@ -12,7 +18,8 @@ and writes back the segment's `audio` path and each line's real `audioMs`.
 Because the gaps are baked into the MP3, the page only has to start the file at
 the segment's offset on the clock.
 """
-import json, math, os, subprocess, sys, tempfile, wave
+import json, math, os, subprocess, sys, tempfile, time, wave
+from datetime import datetime, timedelta
 import numpy as np
 
 RATE = 24000
@@ -53,7 +60,21 @@ def write_mp3(samples, path):
         subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', tmp.name, '-codec:a', 'libmp3lame', '-b:a', '64k', path], check=True)
 
 
-def main(path):
+def segment_ms(seg):
+    gaps = {**DEFAULT_GAPS, **(seg.get('gaps') or {})}
+    n = len(seg['lines'])
+    return gaps['firstLeadMs'] + gaps['leadMs'] * (n - 1) + gaps['holdMs'] * n + sum(l['audioMs'] for l in seg['lines'])
+
+
+def chain_starts(day):
+    t = datetime.fromisoformat(day['segments'][0]['startAt'])
+    for seg in day['segments']:
+        seg['startAt'] = t.isoformat(timespec='milliseconds')
+        t = t + timedelta(milliseconds=segment_ms(seg))
+
+
+def main(path, budget=None):
+    started = time.time()
     day = json.load(open(path))
     if os.environ.get('VOICE_BACKEND') == 'tone':
         pipeline, speak = None, speak_tone
@@ -63,6 +84,10 @@ def main(path):
     out_dir = os.path.join('audio', day['date'])
     os.makedirs(out_dir, exist_ok=True)
     for seg in day['segments']:
+        if seg.get('audio'):
+            continue
+        if budget is not None and time.time() - started > budget:
+            break
         gaps = {**DEFAULT_GAPS, **(seg.get('gaps') or {})}
         parts = []
         for i, line in enumerate(seg['lines']):
@@ -76,11 +101,23 @@ def main(path):
         seg['audio'] = mp3.replace(os.sep, '/')
         total = sum(line['audioMs'] for line in seg['lines'])
         print(f"voice: {mp3}  {len(seg['lines'])} lines, {total / 1000:.1f}s of speech")
-    json.dump(day, open(path, 'w'), indent=2, ensure_ascii=False)
-    open(path, 'a').write('\n')
+        json.dump(day, open(path, 'w'), indent=2, ensure_ascii=False)
+        open(path, 'a').write('\n')
+    left = sum(1 for s in day['segments'] if not s.get('audio'))
+    if left == 0:
+        chain_starts(day)
+        json.dump(day, open(path, 'w'), indent=2, ensure_ascii=False)
+        open(path, 'a').write('\n')
+        total_s = sum(segment_ms(s) for s in day['segments']) / 1000
+        print(f"voice: {len(day['segments'])} segments, {total_s / 60:.1f} minutes on air, starts re-chained from {day['segments'][0]['startAt']}")
+    print(f"voice: {left} left")
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        sys.exit('usage: python3 station/voice.py day/<date>.json')
-    main(sys.argv[1])
+    args = sys.argv[1:]
+    budget = None
+    if '--budget' in args:
+        i = args.index('--budget'); budget = float(args[i + 1]); del args[i:i + 2]
+    if len(args) != 1:
+        sys.exit('usage: python3 station/voice.py day/<date>.json [--budget SECONDS]')
+    main(args[0], budget)

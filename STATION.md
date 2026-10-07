@@ -1,6 +1,6 @@
 # STATION.md
 
-The sheet a cloud session follows once a morning to make the day's chapters. It is fired from the Mac with one line: "follow STATION.md for <date>; the inbox follows" plus the inbox text. The session sees this repo and the inbox text in its prompt, and nothing else of J's. It never looks J up anywhere else: not the internet, not other repos, not memory.
+The sheet a cloud session follows once a morning to make the day's chapters. It is fired from the Mac with one line: "follow STATION.md for <date>, <N> minutes; the inbox follows" plus the inbox text. N is how many minutes of chapters to write (two hours is the usual day; the first run was one segment). The session sees this repo and the inbox text in its prompt, and nothing else of J's. It never looks J up anywhere else: not the internet, not other repos, not memory.
 
 Read this whole sheet before doing anything. Then do the steps in order. Each step says what proves it. If a step cannot be done, stop and say so in the final message; never push a half-made day.
 
@@ -30,7 +30,7 @@ The inbox is in the prompt, after the line "the inbox follows". It has up to thr
 
 ## 3. Write the chapters
 
-Build `sources` first: one entry per inbox item you will use, copied word for word (`kind`: `commit`, `day-note` or `note`; `repo` for commits; `text`). Then write the lines. The first run writes ONE segment of about 18 lines. Later runs write up to two hours: segments start at 06:00 Chiang Mai time and follow each other; a segment's start is the previous one's start plus its length, which you can estimate at 16 characters a second plus the gaps until step 5 gives real numbers.
+Build `sources` first: one entry per inbox item you will use, copied word for word (`kind`: `commit`, `day-note` or `note`; `repo` for commits; `text`). Then write the lines, segment by segment, until the minutes asked for are filled: a segment of 18 lines runs about 80 seconds on air, so two hours is about 90 segments. The first segment starts at 06:00 Chiang Mai time on <date>; give every later segment the same start for now, step 5 re-chains them from the real lengths. Each segment has its own title and its own slice of the day: the day in order, then the meaning of it, then the quiet corners; when the record is thin, say the day was quiet and let March carry it, never pad with things that did not happen. Write the file in parts if it is long (a script that builds the JSON is fine), and run the checker as you go.
 
 Rules while writing:
 - Every line has a `source`. A line of feeling or play points at the source it reacts to.
@@ -43,11 +43,11 @@ Rules while writing:
 
 Run `node station/validate.mjs day/<date>.json`. It refuses the file on any finding and prints each one. Fix the lines and run it again until it prints `OK`. Never change the checker to make a chapter pass.
 
-Then the truth check: start a fresh subagent (Haiku is enough) with the text of `station/truth-check.md` as its instructions, followed by the chapter JSON and the whole inbox text. It answers `CLEAN` or a list of flagged lines. For each flagged line, rewrite it inside the record or cut it, then run the checker again. Run the truth check again after fixes. A chapter is not voiced until it comes back `CLEAN`.
+Then the truth check: start a fresh subagent (Haiku 5.5 is enough) with the text of `station/truth-check.md` as its instructions, followed by the chapter JSON and the whole inbox text. It answers `CLEAN` or a list of flagged lines. For each flagged line, rewrite it inside the record or cut it, then run the checker again. Run the truth check again after fixes. A chapter is not voiced until it comes back `CLEAN`.
 
 ## 5. Voice
 
-If setup succeeded: `python3 station/voice.py day/<date>.json`. It makes one MP3 per segment under `audio/<date>/`, writes each segment's `audio` path and each line's real `audioMs` back into the JSON, and prints what it did. Then run the checker once more.
+If setup succeeded: `python3 station/voice.py day/<date>.json --budget 480`, again and again until it prints `voice: 0 left`. Each run voices the segments that have no audio yet, for about eight minutes, then stops (the one-command wall is ten minutes); it makes one MP3 per segment under `audio/<date>/`, writes each segment's `audio` path and each line's real `audioMs` back into the JSON, and when all are voiced re-chains every `startAt` from the real lengths. Then run the checker once more.
 
 ## 6. Publish
 
