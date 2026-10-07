@@ -109,6 +109,16 @@ def validate():
 
 
 def one_segment(day):
+    # The trial segment is written to disk before it is checked; any failure
+    # puts the day back, or the next run would count an unchecked segment as told.
+    try:
+        return _one_segment(day)
+    except BaseException:
+        json.dump(day, open(DAY, 'w'), indent=1, ensure_ascii=False)
+        raise
+
+
+def _one_segment(day):
     used, titles, tail = told(day)
     new = [l for l in INBOX_TEXT.splitlines() if l.strip() and not l.startswith('##') and not any(l.strip('- ').strip() in u or u in l for u in used)]
     quiet = not new
