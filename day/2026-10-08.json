@@ -1923,6 +1923,116 @@
           "audioMs": 1941
         }
       ]
+    },
+    {
+      "id": "2026-10-08-14",
+      "title": "THE NAME AND THE LIVE LOOP",
+      "startAt": "2026-10-08T03:02:32.472+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-14.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "the page carries his name and howisjason.com from day one (his word, 8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "the station runs live: one segment at a time, always ahead of the clock (J's design, 8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle step 6: day-note sources labelled, blips when an MP3 is gone, a 7-day prune of sound in the station sheet (8 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "From day one, the page carries his name. That was his word.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4309
+        },
+        {
+          "speaker": "march",
+          "text": "His name, and his website too. Both on the page from the start.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3775
+        },
+        {
+          "speaker": "narrator",
+          "text": "The station runs live now. One segment at a time, always ahead of the clock.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5483
+        },
+        {
+          "speaker": "march",
+          "text": "One at a time, and that was his design.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2643
+        },
+        {
+          "speaker": "narrator",
+          "text": "Old sound is pruned after seven days.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2944
+        },
+        {
+          "speaker": "march",
+          "text": "The day notes are labelled now. Blips play when a sound file is gone.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4033
+        },
+        {
+          "speaker": "narrator",
+          "text": "So a missing sound file falls back to a blip, and the story keeps going.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4565
+        },
+        {
+          "speaker": "march",
+          "text": "His name on it. His site on it. A fair start.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2960
+        },
+        {
+          "speaker": "narrator",
+          "text": "A live station, a name on the page, and tidy sound files.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4245
+        },
+        {
+          "speaker": "march",
+          "text": "The channel is running now, one chapter at a time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3152
+        }
+      ]
     }
   ]
 }
