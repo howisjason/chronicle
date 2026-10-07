@@ -2416,6 +2416,69 @@
           "audioMs": 3136
         }
       ]
+    },
+    {
+      "id": "2026-10-08-19",
+      "title": "THE COST IS CUT",
+      "startAt": "2026-10-08T03:05:48.898+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-19.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "day-note",
+          "text": "The day also cut a cost."
+        },
+        {
+          "kind": "day-note",
+          "text": "A suggestion feature in the coding tool, which used up usage after every reply, was turned off."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "The day also cut a cost. A plain sentence, and a good one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4224
+        },
+        {
+          "speaker": "march",
+          "text": "A suggestion feature was turned off. It used up usage after every reply.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4901
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every reply used something up. That feature is off now.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3733
+        },
+        {
+          "speaker": "march",
+          "text": "A cost cut, in the coding tool. Small, but it counts.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3128
+        },
+        {
+          "speaker": "narrator",
+          "text": "One less thing using up usage after every reply.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3648
+        }
+      ]
     }
   ]
 }
