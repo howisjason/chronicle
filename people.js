@@ -88,7 +88,7 @@ function drawHair(g, L, hx, hy, back) {
     px(g, L.hair, hx + 1, hy + 10, 12, 4);       // the beard
     px(g, L.hair, hx + 3, hy + 14, 8, 3);
     px(g, L.hairDark, hx + 5, hy + 16, 4, 2);
-    px(g, L.skin, hx + 5, hy + 10, 4, 3);        // room for the mouth
+    px(g, L.skin, hx + 5, hy + 10, 4, 3);        // room for the mouth (the face is drawn after)
   }
 }
 
@@ -108,8 +108,10 @@ function drawPerson(g, L, x, y, state, faces) {
   else { px(g, L.trim, tx + 2, ty, 18, 1); }
   // head
   px(g, L.skin, hx, hy, 14, 14);
+  // a beard goes under the face so the mouth shows; a fringe goes over it
+  if (L.style === 'sage') drawHair(g, L, hx, hy, false);
   drawFace(g, L, hx, hy, mood, mouth, blink);
-  drawHair(g, L, hx, hy, false);
+  if (L.style !== 'sage') drawHair(g, L, hx, hy, false);
   // arms, 3 px wide
   const armL = tx - 3, armR = tx + 22;
   if (action === 'point') {
