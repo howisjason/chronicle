@@ -2329,6 +2329,93 @@
           "audioMs": 4907
         }
       ]
+    },
+    {
+      "id": "2026-10-08-18",
+      "title": "THE TOY IS CHECKED",
+      "startAt": "2026-10-08T03:05:16.957+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-18.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "day-note",
+          "text": "The build was checked before it was called done."
+        },
+        {
+          "kind": "day-note",
+          "text": "A test browser ran 49 automatic checks, and all of them passed with no errors."
+        },
+        {
+          "kind": "day-note",
+          "text": "A fresh reviewer, who had not built the toy, graded it against the plan and found one real bug: a line could be cut off after the app sat open for a long time."
+        },
+        {
+          "kind": "day-note",
+          "text": "The fix was made, and the reviewer checked it too."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Before it was called done, the build was checked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2987
+        },
+        {
+          "speaker": "march",
+          "text": "49 automatic checks, run in a test browser. All of them passed.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4407
+        },
+        {
+          "speaker": "narrator",
+          "text": "No errors. Not one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1941
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then a fresh reviewer took a look. One who had not built the toy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4331
+        },
+        {
+          "speaker": "march",
+          "text": "The reviewer found a real bug. A line could be cut off after the app sat open for a long time.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5518
+        },
+        {
+          "speaker": "narrator",
+          "text": "The fix was made. The reviewer checked it too.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3221
+        },
+        {
+          "speaker": "march",
+          "text": "Graded against the plan. That is the right yardstick.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3136
+        }
+      ]
     }
   ]
 }
