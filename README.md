@@ -1,6 +1,6 @@
 # chronicle
 
-A channel that tells one person's days as chapters of an epic. The person is J (Jason, https://howisjason.com). The channel is being built in public; this name is a placeholder.
+A channel that tells one person's days as chapters of an epic. The person is Jason, howisjason (https://howisjason.com), and his name and face ride on it by his word (8 Oct 2026). The channel is being built in public; this name is a placeholder.
 
 **Honest labels.** Everything on the page is AI-written and AI-voiced, made from his real record (public commit messages, a day note, tagged notes he chose to share). The sources for each chapter are shown under the player. The telling may make a day feel big. It never says he did a thing he did not do.
 
