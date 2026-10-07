@@ -2,5 +2,7 @@
 # session inside its prompt. It is never committed: the public repo holds only
 # finished chapters. (The channel plan, 8 Oct 2026, law 2.)
 inbox/
+# The voice model, fetched by station/setup.sh (about 350 MB).
+station/models/
 node_modules/
 .DS_Store

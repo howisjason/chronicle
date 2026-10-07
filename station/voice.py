@@ -5,7 +5,8 @@ Usage: python3 station/voice.py day/<date>.json
        VOICE_BACKEND=tone python3 station/voice.py day/<date>.json   (test stand-in, no model)
 
 For each segment it speaks every line (narrator and March have their own Kokoro
-voice), lays the lines on the same timeline timing.js uses (firstLeadMs or leadMs
+voice; the model is the ONNX build fetched by setup.sh from a GitHub release,
+because huggingface.co is blocked in the cloud session), lays the lines on the same timeline timing.js uses (firstLeadMs or leadMs
 of silence, the speech, holdMs of silence), writes audio/<date>/<segment id>.mp3,
 and writes back the segment's `audio` path and each line's real `audioMs`.
 Because the gaps are baked into the MP3, the page only has to start the file at
@@ -16,12 +17,21 @@ import numpy as np
 
 RATE = 24000
 VOICES = {'narrator': 'bm_george', 'march': 'af_heart'}
+MODEL = os.path.join('station', 'models', 'kokoro-v1.0.onnx')
+VOICEBIN = os.path.join('station', 'models', 'voices-v1.0.bin')
+
+# On a Mac the pip espeak loader's bundled data is broken (8 Oct 2026); point
+# the phonemizer at Homebrew's espeak-ng instead. Linux needs nothing.
+if sys.platform == 'darwin' and os.path.isdir('/opt/homebrew/share/espeak-ng-data'):
+    os.environ.setdefault('ESPEAK_DATA_PATH', '/opt/homebrew/share/espeak-ng-data')
+    os.environ.setdefault('PHONEMIZER_ESPEAK_LIBRARY', '/opt/homebrew/lib/libespeak-ng.1.dylib')
 DEFAULT_GAPS = {'firstLeadMs': 1000, 'leadMs': 200, 'holdMs': 600}
 
 
 def speak_kokoro(pipeline, speaker, text):
-    chunks = [np.asarray(audio, dtype=np.float32) for _, _, audio in pipeline(text, voice=VOICES[speaker])]
-    return np.concatenate(chunks) if chunks else np.zeros(0, dtype=np.float32)
+    samples, rate = pipeline.create(text, voice=VOICES[speaker], speed=1.0, lang='en-us')
+    assert rate == RATE, f'voice: Kokoro gave {rate} Hz, expected {RATE}'
+    return np.asarray(samples, dtype=np.float32)
 
 
 def speak_tone(_pipeline, speaker, text):
@@ -48,8 +58,8 @@ def main(path):
     if os.environ.get('VOICE_BACKEND') == 'tone':
         pipeline, speak = None, speak_tone
     else:
-        from kokoro import KPipeline
-        pipeline, speak = KPipeline(lang_code='a', repo_id='hexgrad/Kokoro-82M'), speak_kokoro
+        from kokoro_onnx import Kokoro
+        pipeline, speak = Kokoro(MODEL, VOICEBIN), speak_kokoro
     out_dir = os.path.join('audio', day['date'])
     os.makedirs(out_dir, exist_ok=True)
     for seg in day['segments']:

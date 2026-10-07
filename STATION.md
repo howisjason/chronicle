@@ -51,7 +51,7 @@ If setup succeeded: `python3 station/voice.py day/<date>.json`. It makes one MP3
 
 ## 6. Publish
 
-`git add day/<date>.json audio/<date>` (audio only if it exists), commit with the message `chronicle: <date>, <n> segment(s)` and push to `main`. GitHub Pages serves it within minutes. The final message of the session says: how many segments, whether they are voiced, what the checker and the truth check said, and anything that failed.
+`git add day/<date>.json audio/<date>` (audio only if it exists), commit with the message `chronicle: <date>, <n> segment(s)` and push to `main`. If there is no `origin` remote, add it first: `git remote add origin https://github.com/howisjason/chronicle.git`, then `git fetch origin main` and rebase on it. If the push is refused for credentials, attach the repo `howisjason/chronicle` with push access using the session's own add_repo tool, then push again. (Both happened on the first run, 8 Oct 2026.) GitHub Pages serves it within minutes. The final message of the session says: how many segments, whether they are voiced, what the checker and the truth check said, and anything that failed.
 
 ## What the session never does
 
