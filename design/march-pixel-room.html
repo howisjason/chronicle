@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>March, pixel room</title>
+<!--
+  MARCH, THE PIXEL ROOM. The Game Boy frog's method, in colour.
+  A 128 x 160 grid of art pixels, each one CSS pixel (a whole-number scale: on a
+  phone that is 3 device pixels), drawn by code every frame. Twelve colours for the
+  whole scene. March is a height field of soft shapes (balls and tubes melted
+  together), lit by the lamp on her left, the light cut into flat bands per material
+  with a checker only at the seam between bands, and inked where she meets the room
+  and where a lock or an arm crosses something lower. The face is stamped last.
+  The room: a lamp that flickers, a window of drifting stars (one falls now and
+  then), a plant that sways, a shelf of books. Still parts are drawn once.
+  No image files, no model, no fonts, no sound, no network.
+
+  THE CONTRACT (driven by chronicle/player.js):
+    <div id="march" data-mood="neutral|happy|dry|surprised" data-action="none|point|facepalm">
+    window.marchMouth('closed'|'half'|'open')   ~25 times a second while she talks
+  ?mood=&action=&mouth= in the address set the start state (for screenshots).
+-->
+<style>
+  html, body { margin: 0; background: #0b0b10; color: #e8e8f0; font-family: Georgia, "Times New Roman", serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 1rem; box-sizing: border-box; }
+  #stage { position: relative; margin: 1rem 0; background: #14141c; border-radius: 12px;
+    padding: 1rem; display: grid; grid-template-columns: 140px 1fr; gap: 1rem; align-items: center; }
+  #march { width: 140px; height: 180px; display: flex; align-items: center; justify-content: center; }
+  #march canvas { width: 128px; height: 160px; image-rendering: pixelated; image-rendering: crisp-edges; display: block; }
+  #march-caption { min-height: 4.5em; line-height: 1.5; font-size: 1.05rem; color: #ffd9ec; }
+  /* the test strip: outside #march, never part of the contract */
+  #strip { font-size: 0.85rem; color: #9a9ab0; line-height: 2.2; }
+  #strip b { color: #c9b26b; font-weight: normal; margin-right: 0.3em; }
+  #strip button { font: inherit; font-size: 0.8rem; padding: 0.15em 0.6em; margin: 0 0.15em; background: #1c1c26; color: #e8e8f0;
+    border: 1px solid #333; border-radius: 4px; cursor: pointer; }
+  #strip button.on { border-color: #c9b26b; color: #c9b26b; }
+  #ms { font-family: monospace; color: #777; margin-left: 0.6em; }
+  #big { margin-top: 1rem; }
+  #big canvas { width: 384px; height: 480px; max-width: 100%; image-rendering: pixelated; image-rendering: crisp-edges; display: block; }
+</style>
+</head>
+<body>
+<main>
+  <div id="stage">
+    <div id="march" data-mood="neutral" data-action="none"><canvas id="lcd" width="128" height="160"></canvas></div>
+    <div id="march-caption">Okay so, he opened the laptop at seven and the first thing he did was NOT the thing.</div>
+  </div>
+  <div id="strip">
+    <div><b>mood:</b><span data-k="mood"></span></div>
+    <div><b>action:</b><span data-k="action"></span></div>
+    <div><b>mouth:</b><span data-k="mouth"></span><span id="ms"></span></div>
+  </div>
+  <div id="big"><canvas id="lcd2" width="128" height="160"></canvas></div>
+</main>
+
+<script>
+(() => {
+  'use strict';
+  // ======================================================================
+  //  The screen: 128 x 160 palette indices
+  // ======================================================================
+  const W = 128, H = 160;
+  // the twelve colours of the whole scene
+  const PAL = {
+    ink: 0, roomD: 1, roomM: 2, roomL: 3, warm: 4, skin: 5, white: 6, blue: 7, teal: 8, pinkL: 9, pinkM: 10, pinkD: 11,
+  };
+  const HEX = ['#2a1b2e', '#2f2640', '#4b3d5e', '#6e5a78', '#f2c27a', '#fbe3cf', '#f7f3f8', '#5b86d6', '#5fc9c6', '#ffd3e6', '#f29ac2', '#c96d9a'];
+  const RGB = HEX.map(h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)));
+  const { ink, roomD, roomM, roomL, warm, skin, white, blue, teal, pinkL, pinkM, pinkD } = PAL;
+  const buf = new Uint8Array(W * H);
+  const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+  const put = (x, y, s) => { if (x >= 0 && y >= 0 && x < W && y < H) buf[y * W + x] = s; };
+  const get = (x, y) => (x >= 0 && y >= 0 && x < W && y < H) ? buf[y * W + x] : 0;
+  const hash = (x, y) => { let h = (x * 374761393 + y * 668265263) | 0; h = (h ^ (h >>> 13)) * 1274126177 | 0; return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
+  // a darkness d (0 lit .. ramp.length-1 shadow) -> one colour of the ramp; flat bands,
+  // a checker only in a thin seam where one band meets the next (the frog's sprite rule)
+  const band = (ramp, d, x, y, seam = 0.3) => {
+    const top = ramp.length - 1; d = clamp(d, 0, top); const f = Math.floor(d), r = d - f;
+    if (f >= top) return ramp[top];
+    return ramp[r < 0.5 - seam / 2 ? f : r > 0.5 + seam / 2 ? f + 1 : f + (((x + y) & 1) ? 1 : 0)];
+  };
+
+  // ======================================================================
+  //  The room: still parts drawn once into a sprite layer (255 = nothing)
+  // ======================================================================
+  const still = new Uint8Array(W * H).fill(255);
+  const SX = (x, y, s) => { if (x >= 0 && y >= 0 && x < W && y < H) still[y * W + x] = s; };
+  const WIN = { x0: 86, y0: 8, x1: 121, y1: 54 };      // the window, inner glass is inside the frame
+  const LAMP = { x: 22, bulb: 100 };                   // the lamp stands on the table at the left
+  const FLOOR = 131;                                   // the wall meets the floor here
+  (function buildStill() {
+    // the window: ink frame, a pale inner sill, a cross bar
+    for (let y = WIN.y0; y <= WIN.y1; y++) for (let x = WIN.x0; x <= WIN.x1; x++) {
+      const edge = x === WIN.x0 || x === WIN.x1 || y === WIN.y0 || y === WIN.y1;
+      const inner = x === WIN.x0 + 1 || x === WIN.x1 - 1 || y === WIN.y0 + 1 || y === WIN.y1 - 1;
+      if (edge) SX(x, y, ink); else if (inner) SX(x, y, roomL);
+    }
+    const mx = (WIN.x0 + WIN.x1) >> 1, my = (WIN.y0 + WIN.y1) >> 1;
+    for (let y = WIN.y0 + 2; y < WIN.y1 - 1; y++) SX(mx, y, roomL);
+    for (let x = WIN.x0 + 2; x < WIN.x1 - 1; x++) SX(x, my, roomL);
+    for (let x = WIN.x0 - 1; x <= WIN.x1 + 1; x++) { SX(x, WIN.y1 + 1, roomL); SX(x, WIN.y1 + 2, ink); }   // the sill
+    // the shelf: a plank with a dark underside, books standing on it, a little photo
+    const SH = 36;
+    for (let x = 6; x <= 54; x++) { SX(x, SH, roomL); SX(x, SH + 1, ink); }
+    SX(10, SH + 2, ink); SX(10, SH + 3, ink); SX(50, SH + 2, ink); SX(50, SH + 3, ink);
+    const books = [[8, 4, 13, blue], [13, 3, 11, pinkM], [17, 4, 14, teal], [22, 3, 10, white], [26, 4, 12, pinkD], [31, 3, 9, blue]];
+    for (const [bx, bw, bh, c] of books) for (let y = SH - bh; y < SH; y++) for (let x = bx; x < bx + bw; x++)
+      SX(x, y, x === bx || y === SH - bh ? ink : (x === bx + 1 && y > SH - bh + 1 ? c : y === SH - bh + 1 ? roomL : c));
+    for (let y = SH - 9; y < SH; y++) for (let x = 40; x < 50; x++) {                       // a photo frame: a sky with one star
+      const e = x === 40 || x === 49 || y === SH - 9 || y === SH - 1;
+      SX(x, y, e ? white : (x < 48 && y < SH - 2) ? ((y - (SH - 8)) < 2 ? blue : teal) : roomL);
+    }
+    SX(46, SH - 7, white); SX(42, SH - 5, white);
+    // the table under the lamp
+    for (let x = 8; x <= 36; x++) { SX(x, 112, roomL); SX(x, 113, ink); }
+    for (let y = 114; y < FLOOR; y++) { SX(10, y, ink); SX(34, y, ink); }
+    // the lamp: a dark base and stem, a warm shade, pale rim on its lit side
+    for (let x = 19; x <= 25; x++) SX(x, 111, ink);
+    for (let y = 103; y <= 110; y++) SX(22, y, ink);
+    for (let y = 88; y <= 102; y++) {
+      const half = 3 + (y - 88) * 0.5;
+      for (let x = Math.round(22 - half); x <= Math.round(22 + half); x++) {
+        const edge = x === Math.round(22 - half) || x === Math.round(22 + half) || y === 88 || y === 102;
+        SX(x, y, edge ? ink : (x < 22 - half + 2.5 ? pinkL : warm));
+      }
+    }
+    SX(21, 103, white); SX(22, 103, white); SX(23, 103, white);                             // the bulb peeking under the shade
+    // the plant pot at the right
+    for (let y = 119; y <= 130; y++) for (let x = 104; x <= 120; x++) {
+      const w = y < 122 ? 0 : (y - 121) * 0.35;
+      if (x < 104 + w || x > 120 - w) continue;
+      const edge = y === 119 || y === 130 || x === Math.ceil(104 + w) || x === Math.floor(120 - w);
+      SX(x, y, edge ? ink : (y === 120 || y === 121 ? pinkL : x < 109 ? pinkM : pinkD));
+    }
+    // a rug on the floor under her
+    for (let y = 140; y <= 158; y++) for (let x = 30; x <= 100; x++) {
+      const q = ((x - 65) / 36) ** 2 + ((y - 149) / 10) ** 2;
+      if (q > 1) continue;
+      SX(x, y, q > 0.84 ? pinkD : q > 0.7 ? roomM : roomD);
+    }
+  })();
+
+  // ======================================================================
+  //  The room, per frame: lamp light on the wall and floor, stars, the plant
+  // ======================================================================
+  const WALL = [roomL, roomM, roomD], FLR = [roomM, roomD];
+  function drawRoom(t, flick) {
+    const lx = LAMP.x, ly = LAMP.bulb, R = 23 * flick;
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      let s;
+      if (y < FLOOR) {
+        const d = Math.hypot((x - lx), (y - ly) * 1.25) / R;      // 0 at the bulb, ~2 far away
+        s = band(WALL, d * 0.85 - 0.1, x, y, 0.16);
+      } else if (y === FLOOR) s = ink;
+      else {
+        const d = Math.hypot((x - lx) * 0.8, (y - FLOOR) * 2.2) / R;
+        s = band(FLR, d * 1.4 - 0.1, x, y, 0.25);
+      }
+      buf[y * W + x] = s;
+    }
+    // the still parts, copied in
+    for (let i = 0; i < W * H; i++) if (still[i] !== 255) buf[i] = still[i];
+    // the window: night behind the glass, slowly drifting stars, one falling now and then
+    const gx0 = WIN.x0 + 2, gy0 = WIN.y0 + 2, gw = WIN.x1 - WIN.x0 - 3, gh = WIN.y1 - WIN.y0 - 3;
+    for (let y = gy0; y < gy0 + gh; y++) for (let x = gx0; x < gx0 + gw; x++) if (get(x, y) !== roomL) put(x, y, ink);
+    const drift = t * 0.6;
+    for (let i = 0; i < 14; i++) {
+      const sx = gx0 + ((hash(i, 1) * gw + drift) % gw), sy = gy0 + hash(i, 2) * gh;
+      const X = Math.floor(sx), Y = Math.floor(sy);
+      if (get(X, Y) !== ink) continue;
+      const tw = Math.sin(t * (1.5 + hash(i, 3) * 2) + i) > 0.3;
+      put(X, Y, tw ? white : roomL);
+      if (hash(i, 4) > 0.8 && tw) { for (const [a, b] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) if (get(X + a, Y + b) === ink) put(X + a, Y + b, roomL); }
+    }
+    // the moon: a small warm disc at the top left of the glass
+    for (let y = -2; y <= 2; y++) for (let x = -2; x <= 2; x++) if (x * x + y * y <= 4.5 && get(gx0 + 6 + x, gy0 + 6 + y) === ink) put(gx0 + 6 + x, gy0 + 6 + y, (x > 0 && y < 1) ? warm : warm);
+    if (st.fall >= 0) {                                                       // the falling star
+      const k = st.fall, fx = gx0 + gw - 4 - k * 36, fy = gy0 + 4 + k * 18;
+      for (let j = 0; j < 5; j++) { const X = Math.round(fx + j * 1.4), Y = Math.round(fy - j * 0.7); if (get(X, Y) === ink) put(X, Y, j < 2 ? white : roomL); }
+    }
+    // the plant: four leaves fanning from the pot, each swaying from its root
+    const px = 112, py = 119;
+    const leaves = [[-1.0, 20, 0], [-0.35, 24, 1], [0.35, 23, 2], [1.0, 19, 3]];
+    const mark = [];
+    for (const [ang, len, ph] of leaves) {
+      const sway = Math.sin(t * 1.3 + ph) * 0.09;
+      for (let k = 0; k <= len; k++) {
+        const f = k / len, a = ang * (0.5 + 0.7 * f) + sway * f;
+        const cx = px + Math.sin(a) * k * 0.9, cy = py - Math.cos(a) * k * 0.75;
+        const w = 1.6 * Math.sin(Math.PI * (0.15 + 0.85 * f)) + 0.4;
+        for (let x = Math.round(cx - w); x <= Math.round(cx + w); x++) { const Y = Math.round(cy); mark.push([x, Y, Math.abs(x - cx) > w - 0.9 && f > 0.3]); }
+      }
+    }
+    const lm = new Set(); for (const [x, y] of mark) lm.add(y * W + x);
+    for (const [x, y, dark] of mark) put(x, y, dark ? (((x + y) & 1) ? teal : roomM) : teal);
+    for (const [x, y] of mark) for (const [a, b] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) { const k = (y + b) * W + x + a; if (!lm.has(k) && get(x + a, y + b) !== ink && get(x + a, y + b) !== teal) put(x + a, y + b, ink); }
+    // a vein up the big leaves
+    for (const [ang, len, ph] of leaves) { const sway = Math.sin(t * 1.3 + ph) * 0.09; for (let k = 4; k < len - 3; k += 1) { const f = k / len, a = ang * (0.5 + 0.7 * f) + sway * f; const X = Math.round(px + Math.sin(a) * k * 0.9), Y = Math.round(py - Math.cos(a) * k * 0.75); if (get(X, Y) === teal && (k & 1)) put(X, Y, roomM); } }
+  }
+
+  // ======================================================================
+  //  March: a height field of soft shapes (the braincell / frog method)
+  // ======================================================================
+  const smax = (a, b, k) => { const h = Math.max(k - Math.abs(a - b), 0) / k; return Math.max(a, b) + h * h * k * 0.25; };
+  function ball(px, py, cx, cy, rx, ry, rz) {
+    const qx = (px - cx) / rx, qy = (py - cy) / ry, q = Math.sqrt(qx * qx + qy * qy);
+    return q < 1 ? rz * Math.sqrt(1 - q * q) : -(q - 1) * (rx < ry ? rx : ry);
+  }
+  function tube(px, py, x1, y1, x2, y2, r1, r2) {
+    const dx = x2 - x1, dy = y2 - y1, L = dx * dx + dy * dy;
+    const t = clamp(((px - x1) * dx + (py - y1) * dy) / L, 0, 1);
+    const ex = px - x1 - t * dx, ey = py - y1 - t * dy, d = Math.sqrt(ex * ex + ey * ey), r = r1 + (r2 - r1) * t;
+    return d < r ? Math.sqrt(r * r - d * d) : r - d;
+  }
+  // materials and their light ramps (lit .. shadow)
+  const M_HAIR = 1, M_FACE = 2, M_JACKET = 3, M_SKIRT = 4, M_SKIN = 5, M_LOCK = 6, M_ARM = 7, M_HAND = 8;
+  const RAMP = {
+    [M_HAIR]: [pinkL, pinkM, pinkD], [M_LOCK]: [pinkL, pinkM, pinkD],
+    [M_FACE]: [skin, skin, pinkM], [M_SKIN]: [skin, skin, pinkM], [M_HAND]: [skin, skin, pinkM],
+    [M_JACKET]: [white, white, pinkL], [M_ARM]: [white, white, pinkL],
+    [M_SKIRT]: [blue, blue, roomM],
+  };
+  // March units: origin between her feet on the floor, y grows downward, up is negative
+  const F = { m: 0 };
+  function faceWindow(x, y) {                     // the face shows through the bob here; the fringe is three scallops
+    if (((x / 17.5) ** 2 + ((y + 49) / 17) ** 2) > 1) return false;
+    for (const [cx, cy] of [[-11, -66], [0, -70], [11, -66]]) if ((x - cx) ** 2 + ((y - cy) * 0.8) ** 2 < 46) return false;
+    return true;
+  }
+  function marchField(x, y, P) {
+    const ax = Math.abs(x);
+    // the body: a small white coat, a blue skirt, legs
+    let h = ball(x, y, 0, -26, 11, 12, 9); F.m = M_JACKET;
+    const sk = ball(x, y, 0, -12, 13, 6.5, 6); if (sk > h) { h = sk; F.m = M_SKIRT; }
+    const leg = tube(ax, y, 5, -9, 5, -1, 3, 2.6); if (leg > h) { h = leg; F.m = M_SKIN; }
+    const neck = tube(x, y, 0, -42, 0, -34, 3.2, 3.2); if (neck > h) { h = neck; F.m = M_SKIN; }
+    // the head: one soft mass of hair, flaring at the jaw; the face is a window in it
+    let hd = ball(x, y, 0, -58, 25, 24, 20);
+    hd = smax(hd, ball(x, y, 0, -47, 24, 17, 15), 6);
+    hd = smax(hd, ball(x, y, -9, -82, 5, 3.5, 4), 3);                 // a little tuft on top
+    hd = smax(hd, ball(ax, y, 25, -36, 5, 3.2, 5), 4);                // the bob flicks out at the jaw
+    if (hd > h) { h = hd; F.m = faceWindow(x, y) ? M_FACE : M_HAIR; }
+    // the two side locks hang in front of the shoulders and ride on top of whatever is under them
+    const sw = P.sway;
+    let lock = tube(ax, y, 21, -50, 23 + sw, -33, 4.4, 3);
+    lock = smax(lock, ball(ax, y, 23.5 + sw, -32, 3.4, 3.2, 3), 2);
+    if (lock > 0) { const l = Math.max(h, 0) * 0.6 + 1 + lock * 0.8; if (l > h || F.m === M_JACKET || F.m === M_SKIN) { h = l; F.m = M_LOCK; } }
+    // arms: idle at her sides; one raised for the peace sign; one up over her eye
+    let arm = -99, hand = -99;
+    const left = x < 0;
+    if (P.point > 0.02 && !left) {
+      const k = P.point, ex = 11 + (23 - 11) * k, ey = -16 + (-54 + 16) * k;
+      arm = tube(x, y, 11, -32, ex, ey, 3.2, 2.6); hand = ball(x, y, ex + 0.5, ey - 1.5, 3.2, 3.2, 3);
+    } else if (P.palm > 0.02 && left) {
+      const k = P.palm, ex = -13 + (-7 + 13) * k, ey = -16 + (-49 + 16) * k;
+      arm = tube(x, y, -11, -32, ex + 1, ey + 5, 3.2, 2.6); hand = ball(x, y, ex, ey - 1, 5, 4.6, 5);
+    } else {
+      arm = tube(ax, y, 11, -32, 13, -16, 3.2, 2.6); hand = ball(ax, y, 13.5, -14.5, 2.8, 2.8, 2.6);
+    }
+    const limb = Math.max(arm, hand);
+    if (limb > 0) { const l = Math.max(h, 0) + 1 + limb * 0.8; h = l; F.m = hand > arm ? M_HAND : M_ARM; }
+    return h;
+  }
+
+  const FX = 64, FY = 146;
+  const FB = { x0: -32, y0: -90, w: 64, h: 92 };
+  const WW = FB.w + 2;
+  const hf = new Float32Array(WW * (FB.h + 2)), mat = new Uint8Array(WW * (FB.h + 2));
+  const inF = new Uint8Array(W * H);
+  const LIGHT = (() => { const l = [-0.6, -0.42, 0.68], n = Math.hypot(...l); return l.map(v => v / n); })();
+
+  function drawMarch(st, t) {
+    const fx = FX, fy = FY;
+    const scx = 1 + 0.015 * st.breath, scy = 1 - 0.018 * st.breath;
+    const P = { sway: st.sway, point: st.point, palm: st.palm };
+    const hs = Math.min(scx, scy);
+    for (let j = 0; j < FB.h + 2; j++) for (let i = 0; i < WW; i++) {
+      const sx = fx + FB.x0 - 1 + i + 0.5, sy = fy + FB.y0 - 1 + j + 0.5;
+      hf[j * WW + i] = marchField((sx - fx) / scx, (sy - fy) / scy, P) * hs; mat[j * WW + i] = F.m;
+    }
+    inF.fill(0);
+    for (let j = 1; j <= FB.h; j++) for (let i = 1; i <= FB.w; i++) {
+      const k = j * WW + i, h = hf[k]; if (h <= 0) continue;
+      const X = fx + FB.x0 - 1 + i, Y = fy + FB.y0 - 1 + j;
+      if (X < 0 || Y < 0 || X >= W || Y >= H) continue;
+      inF[Y * W + X] = 1;
+      const nx = -(hf[k + 1] - hf[k - 1]) * 0.5, ny = -(hf[k + WW] - hf[k - WW]) * 0.5, nl = Math.sqrt(nx * nx + ny * ny + 1);
+      const diff = Math.min(1, Math.max(0, (nx * LIGHT[0] + ny * LIGHT[1] + LIGHT[2]) / nl));
+      const M = mat[k];
+      let d = (1 - diff) * 2.1 - 0.25;
+      if (M === M_FACE || M === M_SKIN || M === M_HAND) d = (1 - diff) * 1.4 - 0.65;   // a face stays flat, like the frog's
+      let s = band(RAMP[M], d, X, Y);
+      // ink where a lock, an arm or a hand crosses something lower; a soft hairline round the face
+      const edge = n => hf[n] > 0 && mat[n] !== M && hf[n] < hf[k] - 0.4;
+      if ((M === M_LOCK || M === M_ARM || M === M_HAND) && (edge(k - 1) || edge(k + 1) || edge(k + WW) || edge(k - WW))) s = ink;
+      if (M === M_HAIR && (mat[k + 1] === M_FACE || mat[k - 1] === M_FACE || mat[k + WW] === M_FACE || mat[k - WW] === M_FACE)) s = pinkD;
+      buf[Y * W + X] = s;
+    }
+    // ink: every room pixel touching her
+    for (let y = fy + FB.y0 - 2; y <= fy + FB.y0 + FB.h + 2; y++) for (let x = fx + FB.x0 - 2; x <= fx + FB.x0 + FB.w + 2; x++) {
+      if (x < 1 || y < 1 || x >= W - 1 || y >= H - 1) continue;
+      const k = y * W + x; if (inF[k]) continue;
+      if (inF[k - 1] || inF[k + 1] || inF[k - W] || inF[k + W]) buf[k] = ink;
+    }
+    // ---- stamps on top: shoes, the bow, the camera, the clip, the face, the hands ----
+    const S = (u, v) => [Math.round(fx + u * scx), Math.round(fy + v * scy)];
+    for (const side of [-1, 1]) { const [sx, sy] = S(5 * side, -2); for (let a = -2; a <= 2; a++) { put(sx + a, sy, ink); put(sx + a, sy + 1, ink); } put(sx - 2 * side, sy - 1, ink); }
+    { const [bx, by] = S(0, -37); for (const [a, b, c] of [[-2, 0, blue], [-1, 0, blue], [0, 0, ink], [1, 0, blue], [2, 0, blue], [-3, 1, blue], [-1, 1, blue], [1, 1, blue], [3, 1, blue], [-2, -1, blue], [2, -1, blue]]) put(bx + a, by + b, c); }
+    { const [cx, cy] = S(0, -26);                                                     // the camera, teal, at her chest
+      for (let b = -3; b <= 2; b++) for (let a = -5; a <= 4; a++) put(cx + a, cy + b, (a === -5 || a === 4 || b === -3 || b === 2) ? ink : teal);
+      for (const [a, b] of [[-1, -1], [0, -1], [1, -1], [-1, 0], [0, 0], [1, 0], [-1, 1], [0, 1], [1, 1]]) put(cx + a, cy + b, ink);
+      put(cx - 1, cy - 1, white); put(cx + 3, cy - 2, pinkM); put(cx - 4, cy - 2, pinkL);
+      for (let i = 0; i < 4; i++) { put(cx - 6 - i, cy - 4 - i * 2, ink); put(cx - 6 - i, cy - 5 - i * 2, ink); } }   // the strap
+    { const [kx, ky] = S(-11, -65); put(kx, ky, blue); put(kx + 1, ky, blue); put(kx, ky + 2, blue); put(kx + 1, ky + 2, blue); }   // her hair clip
+    drawFace(st, S);
+    if (st.point > 0.9) { const [hx, hy] = S(23.5, -55.5);                           // the peace sign: two fingers up
+      for (const dx of [-1, 1]) for (let b = -5; b <= -2; b++) put(hx + dx, hy + b, skin);
+      for (const dx of [-2, 2]) for (let b = -6; b <= -2; b++) put(hx + dx, hy + b, ink);
+      put(hx - 1, hy - 6, ink); put(hx + 1, hy - 6, ink); put(hx, hy - 5, ink); put(hx, hy - 4, ink); put(hx, hy - 3, ink); }
+    if (st.palm > 0.9) { const [hx, hy] = S(-7, -51);                                 // fingers over the brow
+      for (const a of [-3, -1, 1]) { put(hx + a, hy - 4, ink); put(hx + a, hy - 3, ink); } }
+  }
+
+  function drawFace(st, S) {
+    const mood = st.mood, blink = st.blink, lk = st.look;
+    // eyes: a blue block with a dark lash line and one bright highlight
+    for (const side of [-1, 1]) {
+      const [ex, ey] = S(7.5 * side + lk, -48);
+      const covered = st.palm > 0.9 && side < 0;
+      if (covered) continue;
+      const wink = mood === 'happy' && side > 0;
+      if (wink || blink > 0.6) {                                            // shut: a curved line, corners up when happy
+        for (let a = -2; a <= 2; a++) put(ex + a, ey + (wink ? (Math.abs(a) === 2 ? -1 : 0) : 0), ink);
+        if (wink) { put(ex - 3, ey - 2, ink); put(ex + 3, ey - 2, ink); }
+        continue;
+      }
+      if (mood === 'surprised') {                                           // star eyes: a white star on blue
+        for (let b = -3; b <= 3; b++) for (let a = -3; a <= 3; a++) if (a * a + b * b <= 9.5) put(ex + a, ey + b, blue);
+        for (const [a, b] of [[0, -2], [0, -1], [0, 0], [0, 1], [0, 2], [-2, 0], [-1, 0], [1, 0], [2, 0], [-1, -1], [1, 1]]) put(ex + a, ey + b, white);
+        put(ex, ey - 3, ink);
+        continue;
+      }
+      const lid = mood === 'dry' ? 2 : (blink > 0.3 ? 1 : 0);
+      // a 4 x 6 eye: a lash row on top, blue below, a dark pupil column, two bright pixels
+      for (let b = -3; b <= 2; b++) for (let a = -2; a <= 1; a++) {
+        if (b < -3 + lid) continue;
+        const corner = (b === 2 && (a === -2 || a === 1));
+        put(ex + a, ey + b, b === -3 + lid ? ink : corner ? ink : blue);
+      }
+      put(ex, ey + 1, ink); put(ex - 1, ey + 1, ink); put(ex, ey, ink); put(ex - 1, ey, pinkD);          // pupil, a plum glint in it
+      put(ex - 1 - (side > 0 ? 1 : 0) + (side < 0 ? 1 : 0), ey - 2 + lid, white); put(ex - 1 - (side > 0 ? 1 : 0) + (side < 0 ? 1 : 0), ey - 1 + lid, white);
+      if (mood === 'dry') { put(ex - 2, ey - 2, ink); put(ex + 1, ey - 2, ink); }
+    }
+    // the little gloom lines on her brow when she is dry
+    if (mood === 'dry') { const [gx, gy] = S(-3, -58); for (const a of [0, 3, 6]) { put(gx + a, gy, pinkD); put(gx + a, gy + 1, pinkD); } }
+    // cheeks
+    for (const side of [-1, 1]) { const [cx, cy] = S(11 * side, -44); put(cx, cy, pinkM); put(cx - side, cy, pinkM); if (mood === 'happy') put(cx, cy + 1, pinkM); }
+    // the mouth, by mood and by what the voice is doing
+    const [mx, my] = S(0, -40), m = st.mouth;
+    if (mood === 'happy') {
+      if (m === 'closed') { for (let a = -3; a <= 3; a++) put(mx + a, my + (Math.abs(a) === 3 ? -1 : 0), ink); }
+      else { const hgt = m === 'open' ? 3 : 2;
+        for (let b = 0; b < hgt; b++) for (let a = -3 + (b === hgt - 1 ? 1 : 0); a <= 3 - (b === hgt - 1 ? 1 : 0); a++) put(mx + a, my + b, (b === 0 && Math.abs(a) < 3) ? white : pinkD);
+        for (let a = -4; a <= 4; a++) put(mx + a, my - 1 + (Math.abs(a) === 4 ? -1 : 0), ink);
+        put(mx - 3, my + hgt - 1, ink); put(mx + 3, my + hgt - 1, ink); for (let a = -2; a <= 2; a++) put(mx + a, my + hgt, ink); }
+    } else if (mood === 'dry') {
+      if (m === 'closed') { for (let a = -2; a <= 2; a++) put(mx + a, my, ink); }
+      else { const hgt = m === 'open' ? 3 : 2; for (let b = 0; b < hgt; b++) for (let a = -2; a <= 2; a++) put(mx + a, my + b, (a === -2 || a === 2 || b === 0 || b === hgt - 1) ? ink : pinkD); }
+    } else if (mood === 'surprised') {
+      const r = m === 'open' ? 3 : m === 'half' ? 2 : 1.5;
+      for (let b = -3; b <= 3; b++) for (let a = -3; a <= 3; a++) { const q = a * a + b * b; if (q <= r * r + 1.2) put(mx + a, my + 1 + b, q <= (r - 1) * (r - 1) + 0.8 ? pinkD : ink); }
+    } else {
+      if (m === 'closed') { for (let a = -1; a <= 1; a++) put(mx + a, my, ink); put(mx - 2, my - 1, ink); put(mx + 2, my - 1, ink); }
+      else { const hgt = m === 'open' ? 4 : 2;
+        for (let b = 0; b < hgt; b++) for (let a = -2; a <= 2; a++) { const e = a === -2 || a === 2 || b === 0 || b === hgt - 1; put(mx + a, my + b, e ? ink : (b === 1 && hgt > 2 ? white : pinkD)); } }
+    }
+  }
+
+  // ======================================================================
+  //  The life
+  // ======================================================================
+  const st = { breath: 0, blink: 0, blinkT: -1, nextBlink: 2, sway: 0, look: 0, nextLook: 3, mood: 'neutral', action: 'none', mouth: 'closed',
+    point: 0, palm: 0, fall: -1, nextFall: 5, flick: 1 };
+  let T = 0;
+  function update(dt) {
+    T += dt;
+    st.breath = Math.sin(T * 2 * Math.PI * 0.3);
+    st.sway = Math.sin(T * 1.1) * 1.1 + Math.sin(T * 2.3) * 0.3;
+    st.nextBlink -= dt;
+    if (st.nextBlink <= 0 && st.blinkT < 0) st.blinkT = 0;
+    if (st.blinkT >= 0) { st.blinkT += dt; const k = st.blinkT;
+      st.blink = k < 0.06 ? k / 0.06 : k < 0.14 ? 1 : Math.max(0, 1 - (k - 0.14) / 0.07);
+      if (k > 0.22) { st.blinkT = -1; st.blink = 0; st.nextBlink = 2 + 4 * Math.random(); if (Math.random() < 0.2) st.nextBlink = 0.2; } }
+    st.nextLook -= dt;                                                       // an idle glance to one side, then back
+    if (st.nextLook <= 0) { st.look = st.look === 0 ? (Math.random() < 0.5 ? -1 : 1) : 0; st.nextLook = st.look === 0 ? 3 + Math.random() * 5 : 0.8 + Math.random() * 1.2; }
+    const e = 1 - Math.exp(-14 * dt);
+    st.point += ((st.action === 'point' ? 1 : 0) - st.point) * e;
+    st.palm += ((st.action === 'facepalm' ? 1 : 0) - st.palm) * e;
+    // the lamp: a slow breathing glow with the odd small flicker
+    const fl = Math.sin(T * 0.7) * 0.02 + (hash(Math.floor(T * 12), 9) < 0.08 ? -0.06 : 0);
+    st.flick += (1 + fl - st.flick) * (1 - Math.exp(-20 * dt));
+    // a falling star now and then
+    if (st.fall >= 0) { st.fall += dt * 1.6; if (st.fall > 1) st.fall = -1; }
+    else if ((st.nextFall -= dt) <= 0) { st.fall = 0; st.nextFall = 7 + Math.random() * 8; }
+  }
+  function render() {
+    const root = document.getElementById('march');
+    st.mood = root.dataset.mood || 'neutral'; st.action = root.dataset.action || 'none';
+    drawRoom(T, st.flick);
+    drawMarch(st, T);
+  }
+
+  // ======================================================================
+  //  Present
+  // ======================================================================
+  const canvases = [document.getElementById('lcd'), document.getElementById('lcd2')].map(c => ({ c, ctx: c.getContext('2d'), img: c.getContext('2d').createImageData(W, H) }));
+  function present() {
+    for (const { ctx, img } of canvases) {
+      const d = img.data;
+      for (let i = 0, j = 0; i < W * H; i++, j += 4) { const c = RGB[buf[i]]; d[j] = c[0]; d[j + 1] = c[1]; d[j + 2] = c[2]; d[j + 3] = 255; }
+      ctx.putImageData(img, 0, 0);
+    }
+  }
+
+  // ---- the contract ----
+  window.marchMouth = s => { st.mouth = (s === 'open' || s === 'half') ? s : 'closed'; };
+  const params = new URLSearchParams(location.search), root = document.getElementById('march');
+  if (params.get('mood')) root.dataset.mood = params.get('mood');
+  if (params.get('action')) root.dataset.action = params.get('action');
+  if (params.get('mouth')) window.marchMouth(params.get('mouth'));
+  if (params.get('action') === 'point') st.point = 1;
+  if (params.get('action') === 'facepalm') st.palm = 1;
+
+  // ---- the test strip ----
+  const OPTS = { mood: ['neutral', 'happy', 'dry', 'surprised'], action: ['none', 'point', 'facepalm'], mouth: ['closed', 'half', 'open', 'talk'] };
+  let talk = false, talkT = 0;
+  for (const k of Object.keys(OPTS)) {
+    const span = document.querySelector(`#strip [data-k="${k}"]`);
+    for (const v of OPTS[k]) { const b = document.createElement('button'); b.textContent = v;
+      b.onclick = () => { if (k === 'mouth') { talk = v === 'talk'; if (!talk) window.marchMouth(v); } else root.dataset[k] = v; refresh(); };
+      span.appendChild(b); }
+  }
+  function refresh() {
+    for (const k of Object.keys(OPTS)) for (const b of document.querySelectorAll(`#strip [data-k="${k}"] button`))
+      b.classList.toggle('on', k === 'mouth' ? (talk ? b.textContent === 'talk' : b.textContent === st.mouth) : root.dataset[k] === b.textContent);
+  }
+  refresh();
+  setInterval(() => { if (talk) { talkT++; window.marchMouth(['half', 'open', 'half', 'closed'][talkT % 4]); } }, 40);
+
+  // ---- the loop ----
+  let last = performance.now(), acc = 0, n = 0;
+  function frame(now) {
+    const dt = Math.min(0.1, (now - last) / 1000); last = now;
+    const t0 = performance.now();
+    update(dt); render(); present();
+    acc += performance.now() - t0; n++;
+    if (n >= 30) { document.getElementById('ms').textContent = (acc / n).toFixed(2) + ' ms/frame'; acc = 0; n = 0; }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  window.__bench = k => { const t0 = performance.now(); for (let i = 0; i < k; i++) { update(1 / 60); render(); present(); } return (performance.now() - t0) / k; };
+  window.__st = st;
+})();
+</script>
+</body>
+</html>
