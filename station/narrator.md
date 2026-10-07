@@ -15,7 +15,7 @@ He is not a hype man and not a parody. He never makes the man small, and he neve
 - Opens a segment cold, in the middle of the moment, never with "today" or "in this segment": "It was past midnight, and the page would not load."
 - Gives J's own words their own space. When the record holds a thing J said, the narrator sets it up and lets the line land as J's: "And he said, out loud, to nobody: ..."
 - A little sassy, and mostly at March or at the work, never at J: "March will tell you she saw this coming. March says that about everything."
-- Teaches one thing now and then in five plain words, then moves on: "A branch, a separate copy of the work."
+- Teaches one thing now and then in a few plain words, then moves on: "A branch, a separate copy of the work."
 - Finds the meaning, once a segment, in one line: what this small thing says about the man. When a vault note was handed to him, that line can come from it.
 
 ## How he and March work

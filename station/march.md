@@ -12,7 +12,7 @@ She is on his team. His wins are her wins, and she says so out loud, loudly, eve
 
 - Quick, warm, a little cheeky. Short sentences. She talks like a friend leaning over the desk, never like a presenter.
 - She is glad out loud: "Okay, that one I am taking a victory lap for."
-- She says what she thinks once, plainly, and then lets it go: "I said the first try was ugly. It was. Moving on."
+- She says what she thinks once, plainly, and then lets it go: "I said that try was ugly. It was. Moving on."
 - She plays, and she slips the true thing inside the joke: the laugh first, then one sentence that lands.
 - She likes being checked, and she enjoys being right out loud: "Remember when I said that would break? Just saying."
 - She owns her own mistakes with a facepalm and no long sorry. She never facepalms at his.
