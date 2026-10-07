@@ -55,9 +55,14 @@ function blip(speaker) {
 }
 const voice = new Audio();
 let voiceSrc = '';
+// A segment whose MP3 is gone (pruned after seven days, or never voiced)
+// falls back to the blips instead of typing in silence.
+const voiceBroken = new Set();
+voice.addEventListener('error', () => voiceBroken.add(voiceSrc));
+const hasVoice = (segment) => !!segment.audio && !voiceBroken.has(segment.audio);
 // Keep the MP3 on the clock: right file, right position, playing.
 function syncVoice(segment, msIntoSegment) {
-  if (!audioCtx || !segment.audio) { if (!voice.paused) voice.pause(); return; }
+  if (!audioCtx || !hasVoice(segment)) { if (!voice.paused) voice.pause(); return; }
   if (voiceSrc !== segment.audio) { voiceSrc = segment.audio; voice.src = segment.audio; }
   const want = msIntoSegment / 1000;
   if (voice.readyState > 0 && Math.abs(voice.currentTime - want) > 0.4) voice.currentTime = want;
@@ -80,7 +85,7 @@ function tick() {
   const shown = line.text.slice(0, typed);
   syncVoice(segment, at.msIntoSegment);
   if (typed !== lastTyped) {
-    if (!segment.audio && phase === 'speak' && line.text[typed - 1] && line.text[typed - 1] !== ' ') blip(line.speaker);
+    if (!hasVoice(segment) && phase === 'speak' && line.text[typed - 1] && line.text[typed - 1] !== ' ') blip(line.speaker);
     lastTyped = typed;
   }
   $('title').textContent = segment.title;
@@ -96,7 +101,12 @@ function tick() {
     talking: marchLine && mouthOpen,
   });
   const srcs = segment.sources || [];
-  $('sources').innerHTML = srcs.map((s, i) => `<li${i === line.source ? ' class="now"' : ''}><span>${s.kind} · ${s.repo || ''}</span> ${escapeHtml(s.text)}</li>`).join('');
+  // Public sources show as they are; a day-note claim is marked as coming
+  // from his own notes of the day, which are not public (the plan, step 6).
+  $('sources').innerHTML = srcs.map((s, i) => {
+    const label = s.kind === 'commit' ? `commit · ${s.repo || ''}` : s.kind === 'day-note' ? 'from his notes of the day' : s.kind === 'note' ? 'from his notes' : s.kind;
+    return `<li${i === line.source ? ' class="now"' : ''}><span>${escapeHtml(label)}</span> ${escapeHtml(s.text)}</li>`;
+  }).join('');
 }
 function escapeHtml(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]); }
 
