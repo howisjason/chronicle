@@ -16,7 +16,9 @@ cd "$(dirname "$0")/.."
 export TZ=Asia/Bangkok
 DATE=${1:-$(date +%F)}
 PREV=$(date -j -f %F -v-1d "$DATE" +%F)
-FROM="$PREV 00:00:00 +0700"; TO="$DATE 06:00:00 +0700"
+# The window runs to NOW, so a gather later in the day brings the day's own
+# commits too (the station runs live and tells what is new since it last told).
+FROM="$PREV 00:00:00 +0700"; TO="$(date '+%F %T') +0700"
 OUT=inbox/$DATE; mkdir -p "$OUT"
 P=/Users/howisjason/Projects
 
@@ -34,7 +36,10 @@ P=/Users/howisjason/Projects
 
 # 2. the day note: one Haiku call over the day's session text, under forbidden.md.
 #    Only typed turns and spoken replies go in (never tool calls, results or
-#    system text), capped so the call stays small.
+#    system text), capped so the call stays small. Written ONCE per air date:
+#    J reads it before the first fire (the first-ten gate), and later gathers
+#    the same day must not swap it for a note he has not read.
+if [ ! -s "$OUT/day-note.md" ]; then
 python3 - "$FROM" "$TO" > "$OUT/sessions.txt" <<'PY'
 import json, os, sys, glob, datetime as dt
 frm = dt.datetime.strptime(sys.argv[1], '%Y-%m-%d %H:%M:%S %z'); to = dt.datetime.strptime(sys.argv[2], '%Y-%m-%d %H:%M:%S %z')
@@ -70,6 +75,7 @@ PY
   echo; echo "SESSION TEXT:"; cat "$OUT/sessions.txt"
 } | claude -p --model claude-haiku-5-5 > "$OUT/day-note.md"
 rm -f "$OUT/sessions.txt"
+fi
 
 # 3. vault notes tagged #onair, whole. The tag must stand on a line of its own:
 #    a note that merely MENTIONS the tag (the channel plan does) must not match.

@@ -19,7 +19,7 @@ Because the gaps are baked into the MP3, the page only has to start the file at
 the segment's offset on the clock.
 """
 import json, math, os, subprocess, sys, tempfile, time, wave
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import numpy as np
 
 RATE = 24000
@@ -89,16 +89,27 @@ def segment_ms(seg):
     return gaps['firstLeadMs'] + gaps['leadMs'] * (n - 1) + gaps['holdMs'] * n + sum(l['audioMs'] for l in seg['lines'])
 
 
-def chain_starts(day):
-    t = datetime.fromisoformat(day['segments'][0]['startAt'])
+def chain_starts(day, newly):
+    """Segments voiced in earlier runs keep their start. A segment voiced in THIS
+    run starts when the one before it ends, or, if that is already past, thirty
+    seconds from now, so the station can run live: always a little ahead of
+    the clock, never writing into the past."""
+    tz = timezone(timedelta(hours=7))
+    now = datetime.now(tz)
+    prev_end = None
     for seg in day['segments']:
-        seg['startAt'] = t.isoformat(timespec='milliseconds')
-        t = t + timedelta(milliseconds=segment_ms(seg))
+        if seg['id'] in newly:
+            start = datetime.fromisoformat(seg['startAt']) if prev_end is None else prev_end
+            if prev_end is not None and prev_end < now + timedelta(seconds=30):
+                start = now + timedelta(seconds=30)
+            seg['startAt'] = start.isoformat(timespec='milliseconds')
+        prev_end = datetime.fromisoformat(seg['startAt']) + timedelta(milliseconds=segment_ms(seg))
 
 
 def main(path, budget=None):
     started = time.time()
     day = json.load(open(path))
+    newly = set()
     if os.environ.get('VOICE_BACKEND') == 'tone':
         pipeline, speak = None, speak_tone
     else:
@@ -122,17 +133,19 @@ def main(path, budget=None):
         mp3 = os.path.join(out_dir, f"{seg['id']}.mp3")
         write_mp3(np.concatenate(parts), mp3)
         seg['audio'] = mp3.replace(os.sep, '/')
+        newly.add(seg['id'])
         total = sum(line['audioMs'] for line in seg['lines'])
         print(f"voice: {mp3}  {len(seg['lines'])} lines, {total / 1000:.1f}s of speech")
         json.dump(day, open(path, 'w'), indent=2, ensure_ascii=False)
         open(path, 'a').write('\n')
     left = sum(1 for s in day['segments'] if not s.get('audio'))
-    if left == 0:
-        chain_starts(day)
+    if newly:
+        chain_starts(day, newly)
         json.dump(day, open(path, 'w'), indent=2, ensure_ascii=False)
         open(path, 'a').write('\n')
-        total_s = sum(segment_ms(s) for s in day['segments']) / 1000
-        print(f"voice: {len(day['segments'])} segments, {total_s / 60:.1f} minutes on air, starts re-chained from {day['segments'][0]['startAt']}")
+        last = day['segments'][-1]
+        end = datetime.fromisoformat(last['startAt']) + timedelta(milliseconds=segment_ms(last))
+        print(f"voice: {len(day['segments'])} segments; the day now ends at {end.isoformat(timespec='seconds')}")
     print(f"voice: {left} left")
 
 

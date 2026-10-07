@@ -1,8 +1,8 @@
 # STATION.md
 
-The sheet a cloud session follows once a morning to make the day's chapters. It is fired from the Mac with one line: "follow STATION.md for <date>, <N> minutes; the inbox follows" plus the inbox text. N is how many minutes of chapters to write (two hours is the usual day; the first run was one segment). The session sees this repo and the inbox text in its prompt, and nothing else of J's. It never looks J up anywhere else: not the internet, not other repos, not memory.
+The sheet a cloud session follows once a morning to make the day's chapters. It is fired from the Mac with one line: "follow STATION.md for <date>, keep <N> minutes ahead of the clock; the inbox follows" plus the inbox text. The station runs LIVE (J's design, 8 Oct 2026): it makes one segment at a time, each written, checked, voiced and pushed before the next is begun, and keeps going until the day's chapters end at least N minutes after the current time in Chiang Mai. Then it stops. It is fired again and again through the day, so the channel is always a little ahead of the clock and never a two-hour block made in one go. The session sees this repo and the inbox text in its prompt, and nothing else of J's. It never looks J up anywhere else: not the internet, not other repos, not memory.
 
-Read this whole sheet before doing anything. Then do the steps in order. Each step says what proves it. If a step cannot be done, stop and say so in the final message; never push a half-made day.
+Read this whole sheet before doing anything. Then do the steps in order. Each step says what proves it. If a step cannot be done, stop and say so in the final message. A segment is pushed only when it is checked; nothing half-made is ever pushed.
 
 ## 0. What a chapter is
 
@@ -24,13 +24,15 @@ Speakers: `narrator`, `march`. Emotions: `neutral`, `happy`, `dry`, `surprised`.
 
 Run `bash station/setup.sh` if it exists (it installs Kokoro, the voice; step 4 of the build adds it). If it fails, say so at the end and still do steps 2 to 4 and 6, with `audio` left `null`.
 
-## 2. Read the inbox
+## 2. Read the inbox, and what is already told
 
-The inbox is in the prompt, after the line "the inbox follows". It has up to three parts: `commits` (public-safe commit messages, one per line, each with its repo), `day-note` (a short note of what he built, learned, decided, tried, in plain words), `notes` (tagged vault notes, for quiet days and teaching lines). It is the only record of the day. If the inbox is empty, write one short quiet-day segment from `notes`, or if there are none, write nothing, push nothing, and say so.
+The inbox is in the prompt, after the line "the inbox follows". It has up to three parts: `commits` (public-safe commit messages, one per line, each with its repo), `day-note` (a short note of what he built, learned, decided, tried, in plain words), `notes` (tagged vault notes, for quiet days and teaching lines). It is the only record of the day.
 
-## 3. Write the chapters
+Then `git pull` and read `day/<date>.json` if it exists: its segments are what the channel has already told today, and their `sources` are the inbox items already used. What is NEW is the inbox minus those sources. New items are the next segments. When nothing is new, one quiet segment is allowed per fire: March and the narrator on one of the `notes`, or, with no notes, a short beat that says plainly the day has been quiet since the last word and looks back on one thing already told, in new words. Never two quiet segments in a row, and never a line about a thing that did not happen.
 
-Build `sources` first: one entry per inbox item you will use, copied word for word (`kind`: `commit`, `day-note` or `note`; `repo` for commits; `text`). Then write the lines, segment by segment, until the minutes asked for are filled: a segment of 18 lines runs about 80 seconds on air, so two hours is about 90 segments. The first segment starts at 06:00 Chiang Mai time on <date>; give every later segment the same start for now, step 5 re-chains them from the real lengths. Each segment has its own title and its own slice of the day: the day in order, then the meaning of it, then the quiet corners; when the record is thin, say the day was quiet and let March carry it, never pad with things that did not happen. Write the file in parts if it is long (a script that builds the JSON is fine), and run the checker as you go.
+## 3. Write ONE segment
+
+Build its `sources` first: one entry per inbox item it uses, copied word for word (`kind`: `commit`, `day-note` or `note`; `repo` for commits; `text`). Then write about 18 lines. Its `startAt` is the previous segment's start plus its length, or one minute from now for the first segment of the day (the day begins when the station first speaks, not at a fixed hour); step 5 corrects it from the real voiced length and the clock. The segment has its own title and its own slice of the day. Append it to `day/<date>.json` (create the file with `date` and `tz` if it is the day's first). Then go straight to step 4; the next segment waits until this one is pushed.
 
 Rules while writing:
 - Every line has a `source`. A line of feeling or play points at the source it reacts to.
@@ -39,21 +41,21 @@ Rules while writing:
 - Short sentences, plain words (VOA Learning English). The page types each line at speaking speed, so a line is one or two sentences.
 - Save as `day/<date>.json`.
 
-## 4. Check
+## 4. Check the segment
 
-Run `node station/validate.mjs day/<date>.json`. It refuses the file on any finding and prints each one. Fix the lines and run it again until it prints `OK`. Never change the checker to make a chapter pass.
+Run `node station/validate.mjs day/<date>.json`. It refuses the file on any finding and prints each one. Fix the lines and run it again until it prints `OK`. Never change the checker to make a segment pass.
 
-**Save first.** The moment the checker prints `OK`, commit `day/<date>.json` and push it to `main` (the remote and credential notes of step 6 apply here too). The page can play an unvoiced day with blips, and a run that is cut off later loses nothing. Push again after the truth check's fixes.
+Then the truth check: start a fresh subagent (Haiku 5.5 is enough) with the text of `station/truth-check.md` as its instructions, followed by the new segment's JSON and the whole inbox text. It answers `CLEAN` or a list of flagged lines. For each flagged line, rewrite it inside the record or cut it, then run the checker again. Run the truth check again after fixes. A segment is not voiced until it comes back `CLEAN`.
 
-Then the truth check: start a fresh subagent (Haiku 5.5 is enough) with the text of `station/truth-check.md` as its instructions, followed by the chapter JSON and the whole inbox text. It answers `CLEAN` or a list of flagged lines. For each flagged line, rewrite it inside the record or cut it, then run the checker again. Run the truth check again after fixes. A chapter is not voiced until it comes back `CLEAN`.
+## 5. Voice the segment
 
-## 5. Voice
+If setup succeeded: `python3 station/voice.py day/<date>.json --budget 480`. It voices every segment without audio (normally just the new one), writes its `audio` path and each line's real `audioMs` into the JSON, and sets the new segment's `startAt` to the end of the one before it, or to thirty seconds from now if that is already past, so the segment goes on air just ahead of the clock. It prints when the day now ends. Then run the checker once more. If setup failed, leave `audio` null; the page plays blips, and the start is set by hand the same way.
 
-If setup succeeded: `python3 station/voice.py day/<date>.json --budget 480`, again and again until it prints `voice: 0 left`, and after EACH run commit `day/<date>.json` and `audio/<date>` and push, so every voiced segment is saved as it is made. Each run voices the segments that have no audio yet, for about eight minutes, then stops (the one-command wall is ten minutes); it makes one MP3 per segment under `audio/<date>/`, writes each segment's `audio` path and each line's real `audioMs` back into the JSON, and when all are voiced re-chains every `startAt` from the real lengths. Then run the checker once more.
+## 6. Publish the segment, then loop
 
-## 6. Publish
+Prune old sound first, once per fire: the chapters stay forever as data, the MP3s do not (about 45 MB a day would swell the public repo). Delete every `audio/<d>` folder whose date is more than 7 days before <date> with `git rm -r -q audio/<d>`. Then `git add day/<date>.json audio/<date>` (audio only if it exists), commit with the message `chronicle: <date>, <n> segment(s)` and push. The cloud harness may make you push to a branch of its own instead of `main`; that is fine, the repo lands every `claude/` branch on `main` by itself (`.github/workflows/land.yml`).
 
-Before committing, prune old sound: the chapters stay forever as data, the MP3s do not (about 45 MB a day would swell the public repo). Delete every `audio/<d>` folder whose date is more than 7 days before <date> with `git rm -r -q audio/<d>`; the page plays blips for a pruned day, and only today's and yesterday's days are ever loaded anyway. Then `git add day/<date>.json audio/<date>` (audio only if it exists), commit with the message `chronicle: <date>, <n> segment(s)` and push to `main`. If there is no `origin` remote, add it first: `git remote add origin https://github.com/howisjason/chronicle.git`, then `git fetch origin main` and rebase on it. If the push is refused for credentials, attach the repo `howisjason/chronicle` with push access using the session's own add_repo tool, then push again. (Both happened on the first run, 8 Oct 2026.) GitHub Pages serves it within minutes. The final message of the session says: how many segments, whether they are voiced, what the checker and the truth check said, and anything that failed.
+Then look at the clock. If the day's last segment ends less than N minutes after now (Chiang Mai time) and there is something new or a quiet segment is allowed, go back to step 3. Otherwise stop. The final message of the session says: how many segments were added, when the day now ends, what the checker and the truth check said, and anything that failed. If there is no `origin` remote, add it first: `git remote add origin https://github.com/howisjason/chronicle.git`, then `git fetch origin main` and rebase on it. If the push is refused for credentials, attach the repo `howisjason/chronicle` with push access using the session's own add_repo tool, then push again. (Both happened on the first run, 8 Oct 2026.) GitHub Pages serves it within minutes. The final message of the session says: how many segments, whether they are voiced, what the checker and the truth check said, and anything that failed.
 
 ## What the session never does
 

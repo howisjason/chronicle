@@ -1,0 +1,30 @@
+# land.yml: a station session is made to push to its own branch by the cloud
+# harness (claude/station-...), never to main, whatever STATION.md says (seen
+# 8 Oct 2026: 13 voiced segments sat on a branch for 40 minutes). GitHub Pages
+# serves main. So every push to such a branch is merged into main here, by the
+# repo itself. A merge that conflicts is left alone and reported; nothing is
+# forced.
+name: land a station branch on main
+on:
+  push:
+    branches: ['claude/**']
+permissions:
+  contents: write
+jobs:
+  land:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main, fetch-depth: 0 }
+      - name: merge the branch into main
+        run: |
+          git config user.name "station"
+          git config user.email "station@users.noreply.github.com"
+          git fetch origin "${GITHUB_REF_NAME}"
+          if git merge --no-edit "origin/${GITHUB_REF_NAME}"; then
+            git push origin main
+            echo "landed ${GITHUB_REF_NAME} on main"
+          else
+            git merge --abort
+            echo "::warning::${GITHUB_REF_NAME} conflicts with main; left unmerged"
+          fi

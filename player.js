@@ -110,9 +110,13 @@ function tick() {
 }
 function escapeHtml(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]); }
 
+// The station appends segments through the day, so the page asks again every
+// minute and swaps in the new day quietly; a segment already playing keeps
+// playing because the clock, not the file, decides what is on.
 loadDay().then((d) => {
   day = d;
   if (d && d.sample) $('note').textContent = 'Sample chapter, hand-written, to prove the player. Stand-in voice.';
   setInterval(tick, 50);
   tick();
+  setInterval(() => loadDay().then((nd) => { if (nd && JSON.stringify(nd) !== JSON.stringify(day)) day = nd; }).catch(() => {}), 60 * 1000);
 });
