@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>March, lit</title>
+<style>
+  html, body { margin: 0; background: #0b0b10; color: #e8e8f0; font-family: Georgia, "Times New Roman", serif; }
+  main { max-width: 42rem; margin: 0 auto; padding: 1rem; box-sizing: border-box; }
+  #stage { background: #14141c; border-radius: 12px; padding: 1rem; display: grid; grid-template-columns: 140px 1fr; gap: 1rem; align-items: center; }
+  #march { width: 140px; height: 180px; position: relative; border-radius: 10px; overflow: hidden; }
+  #march canvas { width: 140px; height: 180px; display: block; }
+  #march-caption { line-height: 1.5; font-size: 1.05rem; color: #ffd9ec; }
+  .strip { margin-top: 1rem; font-size: .85rem; color: #9a9ab0; }
+  .strip .row { margin: .3rem 0; }
+  .strip button { font: inherit; background: #1c1c26; color: #e8e8f0; border: 1px solid #333; border-radius: 6px; padding: .25em .7em; margin: .15em; }
+  .strip button.on { background: #c9b26b; color: #0b0b10; border-color: #c9b26b; }
+  #perf { font-family: ui-monospace, Menlo, monospace; color: #777; }
+  #big { width: 280px; height: 360px; display: block; border-radius: 14px; margin-top: 1rem; }
+</style>
+</head>
+<body>
+<main>
+  <div id="stage">
+    <div id="march" data-mood="neutral" data-action="none" aria-label="March, drawn by code"><canvas id="c" width="280" height="360"></canvas></div>
+    <div id="march-caption">Okay so, he opened the laptop at seven and the first thing he did was NOT the thing.</div>
+  </div>
+  <div class="strip" id="strip">
+    <div class="row">mood: <span id="moods"></span></div>
+    <div class="row">action: <span id="actions"></span></div>
+    <div class="row">mouth: <span id="mouths"></span> <span id="perf"></span></div>
+  </div>
+  <canvas id="big" width="280" height="360"></canvas>
+</main>
+<script>
+/* ============================================================================
+   MARCH 7TH, LIT. Everything on screen is computed; no image files.
+
+   The method is the clay test's (creature-lab/2-clay.html): a HEIGHT FIELD of
+   soft shapes, normals read off it, lit by a warm key lamp (the room's lamp, left)
+   and a cool fill (the window, right). Then, unlike clay, the light is SNAPPED to
+   a few soft bands so it reads as anime cel art with form; shadows are hue-shifted
+   per material (lilac in the pink hair, cool in the white jacket); ink sits only
+   on the silhouette and where a front part steps over a back part, lighter on the
+   lit side. The face is stamped on top with the 2D API every frame, so the mouth
+   can move 25 times a second while the body is re-lit 12 times a second ("on
+   twos") and held in between. The room is built once and copied in.
+   ============================================================================ */
+(() => {
+'use strict';
+const W = 280, H = 360, S = 2.8;        // canvas px, px per creature unit (100 units across)
+const POSE_HZ = 10;
+const clamp = (x, a, b) => x < a ? a : x > b ? b : x;
+const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
+const smax = (a, b, k) => { const h = Math.max(k - Math.abs(a - b), 0) / k; return Math.max(a, b) + h * h * k * 0.25; };
+const lerp = (a, b, t) => a + (b - a) * t;
+function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function ball(px, py, cx, cy, rx, ry, rz) { const qx = (px - cx) / rx, qy = (py - cy) / ry, q = Math.sqrt(qx * qx + qy * qy); return q < 1 ? rz * Math.sqrt(1 - q * q) : -(q - 1) * Math.min(rx, ry); }
+function tube(px, py, x1, y1, x2, y2, r1, r2) { const dx = x2 - x1, dy = y2 - y1, L = dx * dx + dy * dy || 1e-6; const t = clamp(((px - x1) * dx + (py - y1) * dy) / L, 0, 1); const ex = px - x1 - t * dx, ey = py - y1 - t * dy, d = Math.sqrt(ex * ex + ey * ey), r = r1 + (r2 - r1) * t; return d < r ? Math.sqrt(r * r - d * d) : r - d; }
+function boxBlur(src, w, h, r, passes) {
+  const tmp = new Float32Array(Math.max(w, h));
+  for (let p = 0; p < passes; p++) {
+    for (let y = 0; y < h; y++) { const o = y * w; let s = 0; for (let x = -r; x <= r; x++) s += src[o + clamp(x, 0, w - 1)]; for (let x = 0; x < w; x++) { tmp[x] = s / (2 * r + 1); s += src[o + Math.min(w - 1, x + r + 1)] - src[o + Math.max(0, x - r)]; } for (let x = 0; x < w; x++) src[o + x] = tmp[x]; }
+    for (let x = 0; x < w; x++) { let s = 0; for (let y = -r; y <= r; y++) s += src[clamp(y, 0, h - 1) * w + x]; for (let y = 0; y < h; y++) { tmp[y] = s / (2 * r + 1); s += src[Math.min(h - 1, y + r + 1) * w + x] - src[Math.max(0, y - r) * w + x]; } for (let y = 0; y < h; y++) src[y * w + x] = tmp[y]; }
+  }
+}
+const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255);
+
+// ---------- materials: albedo, hue-shifted shade, sheen, ink on the lit side, ink in shadow ----------
+// colours read from her model's texture sheets (hair #fedde6/#d7afba, skin #fff1e8, collar #a396e2,
+// camera #58c7e2, bow #89c1f3) and the close-up (lilac hair shadows, dark gloves)
+const M = {
+  1: { a: hex('#fff2ea'), s: hex('#f0c0b4'), sp: 0.12, ink: hex('#c47a68'), inkD: hex('#8a4a4e') },   // skin
+  2: { a: hex('#f6c6d9'), s: hex('#c493c6'), sp: 1.0,  ink: hex('#b56f9e'), inkD: hex('#73406b') },   // hair
+  3: { a: hex('#fefeff'), s: hex('#c8cbe6'), sp: 0.02,  ink: hex('#9398b8'), inkD: hex('#555a78') },   // jacket
+  4: { a: hex('#a59ce8'), s: hex('#5c62c2'), sp: 0.2,  ink: hex('#6a60b0'), inkD: hex('#3b3576') },   // collar
+  5: { a: hex('#93c8f6'), s: hex('#5b90d8'), sp: 0.3,  ink: hex('#5680c4'), inkD: hex('#345288') },   // bow, stripe, hairpin
+  6: { a: hex('#3c3346'), s: hex('#1e1826'), sp: 0.4,  ink: hex('#221b2a'), inkD: hex('#110d16') },   // choker, gloves, strap
+  7: { a: hex('#62d0e8'), s: hex('#2c88a6'), sp: 0.5,  ink: hex('#2d7c96'), inkD: hex('#1a4c5e') },   // camera
+  8: { a: hex('#222433'), s: hex('#0d0e16'), sp: 1.0,  ink: hex('#12121a'), inkD: hex('#090910') },   // lens
+  9: { a: hex('#5d78dc'), s: hex('#30409e'), sp: 0.2,  ink: hex('#3a4aa8'), inkD: hex('#232a6a') },   // the collar's lower blue
+  10: { a: hex('#eac46a'), s: hex('#9a7430'), sp: 0.8, ink: hex('#8a6a2a'), inkD: hex('#5a4418') },   // gold buttons
+};
+const L1 = (() => { const l = [-0.5, -0.6, 0.72], n = Math.hypot(...l); return l.map(v => v / n); })();   // the lamp: warm key, upper left
+const L2 = (() => { const l = [0.85, -0.2, 0.45], n = Math.hypot(...l); return l.map(v => v / n); })();   // the window: cool fill, right
+const H1 = (() => { const h = [L1[0], L1[1], L1[2] + 1], n = Math.hypot(...h); return h.map(v => v / n); })();
+const SDX = L1[0] / Math.hypot(L1[0], L1[1]), SDY = L1[1] / Math.hypot(L1[0], L1[1]), RISE = L1[2] / Math.hypot(L1[0], L1[1]);
+
+// ---------- the room: a corner, built once ----------
+function buildRoom() {
+  const R = rng(5);
+  const r = new Float32Array(W * H), g = new Float32Array(W * H), b = new Float32Array(W * H);
+  const put = (i, c, k = 1) => { r[i] = c[0] * k; g[i] = c[1] * k; b[i] = c[2] * k; };
+  const wallA = hex('#4b3a3f'), wallB = hex('#17121a');
+  const LAMP = [16, 36];   // units
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const u = x / S, v = y / S, i = y * W + x;
+    const d = Math.hypot((u - LAMP[0]) / 60, (v - LAMP[1]) / 70);
+    const pool = Math.exp(-d * d * 1.8);
+    const k = 0.18 + 0.82 * pool;
+    put(i, [lerp(wallB[0], wallA[0], k), lerp(wallB[1], wallA[1], k), lerp(wallB[2], wallA[2], k)]);
+    // a faint plaster texture
+    const n = (R() - 0.5) * 0.02; r[i] += n; g[i] += n; b[i] += n;
+    // the desk at the bottom
+    if (v > 118) { const t = smooth(118, 121, v), dk = hex('#2a2024'); r[i] = lerp(r[i], dk[0] * (1.2 - (v - 118) / 30), t); g[i] = lerp(g[i], dk[1] * (1.2 - (v - 118) / 30), t); b[i] = lerp(b[i], dk[2] * (1.2 - (v - 118) / 30), t); }
+  }
+  const rect = (u0, v0, u1, v1, c, k = 1) => { for (let y = Math.max(0, v0 * S | 0); y < Math.min(H, v1 * S); y++) for (let x = Math.max(0, u0 * S | 0); x < Math.min(W, u1 * S); x++) put(y * W + x, c, k); };
+  const disc = (cu, cv, ru, rv, c, lit) => { for (let y = Math.max(0, (cv - rv) * S | 0); y < Math.min(H, (cv + rv) * S); y++) for (let x = Math.max(0, (cu - ru) * S | 0); x < Math.min(W, (cu + ru) * S); x++) { const qx = (x / S - cu) / ru, qy = (y / S - cv) / rv, q = qx * qx + qy * qy; if (q < 1) { const sh = 1 - 0.45 * Math.sqrt(q) + (lit ? 0.25 * (-qx - qy) : 0); put(y * W + x, c, sh); } } };
+  // the window, top right: frame, night sky, a moon, stars, a sill
+  const fr = hex('#2b2430');
+  rect(60, 4, 99, 56, fr);
+  for (let y = 7 * S | 0; y < 53 * S; y++) for (let x = 63 * S | 0; x < 96 * S; x++) {
+    const v = y / S, t = (v - 7) / 46, i = y * W + x;
+    const top = hex('#0b1230'), low = hex('#1b2a5c');
+    put(i, [lerp(top[0], low[0], t), lerp(top[1], low[1], t), lerp(top[2], low[2], t)]);
+  }
+  for (let n = 0; n < 60; n++) { const x = (63 + R() * 33) * S | 0, y = (7 + R() * 44) * S | 0, k = 0.3 + R() * 0.7; const i = y * W + x; r[i] += 0.5 * k; g[i] += 0.55 * k; b[i] += 0.7 * k; }
+  disc(88, 15, 3.6, 3.6, hex('#f6edc6'), false);
+  disc(89.6, 14, 3.2, 3.2, hex('#0e1636'), false);           // crescent
+  rect(79, 7, 80.6, 53, fr); rect(63, 29, 96, 30.4, fr);      // the cross bars
+  rect(58, 56, 100, 59, hex('#4a3b3e'));                     // sill
+  // the shelf, top left, with books
+  rect(0, 16, 42, 18.5, hex('#3a2c2c'));
+  const books = [[3, 5.5, '#6b4457'], [8.8, 3.5, '#45566a'], [12.6, 4.5, '#7a6a48'], [17.4, 3, '#5a4a7a'], [21, 5, '#4e6a5a'], [27.5, 4, '#6b5a4a'], [32, 3.2, '#4a4f6b']];
+  for (const [u, w, c] of books) { const hh = 7 + R() * 5; rect(u, 16 - hh, u + w, 16, hex(c)); rect(u, 16 - hh, u + 0.6, 16, hex(c), 1.35); }
+  rect(36.5, 11, 41.5, 16, hex('#2a2228')); rect(37.2, 11.7, 40.8, 15.3, hex('#c9b8a0'), 0.7);   // a small photo frame
+  // the lamp, left: shade, stem, base
+  for (let y = 26 * S | 0; y < 40 * S; y++) { const v = y / S, hw = 5 + (v - 26) * 0.5; for (let x = (16 - hw) * S | 0; x < (16 + hw) * S; x++) { const t = (x / S - 16 + hw) / (2 * hw); put(y * W + x, hex('#f3cf92'), 0.85 + 0.4 * Math.sin(t * 3.14)); } }
+  rect(15.3, 40, 16.7, 58, hex('#3a2f30')); rect(11, 57, 21, 60, hex('#2a2224'));
+  // the plant, lower left
+  rect(4, 100, 16, 116, hex('#5a3a32'));
+  for (const [cu, cv, ru, rv, c] of [[10, 93, 6, 5, '#3f6a4a'], [4, 88, 5, 6, '#2f5238'], [16, 89, 5, 5.5, '#447553'], [9, 82, 4.5, 6, '#3b6646'], [14, 80, 3.5, 5, '#2f5238']]) disc(cu, cv, ru, rv, hex(c), true);
+  // the lamp's warm light on everything near it, then depth of field, vignette, grain
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const u = x / S, v = y / S, i = y * W + x;
+    const d = Math.hypot((u - LAMP[0]) / 40, (v - LAMP[1]) / 50), glow = Math.exp(-d * d) * 0.35;
+    r[i] += glow * 0.9; g[i] += glow * 0.6; b[i] += glow * 0.3;
+  }
+  for (const ch of [r, g, b]) boxBlur(ch, W, H, 2, 3);
+  const out = new Uint8ClampedArray(W * H * 4);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const i = y * W + x, dx = (x - W / 2) / W, dy = (y - H / 2) / H, vig = 1 - 0.55 * (dx * dx + dy * dy) * 2;
+    const gr = (R() - 0.5) * 0.025;
+    out[i * 4] = 255 * clamp(r[i] * vig * 0.92 + gr, 0, 1); out[i * 4 + 1] = 255 * clamp(g[i] * vig * 0.9 + gr, 0, 1); out[i * 4 + 2] = 255 * clamp(b[i] * vig * 0.95 + gr, 0, 1); out[i * 4 + 3] = 255;
+  }
+  return out;
+}
+
+// ---------- life: springs and clocks, stepped every frame ----------
+const A = {
+  t: 0, hx: 0, hy: 0, tilt: 0, breath: 0,
+  locks: [0, 0, 0, 0], lockV: [0, 0, 0, 0],   // side locks and bangs lag the head
+  cam: 0, camV: 0,                            // the camera swings on its strap
+  point: 0, pointV: 0, palm: 0, palmV: 0,     // actions eased in
+  look: [0, 0], lookT: [0, 0], nextLook: 3, blink: 0, blinkT: -1, nextBlink: 2.5,
+  moodMix: { happy: 0, dry: 0, surprised: 0 }, sparkle: 0,
+  prevHx: 0, hxVel: 0,
+};
+function spring(x, v, target, k, c, dt) { v += (-k * (x - target) - c * v) * dt; x += v * dt; return [x, v]; }
+function update(dt, mood, action) {
+  A.t += dt; const t = A.t;
+  A.breath = Math.sin(t * 2 * Math.PI * 0.22);
+  const lookTurn = A.look[0] * 1.6;
+  A.hx = 1.1 * Math.sin(t * 0.47) + lookTurn;
+  A.hy = 0.5 * Math.sin(t * 0.83 + 1) + 0.45 * A.breath;
+  A.tilt = 0.045 * Math.sin(t * 0.31) + A.look[0] * 0.03;
+  A.hxVel = (A.hx - A.prevHx) / Math.max(dt, 1e-3); A.prevHx = A.hx;
+  for (let i = 0; i < 4; i++) { const tgt = -A.hxVel * 0.55 - A.tilt * 6; const k = 38 - i * 5; [A.locks[i], A.lockV[i]] = spring(A.locks[i], A.lockV[i], tgt, k, 3.2, dt); }
+  [A.cam, A.camV] = spring(A.cam, A.camV, -A.hx * 0.02, 18, 1.2, dt);
+  [A.point, A.pointV] = spring(A.point, A.pointV, action === 'point' ? 1 : 0, 70, 11, dt);
+  [A.palm, A.palmV] = spring(A.palm, A.palmV, action === 'facepalm' ? 1 : 0, 70, 11, dt);
+  A.point = clamp(A.point, 0, 1.15); A.palm = clamp(A.palm, 0, 1.15);
+  for (const k in A.moodMix) A.moodMix[k] += ((mood === k ? 1 : 0) - A.moodMix[k]) * (1 - Math.exp(-9 * dt));
+  A.sparkle += ((mood === 'surprised' ? 1 : 0) - A.sparkle) * (1 - Math.exp(-5 * dt));
+  // blinks
+  A.nextBlink -= dt;
+  if (A.nextBlink <= 0 && A.blinkT < 0) A.blinkT = 0;
+  if (A.blinkT >= 0) { A.blinkT += dt; const k = A.blinkT; A.blink = k < 0.07 ? k / 0.07 : k < 0.12 ? 1 : Math.max(0, 1 - (k - 0.12) / 0.09); if (k > 0.22) { A.blinkT = -1; A.blink = 0; A.nextBlink = 2 + Math.random() * 4; } }
+  // an occasional look to the side, then back
+  A.nextLook -= dt;
+  if (A.nextLook <= 0) { if (A.lookT[0] !== 0 || A.lookT[1] !== 0) { A.lookT = [0, 0]; A.nextLook = 2.5 + Math.random() * 4; } else { A.lookT = [(Math.random() < 0.5 ? -1 : 1) * (0.6 + Math.random() * 0.4), (Math.random() - 0.5) * 0.5]; A.nextLook = 0.9 + Math.random() * 1.2; } }
+  const e = 1 - Math.exp(-7 * dt); A.look[0] += (A.lookT[0] - A.look[0]) * e; A.look[1] += (A.lookT[1] - A.look[1]) * e;
+}
+
+// ---------- the figure: a height field of soft shapes, layered back to front ----------
+let MAT = 0;
+function makeField(P) {
+  const hx = P.hx, hy = P.hy, ct = Math.cos(P.tilt), st = Math.sin(P.tilt);
+  const HX = 50 + hx, HY = 44 + hy;
+  const sy = 1 + 0.012 * P.breath, sx = 1 - 0.008 * P.breath;
+  const lk = P.locks;
+  // the hair, in head space. Back mass spikes [x, y, x2, y2, lag, r1, r2]; a cap over the crown cut at the
+  // brow by a ramp; pointed bang teeth hanging from under the cap; long side locks past the jaw; two tufts
+  // the back hair's edge: tapered flares [x, y, x2, y2, r1, r2, lag] that melt into the mass and part only at the tips
+  const FLARES = [[-24, 2, -34, 10, 6, 1.5, 1], [24, 1, 34, 9, 6, 1.5, 1], [-26, 14, -34, 24, 5.5, 1.4, 1], [26, 14, 34, 24, 5.5, 1.4, 1], [-21, 24, -27, 37, 5.5, 1.4, 1], [21, 24, 27, 37, 5.5, 1.4, 1], [-11, 28, -13, 40, 5, 1.3, 0.6], [11, 28, 13, 40, 5, 1.3, 0.6], [0, 29, 1, 40, 5, 1.5, 0.5], [-27, -12, -33, -6, 5, 1.3, 0.6], [27, -13, 33, -7, 5, 1.3, 0.6]];
+  const bboxT = s => [Math.min(s[0], s[2]) - s[4], Math.max(s[0], s[2]) + s[4], Math.min(s[1], s[3]) - s[4], Math.max(s[1], s[3]) + s[4]];
+  const FB = FLARES.map(bboxT);
+  // big sweeping bangs from the crown, parted a little left of centre; the tips point toward the eyes
+  const BANGS = [[-2, -26, -16.5, 0, 7.5, 1.2], [0, -26, -7.5, 2.5, 6.5, 1.0], [2, -26, 5.5, 0.5, 6.2, 1.1], [4, -26, 16, -1.5, 7.5, 1.3], [-6, -24, -22, 4, 6.5, 1.2], [6, -24, 22.5, 2, 6.5, 1.2], [1, -24, -2, -3, 5.5, 1.0], [-3, -22, -12, -4, 5, 1.0], [3, -22, 11, -5, 5, 1.0]];
+  // side locks: two segments each, hugging the jaw then flaring out at the tip
+  const LOCKS = [[-23, -8, -24, 12, -29, 27, 5.4, 3.4, 1.6, 2], [23, -8, 24, 12, 29, 27, 5.4, 3.4, 1.6, 2], [-19.5, 0, -20, 14, -23, 24, 3.4, 2.4, 1.0, 3], [19.5, 0, 20, 14, 23, 24, 3.4, 2.4, 1.0, 3]];
+  const TUFTS = [[-2, -29, -5.5, -34, 1.5, 0.5], [4, -29, 7.5, -33.5, 1.5, 0.5]];
+  const BB = BANGS.map(bboxT);
+  // arms: [shoulder, elbow, wrist] at rest and raised
+  const p = P.point, q = P.palm;
+  const Lelb = [lerp(22, 11, q), lerp(108, 70, q)], Lwr = [lerp(19, 31, q), lerp(126, 52, q)], Lpalm = [lerp(18, 40 + hx * 0.8, q), lerp(129, 43 + hy, q)];
+  const Relb = [lerp(78, 86, p), lerp(108, 74, p)], Rwr = [lerp(81, 78, p), lerp(126, 56, p)], Rhand = [lerp(82, 76, p), lerp(129, 49, p)];
+  const camX = 50 + P.cam * 40, camY = 107 - Math.abs(P.cam) * 8;
+  return function field(u, v) {
+    let h = -60; MAT = 0;
+    const put = (hh, m) => { if (hh > h) { h = hh; MAT = m; } };
+    // head space
+    const dx = u - HX, dy = v - HY, x = dx * ct + dy * st, y = -dx * st + dy * ct;
+    const nearHead = x > -36 && x < 36 && y > -36 && y < 44;
+    // 1. back hair (z 0)
+    let bh = -60;
+    if (nearHead) {
+      bh = ball(x, y, 0, 3, 27, 31, 10);
+      for (let k = 0; k < FLARES.length; k++) { const bb = FB[k]; if (x < bb[0] - 3 || x > bb[1] + 3 || y < bb[2] || y > bb[3]) continue; const s = FLARES[k], lag = lk[(s[0] < 0 ? 0 : 1) + 2] * s[6]; bh = smax(bh, tube(x, y, s[0], s[1], s[2] + lag, s[3], s[4], s[5]), 6); }
+      if (bh > 0) put(bh, 2); else h = bh;
+    }
+    // 2. body (z 1): torso + shoulders, breathing about the base
+    if (v > 70) {
+      const bv = 130 + (v - 130) / sy, bu = 50 + (u - 50) / sx;
+      let bd = ball(bu, bv, 50, 121, 37, 43, 7.5);
+      bd = smax(bd, tube(bu, bv, 26, 91, 74, 91, 9.5, 9.5), 9);
+      if (bd > 0) {
+        let m = 3, lift = 0; const dv = bv - 77, aw = Math.abs(bu - 50), edge = dv * 0.5 + 1.0;
+        if (dv > 0 && dv < 32) {
+          const dl = aw - edge;
+          if (dl < -1.6) m = dv > 14 ? 9 : 4;
+          else if (dl < 1.6) { lift = 1.6 * Math.sqrt(1 - (dl / 1.6) * (dl / 1.6)); m = 3; }   // the raised lapel
+          else if (dl < 2.4) m = 5;                                                           // the blue piping
+        }
+        if (bv > 101 && bv < 118 && (aw > 7 && aw < 12)) for (const [bx, by] of [[41.5, 104], [58.5, 104], [40, 115], [60, 115]]) { if (Math.abs(bu - bx) > 2 || Math.abs(bv - by) > 2) continue; const bt = ball(bu, bv, bx, by, 1.5, 1.5, 0.8); if (bt > 0) { lift = Math.max(lift, bt + 0.3); m = 10; } }
+        // folds in the cloth: shallow grooves
+        if (bv > 94) for (const [fx0, fy0, fx1, fy1] of [[33, 96, 29, 112], [67, 97, 71, 112], [45, 112, 48, 124], [55, 113, 52, 124]]) { if (bu < Math.min(fx0, fx1) - 2 || bu > Math.max(fx0, fx1) + 2 || bv < fy0 - 2 || bv > fy1 + 2) continue; const f = tube(bu, bv, fx0, fy0, fx1, fy1, 1.4, 1.0); if (f > 0) lift -= f * 0.7; }
+        put(bd + 1 + lift, m);
+      } else if (bd > h) h = bd;
+    }
+    // 3. neck (z 3) and choker
+    if (v > 55 && v < 86 && Math.abs(u - 50) < 10) {
+      const nk = tube(u, v, 50 + hx * 0.5, 60 + hy * 0.5, 50, 82, 6.6, 7.4);
+      if (nk > 0) put(nk + 3 + (v > 71.5 && v < 75.5 ? 0.7 : 0), v > 71.5 && v < 75.5 ? 6 : 1); else if (nk > h) h = nk;
+    }
+    // 4. head (z 6): a soft egg with a narrow chin
+    let hdz = -60;
+    if (nearHead) {
+      let hd = ball(x, y, 0, -3, 18.5, 19, 14);
+      hd = smax(hd, ball(x, y, 0, 9, 13.5, 13.5, 12.5), 9);
+      hdz = hd + 6;
+      if (hd > 0) put(hdz, 1); else if (hd > h) h = hd;
+    }
+    // 5. bow at the collar (z 10)
+    if (Math.abs(u - 50) < 12 && Math.abs(v - 77.6) < 6) {
+      const bw = Math.max(ball(u, v, 45.3, 77.6, 5, 3.6, 3), ball(u, v, 54.7, 77.6, 5, 3.6, 3), ball(u, v, 50, 77.6, 2.3, 2.3, 2.6));
+      if (bw > 0) put(bw + 10, 5);
+    }
+    // 6. the camera on its strap (z 9)
+    if (v > 80 && v < 106) { const st1 = tube(u, v, 33, 84, camX - 7, camY - 5, 1.3, 1.3), st2 = tube(u, v, 67, 84, camX + 7, camY - 5, 1.3, 1.3); if (st1 > 0) put(st1 + 8.5, 6); if (st2 > 0) put(st2 + 8.5, 6); }
+    if (Math.abs(u - camX) < 11 && Math.abs(v - camY) < 8) {
+      const cx = (u - camX) / 9.6, cy = (v - camY) / 6.6, qq = Math.pow(cx * cx * cx * cx * cx * cx + cy * cy * cy * cy * cy * cy, 1 / 6);
+      if (qq < 1) { let ch = 5 * Math.sqrt(1 - qq * qq * qq * qq) + 9; let m = 7;
+        const ln = ball(u, v, camX + 3.6, camY + 0.3, 4.4, 4.4, 1.8); if (ln > 0) { ch += ln; m = 8; }
+        const ring = ball(u, v, camX + 3.6, camY + 0.3, 5.2, 5.2, 0.6); if (ln <= 0 && ring > 0) { ch += ring; m = 3; }
+        if (u > camX - 8 && u < camX - 4.6 && v > camY - 5 && v < camY - 2.8) m = 3;   // the little flash window
+        put(ch, m); }
+    }
+    // 7. front hair rides the head surface: the cap, the bang teeth, the side locks; the tufts stand up
+    if (nearHead) {
+      const base = Math.max(hdz, bh, 0);
+      const fringe = ball(x, y, 0, -14, 19.5, 13, 3);
+      if (fringe > 0) put(base + fringe * 0.8 + 0.3, 2);
+      for (let k = 0; k < BANGS.length; k++) { const bb = BB[k]; if (x < bb[0] - 2 || x > bb[1] + 2 || y < bb[2] || y > bb[3] + 1) continue; const s = BANGS[k]; const lag = lk[0] * 0.3 + lk[1] * 0.15; const t = tube(x, y, s[0], s[1], s[2] + lag, s[3], s[4], s[5]); if (t > 0) put(base + t * 1.1 + 2.4, 2); }
+      for (const s of LOCKS) { if (Math.abs(x) < 13 || Math.abs(x) > 36 || y < -15) continue; const lag = lk[s[9] - 2]; const t = smax(tube(x, y, s[0], s[1], s[2] + lag * 0.4, s[3], s[6], s[7]), tube(x, y, s[2] + lag * 0.4, s[3], s[4] + lag, s[5], s[7], s[8]), 2); if (t > 0) put(base + t * 1.1 + 2.0, 2); }
+      for (const s of TUFTS) { const t = tube(x, y, s[0], s[1], s[2] + lk[0] * 0.5, s[3], s[4], s[5]); if (t > 0) put(Math.max(base, 2) + t + 1, 2); }
+      // the hairpin: two little blue bars over the left bangs
+      if (h > 0) { const p1 = tube(x, y, -17.5, -9.5, -13, -11.5, 0.9, 0.9), p2 = tube(x, y, -17.5, -6.8, -13, -8.8, 0.9, 0.9); if (p1 > 0 || p2 > 0) put(h + 1.2, 5); }
+    }
+    // 8. arms. Her right arm (viewer's left): rest, or the facepalm. Her left (viewer's right): rest, or the peace sign.
+    const armZ = 5;
+    if (u < 42 || q > 0.05) { const up = tube(u, v, 26, 91, Lelb[0], Lelb[1], 6.6, 5.8), fo = tube(u, v, Lelb[0], Lelb[1], Lwr[0], Lwr[1], 5.8, 4.6);
+      const z = armZ + 16 * q;
+      if (up > 0) put(up + z, 3); else if (up > h) h = up; if (fo > 0) put(fo + z, 3);
+      const cuff = tube(u, v, Lwr[0] + (Lelb[0] - Lwr[0]) * 0.18, Lwr[1] + (Lelb[1] - Lwr[1]) * 0.18, Lwr[0] + (Lelb[0] - Lwr[0]) * 0.08, Lwr[1] + (Lelb[1] - Lwr[1]) * 0.08, 5.0, 4.9); if (cuff > 0) put(cuff + z, 5);
+      const pm = ball(u, v, Lpalm[0], Lpalm[1], 5.2 + 0.6 * q, 5.4 + 1.6 * q, 3.8); if (pm > 0) put(pm + z + 0.5, q > 0.4 ? 6 : 1);
+      if (q > 0.3) { const fl = (q - 0.3) / 0.7;
+        for (const [ox, ex, ey] of [[-3.6, -7.5, -11.5], [-0.6, -2.5, -14], [2.6, 2.8, -13.5], [5, 7, -10]]) {
+          const fx0 = Lpalm[0] + ox, fy0 = Lpalm[1] - 4.5, fx1 = Lpalm[0] + ex * fl + ox * (1 - fl), fy1 = Lpalm[1] - 4.5 + (ey + 4.5) * fl;
+          const f = tube(u, v, fx0, fy0, fx1, fy1, 1.7, 1.3); if (f > 0) put(f + z + 1.2, 6);
+          const tip = ball(u, v, fx1, fy1, 1.35, 1.35, 1.1); if (tip > 0) put(tip + z + 1.4, 1);
+        } } }
+    if (u > 58 || p > 0.05) { const up = tube(u, v, 74, 91, Relb[0], Relb[1], 6.6, 5.8), fo = tube(u, v, Relb[0], Relb[1], Rwr[0], Rwr[1], 5.8, 4.6);
+      const z = armZ + 14 * p;
+      if (up > 0) put(up + z, 3); else if (up > h) h = up; if (fo > 0) put(fo + z, 3);
+      const cuff = tube(u, v, Rwr[0] + (Relb[0] - Rwr[0]) * 0.18, Rwr[1] + (Relb[1] - Rwr[1]) * 0.18, Rwr[0] + (Relb[0] - Rwr[0]) * 0.08, Rwr[1] + (Relb[1] - Rwr[1]) * 0.08, 5.0, 4.9); if (cuff > 0) put(cuff + z, 5);
+      const hn = ball(u, v, Rhand[0], Rhand[1], 4.6 + 0.4 * p, 5.2 + 0.6 * p, 3.6); if (hn > 0) put(hn + z + 0.5, p > 0.4 ? 6 : 1);
+      if (p > 0.3) { const fl = (p - 0.3) / 0.7;
+        for (const [ox, ex, ey] of [[-1.6, -4.2, -13.5], [1.8, 3.6, -14]]) {
+          const fx0 = Rhand[0] + ox, fy0 = Rhand[1] - 3.5, fx1 = Rhand[0] + ex * fl + ox * (1 - fl), fy1 = Rhand[1] - 3.5 + (ey + 3.5) * fl;
+          const f = tube(u, v, fx0, fy0, fx1, fy1, 1.75, 1.35); if (f > 0) put(f + z + 1.2, 6);
+          const tip = ball(u, v, fx1, fy1, 1.4, 1.4, 1.1); if (tip > 0) put(tip + z + 1.4, 1);
+        }
+      } }
+    return h;
+  };
+}
+
+// ---------- one pose: build the field, light it, ink it, composite over the room ----------
+const HB = new Float32Array(W * H), MB = new Uint8Array(W * H), CR = new Float32Array(W * H * 3), COV = new Float32Array(W * H), SH = new Float32Array(W * H);
+let ROOM, img, lit, lctx;   // lit: the offscreen canvas holding room + body for the current pose
+function* poseJob(P) {
+  const field = makeField(P);
+  const HX = 50 + P.hx, HY = 44 + P.hy, ctt = Math.cos(P.tilt), stt = Math.sin(P.tilt);
+  const x0 = 1, x1 = W - 2, y0 = 1, y1 = H - 2;
+  // pass 1: height and material. The field is sampled on a 2px lattice; a pixel whose four lattice corners
+  // share one material with no step between them is interpolated (most of the skin, hair and cloth), and
+  // only pixels near an edge, a step or a material border are evaluated exactly. Same look, about half the work.
+  const GW = ((x1 - x0) >> 1) + 2, GH = ((y1 - y0) >> 1) + 2, G = new Float32Array(GW * GH), GM = new Uint8Array(GW * GH);
+  for (let gy = 0; gy < GH; gy++) { for (let gx = 0; gx < GW; gx++) { const h = field((x0 + gx * 2 + 0.5) / S, (y0 + gy * 2 + 0.5) / S); G[gy * GW + gx] = h; GM[gy * GW + gx] = h > 0 ? MAT : 0; } if ((gy & 15) === 15) yield; }
+  for (let y = y0; y <= y1; y++) {
+    const gr = ((y - y0) >> 1) * GW, v = (y + 0.5) / S, fy = ((y - y0) & 1) * 0.5;
+    for (let x = x0; x <= x1; x++) {
+      const i = y * W + x, gi = gr + ((x - x0) >> 1), fx = ((x - x0) & 1) * 0.5;
+      const ma = GM[gi], ha = G[gi], hb = G[gi + 1], hc = G[gi + GW], hd = G[gi + GW + 1];
+      if (ma === GM[gi + 1] && ma === GM[gi + GW] && ma === GM[gi + GW + 1]) {
+        const lo = Math.min(ha, hb, hc, hd), hi = Math.max(ha, hb, hc, hd);
+        if (ma === 0) { if (hi < -0.6) { HB[i] = lo; MB[i] = 0; continue; } }
+        else if (hi - lo < 1.5) { HB[i] = (ha + (hb - ha) * fx + (hc - ha) * fy + (ha - hb - hc + hd) * fx * fy) * S; MB[i] = ma; continue; }
+      }
+      const h = field((x + 0.5) / S, v);
+      if (h > 0) { HB[i] = h * S; MB[i] = MAT; } else { HB[i] = h; MB[i] = 0; }
+    }
+    if ((y & 31) === 31) yield;
+  }
+  // the cast shadow on the wall: her mask, blurred and offset toward the window
+  for (let i = 0; i < W * H; i++) SH[i] = MB[i] ? 1 : 0;
+  boxBlur(SH, W, H, 3, 2);
+  yield;
+  // a blurred copy of the height for crevice shading
+  const blurH = new Float32Array(W * H);
+  for (let i = 0; i < W * H; i++) blurH[i] = HB[i] > 0 ? HB[i] : 0;
+  boxBlur(blurH, W, H, 4, 2);
+  yield;
+  // pass 2: light. Banded diffuse from the warm lamp, a cool fill from the window, a rim, a sheen on the hair
+  for (let y = y0 + 1; y < y1; y++) {
+    for (let x = x0 + 1; x < x1; x++) {
+      const i = y * W + x; COV[i] = 0;
+      if (!MB[i]) continue;
+      const m = M[MB[i]];
+      const hl = HB[i - 1] > 0 ? HB[i - 1] : HB[i] - 3, hr = HB[i + 1] > 0 ? HB[i + 1] : HB[i] - 3, hu = HB[i - W] > 0 ? HB[i - W] : HB[i] - 3, hd = HB[i + W] > 0 ? HB[i + W] : HB[i] - 3;
+      let nx = (hl - hr) * 0.5, ny = (hu - hd) * 0.5;
+      const g2 = nx * nx + ny * ny; if (g2 > 9) { const sc = 3 / Math.sqrt(g2); nx *= sc; ny *= sc; }
+      // a cel surface shades by region, not by strand: most of the normal comes from the blurred field
+      if (MB[i] !== 8 && MB[i] !== 7) { const bx = (blurH[i - 1] - blurH[i + 1]) * 0.5, by = (blurH[i - W] - blurH[i + W]) * 0.5; nx = nx * 0.3 + bx * 0.7; ny = ny * 0.3 + by * 0.7; }
+      const inv = 1 / Math.sqrt(nx * nx + ny * ny + 1); nx *= inv; ny *= inv; const nz = inv;
+      // self-shadow: step toward the lamp across the field (the bangs shade the brow, the chin shades the neck)
+      let occ = 0;
+      for (let s = 1; s <= 5; s++) { const stp = s * 2.4, xx = (x + 0.5 + SDX * stp) | 0, yy = (y + 0.5 + SDY * stp) | 0; if (xx < 1 || yy < 1 || xx >= W - 1 || yy >= H - 1) break; const dh = HB[yy * W + xx] - (HB[i] + stp * RISE * 0.6); if (dh > 1.2) { const o = Math.min(1, (dh - 1.2) / 3); if (o > occ) occ = o; } }
+      const crev = clamp(1 - Math.max(0, blurH[i] - HB[i]) * 0.06, 0.55, 1);
+      const ndl = (nx * L1[0] + ny * L1[1] + nz * L1[2]) * (1 - 0.85 * occ) * crev;
+      // three soft bands: shadow, half-tone, lit, with a little continuous form inside each
+      const band = smooth(0.22, 0.34, ndl) * 0.6 + smooth(0.6, 0.72, ndl) * 0.4;
+      const form = (MB[i] === 1 ? 0.04 : 0.08) * (ndl - 0.5);
+      // the anime hair shine: a wavy band across the crown, in head space
+      let shine = 0; if (MB[i] === 2) { const dxh = x / S - HX, dyh = y / S - HY, hy2 = -dxh * stt + dyh * ctt, hx2 = dxh * ctt + dyh * stt; const bandY = -11 + 1.4 * Math.sin(hx2 * 0.9) + Math.abs(hx2) * 0.28; shine = smooth(1.5, 0.6, Math.abs(hy2 - bandY)) * smooth(15, 8, Math.abs(hx2)) * smooth(0.1, 0.5, Math.sin(hx2 * 2.4 + 0.4)) * 0.1; }
+      const fill = Math.max(0, nx * L2[0] + ny * L2[1] + nz * L2[2]) * (1 - band) * 0.55;
+      const edge = (1 - nz) * (1 - nz);
+      const rimRaw = edge * Math.max(0, nx * 0.75 - ny * 0.55), rim = smooth(0.12, 0.2, rimRaw);
+      const hdot = Math.max(0, nx * H1[0] + ny * H1[1] + nz * H1[2]);
+      let sp = Math.pow(hdot, 30) * m.sp * (1 - occ); sp = MB[i] === 2 ? smooth(0.3, 0.5, sp) * 0.12 : smooth(0.35, 0.6, sp) * 0.35;
+      const c = i * 3;
+      for (let k = 0; k < 3; k++) {
+        let col = m.s[k] + (m.a[k] - m.s[k]) * band + form;
+        col += fill * [0.1, 0.14, 0.26][k] + rim * [0.22, 0.3, 0.5][k] * (0.4 + 0.6 * m.a[k]) + sp * [1, 0.95, 0.95][k] + shine * [1, 0.96, 0.98][k];
+        CR[c + k] = col;
+      }
+      COV[i] = 1;
+    }
+    if ((y & 31) === 31) yield;
+  }
+  // pass 3: the silhouette's coverage from the signed distance the field left outside (negative, in units)
+  for (let y = y0 + 1; y < y1; y++) for (let x = x0 + 1; x < x1; x++) {
+    const i = y * W + x; if (MB[i]) continue;
+    if (!MB[i - 1] && !MB[i + 1] && !MB[i - W] && !MB[i + W]) continue;
+    const c = clamp(0.55 + HB[i] * S * 0.9, 0, 1); if (c <= 0.02) continue;
+    let best = -1e9, src = i;
+    for (const j of [i - 1, i + 1, i - W, i + W]) if (MB[j] && MB[j] !== 255 && HB[j] > best) { best = HB[j]; src = j; }
+    COV[i] = c; CR[i * 3] = CR[src * 3]; CR[i * 3 + 1] = CR[src * 3 + 1]; CR[i * 3 + 2] = CR[src * 3 + 2]; MB[i] = 255;
+  }
+  yield;
+  // pass 4: ink. The silhouette gets a two-pixel line (inside ring plus outside ring, so it is solid at 2x and one
+  // pixel at page size), lighter on the lit side; a step where a front part crosses a back part gets a one-pixel line
+  const inside = i => MB[i] !== 0 && MB[i] !== 255;
+  for (let y = y0 + 1; y < y1; y++) for (let x = x0 + 1; x < x1; x++) {
+    const i = y * W + x;
+    if (inside(i)) {
+      const h = HB[i];
+      const out = !inside(i - 1) || !inside(i + 1) || !inside(i - W) || !inside(i + W);
+      const step = (inside(i - 1) && HB[i - 1] - h > 6.5) || (inside(i + 1) && HB[i + 1] - h > 6.5) || (inside(i - W) && HB[i - W] - h > 6.5) || (inside(i + W) && HB[i + W] - h > 6.5);
+      if (!out && !step) continue;
+      const m = M[MB[i]];
+      const hl = inside(i - 1) ? HB[i - 1] : h - 3, hr = inside(i + 1) ? HB[i + 1] : h - 3, hu = inside(i - W) ? HB[i - W] : h - 3, hd = inside(i + W) ? HB[i + W] : h - 3;
+      const litSide = (hl - hr) * L1[0] + (hu - hd) * L1[1] > 0.3;
+      const ink = litSide && out ? m.ink : m.inkD, c = i * 3, w = step ? 0.8 : 1;
+      CR[c] = lerp(CR[c], ink[0], w); CR[c + 1] = lerp(CR[c + 1], ink[1], w); CR[c + 2] = lerp(CR[c + 2], ink[2], w);
+      if (out) COV[i] = 1;
+    } else {
+      let src = -1, best = -1e9;
+      for (const j of [i - 1, i + 1, i - W, i + W]) if (inside(j) && HB[j] > best) { best = HB[j]; src = j; }
+      if (src < 0) continue;
+      const m = M[MB[src]], hl = inside(i - 1) ? HB[i - 1] : best - 3, hr = inside(i + 1) ? HB[i + 1] : best - 3, hu = inside(i - W) ? HB[i - W] : best - 3, hd = inside(i + W) ? HB[i + W] : best - 3;
+      const litSide = (hl - hr) * L1[0] + (hu - hd) * L1[1] > 0.3, ink = litSide ? m.ink : m.inkD;
+      CR[i * 3] = ink[0]; CR[i * 3 + 1] = ink[1]; CR[i * 3 + 2] = ink[2]; COV[i] = Math.max(COV[i], 0.75); MB[i] = 255;
+    }
+  }
+  yield;
+  // composite: room, her shadow on the wall, then her
+  const d = img.data; d.set(ROOM);
+  for (let y = 8; y < H; y++) for (let x = 6; x < W; x++) {
+    const s = SH[(y - 7) * W + x - 5]; if (s < 0.02) continue;
+    const o = (y * W + x) * 4, k = 1 - 0.42 * s; d[o] *= k; d[o + 1] *= k * 0.97; d[o + 2] *= k * 1.02;
+  }
+  for (let y = y0 + 1; y < y1; y++) for (let x = x0 + 1; x < x1; x++) {
+    const i = y * W + x; if (!MB[i]) continue;
+    const a = COV[i], o = i * 4;
+    for (let k = 0; k < 3; k++) d[o + k] = d[o + k] * (1 - a) + 255 * clamp(CR[i * 3 + k], 0, 1) * a;
+    if (MB[i] === 255) MB[i] = 0;
+  }
+  lctx.putImageData(img, 0, 0);
+}
+
+// ---------- the face, stamped every frame in head space ----------
+function drawFace(ctx, P, mood, mouth, mix) {
+  const HX = (50 + P.hx) * S, HY = (44 + P.hy) * S;
+  ctx.save(); ctx.translate(HX, HY); ctx.rotate(P.tilt); ctx.scale(S, S); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const happy = mix.happy, dry = mix.dry, sur = mix.surprised;
+  // the sulk's gloom over the brow
+  if (dry > 0.02) { ctx.save(); ctx.beginPath(); ctx.ellipse(0, 0, 20.5, 22, 0, 0, 6.3); ctx.clip(); const gd = ctx.createLinearGradient(0, -20, 0, -4); gd.addColorStop(0, `rgba(70,50,130,${0.45 * dry})`); gd.addColorStop(1, 'rgba(70,50,130,0)'); ctx.fillStyle = gd; ctx.fillRect(-22, -22, 44, 18); ctx.restore(); }
+  // cheeks
+  for (const sx of [-1, 1]) { ctx.fillStyle = `rgba(255,120,140,${0.28 + 0.3 * happy + 0.2 * sur})`; ctx.beginPath(); ctx.ellipse(sx * 12, 9.6, 3.4, 1.8, 0, 0, 6.3); ctx.fill(); }
+  const lx = P.look[0] * 1.3, ly = P.look[1] * 0.9;
+  const open = 1 - P.blink;
+  for (const sx of [-1, 1]) {
+    const ex = sx * 8.8, ey = 3.2;
+    const wink = sx > 0 ? happy : 0;                // her left eye (viewer's right) winks, as in the close-up
+    const o = open * (1 - wink) * (1 - 0.48 * dry);
+    ctx.save(); ctx.translate(ex, ey);
+    if (o < 0.12) {
+      // closed: a happy arch for the wink, a flat line for a blink
+      ctx.strokeStyle = '#4a2744'; ctx.lineWidth = 1.05; ctx.beginPath();
+      if (wink > 0.5) { ctx.moveTo(-4.6, 1.4); ctx.quadraticCurveTo(0, -3.2, 4.6, 1.4); } else { ctx.moveTo(-4.6, 0.6); ctx.quadraticCurveTo(0, 1.8, 4.6, 0.6); }
+      ctx.stroke();
+    } else {
+      const ry = 5.6 * o;
+      ctx.save(); ctx.beginPath(); ctx.ellipse(0, 0.2, 5.0, ry, 0, 0, 6.3); ctx.clip();
+      ctx.fillStyle = '#fbf7fa'; ctx.fillRect(-6, -7, 12, 14);
+      // iris: blue above, cyan below, a pink gleam at the top and a pink crescent low (her signature)
+      const ix = lx * 0.9, iy = ly * 0.7 + 0.6;
+      if (sur > 0.5) {
+        ctx.fillStyle = '#ffd25a'; star(ctx, ix, iy, 3.9, 1.6, 4); ctx.fill(); ctx.strokeStyle = '#ff8fc8'; ctx.lineWidth = 0.5; ctx.stroke();
+        ctx.fillStyle = '#fff6c8'; star(ctx, ix - 0.9, iy - 0.9, 1.4, 0.5, 4); ctx.fill();
+      } else {
+        const gd = ctx.createLinearGradient(0, iy - 4.4, 0, iy + 4.4); gd.addColorStop(0, '#2b48c0'); gd.addColorStop(0.5, '#4f8ae8'); gd.addColorStop(1, '#8fe4fb');
+        ctx.fillStyle = gd; ctx.beginPath(); ctx.ellipse(ix, iy, 4.1, 4.6, 0, 0, 6.3); ctx.fill();
+        ctx.fillStyle = 'rgba(30,40,110,0.55)'; ctx.beginPath(); ctx.ellipse(ix, iy - 3, 4.1, 2.1, 0, 0, 6.3); ctx.fill();   // the lid's shadow on the iris
+        ctx.fillStyle = '#1c2a78'; ctx.beginPath(); ctx.ellipse(ix, iy + 0.3, 1.8, 2.3, 0, 0, 6.3); ctx.fill();
+        ctx.fillStyle = 'rgba(255,150,220,0.85)'; ctx.beginPath(); ctx.ellipse(ix, iy + 3.1, 2.6, 1.0, 0, 0, 6.3); ctx.fill();   // pink crescent
+        ctx.fillStyle = '#ffd3ec'; ctx.beginPath(); ctx.ellipse(ix - 1.7, iy - 1.8, 1.5, 1.3, 0, 0, 6.3); ctx.fill();           // pink-tinted highlight
+        ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.ellipse(ix + 1.7, iy + 1.4, 0.65, 0.65, 0, 0, 6.3); ctx.fill();
+      }
+      ctx.restore();
+      // lashes: a thick upper lid, flicked outward; a faint lower lid
+      ctx.strokeStyle = '#4a2744'; ctx.lineWidth = 1.15; ctx.beginPath();
+      ctx.moveTo(-5, 0.8); ctx.quadraticCurveTo(-1, -ry - 1.0, 3.6, -ry + 0.2); ctx.lineTo(sx > 0 ? 6.2 : 5.6, -ry + 1.2); ctx.stroke();
+      if (dry > 0.3) { ctx.strokeStyle = `rgba(74,39,68,${dry})`; ctx.lineWidth = 0.9; ctx.beginPath(); ctx.moveTo(-5, -ry + 0.9 + sx * 0.6); ctx.lineTo(5, -ry + 0.9 - sx * 0.6); ctx.stroke(); }
+      ctx.strokeStyle = 'rgba(120,70,100,0.55)'; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(-3.4, ry * 0.75 + 0.3); ctx.quadraticCurveTo(0.5, ry + 0.7, 4, ry * 0.6); ctx.stroke();
+    }
+    ctx.restore();
+    // brow
+    ctx.strokeStyle = '#b8779c'; ctx.lineWidth = 0.75; ctx.beginPath();
+    const by = -6.0 + 1.5 * dry - 1.6 * sur, tiltB = dry * 1.4 * sx;
+    ctx.moveTo(ex - 4.5 * (sx > 0 ? 1 : 1), by + 0.6 + tiltB * -1); ctx.quadraticCurveTo(ex, by - 1.1 - (sx * -0.5 * dry), ex + 4.6, by + 0.9 + tiltB);
+    ctx.stroke();
+  }
+  // mouth at (0, 12.5)
+  const my = 14.0;
+  const op = mouth === 'open' ? 1 : mouth === 'half' ? 0.5 : 0;
+  ctx.fillStyle = '#8a3650'; ctx.strokeStyle = '#8a3650'; ctx.lineWidth = 0.8;
+  if (sur > 0.5) {                                     // a small round o
+    const r = 0.9 + 1.4 * op; ctx.beginPath(); ctx.ellipse(0, my + 0.4, r * 0.9, r, 0, 0, 6.3); ctx.fill();
+    ctx.fillStyle = '#5a1e30'; ctx.beginPath(); ctx.ellipse(0, my + 0.6 + r * 0.3, r * 0.6, r * 0.55, 0, 0, 6.3); ctx.fill();
+  } else if (happy > 0.5) {                            // a grin, wide; open shows teeth
+    const w = 4.6, hgt = 0.8 + 3.0 * op;
+    ctx.beginPath(); ctx.moveTo(-w, my - 0.6); ctx.quadraticCurveTo(0, my + hgt * 2 + 0.6, w, my - 0.6); ctx.quadraticCurveTo(0, my + 0.3, -w, my - 0.6); ctx.fill();
+    if (op > 0.2) { ctx.fillStyle = '#fff6f8'; ctx.beginPath(); ctx.moveTo(-w + 0.8, my - 0.4); ctx.quadraticCurveTo(0, my + 0.9 + 0.6 * op, w - 0.8, my - 0.4); ctx.quadraticCurveTo(0, my + 0.1, -w + 0.8, my - 0.4); ctx.fill(); }
+    if (op > 0.5) { ctx.fillStyle = '#e06a86'; ctx.beginPath(); ctx.ellipse(0, my + hgt * 1.1, 2, 1.1, 0, 0, 6.3); ctx.fill(); }
+  } else if (dry > 0.5) {                              // flat, a touch sour; talking opens a small slot
+    if (op < 0.2) { ctx.beginPath(); ctx.moveTo(-2.8, my + 0.4); ctx.quadraticCurveTo(0, my - 0.3, 2.6, my + 0.6); ctx.stroke(); }
+    else { ctx.beginPath(); ctx.ellipse(0, my + 0.5, 2.3, 0.5 + 1.1 * op, 0, 0, 6.3); ctx.fill(); }
+  } else {                                             // neutral: a small soft smile; talking opens it
+    if (op < 0.2) { ctx.beginPath(); ctx.moveTo(-2.6, my - 0.1); ctx.quadraticCurveTo(0, my + 1.4, 2.6, my - 0.1); ctx.stroke(); }
+    else { ctx.beginPath(); ctx.moveTo(-2.8, my - 0.2); ctx.quadraticCurveTo(0, my + 1.6 + 2.6 * op, 2.8, my - 0.2); ctx.quadraticCurveTo(0, my + 0.4, -2.8, my - 0.2); ctx.fill();
+      if (op > 0.6) { ctx.fillStyle = '#fff6f8'; ctx.fillRect(-1.8, my + 0.1, 3.6, 0.7); } }
+  }
+  ctx.restore();
+  // sparkles around her for the star eyes
+  if (sur > 0.05) {
+    ctx.save(); ctx.translate(HX, HY);
+    for (const [sx, sy, ph, r] of [[-30, -22, 0, 2.6], [31, -16, 1.9, 2.2], [27, 8, 3.7, 1.7], [-27, 10, 5.1, 1.5]]) {
+      const tw = 0.5 + 0.5 * Math.sin(P.t * 5 + ph); ctx.fillStyle = `rgba(255,224,130,${0.9 * sur * tw})`; star(ctx, sx * S, sy * S, r * S * (0.6 + 0.4 * tw), r * S * 0.3, 4); ctx.fill();
+    }
+    ctx.restore();
+  }
+}
+function star(ctx, x, y, R, r, n) { ctx.beginPath(); for (let i = 0; i < n * 2; i++) { const a = i * Math.PI / n - Math.PI / 2, rr = i & 1 ? r : R; ctx.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); } ctx.closePath(); }
+
+// ---------- the room's own quiet life: rain on the window, the lamp's breath ----------
+const DROPS = (() => { const R = rng(11), a = []; for (let i = 0; i < 16; i++) a.push({ x: 63 + R() * 33, y: R() * 46, v: 9 + R() * 8, l: 2 + R() * 3 }); return a; })();
+function drawRoomLife(ctx, dt, t) {
+  ctx.save(); ctx.beginPath(); ctx.rect(63 * S, 7 * S, 33 * S, 46 * S); ctx.clip();
+  ctx.strokeStyle = 'rgba(190,210,255,0.28)'; ctx.lineWidth = 1.2;
+  for (const d of DROPS) { d.y += d.v * dt; if (d.y > 50) { d.y = -4; d.x = 63 + Math.random() * 33; } ctx.beginPath(); ctx.moveTo(d.x * S, d.y * S); ctx.lineTo((d.x - 0.3) * S, (d.y + d.l) * S); ctx.stroke(); }
+  ctx.restore();
+  const gl = ctx.createRadialGradient(16 * S, 36 * S, 4, 16 * S, 36 * S, 150); const k = 0.06 + 0.035 * Math.sin(t * 1.1) * Math.sin(t * 2.7);
+  gl.addColorStop(0, `rgba(255,205,140,${k})`); gl.addColorStop(1, 'rgba(255,205,140,0)'); ctx.fillStyle = gl; ctx.fillRect(0, 0, W, H);
+}
+
+// ---------- page ----------
+const root = document.getElementById('march'), canvas = document.getElementById('c'), ctx = canvas.getContext('2d');
+const big = document.getElementById('big'), bctx = big.getContext('2d');
+lit = document.createElement('canvas'); lit.width = W; lit.height = H; lctx = lit.getContext('2d'); img = lctx.createImageData(W, H);
+ROOM = buildRoom();
+const params = new URLSearchParams(location.search);
+if (params.get('mood')) root.dataset.mood = params.get('mood');
+if (params.get('action')) root.dataset.action = params.get('action');
+let mouth = 'closed', talk = false, talkT = 0;
+window.marchMouth = s => { mouth = s === 'open' || s === 'half' ? s : 'closed'; };
+const mq = params.get('mouth'); if (mq === 'talk') talk = true; else if (mq) window.marchMouth(mq);
+// a screenshot URL wants the pose already there, not easing in: snap the springs to their targets
+if (params.get('action') || params.get('mood')) { A.point = root.dataset.action === 'point' ? 1 : 0; A.palm = root.dataset.action === 'facepalm' ? 1 : 0; for (const k in A.moodMix) A.moodMix[k] = root.dataset.mood === k ? 1 : 0; A.sparkle = A.moodMix.surprised; }
+// the test strip
+function buttons(id, key, list, cur, set) { const el = document.getElementById(id); el.innerHTML = ''; for (const v of list) { const b = document.createElement('button'); b.textContent = v; if (v === cur()) b.className = 'on'; b.onclick = () => { set(v); buttons(id, key, list, cur, set); }; el.appendChild(b); } }
+const strip = () => {
+  buttons('moods', 'mood', ['neutral', 'happy', 'dry', 'surprised'], () => root.dataset.mood, v => { root.dataset.mood = v; });
+  buttons('actions', 'action', ['none', 'point', 'facepalm'], () => root.dataset.action, v => { root.dataset.action = v; });
+  buttons('mouths', 'mouth', ['closed', 'half', 'open', 'talk'], () => talk ? 'talk' : mouth, v => { talk = v === 'talk'; if (!talk) window.marchMouth(v); });
+};
+strip();
+let last = performance.now(), job = null, jobPose = -1, lastPose = -1, poseMs = 0, poseN = 0, workMs = 0, frameMs = 0, frameN = 0, mouthTick = 0;
+function startJob(p) { job = poseJob({ ...A, locks: A.locks.slice(), look: A.look.slice() }); jobPose = p; workMs = 0; }
+function step(budget) { const t0 = performance.now(); while (job && performance.now() - t0 < budget) if (job.next().done) job = null; workMs += performance.now() - t0; if (!job && workMs > 0) { poseMs += workMs; poseN++; workMs = -1e9; } }
+function frame(now) {
+  const f0 = performance.now();
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  update(dt, root.dataset.mood || 'neutral', root.dataset.action || 'none');
+  if (talk) { mouthTick += dt; if (mouthTick > 0.04) { mouthTick = 0; const r = Math.random(); window.marchMouth(r < 0.3 ? 'closed' : r < 0.6 ? 'half' : 'open'); } }
+  const pose = Math.floor(A.t * POSE_HZ);
+  if (pose !== lastPose) { if (jobPose < pose) startJob(pose); step(lastPose < 0 ? 1e9 : 6); if (!job && jobPose === pose) { lastPose = pose; } }
+  else if (job) step(6);
+  if (lastPose >= 0) {
+    ctx.drawImage(lit, 0, 0);
+    drawRoomLife(ctx, dt, A.t);
+    drawFace(ctx, A, root.dataset.mood, mouth, A.moodMix);
+    bctx.drawImage(canvas, 0, 0);
+  }
+  const fm = performance.now() - f0; frameMs += fm; frameN++;
+  if ((frameN & 31) === 0) document.getElementById('perf').textContent = `pose ${(poseMs / Math.max(1, poseN)).toFixed(1)} ms · frame ${(frameMs / frameN).toFixed(1)} ms`;
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+window.__march = { _job: () => poseJob({ ...A, locks: A.locks.slice(), look: A.look.slice() }), perf: () => ({ poseMs: poseMs / Math.max(1, poseN), poses: poseN, frameMs: frameMs / Math.max(1, frameN), frames: frameN }), A,
+  // a synchronous benchmark, because headless WebKit barely runs animation frames: n whole poses, then n face+room draws
+  bench: (n = 10) => { const t0 = performance.now(); for (let k = 0; k < n; k++) { update(1 / 60, root.dataset.mood, root.dataset.action); const j = poseJob({ ...A, locks: A.locks.slice(), look: A.look.slice() }); while (!j.next().done); } const t1 = performance.now();
+    for (let k = 0; k < n; k++) { ctx.drawImage(lit, 0, 0); drawRoomLife(ctx, 1 / 60, A.t); drawFace(ctx, A, root.dataset.mood, mouth, A.moodMix); bctx.drawImage(canvas, 0, 0); } const t2 = performance.now();
+    return { poseMs: (t1 - t0) / n, drawMs: (t2 - t1) / n, perFrameAt12Hz: ((t1 - t0) / n) * 12 / 60 + (t2 - t1) / n }; } };
+})();
+</script>
+</body>
+</html>
