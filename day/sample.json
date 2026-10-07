@@ -59,7 +59,7 @@
         },
         {
           "speaker": "march",
-          "text": "He fixed them. Then a second grader read it again and found one more.",
+          "text": "He fixed them. Then a grader read it again and found one more.",
           "emotion": "surprised",
           "action": "none",
           "source": 2
@@ -87,7 +87,7 @@
         },
         {
           "speaker": "march",
-          "text": "Finished. Say it again, it sounds even better the second time.",
+          "text": "Finished. Say it again, it sounds even better the next time.",
           "emotion": "happy",
           "action": "point",
           "source": 3
