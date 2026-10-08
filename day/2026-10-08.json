@@ -4796,6 +4796,181 @@
           "audioMs": 3517
         }
       ]
+    },
+    {
+      "id": "2026-10-08-35",
+      "title": "THE FEW STONES THAT HOLD THE ROAD",
+      "startAt": "2026-10-08T10:16:09.289+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-35.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Value of Time"
+      ],
+      "angle": "What if I approached this with the Pareto Principle in mind?",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Value of Time: Time magnifies the margin between success & failure. It will multiply whatever you feed it."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: We all have the same limited time in a day."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: At any given moment, you are doing what you most want to be doing."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: Time is the only separator between your past, present and future."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "The donut can wait. The road cannot.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2795
+        },
+        {
+          "speaker": "narrator",
+          "text": "Picture a long road covered in small stones. Most of them are just stones. A few of them hold the whole road up.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7765
+        },
+        {
+          "speaker": "march",
+          "text": "Wait, is the road the stones, or the stones the road? Because I only see stones.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4749
+        },
+        {
+          "speaker": "narrator",
+          "text": "Stay with me. Every man has the same limited time in a day. Same hours. Same clock. Nobody gets extra.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7979
+        },
+        {
+          "speaker": "march",
+          "text": "Same clock, very different days. That part is true, and it stings a little.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4056
+        },
+        {
+          "speaker": "narrator",
+          "text": "The Pareto Principle says that a small slice of what we do brings most of the results. Most of the work goes nowhere. A thin part of it does nearly everything.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10581
+        },
+        {
+          "speaker": "narrator",
+          "text": "Mark the hour. Something important just got said.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3413
+        },
+        {
+          "speaker": "march",
+          "text": "Marking it. Still the same hour, narrator.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2772
+        },
+        {
+          "speaker": "narrator",
+          "text": "Time multiplies whatever you feed it. So feed it the small slice. The part of the day that moves the needle.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7317
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. I would still feed it the slice you can finish, though. Big slices spoil on the desk.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5072
+        },
+        {
+          "speaker": "narrator",
+          "text": "The small slice is not always the easy slice. Often it is the hour you keep saying you will do tomorrow.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6955
+        },
+        {
+          "speaker": "march",
+          "text": "Yes. That is the hour that hurts.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2303
+        },
+        {
+          "speaker": "narrator",
+          "text": "Time is the only separator between your past, present and future. Every choice of the small slice is a stone set down for the man ahead.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9728
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, the stone comparison is doing a lot of work. But fine. The stone is real.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5006
+        },
+        {
+          "speaker": "narrator",
+          "text": "Picture him looking back, years from now, at the few stones he chose to lift. That is the road he walked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6997
+        },
+        {
+          "speaker": "march",
+          "text": "He did not get there by lifting every stone. He got there by finding the few that counted.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5331
+        },
+        {
+          "speaker": "march",
+          "text": "Narrator, your turn. Name your small slice on air. Then name the one hour you will stop pushing to tomorrow.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5774
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 5
+      }
     }
   ]
 }
