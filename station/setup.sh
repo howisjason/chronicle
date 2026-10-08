@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# setup.sh: installs Kokoro, the channel's voice. Run once per session by STATION.md step 1.
+# setup.sh: installs Kokoro, the channel's voice. Run once on the Mac, inside station/.venv.
 #
 # Why the ONNX build and GitHub, not the pip 'kokoro' package and Hugging Face:
 # the cloud session's network blocks huggingface.co (found 8 Oct 2026, first

@@ -208,7 +208,12 @@ def validate():
 def push_audio(day):
     """The sound lives on the `audio` branch, rebuilt from nothing each time with only
     the files still on air or within the last hour, so no sound is ever kept."""
-    keep = [s for s in day['segments'] if s.get('audio') and
+    # Yesterday's file too, so a scene still on air just after midnight keeps its sound.
+    segs = list(day['segments'])
+    y = f'day/{(datetime.now(TZ).date() - timedelta(days=1)).isoformat()}.json'
+    if os.path.exists(y):
+        segs = json.load(open(y))['segments'] + segs
+    keep = [s for s in segs if s.get('audio') and
             datetime.fromisoformat(s['startAt']) + timedelta(milliseconds=seg_ms(s)) > datetime.now(TZ) - AUDIO_KEEP]
     d = 'inbox/audio-branch'
     shutil.rmtree(d, ignore_errors=True)
@@ -221,9 +226,17 @@ def push_audio(day):
     g = lambda *a: subprocess.run(['git', '-C', d, *a], check=True, capture_output=True)
     g('init', '-q'); g('add', '-A'); g('commit', '-qm', 'audio: the last hour only', '--allow-empty')
     g('push', '-qf', url, 'HEAD:audio')
-    for s in day['segments']:  # local copies of anything older go too
-        if s.get('audio') and s not in keep and os.path.exists(s['audio']):
-            os.remove(s['audio'])
+    # Local copies of anything older go too, and whole day folders once empty.
+    keep_paths = {s['audio'] for s in keep}
+    for root, _, files in os.walk('audio'):
+        for f in files:
+            p = os.path.join(root, f)
+            if p not in keep_paths:
+                os.remove(p)
+    for root, dirs, _ in os.walk('audio', topdown=False):
+        for x in dirs:
+            if not os.listdir(os.path.join(root, x)):
+                os.rmdir(os.path.join(root, x))
 
 
 def publish(day):
