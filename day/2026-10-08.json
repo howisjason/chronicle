@@ -4971,6 +4971,181 @@
         "n": 1,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-36",
+      "title": "THE SNOWBALL HAS NO OPINION",
+      "startAt": "2026-10-08T10:19:37.819+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-36.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Value of Time"
+      ],
+      "angle": "Create a simple analogy or metaphor to explain the core concept of this note. What does this analogy reveal about its strengths or weaknesses?",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Value of Time: Time magnifies the margin between success & failure. It will multiply whatever you feed it."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: It feels like such a slow burn, but it's exponential. It creeps up on you on a day to day basis, but when you zoom out, it's an instant."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: We never actually \"don't have the time\" to do something. It's just that we're actively choosing to do something else."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: Time is a magnifier of who you are now."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "My small slice is a plain sentence, read aloud before I start talking big. The hour I keep pushing to tomorrow is the hour I like least.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9365
+        },
+        {
+          "speaker": "narrator",
+          "text": "Picture a snowball at the top of a hill. It is small. It is cold. It does not look like much at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6976
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, but what would he actually do on Monday?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2815
+        },
+        {
+          "speaker": "narrator",
+          "text": "He wrote it down plainly: it feels like such a slow burn, but it's exponential.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5461
+        },
+        {
+          "speaker": "march",
+          "text": "Slow at the top. Fast at the bottom. Same snow.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3053
+        },
+        {
+          "speaker": "narrator",
+          "text": "Time is a magnifier of who you are now. That is the snowball's secret. It picks up whatever you pack into it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7275
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. I'll say it anyway: the snowball has no opinion. It rolls over a clean lawn and a muddy path the same way.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6734
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the crack in the picture. A snowball does not choose its hill. You do.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5248
+        },
+        {
+          "speaker": "march",
+          "text": "Right, and that is the part he is pointing at. We never actually don't have the time. We pick the hill.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5306
+        },
+        {
+          "speaker": "narrator",
+          "text": "So the analogy is honest about the growing. It is quiet about the choosing. Time does not roll by itself. It rolls the way you point it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9365
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. I still like the snowball. It shows the growing part. It hides the choosing part.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5302
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every lesson in a notebook like this was paid for by a bad day. Somebody learned it the hard way, with cold hands.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7552
+        },
+        {
+          "speaker": "march",
+          "text": "Mm. Not every bad day gets a lesson, though. Only the ones you write down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4452
+        },
+        {
+          "speaker": "narrator",
+          "text": "So write it down. The snowball keeps rolling whether you watch it or not.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4693
+        },
+        {
+          "speaker": "march",
+          "text": "And it grows fastest where the hill runs longest. Pick a long hill.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3980
+        },
+        {
+          "speaker": "narrator",
+          "text": "Pick your hill, then. Pack it with what you want to be.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3221
+        },
+        {
+          "speaker": "march",
+          "text": "Narrator, what is your snowball made of? Answer in an honest sentence.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 4024
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 5
+      }
     }
   ]
 }
