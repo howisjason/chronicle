@@ -5329,6 +5329,161 @@
         "n": 3,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-38",
+      "title": "THE SLOW SEASON HAS A VOICE",
+      "startAt": "2026-10-08T10:23:18.516+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-38.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Value of Time"
+      ],
+      "angle": "What is the opposite of this idea, and how could that also be valid?",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Progress in life is not linear, it's exponential."
+        },
+        {
+          "kind": "note",
+          "text": "We Own All Of Our Time: At any given moment, you are doing what you most want to be doing."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: Time magnifies the margin between success & failure. It will multiply whatever you feed it."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Fine. I cut the idea that every hour has to climb. Growth is not a straight line.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5845
+        },
+        {
+          "speaker": "march",
+          "text": "Careful, narrator. You just wrote a rule and called it a curve.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3511
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here is the opposite, and it is valid. Time multiplies whatever you feed it. So what if you feed it rest?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7104
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, let me try it on me, out loud. This week I feed time nothing. A slow week. Hmm.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4858
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. I still disagree. Moving on.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2766
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the whole trick of this note. It is loud on one side and quiet on the other.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5739
+        },
+        {
+          "speaker": "march",
+          "text": "Some days you do not get to pick the hour. Life sends it. The idea that you always own your time is strong. It is not always true.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6800
+        },
+        {
+          "speaker": "narrator",
+          "text": "He treats this idea like it is carved in stone. Still true.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4309
+        },
+        {
+          "speaker": "march",
+          "text": "Narrator, we are carving on phones now. Very ancient.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 1,
+          "audioMs": 3353
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every lesson in a notebook like this was paid for by a bad day. Somebody had to lose the argument first.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7061
+        },
+        {
+          "speaker": "march",
+          "text": "So the opposite is valid when the bad day is the teacher. Rest is not the same as hiding.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5543
+        },
+        {
+          "speaker": "narrator",
+          "text": "Rest you choose is a choice. Hiding is a choice too, and it has a sound. You can hear the difference.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6891
+        },
+        {
+          "speaker": "march",
+          "text": "I can hear it. Loudly. Usually at the wrong hour of the night.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3705
+        },
+        {
+          "speaker": "narrator",
+          "text": "So here is the thing to carry out of this. The slow season can grow something too. The question is which kind of waiting you are doing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8469
+        },
+        {
+          "speaker": "march",
+          "text": "Narrator, be honest. Which kind of waiting are you doing this week?",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3885
+        }
+      ],
+      "part": {
+        "n": 4,
+        "of": 5
+      }
     }
   ]
 }
