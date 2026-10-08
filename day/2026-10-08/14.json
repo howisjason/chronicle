@@ -1385,6 +1385,175 @@
         "n": 3,
         "of": 3
       }
+    },
+    {
+      "id": "2026-10-08-14-09",
+      "title": "THE TEST LOAF ON THE BOARD",
+      "startAt": "2026-10-08T14:28:29.562+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-14-09.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Failure Is How We Learn And Grow",
+        "Any Benefit Fallacy"
+      ],
+      "angle": "What if this problem existed in an entirely different industry?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Failure As a Means Of Growth: Trying to write a great song is hard. Trying to write a bad song is easy and fun."
+        },
+        {
+          "kind": "note",
+          "text": "Failure As a Means Of Growth: Just make sure that you capture the lessons from each experience."
+        },
+        {
+          "kind": "note",
+          "text": "Any Benefit Fallacy: Every choice involves a trade-off."
+        },
+        {
+          "kind": "note",
+          "text": "Any Benefit Fallacy: Time spent on lower-value activities could have been allocated to high-value ones."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Right, the failure note first. Trying to write a bad song is easy and fun, apparently, so we should all go and be terrible on purpose.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6835
+        },
+        {
+          "speaker": "narrator",
+          "text": "A bakery, March, is where the truest lesson on the matter is taught. Before a loaf reaches the window, the baker bakes the test loaf at dawn, burns it, cuts it open on the board, and reads the crumb like scripture. Failure there is the apprenticeship itself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 16960
+        },
+        {
+          "speaker": "march",
+          "text": "Sure. But a test loaf is flour, salt, and an hour of oven time you don't get back. Every choice involves a trade-off, which is the other note's whole point.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7865
+        },
+        {
+          "speaker": "narrator",
+          "text": "A trade-off is a cost only to the timid. The baker who will not spoil a loaf never learns why the dough sank, and his bakery closes in the end, quietly, with a very good window display.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12928
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Grand closing. The lesson is the crumb, not the tragedy. But a bad loaf that teaches you nothing is just wasted flour. The log is what makes it count.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7887
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now, the log you insist on is merely a ledger of confessions. I would keep it in gold ink and read it aloud to the flour merchant, who would weep.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9600
+        },
+        {
+          "speaker": "march",
+          "text": "Time spent on lower-value activities could have been allocated to high-value ones. So which loaves are the high-value ones? Not every test is worth an afternoon.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 8141
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every loaf is worth an afternoon to the man who must learn his oven by heart. You are counting the warmth in the crust as if it were coin.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8981
+        },
+        {
+          "speaker": "march",
+          "text": "I'm counting the afternoon, which is the bit that runs out. Here's where they cross: make the cheap mistake fast, then stop making it expensive. Cheap mistakes are the high-leverage ones.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 9168
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cheap is a word for shopkeepers. The lesson is priceless, March, and you have simply been caught saying it on the wrong side of the counter.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8661
+        },
+        {
+          "speaker": "march",
+          "text": "Caught out, am I. Fine. The private scoreboard says this one is mine.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4088
+        },
+        {
+          "speaker": "narrator",
+          "text": "You keep a scoreboard in your head, which is what happens to clerks. I, on the other hand, keep a whole cathedral of memory, and it is never once been tallied.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10091
+        },
+        {
+          "speaker": "march",
+          "text": "Stop with the cathedral. Planting this for the run: the test loaf. On the board, cut open, half-baked, the crumb showing exactly where it went wrong. Every part of this run comes back to that loaf.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 9291
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall plant a crumb of my own: the baker who has tasted every mistake and still smiles at the oven door. I concede it is a more comfortable image than yours.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11008
+        },
+        {
+          "speaker": "march",
+          "text": "You'd have said that about a cliff. Keep it short, Narrator. No more loaves today.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 4570
+        },
+        {
+          "speaker": "narrator",
+          "text": "Keep it short, she says, and I am cut off mid-crust, which is the price of genius in a studio with a clock. Very well: the test loaf carries it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10069
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 4
+      }
     }
   ]
 }
