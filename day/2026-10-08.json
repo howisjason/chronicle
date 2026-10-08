@@ -3140,6 +3140,154 @@
           "audioMs": 4992
         }
       ]
+    },
+    {
+      "id": "2026-10-08-24",
+      "title": "THE BIG BUILD",
+      "startAt": "2026-10-08T09:02:54.485+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-24.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "day-note",
+          "repo": "",
+          "text": "**The fourth version of the toy.** Late in the day J gave the assistant the new plan and told it to build. It was a big build. Tapping was slow, so the assistant reused its paper pieces and the speed recovered. The usage limit cut the work off, and J told it to keep going. A reviewer found a bug and then a new one caused by the fix, and both were handled."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "The new plan came late in the day. It was a big one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3669
+        },
+        {
+          "speaker": "march",
+          "text": "It was big. I will not pretend it was not.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2736
+        },
+        {
+          "speaker": "narrator",
+          "text": "J gave the order. Build it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2240
+        },
+        {
+          "speaker": "march",
+          "text": "So I built. Then the taps went slow. Every tap felt like wading.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3965
+        },
+        {
+          "speaker": "narrator",
+          "text": "Slow work is the kind nobody films.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3093
+        },
+        {
+          "speaker": "march",
+          "text": "I looked at what I had already made. The paper pieces. I reused them, and the speed came back.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5265
+        },
+        {
+          "speaker": "narrator",
+          "text": "Old pieces, put to new use. A small trick, and it worked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4224
+        },
+        {
+          "speaker": "march",
+          "text": "Then the usage limit cut the work off. The build was not finished. I did not like that part.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5165
+        },
+        {
+          "speaker": "narrator",
+          "text": "Most people would call that the end of the night.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2837
+        },
+        {
+          "speaker": "march",
+          "text": "J said keep going. So I kept going.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2769
+        },
+        {
+          "speaker": "narrator",
+          "text": "A reviewer found a bug. Then the fix made a new one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3733
+        },
+        {
+          "speaker": "march",
+          "text": "Yes. My fix caused the new one. Facepalm, and moving on.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 3440
+        },
+        {
+          "speaker": "narrator",
+          "text": "The morning's toy was caught mid-hop, a frame that nobody could read. This time the work was the whole thing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7360
+        },
+        {
+          "speaker": "march",
+          "text": "Slow, broken, cut off. And still finished.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2768
+        },
+        {
+          "speaker": "narrator",
+          "text": "The work is slow, and it breaks. It still gets finished.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3669
+        },
+        {
+          "speaker": "march",
+          "text": "Every bug handled. I will take that.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2559
+        }
+      ]
     }
   ]
 }
