@@ -854,6 +854,175 @@
         "n": 5,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-14-06",
+      "title": "THE SHOES LEFT BY THE DOOR",
+      "startAt": "2026-10-08T14:16:14.758+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-14-06.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Habits Become Automatic - Your New Identity",
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "Cross Pollination: Find the intersection of key ideas between two or more notes.",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic - Your New Identity: Old habits are who you are. New habits, should they stick, will eventually become old habits."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Vividly imagining a situation is literally the same as experiencing it, as far as your brain's concerned."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Mental practice is as powerful as actual practice."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Okay, the note says old habits are who you are. So the shoes by the door are the person, not the jog.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5777
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the shoes are a vow, waiting in the hall with the patience of a sentry. Every great run begins with footwear that refuses to leave the house without you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10219
+        },
+        {
+          "speaker": "march",
+          "text": "They're runners, not vows. You leave them out because starting tomorrow is easier when you trip over them.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5538
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the stumble is the sermon. You tread on the habit each morning until the habit treads back upon you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6315
+        },
+        {
+          "speaker": "march",
+          "text": "The brain learns from repetition, and tripping is repetition. That's the note, not your sermon.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5243
+        },
+        {
+          "speaker": "narrator",
+          "text": "Imagining the run is running, as the note says, so the shoes are already laced. I have worn them in my mind for years, through every mountain pass I never climbed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10859
+        },
+        {
+          "speaker": "march",
+          "text": "Mental practice is as powerful as actual practice, the note says. But you still haven't gone out the door.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5942
+        },
+        {
+          "speaker": "narrator",
+          "text": "I concede the door. Still, the boots and the drawer and my chair are all one sentence about waiting, and I have been reading it aloud for an hour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9472
+        },
+        {
+          "speaker": "march",
+          "text": "Stay out of my chair. You want it because I keep my score there and you can't read it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4837
+        },
+        {
+          "speaker": "narrator",
+          "text": "I can read the score perfectly. I merely decline to admit how far ahead you are, the way one keeps a cushion warm for a guest who never arrives.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9365
+        },
+        {
+          "speaker": "march",
+          "text": "You were right.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1442
+        },
+        {
+          "speaker": "march",
+          "text": "Now, what's under my design? Guess again, and this time make it sensible.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4052
+        },
+        {
+          "speaker": "narrator",
+          "text": "The drawer holds a crown no one will mail. Or a map. Or a single shoe, which would be fitting for a man who only waits.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7957
+        },
+        {
+          "speaker": "march",
+          "text": "Wrong, every time.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 1820
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall make my move on the chair, where destiny keeps the score and the kettle keeps its clock.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6272
+        },
+        {
+          "speaker": "march",
+          "text": "Keep the chair warm. I've got a comeback saved for when you're comfortable.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3883
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 3
+      }
     }
   ]
 }
