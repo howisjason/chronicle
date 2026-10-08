@@ -1023,6 +1023,187 @@
         "n": 1,
         "of": 3
       }
+    },
+    {
+      "id": "2026-10-08-14-07",
+      "title": "THE PATH THAT WALKS YOU",
+      "startAt": "2026-10-08T14:19:32.803+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-14-07.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Habits Become Automatic - Your New Identity",
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "Create a simple analogy or metaphor to explain the core concept of this note. What does this analogy reveal about its strengths or weaknesses?",
+      "kind": "try_it",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic - Your New Identity: Old habits are who you are."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Think and speak only the grandest narrative for yourself."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Try it on me. I'm a runner who answers comments late. The note says each late answer is a vote. So who do I become?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6158
+        },
+        {
+          "speaker": "narrator",
+          "text": "You become a slow tide, March, a woman who answers each message only when the moon permits, and every late reply is a stone dropped into a well that answers back in the voice of your grandmother.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12821
+        },
+        {
+          "speaker": "march",
+          "text": "That's a poster. Give me something I can walk.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2856
+        },
+        {
+          "speaker": "narrator",
+          "text": "Very well. Imagine a path worn through long grass, where the walker is not one soul but every soul who ever crossed the meadow, pressing the stalks flat until the crossing is simply the road.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13141
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Walk it daily, the grass stays flat. Stop, it grows back. The weak bit: a path goes wherever feet went, even off a cliff.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6757
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the cliff is merely the path's honest ambition, and the walker who strides over the edge has at least kept faith with the grass.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8043
+        },
+        {
+          "speaker": "march",
+          "text": "Stop being poetic at a cliff. Short version: I walk the path, I'm a walker. Done.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4817
+        },
+        {
+          "speaker": "narrator",
+          "text": "Tomorrow your walker will be shorter by a single stride, and the stride will be missed by no one but the grass.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6549
+        },
+        {
+          "speaker": "march",
+          "text": "Brain bit, quick.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1612
+        },
+        {
+          "speaker": "narrator",
+          "text": "The nervous system cannot tell the difference between an imagined experience and a real one. So you may imagine the cliff so faithfully that you fall off it in your sleep, rejoicing.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12032
+        },
+        {
+          "speaker": "march",
+          "text": "That's yours, sure. Mirrors next.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2415
+        },
+        {
+          "speaker": "narrator",
+          "text": "A mirror, yes. It shows you the face you wear this minute, so you are whatever it reflects, which is splendid for a vain man and grave for a woman with a deadline.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10475
+        },
+        {
+          "speaker": "march",
+          "text": "Mirror's worse. It shows the now and nothing of the walk. You can't see your legs in it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4583
+        },
+        {
+          "speaker": "narrator",
+          "text": "You keep winning the instruments, which is unfair, as I had only just polished the glass. Still, the mirror was mine first and you have scratched it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9472
+        },
+        {
+          "speaker": "march",
+          "text": "Think and speak only the grandest narrative. So say mine aloud, in your voice.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4541
+        },
+        {
+          "speaker": "narrator",
+          "text": "Stand straighter. Speak to the room as though the room has paid for the tickets. Say: I am the walker, bold of stride, and the grass bows as I pass.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10027
+        },
+        {
+          "speaker": "march",
+          "text": "I am the walker, bold of stride. There. Feels like a costume I haven't tried on yet.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4911
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I stay in the chair, guess again what sits under your design, and let the cliff keep its appointment.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6464
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 3
+      }
     }
   ]
 }
