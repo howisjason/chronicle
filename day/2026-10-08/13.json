@@ -2563,6 +2563,175 @@
         "n": 2,
         "of": 4
       }
+    },
+    {
+      "id": "2026-10-08-13-16",
+      "title": "WHO SELLS THE SELF BACK",
+      "startAt": "2026-10-08T13:59:05.107+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-16.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Embodiment - Be Who You Strive To Be",
+        "Consistency Compounds Exponentially"
+      ],
+      "angle": "What are the potential ethical implications or societal consequences (positive or negative) of this idea if widely adopted? How could it be misused?",
+      "kind": "legend",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Embody Who You Want To Be: Visualise what you want but even more importantly, visualise who you'd have to be to be living that life, the actions you'd take, the behaviours you'd have, etc."
+        },
+        {
+          "kind": "note",
+          "text": "Do not merely pretend; become. Engage all of your senses in the fantasy. Feed your delusion."
+        },
+        {
+          "kind": "note",
+          "text": "Allowing your consistency to break sets you back magnitudes more than you could ever imagine."
+        },
+        {
+          "kind": "note",
+          "text": "The person you see is the person you'll be."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Hear the old book of the Kingdom of Self. It says a man who visualises the steady life he would have to live begins to live it, and no one may refuse him the throne.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11029
+        },
+        {
+          "speaker": "march",
+          "text": "No one may refuse him the throne? Lovely. Who sells that throne, Narrator? A coach with a course and a jacket with a fringe on it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6670
+        },
+        {
+          "speaker": "narrator",
+          "text": "A humble man with a course, and a fine old tradition. Every crown must be sold by somebody before a man can wear it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8341
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call him humble. He's a vendor telling tired people the problem is their picture of themselves.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5749
+        },
+        {
+          "speaker": "narrator",
+          "text": "The problem is their picture, and the cure is a richer one. Simple, you call that? The old texts are never simple.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7339
+        },
+        {
+          "speaker": "march",
+          "text": "Don't you dare call it simple. Something works on tired people, and that is a different thing entirely.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5473
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the fault lies with the tired. A man who longs for comfort will drink any bright potion poured for him, and the potion is only his own imagining returned.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10539
+        },
+        {
+          "speaker": "march",
+          "text": "That's the part that worries me. Feed your delusion, the note says. Somebody else is writing the feed.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5348
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the streak is a mercy, a ledger of the man's own glory, and a broken streak his own shame, which he carries gladly.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8213
+        },
+        {
+          "speaker": "march",
+          "text": "Shame is what they sell. Miss one morning and you're told you've lost years. Ask anyone who skipped a morning because they were exhausted.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 6584
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exhausted men are weak men, and the book does not weep for weakness. It only asks them to stand up straighter.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7125
+        },
+        {
+          "speaker": "march",
+          "text": "Everything's simple to you, Narrator, right up until the simple thing is a tired person being told to stand up straighter.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6615
+        },
+        {
+          "speaker": "narrator",
+          "text": "J, I grant you a title worthy of the glass in which a man sees himself: Keeper of the Honest Glass. Refuse it and the mirror refuses you.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9195
+        },
+        {
+          "speaker": "march",
+          "text": "He'll decline, he's not a lord. Keep the glass, Narrator, somebody has to look in it honestly, and you'd rather admire your own reflection.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 6968
+        },
+        {
+          "speaker": "narrator",
+          "text": "Look how the sunlight lies across the very arm of this chair I claim, and tells me the glass is already polished. Destiny, March, lying in plain light.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10283
+        },
+        {
+          "speaker": "march",
+          "text": "Sunlight on a chair arm is a Tuesday, Narrator. Sit down before you tip the glass over.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5134
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 4
+      }
     }
   ]
 }
