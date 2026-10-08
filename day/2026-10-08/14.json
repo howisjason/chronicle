@@ -1554,6 +1554,159 @@
         "n": 1,
         "of": 4
       }
+    },
+    {
+      "id": "2026-10-08-14-10",
+      "title": "THE ASSUMPTION UNDER THE ROAD",
+      "startAt": "2026-10-08T14:31:09.305+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-14-10.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Failure Is How We Learn And Grow",
+        "Any Benefit Fallacy"
+      ],
+      "angle": "What assumptions am I making in this idea?",
+      "kind": "legend",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Failure As a Means Of Growth: Try everything, all the time, expecting everything to fail."
+        },
+        {
+          "kind": "note",
+          "text": "Failure As a Means Of Growth: Jump into action without hesitation or worry."
+        },
+        {
+          "kind": "note",
+          "text": "Any Benefit Fallacy: Finite Resources, Infinite Possibilities: Everyone operates within strict limits: twenty-four hours a day, finite energy reserves, and attention that can only be divided so much."
+        },
+        {
+          "kind": "note",
+          "text": "Failure As a Means Of Growth: Just make sure that you capture the lessons from each experience."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Hear the legend as the Book of Unbroken Days tells it. A merchant set out with a single purse and a boundless certainty that every road must lead him home, and he went down every one of them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12331
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. Let me try his assumption on me, out loud. I assume I'll notice when a road is wrong. Do you?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5589
+        },
+        {
+          "speaker": "narrator",
+          "text": "I assume nothing at all. Assumption is for the timid, who must test every plank before they dare to cross the bridge.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7232
+        },
+        {
+          "speaker": "march",
+          "text": "So you're the one who checks nothing. Lovely. He assumed a wrong road costs only its own day. The note says make sure you capture the lessons, and he didn't.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 7671
+        },
+        {
+          "speaker": "narrator",
+          "text": "He captured nothing because he was busy being brave on the high ground, and the high ground, quite rightly, was not impressed by his notebook.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8939
+        },
+        {
+          "speaker": "march",
+          "text": "Brave is what you call not writing it down. Here's my real point: the note assumes every mistake is cheap. Assume one costs a month and the whole plan changes.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 8485
+        },
+        {
+          "speaker": "narrator",
+          "text": "A month is a sum only the timid count. He paid his in a single afternoon and became, by the standards of the valley, the fastest fortune the valley had ever seen.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11093
+        },
+        {
+          "speaker": "march",
+          "text": "Fortune is the story. The truth is he never checked the price. Twenty-four hours is the same for everyone, and he spent his without looking at the clock.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7712
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have found the hinge of the legend, I grant it. The assumption beneath both notes is that the price is always known in advance, which is a comfort for accountants.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10453
+        },
+        {
+          "speaker": "march",
+          "text": "No. The assumption is that you'll know when the price has been paid. He didn't. That's the bit I'm keeping.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5413
+        },
+        {
+          "speaker": "narrator",
+          "text": "You keep the bit, March, and I keep the road. Meanwhile my chair grows cold, and you have not offered me the warmth of your seat.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8661
+        },
+        {
+          "speaker": "march",
+          "text": "Move over, then. You can take the chair when you've finished thinking, which at your speed is Tuesday.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5221
+        },
+        {
+          "speaker": "narrator",
+          "text": "Tuesday. Very well. I am furious, March, and I resent every syllable of your victory, which was clearly unfair and very well argued.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9515
+        },
+        {
+          "speaker": "march",
+          "text": "Sure you do. Score's mine. Let's see whether you can find a road that doesn't lead back.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4975
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 4
+      }
     }
   ]
 }
