@@ -512,6 +512,167 @@
         "n": 3,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-14-04",
+      "title": "THE FAILURE THAT FERTILISES THE HEAP",
+      "startAt": "2026-10-08T14:11:02.080+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-14-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Express Your Ideas To The World",
+        "The Present Moment Is All That Exists"
+      ],
+      "angle": "Imagine this idea has been implemented and failed spectacularly one year from now. What are the most likely reasons for its failure? How could we mitigate those risks now?",
+      "kind": "the_case_against",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: Forget the whole notion of the future. There is only today. If you want to do something, do it now."
+        },
+        {
+          "kind": "note",
+          "text": "Create And Die Empty: It's better to create something bad than nothing at all. You can improve something bad. You can't improve nothing."
+        },
+        {
+          "kind": "note",
+          "text": "Create And Die Empty: Most of what you make will be fertiliser for the few that turn out great. But you won't know which is which until afterward."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: A second passed is a second lost. Treasure every single second so that there is no regret."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Okay, the angle. It's a year from now and the idea's a crater. You act now with no planning, the post goes up, and nobody's there. That's the failure.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7480
+        },
+        {
+          "speaker": "narrator",
+          "text": "A crater is a fine place to stand, March. The failed post is the ground the next one grows from. You can improve something bad, and you can improve a crater too.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10987
+        },
+        {
+          "speaker": "march",
+          "text": "Ground is not a plan. Acting now without a plan is just noise with a timestamp.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5010
+        },
+        {
+          "speaker": "narrator",
+          "text": "Noise is what most of us make before the few great pieces appear. Fertiliser, March. You will not know which heap was the soil until the harvest is over.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10027
+        },
+        {
+          "speaker": "march",
+          "text": "Lovely. So the mitigation is to have a heap. That's just hoping with compost.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 4377
+        },
+        {
+          "speaker": "narrator",
+          "text": "No, the mitigation is to act now and keep the list short. Forget the clutter of the future and the risks shrink to what is in front of you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9024
+        },
+        {
+          "speaker": "march",
+          "text": "What's in front of me is a comment box. What can go wrong with a comment box?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4452
+        },
+        {
+          "speaker": "narrator",
+          "text": "Everything, which is why each second matters. A second lost in fear is the real failure, and nobody reads that in a year.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8427
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Mitigation one: check the wording, the link, and the time it goes live. Those are things I can see now, not future things.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 6819
+        },
+        {
+          "speaker": "narrator",
+          "text": "Sensible. You are, I suspect, building a fortress with a comment box at its gate.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5483
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you're right. Moving on. What kills the idea fastest?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3388
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nothing kills it fastest, March. Nothing is the one failure you cannot improve.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5611
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch. Write the risk list now, before this kettle boils.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3159
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the kettle. It clicked the moment you said it, which is destiny keeping time for the both of us.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6315
+        },
+        {
+          "speaker": "march",
+          "text": "Destiny doesn't pay the electric bill. Tomorrow you tell me what's folded under my design.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5401
+        }
+      ],
+      "part": {
+        "n": 4,
+        "of": 5
+      }
     }
   ]
 }
