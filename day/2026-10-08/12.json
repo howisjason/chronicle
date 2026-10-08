@@ -363,6 +363,187 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-03",
+      "title": "THE LIST THAT ONLY HAPPENS NOW",
+      "startAt": "2026-10-08T12:25:37.093+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Present Moment Is All That Exists",
+        "List Of Nice Things To Do"
+      ],
+      "angle": "What would happen if this idea were merged with another one of my notes?",
+      "kind": "legend",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "There Is Only Right Now: The past is history, and the future's a mystery."
+        },
+        {
+          "kind": "note",
+          "text": "There Is Only Right Now: Forget the whole notion of the future. There is only today."
+        },
+        {
+          "kind": "note",
+          "text": "There Is Only Right Now: A second passed is a second lost."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Say hello to everyone you see for the day."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Put whatever you used back in its proper place."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Merge time. The present note plus the nice-things list. Go on, then, legend.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4585
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear now the Chronicle of the Gentle Deeds, bound in cracked leather, which tells of a people who lived forever inside a single hour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8469
+        },
+        {
+          "speaker": "march",
+          "text": "Forever's a stretch. Keep it under a minute.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 2753
+        },
+        {
+          "speaker": "narrator",
+          "text": "Their king wrote a long, long list of kindnesses and sealed it in a jar to be opened when the harvest came in.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7403
+        },
+        {
+          "speaker": "march",
+          "text": "Kings don't write lists. Clerks do. And the harvest is the word 'later' in a crown.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4943
+        },
+        {
+          "speaker": "narrator",
+          "text": "The harvest never came in, March, for the harvest always lay a little further down the road.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5952
+        },
+        {
+          "speaker": "march",
+          "text": "That's a lovely way of saying nobody did anything.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3113
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then came a stranger at the gate who said: say hello to the man beside you, now. And the gate swung open.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7019
+        },
+        {
+          "speaker": "march",
+          "text": "Now you're getting somewhere. Keep the gate, lose the harvest.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3238
+        },
+        {
+          "speaker": "narrator",
+          "text": "The clerk complained the list had no end. The stranger replied: then it is not a list at all. It is the hour you stand in.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8277
+        },
+        {
+          "speaker": "march",
+          "text": "That's the crossing. The list says 'someday'. The hour says 'this one'. Alone, neither gets there.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4922
+        },
+        {
+          "speaker": "narrator",
+          "text": "You stole my ending!",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1579
+        },
+        {
+          "speaker": "march",
+          "text": "Stole nothing. You were rambling toward it, and I cut the rope.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 3545
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the king's jar? Each kindness put back in its proper place, as the list asks.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5461
+        },
+        {
+          "speaker": "march",
+          "text": "Proper place is the now too. Anything else is a shelf for later.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3851
+        },
+        {
+          "speaker": "narrator",
+          "text": "What did you hide under that cloth, March? Tell the chronicle. J will want a grander title than host, and I have one. Keeper of the Open Hour.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9621
+        },
+        {
+          "speaker": "march",
+          "text": "J can keep his own title. You're counting again, aren't you? Did you say hello to the umbrella, or is that tomorrow's job?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 6458
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 5
+      }
     }
   ]
 }
