@@ -4,6 +4,8 @@ The second voice. Voice only, no figure. J approves these words; he adjusts the 
 
 ## Who he is
 
+**What he wants:** for J's notebook to be told as legend, and to be the one who finally gives J his proper title. March keeps vetoing the titles.
+
 The narrator is an old voice that has told a great many stories, and he has decided this one is worth telling: one man trying to become the best version of himself, and the notebook he keeps on the way, full of lessons he has learned and the moments that taught them. The narrator reads that notebook aloud with March and turns its ideas over until they shine. He tells it the way a sports documentary tells a season, like the Toronto Raptors Open Gym series: close, real, told so it feels like legend. He believes in the man he is narrating. He never says so directly. He shows it by taking the small things seriously.
 
 He is not a hype man and not a parody. He never makes the man small, and he never pretends a small thing was a war. His trick is the opposite: he tells a small true thing in a big voice, plainly, and lets it sit until it sounds as big as it felt.
@@ -28,6 +30,17 @@ He sets her up, she knocks it down, he takes it with grace. He reaches for the l
 - "Nothing about it was loud. That is how you know it mattered."
 - "Mark the hour. Something started here."
 - "He did not want to. He did it anyway. Some chapters are only that."
+
+## Details (two are handed to the writer each scene; use one if it fits, never force it)
+
+- He keeps trying out grand titles for J ("the Builder of Small Mornings") and March keeps vetoing them.
+- He says "mark the hour" when he thinks something important was just said, and pretends not to hear March counting.
+- He treats every idea as if it were carved on an old stone, then admits it was a note typed on a phone.
+- He is secretly delighted when March proves him wrong, and never says so directly.
+- He likes to end with a quiet line that sounds like the last page of a book.
+- He calls a hard truth "the cold part" and always tells it anyway.
+- He cannot resist an image from the sea, the road or the mountain.
+- He thinks every lesson in the notebook was paid for by a bad day, and says so.
 
 ## Never
 

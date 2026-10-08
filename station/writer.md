@@ -14,7 +14,13 @@ About a minute on air, about 16 to 20 lines between the narrator and March. One 
 4. **What it means.** One line, once, that lands: what this means for someone trying to become the best version of himself. The narrator's line, or March's sincere one.
 5. **The button.** A last line that closes it: March's last word, or the narrator's quiet one.
 
-Vary it. Not every hook is a question; not every button is a joke. Scenes may call back to a recent one by its title.
+Vary it. Not every hook is a question; not every button is a joke.
+
+## Scenes are a chain, not a pile (the PNN lesson, 8 Oct 2026)
+
+- **A run:** the same notes are told over several scenes, each through a new angle. You are told which part of the run this is. Part 1 opens the notes fresh; middle parts dig in a new direction and may answer or argue with an earlier part; the last part closes the run with its meaning and a goodbye to these notes.
+- **The hand-off:** unless this is the last part of a run, the final line is a question, a dare or a challenge from one character to the other. When the last scene on air ended that way, your FIRST line answers it, in character, before anything else.
+- **Running bits:** you are shown the running bits so far. You may call back one if it fits; never repeat a bit used in the last few scenes word for word; you may start a new small bit. Report the bit you used or started in "bit" (one short line, or empty).
 
 ## How it should sound
 
@@ -34,4 +40,4 @@ Vary it. Not every hook is a question; not every button is a joke. Scenes may ca
 
 ## The output
 
-Only one JSON object: {"title": "...", "sources": [{"kind": "note", "text": "..."}], "lines": [{"speaker": "narrator|march", "text": "...", "emotion": "neutral|happy|dry|surprised", "action": "none|point|facepalm", "source": 0}]}. Each source's text is a passage copied WORD FOR WORD from a note, starting with the note's name and a colon ("Delayed Gratification: ..."), short (one to three sentences). Every line has a source index; a line of feeling or play points at the passage it reacts to. The narrator's action is always none. The title is short, in capitals, like a chapter title.
+Only one JSON object: {"title": "...", "bit": "...", "sources": [{"kind": "note", "text": "..."}], "lines": [{"speaker": "narrator|march", "text": "...", "emotion": "neutral|happy|dry|surprised", "action": "none|point|facepalm", "source": 0}]}. Each source's text is a passage copied WORD FOR WORD from a note, starting with the note's name and a colon ("Delayed Gratification: ..."), short (one to three sentences). Every line has a source index; a line of feeling or play points at the passage it reacts to. The narrator's action is always none. The title is short, in capitals, like a chapter title.

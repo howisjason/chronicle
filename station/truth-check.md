@@ -13,6 +13,7 @@ Never flag:
 - ideas, lessons, examples, metaphors, analogies and imagined cases that do not claim to be J's history;
 - the characters' opinions, teasing, praise or doubts;
 - public figures the notes name;
-- the two voices talking to each other.
+- the two voices talking to each other;
+- callbacks to earlier scenes or running bits of the channel itself (what March or the narrator did or said before), which you are shown.
 
 Answer with one line per flagged line: `<segment id> line <index>: <what the notes do not support>`, with lines counted from 0, as in the `lines` list. If nothing is flagged, answer exactly: `CLEAN`. "CLEAN" is an acceptable answer, and the usual one; you are not asked to find something.

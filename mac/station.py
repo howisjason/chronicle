@@ -106,8 +106,43 @@ def angles():
     return [m.strip() for m in re.findall(r'(?m)^- (.+)$', sec)]
 
 
-WRITER = '\n\n'.join([read('station/writer.md'), '# March\n' + read('station/march.md'),
-                      '# The narrator\n' + read('station/narrator.md'), '# Forbidden\n' + read('forbidden.md')])
+def sheet_and_details(path):
+    """A character sheet without its Details list, and the list itself: PNN hands
+    its writer two random details per character each segment, so the same
+    character shows a new side without the sheet growing."""
+    text = read(path)
+    if '## Details' not in text:
+        return text, []
+    head, rest = text.split('## Details', 1)
+    body, _, tail = rest.partition('\n## ')
+    details = re.findall(r'(?m)^- (.+)$', body)
+    return head + ('## ' + tail if tail else ''), details
+
+
+MARCH_SHEET, MARCH_DETAILS = sheet_and_details('station/march.md')
+NARR_SHEET, NARR_DETAILS = sheet_and_details('station/narrator.md')
+WRITER = '\n\n'.join([read('station/writer.md'), '# March\n' + MARCH_SHEET,
+                      '# The narrator\n' + NARR_SHEET, '# Forbidden\n' + read('forbidden.md')])
+RUN = 'inbox/lab-run.json' if '--lab' in sys.argv else 'inbox/run.json'
+BITS = 'inbox/lab-bits.json' if '--lab' in sys.argv else 'inbox/bits.json'
+
+
+def current_run(notes, recent_segs):
+    """A run is the same notes told over several scenes, each through a new angle
+    (PNN's shows run a topic in parts). A finished run starts a fresh pick."""
+    run = json.load(open(RUN)) if os.path.exists(RUN) else None
+    if run and run['n'] < run['of'] and all(n in notes for n in run['notes']):
+        run['n'] += 1
+        left = [a for a in angles() if a not in run['angles']] or angles()
+        run['angles'].append(random.choice(left))
+    else:
+        chosen, angle = pick(notes, recent_segs)
+        run = {'notes': chosen, 'n': 1, 'of': random.randint(3, 5), 'angles': [angle]}
+    return run
+
+
+def bits():
+    return json.load(open(BITS)) if os.path.exists(BITS) else []
 
 
 def load_day():
@@ -166,8 +201,12 @@ def pick(notes, recent_segs):
 
 
 def truth(seg, material):
+    # The earlier scenes and running bits are passed too, so a callback to them
+    # is not mistaken for an invented event (lab, 8 Oct 2026).
+    earlier = [s['title'] for s in recent()[-8:]] + bits()[-10:]
     return ask(read('station/truth-check.md'),
-               f'The segment:\n{json.dumps(seg, ensure_ascii=False)}\n\nThe notes it was written from:\n{material}', 'truth').strip()
+               f'The segment:\n{json.dumps(seg, ensure_ascii=False)}\n\nThe notes it was written from:\n{material}'
+               f'\n\nEarlier scenes and running bits on this channel (callbacks to these are allowed): {earlier}', 'truth').strip()
 
 
 def one_segment(day):
@@ -175,13 +214,20 @@ def one_segment(day):
     notes = pool.notes()
     if not notes:
         return 'the pool is empty; run mac/pool.py'
-    chosen, angle = pick(notes, recent() + day['segments'] if LAB else recent())
+    run = current_run(notes, recent() + day['segments'] if LAB else recent())
+    chosen, angle = run['notes'], run['angles'][-1]
     material = '\n\n'.join(f'## NOTE: {n}\n{notes[n]}' for n in chosen)
     titles = [s['title'] for s in day['segments'][-8:]]
     tail = day['segments'][-1]['lines'][-2:] if day['segments'] else []
     frame = ('Merge these two notes: find where their ideas cross, and what the crossing shows that neither shows alone.'
              if len(chosen) == 2 else 'Take this one note deeper than it goes on its own.')
-    user = (f"{material}\n\n{frame}\nThe angle for this scene: {angle}\n\n"
+    part = (f"This is part {run['n']} of a run of {run['of']} on these notes"
+            + (' (the LAST part: close the run, no hand-off question).' if run['n'] == run['of'] else '.'))
+    user = (f"{material}\n\n{frame}\nThe angle for this scene: {angle}\n{part}\n\n"
+            f"Two details for March this scene: {random.sample(MARCH_DETAILS, min(2, len(MARCH_DETAILS)))}\n"
+            f"Two details for the narrator this scene: {random.sample(NARR_DETAILS, min(2, len(NARR_DETAILS)))}\n"
+            f"Running bits from earlier scenes (you may call back one): {bits()[-10:-3]}\n"
+            f"Bits used in the last few scenes, NOT to be used in this one (a bit gets old fast): {bits()[-3:]}\n\n"
             f"Recent scene titles (do not repeat them): {titles}\nThe last two lines on air: {json.dumps(tail, ensure_ascii=False)}")
     feedback = ''
     for attempt in range(3):
@@ -205,7 +251,7 @@ def one_segment(day):
             continue
         verdict = truth(seg, material)
         if verdict == 'CLEAN':
-            return trial
+            return keep(trial, run, out.get('bit'))
         print(f'station: try {attempt + 1} flagged: {verdict[:200]}', flush=True)
         # Repair the flagged lines once; the repair is checked like a new try.
         try:
@@ -218,12 +264,25 @@ def one_segment(day):
             save(trial)
             if validate()[0] and truth(seg2, material) == 'CLEAN':
                 print('station: repaired', flush=True)
-                return trial
+                return keep(trial, run, fixed.get('bit') or out.get('bit'))
         except (ValueError, KeyError, RuntimeError, subprocess.TimeoutExpired):
             pass
         feedback = f'\n\nA fresh reader flagged these lines. Write the scene again without them:\n{verdict}'
     save(day)
+    if os.path.exists(RUN):
+        os.remove(RUN)  # a pick that never passes ends its run
     return 'three tries refused; this pick is dropped'
+
+
+def keep(trial, run, bit):
+    """A scene passed: the run moves on, and its running bit is remembered."""
+    trial['segments'][-1]['part'] = {'n': run['n'], 'of': run['of']}
+    save(trial)
+    json.dump(run, open(RUN, 'w'), indent=1, ensure_ascii=False)
+    if bit and str(bit).strip():
+        b = bits() + [str(bit).strip()[:200]]
+        json.dump(b[-30:], open(BITS, 'w'), indent=1, ensure_ascii=False)
+    return trial
 
 
 def validate():
