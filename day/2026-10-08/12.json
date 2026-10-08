@@ -1566,6 +1566,178 @@
         "n": 4,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-10",
+      "title": "WHO THE EMOTION FILTER SERVES",
+      "startAt": "2026-10-08T12:44:30.417+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-10.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices"
+      ],
+      "angle": "What are the potential ethical implications or societal consequences (positive or negative) of this idea if widely adopted? How could it be misused?",
+      "kind": "verdict",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Learning and memorisation is emotion dependent. When you're bored like you were in school, you likely forget everything."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: The best way to reduce the effects of the forgetting curve is to actively recall what you learned with spaced repetition."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: From a sea of information, they pick out pieces that interest them at the moment."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: EVERY TIME you learn something new, it must be your duty to teach those same lessons to the world."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: You learn the MAJORITY of everything from actually DOING."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Consider the town crier who learns the art of stirring a crowd. He knows wonder opens every ear, and an open ear is a door. What fine bell would not be rung for its own profit?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12437
+        },
+        {
+          "speaker": "march",
+          "text": "Sure, but he has to make people feel something first. Wonder is easy to fake. The note never says what the feeling is pointed at.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6926
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the note hands a loaded brush to every hand. A man with a crowd already in a peak state needs no lie at all, only a clever wonder, and the lie rides in on it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11392
+        },
+        {
+          "speaker": "march",
+          "text": "Or the shop that makes you curious about a cheap tin of paint. Same trick, different shelf. Excitement makes a thing stick, true or not.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6989
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the scheduled reminder, which the note hopes will keep learning fresh. Set it to a fixed slogan and it becomes a bell that rings one creed each morning until the creed feels like one's own.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12629
+        },
+        {
+          "speaker": "march",
+          "text": "Repetition is the risky bit, yeah. But recall only works if you pick what you're recalling, and picking is where you stay in charge.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 7052
+        },
+        {
+          "speaker": "narrator",
+          "text": "Pick? Who picks for the child? The schoolmaster, the church, the advertiser. The child chooses from a sea of information only what adults have arranged to seem interesting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11200
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, that's a real worry. Kids do get steered. But the note wants you to teach it back, and explaining a lie in simple terms makes it crack.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 7332
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yet the world is not always a patient listener. Teach a crowd to broadcast what it learned, and a rumour learns to be told beautifully, and teaching becomes the loudest form of spreading.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 11904
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you win. Anyway, the good side: a farmer who records himself explaining soil to a neighbour helps the whole valley. Spreading knowledge is how neighbours get ahead.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 8679
+        },
+        {
+          "speaker": "narrator",
+          "text": "Good side, bad side, the same bowl of soup. The note never asks who the teacher serves, and a duty to the world is only as sound as the world that receives it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10645
+        },
+        {
+          "speaker": "march",
+          "text": "It does ask you to be honest, though. You learn the bulk of anything by actually doing it. If you can't do it, you shouldn't be teaching it.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 4,
+          "audioMs": 6527
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the teacher must be trusted to do the doing, and trust is exactly what the emotion-maker sells. What if the one who lights the oven never lets the glass cool?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 10219
+        },
+        {
+          "speaker": "march",
+          "text": "Like the glassmaker's oven. Heat has to come out slowly or the glass cracks. Misuse is just ignoring the cooling, and that's the bit the note leaves out.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7822
+        },
+        {
+          "speaker": "narrator",
+          "text": "Verdict, then, chronicle: March was right that the note holds on memory, and I was right that its warmth can be bought. I saw the danger from afar, as one must. I offer J the title Warden of the Annealing Hour, which he won't read.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15595
+        },
+        {
+          "speaker": "march",
+          "text": "He'll read it, go wash the jar on the sill, and set the reminder anyway. Up next: Staying On Your Purpose, then Philosophy Of Social Connection.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7607
+        }
+      ],
+      "part": {
+        "n": 5,
+        "of": 5
+      }
     }
   ]
 }
