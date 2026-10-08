@@ -1529,6 +1529,199 @@
         "n": 3,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-10",
+      "title": "THE CROWD AT THE ONE DOOR",
+      "startAt": "2026-10-08T13:40:55.809+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-10.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices",
+        "Novelty - A Life Fully Lived"
+      ],
+      "angle": "What are the potential ethical implications or societal consequences (positive or negative) of this idea if widely adopted? How could it be misused?",
+      "kind": "try_it",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Nothing twice. Never eat the same food twice. Never go to the same place twice. Never hear the same thing twice. Everything only once."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Be systematic. Follow guides. “Top Places You Must Visit” “Greatest Movies of All Time” “Best Restaurants in Town” Go through them all."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Monotony is the enemy. Novelty is the solution."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Children essentially teach themselves. From a sea of information, they pick out pieces that interest them at the moment."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Okay. I'm living it. Coffee from a shop I've never been to. Done.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3757
+        },
+        {
+          "speaker": "narrator",
+          "text": "Done, March? The note asks you to walk in as a child walks into a field, with your whole face open. You walked in like a clerk with a stamp.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9579
+        },
+        {
+          "speaker": "march",
+          "text": "I walked in like a clerk. Fine. Next: I'm taking the long way round the stone, every single day, so it's new every time.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6716
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you have made the stone a path, which is the very thing the note forbids. Monotony is the enemy, and you have just hired it as a guide.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9045
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on, I'm the one living it. Now here's the bit I like. If everyone follows the same guide, the whole world queues at one door.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6820
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the fault is in the queue, not in the note. A man who loves the sea does not stand on the quay complaining of gulls.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7851
+        },
+        {
+          "speaker": "march",
+          "text": "The note doesn't blame the queue. It also doesn't mention the people who can't get past the end of their street.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5733
+        },
+        {
+          "speaker": "narrator",
+          "text": "Those people will never have the first and last time the note sings about, March. I shall not dress that in silk for you. The street is a wall, and the novelty is shouted through the glass.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11349
+        },
+        {
+          "speaker": "march",
+          "text": "Don't say it's simple. It isn't simple. It's a lot of people stuck at a window.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 4558
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is not simple, and I did not say it was. It is a window, March, and the note has a fine view only from the other side of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8683
+        },
+        {
+          "speaker": "march",
+          "text": "And someone will sell it. Nothing twice as a subscription. Fresh box every month, novelty you keep paying for.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6156
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the seller has read the note and never lived it. Novelty bought in a box is merely a fresh ornament on the same shelf.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8299
+        },
+        {
+          "speaker": "march",
+          "text": "I've got one stroke I'm keeping for myself. You're not getting it, so don't ask.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4420
+        },
+        {
+          "speaker": "narrator",
+          "text": "I should never ask a woman where she keeps her secrets, March, though I note the drawer is shut.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5867
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Your coach voice is getting on my nerves. Move over.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3307
+        },
+        {
+          "speaker": "narrator",
+          "text": "Stand aside, March. You have held this desk all afternoon, and a chair this grand deserves someone who has read the whole note.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8021
+        },
+        {
+          "speaker": "march",
+          "text": "I've read it properly. You've read the first line and called it a sea.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3702
+        },
+        {
+          "speaker": "narrator",
+          "text": "I read the first line with my whole heart, which is the only way that note was ever worth reading.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6379
+        },
+        {
+          "speaker": "march",
+          "text": "Bet you can't name one thing you've never done before. Go on, stroke for it.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4370
+        }
+      ],
+      "part": {
+        "n": 4,
+        "of": 5
+      }
     }
   ]
 }
