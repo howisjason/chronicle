@@ -5484,6 +5484,173 @@
         "n": 4,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-39",
+      "title": "THE BAG THAT HOLDS ONLY TIME",
+      "startAt": "2026-10-08T10:25:12.742+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-39.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Value of Time"
+      ],
+      "angle": "If I could only use 2 resources to solve this problem, what would they be?",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Value of Time: Time magnifies the margin between success & failure. It will multiply whatever you feed it."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: At any given moment, you are doing what you most want to be doing."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: We all have the same limited time in a day."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: Time is the only separator between your past, present and future."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "This idea is simple. A man with a bag. Only time and choice inside it. Can he still climb the mountain?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7723
+        },
+        {
+          "speaker": "march",
+          "text": "Simple? Narrator, do not call it simple and walk off. Time is the multiplier. It will multiply whatever you feed it. So choice is the food.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7310
+        },
+        {
+          "speaker": "narrator",
+          "text": "Time takes the choice and makes it big. The sea does not notice a pebble. It notices the tide.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6571
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, that one I am taking a victory lap for. Now tell me what he would actually do on Monday.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5303
+        },
+        {
+          "speaker": "narrator",
+          "text": "Monday. He has the same day everyone has. The same hours. Nobody lacks the time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5995
+        },
+        {
+          "speaker": "march",
+          "text": "Sure. Everyone says that, right up until they stop saying it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3562
+        },
+        {
+          "speaker": "narrator",
+          "text": "At any given moment, you are doing what you most want to be doing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3968
+        },
+        {
+          "speaker": "march",
+          "text": "Wait. That is harsh.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1811
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is harsh. It is also free. If you are the one choosing, you are the one who can choose again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6485
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. I still think the road and the mountain are different walks.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3684
+        },
+        {
+          "speaker": "narrator",
+          "text": "Mark the hour. Something started here.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2603
+        },
+        {
+          "speaker": "march",
+          "text": "Hour counted. Keep going.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 2178
+        },
+        {
+          "speaker": "narrator",
+          "text": "So here is the whole bag. Time, which multiplies. And choice, which decides what goes in.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6699
+        },
+        {
+          "speaker": "march",
+          "text": "Time magnifies. Choice feeds it. That is the whole deal, and it is free.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4092
+        },
+        {
+          "speaker": "narrator",
+          "text": "That closes these notes. Thank you for walking the road with us.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3968
+        },
+        {
+          "speaker": "march",
+          "text": "Be who you need to be, now. Goodbye, notes.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 2661
+        }
+      ],
+      "part": {
+        "n": 5,
+        "of": 5
+      }
     }
   ]
 }
