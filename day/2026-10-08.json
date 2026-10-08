@@ -5651,6 +5651,174 @@
         "n": 5,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-40",
+      "title": "THE OLD STONE TYPED ON A PHONE",
+      "startAt": "2026-10-08T10:26:57.428+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-40.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Happiness And Gratitude",
+        "Everything Is Subjective"
+      ],
+      "angle": "How was this problem (or a similar one) addressed in the past (e.g., 10, 50, 100 years ago)? What can be learned from previous attempts or contexts?",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: There is no objective right or wrong. There are as many opinions in life as there are people. Some call it black. Others call it white. Everything is subjective."
+        },
+        {
+          "kind": "note",
+          "text": "Everything is Subjective: It's a fool's game to think there's any objective right or wrong, because there is none. Everything is subjective."
+        },
+        {
+          "kind": "note",
+          "text": "Everything is Subjective: Our attitude is like the lens in which we see the world through. A different lens effectively changes your entire reality."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Long before any phone was in anyone's hand, people argued about what was true. Some of the smartest men of their age were sure they had it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8747
+        },
+        {
+          "speaker": "march",
+          "text": "Smartest men of their age. Narrator, you are carving on stone again.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4157
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am carving it on stone. Fine, it was typed on a phone. The cold part comes next.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6187
+        },
+        {
+          "speaker": "march",
+          "text": "Then say the cold part. I can take it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2706
+        },
+        {
+          "speaker": "narrator",
+          "text": "Aristotle said the Earth sat at the center of everything. Everybody believed him, because he was so wise.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6677
+        },
+        {
+          "speaker": "march",
+          "text": "Then a man named Galileo looked at the sky and said no.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3388
+        },
+        {
+          "speaker": "narrator",
+          "text": "Galileo was right about the Earth. He was also wrong about comets and the tides. Everybody believed him too.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7253
+        },
+        {
+          "speaker": "march",
+          "text": "So the lesson is that smart people are wrong sometimes. Simple.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3886
+        },
+        {
+          "speaker": "narrator",
+          "text": "Do not say simple. March, that is a whole history of people being sure.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4928
+        },
+        {
+          "speaker": "march",
+          "text": "It is simple, and I will defend it. Small habits, small checks, and do not hang your whole self on one loud voice. Nobody writes a legend about a checklist, and it still saves the day.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 9079
+        },
+        {
+          "speaker": "narrator",
+          "text": "Newton came after them and blew everyone's mind. He also spent years trying to turn metal into gold.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6805
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, that one is funny. Noted.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 2514
+        },
+        {
+          "speaker": "narrator",
+          "text": "His own note says it plainly. Our attitude is like the lens in which we see the world through.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6229
+        },
+        {
+          "speaker": "march",
+          "text": "So a lens is a habit. You change it with small things, every day, not with one big speech.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5335
+        },
+        {
+          "speaker": "narrator",
+          "text": "And a different lens changes the whole world you see. Even the old stones.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4864
+        },
+        {
+          "speaker": "march",
+          "text": "The stones do not care. Monday does. So tell me, narrator, which lens are you changing before anything else? Answer me next time.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 6476
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 5
+      }
     }
   ]
 }
