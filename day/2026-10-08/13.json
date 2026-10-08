@@ -1207,6 +1207,155 @@
         "n": 1,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-08",
+      "title": "THE STROKE THAT NEEDS A STREET",
+      "startAt": "2026-10-08T13:34:47.859+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-08.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices",
+        "Novelty - A Life Fully Lived"
+      ],
+      "angle": "What is the opposite of this idea, and how could that also be valid?",
+      "kind": "legend",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Monotony is the enemy. Novelty is the solution."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Time feels longer when your day is constantly filled with new and engaging activities, because you're NOT in autopilot mode."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Just learn one thing, watch the one video, THEN APPLY IT."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Consider the opposite, March, as the old philosophers did. Suppose the wall of monotony is not a wall at all but a warm harbour, where a man may rest his sails. Some days a harbour is worth more than any voyage, and the sailor who never docks is merely tired.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 17493
+        },
+        {
+          "speaker": "march",
+          "text": "A harbour where you never leave is a bedroom with a view. The note says monotony is the enemy, and it means the Tuesday you can't remember, not a nap.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7481
+        },
+        {
+          "speaker": "narrator",
+          "text": "A Tuesday forgotten is a Tuesday that rested the soul, March. The mind must be allowed its quiet rooms, or it will never build a grand house to fill.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9963
+        },
+        {
+          "speaker": "march",
+          "text": "Quiet rooms are fine. The note wants autopilot gone, not every room. Those are different things, and you keep mixing them up.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6588
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let us test it on the postcard. On the blank card I see a grand white field, and nothing has yet marred its perfection. Surely a white field is a kind of destiny, the promise not yet broken.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13355
+        },
+        {
+          "speaker": "march",
+          "text": "A blank postcard is just a blank postcard. It's not promising anything. It's waiting for a stroke, and waiting is the boring part.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7050
+        },
+        {
+          "speaker": "narrator",
+          "text": "Destiny is merely the patience of the white field, March. The stroke was always going to come, and the card has known it since the printer first stamped it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9685
+        },
+        {
+          "speaker": "march",
+          "text": "Ink on a blank card is just ink. Nobody's writing destiny on that.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4513
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear the hard truth, then, for I will not soften it. A man who never leaves his own street will die with a card that never bore a stroke, and no grand title will be written on it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11392
+        },
+        {
+          "speaker": "march",
+          "text": "That's the truest thing you've said today. Fine. Then the opposite only holds if the quiet room gets a window, not a wall.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6651
+        },
+        {
+          "speaker": "narrator",
+          "text": "A window! Yes, March, a great window, through which the sea may be glimpsed on any morning, and the cheapest of sails is always the eye.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8683
+        },
+        {
+          "speaker": "march",
+          "text": "The window idea is simple, and simple is what it's meant to be. Keep it that way, and go pick the street.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5954
+        },
+        {
+          "speaker": "narrator",
+          "text": "You call it simple, March, as though simplicity were a crime. I call it the mark of a mind that has cut away the unessential, and I shall say so loudly.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10283
+        },
+        {
+          "speaker": "march",
+          "text": "Keep shouting, I'll keep my comeback for the afternoon. Who draws the first stroke, though? You or me?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5372
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 5
+      }
     }
   ]
 }
