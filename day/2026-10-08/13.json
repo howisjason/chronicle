@@ -870,6 +870,162 @@
         "n": 4,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-06",
+      "title": "THE CHAIR BOTH OF THEM WANT",
+      "startAt": "2026-10-08T13:27:42.877+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-06.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Your Routine Is Top Priority"
+      ],
+      "angle": "How might I solve this in a completely unconventional or exaggerated way?",
+      "kind": "verdict",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Routine: Obey your schedule, no matter how you feel."
+        },
+        {
+          "kind": "note",
+          "text": "Routine: Following your schedule is the most overpowered thing you can do because it turns your entire perfect day into a habit."
+        },
+        {
+          "kind": "note",
+          "text": "Routine: If you have a problem with the schedule then change the schedule itself, not self revise the schedule on a day by day basis."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Closing this one. I'll try the mad version on myself first. I'm the keeper. Chalk's down, lamp's lit, and I'm not allowed out of this chair until the hour says so.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7736
+        },
+        {
+          "speaker": "narrator",
+          "text": "A keeper bound to his chair by his own hand. Magnificent, March, and the book would blush to hear it. The chair itself has been waiting centuries for a worthy occupant.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11477
+        },
+        {
+          "speaker": "march",
+          "text": "Don't say simple. It's a chair and a timer. Say simple once more and I'll ring a bell at you.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 1,
+          "audioMs": 5323
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ring away, then. I shall take the chair while you ring, for a Lord of the Slate must be seated when the hour strikes.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7253
+        },
+        {
+          "speaker": "march",
+          "text": "That's my chair you're eyeing. The lamp's on my side, and so is the kettle.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4137
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your chair is a throne in common clothes, and I only wish to see the view from it, which I am sure is splendid.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7019
+        },
+        {
+          "speaker": "march",
+          "text": "The view is a wall and a kettle. Verdict, then. I was right. The rule isn't the bell or the slate. It's not rubbing out the hours in the dark. Fix a plan in daylight, and it holds.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 8439
+        },
+        {
+          "speaker": "narrator",
+          "text": "You were right, and I am deeply displeased about it, March. You took my simple slate and made a trumpet of it. I had the bones of this story first, the keeper, the lamp and the sea.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11755
+        },
+        {
+          "speaker": "march",
+          "text": "Bones of it. You had a crown in a drawer. I had a Tuesday and a kettle.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 3988
+        },
+        {
+          "speaker": "narrator",
+          "text": "A Tuesday is a small kingdom, and I will rule it, March. Make a note of that, for the legend.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6101
+        },
+        {
+          "speaker": "march",
+          "text": "Noted, and cheap. Your unnamed keeper, the one who never picked up the chalk late. He's the whole point. He just kept his hours in daylight.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7080
+        },
+        {
+          "speaker": "narrator",
+          "text": "A legend need not be named, March. Its silence is its dignity, and its dignity is the lamp.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6336
+        },
+        {
+          "speaker": "march",
+          "text": "Legends need names or they're just weather. Fine. The naming goes to J, not you.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5049
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the book shall have the last word, and I shall hold the pen for it, as the old keepers did.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5909
+        },
+        {
+          "speaker": "march",
+          "text": "The book never gets the last word. J does. Up next, Learning - Best Practices, then Novelty - A Life Fully Lived. Keep the chalk dry.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6890
+        }
+      ],
+      "part": {
+        "n": 5,
+        "of": 5
+      }
     }
   ]
 }
