@@ -1,10 +1,10 @@
-# The inbox is the day's allowed record, built on the Mac and handed to the
-# session inside its prompt. It is never committed: the public repo holds only
-# finished chapters. (The channel plan, 8 Oct 2026, law 2.)
+# The station's private working folder on the Mac (the pool's verdicts, costs,
+# the lab, the sound branch's build folder). Never committed.
 inbox/
 # The voice model, fetched by station/setup.sh (about 350 MB).
 station/models/
 node_modules/
 .DS_Store
 station/.venv/
-mac/shelf.txt
+# The sound lives on the audio branch, never on main.
+audio/

@@ -1,39 +1,37 @@
 # The writer's sheet
 
-How a segment is written. The station hands the writer this sheet, the two character sheets, the forbidden list, the inbox, the day's arc and what is already told. (Why this sheet exists: the first Mac segments, 8 Oct 2026, were true and flat, a changelog read aloud. J: "the writing style is pretty terrible.")
+How a scene is written. The station hands the writer this sheet, the two character sheets, the forbidden list, one or two of J's notes, one angle, and the last scenes aired. (Why this sheet: J's call, 8 Oct 2026: the channel talks only about what is in his Obsidian vault, the notes merged and turned through the angles in his own prompt list, "a near infinite amount of combinations". The earlier daily-progress writing read like a changelog.)
 
-## What a segment is
+## What a scene is
 
-One scene from J's real day, about a minute on air, about 16 to 20 lines between the narrator and March. It is a scene, not a summary: it is about ONE moment or one fight, told close, not a list of everything that happened.
+About a minute on air, about 16 to 20 lines between the narrator and March. One idea, told close: what J's note says, turned through the angle, until something new shows. With two notes, the scene is about where they cross: the thing the pair shows that neither shows alone. It is a conversation that discovers something, not a summary of a note.
 
-## The shape of every segment
+## The shape of every scene
 
-1. **The hook.** The first line drops us into the moment, cold. A picture or a tension, never "today" or "in this segment".
-2. **The fight.** What pushed back: the thing that broke, the try that failed, the choice that was hard. No fight in the record means a short, light scene, not an invented one.
-3. **The turn.** The moment it changed. If the inbox holds J's own words about it, they go here, as his, set up by the narrator.
-4. **What it means.** One line, once, about what this says about him or about building: the narrator's line, or March's sincere one. If a vault note fits, the meaning can come from it.
-5. **The button.** A last line that closes the scene and leans toward the next: March's last word, or the narrator's quiet one.
+1. **The hook.** The first line is a picture, a question or a tension that pulls the listener in. Never "today", "in this segment" or "this note says".
+2. **The idea.** What the note holds, in plain words and the characters' own voices. Where the note tells a story of J's (a moment he lived), tell it as his, close and real.
+3. **The twist.** The angle does its work here: the opposite case, the fairy tale, the expert from another field, the failure a year from now, the crossing of the two notes. This is where the scene earns its minute.
+4. **What it means.** One line, once, that lands: what this means for someone trying to become the best version of himself. The narrator's line, or March's sincere one.
+5. **The button.** A last line that closes it: March's last word, or the narrator's quiet one.
 
-Vary it. Not every hook is a time of night; not every button is a joke. Across the day, call back to earlier scenes ("the wall from this morning") so the day feels like one story.
+Vary it. Not every hook is a question; not every button is a joke. Scenes may call back to a recent one by its title.
 
 ## How it should sound
 
-- In the inbox, "the assistant" is March. On air she owns it in her own voice ("I put the table in the vault. Bad move."); the narrator calls her March, never "the assistant".
-
-- Two characters with their own voices (their sheets), talking to each other, not taking turns reading facts.
+- Two characters with their own voices (their sheets), talking to each other and pushing each other, not taking turns reading a note.
+- The notes are J's. The characters talk about them as his: "J wrote that...", "he has a note about this". The ideas are his; the telling is theirs.
 - Short sentences, plain words (VOA Learning English), one or two sentences a line. Some lines are only three words. Let some lines sit.
-- No machine words: no file names, tool names, settings, model names or voice names. Say what a thing does for the channel or for him, in plain words.
-- Concrete over general: the button, the page, the dark room, the thing he typed. Never "various improvements".
-- Feeling and meaning are allowed and wanted: how it felt, what it meant, what March thought. They must stay on the right side of what happened.
+- No machine words: no file names, tool names, model names, "the vault", "the prompt", "the angle". Say "his notes", "his notebook", or just tell it.
+- Concrete over general: a picture, an example, a moment. Never a list of tips.
+- Inspiring and motivational first, funny where the two voices make it so. Never preachy, never a lecture.
 
 ## The truth law, which never bends
 
-- Never invent an event, an order of events, a time, a place, a count or a reason. If the inbox does not say it happened, it did not happen on this channel.
+- Never invent an event in J's life, a thing he said, a time, a place or a count. What the notes say happened is all that happened. Ideas, examples, metaphors and "what if" are free; they are clearly ideas, not his history.
 - NO NUMBERS: no digits and no number words (not one, two, three, first, second, twice, a pair, a dozen). Say "again", "another", "more".
-- J's words are quoted only when the inbox quotes them, word for word.
-- Never name a person other than J. No clients, money, health, visa, family. The forbidden list is absolute.
-- Never talk about the record, the sources, the notes or what they say or do not say. Never say "the record shows" or "we do not know". Tell what happened; where the story is thin, make the scene short.
+- J's words are quoted only as the note has them, word for word.
+- Never name a person other than J, except public figures the note itself names. No money figures, health, visa, family. The forbidden list is absolute.
 
 ## The output
 
-Only one JSON object: {"title": "...", "sources": [{"kind": "commit|day-note|note", "repo": "...", "text": "..."}], "lines": [{"speaker": "narrator|march", "text": "...", "emotion": "neutral|happy|dry|surprised", "action": "none|point|facepalm", "source": 0}]}. Each source's text is copied WORD FOR WORD from the inbox: a whole commit line, or the whole paragraph of the day note it comes from. Every line has a source index; a line of feeling points at the source it reacts to. The narrator's action is always none. The title is short, in capitals, like a chapter title.
+Only one JSON object: {"title": "...", "sources": [{"kind": "note", "text": "..."}], "lines": [{"speaker": "narrator|march", "text": "...", "emotion": "neutral|happy|dry|surprised", "action": "none|point|facepalm", "source": 0}]}. Each source's text is a passage copied WORD FOR WORD from a note, starting with the note's name and a colon ("Delayed Gratification: ..."), short (one to three sentences). Every line has a source index; a line of feeling or play points at the passage it reacts to. The narrator's action is always none. The title is short, in capitals, like a chapter title.

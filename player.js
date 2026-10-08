@@ -56,6 +56,9 @@ function blip(speaker) {
   o.start();
   o.stop(audioCtx.currentTime + 0.04);
 }
+// The sound lives on the `audio` branch, which holds only the last hour and no
+// history (J: keep the transcripts, not the sound); older scenes play as blips.
+const AUDIO_BASE = 'https://raw.githubusercontent.com/howisjason/chronicle/audio/';
 const voice = new Audio();
 let voiceSrc = '';
 // A segment whose MP3 is gone (pruned after seven days, or never voiced)
@@ -66,7 +69,7 @@ const hasVoice = (segment) => !!segment.audio && !voiceBroken.has(segment.audio)
 // Keep the MP3 on the clock: right file, right position, playing.
 function syncVoice(segment, msIntoSegment) {
   if (!audioCtx || !hasVoice(segment)) { if (!voice.paused) voice.pause(); return; }
-  if (voiceSrc !== segment.audio) { voiceSrc = segment.audio; voice.src = segment.audio; }
+  if (voiceSrc !== segment.audio) { voiceSrc = segment.audio; voice.src = AUDIO_BASE + segment.audio; }
   const want = msIntoSegment / 1000;
   if (voice.readyState > 0 && Math.abs(voice.currentTime - want) > 0.4) voice.currentTime = want;
   if (voice.paused) voice.play().catch(() => {});

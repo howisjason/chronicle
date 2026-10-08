@@ -1,258 +1,281 @@
 #!/usr/bin/env python3
-"""station.py: the station, run on the Mac the way PNN runs (J's call, 8 Oct 2026).
+"""station.py: the channel's station, run on J's Mac the way PNN runs.
 
-Why this exists: a cloud agent session paid 3 to 9 cents a segment, because
-every step (check, truth check, voice, push) was another agent turn re-reading
-Claude Code's whole memory. PNN pays for one plain model request per segment
-and does the rest with ordinary programs. This does the same: one headless
-`claude -p` call writes a segment (no tools, no Claude Code instructions, our
-own sheets only), one more call is the truth check, and the checker, Kokoro and
-git are plain programs. The calls bill J's plan, not an API key; measured
-8 Oct 2026: one segment written for $0.0032 of API-equivalent usage.
+What it tells (J's call, 8 Oct 2026): only the notes in his Obsidian vault, the
+way PNN tells its news feeds. Each scene is one or two notes from the pool
+(mac/pool.py, every note passed by a blind reviewer) seen through one angle from
+his own "AI Prompts For Obsidian Notes" list ("What would happen if this idea
+were merged with another one of my notes? ... infinite combinations"). No daily
+progress, no commits, no session text.
 
-Usage: python3 mac/station.py [YYYY-MM-DD] [MINUTES_AHEAD] [--once]
-Needs the inbox from mac/gather.sh. Logs each call's cost to inbox/<date>/costs.tsv
-(the inbox is never committed).
+How (the PNN way): one plain headless `claude -p` call writes a scene (Haiku 5.5,
+no tools, no Claude Code instructions, our own sheets as the system prompt); the
+checker (station/validate.mjs) and a second call, the truth check, guard it;
+Kokoro voices it on the Mac; the words are committed to main forever
+(day/<date>.json, the transcripts), and the sound goes to the `audio` branch,
+which holds only the last hour and no history (J: keep the transcripts, not the
+sound). Calls bill his plan. Measured 8 Oct 2026: about half a cent of
+API-equivalent usage per clean scene.
+
+Usage: python3 mac/station.py [MINUTES_AHEAD] [--once] [--lab]
+  --lab writes text only into inbox/lab-day.json: never voiced, never pushed.
+Each call's cost goes to inbox/costs.tsv (never committed).
 """
-import hashlib, json, os, subprocess, sys, time
+import json, os, random, re, shutil, subprocess, sys
 from datetime import datetime, timedelta, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
+sys.path.insert(0, os.path.join(ROOT, 'mac'))
+import pool  # noqa: E402
+
 TZ = timezone(timedelta(hours=7))  # Chiang Mai, no daylight saving
-MODEL = 'claude-haiku-5-5'
-EFFORT = 'low'  # thinking was two thirds of the first test's cost
+MODEL, EFFORT = 'claude-haiku-5-5', 'low'
 GAPS = {'firstLeadMs': 1000, 'leadMs': 200, 'holdMs': 600}
+ANGLES_FILE = '/Users/howisjason/Projects/personal/context/obsidian/💡 Meta/⚡️ AI Prompts For Obsidian Notes.md'
+AUDIO_KEEP = timedelta(hours=1)
 
 args = [a for a in sys.argv[1:] if not a.startswith('--')]
-ONCE = '--once' in sys.argv
-# --lab writes text only into a private copy of the day (never voiced, never
-# pushed) so versions can be read side by side before anything airs.
-LAB = '--lab' in sys.argv
-PLANNER = 'claude-sonnet-5-5'  # plans the day's scenes once per run; depth where it pays
-DATE = args[0] if args else datetime.now(TZ).date().isoformat()
-AHEAD = int(args[1]) if len(args) > 1 else 20
-INBOX = f'inbox/{DATE}'
-DAY = f'{INBOX}/lab-day.json' if LAB else f'day/{DATE}.json'
-ARC = f'{INBOX}/{"lab-" if LAB else ""}arc.json'
+ONCE, LAB = '--once' in sys.argv, '--lab' in sys.argv
+AHEAD = int(args[0]) if args else 20
+os.makedirs('inbox', exist_ok=True)
 
 
-def read(p, default=''):
-    try:
-        return open(p).read()
-    except FileNotFoundError:
-        return default
+def today():
+    return datetime.now(TZ).date().isoformat()
 
 
-def ask(system, user, label, model=MODEL):
+def day_path():
+    return 'inbox/lab-day.json' if LAB else f'day/{today()}.json'
+
+
+def read(p):
+    return open(p).read()
+
+
+def ask(system, user, label):
     """One plain model call. Returns its text; logs its cost."""
     r = subprocess.run(
-        ['claude', '-p', '--model', model, '--effort', EFFORT, '--system-prompt', system,
+        ['claude', '-p', '--model', MODEL, '--effort', EFFORT, '--system-prompt', system,
          '--tools', '', '--strict-mcp-config', '--setting-sources', '',
          '--no-session-persistence', '--output-format', 'json'],
         input=user, capture_output=True, text=True, timeout=300)
     d = json.loads(r.stdout)
-    u = d.get('usage', {})
-    with open(f'{INBOX}/costs.tsv', 'a') as f:
+    with open('inbox/costs.tsv', 'a') as f:
         f.write(f"{datetime.now(TZ).isoformat(timespec='seconds')}\t{label}\t{d.get('total_cost_usd')}\t"
-                f"{u.get('output_tokens')}\t{d.get('duration_ms')}\n")
+                f"{d.get('usage', {}).get('output_tokens')}\t{d.get('duration_ms')}\n")
     if d.get('is_error'):
         raise RuntimeError(f'{label}: {d.get("result")}')
     return d['result']
 
 
 def as_json(text):
-    s = text[text.index('{'):text.rindex('}') + 1]
-    return json.loads(s)
+    return json.loads(text[text.index('{'):text.rindex('}') + 1])
 
 
-INBOX_TEXT = ('## commits\n' + read(f'{INBOX}/commits.md') + '\n## day-note\n' + read(f'{INBOX}/day-note.md')
-              + '\n## notes\n' + read(f'{INBOX}/notes.md'))
+def angles():
+    """The angle prompts from his own list, the 'Generating New Innovative Ideas' section."""
+    text = read(ANGLES_FILE)
+    sec = text.split('# Generating New Innovative Ideas', 1)[1].split('\n---', 1)[0]
+    return [m.strip() for m in re.findall(r'(?m)^- (.+)$', sec)]
+
 
 WRITER = '\n\n'.join([read('station/writer.md'), '# March\n' + read('station/march.md'),
-                       '# The narrator\n' + read('station/narrator.md'), '# Forbidden\n' + read('forbidden.md')])
-
-PLAN_SHEET = f"""You plan the day's chapter for a channel that tells J's real day as an epic. Read the writer's sheet below, then split the inbox into SCENES: each one moment with a fight or a turn or a feeling, told close. Order them so the day has an arc: a strong opening scene, the hardest fight in the middle, an ending with meaning. Use only what the inbox shows. RANK BY DRAMA: scenes with J's own words, a real fight, a failure or a turn come first and get the most room. Machinery with no fight in it (code changes, settings, files) is merged into one short scene near the end, or skipped. Never plan a scene whose only content is a technical change.
-Output ONLY JSON: {{"scenes": [{{"moment": "...", "fight": "...", "turn": "...", "quote": "J's exact words from the inbox, or empty", "meaning": "...", "callback": "an earlier scene this one can echo, or empty", "items": ["the exact inbox lines or day-note paragraphs this scene uses"]}}]}}
-
-{read('station/writer.md')}"""
+                      '# The narrator\n' + read('station/narrator.md'), '# Forbidden\n' + read('forbidden.md')])
 
 
 def load_day():
-    if os.path.exists(DAY):
-        return json.load(open(DAY))
-    return {'date': DATE, 'tz': 'Asia/Bangkok', 'segments': []}
+    p = day_path()
+    if os.path.exists(p):
+        return json.load(open(p))
+    return {'date': today(), 'tz': 'Asia/Bangkok', 'segments': []}
+
+
+def save(day):
+    json.dump(day, open(day_path(), 'w'), indent=1, ensure_ascii=False)
+
+
+def seg_ms(seg):
+    return sum((GAPS['firstLeadMs'] if i == 0 else GAPS['leadMs']) + l.get('audioMs', len(l['text']) * 1000 // 16)
+               + GAPS['holdMs'] for i, l in enumerate(seg['lines']))
 
 
 def day_end(day):
     if not day['segments']:
         return None
     last = day['segments'][-1]
-    ms = sum((GAPS['firstLeadMs'] if i == 0 else GAPS['leadMs']) + l.get('audioMs', len(l['text']) * 1000 // 16)
-             + GAPS['holdMs'] for i, l in enumerate(last['lines']))
-    return datetime.fromisoformat(last['startAt']) + timedelta(milliseconds=ms)
+    return datetime.fromisoformat(last['startAt']) + timedelta(milliseconds=seg_ms(last))
 
 
-def told(day):
-    used = [s['text'] for seg in day['segments'] for s in seg['sources']]
-    titles = [seg['title'] for seg in day['segments']]
-    tail = day['segments'][-1]['lines'][-2:] if day['segments'] else []
-    return used, titles, tail
+def recent(n=60):
+    """The last scenes aired, from today's and yesterday's transcripts, so the picker can avoid repeats."""
+    out = []
+    for d in (datetime.now(TZ).date() - timedelta(days=1), datetime.now(TZ).date()):
+        p = f'day/{d.isoformat()}.json'
+        if os.path.exists(p):
+            out += json.load(open(p))['segments']
+    return out[-n:]
 
 
-def validate():
-    r = subprocess.run(['node', 'station/validate.mjs', DAY], capture_output=True, text=True)
-    return r.returncode == 0, (r.stdout + r.stderr).strip()
+def pick(notes, recent_segs):
+    """One or two notes and one angle, avoiding notes and pairings used lately."""
+    names = list(notes)
+    used_notes = [n for s in recent_segs for n in s.get('notes', [])]
+    used_pairs = {tuple(sorted(s.get('notes', []))) for s in recent_segs}
+    used_angles = [s.get('angle') for s in recent_segs[-15:]]
+    fresh = [n for n in names if n not in used_notes[-12:]] or names
+    for _ in range(50):
+        if random.random() < 0.7 and len(names) > 1:
+            a = random.choice(fresh)
+            b = random.choice([n for n in names if n != a])
+            chosen = [a, b]
+        else:
+            chosen = [random.choice(fresh)]
+        if tuple(sorted(chosen)) not in used_pairs:
+            break
+    angle_pool = [x for x in angles() if x not in used_angles] or angles()
+    # His own note marks the merge prompt as the best one; with two notes it is
+    # always the frame, and the angle is the extra twist.
+    return chosen, random.choice(angle_pool)
+
+
+def truth(seg, material):
+    return ask(read('station/truth-check.md'),
+               f'The segment:\n{json.dumps(seg, ensure_ascii=False)}\n\nThe notes it was written from:\n{material}', 'truth').strip()
 
 
 def one_segment(day):
-    # The trial segment is written to disk before it is checked; any failure
-    # puts the day back, or the next run would count an unchecked segment as told.
-    try:
-        return _one_segment(day)
-    except BaseException:
-        json.dump(day, open(DAY, 'w'), indent=1, ensure_ascii=False)
-        raise
-
-
-def plan(day):
-    """The day's arc, made once by the planner and reused; made again only when
-    the inbox has grown and every planned scene is told."""
-    key = hashlib.sha1(INBOX_TEXT.encode()).hexdigest()
-    arc = json.load(open(ARC)) if os.path.exists(ARC) else None
-    if arc and (arc['next'] < len(arc['scenes']) or arc['key'] == key):
-        return arc
-    used, titles, _ = told(day)
-    out = as_json(ask(PLAN_SHEET, f"The inbox:\n{INBOX_TEXT}\n\nAlready told today (titles): {titles}\n"
-                      f"Inbox items already used, do not plan them again: {used}", 'plan', PLANNER))
-    arc = {'key': key, 'next': 0, 'scenes': out['scenes']}
-    json.dump(arc, open(ARC, 'w'), indent=1, ensure_ascii=False)
-    return arc
-
-
-def _one_segment(day):
-    used, titles, tail = told(day)
-    arc = plan(day)
-    quiet = arc['next'] >= len(arc['scenes'])
-    if quiet and day['segments'] and day['segments'][-1].get('quiet'):
-        return 'nothing new, and the last segment was already a quiet one'
-    scene = None if quiet else arc['scenes'][arc['next']]
-    ask_for = ('Nothing in the inbox is new. Write a QUIET scene: on one of the notes, or a short beat that '
-               'looks back on one thing already told, in new words.' if quiet
-               else f'Write this scene, the next in the day\'s arc:\n{json.dumps(scene, ensure_ascii=False)}')
-    user = (f"The inbox:\n{INBOX_TEXT}\n\nAlready told today (titles): {titles}\n"
-            f"The last two lines on air: {json.dumps(tail, ensure_ascii=False)}\n\n{ask_for}")
+    """Write, check and (if needed) repair one scene. Returns the new day, or a reason string."""
+    notes = pool.notes()
+    if not notes:
+        return 'the pool is empty; run mac/pool.py'
+    chosen, angle = pick(notes, recent() + day['segments'] if LAB else recent())
+    material = '\n\n'.join(f'## NOTE: {n}\n{notes[n]}' for n in chosen)
+    titles = [s['title'] for s in day['segments'][-8:]]
+    tail = day['segments'][-1]['lines'][-2:] if day['segments'] else []
+    frame = ('Merge these two notes: find where their ideas cross, and what the crossing shows that neither shows alone.'
+             if len(chosen) == 2 else 'Take this one note deeper than it goes on its own.')
+    user = (f"{material}\n\n{frame}\nThe angle for this scene: {angle}\n\n"
+            f"Recent scene titles (do not repeat them): {titles}\nThe last two lines on air: {json.dumps(tail, ensure_ascii=False)}")
     feedback = ''
-    for attempt in range(4):
-        seg = as_json(ask(WRITER, user + feedback, f'write#{attempt}'))
-        n = len(day['segments']) + 1
-        prev_end = day_end(day)
-        start = max(prev_end, datetime.now(TZ) + timedelta(seconds=60)) if prev_end else datetime.now(TZ) + timedelta(seconds=60)
-        seg = {'id': f'{DATE}-{n:02d}', 'title': seg['title'], 'startAt': start.isoformat(timespec='milliseconds'),
-               'audio': None, 'gaps': GAPS, 'sources': seg['sources'], 'lines': seg['lines']}
-        if quiet:
-            seg['quiet'] = True
-        trial = dict(day, segments=day['segments'] + [seg])
-        json.dump(trial, open(DAY, 'w'), indent=1, ensure_ascii=False)
-        ok, out = validate()
-        if not ok:
-            feedback = f'\n\nYour last try was refused by the checker. Fix these and write it again:\n{out}'
-            print(f'station: try {attempt + 1} refused by the checker: {out[:300]}', flush=True)
-            continue
-        verdict = ask(read('station/truth-check.md'), f'The chapter:\n{json.dumps(seg, ensure_ascii=False)}\n\nThe inbox:\n{INBOX_TEXT}', f'truth#{attempt}')
-        if verdict.strip() == 'CLEAN':
-            return done(trial, arc, quiet)
-        # Cut the flagged lines rather than rewrite: a cut can only remove a
-        # claim, never add one, so it needs no second truth check. Rewrites
-        # kept trading one small stretch for another (8 Oct 2026, four tries).
-        import re
-        bad = {int(m) for m in re.findall(r'(?m)^\S+ line (\d+):', verdict)}
-        # Repair first: the writer rewrites only the flagged lines, keeping the
-        # talk flowing. A plain cut left March answering a question nobody
-        # asked (lab, 8 Oct 2026). The repair is checked again like a new try.
+    for attempt in range(3):
         try:
-            fixed = as_json(ask(WRITER, f"The inbox:\n{INBOX_TEXT}\n\nThis segment:\n{json.dumps(seg, ensure_ascii=False)}\n\n"
-                                f"A fresh reader flagged these lines (counted from 0):\n{verdict}\n\nRewrite ONLY those lines so they "
-                                "claim nothing the inbox does not show, and adjust a neighbouring line only if the talk would not "
-                                "flow. Return the whole segment JSON.", f'repair#{attempt}'))
-            seg2 = dict(seg, lines=fixed['lines'])
-            trial2 = dict(day, segments=day['segments'] + [seg2])
-            json.dump(trial2, open(DAY, 'w'), indent=1, ensure_ascii=False)
-            if validate()[0] and ask(read('station/truth-check.md'), f'The chapter:\n{json.dumps(seg2, ensure_ascii=False)}\n\nThe inbox:\n{INBOX_TEXT}', f'truth-repair#{attempt}').strip() == 'CLEAN':
-                print(f'station: repaired {len(bad)} flagged line(s)', flush=True)
-                return done(trial2, arc, quiet)
+            out = as_json(ask(WRITER, user + feedback, f'write#{attempt}'))
+        except (ValueError, KeyError):
+            feedback = '\n\nYour last answer was not one valid JSON object. Answer with only the JSON.'
+            continue
+        prev_end = day_end(day)
+        soon = datetime.now(TZ) + timedelta(seconds=60)
+        start = max(prev_end, soon) if prev_end else soon
+        seg = {'id': f'{day["date"]}-{len(day["segments"]) + 1:02d}', 'title': out['title'],
+               'startAt': start.isoformat(timespec='milliseconds'), 'audio': None, 'gaps': GAPS,
+               'notes': chosen, 'angle': angle, 'sources': out['sources'], 'lines': out['lines']}
+        trial = dict(day, segments=day['segments'] + [seg])
+        save(trial)
+        ok, msg = validate()
+        if not ok:
+            feedback = f'\n\nThe checker refused your last try. Fix these and write it again:\n{msg}'
+            print(f'station: try {attempt + 1} refused by the checker: {msg[:200]}', flush=True)
+            continue
+        verdict = truth(seg, material)
+        if verdict == 'CLEAN':
+            return trial
+        print(f'station: try {attempt + 1} flagged: {verdict[:200]}', flush=True)
+        # Repair the flagged lines once; the repair is checked like a new try.
+        try:
+            fixed = as_json(ask(WRITER, f"{material}\n\nThis scene:\n{json.dumps(seg, ensure_ascii=False)}\n\n"
+                                f"A fresh reader flagged these lines (counted from 0):\n{verdict}\n\nRewrite ONLY those "
+                                "lines so they claim nothing the notes do not show, keeping the talk flowing. "
+                                "Return the whole scene JSON.", f'repair#{attempt}'))
+            seg2 = dict(seg, lines=fixed['lines'], sources=fixed.get('sources', seg['sources']))
+            trial = dict(day, segments=day['segments'] + [seg2])
+            save(trial)
+            if validate()[0] and truth(seg2, material) == 'CLEAN':
+                print('station: repaired', flush=True)
+                return trial
         except (ValueError, KeyError, RuntimeError, subprocess.TimeoutExpired):
             pass
-        kept = [l for i, l in enumerate(seg['lines']) if i not in bad]
-        if bad and len(kept) >= 12:
-            seg['lines'] = kept
-            trial = dict(day, segments=day['segments'] + [seg])
-            json.dump(trial, open(DAY, 'w'), indent=1, ensure_ascii=False)
-            if validate()[0]:
-                print(f'station: cut {len(bad)} flagged line(s): {verdict[:300]}', flush=True)
-                return done(trial, arc, quiet)
-        print(f'station: try {attempt + 1} flagged by the truth check: {verdict[:300]}', flush=True)
-        feedback = f'\n\nA fresh reader flagged these lines against the record. Rewrite or cut them:\n{verdict}'
-    json.dump(day, open(DAY, 'w'), indent=1, ensure_ascii=False)  # put the day back as it was
-    if not quiet:  # skip a scene that can never pass, so it cannot stall the day
-        arc['next'] += 1
-        json.dump(arc, open(ARC, 'w'), indent=1, ensure_ascii=False)
-    return f'four tries refused, scene skipped; last finding: {feedback.strip()[:400]}'
+        feedback = f'\n\nA fresh reader flagged these lines. Write the scene again without them:\n{verdict}'
+    save(day)
+    return 'three tries refused; this pick is dropped'
 
 
-def done(trial, arc, quiet):
-    if not quiet:
-        arc['next'] += 1
-        json.dump(arc, open(ARC, 'w'), indent=1, ensure_ascii=False)
-    return trial
+def validate():
+    r = subprocess.run(['node', 'station/validate.mjs', day_path()], capture_output=True, text=True)
+    return r.returncode == 0, (r.stdout + r.stderr).strip()
 
 
-def show(seg):
-    print(f'\n== {seg["title"]} ==')
-    for l in seg['lines']:
-        print(f'{l["speaker"].upper():9} {l["text"]}')
+def push_audio(day):
+    """The sound lives on the `audio` branch, rebuilt from nothing each time with only
+    the files still on air or within the last hour, so no sound is ever kept."""
+    keep = [s for s in day['segments'] if s.get('audio') and
+            datetime.fromisoformat(s['startAt']) + timedelta(milliseconds=seg_ms(s)) > datetime.now(TZ) - AUDIO_KEEP]
+    d = 'inbox/audio-branch'
+    shutil.rmtree(d, ignore_errors=True)
+    os.makedirs(d)
+    for s in keep:
+        dst = os.path.join(d, s['audio'])
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        shutil.copy(s['audio'], dst)
+    url = subprocess.run(['git', 'remote', 'get-url', 'origin'], capture_output=True, text=True).stdout.strip()
+    g = lambda *a: subprocess.run(['git', '-C', d, *a], check=True, capture_output=True)
+    g('init', '-q'); g('add', '-A'); g('commit', '-qm', 'audio: the last hour only', '--allow-empty')
+    g('push', '-qf', url, 'HEAD:audio')
+    for s in day['segments']:  # local copies of anything older go too
+        if s.get('audio') and s not in keep and os.path.exists(s['audio']):
+            os.remove(s['audio'])
 
 
-def publish(n_new):
-    subprocess.run([os.path.join(ROOT, 'station/.venv/bin/python'), 'station/voice.py', DAY, '--budget', '480'], check=True)
-    ok, out = validate()
+def publish(day):
+    subprocess.run([os.path.join(ROOT, 'station/.venv/bin/python'), 'station/voice.py', day_path(), '--budget', '480'], check=True)
+    ok, msg = validate()
     if not ok:
-        raise RuntimeError(f'checker refused after voicing: {out}')
-    subprocess.run(['git', 'add', DAY, f'audio/{DATE}'], check=True)
-    subprocess.run(['git', 'commit', '-qm', f'chronicle: {DATE}, {n_new} segment(s) (Mac station)'], check=True)
+        raise RuntimeError(f'checker refused after voicing: {msg}')
+    day = load_day()
+    push_audio(day)  # the sound first, so it is there when the words go live
+    subprocess.run(['git', 'add', day_path()], check=True)
+    subprocess.run(['git', 'commit', '-qm', f'chronicle: {day["date"]}, a scene from the vault'], check=True)
     subprocess.run(['git', 'pull', '-q', '--rebase', '--autostash'], check=True)
     subprocess.run(['git', 'push', '-q'], check=True)
 
 
 def main():
-    if not os.path.exists(f'{INBOX}/commits.md'):
-        sys.exit(f'station: no inbox for {DATE}; run mac/gather.sh first')
-    if LAB:
-        if not os.path.exists(DAY):
-            json.dump(json.load(open(f'day/{DATE}.json')) if os.path.exists(f'day/{DATE}.json') else
-                      {'date': DATE, 'tz': 'Asia/Bangkok', 'segments': []}, open(DAY, 'w'))
-    else:
+    if LAB and not os.path.exists(day_path()):
+        json.dump({'date': today(), 'tz': 'Asia/Bangkok', 'segments': []}, open(day_path(), 'w'))
+    if not LAB:
         subprocess.run(['git', 'pull', '-q', '--rebase', '--autostash'], check=True)
-    made = 0
+    made = fails = 0
     while True:
         day = load_day()
         end = day_end(day)
         if not LAB and end and end > datetime.now(TZ) + timedelta(minutes=AHEAD):
-            print(f'station: ahead of the clock; the day ends {end:%H:%M}'); break
-        result = one_segment(day)
+            print(f'station: ahead of the clock; on air until {end:%H:%M}'); break
+        try:
+            result = one_segment(day)
+        except BaseException:
+            save(day)  # never leave an unchecked scene on disk
+            raise
         if isinstance(result, str):
-            print(f'station: stopped, {result}'); break
+            print(f'station: {result}', flush=True)
+            fails += 1
+            if 'empty' in result or fails >= 3:  # three dropped picks in a row: stop, try next tick
+                break
+            continue
+        fails = 0
         made += 1
+        seg = result['segments'][-1]
         if LAB:
-            show(result['segments'][-1])
+            print(f'\n== {seg["title"]} ==  ({" + ".join(seg["notes"])}; angle: {seg["angle"]})')
+            for l in seg['lines']:
+                print(f'{l["speaker"].upper():9} {l["text"]}')
             if made >= int(os.environ.get('LAB_N', '1')):
                 break
             continue
-        publish(1)
-        print(f'station: segment {made} on air, "{result["segments"][-1]["title"]}"', flush=True)
+        publish(result)
+        print(f'station: on air, "{seg["title"]}" ({" + ".join(seg["notes"])})', flush=True)
         if ONCE:
             break
-    print(f'station: {made} segment(s) made')
+    print(f'station: {made} scene(s) made')
 
 
 if __name__ == '__main__':

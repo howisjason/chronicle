@@ -1,57 +1,39 @@
 # CLAUDE.md — the channel's manual (public repo: nothing private, ever)
 
 This repo is public. Nothing about J's money, people, clients, health or plans
-goes in any file here, including this one. The plan behind the channel and every
-decision's reason live in his private vault: `personal/context/obsidian/🌱 Brain
-Dump/The channel - the plan (7 Oct 2026).md`, read whole before changing anything.
+goes in any file here, including this one. The map of where it stands lives in his private vault: `personal/context/obsidian/🌱
+Brain Dump/The channel - where it stands (8 Oct 2026).md`; the first night's plan
+beside it is history.
 
 ## What this is, in one paragraph
 
-A channel that tells J's days as chapters of an epic, written and voiced by AI
-from his real record, played on a GitHub Pages site with a drawn host (March) and
-a voice-only narrator. Five parts: the inbox (on his Mac, never committed), the
-station (`STATION.md` plus `station/`), the chapters (`day/<date>.json`), the
-sound (`audio/<date>/`), the page (`index.html`, `player.js`, `timing.js`).
-`README.md` carries the honest labels and the five laws; `forbidden.md` is the
-fixed list of what a day note may never say.
+A channel that talks about J's Obsidian notes, the way PNN talks about the news:
+March (a pixel person at a desk) and a voice-only narrator take one or two of his
+Second Brain notes, turn them through one angle from his own "AI Prompts For
+Obsidian Notes" list, and talk until something new shows. Written and voiced by
+AI, played on a GitHub Pages site. No daily progress, no commits, no session text
+(his call, 8 Oct 2026: fewer moving parts, done well). `README.md` carries the
+honest labels; `forbidden.md` is the fixed list of what may never be said.
 
-## How it runs now (decided 8 Oct 2026, J's design)
+## How it runs (8 Oct 2026)
 
-**On the Mac, the PNN way, on his plan.** `mac/station.py` writes one segment per
-plain headless `claude -p` call (Haiku 5.5, no tools, no Claude Code instructions,
-our own sheets as the system prompt), checks it (`station/validate.mjs`), runs the
-truth check as a second call (`station/truth-check.md`, events and privacy only),
-repairs or cuts flagged lines, voices it with Kokoro from `station/.venv`, commits
-and pushes. A Sonnet 5.5 call plans the day's scenes once, ranked by drama
-(`inbox/<date>/arc.json`). Measured: about half a cent of API-equivalent usage per
-clean segment, against 3 to 9 cents in a cloud session. `--lab` writes text only
-into `inbox/<date>/lab-day.json`, never voiced or pushed. Each call's cost is
-logged in `inbox/<date>/costs.tsv`. The writing lives in `station/writer.md`,
-`station/march.md` and `station/narrator.md` (personas, his yes 8 Oct 2026).
+| Part | File |
+|---|---|
+| The pool: every Second Brain note a blind Sonnet reviewer passed for a public channel, reviewed once and again only when the note changes | `mac/pool.py`, verdicts in `inbox/pool.json` |
+| The station: picks notes + an angle, writes one scene per plain headless `claude -p` call (Haiku 5.5, no tools, our own sheets), checks it, truth-checks it, repairs once, voices it, publishes | `mac/station.py` |
+| The writing | `station/writer.md`, `station/march.md`, `station/narrator.md` (personas, his yes 8 Oct 2026), `station/truth-check.md`, `station/note-gate.md` |
+| The checker | `station/validate.mjs` |
+| The voices | `station/voice.py`, Kokoro from `station/.venv` (made by `python3 -m venv station/.venv` + `station/setup.sh`) |
+| The words, forever | `day/<date>.json` on `main`: every scene's lines, notes, angle and sources |
+| The sound, never kept | the `audio` branch, rebuilt from nothing at each scene with only the last hour; the page reads it from raw.githubusercontent.com. Older scenes replay as blips |
+| The clock | `mac/tick.sh` every 15 minutes, LaunchAgent `com.howisjason.chronicle` (plist in `mac/`), log `~/Library/Logs/chronicle.log` |
+| The button | `~/Applications/Chronicle.app` in his Dock, from `mac/button.applescript` (`mac/install-button.sh`): says on or off and flips the clock |
 
-**The clock:** `mac/tick.sh`, every 15 minutes by the LaunchAgent
-`com.howisjason.chronicle` (plist in `mac/`, log `~/Library/Logs/chronicle.log`):
-gather, then the station until the day is 20 minutes ahead. It writes only when
-there is something new, so a quiet day costs almost nothing. The Mac must be awake.
-
-**No manual review (his word, 8 Oct 2026).** A blind reviewer
-(`station/note-gate.md`, a fresh Sonnet call) removes any day-note paragraph not fit
-for a public channel before the station sees it; removals are kept in
-`inbox/<date>/note-gate.txt`. This replaced him reading the first ten notes.
-
-**The cloud way still exists** (`mac/fire.sh` and `STATION.md`, a cloud session on
-the $250 credit, which ends 5 Nov 2026); it is now for tests and build sessions,
-not the daily station. **The cloud harness forces a session to push to its own
-`claude/...` branch;** `.github/workflows/land.yml` merges every such push into
-`main`.
-
-**The Mac side.** `mac/gather.sh <date>` builds `inbox/<date>/` from the
-allow-list only: public-safe commit messages (times in Chiang Mai's clock), one
-day note by a Sonnet call under `station/day-note.md` and `forbidden.md`, written
-ONCE per date and then gated blind (`mac/gate.py`), and the quiet-day shelf (the
-vault notes named in the never-committed `mac/shelf.txt`, gated the same way). The
-window runs from the day before at 00:00 to now. It runs at every tick and also
-rides the Mac's 08:00 clock.
+All calls bill his Claude plan. Measured 8 Oct 2026: about half to two thirds of a
+cent of API-equivalent usage per scene. `--lab` writes text only into
+`inbox/lab-day.json`. Each call's cost goes to `inbox/costs.tsv`. The Mac must be
+awake for new scenes; the page replays otherwise. The cloud way (a cloud session on
+the $250 credit) was removed the same day: one way to run, done well.
 
 **Voices.** March is `station/march_voice.py`, adopted whole from the shelved
 body (heart's throat, alice's movement, lifted; see its header). The narrator is
@@ -64,15 +46,10 @@ the ignored `station/models/`, because the cloud blocks huggingface.co.
 sets a newly voiced segment's `startAt` to the previous end or thirty seconds
 from now if that is past. Every viewer's browser reads its own clock against
 the published starts; the page refetches the day every minute and loops the day
-as replays when nothing is live. Pruning: `audio/<d>` older than 7 days is
-removed by the station; the JSON stays forever.
+as replays when nothing is live.
 
 ## Landmines
 
-- `claude --cloud` needs a real terminal and asks the folder-trust question once.
-- Attaching to a cloud session is not enabled on this account; `claude --teleport
-  <id>` works for a look (it checks out the session's branch; the local clone
-  stayed on `main` both times, but check `git branch --show-current` after).
 - A `+` in a `?at=` URL arrives as a space; `player.js` restores it.
 - Two watchers pulling the same clone at once leave it dirty; `git checkout --
   day/<date>.json` then pull.
