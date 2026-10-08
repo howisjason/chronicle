@@ -1,8 +1,8 @@
-> **Stamped 2026-10-08 16:07 · 900b0a5** — true as of this commit; anything after it is unaccounted for.
+> **Stamped 2026-10-08 16:20 · a38f7f1** — true as of this commit; anything after it is unaccounted for.
 
 # HANDOFF — chronicle
 
-The fourth baton. It replaces the 12:44 one, which was right about the factory being done and is now stale on the page: everything it listed as the next job (the UI and UX) was built this afternoon and is live. Its two landmines (editing `tick.sh` mid-tick, `launchctl unload` mid-scene) and the lab-cost note were promoted into the manual's Landmines today. The manual (`CLAUDE.md`) wins every conflict. J's private map is `personal/context/obsidian/🌱 Brain Dump/The channel - where it stands (8 Oct 2026).md`.
+The fourth baton, re-stamped once after a grader's pass (its three findings are folded in below). It replaces the 12:44 one, which was right about the factory being done and is now stale on the page: everything it listed as the next job (the UI and UX) was built this afternoon and is live. Its two landmines (editing `tick.sh` mid-tick, `launchctl unload` mid-scene) and the lab-cost note were promoted into the manual's Landmines today. The manual (`CLAUDE.md`) wins every conflict. J's private map is `personal/context/obsidian/🌱 Brain Dump/The channel - where it stands (8 Oct 2026).md`.
 
 ## The one job next
 
@@ -22,11 +22,13 @@ The fourth baton. It replaces the 12:44 one, which was right about the factory b
 
 **REPORTED** (a helper said so, nobody here watched): the station and page pick the same show for all 1,440 minutes of a day (the grader ran both over a day); `os._exit` loses no file (the grader tested a write then exit); `replays.json` built from 94 scenes with no duplicates; the three research reports in the rebuild note's appendices (NotebookLM, the content-creation method, why the journey was cut) and the verbatim pull of J's first-night messages.
 
-**PROMISED** (never seen): the live station writing a scene with the new show stamp and the 4 s bumper slot under the real clock (it had not ticked with the new code when this was stamped: `git -C /Users/howisjason/Projects/chronicle log --oneline -1` against `bd500eb` says whether it has pulled it); the timed Dock run switching itself off for real; the clip on a phone; a full day at the cap; the Share button on a phone.
+**REPORTED by the log, not watched:** the timed Dock run switched itself off for real at 14:48 (`tick: the timed run is over; switching off`); the cap was reached at about 14:50 (`today's cap reached ($2.00 of $2.00)`), so the page replays until midnight Chiang Mai and the clock is OFF (he switches it on again from the Dock).
+
+**PROMISED** (never seen): the live station writing a scene with the new show stamp and the 4 s bumper slot (the repo has the code since bd500eb, but the last scenes written today, 14-11 and after, still carry `show: None` because the running process had the old code loaded; the first scene written after the next switch-on is the test); the clip on a phone; a full day at the cap; the Share button on a phone.
 
 ## Facts that will rot: recipes, not values
 
-Whether the station has the new code: `git -C /Users/howisjason/Projects/chronicle merge-base --is-ancestor bd500eb HEAD && echo yes`. Today's spend against the cap: `python3 mac/usage.py`. Whether the clock is on: `launchctl list | grep chronicle`. What the station did lately: `tail -20 ~/Library/Logs/chronicle.log`. The door's queue: `curl -s -H "authorization: Bearer $(cat ~/.claude/chronicle-door-key)" https://chronicle-door.jaceebo.workers.dev/take` (this TAKES the oldest item; it is gone from the queue after). Today's scene shape: the measuring snippet in the rebuild note's section 2 (lines, words, spoken minutes from `day/<date>/*.json`). Cost per write call: `inbox/costs.tsv`, column 3, labels `write#N`.
+Whether the station has the new code: `git -C /Users/howisjason/Projects/chronicle merge-base --is-ancestor bd500eb HEAD && echo yes` (the repo; what the running station executed is the `show` field of the newest scene in the newest hour file, `None` means old code). Today's spend against the cap: `python3 mac/usage.py`. Whether the clock is on: `launchctl list | grep chronicle`. What the station did lately: `tail -20 ~/Library/Logs/chronicle.log`. The door's queue: `curl -s -H "authorization: Bearer $(cat ~/.claude/chronicle-door-key)" https://chronicle-door.jaceebo.workers.dev/take` (this TAKES the oldest item; it is gone from the queue after). Today's scene shape: the measuring snippet in the rebuild note's section 2 (lines, words, spoken minutes from `day/<date>/*.json`). Cost per write call: `inbox/costs.tsv`, column 3, labels `write#N`.
 
 ## Decided this session (all in the manual or the rebuild note)
 
@@ -40,13 +42,13 @@ A worktree of this repo makes its own empty `inbox/`; symlink it to the main che
 
 OPEN (his question, 3:19pm, unanswered): "I'm wondering how the schedule fits into that" (he runs the station by hand, on and off, no pattern). March proposed rotating shows instead of clocking them; ask him. OPEN (March's, 4:05pm): the rebuild note's cost estimate (3 to 4 cents a ten-minute scene) is derived, not measured; if the lab shows over 5 cents, say so before going live. OPEN: at 24/7 the 26 approved notes each come up about eight times a day; a growing vault is the cure.
 
-LIVE SEAMS: `DEFAULT_GAPS` exists in both `station/voice.py` and `timing.js` and must match (each segment carries its own `gaps`, so old scenes are safe). `viewAt(t)` in `player.js` is shared by the live page and the clip; `panels.js` reads its answer too. `shows.json` is read by `station.py` (`show_at`) and `panels.js` (`showAt`) with the same first-match rule; change one, change both. His other session is redesigning March in `people.js`; the cast faces are cropped from the stage at fixed boxes (`CROP` in `panels.js`), so a redrawn March with a different head position needs those two numbers updated.
+LIVE SEAMS: the gaps exist in THREE places, `DEFAULT_GAPS` in `station/voice.py` and `timing.js` and `GAPS` in `mac/station.py`, and must match (each segment carries its own `gaps`, so old scenes are safe). `viewAt(t)` in `player.js` is shared by the live page and the clip; `panels.js` reads its answer too. `shows.json` is read by `station.py` (`show_at`) and `panels.js` (`showAt`) with the same first-match rule; change one, change both. His other session is redesigning March in `people.js`; the cast faces are cropped from the stage at fixed boxes (`CROP` in `panels.js`), so a redrawn March with a different head position needs those two numbers updated.
 
 HIS WORDS NOT DONE: "the clip button doesn't really work the way I intend to" (3:50pm), a Twitch-style scrubber; specified in the rebuild note section 7, not built. Everything else he asked for today was executed or parked by his own word.
 
 ## Still outstanding, in the order worth doing
 
-1. The writing rebuild (the one job; a session). 2. The clip scrubber (page only, half a session). 3. The schedule question (his answer, then a small change). 4. One real day at the $2 cap, reading the usage screen with him (time, not work). 5. The clip on his own phone (his to try). 6. The untracked files in `design/` are a record of rejected looks; the manual says delete freely, and nothing reads them (small). 7. Viewer intake, if he ever says yes (the gate sheet text and the 50-line intake are in this session's transcript of 8 Oct, around 2:20pm, and are easy to rewrite from the door's `/take` shape).
+1. The writing rebuild (the one job; a session). 2. The clip scrubber (page only, half a session). 3. The schedule question (his answer, then a small change). 4. One real day at the $2 cap, reading the usage screen with him (time, not work; today the cap was reached at about 2:50pm after the labs, which is the first data point). 5. The clip on his own phone (his to try). 6. The untracked files in `design/` are a record of rejected looks; the manual says delete freely, and nothing reads them (small). 7. Viewer intake, if he ever says yes (the gate sheet text and the 50-line intake are in this session's transcript of 8 Oct, around 2:20pm, and are easy to rewrite from the door's `/take` shape).
 
 ## The one thing worth carrying forward
 
