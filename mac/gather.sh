@@ -10,7 +10,7 @@
 #   day-note.md  the day as moments with his own words, written by one Sonnet
 #                call from the day's session transcripts (station/day-note.md),
 #                under forbidden.md
-#   notes.md     vault notes tagged #onair, whole
+#   notes.md     the quiet-day shelf (mac/shelf.txt), gated blind
 # Nothing from growth-op, march-brain or personal ever enters, not even counts.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -35,12 +35,14 @@ P=/Users/howisjason/Projects
     | grep -v 'daily snapshot' | awk '{ label = ($0 ~ /creature-lab/) ? "creature-lab" : "braincell"; print label, $0 }' || true
 } > "$OUT/commits.md"
 
-# 2. the day note: one Haiku call over the day's session text, under forbidden.md.
+# 2. the day note: one Sonnet call over the day's session text (station/day-note.md),
+#    under forbidden.md, then the blind gate.
 #    Only typed turns and spoken replies go in (never tool calls, results or
-#    system text), capped so the call stays small. Written ONCE per air date:
-#    J reads it before the first fire (the first-ten gate), and later gathers
-#    the same day must not swap it for a note he has not read.
-if [ ! -s "$OUT/day-note.md" ]; then
+#    system text), capped so the call stays small. Written ONCE per air date, so
+#    later gathers the same day never swap a note already told on air.
+# A note held back by the gate stays held for the day: no rewrite every tick
+# (the grader's finding, 8 Oct 2026: that would cost a Sonnet call each time).
+if [ ! -s "$OUT/day-note.md" ] && [ ! -e "$OUT/day-note.md.held" ]; then
 python3 - "$FROM" "$TO" > "$OUT/sessions.txt" <<'PY'
 import json, os, sys, glob, datetime as dt
 frm = dt.datetime.strptime(sys.argv[1], '%Y-%m-%d %H:%M:%S %z'); to = dt.datetime.strptime(sys.argv[2], '%Y-%m-%d %H:%M:%S %z')
@@ -77,36 +79,22 @@ PY
   echo; echo "SESSION TEXT:"; cat "$OUT/sessions.txt"
 } | claude -p --model claude-sonnet-5-5 --tools "" --strict-mcp-config --setting-sources "" --no-session-persistence > "$OUT/day-note.md"
 rm -f "$OUT/sessions.txt"
-# The note gate: a blind reviewer (a fresh call that never saw the session
-# text) removes every paragraph that should not go on a public channel. J's
-# word, 8 Oct 2026: no manual review, a blind grader instead. Its findings are
-# kept beside the note so a removal can be traced.
-python3 - "$OUT/day-note.md" <<'PY'
-import re, subprocess, sys
-p = sys.argv[1]; note = open(p).read()
-paras = [x for x in re.split(r'\n\s*\n', note.strip()) if x.strip()]
-body = '\n\n'.join(f'[{i}] {x}' for i, x in enumerate(paras))
-sheet = open('station/note-gate.md').read() + '\n\nTHE FORBIDDEN LIST:\n' + open('forbidden.md').read()
-r = subprocess.run(['claude', '-p', '--model', 'claude-sonnet-5-5', '--system-prompt', sheet, '--tools', '', '--strict-mcp-config',
-                    '--setting-sources', '', '--no-session-persistence'], input=body, capture_output=True, text=True, timeout=300)
-ans = r.stdout.strip()
-if r.returncode != 0 or not re.fullmatch(r'NONE|\d+(\s*,\s*\d+)*', ans):
-    import os; os.replace(p, p.replace('day-note.md', 'day-note.held.md'))
-    sys.exit(f'note gate: no clear answer ({ans[:200]!r}); the note is held back')
-cut = set() if ans == 'NONE' else {int(x) for x in ans.split(',')}
-open(p, 'w').write('\n\n'.join(x for i, x in enumerate(paras) if i not in cut) + '\n')
-open(p.replace('day-note.md', 'note-gate.txt'), 'w').write('removed: ' + ans + '\n\n' + '\n\n'.join(paras[i] for i in sorted(cut)))
-print(f'note gate: removed {len(cut)} of {len(paras)} paragraphs')
-PY
+# The note gate: a blind reviewer removes every paragraph not fit for a
+# public channel (mac/gate.py; J's word, 8 Oct 2026: no manual review).
+python3 mac/gate.py "$OUT/day-note.md" para || true  # held: the station runs on commits alone
 fi
 
-# 3. vault notes tagged #onair, whole. The tag must stand on a line of its own:
-#    a note that merely MENTIONS the tag (the channel plan does) must not match.
-#    That near-miss happened on the first run, 8 Oct 2026, and the plan holds
-#    private lines.
-: > "$OUT/notes.md"; N=0
-while IFS= read -r f; do
-  { echo "## NOTE: $(basename "$f" .md)"; cat "$f"; echo; } >> "$OUT/notes.md"; N=$((N+1))
-done < <(grep -rlx --include='*.md' '#onair' "$P/personal/context/obsidian/🌱 Brain Dump" 2>/dev/null || true)
-
+# 3. the quiet-day shelf: the vault notes listed in mac/shelf.txt (never
+#    committed), whole, gated blind once per air date. (The old #onair tag
+#    rule is gone: J wanted no manual work, so March picked the shelf.)
+N=0
+if [ ! -e "$OUT/notes.md" ] && [ ! -e "$OUT/notes.md.held" ] && [ -s mac/shelf.txt ]; then
+  while IFS= read -r name; do
+    case "$name" in ''|'#'*) continue;; esac
+    f="$P/personal/context/obsidian/🧠 Second Brain/$name.md"
+    [ -s "$f" ] && { echo "## NOTE: $name"; cat "$f"; echo; }
+  done < mac/shelf.txt > "$OUT/notes.md"
+  python3 mac/gate.py "$OUT/notes.md" note || true
+fi
+[ -s "$OUT/notes.md" ] && N=$(grep -c '^## NOTE:' "$OUT/notes.md")
 echo "gathered $OUT: $(grep -c . "$OUT/commits.md") commit lines, $(wc -w < "$OUT/day-note.md" | tr -d ' ') words of day note, $N tagged notes"

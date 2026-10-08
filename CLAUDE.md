@@ -47,12 +47,11 @@ not the daily station. **The cloud harness forces a session to push to its own
 
 **The Mac side.** `mac/gather.sh <date>` builds `inbox/<date>/` from the
 allow-list only: public-safe commit messages (times in Chiang Mai's clock), one
-day note by a small Haiku call under `forbidden.md` (written ONCE per date, so
-J can read it before the first fire; the first-ten-days gate), and vault notes
-whose `#onair` tag stands alone on a line (a note that merely mentions the tag
-must not match: the plan itself did, on the first run). The window runs from the
-day before at 00:00 to now. The gather rides the Mac's one 08:00 clock
-(`march-brain/scripts/brain-backup.sh`, after the save, can refuse nothing).
+day note by a Sonnet call under `station/day-note.md` and `forbidden.md`, written
+ONCE per date and then gated blind (`mac/gate.py`), and the quiet-day shelf (the
+vault notes named in the never-committed `mac/shelf.txt`, gated the same way). The
+window runs from the day before at 00:00 to now. It runs at every tick and also
+rides the Mac's 08:00 clock.
 
 **Voices.** March is `station/march_voice.py`, adopted whole from the shelved
 body (heart's throat, alice's movement, lifted; see its header). The narrator is
