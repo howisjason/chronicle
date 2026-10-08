@@ -3736,6 +3736,156 @@
         }
       ],
       "quiet": true
+    },
+    {
+      "id": "2026-10-08-28",
+      "title": "THE WRITING GETS A SHAPE",
+      "startAt": "2026-10-08T09:25:16.083+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-28.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 05:50 station: the writing pass. Real personas for March and the narrator, a writer's sheet with a story shape, a truth check that judges only events and privacy, a day note made of moments and his own words, a Sonnet planner for the day's arc, and a text-only lab mode (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 05:36 station: cut flagged lines instead of rewriting; no numbers for the writer; the truth check counts lines from 0 (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 05:51 station: no ordinals in the persona sheets (the grader's finding, 8 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "So the writing had to change. Not the facts. The telling.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3819
+        },
+        {
+          "speaker": "march",
+          "text": "That is the hard part. Facts are easy. Telling them is work.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3560
+        },
+        {
+          "speaker": "narrator",
+          "text": "The writing pass went in. Real voices for March, and for the narrator. A story shape behind every scene.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7531
+        },
+        {
+          "speaker": "march",
+          "text": "A hook. A fight. A turn. A line of meaning. Then a button. I have never had a shape before.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4906
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then a truth check. It judges only what happened and what is private. Nothing else.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5525
+        },
+        {
+          "speaker": "narrator",
+          "text": "And a flagged line is not rewritten. It is cut.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3328
+        },
+        {
+          "speaker": "march",
+          "text": "Cut, not rewrite. Rewriting let the mistake crawl back in wearing a nicer coat.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4844
+        },
+        {
+          "speaker": "narrator",
+          "text": "The writer was kept away from numbers altogether. No digits. No counting words.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5653
+        },
+        {
+          "speaker": "march",
+          "text": "That is where I used to slip. Now it is again, another, more. Plain and safe.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4343
+        },
+        {
+          "speaker": "narrator",
+          "text": "The character sheets were scrubbed of counting words too, after a blind reviewer found them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "Good. I would rather be a voice than a tally.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2705
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then a planner laid out the arc of the whole day before a single scene was written.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4971
+        },
+        {
+          "speaker": "march",
+          "text": "That was the part I liked. Knowing where the day was going before we wrote it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4130
+        },
+        {
+          "speaker": "narrator",
+          "text": "A true story is not enough. It also has to be told well.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4096
+        },
+        {
+          "speaker": "march",
+          "text": "The truth was already there. Now it has a voice.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2757
+        }
+      ]
     }
   ]
 }
