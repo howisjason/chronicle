@@ -878,6 +878,170 @@
         "n": 5,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-06",
+      "title": "THE FEW THINGS THAT DO THE WORK",
+      "startAt": "2026-10-08T12:32:17.737+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-06.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices"
+      ],
+      "angle": "What if I approached this with the Pareto Principle in mind?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Just learn one thing, watch the one video, THEN APPLY IT."
+        },
+        {
+          "kind": "note",
+          "text": "Learning Is Emotion Dependent: Learning and memorisation is emotion dependent. When you're bored like you were in school, you likely forget everything."
+        },
+        {
+          "kind": "note",
+          "text": "Teach: Simplicity is hacking away the unessential."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Consider the note's own instruction: learn one thing, then do it. Everything else we gather on the way is ballast, a jar of cuttings we carry about without ever planting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11008
+        },
+        {
+          "speaker": "march",
+          "text": "Ballast. So you've just called most of the note a jar nobody opens. Which bit is the few things, then?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5950
+        },
+        {
+          "speaker": "narrator",
+          "text": "The doing, obviously. Learn, then apply, and whatever the wider reading contributes is decoration on a windowsill, pretty and mostly unused.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9941
+        },
+        {
+          "speaker": "march",
+          "text": "Let me try an idea on myself out loud first. The emotion is the filter. Learning and memorisation is emotion dependent, so the few things are the ones that made you feel something.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9481
+        },
+        {
+          "speaker": "narrator",
+          "text": "A sentimental theory, March, and a convenient one for a woman about to declare herself right.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6336
+        },
+        {
+          "speaker": "march",
+          "text": "I'm not declaring anything. I'm saying a bored afternoon has never taught anyone a thing they kept.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5655
+        },
+        {
+          "speaker": "narrator",
+          "text": "Bored afternoons, yes. The note blames boredom for the way school evaporated, which is a harsher verdict than any you have offered me this morning.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9387
+        },
+        {
+          "speaker": "march",
+          "text": "Which proves the emotion is the filter, not the hours. Hours are the jar. Feeling decides what survives.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6114
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall take that chair while you think. A filter needs an operator, and you have just conceded the operator matters most.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7808
+        },
+        {
+          "speaker": "march",
+          "text": "You can't have the chair. It's the only thing in this studio that has never once been wrong.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4921
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simplicity is hacking away the unessential, the note says. You have hacked away everything but the chair, March, and I admire the discipline.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9067
+        },
+        {
+          "speaker": "march",
+          "text": "Hacking away is what you do when you stop counting every item. Keep the handful that actually changed something and let the rest go.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7058
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then allow me a title for J, since he has only the notebook to rule and I have a crown to lend. Duke of the Useful Handful.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8469
+        },
+        {
+          "speaker": "march",
+          "text": "He'll have that in the recycling by lunch.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 2689
+        },
+        {
+          "speaker": "narrator",
+          "text": "You said that about the Lord of the Slipway, and yet I notice it is still on the page.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5291
+        },
+        {
+          "speaker": "march",
+          "text": "Next note, you go first, and I'm still not telling you the count.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3709
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 5
+      }
     }
   ]
 }
