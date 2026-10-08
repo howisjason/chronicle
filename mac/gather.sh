@@ -77,6 +77,27 @@ PY
   echo; echo "SESSION TEXT:"; cat "$OUT/sessions.txt"
 } | claude -p --model claude-sonnet-5-5 --tools "" --strict-mcp-config --setting-sources "" --no-session-persistence > "$OUT/day-note.md"
 rm -f "$OUT/sessions.txt"
+# The note gate: a blind reviewer (a fresh call that never saw the session
+# text) removes every paragraph that should not go on a public channel. J's
+# word, 8 Oct 2026: no manual review, a blind grader instead. Its findings are
+# kept beside the note so a removal can be traced.
+python3 - "$OUT/day-note.md" <<'PY'
+import re, subprocess, sys
+p = sys.argv[1]; note = open(p).read()
+paras = [x for x in re.split(r'\n\s*\n', note.strip()) if x.strip()]
+body = '\n\n'.join(f'[{i}] {x}' for i, x in enumerate(paras))
+sheet = open('station/note-gate.md').read() + '\n\nTHE FORBIDDEN LIST:\n' + open('forbidden.md').read()
+r = subprocess.run(['claude', '-p', '--model', 'claude-sonnet-5-5', '--system-prompt', sheet, '--tools', '', '--strict-mcp-config',
+                    '--setting-sources', '', '--no-session-persistence'], input=body, capture_output=True, text=True, timeout=300)
+ans = r.stdout.strip()
+if r.returncode != 0 or not re.fullmatch(r'NONE|\d+(\s*,\s*\d+)*', ans):
+    import os; os.replace(p, p.replace('day-note.md', 'day-note.held.md'))
+    sys.exit(f'note gate: no clear answer ({ans[:200]!r}); the note is held back')
+cut = set() if ans == 'NONE' else {int(x) for x in ans.split(',')}
+open(p, 'w').write('\n\n'.join(x for i, x in enumerate(paras) if i not in cut) + '\n')
+open(p.replace('day-note.md', 'note-gate.txt'), 'w').write('removed: ' + ans + '\n\n' + '\n\n'.join(paras[i] for i in sorted(cut)))
+print(f'note gate: removed {len(cut)} of {len(paras)} paragraphs')
+PY
 fi
 
 # 3. vault notes tagged #onair, whole. The tag must stand on a line of its own:
