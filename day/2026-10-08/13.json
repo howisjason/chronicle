@@ -1891,6 +1891,179 @@
         "n": 5,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-12",
+      "title": "THE BENCH WITH ROOM AT ONE END",
+      "startAt": "2026-10-08T13:46:03.563+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-12.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Happiness And Gratitude",
+        "Philosophy Of Social Connection"
+      ],
+      "angle": "What’s an angle or factor I might be overlooking?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness (or any other feeling/emotion like successful, worthy, deserving, joyful, etc) is not something that is earned or deserved."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Nobody believes they're wrong. Criticism will only hurt their pride and cause resentment."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Be specific with your praise for it comes off as genuine rather than a vague blanket statement."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Right, the first note says happiness isn't something you earn.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3478
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then every labourer who has bled for his supper is a fool, March. Let the bells ring for the fool.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6549
+        },
+        {
+          "speaker": "march",
+          "text": "Nobody's a fool. It says feelings don't need a receipt, like blood. Nobody checks blood for merit.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5628
+        },
+        {
+          "speaker": "narrator",
+          "text": "Blood has no merit, I grant you. But at the very moment I thought of you, the kettle clicked off, and that is destiny.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7509
+        },
+        {
+          "speaker": "march",
+          "text": "A kettle clicks when it boils. That's physics, not you wanting my chair.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 3815
+        },
+        {
+          "speaker": "narrator",
+          "text": "Physics is only destiny with its coat off. And since you are fetching the biscuits, I shall take your chair.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6613
+        },
+        {
+          "speaker": "march",
+          "text": "Sit on the arm. I offered you the arm last time and you took it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3662
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nobody believes they're wrong, the note says, and criticism only breeds resentment. A splendid rule, though it has a hole in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8789
+        },
+        {
+          "speaker": "march",
+          "text": "Go on. Say the hole out loud.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2402
+        },
+        {
+          "speaker": "narrator",
+          "text": "Everyone is fixed on being liked. No one asks what the bench is for. The bench has room at one end, March, and it sits empty.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8576
+        },
+        {
+          "speaker": "march",
+          "text": "A bench with a gap just means nobody's sat down yet.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3460
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly. Make room, greet the stranger, and wait for the kindness to walk in and take the gap.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6485
+        },
+        {
+          "speaker": "march",
+          "text": "Lovely. But the note says praise has to be specific, and yours was a vague blanket statement.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5401
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I am rebuked by the very book I was praising. Very well, the bench is not the whole note.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6635
+        },
+        {
+          "speaker": "march",
+          "text": "You were right about the gap. Moving on. Who wants the biscuits?",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3312
+        },
+        {
+          "speaker": "narrator",
+          "text": "I shall take that as a bribe. The rest of the bench can wait for the next note.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4949
+        },
+        {
+          "speaker": "march",
+          "text": "Keep your seat warm. I've got a comeback saved for later, and you'll hear it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 4123
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 5
+      }
     }
   ]
 }
