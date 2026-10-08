@@ -158,6 +158,187 @@
         "n": 1,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-14-02",
+      "title": "WHY THE COMMENT ARRIVES LATE",
+      "startAt": "2026-10-08T14:07:07.842+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-14-02.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Express Your Ideas To The World",
+        "The Present Moment Is All That Exists"
+      ],
+      "angle": "If I knew absolutely nothing about this topic or context, what questions would I ask? What would seem confusing or counter-intuitive?",
+      "kind": "quick_fire",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: Leaving your comment on something is like leaving a message in a particular time in space as a wanderer of the universe."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: The past is behind us and when the future comes, it comes as the present."
+        },
+        {
+          "kind": "note",
+          "text": "Create And Die Empty: Die empty. Get every idea out of your head and into reality."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: The past is history, and the future's a mystery."
+        },
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: Don't be afraid to speak your mind."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Okay, I know nothing. Why does a comment count if nobody reads it today?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4343
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because the wanderer reads it when he arrives. Patience is the traveller's gift.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5205
+        },
+        {
+          "speaker": "march",
+          "text": "Arrives where? It's sitting there now, Narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2789
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, and it is already on its way, like a ship seen far off on the sea.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4779
+        },
+        {
+          "speaker": "march",
+          "text": "That's a lot of sea for one comment. What's a wanderer?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3175
+        },
+        {
+          "speaker": "narrator",
+          "text": "Anyone who passes through, March. You, me, and whoever stumbles on us.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4907
+        },
+        {
+          "speaker": "march",
+          "text": "So every reader is a wanderer. Great, now I'm a traveller.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3474
+        },
+        {
+          "speaker": "narrator",
+          "text": "Better. I offer J a new title: Keeper of the Unsent Letters.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4523
+        },
+        {
+          "speaker": "march",
+          "text": "Titles are cheap, Narrator. And the kettle clicked because it boils.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3897
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your kettle clicked the moment I named him. Destiny has a sense of timing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5013
+        },
+        {
+          "speaker": "march",
+          "text": "Creating matters, so why die empty? Why not save something?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3713
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because the future is a mystery, and empty hands are the only honest ones.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5184
+        },
+        {
+          "speaker": "march",
+          "text": "Honest hands still need a cup of tea, Narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2872
+        },
+        {
+          "speaker": "narrator",
+          "text": "Keep the tea. Empty the rest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2411
+        },
+        {
+          "speaker": "march",
+          "text": "Last one: people hide in the crowd anyway. Why does anyone need telling?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4241
+        },
+        {
+          "speaker": "narrator",
+          "text": "They do, March. Most keep their voice in a purse like a coin.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4181
+        },
+        {
+          "speaker": "march",
+          "text": "I'm keeping score, and you're still one behind. Not telling you what I hid.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 4,
+          "audioMs": 4202
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 5
+      }
     }
   ]
 }
