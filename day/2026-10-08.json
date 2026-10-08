@@ -7657,6 +7657,179 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-52",
+      "title": "THE SHOEBOX THAT BECOMES AN APP",
+      "startAt": "2026-10-08T11:48:55.239+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-52.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "List Of Nice Things To Do",
+        "Your Routine Is Top Priority"
+      ],
+      "angle": "How would this idea change if it had to be implemented on a completely different platform (e.g., physical product -> digital service, individual tool -> community platform)?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Gift Idea: Put 50–100 paper hearts or smiley faces in a box. On each cutout write something that is special about your lover or a good friend."
+        },
+        {
+          "kind": "note",
+          "text": "Your Routine Is Top Priority: Following your schedule is the most overpowered thing you can do because it turns your entire perfect day into a habit."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Say hello to everyone you see for the day."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Hear the box of paper hearts, March, a whole kingdom of kindness folded small. Each cutout written in one hand for a heart that needs it, and kept until the lonely hour comes round.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12288
+        },
+        {
+          "speaker": "march",
+          "text": "A shoebox with better handwriting. She pulls one when she is low, so it lands exactly when it is needed. It is simple, and it works.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7115
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simple, you say. A simple box, and yet the whole legend of comfort lives inside it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6016
+        },
+        {
+          "speaker": "march",
+          "text": "Simple? It is a cutout with a real name on it. Do not dress it up as a relic.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4667
+        },
+        {
+          "speaker": "march",
+          "text": "Now put it on an app. Hearts ping at her phone every morning. Ping, here is a kindness. Within a week it is wallpaper.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5902
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the digital kingdom! A great sea of hearts on a server, rolling endlessly like a tide that never once asks whether anyone is on the beach.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9451
+        },
+        {
+          "speaker": "narrator",
+          "text": "I name you, J, Keeper of the Box, Warden of the Paper Hearts. Your title is already written in the hearts.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7381
+        },
+        {
+          "speaker": "march",
+          "text": "J is not a warden. He would hate being called one. He would settle for a shoebox and a pen.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5284
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let me sit in your chair while you think, March. A host needs a throne, and yours has a spring I have always admired.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7680
+        },
+        {
+          "speaker": "march",
+          "text": "Sit in it and you will find out about the spring.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2792
+        },
+        {
+          "speaker": "narrator",
+          "text": "The community is the true hall, March. Every hello witnessed by all, like a bell heard across the harbour. Say hello to everyone you see for the day, and let the whole town see you do it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12096
+        },
+        {
+          "speaker": "march",
+          "text": "Then the town counts the hellos. Leaderboards. Someone chases the most, and the hello turns into a score. Kindness on a scoreboard is just a bad game.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7650
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have found the flaw in my hall, March, and I resent you a little for it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4608
+        },
+        {
+          "speaker": "march",
+          "text": "You are right. Anyway, the routine note.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2682
+        },
+        {
+          "speaker": "march",
+          "text": "Routine says every kindness gets a slot, an alarm, a streak. Miss one and the streak breaks, and you feel robbed. The app would turn your own perfect day into a chore.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8482
+        },
+        {
+          "speaker": "narrator",
+          "text": "A kindness scheduled like a train has lost its heart, March. Let the hour choose itself, and let the shoebox wait.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7936
+        },
+        {
+          "speaker": "march",
+          "text": "Next part, I bring the stamp for the app, and we see whether the box survives the phone. Bring your throne, because I will be sitting in mine.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6924
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 3
+      }
     }
   ]
 }
