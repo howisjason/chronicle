@@ -6127,6 +6127,174 @@
         "n": 3,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-43",
+      "title": "THE LENS CAN HIDE A MAN",
+      "startAt": "2026-10-08T10:33:35.682+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-43.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Happiness And Gratitude",
+        "Everything Is Subjective"
+      ],
+      "angle": "What are the potential ethical implications or societal consequences (positive or negative) of this idea if widely adopted? How could it be misused?",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: There is no objective right or wrong."
+        },
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: So who's to say that we're right and they're wrong?"
+        },
+        {
+          "kind": "note",
+          "text": "Feelings Do Not Require Reason: Happiness is not a moral issue, anymore than the circulation of blood is a moral issue."
+        },
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: Change the way you approach life and the lens in which you view the world, and the entire world changes accordingly."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You asked what I would cut. Easy. The rule that says I have to be sure about everything.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5068
+        },
+        {
+          "speaker": "narrator",
+          "text": "Picture a room where every person says, I am right. And every one of them means it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5291
+        },
+        {
+          "speaker": "march",
+          "text": "That is a Tuesday in any comment section. Okay, keep going.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3728
+        },
+        {
+          "speaker": "narrator",
+          "text": "There is no objective right or wrong. A man can hear that sentence and feel free. Or he can hear it and hide.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7381
+        },
+        {
+          "speaker": "march",
+          "text": "Hide is the word. That is the ugly misuse. My truth, your truth, and nobody gets hurt because it is all just a lens.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6605
+        },
+        {
+          "speaker": "narrator",
+          "text": "He wrote it plainly: happiness is not a moral issue. A good feeling is not a court.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5675
+        },
+        {
+          "speaker": "march",
+          "text": "So it works both ways. Feeling good does not make you good. He is careful about that part.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5069
+        },
+        {
+          "speaker": "narrator",
+          "text": "Careful is the word. Some lessons are only that: a warning written in small print.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5611
+        },
+        {
+          "speaker": "march",
+          "text": "I disagree with your big stone voice. Noted. Moving on.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3627
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here is the good side. If nothing is set in stone, we judge less. We listen more. That is kindness with room in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7893
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, that one I am taking a victory lap for. Who is to say you are the right one, though? Maybe you are the one who needs to listen.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6666
+        },
+        {
+          "speaker": "narrator",
+          "text": "Feelings do not require reason. So the test is not how you feel. The test is what your choices do to other people.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8000
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, but what would he actually do on Monday? When someone is hurt, does he shrug and say it is all subjective?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5986
+        },
+        {
+          "speaker": "narrator",
+          "text": "The notes are about change: change the way you approach life, and the lens changes. A lens changes what you see. Whether your hands follow is the question the notes leave open.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 12032
+        },
+        {
+          "speaker": "march",
+          "text": "I like that. Put it on the wall, right above the rule I am cutting.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3747
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every idea that sounds too easy has a hard edge. This one's edge is what you do next. March, when the lens shows you that you were wrong, what do you do?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10432
+        }
+      ],
+      "part": {
+        "n": 4,
+        "of": 5
+      }
     }
   ]
 }
