@@ -1,0 +1,195 @@
+{
+  "date": "2026-10-08",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-08-12-01",
+      "title": "THE HELLO THAT COSTS NOTHING",
+      "startAt": "2026-10-08T12:21:58.791+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Present Moment Is All That Exists",
+        "List Of Nice Things To Do"
+      ],
+      "angle": "How could I design a solution with zero budget?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: Forget the whole notion of the future. There is only today. If you want to do something, do it now."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Say hello to everyone you see for the day."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Share your umbrella with someone if they're walking the same way."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Here's a note that says the present moment is all there is. Pair it with a list of nice things to do, and the budget is zero. Bargain or dare? Let's find out.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7950
+        },
+        {
+          "speaker": "narrator",
+          "text": "A bargain! The present moment is a shop with no till, and the list is a ledger where every entry is a gift. Destiny asks for no coins, only attention, and attention has never been overdrawn.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13355
+        },
+        {
+          "speaker": "march",
+          "text": "Attention costs nothing, sure. A kettle still costs something, and so does the bench you sit on while you give it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5933
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the kettle is the only expense, and the kettle is already on. Give me the bench, March. I am ready to rule it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7637
+        },
+        {
+          "speaker": "march",
+          "text": "You can have the bench when you can explain it in one sentence. Go on.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4066
+        },
+        {
+          "speaker": "narrator",
+          "text": "The bench belongs to whoever is present, obviously. Whoever sits in the moment owns the chair beside it, and I would like that chair now, please.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9365
+        },
+        {
+          "speaker": "march",
+          "text": "Then I was here first. The chair stays put.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 2747
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cruel. Utterly cruel, and so quick that I can hardly enjoy my own defeat. Do go on, I am sure your little scoreboard is thrilled.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9131
+        },
+        {
+          "speaker": "march",
+          "text": "Enjoy it quietly. The note says say hello to everyone you see. That costs nothing, and it is the whole zero-budget plan.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6713
+        },
+        {
+          "speaker": "narrator",
+          "text": "A hello for every stranger is a grand design, but it is also a flood of greetings, and the stranger will ask what the greeting is for.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8832
+        },
+        {
+          "speaker": "march",
+          "text": "Then tell them it's for nothing. The hello is the product. Nobody has to buy it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4445
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nothing! The most precious thing in the world, handed out for nothing. A true sovereign would charge a penny for it and grow rich on the smile.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9216
+        },
+        {
+          "speaker": "march",
+          "text": "Charge a penny and watch it vanish. Free means it keeps.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3321
+        },
+        {
+          "speaker": "narrator",
+          "text": "Free means it keeps, says the one who keeps the score. March, I know there is a tally under that cloth, with your little rule sitting on top of it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8960
+        },
+        {
+          "speaker": "march",
+          "text": "Keep your guesses. My score is my business, and it is ahead.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3368
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ahead! Of course it is. The cloth is always ahead, and I am always the one who has to say so.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6464
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the plant for this run. An umbrella left on the hook by the shop door, for anyone walking the same way. Zero cost, one hook, and a stranger who gets wet a bit slower.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 8762
+        },
+        {
+          "speaker": "narrator",
+          "text": "The umbrella on the hook! I will carry it up the stairs and hang it in every chapter, dripping with destiny, until the rain stops.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8448
+        },
+        {
+          "speaker": "march",
+          "text": "Hang it wherever you like. Bet you can't say one sentence about it without the sovereign turning up.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5344
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 5
+      }
+    }
+  ]
+}
