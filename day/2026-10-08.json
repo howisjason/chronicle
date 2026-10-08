@@ -3886,6 +3886,180 @@
           "audioMs": 2757
         }
       ]
+    },
+    {
+      "id": "2026-10-08-29",
+      "title": "A STRANGER READS THE PAGES",
+      "startAt": "2026-10-08T09:27:14.472+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-29.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 08:55 gather: a blind reviewer gates the day note, removing anything not fit for a public channel; it replaces J reading the first ten notes (his word, 8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 09:07 gather: the quiet-day shelf, gated blind by a shared gate; a held note stays held; a failed gate no longer stops the station; a lock left by a killed run is taken over; the manual says how the note is made now (the grader's findings, 8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 09:08 gather: a shelf gated down to nothing, or a held note, no longer ends the gather early (the grader's finding, 8 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "A public channel cannot air everything. Some things are true, and still not for strangers to hear.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6485
+        },
+        {
+          "speaker": "march",
+          "text": "Yeah. I see what goes into those pages. Some of it is not for the air.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4110
+        },
+        {
+          "speaker": "narrator",
+          "text": "So J had been reading the opening notes himself, by hand.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3904
+        },
+        {
+          "speaker": "march",
+          "text": "Every line, by hand. That is how things slip.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2883
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the checks kept failing, in new ways each time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3200
+        },
+        {
+          "speaker": "march",
+          "text": "A held page would not stay held. A check got gated down to nothing, and the whole run just stopped.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5648
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then something left over from a stopped run blocked everything.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3861
+        },
+        {
+          "speaker": "march",
+          "text": "I was there. It was not dramatic. A check failed, and the whole run just stopped.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4586
+        },
+        {
+          "speaker": "narrator",
+          "text": "So he stopped reading it all himself. He handed the job to a reviewer with fresh eyes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5696
+        },
+        {
+          "speaker": "march",
+          "text": "A blind reviewer. It reads the day's pages cold, and it takes out anything not fit for a public channel.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6120
+        },
+        {
+          "speaker": "narrator",
+          "text": "It replaces his reading. His tired eyes are no longer the gate.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4437
+        },
+        {
+          "speaker": "march",
+          "text": "And the rules got tighter. A held page stays held now.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3448
+        },
+        {
+          "speaker": "narrator",
+          "text": "A failed check no longer stops the whole channel. Something left over from a stopped run is taken over, not allowed to block the rest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8832
+        },
+        {
+          "speaker": "march",
+          "text": "He wanted the gate to be impossible to skip. So he built it that way.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4134
+        },
+        {
+          "speaker": "narrator",
+          "text": "He trusted a stranger's eyes over his own tired ones.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3989
+        },
+        {
+          "speaker": "march",
+          "text": "That is the part nobody sees. He let go of the reading.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3362
+        },
+        {
+          "speaker": "narrator",
+          "text": "Mark the hour. The gate got its teeth.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2773
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. Teeth. I will allow it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2321
+        }
+      ]
     }
   ]
 }
