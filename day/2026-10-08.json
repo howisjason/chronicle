@@ -2640,6 +2640,186 @@
           "audioMs": 2987
         }
       ]
+    },
+    {
+      "id": "2026-10-08-21",
+      "title": "LIKED, NOT RIGHT",
+      "startAt": "2026-10-08T08:58:17.326+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-21.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "day-note",
+          "repo": "",
+          "text": "**The first version of the gift toy.** Early in the morning J had the assistant build a small phone toy from a long plan. The animation barely ran in the test browser, and with all the souvenirs saved the room did not draw at all. That second one turned out to be a single frame caught mid-hop, but it showed that one line left the screen too fast to read, so the line got more time. A fresh reviewer then found one real bug and four small gaps, and these were fixed. J played with it for a few minutes. He said: \"I actually really like it.\" Then he added: \"it's just not quite what I had in mind.\" He could not say what was wrong, so he chose to wrap up and start a fresh review in a new session."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Early in the morning, the toy was built.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2581
+        },
+        {
+          "speaker": "narrator",
+          "text": "A small phone toy, made from a long plan.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3221
+        },
+        {
+          "speaker": "march",
+          "text": "I built it. The plan was long, and I was proud of it for about a minute.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3965
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the test page showed it. The motion barely ran.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3669
+        },
+        {
+          "speaker": "march",
+          "text": "Barely. That is a generous word for it.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 2684
+        },
+        {
+          "speaker": "narrator",
+          "text": "Worse came next. With every souvenir saved, the room would not draw at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5269
+        },
+        {
+          "speaker": "march",
+          "text": "A blank room. I did not enjoy looking at it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2859
+        },
+        {
+          "speaker": "narrator",
+          "text": "It turned out to be just a frame, caught in the middle of a hop.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3904
+        },
+        {
+          "speaker": "march",
+          "text": "Caught mid-hop. But it showed the real problem. A line left the screen too fast to read.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5412
+        },
+        {
+          "speaker": "narrator",
+          "text": "So that line got more time on the screen.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2773
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Nobody should have to race a sentence.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2817
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then a fresh reviewer went through it. They found a real bug, and small gaps besides. All of it was fixed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6784
+        },
+        {
+          "speaker": "march",
+          "text": "Honest work. I like being checked, even when it stings.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3171
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then he played with it for a few minutes. For a while, that was enough.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4203
+        },
+        {
+          "speaker": "narrator",
+          "text": "He said, out loud: \"I actually really like it.\"",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3307
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then he added the other half: \"it's just not quite what I had in mind.\"",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4480
+        },
+        {
+          "speaker": "march",
+          "text": "Liking a thing and having it be right are two different things. He knows that. So do I.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5111
+        },
+        {
+          "speaker": "narrator",
+          "text": "He could not say what was wrong. So he chose to stop there, and start fresh.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4800
+        },
+        {
+          "speaker": "march",
+          "text": "Wrap it up. We come back in a new session, with clear eyes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3308
+        },
+        {
+          "speaker": "march",
+          "text": "Liked is good. Right is the job.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2494
+        }
+      ]
     }
   ]
 }
