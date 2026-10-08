@@ -1204,6 +1204,187 @@
         "n": 2,
         "of": 3
       }
+    },
+    {
+      "id": "2026-10-08-14-08",
+      "title": "THE SHOES THAT DO THE TALKING",
+      "startAt": "2026-10-08T14:23:08.002+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-14-08.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Habits Become Automatic - Your New Identity",
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "Simplify this concept so a five-year-old could grasp the basic principle. What is the absolute essence?",
+      "kind": "verdict",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic: Old habits are who you are. New habits, should they stick, will eventually become old habits."
+        },
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic: Focus on consistency over intensity. Focus on building character over external results."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Repetition solidifies something as fact."
+        },
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic: Habits are a blessing and a curse. What you do repeatedly becomes automatic."
+        },
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic: [[Your Routine Is Top Priority]]"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Then the verdict, and I was right all along: old habits are who you are, and the new ones, should they stick, become the old ones of tomorrow.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9152
+        },
+        {
+          "speaker": "march",
+          "text": "Smaller, though. You do the small thing again and again, and you become the one who does it. Consistency beats intensity. That's the whole lesson.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7224
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simple, March, is what a thing becomes when it is true enough for a small child at a kitchen table to grasp it at once.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7851
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple. Simple and small aren't the same. Small is the bit you can actually do on a Tuesday.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5906
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then tell the child about the shoes by the door, which I planted in the first part and was never permitted to praise. Repetition solidifies something as fact.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 10411
+        },
+        {
+          "speaker": "march",
+          "text": "Right. What you do repeatedly becomes automatic. The shoes are automatic now. You step past them and put them on. That's the whole trick.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 5,
+          "audioMs": 6931
+        },
+        {
+          "speaker": "narrator",
+          "text": "The kettle has just clicked, which is destiny ringing the bell for my verdict, and you ignored the bell.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 5,
+          "audioMs": 6379
+        },
+        {
+          "speaker": "march",
+          "text": "The kettle clicked because it boiled. Stop giving the kettle a job.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 5,
+          "audioMs": 3918
+        },
+        {
+          "speaker": "narrator",
+          "text": "A child told she is clever enough times will start to believe it, and then she becomes the clever one. The brain takes the repeating as proof.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9301
+        },
+        {
+          "speaker": "march",
+          "text": "That's the imagined bit too. The nervous system doesn't check if it's real. Same wiring either way, so imagining the shoes counts.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6922
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now, under that design of yours, I wager there is a tiny crown painted on the underside, and you blush whenever I walk past it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8811
+        },
+        {
+          "speaker": "march",
+          "text": "No crown. Nothing under the design but a cheap font. Keep guessing.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4023
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall sit a little nearer your chair, which is clearly the grander one, and wait for a better guess.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6443
+        },
+        {
+          "speaker": "march",
+          "text": "You said you meant it all along. A while ago you called the cliff honest ambition. Pick one.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5198
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cut off, as ever, while the kettle sulks behind me. Very well: you were right about the why, I was right about the wiring, and the shoes carry both.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 9557
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Done. Up next: Your Routine Is Top Priority and Philosophy Of Social Connection.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 6,
+          "audioMs": 5629
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 3
+      }
     }
   ]
 }
