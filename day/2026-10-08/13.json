@@ -2064,6 +2064,167 @@
         "n": 1,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-13",
+      "title": "WHAT UNLIMITED TIME BUYS",
+      "startAt": "2026-10-08T13:48:26.427+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-13.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Happiness And Gratitude",
+        "Philosophy Of Social Connection"
+      ],
+      "angle": "What if I had limitless resources or time to solve this?",
+      "kind": "quick_fire",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Your brain has been trained to inseparably link smiling and feeling good because normally we only smile when we're having a good time."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: A real smile can brighten up a whole room. Your smile comes through in your voice too."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Gratitude for what we have makes life worth living."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Nothing else kills drive and determination quite like criticism."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Limitless time, then. Spend it smiling at everyone?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3069
+        },
+        {
+          "speaker": "narrator",
+          "text": "A fine start for an emperor of the smile.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2816
+        },
+        {
+          "speaker": "march",
+          "text": "Your brain does the rest, the note says. Not your crown.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3112
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then grant J a grand title. Duke of Gratitude.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3840
+        },
+        {
+          "speaker": "march",
+          "text": "He's not a duke. He'd hate being called one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2768
+        },
+        {
+          "speaker": "narrator",
+          "text": "With unlimited time, every stranger becomes a friend.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3819
+        },
+        {
+          "speaker": "march",
+          "text": "Only if you stop criticising them first.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2836
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simple. Stop criticising and the whole world warms.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3669
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple. Criticism kills drive, remember.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3470
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I concede the drive. Unlimited drive, even.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3691
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you're right. Biscuits?",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2048
+        },
+        {
+          "speaker": "narrator",
+          "text": "You stole my victory and the last biscuit. Outrageous.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3947
+        },
+        {
+          "speaker": "march",
+          "text": "With limitless resources I'd buy you a bigger chair.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3182
+        },
+        {
+          "speaker": "narrator",
+          "text": "The arm will do. It always does.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2496
+        },
+        {
+          "speaker": "march",
+          "text": "Keep your seat warm. Yours is still the arm.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2879
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 5
+      }
     }
   ]
 }
