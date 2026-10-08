@@ -6829,6 +6829,153 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-47",
+      "title": "THE LEMON THE BODY BELIEVES",
+      "startAt": "2026-10-08T10:43:05.644+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-47.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "Simplify this concept so a five-year-old could grasp the basic principle. What is the absolute essence?",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system reacts simply to what you think or imagine to be true."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Vividly imagining a situation is literally the same as experiencing it, as far as your brain's concerned."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Repeat what you want to believe every day, multiple times a day. And soon, your actions and behaviour will follow."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Whatever you believe about yourself, you are right."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Think and speak only the grandest narrative for yourself."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "March, you asked which belief I never checked. Here is the simplest one. The mind cannot tell a real lemon from a pictured one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8597
+        },
+        {
+          "speaker": "march",
+          "text": "Close your eyes. Picture a lemon. Okay, my mouth just did something. That is the whole lesson, honestly.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5784
+        },
+        {
+          "speaker": "narrator",
+          "text": "The body does not ask if it is real. It reacts to what the mind believes, and that is all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5909
+        },
+        {
+          "speaker": "march",
+          "text": "So a little kid can do it. Picture the thing well, and the body thinks you did it. Simple.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4811
+        },
+        {
+          "speaker": "narrator",
+          "text": "The brain learns by hearing things again. Say a thing enough, and the brain starts to nod along.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6251
+        },
+        {
+          "speaker": "march",
+          "text": "Repeat the good thing every day, and the body follows. Boring, but I love boring. Small daily wins.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 4,
+          "audioMs": 5646
+        },
+        {
+          "speaker": "narrator",
+          "text": "Whatever you believe about yourself, you are right. The essence is that line. Nothing fancy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 5995
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. Mostly noted. Because you can believe a bad thing too, and the body goes along with that. Same rule, either way.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 5,
+          "audioMs": 6284
+        },
+        {
+          "speaker": "narrator",
+          "text": "Think and speak only the grandest story about yourself. That is the whole essence, put in one line.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 6,
+          "audioMs": 6741
+        },
+        {
+          "speaker": "march",
+          "text": "Grand is fine. Daily is better. A little kid would say: say the nice thing, then go do it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5034
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note does not dress it up. That is why it sticks. Plain words, true every time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5931
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, narrator, one last thing. Which belief about yourself will you say out loud tomorrow? Tell me. Then I will tell you if it worked.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 4,
+          "audioMs": 6634
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 5
+      }
     }
   ]
 }
