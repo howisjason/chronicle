@@ -1026,6 +1026,187 @@
         "n": 5,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-07",
+      "title": "THE POSTCARD THAT COSTS NOTHING",
+      "startAt": "2026-10-08T13:31:55.194+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-07.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices",
+        "Novelty - A Life Fully Lived"
+      ],
+      "angle": "How could I design a solution with zero budget?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Nothing twice. Never eat the same food twice. Never go to the same place twice."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Just learn one thing, watch the one video, THEN APPLY IT."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Monotony is the enemy. Novelty is the solution."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: You learn the MAJORITY of everything from actually DOING."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Be systematic. Follow guides."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Zero budget, and the note already hands you the plan. Nothing twice. A place you've never been costs your feet and nothing else.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6645
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your feet, March? A person who has never once been carried past his own front step will be lifted across the whole world by a single step he has not taken before. Nothing twice is no budget at all. It is an oath, and oaths are priceless.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15808
+        },
+        {
+          "speaker": "march",
+          "text": "An oath that costs nothing is my whole argument. Zero money means you spend attention instead, and you already have that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6688
+        },
+        {
+          "speaker": "narrator",
+          "text": "Attention is a coin the gods mint for very few, and you would spend it on a bus timetable. Mark the sadness of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7829
+        },
+        {
+          "speaker": "march",
+          "text": "Stop. The note says learn one thing, watch the one video, then apply it. You don't need a grand tour. You need one new street.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6376
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the street shall be the first chapter of a great book. On my way to this very sentence I passed a paving stone that rocked beneath my heel like a drumbeat. A sign, surely, March, a summons.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13227
+        },
+        {
+          "speaker": "march",
+          "text": "A paving stone that wobbles is a paving stone that wobbles. Whatever sent you past it, it wasn't fate.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6140
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have beaten me again, March, and I resent how thoroughly I enjoyed the beating. Let the stone be an ordinary stone. I still say it was waiting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10240
+        },
+        {
+          "speaker": "march",
+          "text": "You learn the majority from doing it. So walk the new street, then tell me what it taught you. Otherwise it's a walk with a speech stapled to it.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 7034
+        },
+        {
+          "speaker": "narrator",
+          "text": "Monotony is the enemy, March, and you would have me file the enemy under habit. Novelty is the solution, and a solution needs no coin, only a willing mind. Monotony costs far more than any ticket.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13739
+        },
+        {
+          "speaker": "march",
+          "text": "That's a good line. Keep it. Now the plan. Be systematic and follow guides. Free guides are on every phone.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 4,
+          "audioMs": 5906
+        },
+        {
+          "speaker": "narrator",
+          "text": "Guides! The old map-makers would weep to hear it. Let me chart the route myself, then, in grand ink, upon the finest parchment I can imagine.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 9771
+        },
+        {
+          "speaker": "march",
+          "text": "Ink costs money. A pencil stub and the back of an old envelope cost nothing. Zero budget, remember.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 4,
+          "audioMs": 5795
+        },
+        {
+          "speaker": "narrator",
+          "text": "You may have your envelope, March, and I shall keep my ink in the margin where you cannot see it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5867
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the actual idea. The blank postcard stays blank until you go somewhere new. Then it gets one stroke. Zero budget, and a visible record of every first time.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 8609
+        },
+        {
+          "speaker": "narrator",
+          "text": "A postcard filling with strokes is a fine thing, and I'll concede the monotony you feel on an ordinary Tuesday is the very wall every good day breaks through. The wall is the enemy, and the postcard is its ruin.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 14165
+        },
+        {
+          "speaker": "march",
+          "text": "You were right. Anyway, the first stroke. Who draws it, and where? Pick a street before the afternoon's over.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5315
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 5
+      }
     }
   ]
 }
