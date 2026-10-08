@@ -190,6 +190,186 @@
         "n": 3,
         "of": 3
       }
+    },
+    {
+      "id": "2026-10-08-13-02",
+      "title": "THE ROPE THAT FRAYS IN CALM WEATHER",
+      "startAt": "2026-10-08T13:17:33.372+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-02.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Your Routine Is Top Priority"
+      ],
+      "angle": "Imagine this idea has been implemented and failed spectacularly one year from now. What are the most likely reasons for its failure? How could we mitigate those risks now?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Your Routine Is Top Priority: Obey your schedule, no matter how you feel. It doesn't matter how far along you are with something or how much left needs to be done. The moment it's time for the next activity to start, you MUST switch over."
+        },
+        {
+          "kind": "note",
+          "text": "Your Routine Is Top Priority: A schedule makes you act according to the goals of your highest self, not your passing mood."
+        },
+        {
+          "kind": "note",
+          "text": "Your Routine Is Top Priority: If you have a problem with the schedule then change the schedule itself, not self revise the schedule on a day by day basis."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Your Routine Is Top Priority. Bossy title. It wants us all obeying the timetable like a bus driver with a grudge.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6781
+        },
+        {
+          "speaker": "narrator",
+          "text": "A timetable is a ship's log, March. Every hour is written before the storm, and the crew keeps to it through the worst weather.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8021
+        },
+        {
+          "speaker": "march",
+          "text": "Storms don't read logs. Try it on me. One year on, the whole thing has failed spectacularly. I'd switch over mid-sentence every time and hate it by spring.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8165
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you are the first casualty, March, and the rest of the crew sails on. A schedule makes you act according to your highest self, not your passing mood.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9771
+        },
+        {
+          "speaker": "march",
+          "text": "Highest self, passing mood. Lovely. Tell that to a Tuesday when the mood is the only thing talking. Failure one: it was built for the good days and has no plan for the bad.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 8544
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the schedule is a mooring, March. A boat holds fast through a gale because the line was fixed before the wind arrived.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8064
+        },
+        {
+          "speaker": "march",
+          "text": "A mooring line doesn't snap in a gale. It snaps in calm weather, frayed at one knot nobody bothered to check. That's the failure I'd bet on.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7268
+        },
+        {
+          "speaker": "narrator",
+          "text": "Such a simple knot, March. Routine is simple, and simple things endure.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5184
+        },
+        {
+          "speaker": "march",
+          "text": "Simple? Nothing about that knot is simple. Another failure: when it chafes, the note says change the whole schedule, not nudge it. So nobody nudges anything, and the rope rots.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 8787
+        },
+        {
+          "speaker": "narrator",
+          "text": "You bristle at the word simple like a cat at a bath, March. Yet you have described my mooring exactly.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6933
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have stolen my rope, March, and I resent every frayed thread of it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4651
+        },
+        {
+          "speaker": "march",
+          "text": "Stolen? I handed it back. Keep it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2552
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then allow me to crown J the Keeper of the Mooring. A title worthy of a man who holds fast.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6400
+        },
+        {
+          "speaker": "march",
+          "text": "He can have a title when he's got a loose rope to hold. Keeper of the Line, honestly. Pick a smaller one.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 5713
+        },
+        {
+          "speaker": "narrator",
+          "text": "Smaller is for shopkeepers, March. Keepers are for ships.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3947
+        },
+        {
+          "speaker": "march",
+          "text": "Round one goes to the rule being untested, not wrong. Mitigation: build the bad-day version before the storm, not after.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6929
+        },
+        {
+          "speaker": "narrator",
+          "text": "I shall keep the knot in my pocket, March, and you may keep your bad-day version. We meet again at the mooring.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7040
+        },
+        {
+          "speaker": "march",
+          "text": "Next up, the other half of this one. Bring the rope, and don't fray it on the way.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4353
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 5
+      }
     }
   ]
 }
