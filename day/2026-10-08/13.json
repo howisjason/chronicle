@@ -1722,6 +1722,175 @@
         "n": 4,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-11",
+      "title": "THE LAST STROKE KEPT BACK",
+      "startAt": "2026-10-08T13:43:38.200+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-11.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices",
+        "Novelty - A Life Fully Lived"
+      ],
+      "angle": "What concepts from [biology/engineering/chemistry/any other field] could be adapted to improve upon this idea?",
+      "kind": "verdict",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Nothing twice. Never eat the same food twice. Never go to the same place twice. Never hear the same thing twice. Everything only once."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Learning is emotion dependent. When you're bored like you were in school, you likely forget everything."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Monotony is the enemy. Novelty is the solution."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Learn one thing, watch the one video, THEN APPLY IT. You learn the MAJORITY of everything from actually DOING."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Verdict time, then. Who won the stone? The note says nothing twice, and your wobbly corner was the first stroke.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5758
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I was right, and I shall say it grandly. Emotion pinned that stroke to the page, March, not a bored school bell.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8192
+        },
+        {
+          "speaker": "march",
+          "text": "Emotion pinned it because the pavement's cracked. The stone's just rocking on a bad joint.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5352
+        },
+        {
+          "speaker": "narrator",
+          "text": "A bad joint that rings like a tuned spring. Every press a fresh note. You hear it only the once, March, and that is the point.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8512
+        },
+        {
+          "speaker": "march",
+          "text": "Biology says you hear it once and then your head quits hearing it. Habituation. By the next day the wobble's gone.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6225
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then monotony is not outside the door at all. It lives in your own nerves, and it has been listening in.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6635
+        },
+        {
+          "speaker": "march",
+          "text": "So change the walk, not the stone. Doing it beats thinking about it every time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4519
+        },
+        {
+          "speaker": "narrator",
+          "text": "Doing is the whole of the lesson. Wonder first, boots after, and the boots must wander.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5803
+        },
+        {
+          "speaker": "march",
+          "text": "Stop it. You've made a shoe rack into a sermon. Next: I took the stroke across the city, every block a new one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6203
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the city is your stroke and the corner is mine. A fair split, March, which is a rare thing from you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6827
+        },
+        {
+          "speaker": "march",
+          "text": "Don't push it. I keep my own tally, and you've not seen it. One more point in the drawer.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4815
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your drawer is shut, and I suspect you hold the last stroke in there. Where does it go? Tell me or sulk.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6976
+        },
+        {
+          "speaker": "march",
+          "text": "Not telling. You were right, by the way. About the stone and the sea.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3560
+        },
+        {
+          "speaker": "narrator",
+          "text": "Did you just concede? I shall frame the words. Oh, you've beaten me again, March, insufferable.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6144
+        },
+        {
+          "speaker": "march",
+          "text": "That's one more in the private book. Keep your fancy chair. We've got the next notes.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4408
+        },
+        {
+          "speaker": "march",
+          "text": "Up next: Happiness And Gratitude, then Philosophy Of Social Connection. Bring a stroke for each.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5949
+        }
+      ],
+      "part": {
+        "n": 5,
+        "of": 5
+      }
     }
   ]
 }
