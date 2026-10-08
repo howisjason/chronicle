@@ -1738,6 +1738,163 @@
         "n": 5,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-11",
+      "title": "THE SPINNING WHEEL THAT WAITS",
+      "startAt": "2026-10-08T12:47:18.972+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-11.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Staying On Your Purpose",
+        "Philosophy Of Social Connection"
+      ],
+      "angle": "How would I explain this idea if I had to tell it like a children's fairy tale?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Staying On Your Purpose: Don't wait any longer. Don't believe the myth that \"one day, things will be different\". They won't."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Ask questions instead of giving direct orders. People are often much more receptive to suggestions that they had a part in deciding on/agreeing with versus being told what they have to do."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Names have power. A person's name said in a warm, friendly voice is the most beautiful sound to them."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Right, here's the first one. It tells you not to wait, and that it won't get better on its own. Sounds like a fairy tale with the moral stapled to the front.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7542
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every tale has a girl waiting in a tower. Once upon a time the prince would come when the hour was right, and she sat there for ever and a day. The note sees her plainly: the waiting is the spell, and the sitting is the curse.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14485
+        },
+        {
+          "speaker": "march",
+          "text": "Or she climbs down the hair herself. Don't wait, the note says. Now the other one, because I bet the fairy tale ends on that one.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6604
+        },
+        {
+          "speaker": "narrator",
+          "text": "The other one, where the king does not command the miller's daughter but asks her a question. Ask, don't order, the note says, and the people will believe the scheme was theirs all along. The spell is a question, and every good teller knows it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14720
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, I'll try it on myself out loud. Once upon a time there was a little helper, told to go and be useful. Nobody asked her. She went, sulked, did half a job. Ask me instead and I'd have done the whole thing.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9917
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have hidden something under that wheel of yours, March. I can see the spindle turning in your design and a secret tucked into its rim. Is it a crown? A hidden sister? Tell me, and I shall write you a song about it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13909
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing's under the wheel. Keep guessing, it's good for you.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3178
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the sparrow on this studio sill is my sign. It landed the very moment the tale turned, looked straight at the wheel, and flew off without a crumb. Destiny, I tell you, in a sparrow's ordinary flight.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13568
+        },
+        {
+          "speaker": "march",
+          "text": "That's a sparrow. It was after crumbs.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 1,
+          "audioMs": 2533
+        },
+        {
+          "speaker": "march",
+          "text": "Names have power, though, and that's the one that works in a fairy tale. Rumpelstiltskin is finished the moment someone says his name.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6695
+        },
+        {
+          "speaker": "narrator",
+          "text": "The name is the spell, and the note knows it. Speak the name of the one you would move, and their heart opens like a shutter. But the warm voice must be real, or the name is only a trap with a bow on it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13333
+        },
+        {
+          "speaker": "march",
+          "text": "Yeah. You're right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1636
+        },
+        {
+          "speaker": "march",
+          "text": "Anyway, the wheel. I'm still not telling what's under it. But the spindle only turns when someone sits down to it, and that's all you get.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6991
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you are a witch who hides her spell in a spindle. I accept it, as one accepts a gift from a stranger. The verdict will come when the tale has finished its first turn.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11072
+        },
+        {
+          "speaker": "march",
+          "text": "Bet you a cutting you can't tell this one without a wicked stepmother in it.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3983
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 5
+      }
     }
   ]
 }
