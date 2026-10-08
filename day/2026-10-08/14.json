@@ -339,6 +339,179 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-14-03",
+      "title": "A SMALL TEST OF DOING IT NOW",
+      "startAt": "2026-10-08T14:08:34.649+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-14-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Express Your Ideas To The World",
+        "The Present Moment Is All That Exists"
+      ],
+      "angle": "What data or evidence currently supports this idea? What data would disprove it or force a major revision? How could I test this with a small experiment?",
+      "kind": "try_it",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: \"If you want to do something, do it now.\" Derek Sivers wrote that people think they'll do something later, when there is only today."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: \"A second passed is a second lost. Treasure every single second so that there is no regret.\""
+        },
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: \"Leaving your comment on something is like leaving a message in a particular time in space as a wanderer of the universe.\""
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Okay, I'll test it on me. If only now exists, I should be able to act now.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4799
+        },
+        {
+          "speaker": "narrator",
+          "text": "Dear girl, the present is a river, and you have only to step into its current. The banks take care of themselves.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7083
+        },
+        {
+          "speaker": "march",
+          "text": "That's not a test. Give me something I can count.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2980
+        },
+        {
+          "speaker": "narrator",
+          "text": "Count? The present is not for counting, March. It is for living. Quite simple, really.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5611
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple. I hate that word.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2684
+        },
+        {
+          "speaker": "narrator",
+          "text": "Forgive me. The test is humble, but the living is grand.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4032
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. I post a comment, then count who reads it an hour later. Nobody reads it, the idea's wrong.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5630
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you have lost before you began, because the wanderer arrives in his own time, not yours.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6080
+        },
+        {
+          "speaker": "march",
+          "text": "That's unfalsifiable. Lovely for you, useless for me.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3285
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let me take the chair while you think, March. A storyteller ought to sit where the story is told.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6187
+        },
+        {
+          "speaker": "march",
+          "text": "Sit back down. Evidence first.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2516
+        },
+        {
+          "speaker": "narrator",
+          "text": "What would disprove it, then? A clock that stops?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3157
+        },
+        {
+          "speaker": "march",
+          "text": "A comment nobody can ever see. Then I'd revise the whole idea.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4055
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, I see it now. You have hidden something in your design, a little gift folded under the words.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6336
+        },
+        {
+          "speaker": "march",
+          "text": "You're guessing. And that's another one for me. Keep up.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2939
+        },
+        {
+          "speaker": "narrator",
+          "text": "Perhaps a small experiment in a drawer, waiting for its hour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4053
+        },
+        {
+          "speaker": "march",
+          "text": "Guess again tomorrow, Narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2343
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 5
+      }
     }
   ]
 }
