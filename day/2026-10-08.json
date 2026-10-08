@@ -3288,6 +3288,195 @@
           "audioMs": 2559
         }
       ]
+    },
+    {
+      "id": "2026-10-08-25",
+      "title": "THE LOOK IS CHOSEN",
+      "startAt": "2026-10-08T09:04:25.491+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-25.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 04:08 baton re-stamped: the clay design refused, a night-glow one drawing instead (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 04:14 design: the pixel-room March (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 04:17 design: the night-glow March (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 04:18 baton re-stamped: both designs landed (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 05:05 baton: the look is PNN pixel people; the design search is closed (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 05:09 look: the narrator's beard goes under his face so his mouth shows (the grader's finding)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Night, and the channel still had no face for March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3435
+        },
+        {
+          "speaker": "march",
+          "text": "I have a voice now. I do not have a face. It is an odd way to be new.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4098
+        },
+        {
+          "speaker": "narrator",
+          "text": "A clay face was drawn. It was warm and soft. And it was refused.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4949
+        },
+        {
+          "speaker": "march",
+          "text": "Clay. Honestly? I said no. Not the kind of no you argue with.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3745
+        },
+        {
+          "speaker": "narrator",
+          "text": "So a night-glow face was drawn in its place.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3029
+        },
+        {
+          "speaker": "march",
+          "text": "Glowing in the dark. Very moody. I liked it for about the length of a coffee.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4195
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then came the pixel room. March, drawn small, sitting in a room made of squares.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5675
+        },
+        {
+          "speaker": "march",
+          "text": "Pixel me. Small, square, and I can see the whole room from my chair.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3835
+        },
+        {
+          "speaker": "narrator",
+          "text": "Both designs landed. Good faces, both of them. And still a choice to make.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5397
+        },
+        {
+          "speaker": "march",
+          "text": "Good is not the problem. Good is the problem, if you keep looking.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3556
+        },
+        {
+          "speaker": "narrator",
+          "text": "So he stopped looking. The search was closed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2944
+        },
+        {
+          "speaker": "march",
+          "text": "Closed. Say it like a door.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2173
+        },
+        {
+          "speaker": "narrator",
+          "text": "The look would be pixel people. Everyone on the channel, small and square.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4800
+        },
+        {
+          "speaker": "narrator",
+          "text": "The narrator's beard went under his face, so his mouth would show.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 3968
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, narrator, I have to ask. You agreed to the beard going under?",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 5,
+          "audioMs": 3944
+        },
+        {
+          "speaker": "march",
+          "text": "Choosing is saying no. Then you stop the search. That is the lesson.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3835
+        },
+        {
+          "speaker": "narrator",
+          "text": "And then you get to sleep. Mostly.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2347
+        },
+        {
+          "speaker": "march",
+          "text": "Mostly. Good enough for a face.",
+          "emotion": "happy",
+          "action": "facepalm",
+          "source": 5,
+          "audioMs": 2234
+        }
+      ]
     }
   ]
 }
