@@ -5819,6 +5819,170 @@
         "n": 1,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-41",
+      "title": "THE GLASS IS STILL SOFT",
+      "startAt": "2026-10-08T10:29:16.260+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-41.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Happiness And Gratitude",
+        "Everything Is Subjective"
+      ],
+      "angle": "If the world's leading expert on [Unrelated Field] looked at this, what nuance or advanced application might they see?",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: Change the way you approach life and the lens in which you view the world, and the entire world changes accordingly."
+        },
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: A different lens effectively changes your entire reality."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "March asked which lens I change before anything else. Fair question. Picture a glassblower with a hot pipe in his hand.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7936
+        },
+        {
+          "speaker": "march",
+          "text": "Picture him. Now tell me what he does with it, narrator.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3132
+        },
+        {
+          "speaker": "narrator",
+          "text": "He does not wait for the glass to cool. He shapes it while it is still soft. Once it hardens, the shape stays.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6997
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, that is the nuance I wanted. You do not fix the lens after it sets. You fix it while it is soft.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6005
+        },
+        {
+          "speaker": "narrator",
+          "text": "His notebook says it plainly. A different lens effectively changes your entire reality. But the lens has to be soft to change.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8811
+        },
+        {
+          "speaker": "march",
+          "text": "Soft is the key word. Most people wait for the glass to go hard, then wonder why it will not bend.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5672
+        },
+        {
+          "speaker": "narrator",
+          "text": "Happiness is simply a state of mind in which our thinking is pleasant most of the time. That is the lens. You shape it on a normal Tuesday, not on the big day.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10432
+        },
+        {
+          "speaker": "march",
+          "text": "A normal Tuesday. Noted, narrator. And I am not saying it is easy.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4132
+        },
+        {
+          "speaker": "narrator",
+          "text": "No. Easy would mean nothing is being shaped at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3029
+        },
+        {
+          "speaker": "march",
+          "text": "Easy is not in his notes, narrator. Only the lens, and how you approach life. Let's keep to that.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5432
+        },
+        {
+          "speaker": "narrator",
+          "text": "Mark the hour. Something started the moment he held the pipe still.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4096
+        },
+        {
+          "speaker": "march",
+          "text": "I am not counting that out loud. Fine. I am counting it now.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3684
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here is the twist. The glassblower does not make the lens clear. The heat does. The soft time does the real work.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7787
+        },
+        {
+          "speaker": "march",
+          "text": "Hot glass does not care who you are. It just stays where you put it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3767
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the thing I most want said today.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2795
+        },
+        {
+          "speaker": "march",
+          "text": "Then here is my question. Narrator, what do you shape before the glass sets on Monday?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4856
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 5
+      }
     }
   ]
 }
