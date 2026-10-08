@@ -166,9 +166,20 @@ def kinds():
     return dict(re.findall(r'(?m)^- (\w+): (.+)$', read(p))) if os.path.exists(p) else {}
 
 
-def kind_for(run):
+def show_at(when):
+    """The show on air at a Chiang Mai time, from shows.json (the table the page's
+    schedule reads too): the first whose hours hold it, short shows listed first."""
+    h = when.hour + when.minute / 60
+    for s in json.load(open('shows.json'))['shows'] if os.path.exists('shows.json') else []:
+        if s['start'] <= h < s['end']:
+            return s
+    return None
+
+
+def kind_for(run, show=None):
     """Part 1 opens, the last part is the verdict, the parts between draw from the
-    rest without repeating within the run."""
+    rest without repeating within the run; inside a short show with its own kind,
+    every middle part is that kind."""
     k = kinds()
     if not k:
         return None
@@ -176,12 +187,14 @@ def kind_for(run):
         return 'open'
     if run['n'] == run['of']:
         return 'verdict'
+    if show and show.get('kind') in k:
+        return show['kind']
     used = run.get('kinds', [])
     middle = [x for x in k if x not in ('open', 'verdict')]
     return random.choice([x for x in middle if x not in used] or middle)
 
 
-def current_run(notes, recent_segs):
+def current_run(notes, recent_segs, show=None):
     """A run is the same notes told over several scenes, each through a new angle
     (PNN's shows run a topic in parts). A finished run starts a fresh pick: the
     one its verdict already teased as "up next", if those notes are still in the pool."""
@@ -197,7 +210,7 @@ def current_run(notes, recent_segs):
         else:
             chosen, angle = pick(notes, recent_segs)
         run = {'notes': chosen, 'n': 1, 'of': random.randint(3, 5), 'angles': [angle], 'kinds': []}
-    run['kind'] = kind_for(run)
+    run['kind'] = kind_for(run, show)
     if run['n'] == run['of'] and run['kind']:
         run['next'] = list(pick(notes, recent_segs + [{'notes': run['notes']}]))
     return run
@@ -299,7 +312,11 @@ def one_segment(day, path):
     # The scenes before this one may sit in earlier hour files, so everything that
     # looks back (the picker, the titles, the previous scene, the start) reads them all.
     before = history(day, path)
-    run = current_run(notes, before)
+    # The show is the one on air when this scene will start (the end of the one
+    # before, or now), the same moment the line about the part of the day uses.
+    airs = end_of(before) or datetime.now(TZ)
+    show = show_at(airs.astimezone(TZ))
+    run = current_run(notes, before, show)
     chosen, angle = run['notes'], run['angles'][-1]
     material = '\n\n'.join(f'## NOTE: {n}\n{notes[n]}' for n in chosen)
     titles = [s['title'] for s in before[-8:]]
@@ -318,9 +335,11 @@ def one_segment(day, path):
             part += f"\nUp next, to tease by name in the last line: {' and '.join(run['next'][0])}"
     # Saying the hour now and then makes a replay feel live (PNN does); only the
     # part of the day, never the place.
-    h = (end_of(before) or datetime.now(TZ)).hour
+    h = airs.astimezone(TZ).hour
     when = 'late at night' if h < 5 else 'in the morning' if h < 12 else 'in the afternoon' if h < 18 else 'in the evening' if h < 22 else 'late at night'
     part += f"\nThis scene airs {when}; mention it only if it fits naturally."
+    if show:
+        part += f"\nThe show on air: {show['name']}. {show['tone']}"
     user = (f"{material}\n\n{frame}\nThe angle for this scene: {angle}\n{part}\n\n"
             f"Two details for March this scene: {random.sample(MARCH_DETAILS, min(2, len(MARCH_DETAILS)))}\n"
             f"Two details for the narrator this scene: {random.sample(NARR_DETAILS, min(2, len(NARR_DETAILS)))}\n"
@@ -344,7 +363,7 @@ def one_segment(day, path):
         hh = path.rsplit('/', 1)[-1][:2] if not LAB else 'lab'
         seg = {'id': f'{day["date"]}-{hh}-{len(day["segments"]) + 1:02d}', 'title': out['title'],
                'startAt': start.isoformat(timespec='milliseconds'), 'audio': None, 'gaps': GAPS,
-               'notes': chosen, 'angle': angle, 'kind': kind, 'sources': out['sources'], 'lines': out['lines']}
+               'notes': chosen, 'angle': angle, 'kind': kind, 'show': show['id'] if show else None, 'sources': out['sources'], 'lines': out['lines']}
         trial = dict(day, segments=day['segments'] + [seg])
         save(trial, path)
         ok, msg = validate(path)
@@ -429,6 +448,26 @@ def push_audio():
                 os.rmdir(os.path.join(root, x))
 
 
+def write_replays():
+    """day/replays.json: every scene of the last seven days, newest first (id, title,
+    show, start, and the hour file holding its lines), so the page's Replays can
+    list them with one fetch instead of asking for 168 hour files. Rebuilt whole
+    from the hour files at each publish, so it can never drift from them."""
+    since = (datetime.now(TZ) - timedelta(days=7)).isoformat()
+    out = []
+    for d in sorted(os.listdir('day')):
+        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', d):
+            continue
+        for f in sorted(os.listdir(f'day/{d}')):
+            if re.fullmatch(r'\d{2}\.json', f):
+                for seg in json.load(open(f'day/{d}/{f}'))['segments']:
+                    if seg['startAt'] >= since:
+                        out.append({'id': seg['id'], 'title': seg['title'], 'show': seg.get('show'),
+                                    'startAt': seg['startAt'], 'file': f'day/{d}/{f}'})
+    out.sort(key=lambda x: x['startAt'], reverse=True)
+    json.dump(out, open('day/replays.json', 'w'), indent=0, ensure_ascii=False)
+
+
 def publish(path):
     # `path` is the file the scene was written into, held from the start: if the
     # hour turns while it is voiced, it still goes out from the file it lives in.
@@ -437,7 +476,8 @@ def publish(path):
     if not ok:
         raise RuntimeError(f'checker refused after voicing: {msg}')
     push_audio()  # the sound first, so it is there when the words go live
-    subprocess.run(['git', 'add', path], check=True)
+    write_replays()
+    subprocess.run(['git', 'add', path, 'day/replays.json'], check=True)
     subprocess.run(['git', 'commit', '-qm', f'chronicle: {path[4:-5]}, a scene from the vault'], check=True)
     subprocess.run(['git', 'pull', '-q', '--rebase', '--autostash'], check=True)
     subprocess.run(['git', 'push', '-q'], check=True)

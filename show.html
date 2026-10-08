@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A show on Chronicle</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Space+Mono&display=swap">
+<link rel="stylesheet" href="style.css">
+<!-- One show of the lineup (shows.json), PNN's per-show page: its hours, what it
+     is, who hosts it, and its latest scenes from the replay list. -->
+</head>
+<body>
+<main class="room">
+  <header class="masthead">
+    <a class="brand" href="./" style="text-decoration:none;color:inherit"><span class="brand-logo">CHR</span><p class="brand-name">Chronicle</p></a>
+    <nav class="jump"><a href="./">Watch live</a><a href="./#guide">Guide</a><a href="./#shows">Shows</a><a href="./#replays">Replays</a></nav>
+  </header>
+  <div class="page-card" id="card"><p>Loading…</p></div>
+  <section class="sec"><div class="sec-head"><h2>Latest scenes</h2><span>Watch any of them again</span></div>
+    <ol class="replay-list" id="scenes"></ol></section>
+</main>
+<script type="module">
+import { loadShows, drawFaces } from './panels.js';
+const id = new URLSearchParams(location.search).get('id');
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const hn = (h) => { const hh = Math.floor(h) % 24, m = Math.round((h % 1) * 60); return `${hh % 12 || 12}${m ? ':' + String(m).padStart(2, '0') : ''} ${hh < 12 ? 'AM' : 'PM'}`; };
+const show = (await loadShows()).find((s) => s.id === id);
+const card = document.getElementById('card');
+if (!show) card.innerHTML = '<h1>No such show</h1><p><a href="./#shows">All the shows</a></p>';
+else {
+  document.title = `${show.name} on Chronicle`;
+  card.innerHTML = `<h1>${esc(show.name)}</h1><p class="role" style="color:var(--gold);font-family:var(--px)">${hn(show.start)}–${hn(show.end)}, Chiang Mai time, every day</p>
+    <p>${esc(show.blurb)}</p><p style="color:var(--dim)">${esc(show.tone)}</p>
+    <ul class="crew" style="margin:16px 0 0"><li><canvas data-portrait="march" width="26" height="26"></canvas><strong><a href="cast.html?id=march">March</a></strong>Host</li>
+    <li><canvas data-portrait="narrator" width="26" height="26"></canvas><strong><a href="cast.html?id=narrator">The Narrator</a></strong>Storyteller</li></ul>`;
+  drawFaces();
+  let list = [];
+  try { list = await (await fetch('day/replays.json', { cache: 'no-cache' })).json(); } catch { /* none */ }
+  const mine = list.filter((r) => r.show === id).slice(0, 40);
+  const cm = (ms) => new Date(ms + 7 * 3600e3);
+  const when = (ms) => { const d = cm(ms); return `${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })} ${d.getUTCHours() % 12 || 12}:${String(d.getUTCMinutes()).padStart(2, '0')} ${d.getUTCHours() < 12 ? 'AM' : 'PM'}`; };
+  document.getElementById('scenes').innerHTML = mine.length
+    ? mine.map((r) => `<li><a href="./?replay=${encodeURIComponent(r.id)}"><span class="when">${when(Date.parse(r.startAt))}</span><span>${esc(r.title)}</span><span class="show"></span></a></li>`).join('')
+    : '<li><a>No scenes from this show yet.</a></li>';
+}
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@
 // one tap before it may make a sound, hence the button). When a segment has an
 // MP3 (segment.audio), that plays instead, started at the segment's offset on
 // the clock; the gaps are baked into the file.
-import { locate, hourFile, HOUR } from './timing.js';
+import { locate, layout, hourFile, HOUR } from './timing.js';
 import { drawStage } from './people.js';
 import { setupClip } from './clip.js';
 import { setupPanels, updatePanels } from './panels.js';
@@ -17,6 +17,9 @@ const atParam = params.get('at');
 // A '+' in a query string arrives as a space, so '+07:00' is restored here.
 const offsetMs = atParam ? Date.parse(atParam.replace(' ', '+')) - Date.now() : 0;
 const now = () => Date.now() + offsetMs;
+// ?replay=<scene id> plays that one scene from its start, then loops it (the
+// Replays list links here). No minute poll: a replay never changes.
+const REPLAY_ID = params.get('replay');
 
 // The transcripts are one file per hour, day/<date>/<HH>.json in Chiang Mai time
 // (Asia/Bangkok has no daylight saving: fixed +07:00), filed by the hour a scene
@@ -42,7 +45,16 @@ async function loadNow() {
 // At load with nothing in the last two hours (the station is off): walk back
 // hour by hour, up to two days, and replay the newest hour that exists with the
 // one before it. Done once, never in the minute poll.
+async function loadReplay(id) {
+  const list = await (await fetch('day/replays.json', { cache: 'no-cache' })).json();
+  const entry = list.find((r) => r.id === id);
+  if (!entry) return null;
+  const seg = ((await (await fetch(entry.file, { cache: 'no-cache' })).json()).segments || []).find((s) => s.id === id);
+  // Re-timed to start as the page loads, so it plays from its first line.
+  return seg ? { segments: [{ ...seg, startAt: new Date(now()).toISOString() }], replayOf: id } : null;
+}
 async function loadDay() {
+  if (REPLAY_ID) return loadReplay(REPLAY_ID).catch(() => null);
   const live = await loadNow();
   if (live) return live;
   for (let k = 2; k < 48; k++) {
@@ -135,6 +147,43 @@ function startSound() {
 }
 $('sound').addEventListener('click', startSound);
 
+// The jingle before each scene: three square-wave notes, PNN's way.
+function jingle() {
+  if (!audioCtx) return;
+  [523, 659, 784].forEach((f, i) => {
+    const o = audioCtx.createOscillator(), g = audioCtx.createGain(), at = audioCtx.currentTime + i * 0.14;
+    o.type = 'square'; o.frequency.value = f; g.gain.value = 0.04;
+    o.connect(g).connect(mix); o.start(at); o.stop(at + 0.12);
+  });
+}
+
+// The bumper slot: the short gap the voice step leaves before each scene (four
+// seconds), or any wait of up to two minutes for the next written scene. Without
+// it the page filled every gap by replaying an old scene. A longer wait still
+// replays: the station has fallen behind or is off.
+const BUMPER_MAX = 2 * 60 * 1000;
+function gapAt(d, t) {
+  const segs = (d.segments || []).map((s) => ({ s, start: Date.parse(s.startAt) })).sort((a, b) => a.start - b.start);
+  const next = segs.find((x) => x.start > t);
+  if (!next || next.start - t > BUMPER_MAX) return null;
+  const prev = segs.filter((x) => x.start <= t).pop();
+  if (prev && t < prev.start + layout(prev.s).totalMs) return null; // a scene is still on
+  return { next: next.s, ms: next.start - t };
+}
+const DISCLAIMER = 'Every word is written by AI and every voice is made by AI, from his real notes. Ideas may be stretched; his life is never invented.';
+let bumperFor = '';
+function showBumper(g) {
+  $('bumper').hidden = false;
+  if (bumperFor === g.next.id) return;
+  bumperFor = g.next.id;
+  // The first scene of an hour gets the disclaimer card (PNN's top-of-hour card).
+  const top = /-\d{2}-01$/.test(g.next.id);
+  $('bumperLabel').textContent = top ? 'A WORD FROM CHRONICLE' : 'UP NEXT';
+  $('bumperTitle').textContent = top ? 'Real notes. AI hosts.' : g.next.title;
+  $('bumperTease').textContent = top ? DISCLAIMER : (g.next.notes || []).length ? `From his notes: ${g.next.notes.join(' and ')}` : '';
+  jingle();
+}
+
 // The blip rule, shared by the live tick and the clip's sound plan: a blip each
 // time the typed count moves onto a letter while a line is being spoken.
 const blipDue = (at, lastTyped) => at.typed !== lastTyped && at.phase === 'speak'
@@ -144,7 +193,20 @@ let day = null, loadedAt = 0, lastTyped = -1, lastLineKey = '';
 function tick() {
   if (!day) return;
   const t = now();
+  const g = REPLAY_ID ? null : gapAt(day, t);
+  if (g) {
+    showBumper(g);
+    if (!voice.paused) voice.pause();
+    $('lowerThird').dataset.on = '0';
+    $('march-caption').textContent = '';
+    $('caption').textContent = '';
+    $('capName').textContent = '';
+    $('badge').textContent = 'LIVE';
+    return;
+  }
+  $('bumper').hidden = true;
   const v = viewAt(day, t);
+  $('standby').hidden = !!v;
   if (!v) { $('caption').textContent = 'No chapters yet.'; return; }
   const { at } = v;
   const { segment, line, lineIndex, typed, replay } = at;
@@ -156,8 +218,16 @@ function tick() {
     lastTyped = typed;
   }
   $('title').textContent = segment.title;
-  $('badge').textContent = replay ? 'REPLAY' : 'LIVE';
-  $('badge').dataset.live = replay ? '0' : '1';
+  const watchingReplay = !!day.replayOf;
+  $('badge').textContent = watchingReplay || replay ? 'REPLAY' : 'LIVE';
+  $('badge').dataset.live = watchingReplay || replay ? '0' : '1';
+  // The mode notice, like PNN's: what kind of airing this is.
+  const mode = watchingReplay ? 'replay' : replay ? 'off' : 'live';
+  if ($('mode').dataset.mode !== mode) {
+    $('mode').dataset.mode = mode;
+    $('mode').innerHTML = mode === 'replay' ? 'Watching a replay · <a href="./">back to live</a>'
+      : mode === 'off' ? 'Off air · replaying the last scenes' : 'Real notes. AI hosts.';
+  }
   const marchLine = line.speaker === 'march';
   $('march-caption').textContent = marchLine ? v.shown : '';
   $('caption').textContent = marchLine ? '' : v.shown;
@@ -168,7 +238,7 @@ function tick() {
   // Public sources show as they are; a day-note claim is marked as coming
   // from his own notes of the day, which are not public (the plan, step 6).
   $('sources').innerHTML = srcs.map((s, i) => {
-    const label = s.kind === 'commit' ? `commit · ${s.repo || ''}` : s.kind === 'day-note' ? 'from his notes of the day' : s.kind === 'note' ? 'from his notes' : s.kind;
+    const label = s.kind === 'viewer' ? 'from a viewer' : s.kind === 'commit' ? `commit · ${s.repo || ''}` : s.kind === 'day-note' ? 'from his notes of the day' : s.kind === 'note' ? 'from his notes' : s.kind;
     return `<li${i === line.source ? ' class="now"' : ''}><span>${escapeHtml(label)}</span> ${escapeHtml(s.text)}</li>`;
   }).join('');
 }
@@ -224,9 +294,10 @@ function escapeHtml(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp
 // are missing (the station is off) the replay already loaded stays.
 loadDay().then((d) => {
   day = d;
+  if (!d) { $('standby').hidden = false; return; }
   loadedAt = now();
   if (d && d.sample) $('note').textContent = 'Sample chapter, hand-written, to prove the player. Stand-in voice.';
   setInterval(tick, 50);
   tick();
-  setInterval(() => loadNow().then((nd) => { if (nd && JSON.stringify(nd) !== JSON.stringify(day)) day = nd; }).catch(() => {}), 60 * 1000);
+  if (!REPLAY_ID) setInterval(() => loadNow().then((nd) => { if (nd && JSON.stringify(nd) !== JSON.stringify(day)) day = nd; }).catch(() => {}), 60 * 1000);
 });

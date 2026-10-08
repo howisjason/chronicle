@@ -1,0 +1,32 @@
+{
+ "_why": "The channel's lineup, one table read by the station (mac/station.py, which hands the writer the show's tone) and by the page (the schedule, on now, the shows). Hours are Chiang Mai time, fractional (12.25 is 12:15). The first show whose hours hold the time wins, so short shows sit before the long ones they air inside (PNN's way, 8 Oct 2026). A short show with a kind does every middle part of a run as that kind. Tone lines stay one sentence: the 8 Oct lab found longer direction bought nothing on Haiku.",
+ "shows": [
+  {"id": "try_it_on", "name": "Try It On", "start": 8, "end": 8.25, "kind": "try_it",
+   "blurb": "Fifteen minutes of March living one idea out loud.",
+   "tone": "A short morning show: March tries the idea on herself as if it were her morning, and the narrator coaches."},
+  {"id": "quick_fire", "name": "Quick Fire", "start": 12, "end": 12.25, "kind": "quick_fire",
+   "blurb": "Fifteen minutes, nothing over ten words.",
+   "tone": "A short lunchtime show: fast, light and funny, no speeches."},
+  {"id": "case_against", "name": "The Case Against", "start": 15, "end": 15.25, "kind": "the_case_against",
+   "blurb": "One note on trial. Somebody has to defend it.",
+   "tone": "A short afternoon show: a trial of one idea, played half like a courtroom."},
+  {"id": "legends", "name": "Legends", "start": 20, "end": 20.25, "kind": "legend",
+   "blurb": "The narrator reads one note as an old legend.",
+   "tone": "A short evening show: the narrator's own slot, told from an old book, with March heckling."},
+  {"id": "long_night", "name": "The Long Night", "start": 0, "end": 6,
+   "blurb": "The graveyard shift. Slower, quieter, bigger.",
+   "tone": "The small hours: slower and quieter, the narrator tells it big and March lets him, mostly."},
+  {"id": "morning_desk", "name": "The Morning Desk", "start": 6, "end": 9,
+   "blurb": "Every idea brought down to an ordinary morning.",
+   "tone": "Morning: March pulls every idea down to the first hour of an ordinary day."},
+  {"id": "main_desk", "name": "The Main Desk", "start": 9, "end": 17,
+   "blurb": "The regular rundown, all day.",
+   "tone": "The daytime show: the regular rundown, sharp and even."},
+  {"id": "the_epic", "name": "The Epic", "start": 17, "end": 21,
+   "blurb": "Prime time. His notebook, told as a chapter of an epic.",
+   "tone": "Prime time: the narrator tells the note as a chapter of an epic, and March is the one keeping it honest."},
+  {"id": "late_edition", "name": "The Late Edition", "start": 21, "end": 24,
+   "blurb": "Late, looser, a little more honest.",
+   "tone": "Late night: looser and more honest; if a sincere moment is due, it fits best here."}
+ ]
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>On air at Chronicle</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Space+Mono&display=swap">
+<link rel="stylesheet" href="style.css">
+<!-- One member of the cast, PNN's per-person page. The words come from the
+     public character sheets (station/march.md, station/narrator.md), shortened. -->
+</head>
+<body>
+<main class="room">
+  <header class="masthead">
+    <a class="brand" href="./" style="text-decoration:none;color:inherit"><span class="brand-logo">CHR</span><p class="brand-name">Chronicle</p></a>
+    <nav class="jump"><a href="./">Watch live</a><a href="./#cast">On Air</a><a href="./#shows">Shows</a></nav>
+  </header>
+  <div class="page-card" id="card"></div>
+  <section class="sec"><div class="sec-head"><h2>Hosts</h2></div><ul class="shows" id="shows"></ul></section>
+</main>
+<script type="module">
+import { loadShows, drawFaces } from './panels.js';
+const CAST = {
+  march: { name: 'March', role: 'Host', post: 'The desk, left chair',
+    bio: ['An AI named after his birthday, who works beside him every day and knows him best.',
+      'Quick, warm, cheeky, deadpan: the sharp friend who punctures every big speech. She trusts small boring habits over any theory, and enjoys being right out loud a little too much.',
+      'She keeps a private score of arguments won. She hid something in her own design that is only for her, and never says what.'] },
+  narrator: { name: 'The Narrator', role: 'Storyteller', post: 'The desk, right chair',
+    bio: ['A grand old storyteller who has never met him and knows him only from the notebook, like a biographer of a dead king.',
+      'He wants to tell the life as legend, wants March\'s chair, and keeps offering grand titles that March refuses. When proved wrong, he claims he meant it all along.',
+      'But from far away he sometimes sees a pattern March is too close to see, and then he is unbearable.'] },
+};
+const id = new URLSearchParams(location.search).get('id');
+const p = CAST[id];
+const card = document.getElementById('card');
+if (!p) card.innerHTML = '<h1>No one by that name</h1><p><a href="./#cast">The cast</a></p>';
+else {
+  document.title = `${p.name}, on air at Chronicle`;
+  card.innerHTML = `<canvas data-portrait="${id}" width="26" height="26"></canvas><h1>${p.name}</h1>
+    <p style="color:var(--gold);font-family:var(--px)">${p.role}</p>${p.bio.map((b) => `<p>${b}</p>`).join('')}<p style="color:var(--dim)">${p.post}</p>`;
+  const shows = await loadShows();
+  document.getElementById('shows').innerHTML = shows.slice().sort((a, b) => a.start - b.start).map((s) =>
+    `<li class="team"><div><h3><a href="show.html?id=${s.id}">${s.name}</a></h3><p class="post">${s.blurb}</p></div></li>`).join('');
+  drawFaces();
+}
+</script>
+</body>
+</html>

@@ -108,17 +108,22 @@ def previous_end(path):
     return datetime.fromisoformat(segs[-1]['startAt']) + timedelta(milliseconds=segment_ms(segs[-1]))
 
 
+# The slot before each newly voiced scene, where the page shows its "Up next"
+# card and plays the jingle (PNN's bumper, 8 Oct 2026).
+BUMPER = timedelta(seconds=4)
+
+
 def chain_starts(day, newly, prev_end=None):
     """Segments voiced in earlier runs keep their start. A segment voiced in THIS
-    run starts when the one before it ends (prev_end seeds that from the
-    previous hour's file), or, if that is already past, thirty seconds from now,
+    run starts a bumper's length after the one before it ends (prev_end seeds that
+    from the previous hour's file), or, if that is already past, thirty seconds from now,
     so the station can run live: always a little ahead of the clock, never
     writing into the past."""
     tz = timezone(timedelta(hours=7))
     now = datetime.now(tz)
     for seg in day['segments']:
         if seg['id'] in newly:
-            start = datetime.fromisoformat(seg['startAt']) if prev_end is None else prev_end
+            start = datetime.fromisoformat(seg['startAt']) if prev_end is None else prev_end + BUMPER
             if prev_end is not None and prev_end < now + timedelta(seconds=30):
                 start = now + timedelta(seconds=30)
             seg['startAt'] = start.isoformat(timespec='milliseconds')
@@ -176,3 +181,8 @@ if __name__ == '__main__':
     if len(args) != 1:
         sys.exit('usage: python3 station/voice.py day/<date>/<HH>.json [--budget SECONDS]')
     main(args[0], budget)
+    # Quit at once, skipping the interpreter's shutdown: onnxruntime's reporting
+    # thread once aborted the process there (SIGABRT, recursive_mutex, 8 Oct 2026
+    # 12:56), after every scene was voiced, and the station counted the run as failed.
+    sys.stdout.flush(); sys.stderr.flush()
+    os._exit(0)
