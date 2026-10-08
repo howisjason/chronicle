@@ -4,6 +4,8 @@
   <key>Label</key><string>com.howisjason.chronicle</string>
   <key>ProgramArguments</key><array><string>/bin/bash</string><string>/Users/howisjason/Projects/chronicle/mac/tick.sh</string></array>
   <key>StartInterval</key><integer>900</integer>
+  <!-- Lets each tick's caffeinate outlive the tick, so the Mac stays awake between ticks while the station is on. -->
+  <key>AbandonProcessGroup</key><true/>
   <key>StandardOutPath</key><string>/Users/howisjason/Library/Logs/chronicle.log</string>
   <key>StandardErrorPath</key><string>/Users/howisjason/Library/Logs/chronicle.log</string>
 </dict></plist>

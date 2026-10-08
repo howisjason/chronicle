@@ -15,6 +15,17 @@ if [ -s "$LOCK" ] && kill -0 "$(cat "$LOCK")" 2>/dev/null; then
 fi
 echo $$ > "$LOCK"; trap 'rm -f "$LOCK"' EXIT
 echo "$(date '+%F %T') tick"
+# A timed run (the button's "On for N hours") ends at the first tick past
+# inbox/until.txt: the clock switches itself off, and the page replays.
+UNTIL=inbox/until.txt
+if [ -s "$UNTIL" ] && [ "$(date +%s)" -ge "$(cat "$UNTIL")" ]; then
+  rm -f "$UNTIL"; echo "$(date '+%F %T') tick: the timed run is over; switching off"
+  launchctl unload -w ~/Library/LaunchAgents/com.howisjason.chronicle.plist; exit 0
+fi
+# While on, keep the Mac from idle sleep until a little past the next tick
+# (16 minutes against the 15-minute clock), so ticks keep coming. Closing the
+# lid on battery still sleeps it; nothing in software overrides that.
+caffeinate -i -t 960 >/dev/null 2>&1 &
 python3 mac/pool.py >/dev/null
 # A failed run buzzes J's phone through the personal worker's alert door (the
 # same door the agent supervisor uses), at most once every three hours, so a
