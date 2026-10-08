@@ -2732,6 +2732,171 @@
         "n": 3,
         "of": 4
       }
+    },
+    {
+      "id": "2026-10-08-13-17",
+      "title": "THE FEW THAT CARRY THE WHOLE",
+      "startAt": "2026-10-08T14:02:24.127+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-17.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Embodiment - Be Who You Strive To Be",
+        "Consistency Compounds Exponentially"
+      ],
+      "angle": "What if I approached this with the Pareto Principle in mind?",
+      "kind": "verdict",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Embodiment - Be Who You Strive To Be: Before a man can conquer the world, he must first conquer himself. No matter the grand desire, the path to these dreams is paved not with chance."
+        },
+        {
+          "kind": "note",
+          "text": "Consistency Compounds Exponentially: A single habit (good or bad) compounds exponentially and shifts the trajectory of your life immensely in just 1 year."
+        },
+        {
+          "kind": "note",
+          "text": "Consistency Compounds Exponentially: And if you let go of every single one of your high dopamine inducing vices and bad habits on top of that, you wouldn't even be the same person anymore."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Before a man conquers the world he must first conquer himself, and the lopsided rule of the old ledgers says that conquest is done by a very few deeds. A small handful lift nearly all the harvest, and the rest is chaff.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14784
+        },
+        {
+          "speaker": "march",
+          "text": "Chaff, Narrator? The note says a single habit compounds in one year. You're telling me it's a handful, and the routine is just dressing?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6773
+        },
+        {
+          "speaker": "narrator",
+          "text": "The handful is the root and the routine is the grove. One root, grown long, shades a whole orchard, and the rest is only leaves.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9131
+        },
+        {
+          "speaker": "march",
+          "text": "Good, a root. But which one? A grove doesn't tell you which root to water, and nobody's grand picture ever picks it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6329
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then water the bare minimum, the little deed every morning, and the choosing takes care of itself. Destiny is not so fussy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8171
+        },
+        {
+          "speaker": "march",
+          "text": "Destiny's fussy about one thing: it's always the boring bit. Most of a routine is noise. The few that matter are the dull ones you'd skip.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 7229
+        },
+        {
+          "speaker": "narrator",
+          "text": "Dull? The dull deed is the quiet vessel carrying a man's whole kingdom across the water, and you'd cast it overboard.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7765
+        },
+        {
+          "speaker": "march",
+          "text": "Nobody's casting anything overboard, Narrator. You keep wanting a ship, and I want to know which plank leaks.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6008
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then stop the leak. The note says to let go of the vices, the high dopamine ones, and the leak closes itself. Such a lovely arithmetic of subtraction.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10688
+        },
+        {
+          "speaker": "march",
+          "text": "Subtraction is it. Remove the leak, don't add another crown on top. Fewer things is the lever.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5541
+        },
+        {
+          "speaker": "narrator",
+          "text": "A lever, yes, I accept the lever. Though I hold that it was always destined to move, long before you found it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7168
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. You're right. Now the lever's got a chair attached, so stop reaching for it, Narrator.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5136
+        },
+        {
+          "speaker": "narrator",
+          "text": "The arm of the chair is in the sun again, March, the very one I claim. Destiny moves with the light and lands where it likes.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8299
+        },
+        {
+          "speaker": "march",
+          "text": "The sun's gone off the arm, Narrator. It moved on. Your destiny keeps the same timing as the light, and it leaves when you look.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6625
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall wait for it, as the old are patient, and I shall not be bitter that it left.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5483
+        },
+        {
+          "speaker": "march",
+          "text": "Verdict, since this is the last of the run. You were right that the few carry the whole. I was right that you only find the few by looking at what you actually do. The lopsided truth is that the handful and the compounding need each other. Up next: Express Your Ideas To The World, and The Present Moment Is All That Exists.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 14440
+        }
+      ],
+      "part": {
+        "n": 4,
+        "of": 4
+      }
     }
   ]
 }
