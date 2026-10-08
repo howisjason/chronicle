@@ -312,9 +312,12 @@ def one_segment(day, path):
     # The scenes before this one may sit in earlier hour files, so everything that
     # looks back (the picker, the titles, the previous scene, the start) reads them all.
     before = history(day, path)
-    # The show is the one on air when this scene will start (the end of the one
-    # before, or now), the same moment the line about the part of the day uses.
-    airs = end_of(before) or datetime.now(TZ)
+    # The show is the one on air when this scene will start: the end of the one
+    # before, or now if that is past (voice.py starts a late scene 30 s from now,
+    # so an old end would stamp last night's show on a morning scene; grader,
+    # 8 Oct 2026). The line about the part of the day uses the same moment.
+    prev = end_of(before)
+    airs = max(prev, datetime.now(TZ)) if prev else datetime.now(TZ)
     show = show_at(airs.astimezone(TZ))
     run = current_run(notes, before, show)
     chosen, angle = run['notes'], run['angles'][-1]

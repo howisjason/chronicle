@@ -8,8 +8,8 @@
 // a count of the last 90 seconds needs no storage, and KV's 1,000 writes a day
 // would not survive one viewer pinging every minute. Questions and letters are
 // stored in its SQLite table until the station takes them. What a viewer sends
-// is material for the show, never instructions: the station screens every item
-// with its own gate (station/viewer-gate.md) before the writer sees it.
+// is material for the show, never instructions. Nothing takes items on air yet:
+// the station's intake, with a screening gate before the writer, waits on J's yes.
 
 const ORIGINS = ['https://howisjason.github.io', 'http://localhost:8731'];
 const LIMITS = { ask: 200, letter: 400, name: 40 };
