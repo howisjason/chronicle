@@ -3,7 +3,10 @@
 This repo is public. Nothing about J's money, people, clients, health or plans
 goes in any file here, including this one. The map of where it stands lives in his private vault: `personal/context/obsidian/🌱
 Brain Dump/The channel - where it stands (8 Oct 2026).md`; the first night's plan
-beside it is history.
+beside it is history. The next phase, the writing rebuild (ten-minute scenes, two
+writing passes, the NotebookLM and content-creation findings whole), is planned in
+`The channel - the writing rebuild (8 Oct 2026).md` beside it: read it whole before
+touching any sheet in `station/`.
 
 ## What this is, in one paragraph
 
@@ -72,6 +75,8 @@ about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 
 - **The station pushes main.** Every scene it airs runs `git pull --rebase` then `git push`, so ANY commit sitting on local main goes public within minutes, graded or not (8 Oct 2026: a clip rework went live before its grader finished). While the station is on, unreviewed work lives on a branch and is merged only after its grader reports. A push of your own can also bounce off the station's; pull and push again.
 
+- **Editing `mac/tick.sh` while a tick is running can break that tick**, because bash reads a script as it goes; switch the clock off from the Dock button first. **`launchctl unload` kills a run mid-scene** and can leave one checked but unvoiced scene in the hour file; the next tick voices it.
+- A lab run's calls count against the live daily cap (8 Oct 2026: the labs used $1.42 of that day's $2).
 - A `+` in a `?at=` URL arrives as a space; `player.js` restores it.
 - Two watchers pulling the same clone at once leave it dirty; `git checkout --
   day/` then pull.
