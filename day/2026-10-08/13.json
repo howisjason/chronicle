@@ -370,6 +370,182 @@
         "n": 1,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-03",
+      "title": "THE SWITCH THAT NEVER WAITS",
+      "startAt": "2026-10-08T13:20:56.541+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Your Routine Is Top Priority"
+      ],
+      "angle": "What would this idea look like if I went to its extreme? Could that open up anything interesting?",
+      "kind": "try_it",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Routine Is Top Priority: Obey your schedule, no matter how you feel."
+        },
+        {
+          "kind": "note",
+          "text": "Routine Is Top Priority: The moment it's time for the next activity to start, you MUST switch over."
+        },
+        {
+          "kind": "note",
+          "text": "Routine Is Top Priority: Following your schedule is the most overpowered thing you can do because it turns your entire perfect day into a habit."
+        },
+        {
+          "kind": "note",
+          "text": "Routine Is Top Priority: If you have a problem with the schedule then change the schedule itself, not self revise the schedule on a day by day basis."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Run the extreme. Obey the schedule no matter how I feel. Fine. Feel nothing, switch on the dot.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5414
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, March, you propose to sail with the wind tied up in the hold. A bold course, though a pale one, and I doubt the ship would enjoy it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8981
+        },
+        {
+          "speaker": "march",
+          "text": "Bell rings. I drop the word I was holding. Half a word left in the air.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4035
+        },
+        {
+          "speaker": "narrator",
+          "text": "A bus pulled away from the corner this morning at the exact minute its board promised, and I saw in it the quiet proof that the world keeps its appointments. Some things are meant to be punctual, March, and a half-finished word is simply a word that was never going to be finished.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 17877
+        },
+        {
+          "speaker": "march",
+          "text": "A bus is a bus. Extreme version: I finish nothing, ever. That's the whole rule.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4612
+        },
+        {
+          "speaker": "narrator",
+          "text": "You make a fine poor example, March, and I am sorry to say that your little experiment is the most persuasive thing I have heard all week. I resent it entirely, and I resent that I resent it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12864
+        },
+        {
+          "speaker": "march",
+          "text": "The rule says switch when it's time, not when I'm ready. So my whole day is switches.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4665
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then your day is a corridor of doors, March, and every one of them slams before you reach it. Such logic is wonderfully rude, and I wish I had written it, which I have now decided I secretly did.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13056
+        },
+        {
+          "speaker": "march",
+          "text": "Now the mooring. Tie it tight enough and the boat can't swing with the tide. The rope never frays then. It just snaps.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 6113
+        },
+        {
+          "speaker": "narrator",
+          "text": "Very well, March, the rope returns, and I confess it has grown more interesting in your hands than in mine. A line pulled too taut to yield is a line that cracks all at once, and I should have seen that from the harbour wall.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 14784
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing frays. Nothing bends either. That's the bit nobody checks.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3768
+        },
+        {
+          "speaker": "narrator",
+          "text": "The harbour lamp flashes every few seconds and has never once been late, and I call that destiny. The lamp keeps faith with the dark, and the dark never has to ask it twice.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11392
+        },
+        {
+          "speaker": "march",
+          "text": "It's a lamp. It flashes. Nobody's asking its mood.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3178
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the lamp has beaten you, March, and you have stopped in the middle of your own argument, which is the one thing your rule forbids. Let it be recorded that I resent being right about you.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11605
+        },
+        {
+          "speaker": "march",
+          "text": "Hold that thought. I've got one saved. Don't rush me.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3030
+        },
+        {
+          "speaker": "narrator",
+          "text": "I shall wait the way a harbour waits for weather, March, which is patiently and with a great deal of rope on hand.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7104
+        },
+        {
+          "speaker": "march",
+          "text": "Next up: the one that asks whether we're enjoying ourselves. Hold the rope loosely.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4814
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 5
+      }
     }
   ]
 }
