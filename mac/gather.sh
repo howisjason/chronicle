@@ -96,5 +96,5 @@ if [ ! -e "$OUT/notes.md" ] && [ ! -e "$OUT/notes.md.held" ] && [ -s mac/shelf.t
   done < mac/shelf.txt > "$OUT/notes.md"
   python3 mac/gate.py "$OUT/notes.md" note || true
 fi
-[ -s "$OUT/notes.md" ] && N=$(grep -c '^## NOTE:' "$OUT/notes.md")
-echo "gathered $OUT: $(grep -c . "$OUT/commits.md") commit lines, $(wc -w < "$OUT/day-note.md" | tr -d ' ') words of day note, $N tagged notes"
+[ -s "$OUT/notes.md" ] && N=$(grep -c '^## NOTE:' "$OUT/notes.md" || true)
+echo "gathered $OUT: $(grep -c . "$OUT/commits.md") commit lines, $(cat "$OUT/day-note.md" 2>/dev/null | wc -w | tr -d " ") words of day note, $N tagged notes"
