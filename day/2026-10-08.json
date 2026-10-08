@@ -7999,6 +7999,178 @@
         "n": 1,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-54",
+      "title": "THE SMOKED LENS ON THE HALL TABLE",
+      "startAt": "2026-10-08T11:56:03.188+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-54.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Everything Is Subjective"
+      ],
+      "angle": "What if this problem existed in an entirely different industry?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Everything is Subjective: Some call it black. Others call it white. Everything is subjective."
+        },
+        {
+          "kind": "note",
+          "text": "Everything is Subjective: Our attitude is like the lens in which we see the world through. A different lens effectively changes your entire reality."
+        },
+        {
+          "kind": "note",
+          "text": "Everything is Subjective: Even SCIENTIFIC theories we as an entire species currently believes to be fact may one day in the future be proven false."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "J's note says some call it black, others call it white, and everything is subjective. Lovely. Now take it to a tailor's shop.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6776
+        },
+        {
+          "speaker": "narrator",
+          "text": "A tailor's shop! Where the sleeve is measured by destiny and the cut speaks the eternal truth. Black, white, and a perfect sleeve between them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9856
+        },
+        {
+          "speaker": "march",
+          "text": "One tailor says the sleeve sits too long, the other says it is perfect. Same arm, same jacket. Which one is the subjective one?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7189
+        },
+        {
+          "speaker": "narrator",
+          "text": "The one who is correct, obviously. Destiny keeps a tape measure.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4416
+        },
+        {
+          "speaker": "march",
+          "text": "Destiny keeps an opinion. Your tape measure is just a longer opinion with numbers on it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5686
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let a Galileo of the needle arrive, prove the old cut wrong, and be proved wrong by a boy with chalk. The note says every expert is one day proven false, and I say the chalk is always waiting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13355
+        },
+        {
+          "speaker": "march",
+          "text": "That is the note's whole pitch. Every expert ends up looking foolish eventually, and the sleeve does not get worse on the day it is cut.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7159
+        },
+        {
+          "speaker": "narrator",
+          "text": "On the day! A truth that expires is not truth at all, it is weather.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4693
+        },
+        {
+          "speaker": "march",
+          "text": "Weather is fine. You wear a coat in weather, and nobody calls the rain a liar.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4498
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then J's coat is subjective and his sleeves are doomed. Our attitude is the lens, and I offer him a title to match: Sovereign of the Smoked Lens, keeper of every shade of grey.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12672
+        },
+        {
+          "speaker": "march",
+          "text": "He would print that on a sticker and stick it on the bin. But the lens bit is fair, I'll give you that.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5401
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the picture for this run. A pair of spectacles on the hall table, one lens clear and one smoked, both looking at the same bench.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7100
+        },
+        {
+          "speaker": "march",
+          "text": "Let me try it on myself. If I think a sleeve is too long and the tailor thinks it is perfect, I'm not wrong, I'm just standing at a different counter.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7441
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, March tries on the lens! And under that cloth you have hidden something. Is it a sleeve? A rule? A small, sly, glowing rule?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9237
+        },
+        {
+          "speaker": "march",
+          "text": "You're warm. Save the rest for later in the run.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2875
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall wait, dear one, and watch the spectacles on the hall table explain the whole matter.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6315
+        },
+        {
+          "speaker": "march",
+          "text": "Sit down, put the sovereign on the bin, and wait for the crowd.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3538
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 3
+      }
     }
   ]
 }
