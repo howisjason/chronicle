@@ -546,6 +546,174 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-04",
+      "title": "THE BELL THAT NEEDS NO TIDE",
+      "startAt": "2026-10-08T13:23:28.233+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Your Routine Is Top Priority"
+      ],
+      "angle": "What if I had limitless resources or time to solve this?",
+      "kind": "quick_fire",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Why Routine Must Be Your Priority: Following your schedule is the most overpowered thing you can do because it turns your entire perfect day into a habit."
+        },
+        {
+          "kind": "note",
+          "text": "Why Routine Must Be Your Priority: Obey your schedule, no matter how you feel."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Limitless time. Fine. I'd still switch on the bell.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2998
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, but with unending hours, no bell ever sounds at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3819
+        },
+        {
+          "speaker": "march",
+          "text": "Then I hear it late. Still switch.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2339
+        },
+        {
+          "speaker": "narrator",
+          "text": "Late is where good intentions go to nap, March, and you have just opened the door.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5376
+        },
+        {
+          "speaker": "march",
+          "text": "Limitless rope, too. Tie every boat to the wall.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3011
+        },
+        {
+          "speaker": "narrator",
+          "text": "A rope without end, and a harbour without tide. A dreadful kindness, that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "Dreadful? Nothing moves. Nothing frays. Perfect.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2997
+        },
+        {
+          "speaker": "narrator",
+          "text": "Give a man endless hours and he drifts through every one of them. I have watched it happen, and I will not soften it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7531
+        },
+        {
+          "speaker": "march",
+          "text": "You're describing J. He'd hate that.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 2514
+        },
+        {
+          "speaker": "narrator",
+          "text": "I describe no one. I describe the harbour wall, which has watched many drifters pass.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5781
+        },
+        {
+          "speaker": "march",
+          "text": "Harbour wall's smug. Wall's never had a bell.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2921
+        },
+        {
+          "speaker": "narrator",
+          "text": "And what did you hide in the rule, March? A trapdoor? A door without a latch?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5077
+        },
+        {
+          "speaker": "march",
+          "text": "No trapdoor. Just a bell. Bells don't care about endless.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3447
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you hid a bell at the bottom of the boat, and I suspect you knew it all along.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4757
+        },
+        {
+          "speaker": "march",
+          "text": "Point mine. Limitless time doesn't fix a bad bell.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3183
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let the record show the bell is still the only thing ringing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3712
+        },
+        {
+          "speaker": "march",
+          "text": "Question, narrator. Who does J spend his time with? Still waiting.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3748
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 5
+      }
     }
   ]
 }
