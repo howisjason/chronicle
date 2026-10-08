@@ -94,6 +94,8 @@ export function setupClip({ button, out, plan }) {
     if (job) { job.stop(); return; } // a second press ends the clip early
     const p = plan();
     if (!p) return;
+    // The last clip's video is let go before the next, so clips don't pile up in memory.
+    if (lastClipUrl) URL.revokeObjectURL(lastClipUrl);
     out.innerHTML = '';
     const durMs = p.endMs - p.startMs;
     // Made inside the tap, so the browser lets it run; it is never connected
@@ -107,7 +109,8 @@ export function setupClip({ button, out, plan }) {
     // the first frame (an <audio> element seeking into the past would start late).
     // A scene whose MP3 is gone gets its blips instead, as the live page does.
     const buffers = await Promise.all(p.runs.map((r) => (dest && r.audio
-      ? fetch(p.audioBase + r.audio).then((res) => { if (!res.ok) throw 0; return res.arrayBuffer(); })
+      // A slow or hung sound file falls back to blips after ten seconds.
+      ? fetch(p.audioBase + r.audio, { signal: AbortSignal.timeout(10000) }).then((res) => { if (!res.ok) throw 0; return res.arrayBuffer(); })
         .then((b) => ac.decodeAudioData(b)).catch(() => null)
       : null)));
     button.disabled = false;
@@ -185,8 +188,9 @@ export function setupClip({ button, out, plan }) {
 // Hand the file over: a Share button where the browser can share files
 // (phones), and a download link always. Sharing needs a fresh tap, so it is
 // its own button rather than a call made when the recording ends.
+let lastClipUrl = null;
 function handOver(file, out) {
-  const url = URL.createObjectURL(file);
+  const url = lastClipUrl = URL.createObjectURL(file);
   const a = document.createElement('a');
   a.href = url; a.download = file.name; a.id = 'clip-download';
   a.textContent = `Download clip (${(file.size / 1e6).toFixed(1)} MB)`;
