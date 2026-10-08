@@ -41,7 +41,7 @@ else {
   const when = (ms) => { const d = cm(ms); return `${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })} ${d.getUTCHours() % 12 || 12}:${String(d.getUTCMinutes()).padStart(2, '0')} ${d.getUTCHours() < 12 ? 'AM' : 'PM'}`; };
   document.getElementById('scenes').innerHTML = mine.length
     ? mine.map((r) => `<li><a href="./?replay=${encodeURIComponent(r.id)}"><span class="when">${when(Date.parse(r.startAt))}</span><span>${esc(r.title)}</span><span class="show"></span></a></li>`).join('')
-    : '<li><a>No scenes from this show yet.</a></li>';
+    : '<li><a>No scenes from this show yet. Scenes are stamped with their show from 8 Oct 2026 on.</a></li>';
 }
 </script>
 </body>

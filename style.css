@@ -114,7 +114,7 @@ main.room { max-width: 1100px; margin: 0 auto; padding: 24px 16px 60px; }
 .g-times { position: relative; height: 18px; font: 11px var(--px); color: var(--dim); padding: 0 0 6px; }
 .g-times span { position: absolute; top: 0; padding-left: 6px; border-left: 1px solid var(--line); }
 .g-shows { position: relative; height: 150px; }
-.g-show { position: absolute; top: 0; bottom: 0; text-decoration: none; color: var(--text); background: linear-gradient(#2f4fd0, #1f3399); border: 2px solid #4a6cf0; padding: 10px 12px; position: relative; overflow: hidden; }
+.g-show { position: absolute; top: 0; bottom: 0; text-decoration: none; color: var(--text); background: linear-gradient(#2f4fd0, #1f3399); border: 2px solid #4a6cf0; padding: 10px 12px; overflow: hidden; }
 .g-show strong { font: 14px var(--px); display: block; }
 .g-show.now { background: linear-gradient(#f2c14e, #d9a632); color: #10131c; border-color: #fff3c4; }
 .g-show.now em { color: #7a1018; }
@@ -253,3 +253,11 @@ main.room { max-width: 1100px; margin: 0 auto; padding: 24px 16px 60px; }
 .page-card { background: var(--panel); border: 2px solid var(--line); padding: 20px; margin-top: 16px; }
 .page-card h1 { font: 28px var(--px); margin: 0 0 4px; }
 .page-card canvas { width: 96px; height: 96px; image-rendering: pixelated; background: var(--blue); display: block; margin-bottom: 12px; }
+
+/* on a phone the guide keeps its full width and scrolls sideways */
+@media (max-width: 820px) {
+  .guide-grid { overflow-x: auto; }
+  .g-times, .g-shows, .g-lane { min-width: 900px; }
+}
+.page-card .crew canvas { width: 44px; height: 44px; margin-bottom: 4px; }
+.replay-list li a:only-child { grid-template-columns: 1fr; }
