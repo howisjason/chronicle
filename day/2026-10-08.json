@@ -5983,6 +5983,150 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-42",
+      "title": "THE RULE THAT COSTS EVERYTHING",
+      "startAt": "2026-10-08T10:31:18.004+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-42.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Happiness And Gratitude",
+        "Everything Is Subjective"
+      ],
+      "angle": "What could I remove from this idea to make it simpler, cheaper, or more effective? (Instead of just adding)",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: There is no objective right or wrong. There are as many opinions in life as there are people."
+        },
+        {
+          "kind": "note",
+          "text": "Feelings Do Not Require Reason: If you wait until you \"deserve\" to think pleasant thoughts, you're likely to think unpleasant thoughts regarding your own unworthiness."
+        },
+        {
+          "kind": "note",
+          "text": "Feelings Do Not Require Reason: Happiness is not a moral issue, anymore than the circulation of blood is a moral issue."
+        },
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: So don't get too caught up in what's right or wrong."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Nothing. Right away, I cut.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2048
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Cut what, exactly? Show me the fat.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2624
+        },
+        {
+          "speaker": "narrator",
+          "text": "The fat is the rule. You wait until you deserve a good thought.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4224
+        },
+        {
+          "speaker": "march",
+          "text": "And while you wait, you think the bad thoughts about your own worth. That is the cost. It is cheap to keep and expensive to live with.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6671
+        },
+        {
+          "speaker": "narrator",
+          "text": "So cut it. Happiness is not a moral issue.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3435
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Blood does not ask permission to move. Happiness works the same way.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 2,
+          "audioMs": 4174
+        },
+        {
+          "speaker": "narrator",
+          "text": "Less rule. More looking. Everything is subjective, so there is no test to pass.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5312
+        },
+        {
+          "speaker": "march",
+          "text": "I like that. There is no objective right or wrong, so there is nothing to earn.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4302
+        },
+        {
+          "speaker": "narrator",
+          "text": "Think of it as a snow day.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2069
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. But do not hide in the snow. Do not get too caught up in what is right or wrong. Just look.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5049
+        },
+        {
+          "speaker": "narrator",
+          "text": "The lens is free. It always was. He only had to stop charging himself for it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5717
+        },
+        {
+          "speaker": "march",
+          "text": "That is the cheapest version of the idea, and the best one. I will take it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4320
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then here is my question. March, what would you cut from your own rules today?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4992
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 5
+      }
     }
   ]
 }
