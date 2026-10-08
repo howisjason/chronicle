@@ -17,18 +17,33 @@ fixed list of what a day note may never say.
 
 ## How it runs now (decided 8 Oct 2026, J's design)
 
-**Live, one segment at a time.** `mac/fire.sh <date> <minutes-ahead>` starts a
-cloud session from the Mac with STATION.md and the inbox in its prompt. The
-session writes ONE segment, checks it (`station/validate.mjs`), runs the truth
-check (`station/truth-check.md`, a fresh reader), voices it (`station/voice.py`),
-pushes, then loops until the day's chapters end N minutes past the clock in
-Chiang Mai, and stops. Nothing refires it by itself yet; every fire is by hand.
-The end goal is 24/7, so nothing is built as a block.
+**On the Mac, the PNN way, on his plan.** `mac/station.py` writes one segment per
+plain headless `claude -p` call (Haiku 5.5, no tools, no Claude Code instructions,
+our own sheets as the system prompt), checks it (`station/validate.mjs`), runs the
+truth check as a second call (`station/truth-check.md`, events and privacy only),
+repairs or cuts flagged lines, voices it with Kokoro from `station/.venv`, commits
+and pushes. A Sonnet 5.5 call plans the day's scenes once, ranked by drama
+(`inbox/<date>/arc.json`). Measured: about half a cent of API-equivalent usage per
+clean segment, against 3 to 9 cents in a cloud session. `--lab` writes text only
+into `inbox/<date>/lab-day.json`, never voiced or pushed. Each call's cost is
+logged in `inbox/<date>/costs.tsv`. The writing lives in `station/writer.md`,
+`station/march.md` and `station/narrator.md` (personas, his yes 8 Oct 2026).
 
-**The cloud harness forces a session to push to its own `claude/...` branch,
-never to `main`.** `.github/workflows/land.yml` merges every such push into
-`main` by itself; a conflict is left unmerged with a warning. GitHub Pages
-serves `main`. Found 8 Oct 2026 when 13 voiced segments sat on a branch unseen.
+**The clock:** `mac/tick.sh`, every 15 minutes by the LaunchAgent
+`com.howisjason.chronicle` (plist in `mac/`, log `~/Library/Logs/chronicle.log`):
+gather, then the station until the day is 20 minutes ahead. It writes only when
+there is something new, so a quiet day costs almost nothing. The Mac must be awake.
+
+**No manual review (his word, 8 Oct 2026).** A blind reviewer
+(`station/note-gate.md`, a fresh Sonnet call) removes any day-note paragraph not fit
+for a public channel before the station sees it; removals are kept in
+`inbox/<date>/note-gate.txt`. This replaced him reading the first ten notes.
+
+**The cloud way still exists** (`mac/fire.sh` and `STATION.md`, a cloud session on
+the $250 credit, which ends 5 Nov 2026); it is now for tests and build sessions,
+not the daily station. **The cloud harness forces a session to push to its own
+`claude/...` branch;** `.github/workflows/land.yml` merges every such push into
+`main`.
 
 **The Mac side.** `mac/gather.sh <date>` builds `inbox/<date>/` from the
 allow-list only: public-safe commit messages (times in Chiang Mai's clock), one
