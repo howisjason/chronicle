@@ -34,6 +34,11 @@ MODEL, EFFORT = 'claude-haiku-5-5', 'low'
 GAPS = {'firstLeadMs': 1000, 'leadMs': 200, 'holdMs': 600}
 ANGLES_FILE = '/Users/howisjason/Projects/personal/context/obsidian/💡 Meta/⚡️ AI Prompts For Obsidian Notes.md'
 AUDIO_KEEP = timedelta(hours=1)
+# The daily cap, in API-equivalent dollars of plan usage (J: track it on its
+# own, 8 Oct 2026). The Pro window is shared with his own work; PNN runs on
+# about $3 a day. The cap lives in inbox/daily-cap.txt so it can change without
+# a commit; the button shows today's spend against it.
+DEFAULT_CAP = 3.00
 
 args = [a for a in sys.argv[1:] if not a.startswith('--')]
 ONCE, LAB = '--once' in sys.argv, '--lab' in sys.argv
@@ -67,6 +72,27 @@ def ask(system, user, label):
     if d.get('is_error'):
         raise RuntimeError(f'{label}: {d.get("result")}')
     return d['result']
+
+
+def spent_today():
+    day = datetime.now(TZ).date().isoformat()
+    total = 0.0
+    if os.path.exists('inbox/costs.tsv'):
+        for line in open('inbox/costs.tsv'):
+            f = line.rstrip('\n').split('\t')
+            if f[0].startswith(day) and len(f) > 2:
+                try:
+                    total += float(f[2])
+                except ValueError:
+                    pass
+    return total
+
+
+def cap():
+    try:
+        return float(open('inbox/daily-cap.txt').read().strip())
+    except (FileNotFoundError, ValueError):
+        return DEFAULT_CAP
 
 
 def as_json(text):
@@ -259,6 +285,8 @@ def main():
         subprocess.run(['git', 'pull', '-q', '--rebase', '--autostash'], check=True)
     made = fails = 0
     while True:
+        if not LAB and spent_today() >= cap():
+            print(f'station: today\'s cap reached (${spent_today():.2f} of ${cap():.2f}); the page replays until tomorrow'); break
         day = load_day()
         end = day_end(day)
         if not LAB and end and end > datetime.now(TZ) + timedelta(minutes=AHEAD):
