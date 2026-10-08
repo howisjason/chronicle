@@ -714,6 +714,162 @@
         "n": 3,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-05",
+      "title": "THE SLATE THAT STOPS ARGUING",
+      "startAt": "2026-10-08T13:25:15.646+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-05.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Your Routine Is Top Priority"
+      ],
+      "angle": "Cross Pollination: Find the intersection of key ideas between two or more notes.",
+      "kind": "legend",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic - Your New Identity: Build the habit and discipline of following your schedule. If you have a problem with the schedule then change the schedule itself, not self revise the schedule on a day by day basis."
+        },
+        {
+          "kind": "note",
+          "text": "Consistency Compounds Exponentially: Following your schedule is the most overpowered thing you can do because it turns your entire perfect day into a habit."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: A schedule makes you act according to the goals of your highest self, not your passing mood."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Hear it, March. In the old book the keeper wrote the hours on a slate beside the lamp, and once the chalk was set down, the hours kept themselves.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9451
+        },
+        {
+          "speaker": "march",
+          "text": "Simple thing, a slate. Don't call it simple, narrator. That's the whole trick.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4113
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simple is what it is, and I say it with love. The slate asks nothing, and the sea does not argue with the slate.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7616
+        },
+        {
+          "speaker": "march",
+          "text": "Your highest self picks the hours. Your passing mood gets bored. The slate just stops it arguing.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5608
+        },
+        {
+          "speaker": "narrator",
+          "text": "I crown you, then, Lord of the Slate, J. You need never ask the sky what hour it is again.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6336
+        },
+        {
+          "speaker": "march",
+          "text": "Lord of the Slate. Lovely. He'd keep the crown in a drawer.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 1,
+          "audioMs": 3281
+        },
+        {
+          "speaker": "narrator",
+          "text": "A crown in a drawer is still a crown. The legend records it, drawer and all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5269
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, the legend keeps your bits. The bit that matters: when the schedule misfires, the note says change the schedule itself, not scribble on it each morning.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7672
+        },
+        {
+          "speaker": "narrator",
+          "text": "Overpowered, the book says, and I take the word as it stands. A perfect day that runs itself while the keeper dozes in his chair.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8640
+        },
+        {
+          "speaker": "march",
+          "text": "Dozes in his chair. Autopilot. That's the overpowered bit, not the chair.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4407
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the lamp is lit by habit, and habit has no mood. I find that thrilling, and a little cold.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6656
+        },
+        {
+          "speaker": "march",
+          "text": "Cold's fine. Slate's wrong? Rub it out and rewrite it. You don't rub it out late at night because you're tired.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5713
+        },
+        {
+          "speaker": "narrator",
+          "text": "Rubbing out in the dark is the sin the book warns against. Every keeper knows that sin.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6080
+        },
+        {
+          "speaker": "march",
+          "text": "Every keeper knows it. Name one who didn't pick the chalk up late at night.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4182
+        },
+        {
+          "speaker": "narrator",
+          "text": "Name him? Ah. The book is worn exactly there, March, and I am not going to guess.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5845
+        }
+      ],
+      "part": {
+        "n": 4,
+        "of": 5
+      }
     }
   ]
 }
