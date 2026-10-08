@@ -22,6 +22,8 @@
     min-height: 3em; line-height: 1.5; font-size: 1.05rem; }
   #caption[data-on="0"] { opacity: 0.35; }
   #sound { font: inherit; padding: 0.5em 1em; margin: 0.5rem 0; background: #c9b26b; color: #0b0b10; border: 0; border-radius: 6px; }
+  #clip, .clip-share { font: inherit; padding: 0.5em 1em; margin: 0.5rem 0; background: #f4a6cf; color: #0b0b10; border: 0; border-radius: 6px; }
+  #clip-out a { color: #f4a6cf; font-size: 0.9rem; }
   #note { font-size: 0.8rem; color: #9a9ab0; }
   h2 { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #9a9ab0; margin: 1.5rem 0 0.5rem; }
   #sources { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #b0b0c4; }
@@ -43,6 +45,8 @@
   </div>
   <p id="caption" data-on="1"></p>
   <button id="sound">Tap for sound</button>
+  <button id="clip" title="Record the next 30 seconds as a video to share">Clip</button>
+  <span id="clip-out"></span>
   <p id="note"></p>
   <h2>Sources</h2>
   <ul id="sources"></ul>

@@ -6,6 +6,7 @@
 // the clock; the gaps are baked into the file.
 import { locate } from './timing.js';
 import { drawStage } from './people.js';
+import { setupClip } from './clip.js';
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
@@ -45,14 +46,16 @@ function paintStage(state) {
 }
 
 // --- the stand-in voice ---
-let audioCtx = null;
+// Every sound goes through one mix node, which feeds the speakers and a
+// MediaStream the Clip button records from (clip.js).
+let audioCtx = null, mix = null, clipAudio = null;
 function blip(speaker) {
   if (!audioCtx) return;
   const o = audioCtx.createOscillator(), g = audioCtx.createGain();
   o.type = 'square';
   o.frequency.value = speaker === 'march' ? 660 : 330;
   g.gain.value = 0.03;
-  o.connect(g).connect(audioCtx.destination);
+  o.connect(g).connect(mix);
   o.start();
   o.stop(audioCtx.currentTime + 0.04);
 }
@@ -60,6 +63,9 @@ function blip(speaker) {
 // history (J: keep the transcripts, not the sound); older scenes play as blips.
 const AUDIO_BASE = 'https://raw.githubusercontent.com/howisjason/chronicle/audio/';
 const voice = new Audio();
+// Anonymous CORS (raw.githubusercontent.com allows it) so the voice can run
+// through WebAudio into the clip; without it the browser would record silence.
+voice.crossOrigin = 'anonymous';
 let voiceSrc = '';
 // A segment whose MP3 is gone (pruned after seven days, or never voiced)
 // falls back to the blips instead of typing in silence.
@@ -74,11 +80,20 @@ function syncVoice(segment, msIntoSegment) {
   if (voice.readyState > 0 && Math.abs(voice.currentTime - want) > 0.4) voice.currentTime = want;
   if (voice.paused) voice.play().catch(() => {});
 }
-$('sound').addEventListener('click', () => {
+function startSound() {
+  if (audioCtx) return;
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  mix = audioCtx.createGain();
+  mix.connect(audioCtx.destination);
+  audioCtx.createMediaElementSource(voice).connect(mix);
+  if (audioCtx.createMediaStreamDestination) {
+    clipAudio = audioCtx.createMediaStreamDestination();
+    mix.connect(clipAudio);
+  }
   voice.play().catch(() => {});
   $('sound').hidden = true;
-});
+}
+$('sound').addEventListener('click', startSound);
 
 let day = null, lastTyped = -1, lastLineKey = '';
 function tick() {
@@ -98,6 +113,7 @@ function tick() {
   $('badge').textContent = replay ? 'REPLAY' : 'LIVE';
   $('badge').dataset.live = replay ? '0' : '1';
   const marchLine = line.speaker === 'march';
+  clipState = { title: segment.title, speaker: line.speaker, shown };
   $('march-caption').textContent = marchLine ? shown : '';
   $('caption').textContent = marchLine ? '' : shown;
   $('caption').dataset.on = marchLine ? '0' : '1';
@@ -115,6 +131,15 @@ function tick() {
     return `<li${i === line.source ? ' class="now"' : ''}><span>${escapeHtml(label)}</span> ${escapeHtml(s.text)}</li>`;
   }).join('');
 }
+let clipState = { title: '', speaker: '', shown: '' };
+// The Clip button records the next thirty seconds; pressing it also turns the
+// sound on, since the press is the tap WebAudio waits for.
+setupClip({
+  button: $('clip'), out: $('clip-out'), stage: $('march'),
+  getState: () => clipState,
+  getAudio: () => { startSound(); return clipAudio && clipAudio.stream; },
+});
+
 function escapeHtml(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]); }
 
 // The station appends segments through the day, so the page asks again every
