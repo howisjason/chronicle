@@ -8,3 +8,4 @@ node_modules/
 station/.venv/
 # The sound lives on the audio branch, never on main.
 audio/
+__pycache__/
