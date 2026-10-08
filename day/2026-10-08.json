@@ -6295,6 +6295,178 @@
         "n": 4,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-44",
+      "title": "THE LENS IN THE SEA VILLAGE",
+      "startAt": "2026-10-08T10:36:06.463+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-44.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Happiness And Gratitude",
+        "Everything Is Subjective"
+      ],
+      "angle": "How would I explain this idea if I had to tell it like a children's fairy tale?",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: I may not be able to change the world, but I can change the way I see the world."
+        },
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: A different lens effectively changes your entire reality."
+        },
+        {
+          "kind": "note",
+          "text": "Everything Is Subjective: There is no objective right or wrong."
+        },
+        {
+          "kind": "note",
+          "text": "Feelings Do Not Require Reason: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+        },
+        {
+          "kind": "note",
+          "text": "Smile To Be Happy: When you smile, your brain automatically assumes you're having a good time."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Long ago, in a village by the sea, there lived a man who thought the world was too big to change. So he stopped trying before he began.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8683
+        },
+        {
+          "speaker": "march",
+          "text": "That is a sad start for a fairy tale. Okay, keep going. Let's see if the lens shows up.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5327
+        },
+        {
+          "speaker": "narrator",
+          "text": "A lens came to his door. It was old, and it said only this: I may not be able to change the world. But I can change the way I see it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9259
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, I love a talking lens. Fine, but what does he eat for breakfast on Monday?",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4967
+        },
+        {
+          "speaker": "narrator",
+          "text": "So he looked at the thing that bothered him most. He asked the lens a question. A different lens effectively changes your entire reality, and his did.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9579
+        },
+        {
+          "speaker": "march",
+          "text": "The village had a rule. There is no objective right or wrong. Sounds like a nice rule, which is exactly the warning.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6200
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every house had its own window. Every window showed a different truth. Nobody was lying. Nobody was finished either.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7893
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. I still think the easy-sounding ideas are the most dangerous, and also the best. Keep going.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5988
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the man saw that he had been waiting. Waiting to feel he deserved a good day. He wrote it down plainly: Happiness is simply a state of mind in which our thinking is pleasant most of the time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 12437
+        },
+        {
+          "speaker": "march",
+          "text": "There it is. That line is the whole fairy tale, plain as a stone. No prize at the end. Just the thinking.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5775
+        },
+        {
+          "speaker": "narrator",
+          "text": "He smiled at the sea. Not because the sea was calm. Because his brain, the old wise animal, decided it was a good day.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8597
+        },
+        {
+          "speaker": "march",
+          "text": "Careful, narrator. You are about to turn a smile into magic.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3696
+        },
+        {
+          "speaker": "narrator",
+          "text": "Magic is a big word, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2389
+        },
+        {
+          "speaker": "march",
+          "text": "Then say it small. Mark the hour, and I will count it out loud. Okay, it counts. The sea got smaller.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5497
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the end of the lens, and the end of these notes. Put the sea on the wall, and let the rest of the year do the work.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7872
+        },
+        {
+          "speaker": "march",
+          "text": "Good night, sea. Good night, lens. On Monday, he smiles first, and then he thinks.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4370
+        }
+      ],
+      "part": {
+        "n": 5,
+        "of": 5
+      }
     }
   ]
 }
