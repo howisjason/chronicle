@@ -544,6 +544,171 @@
         "n": 3,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-04",
+      "title": "THE TIDE TABLE AND THE WET PAPER BAG",
+      "startAt": "2026-10-08T12:27:22.682+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Present Moment Is All That Exists",
+        "List Of Nice Things To Do"
+      ],
+      "angle": "What if this problem existed in an entirely different industry?",
+      "kind": "the_case_against",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: There is only today. If you want to do something, do it now."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Share your umbrella with someone if they're walking the same way."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: Treasure every single second so that there is no regret."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Hear the error sealed in this note. A ferry steering only by this minute has forgotten every rock it ever scraped.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7531
+        },
+        {
+          "speaker": "march",
+          "text": "It hasn't forgotten, it's only stopped reading rocks off last winter's sheet. Yesterday's sheet lies about today's tide.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6973
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yesterday's sheet is the only honest ledger a captain owns; without the logbook of rivers past, the bow sails blind.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8405
+        },
+        {
+          "speaker": "march",
+          "text": "Logs are handy. Staring at them while the bow runs aground is not. Tide tables get read at the slipway, which is now.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6435
+        },
+        {
+          "speaker": "narrator",
+          "text": "Which ferry company ever printed a timetable saying 'sail when you feel like it'? Every schedule is a memory of a promise.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8043
+        },
+        {
+          "speaker": "march",
+          "text": "Every schedule is a promise about next Tuesday. You keep a promise by turning up on the quay, not by remembering it.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6560
+        },
+        {
+          "speaker": "narrator",
+          "text": "Tomorrow the ferry leaves at its usual hour, as a tide does, and the crowd waits on the quay, faithful as a clock.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7829
+        },
+        {
+          "speaker": "march",
+          "text": "Tomorrow. Lovely word. Still sitting on the quay waiting for someone to turn up.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 4371
+        },
+        {
+          "speaker": "narrator",
+          "text": "Scorn it, but that quay is built on arrivals yet to come; without sailings still ahead, boats rot at their moorings.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7595
+        },
+        {
+          "speaker": "march",
+          "text": "Boats rot at moorings because nobody sails them today. You're defending a timetable by its future.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5926
+        },
+        {
+          "speaker": "narrator",
+          "text": "I offer J a grander title: Lord of the Slipway, keeper of the tide that climbs the step.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6400
+        },
+        {
+          "speaker": "march",
+          "text": "It's a damp paper bag, probably from a bakery, not destiny. And J can't be Lord of anything he hasn't carried up.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 1,
+          "audioMs": 6438
+        },
+        {
+          "speaker": "narrator",
+          "text": "Look, a damp paper bag sits on that step: destiny, written in sea-ink. A ferry knows handwriting.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6976
+        },
+        {
+          "speaker": "march",
+          "text": "Signatures are the past wearing a hat. You can only sign today, ink in hand.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4714
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall say hello to that umbrella on its hook, and you shall hear its verdict.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4949
+        },
+        {
+          "speaker": "march",
+          "text": "Some of my design is mine, and that's where it stays. Say hello to that umbrella first.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5091
+        }
+      ],
+      "part": {
+        "n": 4,
+        "of": 5
+      }
     }
   ]
 }
