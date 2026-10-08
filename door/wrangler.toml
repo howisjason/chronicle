@@ -1,0 +1,14 @@
+# The channel's door: questions, letters and the viewer count (8 Oct 2026).
+# Its own worker, apart from the personal worker that carries J's phone alerts,
+# so nothing here can break those. No cron (the account's cap is 5).
+name = "chronicle-door"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+[[durable_objects.bindings]]
+name = "DESK"
+class_name = "Desk"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Desk"]

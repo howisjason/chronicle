@@ -13,7 +13,7 @@ const $ = (id) => document.getElementById(id);
 const WHO = { march: ['March', 'Host'], narrator: ['The Narrator', 'Storyteller'] };
 // The small server door for questions, letters and the viewer count (door/ in
 // this repo, its own worker). Empty means not connected.
-export const DOOR = '';
+export const DOOR = 'https://chronicle-door.jaceebo.workers.dev';
 
 // Chiang Mai is a fixed +07:00, so its wall clock is UTC shifted by seven hours.
 const cm = (ms) => new Date(ms + 7 * HOUR);
@@ -132,7 +132,7 @@ function setupAsk() {
     try {
       const r = await fetch(`${DOOR}/${kind}`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
       const j = await r.json().catch(() => ({}));
-      if (r.ok) { form.reset(); status(kind === 'ask' ? 'Sent. The desk might take it on air.' : 'Sent. It might be read on air.'); }
+      if (r.ok) { form.reset(); status('Sent. It is waiting at the desk; airing questions and letters is not switched on yet.'); }
       else status(j.error || 'That did not go through. Try again in a minute.');
     } catch { status('That did not go through. Try again in a minute.'); }
   };
