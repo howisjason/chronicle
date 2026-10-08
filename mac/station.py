@@ -38,7 +38,7 @@ AUDIO_KEEP = timedelta(hours=1)
 # own, 8 Oct 2026). The Pro window is shared with his own work; PNN runs on
 # about $3 a day. The cap lives in inbox/daily-cap.txt so it can change without
 # a commit; the button shows today's spend against it.
-DEFAULT_CAP = 3.00
+DEFAULT_CAP = 2.00
 
 args = [a for a in sys.argv[1:] if not a.startswith('--')]
 ONCE, LAB = '--once' in sys.argv, '--lab' in sys.argv

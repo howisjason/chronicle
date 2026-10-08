@@ -23,7 +23,7 @@ def line():
     try:
         cap = float(open(os.path.join(ROOT, 'inbox', 'daily-cap.txt')).read().strip())
     except (FileNotFoundError, ValueError):
-        cap = 3.00
+        cap = 2.00
     scenes = 0
     d = os.path.join(ROOT, 'day', f'{day}.json')
     if os.path.exists(d):
