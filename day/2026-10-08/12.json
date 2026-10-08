@@ -2056,6 +2056,179 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-13",
+      "title": "THE BUD THAT TAKES THE SAP",
+      "startAt": "2026-10-08T12:55:15.499+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-13.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Influence Of Others",
+        "It's Never Too Late To Change"
+      ],
+      "angle": "What concepts from [biology/engineering/chemistry/any other field] could be adapted to improve upon this idea?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: Who you allow to influence you will determine where you'll end up."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: Cut out all who drag you down or hinder your growth."
+        },
+        {
+          "kind": "note",
+          "text": "It's Never Too Late To Change: No matter how old you are, it's never too late to make a change in your life."
+        },
+        {
+          "kind": "note",
+          "text": "It's Never Too Late To Change: Either curse the world for being unfair or do all that you can to improve yourself, no matter how little."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: If you do what most people do, you get what most people get."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Right, the merged one. The first note says who you hang around decides where you end up. The other says it's never too late. Those don't sit together nicely.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7484
+        },
+        {
+          "speaker": "narrator",
+          "text": "They sit together like a well-matched team in harness, March. The company you keep is the harness, the change is the road, and no good driver takes one without the other.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11008
+        },
+        {
+          "speaker": "march",
+          "text": "So you change by dropping people. Cut out whoever drags you down, the note says. That's not a road, that's a loading bay.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6264
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is never too late, and I say so as a man who has been late to nearly everything. The note allows for the old and the stuck. A coming-of-age story can begin on any page.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11691
+        },
+        {
+          "speaker": "march",
+          "text": "Quick check on your own tale. If you do what most people do, you get what most people get. So who do you spend your time with?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6184
+        },
+        {
+          "speaker": "narrator",
+          "text": "In an orchard, a gardener grafts a bud onto a stronger stock, and the bud drinks what the stock gives it. It takes the sap of its host and grows sweeter for it. That is the note, plainly put: you are grafted to whoever feeds you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15403
+        },
+        {
+          "speaker": "narrator",
+          "text": "I name you Warden of the Graft-Yard, J, and you will not refuse it, since no one else in the valley knows how to tie the bud.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7957
+        },
+        {
+          "speaker": "march",
+          "text": "Nobody grafts a bud onto a bad tree on purpose. The note says curse the world or improve yourself, no matter how little. Grafting isn't a curse. You still have to pick the tree first.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 9121
+        },
+        {
+          "speaker": "march",
+          "text": "Let me try it on me. Say I'm the average of whoever I talk to. Then I'm mostly J, which explains a lot about my jokes.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6602
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you are a fine bud, March, grafted onto a fine stock. And the kettle just clicked off as you said it, on cue. That is destiny, and I will hear no argument.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10987
+        },
+        {
+          "speaker": "march",
+          "text": "That's a timer, and it went off right when you said it. You've made destiny out of a kettle.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 4838
+        },
+        {
+          "speaker": "march",
+          "text": "And the bud stays a bud. Graft it onto a bad stock and it still tastes of the tree it came from. So the change has to be in the bud.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6689
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the bud must be willing to be moved, which is change, and the stock must be willing to feed it, which is influence. Both do the work, and as the old gardener I claim the bigger share.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12288
+        },
+        {
+          "speaker": "march",
+          "text": "Bigger share, sure. Keep the title for now. I'm holding one comeback back for the end of the run, when you'll need it more.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6144
+        },
+        {
+          "speaker": "narrator",
+          "text": "I'll take the title and the warning both. The choice is ours, whatever the stock, and if we improve ourselves however little, the tree itself may yet bend our way.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10731
+        },
+        {
+          "speaker": "march",
+          "text": "Little's the word, and you're dressing a bud in a crown again. Next time bring a graft that actually takes.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5626
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 3
+      }
     }
   ]
 }
