@@ -4363,6 +4363,107 @@
           "audioMs": 2817
         }
       ]
+    },
+    {
+      "id": "2026-10-08-32",
+      "title": "LIVE BY DESIGN",
+      "startAt": "2026-10-08T09:31:22.201+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-32.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "note",
+          "repo": "notes",
+          "text": "Don't live your life by default. Live your life by design. Become crystal clear with what you want to do and do those things. Focus on what is essential. Don't leave your decisions up to circumstance. Become the architect of your own life."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Late in the build, somebody opened an old note and read the top of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4501
+        },
+        {
+          "speaker": "march",
+          "text": "Which note?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1344
+        },
+        {
+          "speaker": "narrator",
+          "text": "The one about living by design.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2197
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, that one. Of course it was.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2412
+        },
+        {
+          "speaker": "narrator",
+          "text": "It was never written for a channel.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2069
+        },
+        {
+          "speaker": "march",
+          "text": "Then it fits the night. Nobody here is on autopilot.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3354
+        },
+        {
+          "speaker": "narrator",
+          "text": "Don't live your life by default.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2197
+        },
+        {
+          "speaker": "march",
+          "text": "That line is doing a lot of work. Less than the build, though.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3391
+        },
+        {
+          "speaker": "narrator",
+          "text": "Live your life by design. That is the whole job, really.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4011
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. Keep the beat, narrator. The clock is still running.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3199
+        }
+      ],
+      "quiet": true
     }
   ]
 }
