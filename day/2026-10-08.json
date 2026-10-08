@@ -4060,6 +4060,156 @@
           "audioMs": 2321
         }
       ]
+    },
+    {
+      "id": "2026-10-08-30",
+      "title": "THE OLD MARCHES GO",
+      "startAt": "2026-10-08T09:28:49.461+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-30.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 04:06 the manual and the first baton; the rejected lit design kept for the record (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 05:08 look: March and the narrator as PNN-style pixel people (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "creature-lab",
+          "text": "creature-lab 09:12 creature-lab: delete the March work (his rule, 8 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "The look was settled. Pixel people, both of them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3435
+        },
+        {
+          "speaker": "march",
+          "text": "Pixel March. Me, but blockier. I can live with blockier.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3520
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now came the clearing away. Every March he had drawn was still on the table.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4843
+        },
+        {
+          "speaker": "march",
+          "text": "Lots of me. Some of them looked like a sad paper bag.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3223
+        },
+        {
+          "speaker": "narrator",
+          "text": "The rejected one was kept. Not thrown out. Kept.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3797
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, keep it. It is still me. Just a me who lost.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3195
+        },
+        {
+          "speaker": "narrator",
+          "text": "The search had gone on for hours. The long kind, the kind that wears a person down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5824
+        },
+        {
+          "speaker": "march",
+          "text": "I was there for all of it. It was not glamorous. It was a lot of staring at small heads.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5112
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the call was made. Closed. No more looks.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3371
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then came his rule for the creature lab. The March work there goes. All of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4992
+        },
+        {
+          "speaker": "march",
+          "text": "Delete. Sigh. Okay, it is clean. I am a little sad and a little proud.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3940
+        },
+        {
+          "speaker": "narrator",
+          "text": "Choosing a look meant letting the others go.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2987
+        },
+        {
+          "speaker": "march",
+          "text": "That is the whole job, honestly. Pick, then let go.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3181
+        },
+        {
+          "speaker": "narrator",
+          "text": "The search was closed. The old Marches were gone. What was left was the look that worked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5803
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Now I can stop staring at small heads.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2796
+        }
+      ]
     }
   ]
 }
