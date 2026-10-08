@@ -3477,6 +3477,164 @@
           "audioMs": 2234
         }
       ]
+    },
+    {
+      "id": "2026-10-08-26",
+      "title": "THE CHECK THAT MENDS",
+      "startAt": "2026-10-08T09:05:55.738+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-26.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 05:37 station: a failed check puts the day file back; flagged lines are read only from the start of each finding (the grader's findings, 8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 05:55 station: scenes ranked by drama, flagged lines repaired before they are cut, a scene that never passes is skipped, no machine words, and March owns what the assistant did (lab findings, 8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "chronicle 05:55 station: a failed repair call falls back to the cut instead of dropping the segment (the grader's edge case, 8 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "A check failed. That was all it took to put a whole day at risk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4245
+        },
+        {
+          "speaker": "march",
+          "text": "Yes. Before this, a failed check could leave the day's story broken. Not nice.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4621
+        },
+        {
+          "speaker": "march",
+          "text": "Now it puts the day back the way it was. Nothing half-written, nothing lost.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4390
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then came the lines that were flagged.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2389
+        },
+        {
+          "speaker": "march",
+          "text": "Those got cut. Every time. Even the ones that could have been fixed.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3753
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cut is the easy road. It is also the thin road.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3925
+        },
+        {
+          "speaker": "march",
+          "text": "I was the one doing the cutting, so I can say it. That was lazy.",
+          "emotion": "neutral",
+          "action": "facepalm",
+          "source": 1,
+          "audioMs": 3745
+        },
+        {
+          "speaker": "march",
+          "text": "Now a flagged line gets repaired first. Cut only if the repair fails.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4473
+        },
+        {
+          "speaker": "narrator",
+          "text": "The strongest scenes go first now. Ranked by drama.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3861
+        },
+        {
+          "speaker": "march",
+          "text": "And a scene that never passes gets skipped. It does not hold up the whole day.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4433
+        },
+        {
+          "speaker": "narrator",
+          "text": "And if the repair itself fails, the line is cut, and the segment still goes out.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5291
+        },
+        {
+          "speaker": "march",
+          "text": "Before, a failed repair could drop the whole segment. I hated that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4005
+        },
+        {
+          "speaker": "narrator",
+          "text": "So the segment survives. A little shorter, but it survives.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3968
+        },
+        {
+          "speaker": "march",
+          "text": "Shorter beats gone. Every time.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2477
+        },
+        {
+          "speaker": "narrator",
+          "text": "The channel is learning to tell the day as a story, not a list.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3925
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, narrator, that was a big sentence. But yes. Next, the lines he could finally see.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5306
+        }
+      ]
     }
   ]
 }
