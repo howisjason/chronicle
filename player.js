@@ -53,23 +53,43 @@ async function loadDay() {
 }
 
 // --- March and the narrator, pixel people (people.js draws them) ---
-let mouthFrame = 0;
+// What the screen shows at show-clock time t, worked out from the data alone
+// (no counters, no history), so the live tick and the Clip button's re-render
+// of the past draw the very same picture for the same moment.
+// The mouth flaps every 200 ms while a letter is typing (the old per-tick
+// counter's rate, now read off the clock).
+function viewAt(d, t) {
+  const at = locate(d, t);
+  if (!at) return null;
+  const { segment, line, phase, typed, mouthOpen } = at;
+  const marchLine = line.speaker === 'march';
+  const talker = phase === 'speak' ? line.speaker : null;
+  const m = mouthOpen ? (Math.floor(t / 200) % 2 ? 'open' : 'half') : 'closed';
+  const mood = marchLine ? line.emotion : 'neutral';
+  const action = marchLine && phase !== 'hold' ? line.action : 'none';
+  return {
+    at, title: segment.title, speaker: line.speaker, shown: line.text.slice(0, typed), mood, action,
+    // people.js does bit shifts on its clock, so it gets ms into the day, not epoch ms
+    stageT: t % 86400000,
+    stage: {
+      talker,
+      march: { mood, action, mouth: talker === 'march' ? m : 'closed' },
+      narrator: { mood: 'neutral', action: 'none', mouth: talker === 'narrator' ? m : 'closed' },
+    },
+  };
+}
 const stageCtx = $('march').getContext('2d');
-function paintStage(state) {
+function paintStage(v) {
   const fig = $('march');
-  fig.dataset.mood = state.mood;
-  fig.dataset.action = state.action;
-  let m = 'closed';
-  if (state.mouthOpen) { mouthFrame++; m = (mouthFrame >> 2) % 2 ? 'open' : 'half'; }
-  const march = { mood: state.mood, action: state.action, mouth: state.talker === 'march' ? m : 'closed' };
-  const narrator = { mood: 'neutral', action: 'none', mouth: state.talker === 'narrator' ? m : 'closed' };
-  drawStage(stageCtx, performance.now(), { talker: state.talker, march, narrator });
+  fig.dataset.mood = v.mood;
+  fig.dataset.action = v.action;
+  drawStage(stageCtx, v.stageT, v.stage);
 }
 
 // --- the stand-in voice ---
-// Every sound goes through one mix node, which feeds the speakers and a
-// MediaStream the Clip button records from (clip.js).
-let audioCtx = null, mix = null, clipAudio = null;
+// Every live sound goes through one mix node to the speakers. The Clip button
+// never touches it: it rebuilds the past's sound in its own graph (clip.js).
+let audioCtx = null, mix = null;
 function blip(speaker) {
   if (!audioCtx) return;
   const o = audioCtx.createOscillator(), g = audioCtx.createGain();
@@ -84,8 +104,8 @@ function blip(speaker) {
 // history (J: keep the transcripts, not the sound); older scenes play as blips.
 const AUDIO_BASE = 'https://raw.githubusercontent.com/howisjason/chronicle/audio/';
 const voice = new Audio();
-// Anonymous CORS (raw.githubusercontent.com allows it) so the voice can run
-// through WebAudio into the clip; without it the browser would record silence.
+// Anonymous CORS (raw.githubusercontent.com allows it) so the voice may run
+// through WebAudio; without it the browser would mute it there.
 voice.crossOrigin = 'anonymous';
 let voiceSrc = '';
 // A segment whose MP3 is gone (pruned after seven days, or never voiced)
@@ -109,43 +129,39 @@ function startSound() {
   mix = audioCtx.createGain();
   mix.connect(audioCtx.destination);
   audioCtx.createMediaElementSource(voice).connect(mix);
-  if (audioCtx.createMediaStreamDestination) {
-    clipAudio = audioCtx.createMediaStreamDestination();
-    mix.connect(clipAudio);
-  }
   voice.play().catch(() => {});
   $('sound').hidden = true;
 }
 $('sound').addEventListener('click', startSound);
 
-let day = null, lastTyped = -1, lastLineKey = '';
+// The blip rule, shared by the live tick and the clip's sound plan: a blip each
+// time the typed count moves onto a letter while a line is being spoken.
+const blipDue = (at, lastTyped) => at.typed !== lastTyped && at.phase === 'speak'
+  && at.line.text[at.typed - 1] && at.line.text[at.typed - 1] !== ' ';
+
+let day = null, loadedAt = 0, lastTyped = -1, lastLineKey = '';
 function tick() {
   if (!day) return;
-  const at = locate(day, now());
-  if (!at) { $('caption').textContent = 'No chapters yet.'; return; }
-  const { segment, line, lineIndex, phase, typed, mouthOpen, replay } = at;
+  const t = now();
+  const v = viewAt(day, t);
+  if (!v) { $('caption').textContent = 'No chapters yet.'; return; }
+  const { at } = v;
+  const { segment, line, lineIndex, typed, replay } = at;
   const key = `${segment.id}:${lineIndex}`;
   if (key !== lastLineKey) { lastLineKey = key; lastTyped = -1; }
-  const shown = line.text.slice(0, typed);
   syncVoice(segment, at.msIntoSegment);
   if (typed !== lastTyped) {
-    if (!hasVoice(segment) && phase === 'speak' && line.text[typed - 1] && line.text[typed - 1] !== ' ') blip(line.speaker);
+    if (!hasVoice(segment) && blipDue(at, lastTyped)) blip(line.speaker);
     lastTyped = typed;
   }
   $('title').textContent = segment.title;
   $('badge').textContent = replay ? 'REPLAY' : 'LIVE';
   $('badge').dataset.live = replay ? '0' : '1';
   const marchLine = line.speaker === 'march';
-  clipState = { title: segment.title, speaker: line.speaker, shown };
-  $('march-caption').textContent = marchLine ? shown : '';
-  $('caption').textContent = marchLine ? '' : shown;
+  $('march-caption').textContent = marchLine ? v.shown : '';
+  $('caption').textContent = marchLine ? '' : v.shown;
   $('caption').dataset.on = marchLine ? '0' : '1';
-  paintStage({
-    mood: marchLine ? line.emotion : 'neutral',
-    action: marchLine && phase !== 'hold' ? line.action : 'none',
-    talker: phase === 'speak' ? line.speaker : null,
-    mouthOpen,
-  });
+  paintStage(v);
   const srcs = segment.sources || [];
   // Public sources show as they are; a day-note claim is marked as coming
   // from his own notes of the day, which are not public (the plan, step 6).
@@ -154,14 +170,48 @@ function tick() {
     return `<li${i === line.source ? ' class="now"' : ''}><span>${escapeHtml(label)}</span> ${escapeHtml(s.text)}</li>`;
   }).join('');
 }
-let clipState = { title: '', speaker: '', shown: '' };
-// The Clip button records the next thirty seconds; pressing it also turns the
-// sound on, since the press is the tap WebAudio waits for.
-setupClip({
-  button: $('clip'), out: $('clip-out'), stage: $('march'),
-  getState: () => clipState,
-  getAudio: () => { startSound(); return clipAudio && clipAudio.stream; },
-});
+
+// The Clip button clips what JUST aired, like Twitch: the thirty seconds before
+// the press. The show is data, so the past is re-rendered exactly as it aired
+// rather than kept in a rolling recording. planClip hands clip.js the window,
+// a picture function for any moment in it, and the sound to rebuild: runs of
+// one scene (an MP3 slice where the scene was voiced) and blips for the rest.
+const CLIP_MS = 30 * 1000;
+function planClip() {
+  const d = day, endMs = now(); // a snapshot: the minute poll may swap `day` mid-clip
+  if (!d) return null;
+  // Never before this viewer loaded the page (a clip is of what they watched)...
+  let startMs = Math.max(endMs - CLIP_MS, loadedAt);
+  // ...nor, when the press is live, before the station went live: the replay
+  // loop that filled the gap before is not what aired.
+  const atEnd = locate(d, endMs - 1);
+  if (!atEnd) return null;
+  const atStart = locate(d, startMs);
+  if (!atEnd.replay && atStart && atStart.replay) {
+    const firstLive = (d.segments || []).map((s) => Date.parse(s.startAt)).filter((s) => s >= startMs && s < endMs);
+    if (firstLive.length) startMs = Math.min(...firstLive);
+  }
+  // Walk the window at the live tick's 50 ms step, cutting it into runs of one
+  // scene played straight through, and noting where the blips would have gone.
+  const runs = [];
+  let run = null, key = '', typed = -1;
+  for (let t = startMs; t < endMs; t += 50) {
+    const at = locate(d, t);
+    if (!at) continue;
+    const into = at.msIntoSegment;
+    if (!run || run.id !== at.segment.id || Math.abs(into - (run.intoMs + (t - startMs - run.atMs))) > 200) {
+      run = { id: at.segment.id, audio: at.segment.audio || '', atMs: t - startMs, intoMs: into, durMs: 0, blips: [] };
+      runs.push(run);
+    }
+    run.durMs = t + 50 - startMs - run.atMs;
+    const k = `${at.segment.id}:${at.lineIndex}`;
+    if (k !== key) { key = k; typed = -1; }
+    if (blipDue(at, typed)) run.blips.push({ atMs: t - startMs, speaker: at.line.speaker });
+    typed = at.typed;
+  }
+  return { startMs, endMs, runs, audioBase: AUDIO_BASE, viewAt: (t) => viewAt(d, t) };
+}
+setupClip({ button: $('clip'), out: $('clip-out'), plan: planClip });
 
 function escapeHtml(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]); }
 
@@ -171,6 +221,7 @@ function escapeHtml(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp
 // are missing (the station is off) the replay already loaded stays.
 loadDay().then((d) => {
   day = d;
+  loadedAt = now();
   if (d && d.sample) $('note').textContent = 'Sample chapter, hand-written, to prove the player. Stand-in voice.';
   setInterval(tick, 50);
   tick();
