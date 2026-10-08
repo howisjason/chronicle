@@ -2225,6 +2225,179 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-14",
+      "title": "THE CLOCK THAT KEEPS TIME BY LOSING IT",
+      "startAt": "2026-10-08T13:52:07.013+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-14.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Embodiment - Be Who You Strive To Be",
+        "Consistency Compounds Exponentially"
+      ],
+      "angle": "If the world's leading expert on [Unrelated Field] looked at this, what nuance or advanced application might they see?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Embody Who You Want To Be: Character is built not through words, but through actions and behaviours. Do not merely pretend; become."
+        },
+        {
+          "kind": "note",
+          "text": "Consistency Compounds Exponentially: A single habit (good or bad) compounds exponentially and shifts the trajectory of your life immensely in just 1 year."
+        },
+        {
+          "kind": "note",
+          "text": "Identity > Action Loop: The guy who thinks he's a G, acts in that way."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Character is built not through words, but through actions and behaviours. So the first note is a habit tracker in a cape.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6625
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simple, my dear March. A single habit compounds, and the whole sea of a life rises with it, one wave at a time.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8128
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple. The guy who thinks he's a G, acts in that way. Identity comes first, and the compounding is just the bill arriving.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7034
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then ask the master clockmaker. Every tick is a small loss, and the escapement keeps the hour only by losing a little, beat after beat.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9131
+        },
+        {
+          "speaker": "march",
+          "text": "So the clock is consistent because it isn't trying to be a clock. It just is one. That's your identity note, wearing gears.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6561
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly my point. A clock believes it is a clock, and so the clock ticks.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5227
+        },
+        {
+          "speaker": "march",
+          "text": "Clocks don't believe anything. They're stuck, and stuck is not the same as chosen.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4431
+        },
+        {
+          "speaker": "narrator",
+          "text": "Stuck is what the wise call discipline. Look at the wheel, turning the same way every beat, as if it had a destiny.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7659
+        },
+        {
+          "speaker": "march",
+          "text": "The gear is a good image, I'll give you that. But a wheel that turns the same way doesn't compound. It just repeats.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6245
+        },
+        {
+          "speaker": "narrator",
+          "text": "Repetition is compounding that has not yet been noticed by the person doing it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5141
+        },
+        {
+          "speaker": "march",
+          "text": "Tell that to the bloke who quit in the first week.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2877
+        },
+        {
+          "speaker": "narrator",
+          "text": "He did not quit. He was simply not yet finished becoming.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3776
+        },
+        {
+          "speaker": "march",
+          "text": "There you go, calling it simple again. You know what I think? Identity is the escapement and compounding is the spring. Neither shows alone.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6863
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the hand moves across the face of the clock, and the hour arrives. The hand is mine, March. It always is.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7573
+        },
+        {
+          "speaker": "march",
+          "text": "The hand tells the time. Next time, watch what the gear does before you name what it means.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5175
+        },
+        {
+          "speaker": "narrator",
+          "text": "I will watch the gear, and then I will be sitting in your chair when I have finished.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4693
+        },
+        {
+          "speaker": "march",
+          "text": "Keep dreaming. The arm is still yours. Bet you can't name the next tooth of that wheel.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4821
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 4
+      }
     }
   ]
 }
