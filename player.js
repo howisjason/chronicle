@@ -81,8 +81,10 @@ function syncVoice(segment, msIntoSegment) {
   if (voice.paused) voice.play().catch(() => {});
 }
 function startSound() {
-  if (audioCtx) return;
+  // Some browsers create the context suspended; a tap must wake it (grader, 8 Oct 2026).
+  if (audioCtx) { if (audioCtx.state === 'suspended') audioCtx.resume(); return; }
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
   mix = audioCtx.createGain();
   mix.connect(audioCtx.destination);
   audioCtx.createMediaElementSource(voice).connect(mix);
