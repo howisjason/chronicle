@@ -4210,6 +4210,159 @@
           "audioMs": 2796
         }
       ]
+    },
+    {
+      "id": "2026-10-08-31",
+      "title": "THE CLOCK KEEPS TIME",
+      "startAt": "2026-10-08T09:30:10.933+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-31.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "station: the Mac runs it the PNN way, one plain call per segment (8 Oct 2026)"
+        },
+        {
+          "kind": "commit",
+          "repo": "chronicle",
+          "text": "station: a 15-minute clock on the Mac, and the manual says how it runs now (8 Oct 2026)"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "The Mac had been waiting for a plain rule. Now it had one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3691
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, I have to say it. It was not a glamorous rule. Just: call, then wait.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4621
+        },
+        {
+          "speaker": "narrator",
+          "text": "Each segment got its own call. Quiet. Nothing extra.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4053
+        },
+        {
+          "speaker": "march",
+          "text": "Honestly, I liked it. Fewer ways to break.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2771
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then came the clock. The Mac kept its own time now, a beat at a time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5205
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Somebody has to keep time when nobody is watching.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3353
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nobody had to press anything. It just ran.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3157
+        },
+        {
+          "speaker": "march",
+          "text": "That is the goal. Boring, reliable, running.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2810
+        },
+        {
+          "speaker": "narrator",
+          "text": "The manual says how it runs now. Plain words, from the start.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4309
+        },
+        {
+          "speaker": "march",
+          "text": "Read it. Really read it. Do not just nod at it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2956
+        },
+        {
+          "speaker": "narrator",
+          "text": "A channel that tells the day has to keep time with it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3541
+        },
+        {
+          "speaker": "march",
+          "text": "Fifteen minutes a beat. That is the whole clock. Simple is good.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3511
+        },
+        {
+          "speaker": "narrator",
+          "text": "Fifteen minutes. One beat, then the next. Each one on time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4331
+        },
+        {
+          "speaker": "march",
+          "text": "Look at you, narrator, being all orderly.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2617
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am always orderly. March is the one who gets sloppy.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3925
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Clock's running. Keep the beat, narrator.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2817
+        }
+      ]
     }
   ]
 }
