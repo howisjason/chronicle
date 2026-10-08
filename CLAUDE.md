@@ -66,6 +66,8 @@ about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 
 ## Landmines
 
+- **The station pushes main.** Every scene it airs runs `git pull --rebase` then `git push`, so ANY commit sitting on local main goes public within minutes, graded or not (8 Oct 2026: a clip rework went live before its grader finished). While the station is on, unreviewed work lives on a branch and is merged only after its grader reports. A push of your own can also bounce off the station's; pull and push again.
+
 - A `+` in a `?at=` URL arrives as a space; `player.js` restores it.
 - Two watchers pulling the same clone at once leave it dirty; `git checkout --
   day/` then pull.
