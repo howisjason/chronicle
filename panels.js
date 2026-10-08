@@ -21,12 +21,13 @@ const span = (ms) => { const m = Math.max(0, Math.round(ms / 60000)); return m <
 // The faces are cut from the stage itself, drawn once at rest, so a change to a
 // character in people.js shows up here with no second drawing to keep in step.
 // The boxes are the head and shoulders around each head's top-left (25,22) and (89,20).
+// Drawn at t = 1000 because t = 0 falls inside March's blink (grader, 8 Oct 2026).
 const CROP = { march: [19, 18], narrator: [83, 16] };
 function drawFaces() {
   const stage = document.createElement('canvas');
   stage.width = W; stage.height = H;
   const rest = { mood: 'neutral', action: 'none', mouth: 'closed' };
-  drawStage(stage.getContext('2d'), 0, { talker: null, march: rest, narrator: rest });
+  drawStage(stage.getContext('2d'), 1000, { talker: null, march: rest, narrator: rest });
   for (const c of document.querySelectorAll('canvas[data-portrait]')) {
     const [x, y] = CROP[c.dataset.portrait];
     c.getContext('2d').drawImage(stage, x, y, 26, 26, 0, 0, 26, 26);
@@ -57,6 +58,9 @@ function upcoming(d, at, t) {
     const j = i + k;
     if (j >= segs.length && !at.replay) break;
     const s = segs[j % segs.length];
+    // Live, a written scene carries its real start (scenes sit about a minute
+    // apart, so adding lengths end to end ran early); on replay the loop has none.
+    if (!at.replay && s.startAt) start = Date.parse(s.startAt);
     out.push({ title: s.title, startMs: start });
     start += layout(s).totalMs;
   }
