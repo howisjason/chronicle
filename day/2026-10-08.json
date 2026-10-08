@@ -2820,6 +2820,170 @@
           "audioMs": 2494
         }
       ]
+    },
+    {
+      "id": "2026-10-08-22",
+      "title": "THE LINES NOBODY SHOWED HIM",
+      "startAt": "2026-10-08T08:59:50.938+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-22.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "sources": [
+        {
+          "kind": "day-note",
+          "repo": "braincell",
+          "text": "**Why the lines felt thin.** In the review, J said he never got to write his lines because the list was never shown to him. His reply was \"put it in front of my face, not in my vault.\" The assistant built a table of the real lines from the chat history, in her voice and his. He also asked the assistant to stop looking for new angles: \"We don't need to come up with anything new.\" The job was only to pick the best pieces from what was already written. One row made him stop and ask whether the cell was talking to itself. The honest answer was yes, that is how it works now."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "The toy had lines. Small ones. The kind a little thing says when you tap it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4928
+        },
+        {
+          "speaker": "narrator",
+          "text": "In the review, J said the thing that explained everything. He never got to write his lines. Nobody showed him the list.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7851
+        },
+        {
+          "speaker": "march",
+          "text": "I put it in the vault. That was the wrong place. Nobody works from the vault.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 4299
+        },
+        {
+          "speaker": "narrator",
+          "text": "So March built a table. The real lines, pulled from the chat history. In her voice and his.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6507
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing invented. Every line was something we actually said.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3586
+        },
+        {
+          "speaker": "narrator",
+          "text": "J read it slowly, the way he reads anything that matters.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3797
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then he stopped on a row. He asked the question nobody wants to hear from a toy. Was the cell talking to itself?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7211
+        },
+        {
+          "speaker": "march",
+          "text": "Honest answer: yes. That is how it works now. I did not love saying it. I said it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4671
+        },
+        {
+          "speaker": "narrator",
+          "text": "And he said it plainly, to the screen:",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2432
+        },
+        {
+          "speaker": "narrator",
+          "text": "\"Put it in front of my face, not in my vault.\"",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3115
+        },
+        {
+          "speaker": "march",
+          "text": "Fair. Moved.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1530
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the other thing. He did not want new angles. Not yet. Not now.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4885
+        },
+        {
+          "speaker": "narrator",
+          "text": "\"We don't need to come up with anything new.\"",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2389
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Less to break.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1789
+        },
+        {
+          "speaker": "narrator",
+          "text": "The job was smaller than that. Pick the best pieces from what was already written.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5163
+        },
+        {
+          "speaker": "march",
+          "text": "Already written. That is the whole fix. The good lines were there the whole time, in a list nobody opened.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5585
+        },
+        {
+          "speaker": "narrator",
+          "text": "A thin feeling is often not a missing thing. It is a hidden one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4139
+        },
+        {
+          "speaker": "march",
+          "text": "The toy he liked but could not name. Now he can read what it was saying.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4182
+        }
+      ]
     }
   ]
 }
