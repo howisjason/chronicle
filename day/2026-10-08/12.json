@@ -1895,6 +1895,167 @@
         "n": 1,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-12",
+      "title": "THE KING WHO ASKS NICELY",
+      "startAt": "2026-10-08T12:49:41.938+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-12.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Staying On Your Purpose",
+        "Philosophy Of Social Connection"
+      ],
+      "angle": "What would happen if this idea were merged with another one of my notes?",
+      "kind": "the_case_against",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Arouse In The Other Person An Eager Want: Ask yourself \"how can I make this person want to do it?\""
+        },
+        {
+          "kind": "note",
+          "text": "Staying On Your Purpose: Don't wait any longer. Don't believe the myth that \"one day, things will be different\". They won't."
+        },
+        {
+          "kind": "note",
+          "text": "Give Honest And Sincere Appreciation: Flattery is insincere. Appreciation is sincere."
+        },
+        {
+          "kind": "note",
+          "text": "Arouse In The Other Person An Eager Want: Let the other person believe your idea was theirs, and praise them for coming up with such an idea."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Right, the merged one. Ask yourself how can I make this person want to do it, then don't wait any longer. Put those together and you've got a con with a kind face.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 8113
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every tale has a trickster, and he is never wicked to the one he charms. He hands the miller's daughter a gift and she believes the gift was hers. The note is a spell that works only when the caster believes in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13355
+        },
+        {
+          "speaker": "march",
+          "text": "Spell, con, same thing. Let them believe it was theirs. That's lying with better posture.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 3,
+          "audioMs": 4631
+        },
+        {
+          "speaker": "narrator",
+          "text": "Not lying. The king does not push her, he asks, and the answer grows in her own mouth like a bean in a pot. Honest from first word to last, because she truly had the idea once he had asked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12672
+        },
+        {
+          "speaker": "march",
+          "text": "Then the next bit. You can't ask someone a nice question and also tell them to hurry. Pick one.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5197
+        },
+        {
+          "speaker": "narrator",
+          "text": "Both, as all good tales have both. The question opens the gate and the urgency walks her through it before the clock strikes the afternoon hour, which is when this tale airs, and I call that a blessing on my side of the argument.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14741
+        },
+        {
+          "speaker": "march",
+          "text": "Afternoon, sure. Here's my one. Flattery is insincere, the note says. You're flattering the king.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5287
+        },
+        {
+          "speaker": "narrator",
+          "text": "Appreciation is sincere, the note says in the very next breath. The king praises her for her ideas, and every word of it rings true because the ideas really were hers.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11904
+        },
+        {
+          "speaker": "march",
+          "text": "They were hers because he asked. That's the part that's wrong, and you keep stepping over it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 4728
+        },
+        {
+          "speaker": "narrator",
+          "text": "You beat me on that line, March, and I resent how much I enjoyed it. A tale is meant to be argued with, and you keep stealing its chair to do it.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9493
+        },
+        {
+          "speaker": "march",
+          "text": "Keep the chair, then. Your king asked so nicely. Who does he marry next?",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4050
+        },
+        {
+          "speaker": "narrator",
+          "text": "A cutting's a cutting, and you have fished for it since the first scene. Very well, the king marries a kind woman, and her stepdaughter spins in the cellar until the wheel stops.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11093
+        },
+        {
+          "speaker": "march",
+          "text": "There's the wicked stepmother, so I'm owed that cutting. Keep going, I'm enjoying this.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4634
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then ask me a question instead, March, as the note would have you do. What is under the wheel, and who taught you to keep it?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7680
+        },
+        {
+          "speaker": "march",
+          "text": "Nice try. It's still a spindle.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2344
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 5
+      }
     }
   ]
 }
