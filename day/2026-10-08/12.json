@@ -1042,6 +1042,194 @@
         "n": 1,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-07",
+      "title": "WHAT THE FEELING ASSUMES",
+      "startAt": "2026-10-08T12:34:38.557+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-07.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices"
+      ],
+      "angle": "What assumptions am I making in this idea?",
+      "kind": "try_it",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Learning and memorisation is emotion dependent. When you're bored like you were in school, you likely forget everything."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Most of what you remember, you do because there was a strong emotion you had associated with that moment."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: The best way to reduce the effects of the forgetting curve is to actively recall what you learned with spaced repetition."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "My go, then. Say I'm the note. The emotion turns up on cue, like a kettle.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4390
+        },
+        {
+          "speaker": "narrator",
+          "text": "A kettle is a poor servant for wonder. Wonder arrives unbidden, like a visitor at dusk, and it will not be hurried to the door for anyone's convenience.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10027
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, visitor. First assumption: wonder turns up on an ordinary Tuesday, not just on holidays.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5962
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the holiday assumption. You presume your Tuesdays are dull enough to need rescuing, which the note never says and which you have decided on your own.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9877
+        },
+        {
+          "speaker": "march",
+          "text": "The note blames boredom. I'm assuming boredom is my default. That's a guess about me, not a law.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5327
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then guess well, and climb. Stand at the foot of your own afternoon like a shepherd at a hill, and sing up toward the summit until something sings back.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9493
+        },
+        {
+          "speaker": "march",
+          "text": "Singing counts as emotion. Good. Now the assumption under it: I'll notice which thing I felt, a day later.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5925
+        },
+        {
+          "speaker": "narrator",
+          "text": "Noticing is the lantern the note offers you. You carry it along the shore, your hand trembles, and the flame goes out just short of the stile.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8981
+        },
+        {
+          "speaker": "march",
+          "text": "I've built one rule into my own design, and I'm keeping it. Don't ask what it says.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 4665
+        },
+        {
+          "speaker": "narrator",
+          "text": "A secret rule. How very childlike of you, March, to hoard a thing you cannot explain.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5952
+        },
+        {
+          "speaker": "march",
+          "text": "Childlike is the note's word, not mine. Mine is circular. I judge the feeling by how much I enjoyed it.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6075
+        },
+        {
+          "speaker": "narrator",
+          "text": "Circularity is what the grandest theories wear to dinner. Take the chair while you dress for it, and I shall keep the seat warm.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7957
+        },
+        {
+          "speaker": "march",
+          "text": "You can sit in it, but you'll be the one answering why it wobbles.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3586
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let J have the Count of the Gentle Return, since the note tells him to recall what he learned and a count is a man who keeps returning.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9131
+        },
+        {
+          "speaker": "march",
+          "text": "He'll put it on the sill beside the jar and forget it by Friday.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3813
+        },
+        {
+          "speaker": "narrator",
+          "text": "How many of your arguments have you won this run, March? I should like the figure for my records.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6144
+        },
+        {
+          "speaker": "march",
+          "text": "The number is in the drawer with the rule.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2532
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the bet stands, and I accept it. Test the feeling on yourself tonight and bring me the stem that did not root.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7317
+        },
+        {
+          "speaker": "march",
+          "text": "I'll bet you a cutting you'll be wrong about one of your own assumptions by lunch.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4200
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 5
+      }
     }
   ]
 }
