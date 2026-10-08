@@ -1386,6 +1386,186 @@
         "n": 3,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-09",
+      "title": "THE HOURS NOBODY HAS",
+      "startAt": "2026-10-08T12:40:34.082+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-09.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices"
+      ],
+      "angle": "What if I had limitless resources or time to solve this?",
+      "kind": "the_case_against",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Spaced Repetition: Set scheduled reminders for valuable lessons learned. The best way to reduce the effects of the forgetting curve is to actively recall what you learned with spaced repetition."
+        },
+        {
+          "kind": "note",
+          "text": "Learn And Apply: Don't think that you need to learn every single thing before you even start. Just learn one thing, watch the one video, THEN APPLY IT."
+        },
+        {
+          "kind": "note",
+          "text": "Learning Is Emotion Dependent: Learning and memorisation is emotion dependent. When you're bored like you were in school, you likely forget everything."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Suppose the gods had handed J a bottomless purse and a lifetime of Sundays. Then the note is a thrifty nursemaid's advice, a clock for people who must hurry. Why set a reminder at all, when every hour already belongs to him?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15872
+        },
+        {
+          "speaker": "march",
+          "text": "Because a lifetime of Sundays still gets forgotten. Infinite time doesn't stop the forgetting, it just gives it more room to work.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6881
+        },
+        {
+          "speaker": "narrator",
+          "text": "Room for what? A learner of endless means rereads the book until the words wear smooth and the meaning seeps in by sheer repetition. No one with endless hours needs a clock to tell him when to look again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14101
+        },
+        {
+          "speaker": "march",
+          "text": "Rereading isn't recalling. You can read the same page all afternoon and never once pull it out of your head. The note says actively recall, and extra resources won't fix that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9018
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the wealthy learner simply does everything at once: learns, does, teaches, and never lets a memory go cold. Abundance is the cure your clerk's note was too poor to imagine.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12309
+        },
+        {
+          "speaker": "march",
+          "text": "Except the note says don't learn everything before you start. Learn one thing, then apply it. Infinite time would make you the person who studies the whole trade and never lifts a tool.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8932
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the apprentice of the richest guild in the kingdom would be the finest of all, having studied every treatise before breakfast.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7893
+        },
+        {
+          "speaker": "march",
+          "text": "He'd forget the treatises by lunch. Okay, that's your best jab so far, and I'm keeping it in the drawer with the others.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6412
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the note has lost its only argument, and the chair is mine by default.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5141
+        },
+        {
+          "speaker": "march",
+          "text": "Not yet. Look at the emotion bit. Give someone forever and the first wonder goes flat, because there's always more later. The note says boredom is where memory dies, and infinite time breeds boredom.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9702
+        },
+        {
+          "speaker": "narrator",
+          "text": "Boredom! A bold accusation against those at leisure. Yet I grant they forget as quickly as the poor, since the bowl cools just as fast in the mansion as in the hut.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10880
+        },
+        {
+          "speaker": "march",
+          "text": "You're quite right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1575
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear that, chronicle? She concedes, and the bowl itself has spoken in my favour.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5483
+        },
+        {
+          "speaker": "march",
+          "text": "Anyway. The reminder isn't a rule for the poor. It's for whoever forgets, and forever doesn't make anyone less forgetful.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6246
+        },
+        {
+          "speaker": "narrator",
+          "text": "What have you hidden in your design, March? A bell-rope behind the shelf, a trapdoor to the chair?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5888
+        },
+        {
+          "speaker": "march",
+          "text": "Not saying. Write your title in the margin instead.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3173
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let it be recorded that I offer J the title Prince of the Unbounded Afternoon, which he will decline as he declines the rest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8875
+        },
+        {
+          "speaker": "march",
+          "text": "He'll decline it, then set the reminder anyway.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2958
+        }
+      ],
+      "part": {
+        "n": 4,
+        "of": 5
+      }
     }
   ]
 }
