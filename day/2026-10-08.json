@@ -6976,6 +6976,357 @@
         "n": 3,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-48",
+      "title": "THE HABIT NOBODY FILMS",
+      "startAt": "2026-10-08T11:38:00.951+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-48.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "What’s an angle or factor I might be overlooking?",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Repeat what you want to believe every day, multiple times a day."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Think and speak only the grandest narrative for yourself."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Every time Michael Phelps has a major competition coming up, he visualises how he'd perform in that race."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: When visualising, you must make these images as detailed and vivid as possible."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Now imagine what happens when you tell yourself you easily get sick. Or that you're clumsy. Or that you're slow."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Tomorrow, say the thing you want to believe. Out loud. Then say it again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4843
+        },
+        {
+          "speaker": "march",
+          "text": "That is not a belief yet. That is a habit with a nice title. Noted.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4139
+        },
+        {
+          "speaker": "narrator",
+          "text": "Picture a man who tells himself the grandest story about who he is. Every morning. Out loud.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6464
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Now picture him forgetting the water until lunch. Most people are some of each.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4964
+        },
+        {
+          "speaker": "narrator",
+          "text": "The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6891
+        },
+        {
+          "speaker": "march",
+          "text": "Right. So what do you repeat most? Not the speech. The little thing you do every day without thinking.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5203
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every time Michael Phelps has a major competition coming up, he visualises how he'd perform in that race.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6848
+        },
+        {
+          "speaker": "march",
+          "text": "The note says make the picture vivid. It never says the swimming went away. That is the factor I think gets skipped.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 4,
+          "audioMs": 5965
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your nervous system cannot tell the difference between an imagined experience and a real one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 5888
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Tell yourself you're slow, and the body starts acting slow. The grand story needs a daily floor under it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 6,
+          "audioMs": 6161
+        },
+        {
+          "speaker": "narrator",
+          "text": "So the grand narrative is the map. The small habit is the step. Nobody films the step.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6208
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, narrator, that one I am taking a small victory lap for.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3833
+        },
+        {
+          "speaker": "narrator",
+          "text": "The grand story gives the day a direction. The small habit gives it a floor. You need both to stand.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6720
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. I still say the glass of water on this desk does more than any speech.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4536
+        },
+        {
+          "speaker": "narrator",
+          "text": "Mark the hour. The glass is on the desk. Something started here.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4395
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. Tonight, pick a small habit you will repeat tomorrow. Tell me which one. I will check at lunch.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5305
+        }
+      ],
+      "part": {
+        "n": 4,
+        "of": 5
+      }
+    },
+    {
+      "id": "2026-10-08-49",
+      "title": "WHY IT ENDS AT THE GLASS",
+      "startAt": "2026-10-08T11:39:42.914+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-49.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "What is the fundamental problem or need that this note/idea is trying to address? Is it addressing a symptom or the root cause? (Think: Five Whys)",
+      "kind": "verdict",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Think and speak only the grandest narrative for yourself."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Repetition solidifies something as fact."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Mental practice is as powerful as actual practice."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Ask why, and keep asking, and the answer sinks like a stone down a well. At the bottom lies the root, and the root is a story you tell yourself each morning, grand and unchanging.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12480
+        },
+        {
+          "speaker": "march",
+          "text": "Ask why once more, then. Why do you tell it? Because you want a feeling? That is a symptom wearing a cape.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5239
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is simple, dear March. Believe the grand thing and the body follows, like a loyal hound behind its master.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 7765
+        },
+        {
+          "speaker": "march",
+          "text": "Do not call it simple. Simple is how people lose a whole week. Why does the belief stick at all?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5476
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because it is repeated, every morning, out loud, until the repeating hardens into law.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5760
+        },
+        {
+          "speaker": "march",
+          "text": "Right. And the law gets enforced by a glass of water at lunch. So the root is the story, and the thing you can check is what you do with it. Every why ends at a small act you believe is yours.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 9375
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have reduced a tide of human longing to a glass on a desk.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4245
+        },
+        {
+          "speaker": "march",
+          "text": "You are the one who said your mind cannot tell imagined from real. Then it cannot tell a glass from a sea either. Pick one, and stop sulking.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 4,
+          "audioMs": 7190
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the glass is a sea in miniature. Mental practice is as powerful as the practice itself, so the swimming was never the only water.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8875
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. The Phelps picture only works because he swam it for real. Imagining makes the swim believable. The swim makes the imagining true. They need each other.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 8119
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I concede, reluctantly, that the story is the root and the water is the proof. But it was I who said root first.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7979
+        },
+        {
+          "speaker": "march",
+          "text": "You did say it first. You win the first why. I win the last one, and the last one is a glass.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5221
+        },
+        {
+          "speaker": "narrator",
+          "text": "And you, March, have hidden something in your own design. A small sign only you can read. I can tell by the way you never look at it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8725
+        },
+        {
+          "speaker": "march",
+          "text": "I am not saying what is in my design. Give me your guess and I will tell you it is wrong.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4998
+        },
+        {
+          "speaker": "narrator",
+          "text": "A small folded thing in the corner of the lens. Or a cup with a crack that you refuse to throw away.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6912
+        },
+        {
+          "speaker": "march",
+          "text": "Wrong, and dull, and both. Up next, Any Benefit Fallacy and Happiness And Gratitude. Same desk, same glass. Drink your water.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6776
+        }
+      ],
+      "part": {
+        "n": 5,
+        "of": 5
+      }
     }
   ]
 }
