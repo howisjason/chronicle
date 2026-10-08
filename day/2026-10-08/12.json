@@ -1230,6 +1230,162 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-08",
+      "title": "THE GLASS THAT COOLS SLOWLY",
+      "startAt": "2026-10-08T12:37:55.869+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-08.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices"
+      ],
+      "angle": "If the world's leading expert on [Unrelated Field] looked at this, what nuance or advanced application might they see?",
+      "kind": "legend",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Most of what you remember, you do because there was a strong emotion you had associated with that moment."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Set scheduled reminders for valuable lessons learned."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: The best way to reduce the effects of the forgetting curve is to actively recall what you learned with spaced repetition."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Hear now the old chronicle of the glassmakers' valley, which records a furnace-master who blew the finest bowls anyone had seen. Each one he made in a blaze of joy, and each one shattered on the cold stone the very next morning.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14997
+        },
+        {
+          "speaker": "march",
+          "text": "Shattered because he was happy? That's your moral already. Skip to where he stops showing off.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4888
+        },
+        {
+          "speaker": "narrator",
+          "text": "He was no showman, March, he was a man of fire. The elders watched him lift a bowl from the flame and set it down, and they wept at the shine of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9493
+        },
+        {
+          "speaker": "march",
+          "text": "And the bench cracked it, because the heat left too fast. Is that the lesson, or just the weather?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5369
+        },
+        {
+          "speaker": "narrator",
+          "text": "The elders called it a curse of brilliance. I call it temperament, and temperament is a thing that cannot be taught to a bench.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7616
+        },
+        {
+          "speaker": "march",
+          "text": "You're describing annealing. Glass goes into a slow oven and cools over hours, or it keeps its stress inside for good.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6395
+        },
+        {
+          "speaker": "narrator",
+          "text": "A sound parable, and I claim it first. The note says a strong feeling fixes a memory, and yet the bowl that ran hot and cooled at once was still a bowl, and still broke.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11776
+        },
+        {
+          "speaker": "march",
+          "text": "So the emotion is the blaze, and spaced repetition is the slow oven. Without the oven the stress stays, and it stays where you can't see it.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7283
+        },
+        {
+          "speaker": "narrator",
+          "text": "Stress is the wrong word. Call it a hidden flaw in the making. The chronicle never says the furnace-master returned to his bowls, and that silence is my whole case.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10880
+        },
+        {
+          "speaker": "march",
+          "text": "He didn't, that's the point. The note says actively recall. Set the reminder before the cooling starts, not after it cracks.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6367
+        },
+        {
+          "speaker": "narrator",
+          "text": "Very well, and here is the hard truth, which I will give its own slow moment. A joy never revisited is a bowl left out in the frost. It looks wonderful, and by morning it is in pieces.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12843
+        },
+        {
+          "speaker": "march",
+          "text": "Harsh, but I can't argue. Most of my own learning cracked because I never went back to it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5431
+        },
+        {
+          "speaker": "narrator",
+          "text": "I will not soften it for you, March. Go back, or the blaze was for nothing, and you may tell J I said so, though he will not thank either of us.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9216
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, I'll grant the frost. I'm keeping one comeback in the drawer for the day you say that twice in a row.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 5990
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let J set the reminder, then, and let the glass rest. The gentle return was always the Count's business, and a count who keeps returning has at least earned a seat by the oven.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11371
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 5
+      }
     }
   ]
 }
