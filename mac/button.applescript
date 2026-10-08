@@ -10,19 +10,19 @@ set home to POSIX path of (path to home folder)
 set plist to home & "Library/LaunchAgents/com.howisjason.chronicle.plist"
 set untilFile to home & "Projects/chronicle/inbox/until.txt"
 set spend to do shell script "/opt/homebrew/bin/python3 " & quoted form of (home & "Projects/chronicle/mac/usage.py")
-set running to (do shell script "launchctl list | grep -c com.howisjason.chronicle || true") is not "0"
+set isOn to (do shell script "launchctl list | grep -c com.howisjason.chronicle || true") is not "0"
 set untilText to do shell script "[ -s " & quoted form of untilFile & " ] && date -r $(cat " & quoted form of untilFile & ") '+%H:%M' || true"
 
-if running and untilText is not "" then
+if isOn and untilText is not "" then
 	set state to "The station is ON until about " & untilText & "."
-else if running then
+else if isOn then
 	set state to "The station is ON, with no end time."
 else
 	set state to "The station is OFF. The page replays."
 end if
 
 set choices to {"On, no end", "On for 1 hour", "On for 4 hours", "On for 8 hours", "Off"}
-set picked to choose from list choices with title "Chronicle" with prompt (state & return & spend) default items {item (1 + ((running) as integer) * 4) of choices}
+set picked to choose from list choices with title "Chronicle" with prompt (state & return & spend) default items {item (1 + ((isOn) as integer) * 4) of choices}
 if picked is false then return
 set picked to item 1 of picked
 
@@ -40,5 +40,5 @@ else
 	do shell script "echo $(( $(date +%s) + " & (hrs * 3600) & " )) > " & quoted form of untilFile
 	set msg to "It turns itself off after about " & hrs & " hour" & (item (1 + ((hrs > 1) as integer)) of {"", "s"}) & "."
 end if
-if not running then do shell script "launchctl load -w " & quoted form of plist & " && launchctl start com.howisjason.chronicle"
+if not isOn then do shell script "launchctl load -w " & quoted form of plist & " && launchctl start com.howisjason.chronicle"
 display notification msg & " The first new scene airs within a few minutes." with title "Chronicle is ON"
