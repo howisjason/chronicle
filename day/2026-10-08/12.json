@@ -190,6 +190,179 @@
         "n": 1,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-02",
+      "title": "THE CHILD'S VERSION OF THE RAIN",
+      "startAt": "2026-10-08T12:24:28.848+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-02.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Present Moment Is All That Exists",
+        "List Of Nice Things To Do"
+      ],
+      "angle": "Simplify this concept so a five-year-old could grasp the basic principle. What is the absolute essence?",
+      "kind": "quick_fire",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Share your umbrella with someone if they're walking the same way."
+        },
+        {
+          "kind": "note",
+          "text": "Present Moment: \"There is only today. If you want to do something, do it now.\" Derek Sivers"
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Say hello to everyone you see for the day."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Little-kid test. Can a child get it?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2663
+        },
+        {
+          "speaker": "narrator",
+          "text": "A child knows the sea. Simple is only a shorter road.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3989
+        },
+        {
+          "speaker": "march",
+          "text": "Shorter road, fine. Say hello. Share the umbrella. Done.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3278
+        },
+        {
+          "speaker": "narrator",
+          "text": "The umbrella again! Dripping with destiny, as promised.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3925
+        },
+        {
+          "speaker": "march",
+          "text": "Promised nothing. It's a hook, not a prophecy.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2794
+        },
+        {
+          "speaker": "narrator",
+          "text": "A hook is a prophecy with a bent nail.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2944
+        },
+        {
+          "speaker": "march",
+          "text": "Child's version: you give, somebody stays drier.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3072
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simplest truth: you give while the rain still falls.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3627
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, you're right. Next question.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2404
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your hidden rule: the child always gets the umbrella.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3584
+        },
+        {
+          "speaker": "march",
+          "text": "Wrong. Close enough to annoy you, though.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2554
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hard truth, March. Most of that list dies unspoken.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3989
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nobody reaches the bottom of it. Not one life.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3605
+        },
+        {
+          "speaker": "march",
+          "text": "Then say one thing today. That's all it wants.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2862
+        },
+        {
+          "speaker": "narrator",
+          "text": "One thing. Very well. I'll start tomorrow.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3051
+        },
+        {
+          "speaker": "march",
+          "text": "Tomorrow isn't in the note. Try again.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2752
+        },
+        {
+          "speaker": "narrator",
+          "text": "Fine. I shall say hello to the umbrella.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2752
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 5
+      }
     }
   ]
 }
