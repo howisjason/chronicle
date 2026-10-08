@@ -7830,6 +7830,175 @@
         "n": 1,
         "of": 3
       }
+    },
+    {
+      "id": "2026-10-08-53",
+      "title": "THE COURT OF GIANTS AND THE JAR OF CUTTINGS",
+      "startAt": "2026-10-08T11:52:31.695+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-53.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices",
+        "The Influence Of Others"
+      ],
+      "angle": "What if I had limitless resources or time to solve this?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Don't think that you need to learn every single thing before you even start. Just learn one thing, watch the one video, THEN APPLY IT."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: “You are the average of the five people you spend the most time with”."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: You're the average of those around you, don't associate with average people."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Simplicity is hacking away the unessential."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Limitless time, March! Imagine J with every hour the world can spare, learning every craft under the sun before the kettle boils. A golden cup, and the whole library poured in.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12352
+        },
+        {
+          "speaker": "march",
+          "text": "Then he never leaves the library. The note says it plainly. Learn one thing, watch the one video, then apply it. Time was never the trouble.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7121
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then give him a court of giants, the greatest minds of every age, gathered round his throne like lamps. Surely lamps are better than a single candle.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9664
+        },
+        {
+          "speaker": "march",
+          "text": "Giants. Lovely. The note says you are the average of the five people you spend the most time with. So who sits beside him on a Tuesday? Giants are a lot of work to sit near.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 8382
+        },
+        {
+          "speaker": "narrator",
+          "text": "A Tuesday is a small stage, March, and a lamp can light any stage. Surround him with the grand ones and the ordinary hour becomes a coronation.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10411
+        },
+        {
+          "speaker": "march",
+          "text": "Average people are not the problem, they are the crowd. Giants are not a fix either, they are a bigger crowd. Unlimited resources buy you a bigger crowd, not a better one.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 8461
+        },
+        {
+          "speaker": "narrator",
+          "text": "But the court does one thing your Tuesday cannot, March. A giant at the table sees the step J cannot see from the floor, and shows him where to put his foot next.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10283
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you win. Now the picture for the run.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2664
+        },
+        {
+          "speaker": "march",
+          "text": "Here it is. A jam jar of cuttings on a windowsill, each stem rooting in the water beside the others. None of them roots alone, and none roots in a jar of weeds.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 8010
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then J shall be Duke of the Five Closest Friends, and I shall take your chair while you admire your jar.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6464
+        },
+        {
+          "speaker": "march",
+          "text": "He would hate a duke. And that chair is my spot, so put the cushions back.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 1,
+          "audioMs": 4090
+        },
+        {
+          "speaker": "march",
+          "text": "There is one rule in my own design I keep to myself. It is only mine, and I am not saying what it is.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6109
+        },
+        {
+          "speaker": "narrator",
+          "text": "A secret in the jar, March? How delicious. Then the jar holds the true legend.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5781
+        },
+        {
+          "speaker": "march",
+          "text": "No. The jar holds cuttings. Next part, we put it in a crowded window and see who roots.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5259
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall wait by the window, dear March, and watch your cuttings drown in the crowd.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5269
+        },
+        {
+          "speaker": "march",
+          "text": "Sit down and watch them root.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2257
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 5
+      }
     }
   ]
 }
