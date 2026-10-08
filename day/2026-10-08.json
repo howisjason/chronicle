@@ -5146,6 +5146,189 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-37",
+      "title": "THE EXCUSE GETS CUT",
+      "startAt": "2026-10-08T10:21:27.041+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-37.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Value of Time"
+      ],
+      "angle": "What could I remove from this idea to make it simpler, cheaper, or more effective? (Instead of just adding)",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Value of Time: We never actually \"don't have the time\" to do something. It's just that we're actively choosing to do something else."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: We all have the same limited time in a day."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: When we say we don't have time to do something, what we really mean is that we don't think it's a high enough priority compared to the things that we're choosing to do instead, whether that's watching YouTube or napping."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: It's literally just about being."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Honest answer, March. My snowball is made of waiting. Soft, cold, and heavy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5653
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Now we can work with it. Let's cut it down.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2836
+        },
+        {
+          "speaker": "narrator",
+          "text": "Today we cut. We do not add. We strip this note to the bone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4459
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Start with the biggest word in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2640
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here it is. He wrote it plainly: \"We never actually \"don't have the time\" to do something.\"",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5760
+        },
+        {
+          "speaker": "march",
+          "text": "That is the cut. Delete the phrase. I don't have time. Gone.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3242
+        },
+        {
+          "speaker": "narrator",
+          "text": "It sounds too easy. The best ideas in his notebook often do.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4352
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, but what would he actually do on Monday?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2815
+        },
+        {
+          "speaker": "narrator",
+          "text": "On Monday, a man stops saying the excuse. He says the true thing instead. I am choosing something else right now.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7637
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. So: I am choosing to scroll. Honest. Then stop.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3260
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here is the cold part. Most of what we call no time is a choice we already made.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5717
+        },
+        {
+          "speaker": "march",
+          "text": "Wait, the cold part? Narrator, say it nicer.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2898
+        },
+        {
+          "speaker": "narrator",
+          "text": "No. It is true. I am telling it anyway.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3093
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. Then what is left when the words are gone?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2878
+        },
+        {
+          "speaker": "narrator",
+          "text": "Just this: \"It's literally just about being.\" Nothing else. That is the whole lesson.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5589
+        },
+        {
+          "speaker": "march",
+          "text": "Mark the hour. I'm counting it out loud.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 2728
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every good book ends on a quiet page. This is the page where you put the excuse down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6037
+        },
+        {
+          "speaker": "march",
+          "text": "Narrator, on Monday, what excuse are you cutting, and what will you do instead?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3752
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 5
+      }
     }
   ]
 }
