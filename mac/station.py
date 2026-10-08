@@ -30,7 +30,11 @@ sys.path.insert(0, os.path.join(ROOT, 'mac'))
 import pool  # noqa: E402
 
 TZ = timezone(timedelta(hours=7))  # Chiang Mai, no daylight saving
-MODEL, EFFORT = 'claude-haiku-5-5', 'low'
+# CHRONICLE_MODEL lets a lab round try another writer on the same sheets (8 Oct 2026).
+MODEL, EFFORT = os.environ.get('CHRONICLE_MODEL', 'claude-haiku-5-5'), 'low'
+# The truth check stays on Haiku whatever writes: in the 8 Oct lab an Opus truth
+# check cost about 3.5 cents a scene against Haiku's 0.1, for the same job.
+CHECK_MODEL = 'claude-haiku-5-5'
 GAPS = {'firstLeadMs': 1000, 'leadMs': 200, 'holdMs': 600}
 ANGLES_FILE = '/Users/howisjason/Projects/personal/context/obsidian/💡 Meta/⚡️ AI Prompts For Obsidian Notes.md'
 AUDIO_KEEP = timedelta(hours=1)
@@ -51,17 +55,18 @@ def today():
 
 
 def day_path():
-    return 'inbox/lab-day.json' if LAB else f'day/{today()}.json'
+    return f'inbox/lab{os.environ.get("LAB_TAG", "")}-day.json' if LAB else f'day/{today()}.json'
 
 
 def read(p):
     return open(p).read()
 
 
-def ask(system, user, label):
+def ask(system, user, label, model=None):
     """One plain model call. Returns its text; logs its cost."""
+    label = os.environ.get('LAB_TAG', '') + label
     r = subprocess.run(
-        ['claude', '-p', '--model', MODEL, '--effort', EFFORT, '--system-prompt', system,
+        ['claude', '-p', '--model', model or MODEL, '--effort', EFFORT, '--system-prompt', system,
          '--tools', '', '--strict-mcp-config', '--setting-sources', '',
          '--no-session-persistence', '--output-format', 'json'],
         input=user, capture_output=True, text=True, timeout=300)
@@ -119,30 +124,68 @@ def sheet_and_details(path):
     return head + ('## ' + tail if tail else ''), details
 
 
-MARCH_SHEET, MARCH_DETAILS = sheet_and_details('station/march.md')
-NARR_SHEET, NARR_DETAILS = sheet_and_details('station/narrator.md')
-WRITER = '\n\n'.join([read('station/writer.md'), '# March\n' + MARCH_SHEET,
+# CHRONICLE_SHEETS lets a lab round try another set of the three sheets (8 Oct 2026).
+SHEETS = os.environ.get('CHRONICLE_SHEETS', 'station')
+MARCH_SHEET, MARCH_DETAILS = sheet_and_details(f'{SHEETS}/march.md')
+NARR_SHEET, NARR_DETAILS = sheet_and_details(f'{SHEETS}/narrator.md')
+WRITER = '\n\n'.join([read(f'{SHEETS}/writer.md'), '# March\n' + MARCH_SHEET,
                       '# The narrator\n' + NARR_SHEET, '# Forbidden\n' + read('forbidden.md')])
-RUN = 'inbox/lab-run.json' if '--lab' in sys.argv else 'inbox/run.json'
-BITS = 'inbox/lab-bits.json' if '--lab' in sys.argv else 'inbox/bits.json'
+# LAB_TAG keeps parallel lab rounds in their own files.
+TAG = os.environ.get('LAB_TAG', '')
+RUN = f'inbox/lab{TAG}-run.json' if '--lab' in sys.argv else 'inbox/run.json'
+# The show's memory: at most ten lines about the show itself (the score between
+# them, feuds, the image planted in a run, jokes and when they were last used),
+# rewritten whole by the writer after every scene. It replaced the running-bits
+# list (8 Oct 2026), which only appended and so fed the same jokes back in.
+MEMORY = f'inbox/lab{TAG}-memory.json' if '--lab' in sys.argv else 'inbox/memory.json'
+
+
+def kinds():
+    """The segment kinds (PNN airs dozens; one kind made every scene the same
+    shape): '- name: the one line handed to the writer'."""
+    p = f'{SHEETS}/kinds.md'
+    return dict(re.findall(r'(?m)^- (\w+): (.+)$', read(p))) if os.path.exists(p) else {}
+
+
+def kind_for(run):
+    """Part 1 opens, the last part is the verdict, the parts between draw from the
+    rest without repeating within the run."""
+    k = kinds()
+    if not k:
+        return None
+    if run['n'] == 1:
+        return 'open'
+    if run['n'] == run['of']:
+        return 'verdict'
+    used = run.get('kinds', [])
+    middle = [x for x in k if x not in ('open', 'verdict')]
+    return random.choice([x for x in middle if x not in used] or middle)
 
 
 def current_run(notes, recent_segs):
     """A run is the same notes told over several scenes, each through a new angle
-    (PNN's shows run a topic in parts). A finished run starts a fresh pick."""
+    (PNN's shows run a topic in parts). A finished run starts a fresh pick: the
+    one its verdict already teased as "up next", if those notes are still in the pool."""
     run = json.load(open(RUN)) if os.path.exists(RUN) else None
     if run and run['n'] < run['of'] and all(n in notes for n in run['notes']):
         run['n'] += 1
         left = [a for a in angles() if a not in run['angles']] or angles()
         run['angles'].append(random.choice(left))
     else:
-        chosen, angle = pick(notes, recent_segs)
-        run = {'notes': chosen, 'n': 1, 'of': random.randint(3, 5), 'angles': [angle]}
+        nxt = run.get('next') if run else None
+        if nxt and all(n in notes for n in nxt[0]):
+            chosen, angle = nxt
+        else:
+            chosen, angle = pick(notes, recent_segs)
+        run = {'notes': chosen, 'n': 1, 'of': random.randint(3, 5), 'angles': [angle], 'kinds': []}
+    run['kind'] = kind_for(run)
+    if run['n'] == run['of'] and run['kind']:
+        run['next'] = list(pick(notes, recent_segs + [{'notes': run['notes']}]))
     return run
 
 
-def bits():
-    return json.load(open(BITS)) if os.path.exists(BITS) else []
+def memory():
+    return json.load(open(MEMORY)) if os.path.exists(MEMORY) else []
 
 
 def load_day():
@@ -201,12 +244,12 @@ def pick(notes, recent_segs):
 
 
 def truth(seg, material):
-    # The earlier scenes and running bits are passed too, so a callback to them
+    # The earlier scenes and the show's memory are passed too, so a callback to them
     # is not mistaken for an invented event (lab, 8 Oct 2026).
-    earlier = [s['title'] for s in recent()[-8:]] + bits()[-10:]
+    earlier = [s['title'] for s in recent()[-8:]] + memory()
     return ask(read('station/truth-check.md'),
                f'The segment:\n{json.dumps(seg, ensure_ascii=False)}\n\nThe notes it was written from:\n{material}'
-               f'\n\nEarlier scenes and running bits on this channel (callbacks to these are allowed): {earlier}', 'truth').strip()
+               f'\n\nEarlier scene titles and the channel memory (callbacks to these are allowed): {earlier}', 'truth', CHECK_MODEL).strip()
 
 
 def one_segment(day):
@@ -218,30 +261,45 @@ def one_segment(day):
     chosen, angle = run['notes'], run['angles'][-1]
     material = '\n\n'.join(f'## NOTE: {n}\n{notes[n]}' for n in chosen)
     titles = [s['title'] for s in day['segments'][-8:]]
-    tail = day['segments'][-1]['lines'][-2:] if day['segments'] else []
+    # The whole previous scene, not only its last lines, so the next one can build
+    # on anything in it and never repeat it (J: "things build on top of what has
+    # already happened", 8 Oct 2026).
+    prev = [{'speaker': l['speaker'], 'text': l['text']} for l in day['segments'][-1]['lines']] if day['segments'] else []
     frame = ('Merge these two notes: find where their ideas cross, and what the crossing shows that neither shows alone.'
              if len(chosen) == 2 else 'Take this one note deeper than it goes on its own.')
     part = (f"This is part {run['n']} of a run of {run['of']} on these notes"
             + (' (the LAST part: close the run, no hand-off question).' if run['n'] == run['of'] else '.'))
+    kind = run.get('kind')
+    if kind:
+        part += f"\nThe kind of segment: {kinds().get(kind, '')}"
+        if kind == 'verdict' and run.get('next'):
+            part += f"\nUp next, to tease by name in the last line: {' and '.join(run['next'][0])}"
+    # Saying the hour now and then makes a replay feel live (PNN does); only the
+    # part of the day, never the place.
+    h = (day_end(day) or datetime.now(TZ)).hour
+    when = 'late at night' if h < 5 else 'in the morning' if h < 12 else 'in the afternoon' if h < 18 else 'in the evening' if h < 22 else 'late at night'
+    part += f"\nThis scene airs {when}; mention it only if it fits naturally."
     user = (f"{material}\n\n{frame}\nThe angle for this scene: {angle}\n{part}\n\n"
             f"Two details for March this scene: {random.sample(MARCH_DETAILS, min(2, len(MARCH_DETAILS)))}\n"
             f"Two details for the narrator this scene: {random.sample(NARR_DETAILS, min(2, len(NARR_DETAILS)))}\n"
-            f"Running bits from earlier scenes (you may call back one): {bits()[-10:-3]}\n"
-            f"Bits used in the last few scenes, NOT to be used in this one (a bit gets old fast): {bits()[-3:]}\n\n"
-            f"Recent scene titles (do not repeat them): {titles}\nThe last two lines on air: {json.dumps(tail, ensure_ascii=False)}")
+            f"The show's memory so far: {json.dumps(memory(), ensure_ascii=False)}\n\n"
+            f"Recent scene titles (do not repeat them): {titles}\nThe previous scene on air, whole: {json.dumps(prev, ensure_ascii=False)}")
     feedback = ''
     for attempt in range(3):
         try:
             out = as_json(ask(WRITER, user + feedback, f'write#{attempt}'))
+            # A JSON missing a part used to crash the whole run (lab, 8 Oct 2026); now it is a refused try.
+            if not all(k in out for k in ('title', 'sources', 'lines')):
+                raise KeyError('title, sources or lines missing')
         except (ValueError, KeyError):
-            feedback = '\n\nYour last answer was not one valid JSON object. Answer with only the JSON.'
+            feedback = '\n\nYour last answer was not one complete JSON object with title, memory, sources and lines. Answer with only the JSON.'
             continue
         prev_end = day_end(day)
         soon = datetime.now(TZ) + timedelta(seconds=60)
         start = max(prev_end, soon) if prev_end else soon
         seg = {'id': f'{day["date"]}-{len(day["segments"]) + 1:02d}', 'title': out['title'],
                'startAt': start.isoformat(timespec='milliseconds'), 'audio': None, 'gaps': GAPS,
-               'notes': chosen, 'angle': angle, 'sources': out['sources'], 'lines': out['lines']}
+               'notes': chosen, 'angle': angle, 'kind': kind, 'sources': out['sources'], 'lines': out['lines']}
         trial = dict(day, segments=day['segments'] + [seg])
         save(trial)
         ok, msg = validate()
@@ -251,7 +309,7 @@ def one_segment(day):
             continue
         verdict = truth(seg, material)
         if verdict == 'CLEAN':
-            return keep(trial, run, out.get('bit'))
+            return keep(trial, run, out.get('memory'))
         print(f'station: try {attempt + 1} flagged: {verdict[:200]}', flush=True)
         # Repair the flagged lines once; the repair is checked like a new try.
         try:
@@ -264,7 +322,7 @@ def one_segment(day):
             save(trial)
             if validate()[0] and truth(seg2, material) == 'CLEAN':
                 print('station: repaired', flush=True)
-                return keep(trial, run, fixed.get('bit') or out.get('bit'))
+                return keep(trial, run, fixed.get('memory') or out.get('memory'))
         except (ValueError, KeyError, RuntimeError, subprocess.TimeoutExpired):
             pass
         feedback = f'\n\nA fresh reader flagged these lines. Write the scene again without them:\n{verdict}'
@@ -274,14 +332,15 @@ def one_segment(day):
     return 'three tries refused; this pick is dropped'
 
 
-def keep(trial, run, bit):
-    """A scene passed: the run moves on, and its running bit is remembered."""
+def keep(trial, run, mem):
+    """A scene passed: the run moves on, and the show's memory is replaced by the writer's update."""
     trial['segments'][-1]['part'] = {'n': run['n'], 'of': run['of']}
     save(trial)
+    if run.get('kind'):
+        run['kinds'] = run.get('kinds', []) + [run['kind']]
     json.dump(run, open(RUN, 'w'), indent=1, ensure_ascii=False)
-    if bit and str(bit).strip():
-        b = bits() + [str(bit).strip()[:200]]
-        json.dump(b[-30:], open(BITS, 'w'), indent=1, ensure_ascii=False)
+    if isinstance(mem, list) and mem:
+        json.dump([str(m).strip()[:200] for m in mem if str(m).strip()][:10], open(MEMORY, 'w'), indent=1, ensure_ascii=False)
     return trial
 
 

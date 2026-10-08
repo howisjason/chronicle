@@ -12,6 +12,12 @@
 //              digits, and spelled numbers from two to twenty. "One" and
 //              "single" are left alone; they read as articles more often than
 //              counts. Ordinals like "seventh" are matched to "7".
+//   worn out  the NEWEST scene only (aired ones are never judged again): a word
+//              one speaker uses in more than four of their lines, or a run of
+//              six words lifted from the scene before. Haiku grabs one word and
+//              wears it out ("madam" in nearly every narrator line, lab 8 Oct
+//              2026); catching it here costs the writer no extra words to read.
+//              Words from the scene's own sources and the names are exempt.
 //   forbidden  the mechanical half of forbidden.md: money marks, health and
 //              visa words, key-shaped strings, email addresses. The human half
 //              (names of people, clients) is the fresh reader's job
@@ -72,7 +78,41 @@ export function validate(day) {
       }
     });
   });
+  const segs = day.segments;
+  if (segs.length) f.push(...wornOut(segs[segs.length - 1], segs[segs.length - 2]));
   return f;
+}
+
+const STOP = new Set(('the and that this with have from what your you are was were for not but his her him she they them then than there their here when where which who whom will would could should shall must about into over only just like also even very more most much some such been being does did done says said into onto upon its it\'s i\'m don\'t can\'t that\'s let\'s you\'re he\'d he\'s she\'s i\'ll i\'d we\'re isn\'t won\'t yes no not now one all any can may might our out own off too why how see say get got going make made know think well back still way thing things time once again another every each other same right okay fine good note notes notebook idea ideas bit man day way lot kind sort put').split(' '));
+const NAMES = new Set(['march', 'narrator', 'j']);
+const words = (t) => String(t || '').toLowerCase().match(/[a-z][a-z']*/g) || [];
+
+export function wornOut(seg, prev) {
+  const out = [];
+  if (!seg || !Array.isArray(seg.lines)) return out;
+  const srcWords = new Set((seg.sources || []).flatMap((x) => words(x && x.text)));
+  const per = {};
+  for (const l of seg.lines) {
+    for (const w of new Set(words(l.text))) {
+      if (w.length < 3 || STOP.has(w) || NAMES.has(w) || srcWords.has(w)) continue;
+      const k = `${l.speaker} ${w}`;
+      per[k] = (per[k] || 0) + 1;
+    }
+  }
+  for (const [k, n] of Object.entries(per)) {
+    const [who, w] = k.split(' ');
+    if (n > 4) out.push(`${seg.id}: worn out, ${who === 'march' ? 'March' : 'the narrator'} says "${w}" in ${n} lines (at most 4)`);
+  }
+  if (prev && Array.isArray(prev.lines)) {
+    const grams = (t) => { const ws = words(t); const g = []; for (let i = 0; i + 6 <= ws.length; i++) g.push(ws.slice(i, i + 6).join(' ')); return g; };
+    const before = new Set(prev.lines.flatMap((l) => grams(l.text)));
+    const srcText = (seg.sources || []).map((x) => words(x && x.text).join(' ')).join(' | ');
+    for (const l of seg.lines) {
+      const hit = grams(l.text).find((g) => before.has(g) && !srcText.includes(g));
+      if (hit) out.push(`${seg.id}: repeats the scene before word for word: "${hit}"`);
+    }
+  }
+  return out;
 }
 
 export function numbersIn(text) {

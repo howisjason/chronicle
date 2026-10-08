@@ -21,17 +21,23 @@ honest labels; `forbidden.md` is the fixed list of what may never be said.
 |---|---|
 | The pool: every Second Brain note a blind Sonnet reviewer passed for a public channel, reviewed once and again only when the note changes | `mac/pool.py`, verdicts in `inbox/pool.json` |
 | The station: picks notes + an angle, writes one scene per plain headless `claude -p` call (Haiku 5.5, no tools, our own sheets), checks it, truth-checks it, repairs once, voices it, publishes | `mac/station.py` |
-| The writing | `station/writer.md`, `station/march.md`, `station/narrator.md` (personas, his yes 8 Oct 2026), `station/truth-check.md`, `station/note-gate.md` |
-| The checker | `station/validate.mjs` |
+| The writing | `station/writer.md`, `station/march.md`, `station/narrator.md`, `station/kinds.md`, `station/truth-check.md`, `station/note-gate.md`. Lean on purpose (8 Oct 2026 lab): a quarter of the old words wrote as well on Haiku. March is the host who knows J; the narrator is built as her opposite (J's call: friction and chemistry). Voices are DESCRIBED, never given as sample lines, because the writer copies them (PNN's own finding). Each scene gets one segment kind from `kinds.md` (open, verdict, and a middle drawn from the rest) and two random details per character |
+| The show's memory | `inbox/memory.json`: at most ten lines about the show itself (the score between March and the narrator, feuds, the image planted in a run, jokes and when last used), rewritten whole by the writer after each scene and handed to the next with the whole previous scene |
+| The checker | `station/validate.mjs`: shape, sources, numbers, forbidden words, and for the newest scene only, worn-out words (one speaker using a word in more than four lines) and lines lifted from the scene before |
 | The voices | `station/voice.py`, Kokoro from `station/.venv` (made by `python3 -m venv station/.venv` + `station/setup.sh`) |
 | The words, forever | `day/<date>.json` on `main`: every scene's lines, notes, angle and sources |
 | The sound, never kept | the `audio` branch, rebuilt from nothing at each scene with only the last hour; the page reads it from raw.githubusercontent.com. Older scenes replay as blips |
-| The clock | `mac/tick.sh` every 15 minutes, LaunchAgent `com.howisjason.chronicle` (plist in `mac/`), log `~/Library/Logs/chronicle.log` |
+| The clock | `mac/tick.sh` every 15 minutes, LaunchAgent `com.howisjason.chronicle` (plist in `mac/`), log `~/Library/Logs/chronicle.log`. A failed run sends J a Telegram message through the personal worker's alert door, at most once every three hours (the door's address is in `~/.claude/alert-url` and its key in `~/.claude/speak-key`, both outside this public repo) |
+| The clip button | `clip.js` on the page: a viewer presses Clip and gets the next 30 seconds as a video (MP4 or WebM) with captions, the title and "Watch live: howisjason.github.io/chronicle" burned in, made entirely in their browser; voice and blips reach it through one WebAudio mix in `player.js`. Untested on iPhone Safari; the button hides itself where the browser cannot record |
 | The button | `~/Applications/Chronicle.app` in his Dock, from `mac/button.applescript` (`mac/install-button.sh`): says on or off and flips the clock |
 
 All calls bill his Claude plan. Measured 8 Oct 2026: about half to two thirds of a
-cent of API-equivalent usage per scene. `--lab` writes text only into
-`inbox/lab-day.json`. Each call's cost goes to `inbox/costs.tsv`. The Mac must be
+cent of API-equivalent usage per scene. The writer is Haiku on low effort, J's
+call (8 Oct 2026): Opus wrote better but cost about ten cents a scene, and only
+Haiku makes 24/7 possible. The truth check is always Haiku. `--lab` writes text
+only into `inbox/lab<LAB_TAG>-day.json`; `CHRONICLE_MODEL` and `CHRONICLE_SHEETS`
+let a lab round try another writer or another folder of sheets. Lab calls count
+against the daily cap too. Each call's cost goes to `inbox/costs.tsv`. The Mac must be
 awake for new scenes; the page replays otherwise. The cloud way (a cloud session on
 the $250 credit) was removed the same day: one way to run, done well.
 
@@ -59,7 +65,7 @@ as replays when nothing is live.
 
 ## Tests
 
-`node --test timing.test.mjs station/validate.test.mjs` (12 tests; the checker's
+`node --test timing.test.mjs station/validate.test.mjs` (14 tests; the checker's
 plant a wrong number, a missing source and forbidden words and watch each
 refused). The truth check is exercised by handing a fresh Haiku a planted
 invented line with the real inbox; it flagged exactly that line on 8 Oct 2026.

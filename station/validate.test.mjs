@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { validate, numbersIn } from './validate.mjs';
+import { validate, numbersIn, wornOut } from './validate.mjs';
 
 const good = () => JSON.parse(readFileSync(new URL('../day/sample.json', import.meta.url), 'utf8'));
 const line = (d, i) => d.segments[0].lines[i];
@@ -52,4 +52,22 @@ test('shape faults are named', () => {
 
 test('numbersIn: digits, words, ordinals; one and single ignored', () => {
   assert.deepEqual([...numbersIn('twenty Looms, the seventh of Oct, 1,250 and one single 7')].sort(), ['1250', '20', '7']);
+});
+
+test('a worn-out word is refused, and only in the newest scene', () => {
+  const d = good();
+  const seg = d.segments[0];
+  const n = seg.lines.filter((l) => l.speaker === 'narrator').slice(0, 5);
+  n.forEach((l) => { l.text += ' Indeed, madam.'; });
+  assert.ok(validate(d).some((m) => /worn out, the narrator says "madam" in 5 lines/.test(m)));
+  d.segments.push(JSON.parse(JSON.stringify(good().segments[0])));
+  d.segments[1].id = 'next';
+  assert.ok(!validate(d).some((m) => /worn out/.test(m)), 'an aired scene is never judged again');
+});
+
+test('a line lifted from the scene before is refused', () => {
+  const prev = { lines: [{ speaker: 'march', text: 'The sailor is fine, the sailor is watching the bus go.' }] };
+  const seg = { id: 's', sources: [{ text: 'Note: nothing here.' }], lines: [{ speaker: 'narrator', text: 'As she said, the sailor is watching the bus go home.' }] };
+  assert.match(wornOut(seg, prev)[0], /repeats the scene before/);
+  assert.deepEqual(wornOut({ ...seg, lines: [{ speaker: 'narrator', text: 'A different line entirely, about a harbour.' }] }, prev), []);
 });
