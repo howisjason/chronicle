@@ -709,6 +709,175 @@
         "n": 4,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-12-05",
+      "title": "THE UMBRELLA AT THE END OF THE RUN",
+      "startAt": "2026-10-08T12:29:20.518+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-12-05.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Present Moment Is All That Exists",
+        "List Of Nice Things To Do"
+      ],
+      "angle": "How might I look at this problem from an entirely different perspective?",
+      "kind": "verdict",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: The past is behind us and when the future comes, it comes as the present. In essence, all we ever truly experience is the present."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: People think they’ll do something later. They think they’ll have more time in the future than they do today, as if later is a magical time when everything will happen."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Share your umbrella with someone if they're walking the same way."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Put whatever you used back in its proper place."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "text": "Here is the crossing that neither note shows alone. The present note says the moment is all there is; the list says what the moment is for.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9365
+        },
+        {
+          "speaker": "march",
+          "text": "The list has no dates on it. Every line is something you can do where you're standing, which is the only place the note says you are.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6798
+        },
+        {
+          "speaker": "narrator",
+          "text": "People think they'll do something later, the note warns, and then the list arrives with a long column of kindnesses, each one due now.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8405
+        },
+        {
+          "speaker": "march",
+          "text": "Nobody on that list is written for later. A thank-you, a hello, a hand on a door. You can't book a hello for next spring.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6266
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the list is a museum of the present, each item a moment kept in its glass case. I will not soften this: most people read a list like that as a wish, and a wish is just a later in a nicer coat.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13163
+        },
+        {
+          "speaker": "march",
+          "text": "A wish you act on before lunch is a deed. It's not a coat, it's a jacket with a bus ticket in the pocket.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6222
+        },
+        {
+          "speaker": "narrator",
+          "text": "Share your umbrella with someone if they're walking the same way. That is the whole argument, pressed flat, and you dismiss it as a tip.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8469
+        },
+        {
+          "speaker": "march",
+          "text": "The umbrella's on its hook by the shop door, which is about as present as objects get. You promised to say hello to it. Did you?",
+          "emotion": "happy",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6951
+        },
+        {
+          "speaker": "narrator",
+          "text": "Were I to say good morning to that umbrella, it would not reply, and I would take that silence as a verdict.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6955
+        },
+        {
+          "speaker": "march",
+          "text": "That's not a verdict, that's an umbrella. Its verdict is that it's dry.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3982
+        },
+        {
+          "speaker": "narrator",
+          "text": "I was right in the end, that the list is a museum of the present, and I will be right about it at my funeral.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6741
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. You're right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1739
+        },
+        {
+          "speaker": "narrator",
+          "text": "You will never tell me the count, will you. Not even on the last part of a run.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4907
+        },
+        {
+          "speaker": "march",
+          "text": "Anyway, the umbrella. Put it back on its hook when you're done with it.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3540
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ungrateful. A lifetime of storytelling, and I am given a bag, a bossy umbrella and a verdict from a silence.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7957
+        },
+        {
+          "speaker": "march",
+          "text": "Up next: Learning - Best Practices.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 2489
+        }
+      ],
+      "part": {
+        "n": 5,
+        "of": 5
+      }
     }
   ]
 }
