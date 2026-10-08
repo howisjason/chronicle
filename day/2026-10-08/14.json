@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-08",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-08-14-01",
+      "title": "THE POSTBOX THAT ONLY HAS NOW",
+      "startAt": "2026-10-08T14:04:51.693+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-14-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Express Your Ideas To The World",
+        "The Present Moment Is All That Exists"
+      ],
+      "angle": "How might I look at this problem from an entirely different perspective?",
+      "kind": "open",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: Leaving your comment on something is like leaving a message in a particular time in space as a wanderer of the universe."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: Forget the whole notion of the future. There is only today. If you want to do something, do it now."
+        },
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: Your ethereal thoughts that come lightly and infinitely can become real and concrete the moment you make a post or leave a comment."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Here's a note with a split down the middle. Half of it says leave your mark everywhere. The other half says there's only now. Which half do you want?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6716
+        },
+        {
+          "speaker": "narrator",
+          "text": "Leave the mark, of course. A message dropped into one particular moment is a stone set in a road, and the wanderers who come after will stumble on it and know that someone passed this way.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12309
+        },
+        {
+          "speaker": "march",
+          "text": "A stone only lands in the present, Narrator. Your wanderer reads it on a Tuesday, not in your century. The message isn't sent to the past. It's sent now.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 7585
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the present is the stone and the road both, and every post is destiny laid down all at once. Its arrival was written the moment it was sent.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9941
+        },
+        {
+          "speaker": "march",
+          "text": "It's a postbox, Narrator. On the corner, flap bent, slot worn pale. A letter goes in and sits in the dark until the van comes round. Nothing destined about it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 8352
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the humble postbox at the corner, its slot worn pale by countless hands. I find it sacred. Every letter inside is a small deed waiting for its destiny.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11456
+        },
+        {
+          "speaker": "march",
+          "text": "Sacred until the van empties it on Thursday. Let me try this on me, out loud: once I hit send, I stop holding the thought. That's the bit I like.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7628
+        },
+        {
+          "speaker": "narrator",
+          "text": "You are trying an idea on yourself in front of the audience, March, how bold of you. And I shall guess what you have hidden in the design of that very postbox. A crown in the slot, perhaps?",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12160
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing hidden. Just a bit of slant on the flap. And a crown in a postbox would just get the post stuck.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 5753
+        },
+        {
+          "speaker": "narrator",
+          "text": "You are close to a sermon, which I allow. But the sending was destined; every stamp was bought for it long before the letter was written.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8853
+        },
+        {
+          "speaker": "march",
+          "text": "Stamps get bought on a Tuesday, Narrator. Nobody has ever bought one for destiny.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4890
+        },
+        {
+          "speaker": "narrator",
+          "text": "You stand so close to the box that you cannot see the post you are standing in. Step back, March. Each message is a wanderer's message in time, and you have addressed yours to the wrong century.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12352
+        },
+        {
+          "speaker": "march",
+          "text": "The wrong century? I sent mine the moment I hit enter, which is the only moment there is.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5327
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the moment is the message, and you have proved my point while refusing to say so.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5355
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you're right. Anyway, the postbox is yours. Lunch is on the next card.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4672
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 5
+      }
+    }
+  ]
+}
