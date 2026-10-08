@@ -1356,6 +1356,179 @@
         "n": 2,
         "of": 5
       }
+    },
+    {
+      "id": "2026-10-08-13-09",
+      "title": "THE STROKE THAT NEVER REPEATS",
+      "startAt": "2026-10-08T13:38:06.138+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-09.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "Learning - Best Practices",
+        "Novelty - A Life Fully Lived"
+      ],
+      "angle": "If I knew absolutely nothing about this topic or context, what questions would I ask? What would seem confusing or counter-intuitive?",
+      "kind": "the_case_against",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Nothing twice. Never eat the same food twice. Never go to the same place twice. Never hear the same thing twice. Everything only once."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Time feels longer when your day is constantly filled with new and engaging activities, because you're NOT in autopilot mode."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Learning should be done in an environment that is fun and deliberately childlike."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Nothing twice means you never order the same coffee again. That's not a mission, it's a hostage situation with a menu.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6778
+        },
+        {
+          "speaker": "narrator",
+          "text": "A hostage is one who cannot leave, March, and the note asks only that you never become a captive of the familiar. Nothing twice is the discipline of the explorer, who sets out each morning toward a coast he has never beheld.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14827
+        },
+        {
+          "speaker": "march",
+          "text": "Explorers also get lost. A coast you've never seen is just a coast you haven't looked up yet.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5572
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let the lost be the very point. The note says the mind is awake when it is not on autopilot, and a man who wanders loses only his habits, which were never worth keeping.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11477
+        },
+        {
+          "speaker": "march",
+          "text": "Habits are the boring bit that keeps you fed. Dropping them is fine. Dropping the bread shop every week is a different thing, and the note doesn't say that.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 7589
+        },
+        {
+          "speaker": "narrator",
+          "text": "Learning should be done in a fun and childlike way, March. A child asks why bread is bread and then wanders into everything. You are asking the child's question and calling it an objection.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12331
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, I'll ask the child's question properly. What happens when you run out of new places? Nothing twice runs out fast.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6593
+        },
+        {
+          "speaker": "narrator",
+          "text": "It never runs out, March, because no place is the same twice even when you walk the same road. Suppose the rain changes, or the bell, or the baker's cat is a day older. Every return is a fresh stroke upon the card.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15040
+        },
+        {
+          "speaker": "march",
+          "text": "The baker's cat has not aged a day. You're doing the thing again, the big-picture inflation. A bench is a bench.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6004
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yet suppose a single pigeon settled on the sill exactly where the first postcard lay. Is that not the city and the card agreeing on a meeting? I find destiny in the smallest feathers.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12523
+        },
+        {
+          "speaker": "march",
+          "text": "It's a pigeon. Pigeons like sills. You're meant to be arguing against the note, and you keep defending it so beautifully I've lost my place in my own argument.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 8013
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let me answer your question, since you have grown weary of mine. The first stroke is mine, and it goes on the wobbling stone at the corner, where the ground refuses to stay still. Destiny leaves its mark where the earth does not hold.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14933
+        },
+        {
+          "speaker": "march",
+          "text": "A wobbling stone is just a stone. Fine, you get the first stroke. The next one's mine, and it goes across the city where nothing has ever been tipped on purpose.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7993
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your scoring is a vulgarity, March, and I resent every mark you make in that secret book. You are insufferable, and I shall complain of it to the empty room for a full hour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11349
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. That's one more for the book, and you're not reading the book.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3355
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am not reading it, only frowning at it from the far side of the desk, which is a perfectly honourable way to read.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7445
+        },
+        {
+          "speaker": "march",
+          "text": "Bet you can't get the stone drawn before the afternoon show.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3449
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 5
+      }
     }
   ]
 }
