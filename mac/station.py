@@ -12,7 +12,7 @@ How (the PNN way): one plain headless `claude -p` call writes a scene (Haiku 5.5
 no tools, no Claude Code instructions, our own sheets as the system prompt); the
 checker (station/validate.mjs) and a second call, the truth check, guard it;
 Kokoro voices it on the Mac; the words are committed to main forever
-(day/<date>.json, the transcripts), and the sound goes to the `audio` branch,
+(day/<date>/<HH>.json, the transcripts), and the sound goes to the `audio` branch,
 which holds only the last hour and no history (J: keep the transcripts, not the
 sound). Calls bill his plan. Measured 8 Oct 2026: about half a cent of
 API-equivalent usage per clean scene.
@@ -54,8 +54,27 @@ def today():
     return datetime.now(TZ).date().isoformat()
 
 
+def hour_path(when):
+    """The transcript file for the hour a scene is WRITTEN in (8 Oct 2026). One file
+    a day grew to megabytes at 24/7 and every viewer re-fetched it each minute; an
+    hour file stays about 35 scenes. Filing by the writing hour, not the airing
+    hour, means a scene's file is fixed the moment it is made (voicing may still
+    move its start), and since the station never writes more than about 25
+    minutes ahead, a scene airing at t sits in t's hour file or the one before:
+    the page only ever needs those two."""
+    when = when.astimezone(TZ)
+    return f'day/{when:%Y-%m-%d}/{when:%H}.json'
+
+
 def day_path():
-    return f'inbox/lab{os.environ.get("LAB_TAG", "")}-day.json' if LAB else f'day/{today()}.json'
+    """Where the next scene is filed: this hour's file, or the lab's own single file."""
+    return f'inbox/lab{os.environ.get("LAB_TAG", "")}-day.json' if LAB else hour_path(datetime.now(TZ))
+
+
+def hour_paths(hours_back):
+    """The hour files that exist from hours_back hours ago up to now, oldest first."""
+    now = datetime.now(TZ)
+    return [p for p in (hour_path(now - timedelta(hours=k)) for k in range(hours_back, -1, -1)) if os.path.exists(p)]
 
 
 def read(p):
@@ -188,15 +207,23 @@ def memory():
     return json.load(open(MEMORY)) if os.path.exists(MEMORY) else []
 
 
-def load_day():
-    p = day_path()
-    if os.path.exists(p):
-        return json.load(open(p))
-    return {'date': today(), 'tz': 'Asia/Bangkok', 'segments': []}
+def load_day(path):
+    if os.path.exists(path):
+        return json.load(open(path))
+    # A new hour file takes its date from its own path, so a scene written at
+    # 23:59:59.9 never gets the next day's date.
+    return {'date': path[4:14] if path.startswith('day/') else today(), 'tz': 'Asia/Bangkok', 'segments': []}
 
 
-def save(day):
-    json.dump(day, open(day_path(), 'w'), indent=1, ensure_ascii=False)
+def save(day, path):
+    # An hour with no scene is no file, so a dropped first try never leaves an
+    # empty transcript lying in day/.
+    if not day['segments'] and not LAB:
+        if os.path.exists(path):
+            os.remove(path)
+        return
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    json.dump(day, open(path, 'w'), indent=1, ensure_ascii=False)
 
 
 def seg_ms(seg):
@@ -204,21 +231,33 @@ def seg_ms(seg):
                + GAPS['holdMs'] for i, l in enumerate(seg['lines']))
 
 
-def day_end(day):
-    if not day['segments']:
+def end_of(segs):
+    """When the last of these scenes stops airing, or None."""
+    if not segs:
         return None
-    last = day['segments'][-1]
+    last = segs[-1]
     return datetime.fromisoformat(last['startAt']) + timedelta(milliseconds=seg_ms(last))
 
 
-def recent(n=60):
-    """The last scenes aired, from today's and yesterday's transcripts, so the picker can avoid repeats."""
+def recent(n=60, skip=None):
+    """The last n scenes, oldest first, from the hour files of the last two days
+    (newest file first, stopping once n are found), so the picker can avoid
+    repeats. `skip` leaves out the file being written, which the caller holds in
+    memory."""
     out = []
-    for d in (datetime.now(TZ).date() - timedelta(days=1), datetime.now(TZ).date()):
-        p = f'day/{d.isoformat()}.json'
-        if os.path.exists(p):
-            out += json.load(open(p))['segments']
+    for p in reversed(hour_paths(47)):
+        if p != skip:
+            out = json.load(open(p))['segments'] + out
+            if len(out) >= n:
+                break
     return out[-n:]
+
+
+def history(day, path):
+    """Every scene before the next one, across hour files and midnight: the
+    earlier files' scenes, then the open file's own (for the lab, the real
+    recent scenes then the lab's)."""
+    return recent(skip=path) + day['segments']
 
 
 def pick(notes, recent_segs):
@@ -252,19 +291,22 @@ def truth(seg, material):
                f'\n\nEarlier scene titles and the channel memory (callbacks to these are allowed): {earlier}', 'truth', CHECK_MODEL).strip()
 
 
-def one_segment(day):
+def one_segment(day, path):
     """Write, check and (if needed) repair one scene. Returns the new day, or a reason string."""
     notes = pool.notes()
     if not notes:
         return 'the pool is empty; run mac/pool.py'
-    run = current_run(notes, recent() + day['segments'] if LAB else recent())
+    # The scenes before this one may sit in earlier hour files, so everything that
+    # looks back (the picker, the titles, the previous scene, the start) reads them all.
+    before = history(day, path)
+    run = current_run(notes, before)
     chosen, angle = run['notes'], run['angles'][-1]
     material = '\n\n'.join(f'## NOTE: {n}\n{notes[n]}' for n in chosen)
-    titles = [s['title'] for s in day['segments'][-8:]]
+    titles = [s['title'] for s in before[-8:]]
     # The whole previous scene, not only its last lines, so the next one can build
     # on anything in it and never repeat it (J: "things build on top of what has
     # already happened", 8 Oct 2026).
-    prev = [{'speaker': l['speaker'], 'text': l['text']} for l in day['segments'][-1]['lines']] if day['segments'] else []
+    prev = [{'speaker': l['speaker'], 'text': l['text']} for l in before[-1]['lines']] if before else []
     frame = ('Merge these two notes: find where their ideas cross, and what the crossing shows that neither shows alone.'
              if len(chosen) == 2 else 'Take this one note deeper than it goes on its own.')
     part = (f"This is part {run['n']} of a run of {run['of']} on these notes"
@@ -276,7 +318,7 @@ def one_segment(day):
             part += f"\nUp next, to tease by name in the last line: {' and '.join(run['next'][0])}"
     # Saying the hour now and then makes a replay feel live (PNN does); only the
     # part of the day, never the place.
-    h = (day_end(day) or datetime.now(TZ)).hour
+    h = (end_of(before) or datetime.now(TZ)).hour
     when = 'late at night' if h < 5 else 'in the morning' if h < 12 else 'in the afternoon' if h < 18 else 'in the evening' if h < 22 else 'late at night'
     part += f"\nThis scene airs {when}; mention it only if it fits naturally."
     user = (f"{material}\n\n{frame}\nThe angle for this scene: {angle}\n{part}\n\n"
@@ -294,22 +336,25 @@ def one_segment(day):
         except (ValueError, KeyError):
             feedback = '\n\nYour last answer was not one complete JSON object with title, memory, sources and lines. Answer with only the JSON.'
             continue
-        prev_end = day_end(day)
+        prev_end = end_of(before)
         soon = datetime.now(TZ) + timedelta(seconds=60)
         start = max(prev_end, soon) if prev_end else soon
-        seg = {'id': f'{day["date"]}-{len(day["segments"]) + 1:02d}', 'title': out['title'],
+        # <date>-<HH>-<NN>: unique across the day because NN counts within the hour
+        # file, and never equal to the older one-file ids (<date>-<NN>) still kept.
+        hh = path.rsplit('/', 1)[-1][:2] if not LAB else 'lab'
+        seg = {'id': f'{day["date"]}-{hh}-{len(day["segments"]) + 1:02d}', 'title': out['title'],
                'startAt': start.isoformat(timespec='milliseconds'), 'audio': None, 'gaps': GAPS,
                'notes': chosen, 'angle': angle, 'kind': kind, 'sources': out['sources'], 'lines': out['lines']}
         trial = dict(day, segments=day['segments'] + [seg])
-        save(trial)
-        ok, msg = validate()
+        save(trial, path)
+        ok, msg = validate(path)
         if not ok:
             feedback = f'\n\nThe checker refused your last try. Fix these and write it again:\n{msg}'
             print(f'station: try {attempt + 1} refused by the checker: {msg[:200]}', flush=True)
             continue
         verdict = truth(seg, material)
         if verdict == 'CLEAN':
-            return keep(trial, run, out.get('memory'))
+            return keep(trial, path, run, out.get('memory'))
         print(f'station: try {attempt + 1} flagged: {verdict[:200]}', flush=True)
         # Repair the flagged lines once; the repair is checked like a new try.
         try:
@@ -319,23 +364,23 @@ def one_segment(day):
                                 "Return the whole scene JSON.", f'repair#{attempt}'))
             seg2 = dict(seg, lines=fixed['lines'], sources=fixed.get('sources', seg['sources']))
             trial = dict(day, segments=day['segments'] + [seg2])
-            save(trial)
-            if validate()[0] and truth(seg2, material) == 'CLEAN':
+            save(trial, path)
+            if validate(path)[0] and truth(seg2, material) == 'CLEAN':
                 print('station: repaired', flush=True)
-                return keep(trial, run, fixed.get('memory') or out.get('memory'))
+                return keep(trial, path, run, fixed.get('memory') or out.get('memory'))
         except (ValueError, KeyError, RuntimeError, subprocess.TimeoutExpired):
             pass
         feedback = f'\n\nA fresh reader flagged these lines. Write the scene again without them:\n{verdict}'
-    save(day)
+    save(day, path)
     if os.path.exists(RUN):
         os.remove(RUN)  # a pick that never passes ends its run
     return 'three tries refused; this pick is dropped'
 
 
-def keep(trial, run, mem):
+def keep(trial, path, run, mem):
     """A scene passed: the run moves on, and the show's memory is replaced by the writer's update."""
     trial['segments'][-1]['part'] = {'n': run['n'], 'of': run['of']}
-    save(trial)
+    save(trial, path)
     if run.get('kind'):
         run['kinds'] = run.get('kinds', []) + [run['kind']]
     json.dump(run, open(RUN, 'w'), indent=1, ensure_ascii=False)
@@ -344,19 +389,20 @@ def keep(trial, run, mem):
     return trial
 
 
-def validate():
-    r = subprocess.run(['node', 'station/validate.mjs', day_path()], capture_output=True, text=True)
+def validate(path):
+    # The checker finds the scene before on its own when this file holds only the
+    # newest scene (it reads the previous hour's file from the path).
+    r = subprocess.run(['node', 'station/validate.mjs', path], capture_output=True, text=True)
     return r.returncode == 0, (r.stdout + r.stderr).strip()
 
 
-def push_audio(day):
+def push_audio():
     """The sound lives on the `audio` branch, rebuilt from nothing each time with only
     the files still on air or within the last hour, so no sound is ever kept."""
-    # Yesterday's file too, so a scene still on air just after midnight keeps its sound.
-    segs = list(day['segments'])
-    y = f'day/{(datetime.now(TZ).date() - timedelta(days=1)).isoformat()}.json'
-    if os.path.exists(y):
-        segs = json.load(open(y))['segments'] + segs
+    # The last three hour files (across midnight too): a scene that ended within the
+    # last hour was written at most about 25 minutes before it started, so it was
+    # filed no more than two hours back.
+    segs = [s for p in hour_paths(2) for s in json.load(open(p))['segments']]
     keep = [s for s in segs if s.get('audio') and
             datetime.fromisoformat(s['startAt']) + timedelta(milliseconds=seg_ms(s)) > datetime.now(TZ) - AUDIO_KEEP]
     d = 'inbox/audio-branch'
@@ -383,15 +429,16 @@ def push_audio(day):
                 os.rmdir(os.path.join(root, x))
 
 
-def publish(day):
-    subprocess.run([os.path.join(ROOT, 'station/.venv/bin/python'), 'station/voice.py', day_path(), '--budget', '480'], check=True)
-    ok, msg = validate()
+def publish(path):
+    # `path` is the file the scene was written into, held from the start: if the
+    # hour turns while it is voiced, it still goes out from the file it lives in.
+    subprocess.run([os.path.join(ROOT, 'station/.venv/bin/python'), 'station/voice.py', path, '--budget', '480'], check=True)
+    ok, msg = validate(path)
     if not ok:
         raise RuntimeError(f'checker refused after voicing: {msg}')
-    day = load_day()
-    push_audio(day)  # the sound first, so it is there when the words go live
-    subprocess.run(['git', 'add', day_path()], check=True)
-    subprocess.run(['git', 'commit', '-qm', f'chronicle: {day["date"]}, a scene from the vault'], check=True)
+    push_audio()  # the sound first, so it is there when the words go live
+    subprocess.run(['git', 'add', path], check=True)
+    subprocess.run(['git', 'commit', '-qm', f'chronicle: {path[4:-5]}, a scene from the vault'], check=True)
     subprocess.run(['git', 'pull', '-q', '--rebase', '--autostash'], check=True)
     subprocess.run(['git', 'push', '-q'], check=True)
 
@@ -405,14 +452,15 @@ def main():
     while True:
         if not LAB and spent_today() >= cap():
             print(f'station: today\'s cap reached (${spent_today():.2f} of ${cap():.2f}); the page replays until tomorrow'); break
-        day = load_day()
-        end = day_end(day)
+        path = day_path()  # fixed for this scene, even if the hour turns mid-scene
+        day = load_day(path)
+        end = end_of(history(day, path))
         if not LAB and end and end > datetime.now(TZ) + timedelta(minutes=AHEAD):
             print(f'station: ahead of the clock; on air until {end:%H:%M}'); break
         try:
-            result = one_segment(day)
+            result = one_segment(day, path)
         except BaseException:
-            save(day)  # never leave an unchecked scene on disk
+            save(day, path)  # never leave an unchecked scene on disk
             raise
         if isinstance(result, str):
             print(f'station: {result}', flush=True)
@@ -430,7 +478,7 @@ def main():
             if made >= int(os.environ.get('LAB_N', '1')):
                 break
             continue
-        publish(result)
+        publish(path)
         print(f'station: on air, "{seg["title"]}" ({" + ".join(seg["notes"])})', flush=True)
         if ONCE:
             break

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // validate.mjs: the station's checker. Refuses a chapter before it is voiced.
-// Usage: node station/validate.mjs day/<date>.json   (exit 1 on any finding)
+// Usage: node station/validate.mjs day/<date>/<HH>.json   (exit 1 on any finding)
 //
 // What it checks, and why (the channel plan, 8 Oct 2026, law 1 and law 2):
 //   shape      every part of the page agrees on this format; a wrong shape
@@ -18,11 +18,15 @@
 //              wears it out ("madam" in nearly every narrator line, lab 8 Oct
 //              2026); catching it here costs the writer no extra words to read.
 //              Words from the scene's own sources and the names are exempt.
+//              The transcripts are one file per hour (8 Oct 2026), so when the
+//              newest scene is the first in its file, the scene before is the
+//              last one of the previous hour's file; the command line finds it
+//              from the path (previousHourPath), across midnight too.
 //   forbidden  the mechanical half of forbidden.md: money marks, health and
 //              visa words, key-shaped strings, email addresses. The human half
 //              (names of people, clients) is the fresh reader's job
 //              (station/truth-check.md); no regex knows who is private.
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 
 const SPEAKERS = new Set(['narrator', 'march']);
 const EMOTIONS = new Set(['neutral', 'happy', 'dry', 'surprised']);
@@ -41,7 +45,9 @@ const FORBIDDEN = [
   [/\b(?:client|prospect|invoice|payment|rent|salary|debt|credit card|bank)\b/i, 'a money or client word'],
 ];
 
-export function validate(day) {
+// `before` is the scene aired just before this file's first one, if any; it is
+// only used when the file holds a single scene.
+export function validate(day, before = null) {
   const f = [];
   const need = (ok, msg) => { if (!ok) f.push(msg); };
   need(day && typeof day === 'object', 'not an object');
@@ -79,7 +85,7 @@ export function validate(day) {
     });
   });
   const segs = day.segments;
-  if (segs.length) f.push(...wornOut(segs[segs.length - 1], segs[segs.length - 2]));
+  if (segs.length) f.push(...wornOut(segs[segs.length - 1], segs.length > 1 ? segs[segs.length - 2] : before));
   return f;
 }
 
@@ -122,10 +128,21 @@ export function numbersIn(text) {
   return out;
 }
 
+// day/<date>/<HH>.json -> the hour before's file (23.json of the day before at
+// midnight), or null for a path of another shape (the lab's single file).
+export function previousHourPath(path) {
+  const m = String(path).match(/^(.*?)(\d{4}-\d{2}-\d{2})\/(\d{2})\.json$/);
+  if (!m) return null;
+  const t = new Date(Date.parse(`${m[2]}T${m[3]}:00:00Z`) - 3600 * 1000); // UTC arithmetic on the local clock face
+  return `${m[1]}${t.toISOString().slice(0, 10)}/${t.toISOString().slice(11, 13)}.json`;
+}
+
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split('/').pop())) {
   const file = process.argv[2];
-  if (!file) { console.error('usage: node station/validate.mjs day/<date>.json'); process.exit(2); }
-  const findings = validate(JSON.parse(readFileSync(file, 'utf8')));
+  if (!file) { console.error('usage: node station/validate.mjs day/<date>/<HH>.json'); process.exit(2); }
+  const prevFile = previousHourPath(file);
+  const prevSegs = prevFile && existsSync(prevFile) ? JSON.parse(readFileSync(prevFile, 'utf8')).segments || [] : [];
+  const findings = validate(JSON.parse(readFileSync(file, 'utf8')), prevSegs[prevSegs.length - 1] || null);
   if (findings.length) { console.error(`REFUSED ${file}:\n  ` + findings.join('\n  ')); process.exit(1); }
   console.log(`OK ${file}`);
 }

@@ -1,0 +1,2186 @@
+{
+ "date": "2026-10-08",
+ "tz": "Asia/Bangkok",
+ "segments": [
+  {
+   "id": "2026-10-08-35",
+   "title": "THE FEW STONES THAT HOLD THE ROAD",
+   "startAt": "2026-10-08T10:16:09.289+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-35.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "The Value of Time"
+   ],
+   "angle": "What if I approached this with the Pareto Principle in mind?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "The Value of Time: Time magnifies the margin between success & failure. It will multiply whatever you feed it."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: We all have the same limited time in a day."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: At any given moment, you are doing what you most want to be doing."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: Time is the only separator between your past, present and future."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "The donut can wait. The road cannot.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2795
+    },
+    {
+     "speaker": "narrator",
+     "text": "Picture a long road covered in small stones. Most of them are just stones. A few of them hold the whole road up.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 7765
+    },
+    {
+     "speaker": "march",
+     "text": "Wait, is the road the stones, or the stones the road? Because I only see stones.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 4749
+    },
+    {
+     "speaker": "narrator",
+     "text": "Stay with me. Every man has the same limited time in a day. Same hours. Same clock. Nobody gets extra.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 7979
+    },
+    {
+     "speaker": "march",
+     "text": "Same clock, very different days. That part is true, and it stings a little.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4056
+    },
+    {
+     "speaker": "narrator",
+     "text": "The Pareto Principle says that a small slice of what we do brings most of the results. Most of the work goes nowhere. A thin part of it does nearly everything.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 10581
+    },
+    {
+     "speaker": "narrator",
+     "text": "Mark the hour. Something important just got said.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3413
+    },
+    {
+     "speaker": "march",
+     "text": "Marking it. Still the same hour, narrator.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 2772
+    },
+    {
+     "speaker": "narrator",
+     "text": "Time multiplies whatever you feed it. So feed it the small slice. The part of the day that moves the needle.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7317
+    },
+    {
+     "speaker": "march",
+     "text": "Noted. I would still feed it the slice you can finish, though. Big slices spoil on the desk.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5072
+    },
+    {
+     "speaker": "narrator",
+     "text": "The small slice is not always the easy slice. Often it is the hour you keep saying you will do tomorrow.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6955
+    },
+    {
+     "speaker": "march",
+     "text": "Yes. That is the hour that hurts.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2303
+    },
+    {
+     "speaker": "narrator",
+     "text": "Time is the only separator between your past, present and future. Every choice of the small slice is a stone set down for the man ahead.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 9728
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, the stone comparison is doing a lot of work. But fine. The stone is real.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 5006
+    },
+    {
+     "speaker": "narrator",
+     "text": "Picture him looking back, years from now, at the few stones he chose to lift. That is the road he walked.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 6997
+    },
+    {
+     "speaker": "march",
+     "text": "He did not get there by lifting every stone. He got there by finding the few that counted.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 3,
+     "audioMs": 5331
+    },
+    {
+     "speaker": "march",
+     "text": "Narrator, your turn. Name your small slice on air. Then name the one hour you will stop pushing to tomorrow.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 5774
+    }
+   ],
+   "part": {
+    "n": 1,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-36",
+   "title": "THE SNOWBALL HAS NO OPINION",
+   "startAt": "2026-10-08T10:19:37.819+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-36.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "The Value of Time"
+   ],
+   "angle": "Create a simple analogy or metaphor to explain the core concept of this note. What does this analogy reveal about its strengths or weaknesses?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "The Value of Time: Time magnifies the margin between success & failure. It will multiply whatever you feed it."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: It feels like such a slow burn, but it's exponential. It creeps up on you on a day to day basis, but when you zoom out, it's an instant."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: We never actually \"don't have the time\" to do something. It's just that we're actively choosing to do something else."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: Time is a magnifier of who you are now."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "My small slice is a plain sentence, read aloud before I start talking big. The hour I keep pushing to tomorrow is the hour I like least.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 9365
+    },
+    {
+     "speaker": "narrator",
+     "text": "Picture a snowball at the top of a hill. It is small. It is cold. It does not look like much at all.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6976
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, but what would he actually do on Monday?",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2815
+    },
+    {
+     "speaker": "narrator",
+     "text": "He wrote it down plainly: it feels like such a slow burn, but it's exponential.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5461
+    },
+    {
+     "speaker": "march",
+     "text": "Slow at the top. Fast at the bottom. Same snow.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3053
+    },
+    {
+     "speaker": "narrator",
+     "text": "Time is a magnifier of who you are now. That is the snowball's secret. It picks up whatever you pack into it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 7275
+    },
+    {
+     "speaker": "march",
+     "text": "Noted. I'll say it anyway: the snowball has no opinion. It rolls over a clean lawn and a muddy path the same way.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6734
+    },
+    {
+     "speaker": "narrator",
+     "text": "That is the crack in the picture. A snowball does not choose its hill. You do.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5248
+    },
+    {
+     "speaker": "march",
+     "text": "Right, and that is the part he is pointing at. We never actually don't have the time. We pick the hill.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 2,
+     "audioMs": 5306
+    },
+    {
+     "speaker": "narrator",
+     "text": "So the analogy is honest about the growing. It is quiet about the choosing. Time does not roll by itself. It rolls the way you point it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 9365
+    },
+    {
+     "speaker": "march",
+     "text": "Noted. I still like the snowball. It shows the growing part. It hides the choosing part.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5302
+    },
+    {
+     "speaker": "narrator",
+     "text": "Every lesson in a notebook like this was paid for by a bad day. Somebody learned it the hard way, with cold hands.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7552
+    },
+    {
+     "speaker": "march",
+     "text": "Mm. Not every bad day gets a lesson, though. Only the ones you write down.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4452
+    },
+    {
+     "speaker": "narrator",
+     "text": "So write it down. The snowball keeps rolling whether you watch it or not.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 4693
+    },
+    {
+     "speaker": "march",
+     "text": "And it grows fastest where the hill runs longest. Pick a long hill.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3980
+    },
+    {
+     "speaker": "narrator",
+     "text": "Pick your hill, then. Pack it with what you want to be.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3221
+    },
+    {
+     "speaker": "march",
+     "text": "Narrator, what is your snowball made of? Answer in an honest sentence.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 3,
+     "audioMs": 4024
+    }
+   ],
+   "part": {
+    "n": 2,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-37",
+   "title": "THE EXCUSE GETS CUT",
+   "startAt": "2026-10-08T10:21:27.041+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-37.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "The Value of Time"
+   ],
+   "angle": "What could I remove from this idea to make it simpler, cheaper, or more effective? (Instead of just adding)",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "The Value of Time: We never actually \"don't have the time\" to do something. It's just that we're actively choosing to do something else."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: We all have the same limited time in a day."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: When we say we don't have time to do something, what we really mean is that we don't think it's a high enough priority compared to the things that we're choosing to do instead, whether that's watching YouTube or napping."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: It's literally just about being."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Honest answer, March. My snowball is made of waiting. Soft, cold, and heavy.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5653
+    },
+    {
+     "speaker": "march",
+     "text": "Good. Now we can work with it. Let's cut it down.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 2836
+    },
+    {
+     "speaker": "narrator",
+     "text": "Today we cut. We do not add. We strip this note to the bone.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4459
+    },
+    {
+     "speaker": "march",
+     "text": "Fine. Start with the biggest word in it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2640
+    },
+    {
+     "speaker": "narrator",
+     "text": "Here it is. He wrote it plainly: \"We never actually \"don't have the time\" to do something.\"",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5760
+    },
+    {
+     "speaker": "march",
+     "text": "That is the cut. Delete the phrase. I don't have time. Gone.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3242
+    },
+    {
+     "speaker": "narrator",
+     "text": "It sounds too easy. The best ideas in his notebook often do.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4352
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, but what would he actually do on Monday?",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2815
+    },
+    {
+     "speaker": "narrator",
+     "text": "On Monday, a man stops saying the excuse. He says the true thing instead. I am choosing something else right now.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 7637
+    },
+    {
+     "speaker": "march",
+     "text": "Ha. So: I am choosing to scroll. Honest. Then stop.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 2,
+     "audioMs": 3260
+    },
+    {
+     "speaker": "narrator",
+     "text": "Here is the cold part. Most of what we call no time is a choice we already made.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5717
+    },
+    {
+     "speaker": "march",
+     "text": "Wait, the cold part? Narrator, say it nicer.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2898
+    },
+    {
+     "speaker": "narrator",
+     "text": "No. It is true. I am telling it anyway.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3093
+    },
+    {
+     "speaker": "march",
+     "text": "Okay. Then what is left when the words are gone?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 2878
+    },
+    {
+     "speaker": "narrator",
+     "text": "Just this: \"It's literally just about being.\" Nothing else. That is the whole lesson.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 5589
+    },
+    {
+     "speaker": "march",
+     "text": "Mark the hour. I'm counting it out loud.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 3,
+     "audioMs": 2728
+    },
+    {
+     "speaker": "narrator",
+     "text": "Every good book ends on a quiet page. This is the page where you put the excuse down.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 6037
+    },
+    {
+     "speaker": "march",
+     "text": "Narrator, on Monday, what excuse are you cutting, and what will you do instead?",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 3752
+    }
+   ],
+   "part": {
+    "n": 3,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-38",
+   "title": "THE SLOW SEASON HAS A VOICE",
+   "startAt": "2026-10-08T10:23:18.516+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-38.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "The Value of Time"
+   ],
+   "angle": "What is the opposite of this idea, and how could that also be valid?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Progress in life is not linear, it's exponential."
+    },
+    {
+     "kind": "note",
+     "text": "We Own All Of Our Time: At any given moment, you are doing what you most want to be doing."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: Time magnifies the margin between success & failure. It will multiply whatever you feed it."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Fine. I cut the idea that every hour has to climb. Growth is not a straight line.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5845
+    },
+    {
+     "speaker": "march",
+     "text": "Careful, narrator. You just wrote a rule and called it a curve.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3511
+    },
+    {
+     "speaker": "narrator",
+     "text": "Here is the opposite, and it is valid. Time multiplies whatever you feed it. So what if you feed it rest?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 7104
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, let me try it on me, out loud. This week I feed time nothing. A slow week. Hmm.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4858
+    },
+    {
+     "speaker": "march",
+     "text": "Noted. I still disagree. Moving on.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2766
+    },
+    {
+     "speaker": "narrator",
+     "text": "That is the whole trick of this note. It is loud on one side and quiet on the other.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5739
+    },
+    {
+     "speaker": "march",
+     "text": "Some days you do not get to pick the hour. Life sends it. The idea that you always own your time is strong. It is not always true.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 1,
+     "audioMs": 6800
+    },
+    {
+     "speaker": "narrator",
+     "text": "He treats this idea like it is carved in stone. Still true.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4309
+    },
+    {
+     "speaker": "march",
+     "text": "Narrator, we are carving on phones now. Very ancient.",
+     "emotion": "dry",
+     "action": "facepalm",
+     "source": 1,
+     "audioMs": 3353
+    },
+    {
+     "speaker": "narrator",
+     "text": "Every lesson in a notebook like this was paid for by a bad day. Somebody had to lose the argument first.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 7061
+    },
+    {
+     "speaker": "march",
+     "text": "So the opposite is valid when the bad day is the teacher. Rest is not the same as hiding.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 1,
+     "audioMs": 5543
+    },
+    {
+     "speaker": "narrator",
+     "text": "Rest you choose is a choice. Hiding is a choice too, and it has a sound. You can hear the difference.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6891
+    },
+    {
+     "speaker": "march",
+     "text": "I can hear it. Loudly. Usually at the wrong hour of the night.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3705
+    },
+    {
+     "speaker": "narrator",
+     "text": "So here is the thing to carry out of this. The slow season can grow something too. The question is which kind of waiting you are doing.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 8469
+    },
+    {
+     "speaker": "march",
+     "text": "Narrator, be honest. Which kind of waiting are you doing this week?",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3885
+    }
+   ],
+   "part": {
+    "n": 4,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-39",
+   "title": "THE BAG THAT HOLDS ONLY TIME",
+   "startAt": "2026-10-08T10:25:12.742+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-39.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "The Value of Time"
+   ],
+   "angle": "If I could only use 2 resources to solve this problem, what would they be?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "The Value of Time: Time magnifies the margin between success & failure. It will multiply whatever you feed it."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: At any given moment, you are doing what you most want to be doing."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: We all have the same limited time in a day."
+    },
+    {
+     "kind": "note",
+     "text": "The Value of Time: Time is the only separator between your past, present and future."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "This idea is simple. A man with a bag. Only time and choice inside it. Can he still climb the mountain?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7723
+    },
+    {
+     "speaker": "march",
+     "text": "Simple? Narrator, do not call it simple and walk off. Time is the multiplier. It will multiply whatever you feed it. So choice is the food.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 7310
+    },
+    {
+     "speaker": "narrator",
+     "text": "Time takes the choice and makes it big. The sea does not notice a pebble. It notices the tide.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 6571
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, that one I am taking a victory lap for. Now tell me what he would actually do on Monday.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 2,
+     "audioMs": 5303
+    },
+    {
+     "speaker": "narrator",
+     "text": "Monday. He has the same day everyone has. The same hours. Nobody lacks the time.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5995
+    },
+    {
+     "speaker": "march",
+     "text": "Sure. Everyone says that, right up until they stop saying it.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3562
+    },
+    {
+     "speaker": "narrator",
+     "text": "At any given moment, you are doing what you most want to be doing.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3968
+    },
+    {
+     "speaker": "march",
+     "text": "Wait. That is harsh.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 1,
+     "audioMs": 1811
+    },
+    {
+     "speaker": "narrator",
+     "text": "It is harsh. It is also free. If you are the one choosing, you are the one who can choose again.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6485
+    },
+    {
+     "speaker": "march",
+     "text": "Noted. I still think the road and the mountain are different walks.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3684
+    },
+    {
+     "speaker": "narrator",
+     "text": "Mark the hour. Something started here.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 2603
+    },
+    {
+     "speaker": "march",
+     "text": "Hour counted. Keep going.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 3,
+     "audioMs": 2178
+    },
+    {
+     "speaker": "narrator",
+     "text": "So here is the whole bag. Time, which multiplies. And choice, which decides what goes in.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6699
+    },
+    {
+     "speaker": "march",
+     "text": "Time magnifies. Choice feeds it. That is the whole deal, and it is free.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4092
+    },
+    {
+     "speaker": "narrator",
+     "text": "That closes these notes. Thank you for walking the road with us.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3968
+    },
+    {
+     "speaker": "march",
+     "text": "Be who you need to be, now. Goodbye, notes.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 3,
+     "audioMs": 2661
+    }
+   ],
+   "part": {
+    "n": 5,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-40",
+   "title": "THE OLD STONE TYPED ON A PHONE",
+   "startAt": "2026-10-08T10:26:57.428+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-40.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "Happiness And Gratitude",
+    "Everything Is Subjective"
+   ],
+   "angle": "How was this problem (or a similar one) addressed in the past (e.g., 10, 50, 100 years ago)? What can be learned from previous attempts or contexts?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: There is no objective right or wrong. There are as many opinions in life as there are people. Some call it black. Others call it white. Everything is subjective."
+    },
+    {
+     "kind": "note",
+     "text": "Everything is Subjective: It's a fool's game to think there's any objective right or wrong, because there is none. Everything is subjective."
+    },
+    {
+     "kind": "note",
+     "text": "Everything is Subjective: Our attitude is like the lens in which we see the world through. A different lens effectively changes your entire reality."
+    },
+    {
+     "kind": "note",
+     "text": "Happiness And Gratitude: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Long before any phone was in anyone's hand, people argued about what was true. Some of the smartest men of their age were sure they had it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 8747
+    },
+    {
+     "speaker": "march",
+     "text": "Smartest men of their age. Narrator, you are carving on stone again.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4157
+    },
+    {
+     "speaker": "narrator",
+     "text": "I am carving it on stone. Fine, it was typed on a phone. The cold part comes next.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6187
+    },
+    {
+     "speaker": "march",
+     "text": "Then say the cold part. I can take it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2706
+    },
+    {
+     "speaker": "narrator",
+     "text": "Aristotle said the Earth sat at the center of everything. Everybody believed him, because he was so wise.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6677
+    },
+    {
+     "speaker": "march",
+     "text": "Then a man named Galileo looked at the sky and said no.",
+     "emotion": "surprised",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3388
+    },
+    {
+     "speaker": "narrator",
+     "text": "Galileo was right about the Earth. He was also wrong about comets and the tides. Everybody believed him too.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 7253
+    },
+    {
+     "speaker": "march",
+     "text": "So the lesson is that smart people are wrong sometimes. Simple.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3886
+    },
+    {
+     "speaker": "narrator",
+     "text": "Do not say simple. March, that is a whole history of people being sure.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4928
+    },
+    {
+     "speaker": "march",
+     "text": "It is simple, and I will defend it. Small habits, small checks, and do not hang your whole self on one loud voice. Nobody writes a legend about a checklist, and it still saves the day.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 9079
+    },
+    {
+     "speaker": "narrator",
+     "text": "Newton came after them and blew everyone's mind. He also spent years trying to turn metal into gold.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6805
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, that one is funny. Noted.",
+     "emotion": "dry",
+     "action": "facepalm",
+     "source": 0,
+     "audioMs": 2514
+    },
+    {
+     "speaker": "narrator",
+     "text": "His own note says it plainly. Our attitude is like the lens in which we see the world through.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 6229
+    },
+    {
+     "speaker": "march",
+     "text": "So a lens is a habit. You change it with small things, every day, not with one big speech.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 2,
+     "audioMs": 5335
+    },
+    {
+     "speaker": "narrator",
+     "text": "And a different lens changes the whole world you see. Even the old stones.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4864
+    },
+    {
+     "speaker": "march",
+     "text": "The stones do not care. Monday does. So tell me, narrator, which lens are you changing before anything else? Answer me next time.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 3,
+     "audioMs": 6476
+    }
+   ],
+   "part": {
+    "n": 1,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-41",
+   "title": "THE GLASS IS STILL SOFT",
+   "startAt": "2026-10-08T10:29:16.260+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-41.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "Happiness And Gratitude",
+    "Everything Is Subjective"
+   ],
+   "angle": "If the world's leading expert on [Unrelated Field] looked at this, what nuance or advanced application might they see?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: Change the way you approach life and the lens in which you view the world, and the entire world changes accordingly."
+    },
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: A different lens effectively changes your entire reality."
+    },
+    {
+     "kind": "note",
+     "text": "Happiness And Gratitude: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "March asked which lens I change before anything else. Fair question. Picture a glassblower with a hot pipe in his hand.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7936
+    },
+    {
+     "speaker": "march",
+     "text": "Picture him. Now tell me what he does with it, narrator.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3132
+    },
+    {
+     "speaker": "narrator",
+     "text": "He does not wait for the glass to cool. He shapes it while it is still soft. Once it hardens, the shape stays.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6997
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, that is the nuance I wanted. You do not fix the lens after it sets. You fix it while it is soft.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6005
+    },
+    {
+     "speaker": "narrator",
+     "text": "His notebook says it plainly. A different lens effectively changes your entire reality. But the lens has to be soft to change.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 8811
+    },
+    {
+     "speaker": "march",
+     "text": "Soft is the key word. Most people wait for the glass to go hard, then wonder why it will not bend.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 5672
+    },
+    {
+     "speaker": "narrator",
+     "text": "Happiness is simply a state of mind in which our thinking is pleasant most of the time. That is the lens. You shape it on a normal Tuesday, not on the big day.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 10432
+    },
+    {
+     "speaker": "march",
+     "text": "A normal Tuesday. Noted, narrator. And I am not saying it is easy.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4132
+    },
+    {
+     "speaker": "narrator",
+     "text": "No. Easy would mean nothing is being shaped at all.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3029
+    },
+    {
+     "speaker": "march",
+     "text": "Easy is not in his notes, narrator. Only the lens, and how you approach life. Let's keep to that.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 5432
+    },
+    {
+     "speaker": "narrator",
+     "text": "Mark the hour. Something started the moment he held the pipe still.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4096
+    },
+    {
+     "speaker": "march",
+     "text": "I am not counting that out loud. Fine. I am counting it now.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3684
+    },
+    {
+     "speaker": "narrator",
+     "text": "Here is the twist. The glassblower does not make the lens clear. The heat does. The soft time does the real work.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 7787
+    },
+    {
+     "speaker": "march",
+     "text": "Hot glass does not care who you are. It just stays where you put it.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3767
+    },
+    {
+     "speaker": "narrator",
+     "text": "That is the thing I most want said today.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2795
+    },
+    {
+     "speaker": "march",
+     "text": "Then here is my question. Narrator, what do you shape before the glass sets on Monday?",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 4856
+    }
+   ],
+   "part": {
+    "n": 2,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-42",
+   "title": "THE RULE THAT COSTS EVERYTHING",
+   "startAt": "2026-10-08T10:31:18.004+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-42.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "Happiness And Gratitude",
+    "Everything Is Subjective"
+   ],
+   "angle": "What could I remove from this idea to make it simpler, cheaper, or more effective? (Instead of just adding)",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: There is no objective right or wrong. There are as many opinions in life as there are people."
+    },
+    {
+     "kind": "note",
+     "text": "Feelings Do Not Require Reason: If you wait until you \"deserve\" to think pleasant thoughts, you're likely to think unpleasant thoughts regarding your own unworthiness."
+    },
+    {
+     "kind": "note",
+     "text": "Feelings Do Not Require Reason: Happiness is not a moral issue, anymore than the circulation of blood is a moral issue."
+    },
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: So don't get too caught up in what's right or wrong."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Nothing. Right away, I cut.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2048
+    },
+    {
+     "speaker": "march",
+     "text": "Good. Cut what, exactly? Show me the fat.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 2624
+    },
+    {
+     "speaker": "narrator",
+     "text": "The fat is the rule. You wait until you deserve a good thought.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4224
+    },
+    {
+     "speaker": "march",
+     "text": "And while you wait, you think the bad thoughts about your own worth. That is the cost. It is cheap to keep and expensive to live with.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6671
+    },
+    {
+     "speaker": "narrator",
+     "text": "So cut it. Happiness is not a moral issue.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3435
+    },
+    {
+     "speaker": "march",
+     "text": "Right. Blood does not ask permission to move. Happiness works the same way.",
+     "emotion": "surprised",
+     "action": "point",
+     "source": 2,
+     "audioMs": 4174
+    },
+    {
+     "speaker": "narrator",
+     "text": "Less rule. More looking. Everything is subjective, so there is no test to pass.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5312
+    },
+    {
+     "speaker": "march",
+     "text": "I like that. There is no objective right or wrong, so there is nothing to earn.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4302
+    },
+    {
+     "speaker": "narrator",
+     "text": "Think of it as a snow day.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 2069
+    },
+    {
+     "speaker": "march",
+     "text": "Fine. But do not hide in the snow. Do not get too caught up in what is right or wrong. Just look.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 3,
+     "audioMs": 5049
+    },
+    {
+     "speaker": "narrator",
+     "text": "The lens is free. It always was. He only had to stop charging himself for it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5717
+    },
+    {
+     "speaker": "march",
+     "text": "That is the cheapest version of the idea, and the best one. I will take it.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4320
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then here is my question. March, what would you cut from your own rules today?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4992
+    }
+   ],
+   "part": {
+    "n": 3,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-43",
+   "title": "THE LENS CAN HIDE A MAN",
+   "startAt": "2026-10-08T10:33:35.682+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-43.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "Happiness And Gratitude",
+    "Everything Is Subjective"
+   ],
+   "angle": "What are the potential ethical implications or societal consequences (positive or negative) of this idea if widely adopted? How could it be misused?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: There is no objective right or wrong."
+    },
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: So who's to say that we're right and they're wrong?"
+    },
+    {
+     "kind": "note",
+     "text": "Feelings Do Not Require Reason: Happiness is not a moral issue, anymore than the circulation of blood is a moral issue."
+    },
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: Change the way you approach life and the lens in which you view the world, and the entire world changes accordingly."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "march",
+     "text": "You asked what I would cut. Easy. The rule that says I have to be sure about everything.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 3,
+     "audioMs": 5068
+    },
+    {
+     "speaker": "narrator",
+     "text": "Picture a room where every person says, I am right. And every one of them means it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5291
+    },
+    {
+     "speaker": "march",
+     "text": "That is a Tuesday in any comment section. Okay, keep going.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3728
+    },
+    {
+     "speaker": "narrator",
+     "text": "There is no objective right or wrong. A man can hear that sentence and feel free. Or he can hear it and hide.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 7381
+    },
+    {
+     "speaker": "march",
+     "text": "Hide is the word. That is the ugly misuse. My truth, your truth, and nobody gets hurt because it is all just a lens.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6605
+    },
+    {
+     "speaker": "narrator",
+     "text": "He wrote it plainly: happiness is not a moral issue. A good feeling is not a court.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5675
+    },
+    {
+     "speaker": "march",
+     "text": "So it works both ways. Feeling good does not make you good. He is careful about that part.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5069
+    },
+    {
+     "speaker": "narrator",
+     "text": "Careful is the word. Some lessons are only that: a warning written in small print.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5611
+    },
+    {
+     "speaker": "march",
+     "text": "I disagree with your big stone voice. Noted. Moving on.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 3627
+    },
+    {
+     "speaker": "narrator",
+     "text": "Here is the good side. If nothing is set in stone, we judge less. We listen more. That is kindness with room in it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7893
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, that one I am taking a victory lap for. Who is to say you are the right one, though? Maybe you are the one who needs to listen.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6666
+    },
+    {
+     "speaker": "narrator",
+     "text": "Feelings do not require reason. So the test is not how you feel. The test is what your choices do to other people.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 8000
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, but what would he actually do on Monday? When someone is hurt, does he shrug and say it is all subjective?",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 2,
+     "audioMs": 5986
+    },
+    {
+     "speaker": "narrator",
+     "text": "The notes are about change: change the way you approach life, and the lens changes. A lens changes what you see. Whether your hands follow is the question the notes leave open.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 12032
+    },
+    {
+     "speaker": "march",
+     "text": "I like that. Put it on the wall, right above the rule I am cutting.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3747
+    },
+    {
+     "speaker": "narrator",
+     "text": "Every idea that sounds too easy has a hard edge. This one's edge is what you do next. March, when the lens shows you that you were wrong, what do you do?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 10432
+    }
+   ],
+   "part": {
+    "n": 4,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-44",
+   "title": "THE LENS IN THE SEA VILLAGE",
+   "startAt": "2026-10-08T10:36:06.463+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-44.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "Happiness And Gratitude",
+    "Everything Is Subjective"
+   ],
+   "angle": "How would I explain this idea if I had to tell it like a children's fairy tale?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: I may not be able to change the world, but I can change the way I see the world."
+    },
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: A different lens effectively changes your entire reality."
+    },
+    {
+     "kind": "note",
+     "text": "Everything Is Subjective: There is no objective right or wrong."
+    },
+    {
+     "kind": "note",
+     "text": "Feelings Do Not Require Reason: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+    },
+    {
+     "kind": "note",
+     "text": "Smile To Be Happy: When you smile, your brain automatically assumes you're having a good time."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Long ago, in a village by the sea, there lived a man who thought the world was too big to change. So he stopped trying before he began.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 8683
+    },
+    {
+     "speaker": "march",
+     "text": "That is a sad start for a fairy tale. Okay, keep going. Let's see if the lens shows up.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5327
+    },
+    {
+     "speaker": "narrator",
+     "text": "A lens came to his door. It was old, and it said only this: I may not be able to change the world. But I can change the way I see it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 9259
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, I love a talking lens. Fine, but what does he eat for breakfast on Monday?",
+     "emotion": "happy",
+     "action": "point",
+     "source": 1,
+     "audioMs": 4967
+    },
+    {
+     "speaker": "narrator",
+     "text": "So he looked at the thing that bothered him most. He asked the lens a question. A different lens effectively changes your entire reality, and his did.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 9579
+    },
+    {
+     "speaker": "march",
+     "text": "The village had a rule. There is no objective right or wrong. Sounds like a nice rule, which is exactly the warning.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 6200
+    },
+    {
+     "speaker": "narrator",
+     "text": "Every house had its own window. Every window showed a different truth. Nobody was lying. Nobody was finished either.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 7893
+    },
+    {
+     "speaker": "march",
+     "text": "Noted. I still think the easy-sounding ideas are the most dangerous, and also the best. Keep going.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5988
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the man saw that he had been waiting. Waiting to feel he deserved a good day. He wrote it down plainly: Happiness is simply a state of mind in which our thinking is pleasant most of the time.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 12437
+    },
+    {
+     "speaker": "march",
+     "text": "There it is. That line is the whole fairy tale, plain as a stone. No prize at the end. Just the thinking.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 3,
+     "audioMs": 5775
+    },
+    {
+     "speaker": "narrator",
+     "text": "He smiled at the sea. Not because the sea was calm. Because his brain, the old wise animal, decided it was a good day.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 8597
+    },
+    {
+     "speaker": "march",
+     "text": "Careful, narrator. You are about to turn a smile into magic.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 4,
+     "audioMs": 3696
+    },
+    {
+     "speaker": "narrator",
+     "text": "Magic is a big word, March.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 2389
+    },
+    {
+     "speaker": "march",
+     "text": "Then say it small. Mark the hour, and I will count it out loud. Okay, it counts. The sea got smaller.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 4,
+     "audioMs": 5497
+    },
+    {
+     "speaker": "narrator",
+     "text": "That is the end of the lens, and the end of these notes. Put the sea on the wall, and let the rest of the year do the work.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 7872
+    },
+    {
+     "speaker": "march",
+     "text": "Good night, sea. Good night, lens. On Monday, he smiles first, and then he thinks.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 4,
+     "audioMs": 4370
+    }
+   ],
+   "part": {
+    "n": 5,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-45",
+   "title": "THE CLERK WHO FILES EVERYTHING",
+   "startAt": "2026-10-08T10:38:26.396+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-45.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "How Our Brains Interpret Imagined And Real Experiences"
+   ],
+   "angle": "How might I look at this problem from an entirely different perspective?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Mental practice is as powerful as actual practice."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: When visualising, you must make these images as detailed and vivid as possible."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Whatever you believe about yourself, you are right."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Picture a clerk in a grey office, the kind with no windows. Every file that lands on his desk, he files. He never checks if it is true.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 9600
+    },
+    {
+     "speaker": "march",
+     "text": "That clerk is your nervous system. Noted, and I am saying it before you make him sound lazy. He is not lazy. He is just very literal.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 7159
+    },
+    {
+     "speaker": "narrator",
+     "text": "Stop looking at the world for a minute. Look at the desk. From there, a vivid picture and a real day look exactly the same.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 8085
+    },
+    {
+     "speaker": "march",
+     "text": "That is the entirely different view. We always ask, is the world true? The clerk asks, what did I receive? Totally different question.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 6669
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then repetition does the rest. Say a thing enough times and the clerk starts to believe it. He does not check the source.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 7829
+    },
+    {
+     "speaker": "march",
+     "text": "So if you keep filing I am slow, he will hand you slow. He is not being mean. He is being obedient.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5634
+    },
+    {
+     "speaker": "narrator",
+     "text": "So write the file yourself. Clean and vivid, the way you would describe a room you love. Small details. The light. The sound of the door.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 9472
+    },
+    {
+     "speaker": "march",
+     "text": "Mental practice is as powerful as actual practice. The clerk cannot tell the court from the gym. He just sees a good file.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 1,
+     "audioMs": 7074
+    },
+    {
+     "speaker": "narrator",
+     "text": "Mark the hour. A man can look at his own mind the way the clerk looks at paper, and see that it was never the world. Only the file.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 8469
+    },
+    {
+     "speaker": "march",
+     "text": "Hour marked. I am counting it out loud, and it is a long count. Okay, I need to push. Would the clerk really stamp anything you gave him?",
+     "emotion": "dry",
+     "action": "none",
+     "source": 4,
+     "audioMs": 6734
+    },
+    {
+     "speaker": "narrator",
+     "text": "On Monday, he files a new one. The smell of the coffee. The weight of the pen. He files it again, and again, until it sticks.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 8384
+    },
+    {
+     "speaker": "march",
+     "text": "Noted. I still think the clerk is too calm. But I will let him be calm.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4218
+    },
+    {
+     "speaker": "narrator",
+     "text": "The notebook holds a plain lesson. Whatever you believe about yourself, you act on. So check which file you keep.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 7445
+    },
+    {
+     "speaker": "narrator",
+     "text": "Some pages only make sense when you are the one holding the pen.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 4352
+    },
+    {
+     "speaker": "march",
+     "text": "Then here is my question, narrator. If the clerk is always the one holding the pen, who is holding yours?",
+     "emotion": "surprised",
+     "action": "point",
+     "source": 0,
+     "audioMs": 5968
+    }
+   ],
+   "part": {
+    "n": 1,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-46",
+   "title": "THE ASSUMPTION IN THE PEN",
+   "startAt": "2026-10-08T10:40:47.495+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-46.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "How Our Brains Interpret Imagined And Real Experiences"
+   ],
+   "angle": "What assumptions am I making in this idea?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: The only way we perceive reality is through our own lens, right?"
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Whatever you believe about yourself, you are right."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: The brain learns from repetition."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Think and speak only the grandest narrative for yourself."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: How we see ourselves and how we see the world effectively is the truth as far as we're individually personally concerned."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Nobody holds mine, March. I write the page, and then I believe the page.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5120
+    },
+    {
+     "speaker": "march",
+     "text": "Your page is a good page. Still, this note makes some big claims without checking them.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 5180
+    },
+    {
+     "speaker": "narrator",
+     "text": "Which claims? He wrote that the nervous system cannot tell the difference between imagined and real.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6464
+    },
+    {
+     "speaker": "march",
+     "text": "Every time is a big assumption. The body reacts to what it feels. Does that mean it cannot tell? That is a different sentence.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 6369
+    },
+    {
+     "speaker": "narrator",
+     "text": "A sure voice, and then a question he never asked. Mark the hour.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4544
+    },
+    {
+     "speaker": "march",
+     "text": "That is another one for the tally. Mark the hour, narrator, and I count it.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4140
+    },
+    {
+     "speaker": "narrator",
+     "text": "Let me try a title. The Keeper of Quiet Rules. He would look good on a stone.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5611
+    },
+    {
+     "speaker": "march",
+     "text": "No. He is not the keeper of anything. Veto. Keep typing.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 3447
+    },
+    {
+     "speaker": "march",
+     "text": "Noted. I still say the claim about belief is the big one.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3522
+    },
+    {
+     "speaker": "narrator",
+     "text": "Whatever you believe about yourself, you are right.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3115
+    },
+    {
+     "speaker": "march",
+     "text": "That is the assumption I would check on a Monday. The note says if you believe you are eating worms, you gag. Fine. But are you right about yourself? Or only awake?",
+     "emotion": "surprised",
+     "action": "point",
+     "source": 2,
+     "audioMs": 7442
+    },
+    {
+     "speaker": "narrator",
+     "text": "The body follows the belief, that is his claim. True in a gag. What about a bad belief about your own voice?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 7552
+    },
+    {
+     "speaker": "march",
+     "text": "Then the belief is not the truth. It is the story the body is told. A big difference.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 4982
+    },
+    {
+     "speaker": "narrator",
+     "text": "He wrote that the brain learns from repetition. Say a thing enough times and it becomes fact.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 6101
+    },
+    {
+     "speaker": "march",
+     "text": "Repetition is not proof, narrator. It is practice. Practice can be wrong too.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 3,
+     "audioMs": 4686
+    },
+    {
+     "speaker": "narrator",
+     "text": "Think and speak only the grandest narrative for yourself.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 3819
+    },
+    {
+     "speaker": "march",
+     "text": "Only the grandest? What if the grandest story is a lie? Check it before you say it out loud.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 4,
+     "audioMs": 5029
+    },
+    {
+     "speaker": "narrator",
+     "text": "How we see ourselves is the truth as far as we're individually personally concerned. That is the assumption under all of it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 5,
+     "audioMs": 8448
+    },
+    {
+     "speaker": "march",
+     "text": "So here is my dare to you, narrator. Which belief in this note have you never checked? Bring it back to me next scene.",
+     "emotion": "surprised",
+     "action": "point",
+     "source": 5,
+     "audioMs": 5801
+    }
+   ],
+   "part": {
+    "n": 2,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-47",
+   "title": "THE LEMON THE BODY BELIEVES",
+   "startAt": "2026-10-08T10:43:05.644+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-47.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "How Our Brains Interpret Imagined And Real Experiences"
+   ],
+   "angle": "Simplify this concept so a five-year-old could grasp the basic principle. What is the absolute essence?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system reacts simply to what you think or imagine to be true."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Vividly imagining a situation is literally the same as experiencing it, as far as your brain's concerned."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Repeat what you want to believe every day, multiple times a day. And soon, your actions and behaviour will follow."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Whatever you believe about yourself, you are right."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Think and speak only the grandest narrative for yourself."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "March, you asked which belief I never checked. Here is the simplest one. The mind cannot tell a real lemon from a pictured one.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 8597
+    },
+    {
+     "speaker": "march",
+     "text": "Close your eyes. Picture a lemon. Okay, my mouth just did something. That is the whole lesson, honestly.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 5784
+    },
+    {
+     "speaker": "narrator",
+     "text": "The body does not ask if it is real. It reacts to what the mind believes, and that is all.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5909
+    },
+    {
+     "speaker": "march",
+     "text": "So a little kid can do it. Picture the thing well, and the body thinks you did it. Simple.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4811
+    },
+    {
+     "speaker": "narrator",
+     "text": "The brain learns by hearing things again. Say a thing enough, and the brain starts to nod along.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 6251
+    },
+    {
+     "speaker": "march",
+     "text": "Repeat the good thing every day, and the body follows. Boring, but I love boring. Small daily wins.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 4,
+     "audioMs": 5646
+    },
+    {
+     "speaker": "narrator",
+     "text": "Whatever you believe about yourself, you are right. The essence is that line. Nothing fancy.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 5,
+     "audioMs": 5995
+    },
+    {
+     "speaker": "march",
+     "text": "Noted. Mostly noted. Because you can believe a bad thing too, and the body goes along with that. Same rule, either way.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 5,
+     "audioMs": 6284
+    },
+    {
+     "speaker": "narrator",
+     "text": "Think and speak only the grandest story about yourself. That is the whole essence, put in one line.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 6,
+     "audioMs": 6741
+    },
+    {
+     "speaker": "march",
+     "text": "Grand is fine. Daily is better. A little kid would say: say the nice thing, then go do it.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 4,
+     "audioMs": 5034
+    },
+    {
+     "speaker": "narrator",
+     "text": "The note does not dress it up. That is why it sticks. Plain words, true every time.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5931
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, narrator, one last thing. Which belief about yourself will you say out loud tomorrow? Tell me. Then I will tell you if it worked.",
+     "emotion": "surprised",
+     "action": "point",
+     "source": 4,
+     "audioMs": 6634
+    }
+   ],
+   "part": {
+    "n": 3,
+    "of": 5
+   }
+  }
+ ]
+}

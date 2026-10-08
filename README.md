@@ -19,7 +19,7 @@ A channel that talks about one person's notebook: his lessons and ideas, told as
 | Path | What it is |
 |---|---|
 | `index.html`, `player.js`, `timing.js` | The page, served by GitHub Pages from `main` |
-| `day/<date>.json` | One day's chapters as data: segments, lines, start times, sources |
+| `day/<date>/<HH>.json` | One hour's scenes as data (Chiang Mai time): segments, lines, start times, sources |
 | `audio/<date>/` | One MP3 per segment |
 | `station/` | The checker and the voice script the session runs |
 | `forbidden.md` | What may never be said on air |

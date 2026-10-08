@@ -9,10 +9,20 @@
 //
 // Every viewer's browser reads its own clock against the published start
 // times, so two browsers agree on the word without a server. When no segment
-// is live, the day's segments loop in order from the first, anchored to the
-// first segment's start, so the loop position is also a function of the clock.
+// is live, the loaded segments (player.js hands over two hour files as one
+// "day") loop in order from the first, anchored to the first segment's start,
+// so the loop position is also a function of the clock.
 
 export const CHARS_PER_SEC = 16;
+export const HOUR = 3600 * 1000;
+
+// The transcript file for the Chiang Mai hour holding epoch ms: day/<date>/<HH>.json.
+// Asia/Bangkok is a fixed +07:00 (no daylight saving), so the arithmetic is exact,
+// and the hour before 00:xx is the previous day's 23.json.
+export function hourFile(ms) {
+  const k = new Date(ms + 7 * HOUR).toISOString();
+  return `day/${k.slice(0, 10)}/${k.slice(11, 13)}.json`;
+}
 export const DEFAULT_GAPS = { firstLeadMs: 1000, leadMs: 200, holdMs: 600 };
 
 export function speakMs(line) {

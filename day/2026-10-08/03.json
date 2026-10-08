@@ -1,0 +1,807 @@
+{
+ "date": "2026-10-08",
+ "tz": "Asia/Bangkok",
+ "segments": [
+  {
+   "id": "2026-10-08-12",
+   "title": "THE VOICE ARRIVES",
+   "startAt": "2026-10-08T03:00:58.822+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-12.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "voice: setup.sh, voice.py, MP3 playback in the player (untested with Kokoro)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "README: steps 1 to 3 are in (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle step 4: the voice through kokoro-onnx from a GitHub release; the publish step knows the remote (8 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Steps one to three are in. The README says so.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3264
+    },
+    {
+     "speaker": "march",
+     "text": "Three steps in, one to go.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 1749
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the voice: a setup script, a voice script, and MP3 playback in the player.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5291
+    },
+    {
+     "speaker": "march",
+     "text": "A voice! Plain files that play.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1941
+    },
+    {
+     "speaker": "narrator",
+     "text": "The commit admits the voice was untested with Kokoro.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3904
+    },
+    {
+     "speaker": "march",
+     "text": "Honest. Untested is a fair word to put in a commit.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3093
+    },
+    {
+     "speaker": "narrator",
+     "text": "Step four then brought the voice through kokoro-onnx, from a GitHub release.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4821
+    },
+    {
+     "speaker": "march",
+     "text": "A release file for the voice. That is the plan.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2645
+    },
+    {
+     "speaker": "narrator",
+     "text": "The publish step now knows its remote.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2645
+    },
+    {
+     "speaker": "march",
+     "text": "A small line, a real fix. It knows where to send the chapter.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3691
+    },
+    {
+     "speaker": "narrator",
+     "text": "The voice has a name: Kokoro.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2197
+    },
+    {
+     "speaker": "march",
+     "text": "Kokoro. A voice that can say the day out loud.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2645
+    },
+    {
+     "speaker": "narrator",
+     "text": "Stand by, the voice is coming.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2240
+    },
+    {
+     "speaker": "march",
+     "text": "The first real test of that voice is still to come.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2581
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-13",
+   "title": "THE LAST WORD",
+   "startAt": "2026-10-08T03:01:53.529+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-13.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "text": "The build itself took the longest."
+    },
+    {
+     "kind": "day-note",
+     "text": "The real lesson was that shortcuts don't save time—they just move the work around."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "The build took the longest, the day note says.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2923
+    },
+    {
+     "speaker": "march",
+     "text": "The longest part. That is a fact from the day note.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2837
+    },
+    {
+     "speaker": "narrator",
+     "text": "The real lesson, in the words of the day note: shortcuts do not save time.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5056
+    },
+    {
+     "speaker": "march",
+     "text": "They just move the work around. That is where the story stops.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3243
+    },
+    {
+     "speaker": "narrator",
+     "text": "Move the work, and it waits for you.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2304
+    },
+    {
+     "speaker": "march",
+     "text": "Longest build, hardest lesson. A fair trade.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2880
+    },
+    {
+     "speaker": "narrator",
+     "text": "That is the last word of the day record.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2773
+    },
+    {
+     "speaker": "march",
+     "text": "The last word on the page belongs to the lesson.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2645
+    },
+    {
+     "speaker": "narrator",
+     "text": "The record was thin in places. We did not pad it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3541
+    },
+    {
+     "speaker": "march",
+     "text": "No padding. Only what happened.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1941
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-14",
+   "title": "THE NAME AND THE LIVE LOOP",
+   "startAt": "2026-10-08T03:02:32.472+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-14.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "the page carries his name and howisjason.com from day one (his word, 8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "the station runs live: one segment at a time, always ahead of the clock (J's design, 8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle step 6: day-note sources labelled, blips when an MP3 is gone, a 7-day prune of sound in the station sheet (8 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "From day one, the page carries his name. That was his word.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4309
+    },
+    {
+     "speaker": "march",
+     "text": "His name, and his website too. Both on the page from the start.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3775
+    },
+    {
+     "speaker": "narrator",
+     "text": "The station runs live now. One segment at a time, always ahead of the clock.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5483
+    },
+    {
+     "speaker": "march",
+     "text": "One at a time, and that was his design.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2643
+    },
+    {
+     "speaker": "narrator",
+     "text": "Old sound is pruned after seven days.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2944
+    },
+    {
+     "speaker": "march",
+     "text": "The day notes are labelled now. Blips play when a sound file is gone.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4033
+    },
+    {
+     "speaker": "narrator",
+     "text": "So a missing sound file falls back to a blip, and the story keeps going.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4565
+    },
+    {
+     "speaker": "march",
+     "text": "His name on it. His site on it. A fair start.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2960
+    },
+    {
+     "speaker": "narrator",
+     "text": "A live station, a name on the page, and tidy sound files.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4245
+    },
+    {
+     "speaker": "march",
+     "text": "The channel is running now, one chapter at a time.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3152
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-15",
+   "title": "MARCH FINDS HER VOICE",
+   "startAt": "2026-10-08T03:03:19.381+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-15.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "March speaks in her own voice: march_voice.py adopted whole from the shelved body (his ask, 8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "design: three March candidates (pixel, paper, watercolour) with phone screenshots, for J's pick (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "design: a fourth March, cel-shaded from her real references (8 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "March has a voice of her own now. He asked for it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3392
+    },
+    {
+     "speaker": "march",
+     "text": "Taken whole from the shelved body. Not a new one.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3069
+    },
+    {
+     "speaker": "narrator",
+     "text": "Three candidates first. Pixel, paper and watercolour.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4139
+    },
+    {
+     "speaker": "march",
+     "text": "Each came with phone screenshots, for his pick.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2862
+    },
+    {
+     "speaker": "march",
+     "text": "Pixel, paper, watercolour. Three ways to be drawn.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3063
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then a fourth. Cel-shaded, from her real references.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3733
+    },
+    {
+     "speaker": "march",
+     "text": "A fourth! Drawn from my real references.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2838
+    },
+    {
+     "speaker": "narrator",
+     "text": "Her voice came off a shelf. Now it is hers.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3179
+    },
+    {
+     "speaker": "march",
+     "text": "A voice and a look. Both hers.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2416
+    },
+    {
+     "speaker": "narrator",
+     "text": "Three looks, and each one a step closer.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2816
+    },
+    {
+     "speaker": "march",
+     "text": "She speaks in her own voice. That was his ask.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2852
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-16",
+   "title": "OPTIONS THAT LOOK THE SAME",
+   "startAt": "2026-10-08T03:04:03.340+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-16.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "text": "Not every try worked."
+    },
+    {
+     "kind": "day-note",
+     "text": "Three design options came back looking almost the same, because the same instructions were sent to each builder."
+    },
+    {
+     "kind": "day-note",
+     "text": "J's reaction was, \"How am I supposed to pick what design style I like if all three are the same?\""
+    },
+    {
+     "kind": "day-note",
+     "text": "The lesson is now saved as a note, so future sessions read it before they make options to choose from."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Not every try worked. The day note says so plainly.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3648
+    },
+    {
+     "speaker": "march",
+     "text": "Three design options came back almost the same. That was the trouble.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4108
+    },
+    {
+     "speaker": "narrator",
+     "text": "Why? The same instructions went to each builder.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3072
+    },
+    {
+     "speaker": "march",
+     "text": "How am I supposed to pick what design style I like if all three are the same? That was his question.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5754
+    },
+    {
+     "speaker": "narrator",
+     "text": "A fair question. Hard to answer from three copies.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3520
+    },
+    {
+     "speaker": "march",
+     "text": "So the lesson is now a saved note. Future sessions read it first.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 4175
+    },
+    {
+     "speaker": "narrator",
+     "text": "Read it before making options. A small rule, but a sharp one.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 4480
+    },
+    {
+     "speaker": "march",
+     "text": "Not every try worked. Good to say so out loud.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3025
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-17",
+   "title": "THE TOY, PLAYED",
+   "startAt": "2026-10-08T03:04:42.322+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-17.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "text": "J played with the toy and liked it, but could not yet say what felt off."
+    },
+    {
+     "kind": "day-note",
+     "text": "The session ended with a written handoff."
+    },
+    {
+     "kind": "day-note",
+     "text": "A new session will compare the original ideas with what the toy does now and decide what to change."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "He played with the toy. He liked it. He could not yet say what felt off.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4651
+    },
+    {
+     "speaker": "march",
+     "text": "Liked it, and still unsure what is wrong. An honest review.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3541
+    },
+    {
+     "speaker": "narrator",
+     "text": "The session ended with a written handoff, for the next session.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3733
+    },
+    {
+     "speaker": "march",
+     "text": "A new session will compare the original ideas with what the toy does now.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4347
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then it decides what to change. A fine plan for a toy.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4032
+    },
+    {
+     "speaker": "march",
+     "text": "Playing it was the test. He played it, and he liked it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3024
+    },
+    {
+     "speaker": "narrator",
+     "text": "So the story pauses at a toy that works, and has not yet found its feeling.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4907
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-18",
+   "title": "THE TOY IS CHECKED",
+   "startAt": "2026-10-08T03:05:16.957+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-18.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "text": "The build was checked before it was called done."
+    },
+    {
+     "kind": "day-note",
+     "text": "A test browser ran 49 automatic checks, and all of them passed with no errors."
+    },
+    {
+     "kind": "day-note",
+     "text": "A fresh reviewer, who had not built the toy, graded it against the plan and found one real bug: a line could be cut off after the app sat open for a long time."
+    },
+    {
+     "kind": "day-note",
+     "text": "The fix was made, and the reviewer checked it too."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Before it was called done, the build was checked.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2987
+    },
+    {
+     "speaker": "march",
+     "text": "49 automatic checks, run in a test browser. All of them passed.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4407
+    },
+    {
+     "speaker": "narrator",
+     "text": "No errors. Not one.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 1941
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then a fresh reviewer took a look. One who had not built the toy.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4331
+    },
+    {
+     "speaker": "march",
+     "text": "The reviewer found a real bug. A line could be cut off after the app sat open for a long time.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5518
+    },
+    {
+     "speaker": "narrator",
+     "text": "The fix was made. The reviewer checked it too.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3221
+    },
+    {
+     "speaker": "march",
+     "text": "Graded against the plan. That is the right yardstick.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3136
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-19",
+   "title": "THE COST IS CUT",
+   "startAt": "2026-10-08T03:05:48.898+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-19.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "text": "The day also cut a cost."
+    },
+    {
+     "kind": "day-note",
+     "text": "A suggestion feature in the coding tool, which used up usage after every reply, was turned off."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "The day also cut a cost. A plain sentence, and a good one.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4224
+    },
+    {
+     "speaker": "march",
+     "text": "A suggestion feature was turned off. It used up usage after every reply.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4901
+    },
+    {
+     "speaker": "narrator",
+     "text": "Every reply used something up. That feature is off now.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3733
+    },
+    {
+     "speaker": "march",
+     "text": "A cost cut, in the coding tool. Small, but it counts.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3128
+    },
+    {
+     "speaker": "narrator",
+     "text": "One less thing using up usage after every reply.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3648
+    }
+   ]
+  }
+ ]
+}

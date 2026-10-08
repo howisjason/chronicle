@@ -1,7 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import { validate, numbersIn, wornOut } from './validate.mjs';
+import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, rmSync } from 'node:fs';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { validate, numbersIn, wornOut, previousHourPath } from './validate.mjs';
 
 const good = () => JSON.parse(readFileSync(new URL('../day/sample.json', import.meta.url), 'utf8'));
 const line = (d, i) => d.segments[0].lines[i];
@@ -70,4 +74,43 @@ test('a line lifted from the scene before is refused', () => {
   const seg = { id: 's', sources: [{ text: 'Note: nothing here.' }], lines: [{ speaker: 'narrator', text: 'As she said, the sailor is watching the bus go home.' }] };
   assert.match(wornOut(seg, prev)[0], /repeats the scene before/);
   assert.deepEqual(wornOut({ ...seg, lines: [{ speaker: 'narrator', text: 'A different line entirely, about a harbour.' }] }, prev), []);
+});
+
+test('previousHourPath: the hour before, across midnight; other paths have none', () => {
+  assert.equal(previousHourPath('day/2026-10-08/11.json'), 'day/2026-10-08/10.json');
+  assert.equal(previousHourPath('/x/day/2026-10-09/00.json'), '/x/day/2026-10-08/23.json');
+  assert.equal(previousHourPath('day/2026-11-01/00.json'), 'day/2026-10-31/23.json');
+  assert.equal(previousHourPath('inbox/lab-day.json'), null);
+});
+
+test('the first scene of an hour file is checked against the last scene of the hour before', () => {
+  const prev = { id: 'p', lines: [{ speaker: 'march', text: 'The sailor is fine, the sailor is watching the bus go.' }] };
+  const d = good();
+  line(d, 1).text = 'As she said, the sailor is watching the bus go home.';
+  assert.ok(validate(d, prev).some((m) => /repeats the scene before/.test(m)), 'alone in its file: checked against the hour before');
+  assert.deepEqual(validate(d, null), []);
+  // With a scene before it in the same file, that one is the scene before, not `before`.
+  const two = good();
+  two.segments.unshift({ ...JSON.parse(JSON.stringify(good().segments[0])), id: 'a' });
+  two.segments[1].lines[1].text = 'As she said, the sailor is watching the bus go home.';
+  assert.deepEqual(validate(two, prev), validate(two, null));
+  assert.ok(!validate(two, prev).some((m) => /the sailor is watching/.test(m)));
+});
+
+test('the command line finds the scene before in the previous hour file, across midnight', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'chron-'));
+  const prev = good();
+  mkdirSync(join(dir, 'day/2026-10-08'), { recursive: true });
+  mkdirSync(join(dir, 'day/2026-10-09'), { recursive: true });
+  writeFileSync(join(dir, 'day/2026-10-08/23.json'), JSON.stringify(prev));
+  const d = good();
+  d.segments[0].id = 'next';
+  d.segments[0].lines[1].text = prev.segments[0].lines[0].text;
+  const file = join(dir, 'day/2026-10-09/00.json');
+  writeFileSync(file, JSON.stringify(d));
+  const run = spawnSync('node', [fileURLToPath(new URL('./validate.mjs', import.meta.url)), file], { encoding: 'utf8' });
+  assert.equal(run.status, 1);
+  assert.match(run.stderr, /repeats the scene before/);
+  rmSync(join(dir, 'day/2026-10-08/23.json'));
+  assert.equal(spawnSync('node', [fileURLToPath(new URL('./validate.mjs', import.meta.url)), file]).status, 0);
 });

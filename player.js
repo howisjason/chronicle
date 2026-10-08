@@ -4,7 +4,7 @@
 // one tap before it may make a sound, hence the button). When a segment has an
 // MP3 (segment.audio), that plays instead, started at the segment's offset on
 // the clock; the gaps are baked into the file.
-import { locate } from './timing.js';
+import { locate, hourFile, HOUR } from './timing.js';
 import { drawStage } from './people.js';
 import { setupClip } from './clip.js';
 
@@ -17,18 +17,39 @@ const atParam = params.get('at');
 const offsetMs = atParam ? Date.parse(atParam.replace(' ', '+')) - Date.now() : 0;
 const now = () => Date.now() + offsetMs;
 
-// Today's date in Chiang Mai (Asia/Bangkok has no daylight saving: fixed +07:00).
-function bangkokDate(ms) {
-  return new Date(ms + 7 * 3600 * 1000).toISOString().slice(0, 10);
+// The transcripts are one file per hour, day/<date>/<HH>.json in Chiang Mai time
+// (Asia/Bangkok has no daylight saving: fixed +07:00), filed by the hour a scene
+// was WRITTEN. The station writes at most about 25 minutes ahead, so whatever
+// airs now sits in this hour's file or the one before (8 Oct 2026). One file a
+// day re-fetched every minute would have cost each viewer gigabytes a day at 24/7.
+// 'no-cache' asks the server each time but sends the file's ETag, so an unchanged
+// hour comes back as a bodiless 304; a missing hour is a small 404 (404.html).
+async function fetchHour(ms) {
+  const r = await fetch(hourFile(ms), { cache: 'no-cache' });
+  return r.ok ? (await r.json()).segments || [] : null;
 }
+// Two hour files as one day for timing.js: the earlier hour first, so the replay
+// loop runs in airing order.
+const join = (earlier, later) => ({ segments: [...(earlier || []), ...(later || [])] });
+// The minute poll: this hour and the one before. The one before is asked too
+// because a scene written at 10:59 can be committed and served a few minutes
+// after 11:00; once settled it costs one 304 a minute.
+async function loadNow() {
+  const [earlier, later] = await Promise.all([fetchHour(now() - HOUR), fetchHour(now())]);
+  return earlier || later ? join(earlier, later) : null;
+}
+// At load with nothing in the last two hours (the station is off): walk back
+// hour by hour, up to two days, and replay the newest hour that exists with the
+// one before it. Done once, never in the minute poll.
 async function loadDay() {
-  const today = bangkokDate(now());
-  const yesterday = bangkokDate(now() - 86400 * 1000);
-  for (const name of [today, yesterday, 'sample']) {
-    const r = await fetch(`day/${name}.json`, { cache: 'no-store' });
-    if (r.ok) return r.json();
+  const live = await loadNow();
+  if (live) return live;
+  for (let k = 2; k < 48; k++) {
+    const later = await fetchHour(now() - k * HOUR);
+    if (later) return join(await fetchHour(now() - (k + 1) * HOUR), later);
   }
-  return null;
+  const r = await fetch('day/sample.json', { cache: 'no-cache' });
+  return r.ok ? r.json() : null;
 }
 
 // --- March and the narrator, pixel people (people.js draws them) ---
@@ -144,13 +165,14 @@ setupClip({
 
 function escapeHtml(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]); }
 
-// The station appends segments through the day, so the page asks again every
-// minute and swaps in the new day quietly; a segment already playing keeps
-// playing because the clock, not the file, decides what is on.
+// The station appends scenes through the hour, so the page asks again every
+// minute and swaps in the new pair quietly; a segment already playing keeps
+// playing because the clock, not the file, decides what is on. When both hours
+// are missing (the station is off) the replay already loaded stays.
 loadDay().then((d) => {
   day = d;
   if (d && d.sample) $('note').textContent = 'Sample chapter, hand-written, to prove the player. Stand-in voice.';
   setInterval(tick, 50);
   tick();
-  setInterval(() => loadDay().then((nd) => { if (nd && JSON.stringify(nd) !== JSON.stringify(day)) day = nd; }).catch(() => {}), 60 * 1000);
+  setInterval(() => loadNow().then((nd) => { if (nd && JSON.stringify(nd) !== JSON.stringify(day)) day = nd; }).catch(() => {}), 60 * 1000);
 });

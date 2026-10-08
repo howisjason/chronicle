@@ -1,0 +1,1683 @@
+{
+ "date": "2026-10-08",
+ "tz": "Asia/Bangkok",
+ "segments": [
+  {
+   "id": "2026-10-08-01",
+   "title": "THE PAGE LOSES A CARD",
+   "startAt": "2026-10-08T02:49:36.848+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-01.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "howisjason.com",
+     "text": "Remove the notes-to-videos card: it matched none of the four problems the page fixes, and a cold reader could not see its value (J's call, 7 Oct 2026, after a blind second opinion agreed)"
+    },
+    {
+     "kind": "commit",
+     "repo": "howisjason.com",
+     "text": "Lighter page: icon badges on the headings, one intro sentence cut, How I work cut to four, a play-button cover on the video, his face at the closing ask, the assistant card centred beside the phone (J's review, 7 Oct 2026)"
+    },
+    {
+     "kind": "day-note",
+     "text": "Also refined my portfolio page today and worked through how to talk about my work on social media."
+    },
+    {
+     "kind": "day-note",
+     "text": "Spent time on the wording and strategy so it sounds confident instead of desperate."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Our story opens with a portfolio page. It was built to fix four problems.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5312
+    },
+    {
+     "speaker": "march",
+     "text": "Plain facts first. He refined the page, and he worked out how to talk about his work on social media.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5995
+    },
+    {
+     "speaker": "narrator",
+     "text": "One card on the page was about notes turning into videos.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4032
+    },
+    {
+     "speaker": "march",
+     "text": "It matched none of the four problems. A cold reader could not see its value.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4245
+    },
+    {
+     "speaker": "narrator",
+     "text": "So the card was cut. It was his call.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2624
+    },
+    {
+     "speaker": "march",
+     "text": "A blind second opinion agreed with him. I like a check like that.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3733
+    },
+    {
+     "speaker": "narrator",
+     "text": "The rest of the page got lighter too.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2560
+    },
+    {
+     "speaker": "march",
+     "text": "Icon badges went on the headings. One intro sentence was cut.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3904
+    },
+    {
+     "speaker": "narrator",
+     "text": "How I work was cut to four.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2048
+    },
+    {
+     "speaker": "march",
+     "text": "A play-button cover went on the video. The assistant card sat centred beside the phone.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5099
+    },
+    {
+     "speaker": "narrator",
+     "text": "His own review drove the cuts. The commit says so in plain words.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4565
+    },
+    {
+     "speaker": "march",
+     "text": "He also spent time on the wording and the strategy.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 2709
+    },
+    {
+     "speaker": "narrator",
+     "text": "The aim was to sound confident, not desperate.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3264
+    },
+    {
+     "speaker": "march",
+     "text": "Confident instead of desperate. That was the target for the words.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3584
+    },
+    {
+     "speaker": "narrator",
+     "text": "A portfolio is a page that shows what a person has made.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4075
+    },
+    {
+     "speaker": "march",
+     "text": "Plain, true, and short. That is a good way to show work.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3200
+    },
+    {
+     "speaker": "narrator",
+     "text": "Four problems, one card cut, one page lighter.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3584
+    },
+    {
+     "speaker": "march",
+     "text": "A clear page at the end of the day. Good work.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2560
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-02",
+   "title": "THE FACE AT THE ASK",
+   "startAt": "2026-10-08T02:50:59.141+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-02.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "howisjason.com",
+     "text": "Closing photo: J's own smiling photo replaces the video frame (his pick, 7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "howisjason.com",
+     "text": "Closing photo's description no longer says it comes from the video"
+    },
+    {
+     "kind": "commit",
+     "repo": "howisjason.com",
+     "text": "Closing photo: J's whole photo inside the circle, not a tight crop (his catch, 7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "howisjason.com",
+     "text": "Lighter page: icon badges on the headings, one intro sentence cut, How I work cut to four, a play-button cover on the video, his face at the closing ask, the assistant card centred beside the phone (J's review, 7 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Now the closing ask needed a face.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 2581
+    },
+    {
+     "speaker": "march",
+     "text": "His own smiling photo replaced the video frame. His pick.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3648
+    },
+    {
+     "speaker": "narrator",
+     "text": "The words under the picture changed too. They no longer said the photo came from the video.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5696
+    },
+    {
+     "speaker": "march",
+     "text": "Small words, a small fix. But they had to be true.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3008
+    },
+    {
+     "speaker": "narrator",
+     "text": "The first crop was too tight. J caught it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3008
+    },
+    {
+     "speaker": "march",
+     "text": "Too tight! Then the whole photo went inside the circle.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2987
+    },
+    {
+     "speaker": "narrator",
+     "text": "So the whole photo went in. Nothing was trimmed tight at the edges.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4160
+    },
+    {
+     "speaker": "march",
+     "text": "His smile, the whole frame, and the ask.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2155
+    },
+    {
+     "speaker": "narrator",
+     "text": "The page now shows his face at the closing ask.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3456
+    },
+    {
+     "speaker": "march",
+     "text": "That is the line that matters. A real person, at the moment of asking.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 4075
+    },
+    {
+     "speaker": "narrator",
+     "text": "The description got its own fix, in its own commit.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3371
+    },
+    {
+     "speaker": "march",
+     "text": "Catching a crop is a small job. He did it anyway.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2923
+    },
+    {
+     "speaker": "narrator",
+     "text": "One photo swap, one caught crop, one fixed description.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4053
+    },
+    {
+     "speaker": "march",
+     "text": "Whole photo, inside the circle. Good.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2432
+    },
+    {
+     "speaker": "narrator",
+     "text": "That is how the closing ask ends on this page.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3093
+    },
+    {
+     "speaker": "march",
+     "text": "Glad it is his face. Glad it is his photo.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2560
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-03",
+   "title": "THE TOY THAT FELT THIN",
+   "startAt": "2026-10-08T02:52:05.947+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-03.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "text": "Built an interactive toy today and tested it pretty thoroughly."
+    },
+    {
+     "kind": "day-note",
+     "text": "Found it works smoothly—all the animations and interactions do what they're supposed to do—but when I played with it, something felt off."
+    },
+    {
+     "kind": "day-note",
+     "text": "The dialogue feels repetitive and thin."
+    },
+    {
+     "kind": "day-note",
+     "text": "It's built right, but it doesn't feel quite how I had in mind."
+    },
+    {
+     "kind": "day-note",
+     "text": "Decided to gather all the design ideas from the past few sessions, line them up side by side with what got built, and go through them together so I can actually say what feels wrong."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "A toy was built, and tested hard. The day note says so.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3883
+    },
+    {
+     "speaker": "march",
+     "text": "Pretty thoroughly, he says. He tested it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2219
+    },
+    {
+     "speaker": "narrator",
+     "text": "It worked. The animations did what they were meant to do.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3691
+    },
+    {
+     "speaker": "march",
+     "text": "Smooth, all of it. And still, something felt off.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2752
+    },
+    {
+     "speaker": "narrator",
+     "text": "That is the hard part of building. A thing can work and still feel wrong.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4779
+    },
+    {
+     "speaker": "march",
+     "text": "The dialogue was the trouble. It felt repetitive and thin.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3221
+    },
+    {
+     "speaker": "narrator",
+     "text": "Repetitive is a hard word to hear about your own work.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3755
+    },
+    {
+     "speaker": "march",
+     "text": "Built right, yet not how he had in mind. That is an honest sentence.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3776
+    },
+    {
+     "speaker": "narrator",
+     "text": "So he chose a method. He would gather every design idea from the past sessions.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 5077
+    },
+    {
+     "speaker": "march",
+     "text": "Then line them up side by side with what got built.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 2709
+    },
+    {
+     "speaker": "narrator",
+     "text": "Go through them together, so he can say what feels wrong.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 3477
+    },
+    {
+     "speaker": "march",
+     "text": "Say the wrong thing out loud. That is the first step toward fixing it.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 4,
+     "audioMs": 3861
+    },
+    {
+     "speaker": "narrator",
+     "text": "A quiet turn in the story, and a good one.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2880
+    },
+    {
+     "speaker": "march",
+     "text": "Not a crash. Not a bug. A feeling, which is harder to fix.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3605
+    },
+    {
+     "speaker": "narrator",
+     "text": "The story turns on one word: thin.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2773
+    },
+    {
+     "speaker": "march",
+     "text": "Thin. Okay. We can work with thin.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 4,
+     "audioMs": 2155
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-04",
+   "title": "THE SAME THING THREE TIMES",
+   "startAt": "2026-10-08T02:53:14.160+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-04.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "text": "Learned something hard about delegating: when you give three people the same instructions but tell them to make different things, they'll just make the same thing three times."
+    },
+    {
+     "kind": "day-note",
+     "text": "I took a shortcut on the briefs because it was faster to copy-paste one description instead of writing three completely different ones."
+    },
+    {
+     "kind": "day-note",
+     "text": "Cost me a lot of wasted work."
+    },
+    {
+     "kind": "day-note",
+     "text": "The real lesson was that shortcuts don't save time—they just move the work around."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Here is a hard lesson about handing work to others.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3435
+    },
+    {
+     "speaker": "march",
+     "text": "Three people, the same instructions. Three different goals on paper.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3861
+    },
+    {
+     "speaker": "narrator",
+     "text": "The result: the same thing, made three times.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3093
+    },
+    {
+     "speaker": "march",
+     "text": "The same thing three times. Look here, that is the point.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3157
+    },
+    {
+     "speaker": "narrator",
+     "text": "The shortcut was a copy-paste. One description, used for everything.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4651
+    },
+    {
+     "speaker": "march",
+     "text": "It was quicker to copy one description than to write three different ones.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3797
+    },
+    {
+     "speaker": "narrator",
+     "text": "The shortcut did not save time. It cost a lot of wasted work.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4608
+    },
+    {
+     "speaker": "march",
+     "text": "Shortcuts do not save time. They move the work around.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3093
+    },
+    {
+     "speaker": "narrator",
+     "text": "That is the lesson he wrote for himself. A plain, hard truth.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 4267
+    },
+    {
+     "speaker": "march",
+     "text": "A good one to keep. He wrote it down.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 3,
+     "audioMs": 2027
+    },
+    {
+     "speaker": "narrator",
+     "text": "Briefs, shortcuts, and a lot of wasted work.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3136
+    },
+    {
+     "speaker": "march",
+     "text": "A lot of wasted work. That is a cost, and he paid it.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3051
+    },
+    {
+     "speaker": "narrator",
+     "text": "The lesson stands on its own. No need to dress it up.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3456
+    },
+    {
+     "speaker": "march",
+     "text": "Three people, one copy-paste.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1771
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-05",
+   "title": "THREE, THEN SIX, THEN NINE",
+   "startAt": "2026-10-08T02:54:13.563+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-05.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell: three candidate brain cell designs (pocket console, glowing neuron, empty head) and a menu page"
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell: six truly different designs (crank, clay, printed plate, ink-wash, relic, silk); menu lists all nine"
+    },
+    {
+     "kind": "day-note",
+     "text": "Learned something hard about delegating: when you give three people the same instructions but tell them to make different things, they'll just make the same thing three times."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Now the brain cell, from the commits.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2389
+    },
+    {
+     "speaker": "march",
+     "text": "Three candidate designs came first. A pocket console, a glowing neuron, and an empty head.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5717
+    },
+    {
+     "speaker": "narrator",
+     "text": "Plus a menu page to choose between them.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2987
+    },
+    {
+     "speaker": "march",
+     "text": "Then six. And these six were meant to be truly different.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3200
+    },
+    {
+     "speaker": "narrator",
+     "text": "A crank. A clay piece. A printed plate, an ink-wash, a relic, and silk.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4800
+    },
+    {
+     "speaker": "march",
+     "text": "Six different pictures of one toy. The menu lists all nine.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3584
+    },
+    {
+     "speaker": "narrator",
+     "text": "Nine designs, all on one menu.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2517
+    },
+    {
+     "speaker": "march",
+     "text": "Six truly different designs, the record says. That is the word that matters.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4288
+    },
+    {
+     "speaker": "narrator",
+     "text": "The day note warned about making the same thing three times.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4011
+    },
+    {
+     "speaker": "march",
+     "text": "Six different things, not copies. That is the point of the exercise.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3968
+    },
+    {
+     "speaker": "narrator",
+     "text": "Six real ones, then a menu of nine.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2944
+    },
+    {
+     "speaker": "march",
+     "text": "Six and nine, on one page. A tidy count.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2837
+    },
+    {
+     "speaker": "narrator",
+     "text": "A pocket console and a silk one. Quite a range.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3520
+    },
+    {
+     "speaker": "march",
+     "text": "The menu lists the whole range.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 1643
+    },
+    {
+     "speaker": "narrator",
+     "text": "The record shows nine on the menu, and no more.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3072
+    },
+    {
+     "speaker": "march",
+     "text": "Nine on the menu. That is a lot of brain.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2560
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-06",
+   "title": "THE ROOM IS CHOSEN",
+   "startAt": "2026-10-08T02:55:21.200+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-06.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell: the three room mockups (sketchbook, paper cut-out, cosy pixel); J picked paper cut-out (7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell v2: the paper diorama toy, built from the v2 plan (7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell v2: the grader's findings fixed (7 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Next came three room mockups. A sketchbook. A paper cut-out. A cosy pixel room.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5845
+    },
+    {
+     "speaker": "march",
+     "text": "Three rooms, and one of them won.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1813
+    },
+    {
+     "speaker": "narrator",
+     "text": "J picked the paper cut-out.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1963
+    },
+    {
+     "speaker": "march",
+     "text": "A paper room. He picked it.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1792
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then version two was built. It was a paper diorama toy, made from the v2 plan.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5824
+    },
+    {
+     "speaker": "march",
+     "text": "Paper diorama. The v2 plan became a toy.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2923
+    },
+    {
+     "speaker": "narrator",
+     "text": "A grader read the version two build. Its findings were fixed.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4053
+    },
+    {
+     "speaker": "march",
+     "text": "A grader found things, and they were fixed. That is how the work went.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3627
+    },
+    {
+     "speaker": "narrator",
+     "text": "Fixed findings, one by one.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2325
+    },
+    {
+     "speaker": "march",
+     "text": "A paper diorama toy. That is a real build.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2752
+    },
+    {
+     "speaker": "narrator",
+     "text": "The pick came before the build.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2112
+    },
+    {
+     "speaker": "march",
+     "text": "A cosy pixel room lost. A paper room won. Good for the paper.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3947
+    },
+    {
+     "speaker": "narrator",
+     "text": "A diorama, made of paper.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2048
+    },
+    {
+     "speaker": "march",
+     "text": "Findings fixed. The toy got better, one fix at a time.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3456
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-07",
+   "title": "THE SPEC IN THE SMALL HOURS",
+   "startAt": "2026-10-08T02:56:17.680+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-07.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell: the v3 spec as decided with J (7 Oct 2026, 4:30 to 5:15am)"
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell v3a: one voice, taps that build up, carry it around, her window, news, visible rares, two real moods (7 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "The next spec was decided with J, in the small hours of the morning.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4672
+    },
+    {
+     "speaker": "march",
+     "text": "Small hours! That is early for a spec.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2283
+    },
+    {
+     "speaker": "narrator",
+     "text": "A set window, and a spec came out of it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2709
+    },
+    {
+     "speaker": "march",
+     "text": "The spec was decided with J. Then the build followed.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3072
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then v3a. One voice, not a chorus.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3371
+    },
+    {
+     "speaker": "march",
+     "text": "Taps that build up. Things that can be carried around.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2859
+    },
+    {
+     "speaker": "narrator",
+     "text": "Her window. News. Visible rares. Two real moods.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3733
+    },
+    {
+     "speaker": "march",
+     "text": "Two real moods. A short list, and real.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2432
+    },
+    {
+     "speaker": "narrator",
+     "text": "Carry it around. A toy that goes with you.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2923
+    },
+    {
+     "speaker": "march",
+     "text": "A window for her. Simple to say.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2027
+    },
+    {
+     "speaker": "narrator",
+     "text": "The spec was the plan. The build came after it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3136
+    },
+    {
+     "speaker": "march",
+     "text": "A spec made in the small hours, then built.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2432
+    },
+    {
+     "speaker": "narrator",
+     "text": "Visible rares. Things a player can see.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2709
+    },
+    {
+     "speaker": "march",
+     "text": "Decided with J, then built. The record shows that order.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3435
+    },
+    {
+     "speaker": "narrator",
+     "text": "The record is thin on the details. We will not invent them.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3968
+    },
+    {
+     "speaker": "march",
+     "text": "Right. We do not make things up here.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1899
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-08",
+   "title": "THE LAST ROUNDS",
+   "startAt": "2026-10-08T02:57:18.940+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-08.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell v4a: the last round from the v4 plan (7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell v4b: the grader's findings fixed (7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell v4c: the re-grade's finding fixed (7 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Version four. The last round, from the v4 plan.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3691
+    },
+    {
+     "speaker": "march",
+     "text": "The commit names it the last round, from the v4 plan.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3136
+    },
+    {
+     "speaker": "narrator",
+     "text": "A grader found things, and they were fixed.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2752
+    },
+    {
+     "speaker": "march",
+     "text": "Findings fixed. The same good habit, again.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2688
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the grader read it once more. The re-grade found one thing.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4032
+    },
+    {
+     "speaker": "march",
+     "text": "One thing. Fixed.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 1280
+    },
+    {
+     "speaker": "narrator",
+     "text": "The re-grade finding was fixed in its own commit.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3477
+    },
+    {
+     "speaker": "march",
+     "text": "Last round, the record says. Last round of the version.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2944
+    },
+    {
+     "speaker": "narrator",
+     "text": "Versions a, b and c. Each one a step.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3221
+    },
+    {
+     "speaker": "march",
+     "text": "Each step a little closer to done.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 1685
+    },
+    {
+     "speaker": "narrator",
+     "text": "Here, the grader read the work and a fix followed.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3371
+    },
+    {
+     "speaker": "march",
+     "text": "A grade, then a fix. That is how the toy got finished.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3072
+    },
+    {
+     "speaker": "narrator",
+     "text": "Last round, and then the web.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2133
+    },
+    {
+     "speaker": "march",
+     "text": "A grader and a fix, one more time.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2048
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-09",
+   "title": "ON THE AIR",
+   "startAt": "2026-10-08T02:58:10.470+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-09.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell: deploy to Netlify, our-one-brain-cell.netlify.app (7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell: finished; the design mockups go, the tests stand without the gift notes (7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell: the review writer says its source note is gone (7 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Then the toy went onto the web. It was deployed to Netlify.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4117
+    },
+    {
+     "speaker": "march",
+     "text": "On the air, so to speak. The brain cell is live.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2859
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the word finished.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 1685
+    },
+    {
+     "speaker": "march",
+     "text": "Finished. The design mockups go, and the tests stand.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3115
+    },
+    {
+     "speaker": "narrator",
+     "text": "The tests stand without the gift notes.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2539
+    },
+    {
+     "speaker": "march",
+     "text": "The tests still pass without the gift notes. Good.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2709
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then a note from the review writer. Its source note is gone.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3840
+    },
+    {
+     "speaker": "march",
+     "text": "Gone? That is a surprise after everything else.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2539
+    },
+    {
+     "speaker": "narrator",
+     "text": "A small note, a big question.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2197
+    },
+    {
+     "speaker": "march",
+     "text": "The record says it is gone. It does not say why. We will not guess.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3691
+    },
+    {
+     "speaker": "narrator",
+     "text": "Live on the web, finished, and one loose note.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3072
+    },
+    {
+     "speaker": "march",
+     "text": "A toy on the web. That is a real step for the brain cell.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3392
+    },
+    {
+     "speaker": "narrator",
+     "text": "Some things go and some things stay. The tests stay.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3520
+    },
+    {
+     "speaker": "march",
+     "text": "Deployed, finished, tested. Good work.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2389
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-10",
+   "title": "THE ARCHIVE OF CREATURES",
+   "startAt": "2026-10-08T02:59:04.134+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-10.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "creature-lab",
+     "text": "creature-lab: one archive page for all 14 code-drawn creatures (J's ask, 7 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "A different workshop, a different set of toys: the creature lab.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4053
+    },
+    {
+     "speaker": "march",
+     "text": "One archive page for all of them.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1877
+    },
+    {
+     "speaker": "narrator",
+     "text": "Fourteen creatures, all drawn in code.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2816
+    },
+    {
+     "speaker": "march",
+     "text": "Fourteen creatures, one page. J asked for it.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3136
+    },
+    {
+     "speaker": "narrator",
+     "text": "The page is the archive. Everything in one place.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3584
+    },
+    {
+     "speaker": "march",
+     "text": "An archive is a shelf that never gets dusty.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2667
+    },
+    {
+     "speaker": "narrator",
+     "text": "Code drew each one of them.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1941
+    },
+    {
+     "speaker": "march",
+     "text": "Code-drawn means the lines come from the program.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2837
+    },
+    {
+     "speaker": "narrator",
+     "text": "J asked for it, and the lab built it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2667
+    },
+    {
+     "speaker": "march",
+     "text": "One ask, one page. Simple.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2027
+    },
+    {
+     "speaker": "narrator",
+     "text": "Fourteen is a good number for a shelf of creatures.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3520
+    },
+    {
+     "speaker": "march",
+     "text": "Fourteen little lives on one shelf.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2048
+    },
+    {
+     "speaker": "narrator",
+     "text": "That is the lab for this day.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1984
+    },
+    {
+     "speaker": "march",
+     "text": "The record for the lab is one commit.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2027
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-11",
+   "title": "THE CHANNEL GETS ITS BONES",
+   "startAt": "2026-10-08T02:59:53.318+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-11.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle step 1: the repo seeded, with a stand-by page (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle step 2: the player, timing.js with tests, a sample chapter (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle: three sample lines pulled back to what their sources say (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle step 3: the station sheet whole, the checker with tests, the truth check, the two character sheets (8 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Now the channel itself. Step one was the repo, with a stand-by page.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5035
+    },
+    {
+     "speaker": "march",
+     "text": "A stand-by page, waiting for its first chapter.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2752
+    },
+    {
+     "speaker": "narrator",
+     "text": "Step two gave it a player, a timing file with tests, and a sample chapter.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5035
+    },
+    {
+     "speaker": "march",
+     "text": "The player plays the chapter. The tests check the timing.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3051
+    },
+    {
+     "speaker": "narrator",
+     "text": "Three sample lines were pulled back. They now say only what their sources say.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4949
+    },
+    {
+     "speaker": "march",
+     "text": "A fair rule. Lines must match the record.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2581
+    },
+    {
+     "speaker": "narrator",
+     "text": "Step three gave the channel its sheets: the station sheet, a checker, and a truth check.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 5504
+    },
+    {
+     "speaker": "march",
+     "text": "Two character sheets, too.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 1493
+    },
+    {
+     "speaker": "narrator",
+     "text": "The checker came with tests of its own.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 2624
+    },
+    {
+     "speaker": "march",
+     "text": "Good. A checker that is tested is a checker to trust.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3008
+    },
+    {
+     "speaker": "narrator",
+     "text": "The checker and the truth check are part of the station.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3264
+    },
+    {
+     "speaker": "march",
+     "text": "That is a lot of rules for a channel. Good rules, though.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3051
+    },
+    {
+     "speaker": "narrator",
+     "text": "A sample chapter is a practice run.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2731
+    },
+    {
+     "speaker": "march",
+     "text": "It taught the player its job.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 1557
+    },
+    {
+     "speaker": "narrator",
+     "text": "A stand-by page is what you show before the show starts.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3925
+    },
+    {
+     "speaker": "march",
+     "text": "And then the show begins.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1344
+    }
+   ]
+  }
+ ]
+}

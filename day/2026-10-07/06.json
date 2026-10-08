@@ -1,0 +1,202 @@
+{
+ "date": "2026-10-07",
+ "tz": "Asia/Bangkok",
+ "segments": [
+  {
+   "id": "2026-10-07-01",
+   "title": "THE DAY THE BRAIN CELL WENT LIVE",
+   "startAt": "2026-10-07T06:00:00+07:00",
+   "audio": "audio/2026-10-07/2026-10-07-01.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "text": "He worked from before dawn. The one-page portfolio site got lighter through the early morning: a card nobody could see the value of was cut, the headings got icons, and his own smiling photo went in at the closing ask, after he caught that the first crop was too tight."
+    },
+    {
+     "kind": "commit",
+     "repo": "howisjason.com",
+     "text": "Closing photo: J's whole photo inside the circle, not a tight crop (his catch, 7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "howisjason.com",
+     "text": "Remove the notes-to-videos card: it matched none of the four problems the page fixes, and a cold reader could not see its value (J's call, 7 Oct 2026, after a blind second opinion agreed)"
+    },
+    {
+     "kind": "day-note",
+     "text": "Most of the day went to the brain cell, a small code-drawn toy he has been building in public. The night before, nine designs were drawn; he picked the paper cut-out room. Through the day it went from a second version to a fourth, each version read by a grader whose findings he fixed before moving on. In the evening it went live on the web, and the last commit of the night said finished."
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell v4c: the re-grade's finding fixed (7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell: deploy to Netlify, our-one-brain-cell.netlify.app (7 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "braincell",
+     "text": "braincell: finished; the design mockups go, the tests stand without the gift notes (7 Oct 2026)"
+    },
+    {
+     "kind": "day-note",
+     "text": "Late at night he brought a new idea: a channel of his own, in the style of an AI-run news station that never goes off the air, but telling his own days as chapters of an epic. He had the station taken apart to see how it works, tested that a session in the cloud could be started from one line on his computer and push its work to a public repo, and wrote the plan for the build to start the next morning. The build began just after midnight."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "A new day begins. He is already at work, and the sun is not up.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4437
+    },
+    {
+     "speaker": "march",
+     "text": "Before dawn, and already building. I love a quiet start.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3349
+    },
+    {
+     "speaker": "narrator",
+     "text": "First, his page. It had a card that nobody could see the value of.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4480
+    },
+    {
+     "speaker": "march",
+     "text": "So he cut it. A fresh reader agreed with him.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2560
+    },
+    {
+     "speaker": "narrator",
+     "text": "The headings got small icons. The page grew lighter.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3627
+    },
+    {
+     "speaker": "march",
+     "text": "And then his own smiling photo, at the closing ask. I like that one.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4139
+    },
+    {
+     "speaker": "narrator",
+     "text": "The first crop was too tight. He saw it and said so.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3477
+    },
+    {
+     "speaker": "march",
+     "text": "His catch. The whole photo sits inside the circle now.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3157
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then came the brain cell. A small toy, drawn in code, built in public.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 4971
+    },
+    {
+     "speaker": "march",
+     "text": "He picked the paper cut-out room. Good choice.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 3,
+     "audioMs": 2688
+    },
+    {
+     "speaker": "narrator",
+     "text": "A grader read each version. He fixed what it found, and then moved on.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 4821
+    },
+    {
+     "speaker": "march",
+     "text": "Even the re-grade found one more thing. He fixed that too.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 4,
+     "audioMs": 3051
+    },
+    {
+     "speaker": "narrator",
+     "text": "In the evening, it went live on the web.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 5,
+     "audioMs": 2645
+    },
+    {
+     "speaker": "march",
+     "text": "Live! A real address and everything.",
+     "emotion": "surprised",
+     "action": "point",
+     "source": 5,
+     "audioMs": 2197
+    },
+    {
+     "speaker": "narrator",
+     "text": "The last commit of the night said finished.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 6,
+     "audioMs": 2645
+    },
+    {
+     "speaker": "march",
+     "text": "I would have added a trumpet. He did not ask me.",
+     "emotion": "dry",
+     "action": "facepalm",
+     "source": 6,
+     "audioMs": 2624
+    },
+    {
+     "speaker": "narrator",
+     "text": "Late that night, he brought a new idea: a channel of his own, telling his days as chapters of an epic.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 7,
+     "audioMs": 6720
+    },
+    {
+     "speaker": "march",
+     "text": "And the build began just after midnight. That is where we are now.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 7,
+     "audioMs": 3499
+    }
+   ]
+  }
+ ]
+}

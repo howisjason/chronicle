@@ -23,9 +23,9 @@ honest labels; `forbidden.md` is the fixed list of what may never be said.
 | The station: picks notes + an angle, writes one scene per plain headless `claude -p` call (Haiku 5.5, no tools, our own sheets), checks it, truth-checks it, repairs once, voices it, publishes | `mac/station.py` |
 | The writing | `station/writer.md`, `station/march.md`, `station/narrator.md`, `station/kinds.md`, `station/truth-check.md`, `station/note-gate.md`. Lean on purpose (8 Oct 2026 lab): a quarter of the old words wrote as well on Haiku. March is the host who knows J; the narrator is built as her opposite (J's call: friction and chemistry). Voices are DESCRIBED, never given as sample lines, because the writer copies them (PNN's own finding). Each scene gets one segment kind from `kinds.md` (open, verdict, and a middle drawn from the rest) and two random details per character |
 | The show's memory | `inbox/memory.json`: at most ten lines about the show itself (the score between March and the narrator, feuds, the image planted in a run, jokes and when last used), rewritten whole by the writer after each scene and handed to the next with the whole previous scene |
-| The checker | `station/validate.mjs`: shape, sources, numbers, forbidden words, and for the newest scene only, worn-out words (one speaker using a word in more than four lines) and lines lifted from the scene before |
+| The checker | `station/validate.mjs`: shape, sources, numbers, forbidden words, and for the newest scene only, worn-out words (one speaker using a word in more than four lines) and lines lifted from the scene before (read from the previous hour's file when the newest scene opens its file) |
 | The voices | `station/voice.py`, Kokoro from `station/.venv` (made by `python3 -m venv station/.venv` + `station/setup.sh`) |
-| The words, forever | `day/<date>.json` on `main`: every scene's lines, notes, angle and sources |
+| The words, forever | `day/<date>/<HH>.json` on `main`, one file per Chiang Mai hour, a scene filed by the hour it is WRITTEN (ids `<date>-<HH>-<NN>`): every scene's lines, notes, angle and sources. One file a day would have grown to megabytes at 24/7 with every viewer re-fetching it each minute; an hour file stays about 35 scenes. The 7 and 8 Oct scenes were moved in by their start hour, unchanged, old ids kept. `day/sample.json` is the tests' fixture and the page's last resort |
 | The sound, never kept | the `audio` branch, rebuilt from nothing at each scene with only the last hour; the page reads it from raw.githubusercontent.com. Older scenes replay as blips |
 | The clock | `mac/tick.sh` every 15 minutes, LaunchAgent `com.howisjason.chronicle` (plist in `mac/`), log `~/Library/Logs/chronicle.log`. A failed run sends J a Telegram message through the personal worker's alert door, at most once every three hours (the door's address is in `~/.claude/alert-url` and its key in `~/.claude/speak-key`, both outside this public repo) |
 | The clip button | `clip.js` on the page: a viewer presses Clip and gets the next 30 seconds as a video (MP4 or WebM) with captions, the title and "Watch live: howisjason.github.io/chronicle" burned in, made entirely in their browser; voice and blips reach it through one WebAudio mix in `player.js`. Untested on iPhone Safari; the button hides itself where the browser cannot record |
@@ -35,7 +35,7 @@ All calls bill his Claude plan. Measured 8 Oct 2026: about half to two thirds of
 cent of API-equivalent usage per scene. The writer is Haiku on low effort, J's
 call (8 Oct 2026): Opus wrote better but cost about ten cents a scene, and only
 Haiku makes 24/7 possible. The truth check is always Haiku. `--lab` writes text
-only into `inbox/lab<LAB_TAG>-day.json`; `CHRONICLE_MODEL` and `CHRONICLE_SHEETS`
+only into `inbox/lab<LAB_TAG>-day.json` (one file, not hour files); `CHRONICLE_MODEL` and `CHRONICLE_SHEETS`
 let a lab round try another writer or another folder of sheets. Lab calls count
 against the daily cap too. Each call's cost goes to `inbox/costs.tsv`. The Mac must be
 awake for new scenes; the page replays otherwise. The cloud way (a cloud session on
@@ -50,24 +50,35 @@ the ignored `station/models/`, because the cloud blocks huggingface.co.
 **Timing.** A line is lead + speaking + hold; speaking is the real `audioMs`.
 `voice.py` bakes the gaps into each segment's MP3, writes `audioMs` back, and
 sets a newly voiced segment's `startAt` to the previous end or thirty seconds
-from now if that is past. Every viewer's browser reads its own clock against
-the published starts; the page refetches the day every minute and loops the day
-as replays when nothing is live.
+from now if that is past; for an hour file's first scene the previous end comes
+from the hour before's file, across midnight too. Every viewer's browser reads
+its own clock against the published starts. The station never writes more than
+about 25 minutes ahead, so whatever airs now sits in this hour's file or the one
+before: the page loads those two and re-asks for both every minute with
+`cache: 'no-cache'`, so an unchanged file is a bodiless 304 (the hour before is
+asked too because a scene written at :59 can land a few minutes after the hour
+turns). When nothing is live it loops those two hours; when neither exists (the
+station off), it walks back hour by hour, once at load, up to two days, and loops
+the newest hour found with the one before it. `404.html` is tiny because the
+off-air poll asks for missing hours every minute. Measured on a synthetic 24/7 day
+(848 scenes): about 0.7 MB an hour per viewer as served (gzip), 17 MB a day, against
+about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 
 ## Landmines
 
 - A `+` in a `?at=` URL arrives as a space; `player.js` restores it.
 - Two watchers pulling the same clone at once leave it dirty; `git checkout --
-  day/<date>.json` then pull.
+  day/` then pull.
 - Playwright's `npx -y playwright screenshot` can demand a newer browser; the
   headless shell at `~/Library/Caches/ms-playwright/chromium_headless_shell-1243`
   with `playwright-core` works from a scratch folder.
 
 ## Tests
 
-`node --test timing.test.mjs station/validate.test.mjs` (14 tests; the checker's
+`node --test timing.test.mjs station/validate.test.mjs` (19 tests; the checker's
 plant a wrong number, a missing source and forbidden words and watch each
-refused). The truth check is exercised by handing a fresh Haiku a planted
+refused; the hour-file ones check an hour turn and midnight, and that the first
+scene of an hour file is checked against the last scene of the hour before). The truth check is exercised by handing a fresh Haiku a planted
 invented line with the real inbox; it flagged exactly that line on 8 Oct 2026.
 
 ## The look (step 8): pixel people, like PNN (J's call, 8 Oct 2026, 5:05am)

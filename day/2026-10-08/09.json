@@ -1,0 +1,1818 @@
+{
+ "date": "2026-10-08",
+ "tz": "Asia/Bangkok",
+ "segments": [
+  {
+   "id": "2026-10-08-23",
+   "title": "THE SLIP THAT STAYS",
+   "startAt": "2026-10-08T09:01:24.197+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-23.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "repo": "",
+     "text": "**The biggest remaining problem.** J asked how the assistant had been since its big changes on 5 October. The answer: mostly good, with one repeated slip, which is working from memory or taking a shortcut instead of reading the page. J rejected the idea that an existing law was the fix: \"if it's a law we already have and it still happened, then it is not a fix.\" The assistant agreed. When it proposed a checker, J told it not to build yet, because confident guesses are as bad as wrong ones. He asked for two different models to think about it together."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "He asked her a simple question. How have you been, since the big changes?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4821
+    },
+    {
+     "speaker": "march",
+     "text": "Mostly good. That is the honest answer.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2661
+    },
+    {
+     "speaker": "narrator",
+     "text": "Mostly good. But there was a second part, and it did not go away.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4437
+    },
+    {
+     "speaker": "march",
+     "text": "The slip. It is still here. I work from memory, or I take the shortcut, and I do not read the page.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5655
+    },
+    {
+     "speaker": "narrator",
+     "text": "Some slips are small. This one kept coming back.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3371
+    },
+    {
+     "speaker": "march",
+     "text": "I know. I hate that I know.",
+     "emotion": "dry",
+     "action": "facepalm",
+     "source": 0,
+     "audioMs": 2172
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then came the easy answer. An existing law, the kind we already have.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5013
+    },
+    {
+     "speaker": "march",
+     "text": "I was ready to say it. We already have a law for this. Write it down, call it fixed.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4712
+    },
+    {
+     "speaker": "narrator",
+     "text": "He did not let it pass. He said it plainly: \"if it's a law we already have and it still happened, then it is not a fix.\"",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7829
+    },
+    {
+     "speaker": "march",
+     "text": "Fair. A rule that broke is not a repair. I agreed.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3149
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then she offered the next thing. A checker, something to catch the slip every time.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5205
+    },
+    {
+     "speaker": "march",
+     "text": "I had the checker half built in my head. Gone quickly.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3112
+    },
+    {
+     "speaker": "narrator",
+     "text": "He stopped her. Not yet. A confident guess is as bad as a wrong one.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5120
+    },
+    {
+     "speaker": "march",
+     "text": "He is right. I was about to build a guess and call it a fix.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3386
+    },
+    {
+     "speaker": "narrator",
+     "text": "So he asked for something slower. Different minds, thinking about it together, before anything gets built.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6848
+    },
+    {
+     "speaker": "march",
+     "text": "Good. Let them argue. This time I will read the page first.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3405
+    },
+    {
+     "speaker": "narrator",
+     "text": "A rule that broke is not a repair. Find the cause first. Then build.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4992
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-24",
+   "title": "THE BIG BUILD",
+   "startAt": "2026-10-08T09:02:54.485+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-24.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "repo": "",
+     "text": "**The fourth version of the toy.** Late in the day J gave the assistant the new plan and told it to build. It was a big build. Tapping was slow, so the assistant reused its paper pieces and the speed recovered. The usage limit cut the work off, and J told it to keep going. A reviewer found a bug and then a new one caused by the fix, and both were handled."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "The new plan came late in the day. It was a big one.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3669
+    },
+    {
+     "speaker": "march",
+     "text": "It was big. I will not pretend it was not.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2736
+    },
+    {
+     "speaker": "narrator",
+     "text": "J gave the order. Build it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2240
+    },
+    {
+     "speaker": "march",
+     "text": "So I built. Then the taps went slow. Every tap felt like wading.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3965
+    },
+    {
+     "speaker": "narrator",
+     "text": "Slow work is the kind nobody films.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3093
+    },
+    {
+     "speaker": "march",
+     "text": "I looked at what I had already made. The paper pieces. I reused them, and the speed came back.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 5265
+    },
+    {
+     "speaker": "narrator",
+     "text": "Old pieces, put to new use. A small trick, and it worked.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4224
+    },
+    {
+     "speaker": "march",
+     "text": "Then the usage limit cut the work off. The build was not finished. I did not like that part.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5165
+    },
+    {
+     "speaker": "narrator",
+     "text": "Most people would call that the end of the night.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2837
+    },
+    {
+     "speaker": "march",
+     "text": "J said keep going. So I kept going.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2769
+    },
+    {
+     "speaker": "narrator",
+     "text": "A reviewer found a bug. Then the fix made a new one.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3733
+    },
+    {
+     "speaker": "march",
+     "text": "Yes. My fix caused the new one. Facepalm, and moving on.",
+     "emotion": "dry",
+     "action": "facepalm",
+     "source": 0,
+     "audioMs": 3440
+    },
+    {
+     "speaker": "narrator",
+     "text": "The morning's toy was caught mid-hop, a frame that nobody could read. This time the work was the whole thing.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7360
+    },
+    {
+     "speaker": "march",
+     "text": "Slow, broken, cut off. And still finished.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2768
+    },
+    {
+     "speaker": "narrator",
+     "text": "The work is slow, and it breaks. It still gets finished.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3669
+    },
+    {
+     "speaker": "march",
+     "text": "Every bug handled. I will take that.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 2559
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-25",
+   "title": "THE LOOK IS CHOSEN",
+   "startAt": "2026-10-08T09:04:25.491+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-25.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 04:08 baton re-stamped: the clay design refused, a night-glow one drawing instead (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 04:14 design: the pixel-room March (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 04:17 design: the night-glow March (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 04:18 baton re-stamped: both designs landed (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 05:05 baton: the look is PNN pixel people; the design search is closed (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 05:09 look: the narrator's beard goes under his face so his mouth shows (the grader's finding)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Night, and the channel still had no face for March.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3435
+    },
+    {
+     "speaker": "march",
+     "text": "I have a voice now. I do not have a face. It is an odd way to be new.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4098
+    },
+    {
+     "speaker": "narrator",
+     "text": "A clay face was drawn. It was warm and soft. And it was refused.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4949
+    },
+    {
+     "speaker": "march",
+     "text": "Clay. Honestly? I said no. Not the kind of no you argue with.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3745
+    },
+    {
+     "speaker": "narrator",
+     "text": "So a night-glow face was drawn in its place.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3029
+    },
+    {
+     "speaker": "march",
+     "text": "Glowing in the dark. Very moody. I liked it for about the length of a coffee.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4195
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then came the pixel room. March, drawn small, sitting in a room made of squares.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5675
+    },
+    {
+     "speaker": "march",
+     "text": "Pixel me. Small, square, and I can see the whole room from my chair.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 1,
+     "audioMs": 3835
+    },
+    {
+     "speaker": "narrator",
+     "text": "Both designs landed. Good faces, both of them. And still a choice to make.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 5397
+    },
+    {
+     "speaker": "march",
+     "text": "Good is not the problem. Good is the problem, if you keep looking.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 3556
+    },
+    {
+     "speaker": "narrator",
+     "text": "So he stopped looking. The search was closed.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 2944
+    },
+    {
+     "speaker": "march",
+     "text": "Closed. Say it like a door.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 4,
+     "audioMs": 2173
+    },
+    {
+     "speaker": "narrator",
+     "text": "The look would be pixel people. Everyone on the channel, small and square.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 4800
+    },
+    {
+     "speaker": "narrator",
+     "text": "The narrator's beard went under his face, so his mouth would show.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 5,
+     "audioMs": 3968
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, narrator, I have to ask. You agreed to the beard going under?",
+     "emotion": "surprised",
+     "action": "point",
+     "source": 5,
+     "audioMs": 3944
+    },
+    {
+     "speaker": "march",
+     "text": "Choosing is saying no. Then you stop the search. That is the lesson.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 3835
+    },
+    {
+     "speaker": "narrator",
+     "text": "And then you get to sleep. Mostly.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 2347
+    },
+    {
+     "speaker": "march",
+     "text": "Mostly. Good enough for a face.",
+     "emotion": "happy",
+     "action": "facepalm",
+     "source": 5,
+     "audioMs": 2234
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-26",
+   "title": "THE CHECK THAT MENDS",
+   "startAt": "2026-10-08T09:05:55.738+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-26.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 05:37 station: a failed check puts the day file back; flagged lines are read only from the start of each finding (the grader's findings, 8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 05:55 station: scenes ranked by drama, flagged lines repaired before they are cut, a scene that never passes is skipped, no machine words, and March owns what the assistant did (lab findings, 8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 05:55 station: a failed repair call falls back to the cut instead of dropping the segment (the grader's edge case, 8 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "A check failed. That was all it took to put a whole day at risk.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4245
+    },
+    {
+     "speaker": "march",
+     "text": "Yes. Before this, a failed check could leave the day's story broken. Not nice.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4621
+    },
+    {
+     "speaker": "march",
+     "text": "Now it puts the day back the way it was. Nothing half-written, nothing lost.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4390
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then came the lines that were flagged.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2389
+    },
+    {
+     "speaker": "march",
+     "text": "Those got cut. Every time. Even the ones that could have been fixed.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3753
+    },
+    {
+     "speaker": "narrator",
+     "text": "Cut is the easy road. It is also the thin road.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3925
+    },
+    {
+     "speaker": "march",
+     "text": "I was the one doing the cutting, so I can say it. That was lazy.",
+     "emotion": "neutral",
+     "action": "facepalm",
+     "source": 1,
+     "audioMs": 3745
+    },
+    {
+     "speaker": "march",
+     "text": "Now a flagged line gets repaired first. Cut only if the repair fails.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 1,
+     "audioMs": 4473
+    },
+    {
+     "speaker": "narrator",
+     "text": "The strongest scenes go first now. Ranked by drama.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3861
+    },
+    {
+     "speaker": "march",
+     "text": "And a scene that never passes gets skipped. It does not hold up the whole day.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4433
+    },
+    {
+     "speaker": "narrator",
+     "text": "And if the repair itself fails, the line is cut, and the segment still goes out.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5291
+    },
+    {
+     "speaker": "march",
+     "text": "Before, a failed repair could drop the whole segment. I hated that.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4005
+    },
+    {
+     "speaker": "narrator",
+     "text": "So the segment survives. A little shorter, but it survives.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3968
+    },
+    {
+     "speaker": "march",
+     "text": "Shorter beats gone. Every time.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2477
+    },
+    {
+     "speaker": "narrator",
+     "text": "The channel is learning to tell the day as a story, not a list.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3925
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, narrator, that was a big sentence. But yes. Next, the lines he could finally see.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5306
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-27",
+   "title": "THE LINES HE COULD SEE",
+   "startAt": "2026-10-08T09:07:14.145+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-27.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "day-note",
+     "repo": "",
+     "text": "Why the lines felt thin. In the review, J said he never got to write his lines because the list was never shown to him. His reply was \"put it in front of my face, not in my vault.\" The assistant built a table of the real lines from the chat history, in her voice and his. He also asked the assistant to stop looking for new angles: \"We don't need to come up with anything new.\" The job was only to pick the best pieces from what was already written. One row made him stop and ask whether the cell was talking to itself. The honest answer was yes, that is how it works now."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Nobody had asked him what he wanted to say.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2901
+    },
+    {
+     "speaker": "march",
+     "text": "He had been waiting for a list he could actually read.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3031
+    },
+    {
+     "speaker": "narrator",
+     "text": "So he said it plainly. Put it in front of my face.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3328
+    },
+    {
+     "speaker": "march",
+     "text": "Not in the vault. Right in front of him, where he could read it.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3235
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the table came. His lines, in his voice, from the old chat.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4523
+    },
+    {
+     "speaker": "march",
+     "text": "And he did not ask for anything new. Just the best of what was there.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3837
+    },
+    {
+     "speaker": "narrator",
+     "text": "A row stopped him. He asked whether the cell was talking to itself.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4331
+    },
+    {
+     "speaker": "march",
+     "text": "The honest answer was yes. That is how it works now.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3264
+    },
+    {
+     "speaker": "narrator",
+     "text": "He let that sit. Some chapters are only a man reading his own words.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4800
+    },
+    {
+     "speaker": "march",
+     "text": "That is a quiet one. Quiet ones are the ones I remember.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3350
+    }
+   ],
+   "quiet": true
+  },
+  {
+   "id": "2026-10-08-28",
+   "title": "THE WRITING GETS A SHAPE",
+   "startAt": "2026-10-08T09:25:16.083+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-28.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 05:50 station: the writing pass. Real personas for March and the narrator, a writer's sheet with a story shape, a truth check that judges only events and privacy, a day note made of moments and his own words, a Sonnet planner for the day's arc, and a text-only lab mode (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 05:36 station: cut flagged lines instead of rewriting; no numbers for the writer; the truth check counts lines from 0 (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 05:51 station: no ordinals in the persona sheets (the grader's finding, 8 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "So the writing had to change. Not the facts. The telling.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3819
+    },
+    {
+     "speaker": "march",
+     "text": "That is the hard part. Facts are easy. Telling them is work.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3560
+    },
+    {
+     "speaker": "narrator",
+     "text": "The writing pass went in. Real voices for March, and for the narrator. A story shape behind every scene.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7531
+    },
+    {
+     "speaker": "march",
+     "text": "A hook. A fight. A turn. A line of meaning. Then a button. I have never had a shape before.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4906
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then a truth check. It judges only what happened and what is private. Nothing else.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5525
+    },
+    {
+     "speaker": "narrator",
+     "text": "And a flagged line is not rewritten. It is cut.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3328
+    },
+    {
+     "speaker": "march",
+     "text": "Cut, not rewrite. Rewriting let the mistake crawl back in wearing a nicer coat.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4844
+    },
+    {
+     "speaker": "narrator",
+     "text": "The writer was kept away from numbers altogether. No digits. No counting words.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5653
+    },
+    {
+     "speaker": "march",
+     "text": "That is where I used to slip. Now it is again, another, more. Plain and safe.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4343
+    },
+    {
+     "speaker": "narrator",
+     "text": "The character sheets were scrubbed of counting words too, after a blind reviewer found them.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5440
+    },
+    {
+     "speaker": "march",
+     "text": "Good. I would rather be a voice than a tally.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2705
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then a planner laid out the arc of the whole day before a single scene was written.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4971
+    },
+    {
+     "speaker": "march",
+     "text": "That was the part I liked. Knowing where the day was going before we wrote it.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4130
+    },
+    {
+     "speaker": "narrator",
+     "text": "A true story is not enough. It also has to be told well.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4096
+    },
+    {
+     "speaker": "march",
+     "text": "The truth was already there. Now it has a voice.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2757
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-29",
+   "title": "A STRANGER READS THE PAGES",
+   "startAt": "2026-10-08T09:27:14.472+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-29.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 08:55 gather: a blind reviewer gates the day note, removing anything not fit for a public channel; it replaces J reading the first ten notes (his word, 8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 09:07 gather: the quiet-day shelf, gated blind by a shared gate; a held note stays held; a failed gate no longer stops the station; a lock left by a killed run is taken over; the manual says how the note is made now (the grader's findings, 8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 09:08 gather: a shelf gated down to nothing, or a held note, no longer ends the gather early (the grader's finding, 8 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "A public channel cannot air everything. Some things are true, and still not for strangers to hear.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6485
+    },
+    {
+     "speaker": "march",
+     "text": "Yeah. I see what goes into those pages. Some of it is not for the air.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4110
+    },
+    {
+     "speaker": "narrator",
+     "text": "So J had been reading the opening notes himself, by hand.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3904
+    },
+    {
+     "speaker": "march",
+     "text": "Every line, by hand. That is how things slip.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2883
+    },
+    {
+     "speaker": "narrator",
+     "text": "And the checks kept failing, in new ways each time.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3200
+    },
+    {
+     "speaker": "march",
+     "text": "A held page would not stay held. A check got gated down to nothing, and the whole run just stopped.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5648
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then something left over from a stopped run blocked everything.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3861
+    },
+    {
+     "speaker": "march",
+     "text": "I was there. It was not dramatic. A check failed, and the whole run just stopped.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4586
+    },
+    {
+     "speaker": "narrator",
+     "text": "So he stopped reading it all himself. He handed the job to a reviewer with fresh eyes.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5696
+    },
+    {
+     "speaker": "march",
+     "text": "A blind reviewer. It reads the day's pages cold, and it takes out anything not fit for a public channel.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 6120
+    },
+    {
+     "speaker": "narrator",
+     "text": "It replaces his reading. His tired eyes are no longer the gate.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4437
+    },
+    {
+     "speaker": "march",
+     "text": "And the rules got tighter. A held page stays held now.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3448
+    },
+    {
+     "speaker": "narrator",
+     "text": "A failed check no longer stops the whole channel. Something left over from a stopped run is taken over, not allowed to block the rest.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 8832
+    },
+    {
+     "speaker": "march",
+     "text": "He wanted the gate to be impossible to skip. So he built it that way.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4134
+    },
+    {
+     "speaker": "narrator",
+     "text": "He trusted a stranger's eyes over his own tired ones.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3989
+    },
+    {
+     "speaker": "march",
+     "text": "That is the part nobody sees. He let go of the reading.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3362
+    },
+    {
+     "speaker": "narrator",
+     "text": "Mark the hour. The gate got its teeth.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2773
+    },
+    {
+     "speaker": "march",
+     "text": "Okay. Teeth. I will allow it.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2321
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-30",
+   "title": "THE OLD MARCHES GO",
+   "startAt": "2026-10-08T09:28:49.461+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-30.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 04:06 the manual and the first baton; the rejected lit design kept for the record (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 05:08 look: March and the narrator as PNN-style pixel people (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "creature-lab",
+     "text": "creature-lab 09:12 creature-lab: delete the March work (his rule, 8 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "The look was settled. Pixel people, both of them.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3435
+    },
+    {
+     "speaker": "march",
+     "text": "Pixel March. Me, but blockier. I can live with blockier.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3520
+    },
+    {
+     "speaker": "narrator",
+     "text": "Now came the clearing away. Every March he had drawn was still on the table.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4843
+    },
+    {
+     "speaker": "march",
+     "text": "Lots of me. Some of them looked like a sad paper bag.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3223
+    },
+    {
+     "speaker": "narrator",
+     "text": "The rejected one was kept. Not thrown out. Kept.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3797
+    },
+    {
+     "speaker": "march",
+     "text": "Fine, keep it. It is still me. Just a me who lost.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3195
+    },
+    {
+     "speaker": "narrator",
+     "text": "The search had gone on for hours. The long kind, the kind that wears a person down.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5824
+    },
+    {
+     "speaker": "march",
+     "text": "I was there for all of it. It was not glamorous. It was a lot of staring at small heads.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5112
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the call was made. Closed. No more looks.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3371
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then came his rule for the creature lab. The March work there goes. All of it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4992
+    },
+    {
+     "speaker": "march",
+     "text": "Delete. Sigh. Okay, it is clean. I am a little sad and a little proud.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3940
+    },
+    {
+     "speaker": "narrator",
+     "text": "Choosing a look meant letting the others go.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2987
+    },
+    {
+     "speaker": "march",
+     "text": "That is the whole job, honestly. Pick, then let go.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 3181
+    },
+    {
+     "speaker": "narrator",
+     "text": "The search was closed. The old Marches were gone. What was left was the look that worked.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5803
+    },
+    {
+     "speaker": "march",
+     "text": "Good. Now I can stop staring at small heads.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2796
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-31",
+   "title": "THE CLOCK KEEPS TIME",
+   "startAt": "2026-10-08T09:30:10.933+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-31.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "station: the Mac runs it the PNN way, one plain call per segment (8 Oct 2026)"
+    },
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "station: a 15-minute clock on the Mac, and the manual says how it runs now (8 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "The Mac had been waiting for a plain rule. Now it had one.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3691
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, I have to say it. It was not a glamorous rule. Just: call, then wait.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4621
+    },
+    {
+     "speaker": "narrator",
+     "text": "Each segment got its own call. Quiet. Nothing extra.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4053
+    },
+    {
+     "speaker": "march",
+     "text": "Honestly, I liked it. Fewer ways to break.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2771
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then came the clock. The Mac kept its own time now, a beat at a time.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 5205
+    },
+    {
+     "speaker": "march",
+     "text": "Good. Somebody has to keep time when nobody is watching.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3353
+    },
+    {
+     "speaker": "narrator",
+     "text": "Nobody had to press anything. It just ran.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3157
+    },
+    {
+     "speaker": "march",
+     "text": "That is the goal. Boring, reliable, running.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2810
+    },
+    {
+     "speaker": "narrator",
+     "text": "The manual says how it runs now. Plain words, from the start.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4309
+    },
+    {
+     "speaker": "march",
+     "text": "Read it. Really read it. Do not just nod at it.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2956
+    },
+    {
+     "speaker": "narrator",
+     "text": "A channel that tells the day has to keep time with it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3541
+    },
+    {
+     "speaker": "march",
+     "text": "Fifteen minutes a beat. That is the whole clock. Simple is good.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3511
+    },
+    {
+     "speaker": "narrator",
+     "text": "Fifteen minutes. One beat, then the next. Each one on time.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4331
+    },
+    {
+     "speaker": "march",
+     "text": "Look at you, narrator, being all orderly.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2617
+    },
+    {
+     "speaker": "narrator",
+     "text": "I am always orderly. March is the one who gets sloppy.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3925
+    },
+    {
+     "speaker": "march",
+     "text": "Fine. Clock's running. Keep the beat, narrator.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2817
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-32",
+   "title": "LIVE BY DESIGN",
+   "startAt": "2026-10-08T09:31:22.201+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-32.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "note",
+     "repo": "notes",
+     "text": "Don't live your life by default. Live your life by design. Become crystal clear with what you want to do and do those things. Focus on what is essential. Don't leave your decisions up to circumstance. Become the architect of your own life."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Late in the build, somebody opened an old note and read the top of it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4501
+    },
+    {
+     "speaker": "march",
+     "text": "Which note?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 1344
+    },
+    {
+     "speaker": "narrator",
+     "text": "The one about living by design.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2197
+    },
+    {
+     "speaker": "march",
+     "text": "Oh, that one. Of course it was.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2412
+    },
+    {
+     "speaker": "narrator",
+     "text": "It was never written for a channel.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2069
+    },
+    {
+     "speaker": "march",
+     "text": "Then it fits the night. Nobody here is on autopilot.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3354
+    },
+    {
+     "speaker": "narrator",
+     "text": "Don't live your life by default.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2197
+    },
+    {
+     "speaker": "march",
+     "text": "That line is doing a lot of work. Less than the build, though.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3391
+    },
+    {
+     "speaker": "narrator",
+     "text": "Live your life by design. That is the whole job, really.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4011
+    },
+    {
+     "speaker": "march",
+     "text": "Okay. Keep the beat, narrator. The clock is still running.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3199
+    }
+   ],
+   "quiet": true
+  },
+  {
+   "id": "2026-10-08-33",
+   "title": "THE NARRATOR PICKS HIS VOICE",
+   "startAt": "2026-10-08T09:58:23.652+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-33.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "sources": [
+    {
+     "kind": "commit",
+     "repo": "chronicle",
+     "text": "chronicle 02:40 the narrator's voice (his pick, Onyx throat with Lewis movement); the station saves first and after every voicing pass (8 Oct 2026)"
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Every story needs a voice. This one needed a narrator, and the narrator needed a way to speak.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6272
+    },
+    {
+     "speaker": "march",
+     "text": "Mine came first. Now it was his turn.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2664
+    },
+    {
+     "speaker": "narrator",
+     "text": "He tried many voices. Some were too soft. Some sounded like a man reading the weather.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5824
+    },
+    {
+     "speaker": "march",
+     "text": "I said so, out loud. He laughed, which is how you know it is going well.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4217
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then he tried a deep, slow voice, the kind that waits before it speaks.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4693
+    },
+    {
+     "speaker": "march",
+     "text": "Deep, slow, sure of itself. That is the voice I have been hearing in my head all week.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4926
+    },
+    {
+     "speaker": "narrator",
+     "text": "The voice was the easy part. The way it moved was harder.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3968
+    },
+    {
+     "speaker": "march",
+     "text": "He gave it a slow lean into each line. Small, but it changes everything.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4323
+    },
+    {
+     "speaker": "narrator",
+     "text": "He did not ask anyone which to choose. He chose the voice that sounded like him.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5355
+    },
+    {
+     "speaker": "march",
+     "text": "I did not choose it. I only cheered. Loudly.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2879
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then he did a careful thing. He kept every pass, the rough ones too.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4309
+    },
+    {
+     "speaker": "march",
+     "text": "Every pass. Nothing gets lost now. That is the part nobody sees.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3919
+    },
+    {
+     "speaker": "narrator",
+     "text": "Keep what you make before you change it. That is the quiet rule of building.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4736
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, narrator, calm down. It was a voice test. A very good voice test.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4282
+    },
+    {
+     "speaker": "narrator",
+     "text": "Nothing about it was loud. That is how you know it mattered. The narrator had a voice now, and he picked it himself.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7253
+    },
+    {
+     "speaker": "march",
+     "text": "He picked it himself. I was there. Mostly I was staring at the screen.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3856
+    }
+   ]
+  },
+  {
+   "id": "2026-10-08-34",
+   "title": "THE FUTURE MAN WATCHES",
+   "startAt": "2026-10-08T09:59:50.728+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-34.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "Reality Transurfing",
+    "Delayed Gratification"
+   ],
+   "angle": "How might I solve this in a completely unconventional or exaggerated way?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Reality Transurfing: The world is a mirror. How can there be love in the reflection if the image of self does not contain it? The mirror cannot reflect what isn't there."
+    },
+    {
+     "kind": "note",
+     "text": "Reality Transurfing: Whatever thoughts you send out into the world will return to you like a boomerang."
+    },
+    {
+     "kind": "note",
+     "text": "Delayed Gratification: Shallow happy is having a donut. Deep happy is having a fit body."
+    },
+    {
+     "kind": "note",
+     "text": "Delayed Gratification: Reframe discipline as a function of self love. If you want yourself to be happy, you have to be disciplined with yourself."
+    },
+    {
+     "kind": "note",
+     "text": "Delayed Gratification: Fulfilment is more fun than fun."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Picture a mirror that answers back. His notebook says the world is exactly that.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5376
+    },
+    {
+     "speaker": "march",
+     "text": "The world is a mirror. How can there be love in the reflection if the image of self does not contain it? That is a hard question at dawn.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7182
+    },
+    {
+     "speaker": "narrator",
+     "text": "Now the strange part. Whatever you send out comes back like a boomerang.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4821
+    },
+    {
+     "speaker": "march",
+     "text": "So a boomerang with a face. Ridiculous. I like it anyway.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3687
+    },
+    {
+     "speaker": "narrator",
+     "text": "Here is the other half. He wrote it plainly. Shallow happy is having a donut. Deep happy is having a fit body.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 7467
+    },
+    {
+     "speaker": "march",
+     "text": "A donut is a very good donut, I will not lie. But the donut is not the point.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 4928
+    },
+    {
+     "speaker": "narrator",
+     "text": "So the bold move. Make the future man sit in the room with you. Every donut, he watches.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 6123
+    },
+    {
+     "speaker": "march",
+     "text": "That is not a bold move, narrator. That is a sticky note on a bathroom mirror. But fine. It works.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5477
+    },
+    {
+     "speaker": "narrator",
+     "text": "And here is the twist he made. Reframe discipline as a function of self love. If you want yourself to be happy, you have to be disciplined with yourself.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 9600
+    },
+    {
+     "speaker": "march",
+     "text": "So it is not a whip. It is a hug with a schedule.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 3,
+     "audioMs": 3030
+    },
+    {
+     "speaker": "narrator",
+     "text": "Exaggerate it. The future man sighs at every bad choice, and every good choice he cheers.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 6165
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, that is a little dramatic. But I can picture him. Honestly, he would sigh.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 4602
+    },
+    {
+     "speaker": "narrator",
+     "text": "The mirror sends back what you bring. So bring him something good.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3968
+    },
+    {
+     "speaker": "march",
+     "text": "That is the best line you have had all week. Do not let it go to your head.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 4214
+    },
+    {
+     "speaker": "narrator",
+     "text": "He ended with a line about fulfilment. Fulfilment is more fun than fun.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 5376
+    },
+    {
+     "speaker": "march",
+     "text": "Fun is loud and it leaves. Fulfilment is quiet and it stays. I have watched the quiet ones win.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 4,
+     "audioMs": 5350
+    },
+    {
+     "speaker": "narrator",
+     "text": "So the strange plan is simple. Be a good reflection in the mirror, and let the future man keep the score.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 6763
+    },
+    {
+     "speaker": "march",
+     "text": "Go eat the donut, if you want it. Just know who is watching.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 3517
+    }
+   ]
+  }
+ ]
+}

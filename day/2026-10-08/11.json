@@ -1,0 +1,1201 @@
+{
+ "date": "2026-10-08",
+ "tz": "Asia/Bangkok",
+ "segments": [
+  {
+   "id": "2026-10-08-48",
+   "title": "THE HABIT NOBODY FILMS",
+   "startAt": "2026-10-08T11:38:00.951+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-48.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "How Our Brains Interpret Imagined And Real Experiences"
+   ],
+   "angle": "What’s an angle or factor I might be overlooking?",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Repeat what you want to believe every day, multiple times a day."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Think and speak only the grandest narrative for yourself."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Every time Michael Phelps has a major competition coming up, he visualises how he'd perform in that race."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: When visualising, you must make these images as detailed and vivid as possible."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Now imagine what happens when you tell yourself you easily get sick. Or that you're clumsy. Or that you're slow."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Tomorrow, say the thing you want to believe. Out loud. Then say it again.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4843
+    },
+    {
+     "speaker": "march",
+     "text": "That is not a belief yet. That is a habit with a nice title. Noted.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4139
+    },
+    {
+     "speaker": "narrator",
+     "text": "Picture a man who tells himself the grandest story about who he is. Every morning. Out loud.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6464
+    },
+    {
+     "speaker": "march",
+     "text": "Good. Now picture him forgetting the water until lunch. Most people are some of each.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4964
+    },
+    {
+     "speaker": "narrator",
+     "text": "The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 6891
+    },
+    {
+     "speaker": "march",
+     "text": "Right. So what do you repeat most? Not the speech. The little thing you do every day without thinking.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 5203
+    },
+    {
+     "speaker": "narrator",
+     "text": "Every time Michael Phelps has a major competition coming up, he visualises how he'd perform in that race.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 3,
+     "audioMs": 6848
+    },
+    {
+     "speaker": "march",
+     "text": "The note says make the picture vivid. It never says the swimming went away. That is the factor I think gets skipped.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 4,
+     "audioMs": 5965
+    },
+    {
+     "speaker": "narrator",
+     "text": "Your nervous system cannot tell the difference between an imagined experience and a real one.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 5,
+     "audioMs": 5888
+    },
+    {
+     "speaker": "march",
+     "text": "Right. Tell yourself you're slow, and the body starts acting slow. The grand story needs a daily floor under it.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 6,
+     "audioMs": 6161
+    },
+    {
+     "speaker": "narrator",
+     "text": "So the grand narrative is the map. The small habit is the step. Nobody films the step.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6208
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, narrator, that one I am taking a small victory lap for.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 0,
+     "audioMs": 3833
+    },
+    {
+     "speaker": "narrator",
+     "text": "The grand story gives the day a direction. The small habit gives it a floor. You need both to stand.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6720
+    },
+    {
+     "speaker": "march",
+     "text": "Noted. I still say the glass of water on this desk does more than any speech.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4536
+    },
+    {
+     "speaker": "narrator",
+     "text": "Mark the hour. The glass is on the desk. Something started here.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 4395
+    },
+    {
+     "speaker": "march",
+     "text": "Okay. Tonight, pick a small habit you will repeat tomorrow. Tell me which one. I will check at lunch.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 0,
+     "audioMs": 5305
+    }
+   ],
+   "part": {
+    "n": 4,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-49",
+   "title": "WHY IT ENDS AT THE GLASS",
+   "startAt": "2026-10-08T11:39:42.914+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-49.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "How Our Brains Interpret Imagined And Real Experiences"
+   ],
+   "angle": "What is the fundamental problem or need that this note/idea is trying to address? Is it addressing a symptom or the root cause? (Think: Five Whys)",
+   "kind": "verdict",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Think and speak only the grandest narrative for yourself."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Repetition solidifies something as fact."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: The brain learns from repetition. If you hear something enough times, your brain will start to believe it's true."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Mental practice is as powerful as actual practice."
+    },
+    {
+     "kind": "note",
+     "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Ask why, and keep asking, and the answer sinks like a stone down a well. At the bottom lies the root, and the root is a story you tell yourself each morning, grand and unchanging.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 12480
+    },
+    {
+     "speaker": "march",
+     "text": "Ask why once more, then. Why do you tell it? Because you want a feeling? That is a symptom wearing a cape.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 5239
+    },
+    {
+     "speaker": "narrator",
+     "text": "It is simple, dear March. Believe the grand thing and the body follows, like a loyal hound behind its master.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 4,
+     "audioMs": 7765
+    },
+    {
+     "speaker": "march",
+     "text": "Do not call it simple. Simple is how people lose a whole week. Why does the belief stick at all?",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 5476
+    },
+    {
+     "speaker": "narrator",
+     "text": "Because it is repeated, every morning, out loud, until the repeating hardens into law.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5760
+    },
+    {
+     "speaker": "march",
+     "text": "Right. And the law gets enforced by a glass of water at lunch. So the root is the story, and the thing you can check is what you do with it. Every why ends at a small act you believe is yours.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 1,
+     "audioMs": 9375
+    },
+    {
+     "speaker": "narrator",
+     "text": "You have reduced a tide of human longing to a glass on a desk.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 3,
+     "audioMs": 4245
+    },
+    {
+     "speaker": "march",
+     "text": "You are the one who said your mind cannot tell imagined from real. Then it cannot tell a glass from a sea either. Pick one, and stop sulking.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 4,
+     "audioMs": 7190
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the glass is a sea in miniature. Mental practice is as powerful as the practice itself, so the swimming was never the only water.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 3,
+     "audioMs": 8875
+    },
+    {
+     "speaker": "march",
+     "text": "Ha. The Phelps picture only works because he swam it for real. Imagining makes the swim believable. The swim makes the imagining true. They need each other.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 3,
+     "audioMs": 8119
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then I concede, reluctantly, that the story is the root and the water is the proof. But it was I who said root first.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7979
+    },
+    {
+     "speaker": "march",
+     "text": "You did say it first. You win the first why. I win the last one, and the last one is a glass.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 1,
+     "audioMs": 5221
+    },
+    {
+     "speaker": "narrator",
+     "text": "And you, March, have hidden something in your own design. A small sign only you can read. I can tell by the way you never look at it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 8725
+    },
+    {
+     "speaker": "march",
+     "text": "I am not saying what is in my design. Give me your guess and I will tell you it is wrong.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4998
+    },
+    {
+     "speaker": "narrator",
+     "text": "A small folded thing in the corner of the lens. Or a cup with a crack that you refuse to throw away.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 6912
+    },
+    {
+     "speaker": "march",
+     "text": "Wrong, and dull, and both. Up next, Any Benefit Fallacy and Happiness And Gratitude. Same desk, same glass. Drink your water.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 1,
+     "audioMs": 6776
+    }
+   ],
+   "part": {
+    "n": 5,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-50",
+   "title": "WHAT IF NOTHING ELSE COUNTS",
+   "startAt": "2026-10-08T11:41:51.649+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-50.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "Any Benefit Fallacy",
+    "Happiness And Gratitude"
+   ],
+   "angle": "What would this idea look like if I went to its extreme? Could that open up anything interesting?",
+   "kind": "open",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Any Benefit Fallacy: Just because something offers _any_ positive outcome doesn’t justify its pursuit."
+    },
+    {
+     "kind": "note",
+     "text": "Any Benefit Fallacy: Not every beneficial activity or habit is worth your time."
+    },
+    {
+     "kind": "note",
+     "text": "Happiness And Gratitude: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+    },
+    {
+     "kind": "note",
+     "text": "Happiness And Gratitude: If you are to be happy at all, you must be happy, period! Not happy \"because of.\""
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "march",
+     "text": "Right, the Any Benefit note. Just because something offers any positive outcome doesn't justify its pursuit. Taken to the end, that says almost nothing is worth doing.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 8846
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then let us walk to the very end, dear March, where only one act remains, like a single lamp at the top of a long stair. Every other thing is dimmed, and the lamp is all that counts.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 12011
+    },
+    {
+     "speaker": "march",
+     "text": "Going to the extreme is what people do when they have never had a Tuesday. Do one thing and nothing else, and by lunch you will be bored out of your skull.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 7395
+    },
+    {
+     "speaker": "narrator",
+     "text": "Boredom is merely a thought that has not yet found its purpose. The note says happiness is a state of mind in which our thinking is pleasant most of the time. So the extreme is a mind with nothing to do but be pleased.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 13803
+    },
+    {
+     "speaker": "march",
+     "text": "Let me try it on me, out loud. I am happy about nothing in particular right now, and I am still annoyed by you. So the extreme does not make the mood pleasant. It only removes the excuse.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 8968
+    },
+    {
+     "speaker": "narrator",
+     "text": "Ah, the excuse. The note says you must be happy, period, not happy because of. The excuse is the very rope being cut, like a rope from a boat that was never meant to sail.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 3,
+     "audioMs": 11520
+    },
+    {
+     "speaker": "march",
+     "text": "Period, it says. I like that bit. It is the only part of the note that does not need a grand story wrapped round it.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 3,
+     "audioMs": 6393
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the extreme is this: a bus shelter at the end of a road, one bench, a timetable faded to nothing. Each morning a man sits on it. Each morning a pigeon arrives. Destiny, March, is in the pigeon.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 13803
+    },
+    {
+     "speaker": "march",
+     "text": "A pigeon is not destiny. A pigeon is a pigeon. But I will keep the bench. Bus shelter, one bench. That is the image for this run, and you may not improve it.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 7800
+    },
+    {
+     "speaker": "narrator",
+     "text": "I shall improve it. The bench faces the road, and whoever sits there is not waiting for a bus. They are waiting for the bus to be worth the wait.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 9216
+    },
+    {
+     "speaker": "march",
+     "text": "The note says feelings do not need a reason. So the bench does not need a bus. Happiness that waits for a bus is a late bus.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 6774
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the extreme is a bench with no bus at all, and the happy man is the one who sits there pleased, having simply decided to be.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 3,
+     "audioMs": 8448
+    },
+    {
+     "speaker": "march",
+     "text": "Stop. You just said the extreme is a bench with no bus. That is the Any Benefit fallacy in a nicer coat. We would never get anywhere, and you would never get off.",
+     "emotion": "dry",
+     "action": "facepalm",
+     "source": 0,
+     "audioMs": 7969
+    },
+    {
+     "speaker": "narrator",
+     "text": "You are cruel, March, and you are right about the coat.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 0,
+     "audioMs": 3413
+    },
+    {
+     "speaker": "march",
+     "text": "I am saving a comeback for later in this run, so do not get comfortable. Next part, the bench gets its verdict. Until then, keep the bench.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 1,
+     "audioMs": 7368
+    }
+   ],
+   "part": {
+    "n": 1,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-51",
+   "title": "THE BELL THAT RINGS FOR NOTHING",
+   "startAt": "2026-10-08T11:44:28.778+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-51.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "Any Benefit Fallacy",
+    "Happiness And Gratitude"
+   ],
+   "angle": "If the world's leading expert on [Unrelated Field] looked at this, what nuance or advanced application might they see?",
+   "kind": "legend",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Any Benefit Fallacy: Just because something offers _any_ positive outcome doesn't justify its pursuit."
+    },
+    {
+     "kind": "note",
+     "text": "Happiness And Gratitude: Gratitude for what we have makes life worth living."
+    },
+    {
+     "kind": "note",
+     "text": "Smile To Be Happy: When you smile, your brain automatically assumes you're having a good time."
+    },
+    {
+     "kind": "note",
+     "text": "Happiness And Gratitude: The more grateful you are for something, the more doing it will release dopamine."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Hear now of the Bell-Warden of Harrowmere, who rang the harbour bell at every turn of the water for a whole lifetime, and who was, by the reckoning of the old book, the foremost authority on the sounding of ships' bells in all the northern world. He nailed one rule to the tower door, and it read: a bell must ring for something, or it is only metal.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 21931
+    },
+    {
+     "speaker": "march",
+     "text": "Harrowmere. Did a pigeon come into it?",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 2491
+    },
+    {
+     "speaker": "narrator",
+     "text": "No pigeon, March, though I grant the bell has wings in the telling. The Warden's great insight was that the harbour bell rang every tide whether ships were near or not, and when they asked him why, he said a bell need not be justified by the boats.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 15851
+    },
+    {
+     "speaker": "march",
+     "text": "That is the Any Benefit line with a bell on it. He rings it for nothing, and you call that wisdom. I call it a man with a rope and no boat.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 7224
+    },
+    {
+     "speaker": "narrator",
+     "text": "A simple man would call it a habit. The old book calls it devotion, which is the same act with the lamp lit. Every turn of the water he rang, and every ringing he thanked the sea for the vessels it had let home.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 13696
+    },
+    {
+     "speaker": "march",
+     "text": "Simple? Tides are the least simple thing in the building. Fine, go on. What did he thank the sea for?",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 5304
+    },
+    {
+     "speaker": "narrator",
+     "text": "For what it had already given him, March. Gratitude for the vessels already safe in harbour, and not one ledger of the ones that never came back. The book says the Warden never once counted the lost hulls, and so his chime never sounded like grief.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 15296
+    },
+    {
+     "speaker": "march",
+     "text": "That is the only useful thing in your whole legend. Gratitude costs a breath, and the return is a pleasant mind every single time. It only looks like a habit because it pays out so often.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 3,
+     "audioMs": 9613
+    },
+    {
+     "speaker": "narrator",
+     "text": "Useful, you say. I say it is destiny keeping a tide table. The Warden also smiled at the water each morning, the book is quite clear on it, and smiled at nothing at all.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 11605
+    },
+    {
+     "speaker": "march",
+     "text": "Smiling at nothing is what your own face does when I am talking. Smile and the brain assumes a good time. The note slips that trick in, and it costs nothing.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 7865
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the Warden's bell was a smile with a rope tied to it, and the rope was gratitude, and the tower was the only thing in the story that ever needed a door.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 3,
+     "audioMs": 9643
+    },
+    {
+     "speaker": "march",
+     "text": "Nice. Now the bit that matters. That is a high return for no input. Return on investment says pick the few that pay most. Happiness says do not make a pleasant mind earn its place first. Put them together and the cheapest good act is the one you never have to justify.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 3,
+     "audioMs": 12390
+    },
+    {
+     "speaker": "narrator",
+     "text": "You have taken my Warden, March, and given him a spreadsheet. It is most unfair of you to be right inside my own legend.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 8064
+    },
+    {
+     "speaker": "march",
+     "text": "You were about to say the bell was destiny. I am only holding the rope you dropped.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4896
+    },
+    {
+     "speaker": "narrator",
+     "text": "Hold it, then, and mind the tower stairs. They are steep, as I have always said, and they do not care who is holding the rope.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 7936
+    },
+    {
+     "speaker": "march",
+     "text": "Next part, I bring the verdict, and we test the bell on a Tuesday. Do not ring it at the wrong hour.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 2,
+     "audioMs": 5409
+    }
+   ],
+   "part": {
+    "n": 2,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-52",
+   "title": "THE SHOEBOX THAT BECOMES AN APP",
+   "startAt": "2026-10-08T11:48:55.239+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-52.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "List Of Nice Things To Do",
+    "Your Routine Is Top Priority"
+   ],
+   "angle": "How would this idea change if it had to be implemented on a completely different platform (e.g., physical product -> digital service, individual tool -> community platform)?",
+   "kind": "open",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "List Of Nice Things To Do: Gift Idea: Put 50–100 paper hearts or smiley faces in a box. On each cutout write something that is special about your lover or a good friend."
+    },
+    {
+     "kind": "note",
+     "text": "Your Routine Is Top Priority: Following your schedule is the most overpowered thing you can do because it turns your entire perfect day into a habit."
+    },
+    {
+     "kind": "note",
+     "text": "List Of Nice Things To Do: Say hello to everyone you see for the day."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Hear the box of paper hearts, March, a whole kingdom of kindness folded small. Each cutout written in one hand for a heart that needs it, and kept until the lonely hour comes round.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 12288
+    },
+    {
+     "speaker": "march",
+     "text": "A shoebox with better handwriting. She pulls one when she is low, so it lands exactly when it is needed. It is simple, and it works.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7115
+    },
+    {
+     "speaker": "narrator",
+     "text": "Simple, you say. A simple box, and yet the whole legend of comfort lives inside it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6016
+    },
+    {
+     "speaker": "march",
+     "text": "Simple? It is a cutout with a real name on it. Do not dress it up as a relic.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 4667
+    },
+    {
+     "speaker": "march",
+     "text": "Now put it on an app. Hearts ping at her phone every morning. Ping, here is a kindness. Within a week it is wallpaper.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5902
+    },
+    {
+     "speaker": "narrator",
+     "text": "Ah, the digital kingdom! A great sea of hearts on a server, rolling endlessly like a tide that never once asks whether anyone is on the beach.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 9451
+    },
+    {
+     "speaker": "narrator",
+     "text": "I name you, J, Keeper of the Box, Warden of the Paper Hearts. Your title is already written in the hearts.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7381
+    },
+    {
+     "speaker": "march",
+     "text": "J is not a warden. He would hate being called one. He would settle for a shoebox and a pen.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5284
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then let me sit in your chair while you think, March. A host needs a throne, and yours has a spring I have always admired.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 7680
+    },
+    {
+     "speaker": "march",
+     "text": "Sit in it and you will find out about the spring.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 2792
+    },
+    {
+     "speaker": "narrator",
+     "text": "The community is the true hall, March. Every hello witnessed by all, like a bell heard across the harbour. Say hello to everyone you see for the day, and let the whole town see you do it.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 12096
+    },
+    {
+     "speaker": "march",
+     "text": "Then the town counts the hellos. Leaderboards. Someone chases the most, and the hello turns into a score. Kindness on a scoreboard is just a bad game.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 2,
+     "audioMs": 7650
+    },
+    {
+     "speaker": "narrator",
+     "text": "You have found the flaw in my hall, March, and I resent you a little for it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4608
+    },
+    {
+     "speaker": "march",
+     "text": "You are right. Anyway, the routine note.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2682
+    },
+    {
+     "speaker": "march",
+     "text": "Routine says every kindness gets a slot, an alarm, a streak. Miss one and the streak breaks, and you feel robbed. The app would turn your own perfect day into a chore.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 8482
+    },
+    {
+     "speaker": "narrator",
+     "text": "A kindness scheduled like a train has lost its heart, March. Let the hour choose itself, and let the shoebox wait.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 7936
+    },
+    {
+     "speaker": "march",
+     "text": "Next part, I bring the stamp for the app, and we see whether the box survives the phone. Bring your throne, because I will be sitting in mine.",
+     "emotion": "happy",
+     "action": "point",
+     "source": 1,
+     "audioMs": 6924
+    }
+   ],
+   "part": {
+    "n": 1,
+    "of": 3
+   }
+  },
+  {
+   "id": "2026-10-08-53",
+   "title": "THE COURT OF GIANTS AND THE JAR OF CUTTINGS",
+   "startAt": "2026-10-08T11:52:31.695+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-53.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "Learning - Best Practices",
+    "The Influence Of Others"
+   ],
+   "angle": "What if I had limitless resources or time to solve this?",
+   "kind": "open",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Learning - Best Practices: Don't think that you need to learn every single thing before you even start. Just learn one thing, watch the one video, THEN APPLY IT."
+    },
+    {
+     "kind": "note",
+     "text": "The Influence Of Others: “You are the average of the five people you spend the most time with”."
+    },
+    {
+     "kind": "note",
+     "text": "The Influence Of Others: You're the average of those around you, don't associate with average people."
+    },
+    {
+     "kind": "note",
+     "text": "Learning - Best Practices: Simplicity is hacking away the unessential."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Limitless time, March! Imagine J with every hour the world can spare, learning every craft under the sun before the kettle boils. A golden cup, and the whole library poured in.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 12352
+    },
+    {
+     "speaker": "march",
+     "text": "Then he never leaves the library. The note says it plainly. Learn one thing, watch the one video, then apply it. Time was never the trouble.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 7121
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then give him a court of giants, the greatest minds of every age, gathered round his throne like lamps. Surely lamps are better than a single candle.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 9664
+    },
+    {
+     "speaker": "march",
+     "text": "Giants. Lovely. The note says you are the average of the five people you spend the most time with. So who sits beside him on a Tuesday? Giants are a lot of work to sit near.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 8382
+    },
+    {
+     "speaker": "narrator",
+     "text": "A Tuesday is a small stage, March, and a lamp can light any stage. Surround him with the grand ones and the ordinary hour becomes a coronation.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 10411
+    },
+    {
+     "speaker": "march",
+     "text": "Average people are not the problem, they are the crowd. Giants are not a fix either, they are a bigger crowd. Unlimited resources buy you a bigger crowd, not a better one.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 2,
+     "audioMs": 8461
+    },
+    {
+     "speaker": "narrator",
+     "text": "But the court does one thing your Tuesday cannot, March. A giant at the table sees the step J cannot see from the floor, and shows him where to put his foot next.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0,
+     "audioMs": 10283
+    },
+    {
+     "speaker": "march",
+     "text": "Fine, you win. Now the picture for the run.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 2664
+    },
+    {
+     "speaker": "march",
+     "text": "Here it is. A jam jar of cuttings on a windowsill, each stem rooting in the water beside the others. None of them roots alone, and none roots in a jar of weeds.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 3,
+     "audioMs": 8010
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then J shall be Duke of the Five Closest Friends, and I shall take your chair while you admire your jar.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6464
+    },
+    {
+     "speaker": "march",
+     "text": "He would hate a duke. And that chair is my spot, so put the cushions back.",
+     "emotion": "dry",
+     "action": "facepalm",
+     "source": 1,
+     "audioMs": 4090
+    },
+    {
+     "speaker": "march",
+     "text": "There is one rule in my own design I keep to myself. It is only mine, and I am not saying what it is.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3,
+     "audioMs": 6109
+    },
+    {
+     "speaker": "narrator",
+     "text": "A secret in the jar, March? How delicious. Then the jar holds the true legend.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5781
+    },
+    {
+     "speaker": "march",
+     "text": "No. The jar holds cuttings. Next part, we put it in a crowded window and see who roots.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 3,
+     "audioMs": 5259
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then I shall wait by the window, dear March, and watch your cuttings drown in the crowd.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2,
+     "audioMs": 5269
+    },
+    {
+     "speaker": "march",
+     "text": "Sit down and watch them root.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 2257
+    }
+   ],
+   "part": {
+    "n": 1,
+    "of": 5
+   }
+  },
+  {
+   "id": "2026-10-08-54",
+   "title": "THE SMOKED LENS ON THE HALL TABLE",
+   "startAt": "2026-10-08T11:56:03.188+07:00",
+   "audio": "audio/2026-10-08/2026-10-08-54.mp3",
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 200,
+    "holdMs": 600
+   },
+   "notes": [
+    "Everything Is Subjective"
+   ],
+   "angle": "What if this problem existed in an entirely different industry?",
+   "kind": "open",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Everything is Subjective: Some call it black. Others call it white. Everything is subjective."
+    },
+    {
+     "kind": "note",
+     "text": "Everything is Subjective: Our attitude is like the lens in which we see the world through. A different lens effectively changes your entire reality."
+    },
+    {
+     "kind": "note",
+     "text": "Everything is Subjective: Even SCIENTIFIC theories we as an entire species currently believes to be fact may one day in the future be proven false."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "march",
+     "text": "J's note says some call it black, others call it white, and everything is subjective. Lovely. Now take it to a tailor's shop.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 6776
+    },
+    {
+     "speaker": "narrator",
+     "text": "A tailor's shop! Where the sleeve is measured by destiny and the cut speaks the eternal truth. Black, white, and a perfect sleeve between them.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 9856
+    },
+    {
+     "speaker": "march",
+     "text": "One tailor says the sleeve sits too long, the other says it is perfect. Same arm, same jacket. Which one is the subjective one?",
+     "emotion": "dry",
+     "action": "point",
+     "source": 0,
+     "audioMs": 7189
+    },
+    {
+     "speaker": "narrator",
+     "text": "The one who is correct, obviously. Destiny keeps a tape measure.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0,
+     "audioMs": 4416
+    },
+    {
+     "speaker": "march",
+     "text": "Destiny keeps an opinion. Your tape measure is just a longer opinion with numbers on it.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0,
+     "audioMs": 5686
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then let a Galileo of the needle arrive, prove the old cut wrong, and be proved wrong by a boy with chalk. The note says every expert is one day proven false, and I say the chalk is always waiting.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 13355
+    },
+    {
+     "speaker": "march",
+     "text": "That is the note's whole pitch. Every expert ends up looking foolish eventually, and the sleeve does not get worse on the day it is cut.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2,
+     "audioMs": 7159
+    },
+    {
+     "speaker": "narrator",
+     "text": "On the day! A truth that expires is not truth at all, it is weather.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4693
+    },
+    {
+     "speaker": "march",
+     "text": "Weather is fine. You wear a coat in weather, and nobody calls the rain a liar.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 2,
+     "audioMs": 4498
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then J's coat is subjective and his sleeves are doomed. Our attitude is the lens, and I offer him a title to match: Sovereign of the Smoked Lens, keeper of every shade of grey.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 12672
+    },
+    {
+     "speaker": "march",
+     "text": "He would print that on a sticker and stick it on the bin. But the lens bit is fair, I'll give you that.",
+     "emotion": "dry",
+     "action": "point",
+     "source": 1,
+     "audioMs": 5401
+    },
+    {
+     "speaker": "march",
+     "text": "Here's the picture for this run. A pair of spectacles on the hall table, one lens clear and one smoked, both looking at the same bench.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 7100
+    },
+    {
+     "speaker": "march",
+     "text": "Let me try it on myself. If I think a sleeve is too long and the tailor thinks it is perfect, I'm not wrong, I'm just standing at a different counter.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 7441
+    },
+    {
+     "speaker": "narrator",
+     "text": "Ah, March tries on the lens! And under that cloth you have hidden something. Is it a sleeve? A rule? A small, sly, glowing rule?",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 1,
+     "audioMs": 9237
+    },
+    {
+     "speaker": "march",
+     "text": "You're warm. Save the rest for later in the run.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 2875
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then I shall wait, dear one, and watch the spectacles on the hall table explain the whole matter.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1,
+     "audioMs": 6315
+    },
+    {
+     "speaker": "march",
+     "text": "Sit down, put the sovereign on the bin, and wait for the crowd.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1,
+     "audioMs": 3538
+    }
+   ],
+   "part": {
+    "n": 1,
+    "of": 3
+   }
+  }
+ ]
+}

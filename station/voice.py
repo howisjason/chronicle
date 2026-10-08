@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """voice.py: turns a day's chapters into one MP3 per segment.
 
-Usage: python3 station/voice.py day/<date>.json [--budget SECONDS]
-       VOICE_BACKEND=tone python3 station/voice.py day/<date>.json   (test stand-in, no model)
+Usage: python3 station/voice.py day/<date>/<HH>.json [--budget SECONDS]
+       VOICE_BACKEND=tone python3 station/voice.py day/<date>/<HH>.json   (test stand-in, no model)
 
 Segments that already have audio are skipped, and --budget stops after that
 many seconds of work (the cloud's one-command wall is ten minutes), so the
 station runs this in a loop until it prints "0 left". When every segment is
-voiced, startAt is re-chained from the real lengths: the first segment keeps
-its start, each later one starts when the one before it ends.
+voiced, startAt is re-chained from the real lengths: each segment starts when
+the one before it ends, and for the first segment of an hour file "the one
+before" is the last scene of the previous hour's file (across midnight too).
 
 For each segment it speaks every line (narrator and March have their own Kokoro
 voice; the model is the ONNX build fetched by setup.sh from a GitHub release,
@@ -18,7 +19,7 @@ and writes back the segment's `audio` path and each line's real `audioMs`.
 Because the gaps are baked into the MP3, the page only has to start the file at
 the segment's offset on the clock.
 """
-import json, math, os, subprocess, sys, tempfile, time, wave
+import json, math, os, re, subprocess, sys, tempfile, time, wave
 from datetime import datetime, timedelta, timezone
 import numpy as np
 
@@ -84,19 +85,37 @@ def write_mp3(samples, path):
 
 
 def segment_ms(seg):
+    # An unvoiced line counts at 16 characters a second, as timing.js and the
+    # station do, so a scene before this file that was never voiced still chains.
     gaps = {**DEFAULT_GAPS, **(seg.get('gaps') or {})}
     n = len(seg['lines'])
-    return gaps['firstLeadMs'] + gaps['leadMs'] * (n - 1) + gaps['holdMs'] * n + sum(l['audioMs'] for l in seg['lines'])
+    return gaps['firstLeadMs'] + gaps['leadMs'] * (n - 1) + gaps['holdMs'] * n + sum(l.get('audioMs', len(l['text']) * 1000 // 16) for l in seg['lines'])
 
 
-def chain_starts(day, newly):
+def previous_end(path):
+    """When the last scene of the hour file before this one ends, or None. The
+    transcripts are one file per hour (day/<date>/<HH>.json, 8 Oct 2026), so the
+    first scene of a new hour chains on from the previous file. A gap of an
+    hour or more means the previous scene ended long ago, which None covers."""
+    m = re.search(r'(\d{4}-\d{2}-\d{2})[/\\](\d{2})\.json$', path)
+    if not m:
+        return None
+    before = datetime.fromisoformat(f'{m[1]}T{m[2]}:00:00+07:00') - timedelta(hours=1)
+    p = os.path.join(os.path.dirname(os.path.dirname(path)), f'{before:%Y-%m-%d}', f'{before:%H}.json')
+    segs = json.load(open(p))['segments'] if os.path.exists(p) else []
+    if not segs:
+        return None
+    return datetime.fromisoformat(segs[-1]['startAt']) + timedelta(milliseconds=segment_ms(segs[-1]))
+
+
+def chain_starts(day, newly, prev_end=None):
     """Segments voiced in earlier runs keep their start. A segment voiced in THIS
-    run starts when the one before it ends, or, if that is already past, thirty
-    seconds from now, so the station can run live: always a little ahead of
-    the clock, never writing into the past."""
+    run starts when the one before it ends (prev_end seeds that from the
+    previous hour's file), or, if that is already past, thirty seconds from now,
+    so the station can run live: always a little ahead of the clock, never
+    writing into the past."""
     tz = timezone(timedelta(hours=7))
     now = datetime.now(tz)
-    prev_end = None
     for seg in day['segments']:
         if seg['id'] in newly:
             start = datetime.fromisoformat(seg['startAt']) if prev_end is None else prev_end
@@ -140,7 +159,7 @@ def main(path, budget=None):
         open(path, 'a').write('\n')
     left = sum(1 for s in day['segments'] if not s.get('audio'))
     if newly:
-        chain_starts(day, newly)
+        chain_starts(day, newly, previous_end(path))
         json.dump(day, open(path, 'w'), indent=2, ensure_ascii=False)
         open(path, 'a').write('\n')
         last = day['segments'][-1]
@@ -155,5 +174,5 @@ if __name__ == '__main__':
     if '--budget' in args:
         i = args.index('--budget'); budget = float(args[i + 1]); del args[i:i + 2]
     if len(args) != 1:
-        sys.exit('usage: python3 station/voice.py day/<date>.json [--budget SECONDS]')
+        sys.exit('usage: python3 station/voice.py day/<date>/<HH>.json [--budget SECONDS]')
     main(args[0], budget)

@@ -2,7 +2,7 @@
 """usage.py: today's plan usage by the station, from its own log (inbox/costs.tsv).
 The figure is Claude Code's API-equivalent cost of each call, the closest number
 a script can read to what the calls take from his plan. Used by the button."""
-import json, os
+import glob, json, os
 from datetime import datetime, timedelta, timezone
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TZ = timezone(timedelta(hours=7))
@@ -24,10 +24,10 @@ def line():
         cap = float(open(os.path.join(ROOT, 'inbox', 'daily-cap.txt')).read().strip())
     except (FileNotFoundError, ValueError):
         cap = 2.00
+    # Today's scenes live in one file per hour, day/<date>/<HH>.json (8 Oct 2026).
     scenes = 0
-    d = os.path.join(ROOT, 'day', f'{day}.json')
-    if os.path.exists(d):
-        scenes = sum(1 for s in json.load(open(d))['segments'] if s.get('notes'))
+    for p in glob.glob(os.path.join(ROOT, 'day', day, '[0-2][0-9].json')):
+        scenes += sum(1 for s in json.load(open(p))['segments'] if s.get('notes'))
     return f'Today: ${spent:.2f} of the ${cap:.2f} daily cap, {scenes} scenes from the notes.'
 
 
