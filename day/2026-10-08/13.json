@@ -1,0 +1,195 @@
+{
+  "date": "2026-10-08",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-08-13-01",
+      "title": "THE STARTER THAT TAKES ITS SOUR",
+      "startAt": "2026-10-08T13:14:39.208+07:00",
+      "audio": "audio/2026-10-08/2026-10-08-13-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 200,
+        "holdMs": 600
+      },
+      "notes": [
+        "The Influence Of Others",
+        "It's Never Too Late To Change"
+      ],
+      "angle": "What if this problem existed in an entirely different industry?",
+      "kind": "verdict",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: You are the average of the five people you spend the most time with"
+        },
+        {
+          "kind": "note",
+          "text": "It's Never Too Late To Change: No matter how old you are, it's never too late to make a change in your life."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: Be with people who see the world in the bigger picture so that THAT becomes your normal frame of mind."
+        },
+        {
+          "kind": "note",
+          "text": "The Choice To Change Is Ours: Either curse the world for being unfair or do all that you can to improve yourself, no matter how little."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: Live among your fellow freaks, where obsession is normal and ambition is rewarded."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Last part. Influence and change, in one jar. Go on, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3733
+        },
+        {
+          "speaker": "narrator",
+          "text": "A sourdough starter, March. It takes its sour from whoever feeds it, and those five people become its whole flavour.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7403
+        },
+        {
+          "speaker": "march",
+          "text": "Bakery now. Fine, we're in a bakery.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2559
+        },
+        {
+          "speaker": "narrator",
+          "text": "And a starter that was sour yesterday can be fed fresh today. It is never too late for the dough.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6251
+        },
+        {
+          "speaker": "march",
+          "text": "Fresh feed doesn't rise if the jar still sits on the windowsill next to the bins.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4731
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then move the jar. Keep it among bakers who bake before dawn, and rising becomes the normal frame of mind.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7488
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Good one. Moving the jar is the easy half.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3020
+        },
+        {
+          "speaker": "narrator",
+          "text": "The hard half is choosing to feed it at all, rather than cursing the windowsill for being unfair.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5888
+        },
+        {
+          "speaker": "march",
+          "text": "Curse the windowsill, feed the starter. Right, and the bakery isn't fair either.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 4470
+        },
+        {
+          "speaker": "narrator",
+          "text": "Live among your fellow freaks, March. Bakers obsessed with rising dough are normal there, and ambition is rewarded.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8128
+        },
+        {
+          "speaker": "march",
+          "text": "Obsessed bakers get up in the dark. Nobody mentions that part.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 4,
+          "audioMs": 3949
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ambition gets rewarded, March. The bread is the reward.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4139
+        },
+        {
+          "speaker": "march",
+          "text": "Verdict. You were right that the jar matters. I was right that the feeding does the work.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4922
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then we agree on the crust, March. Allow me to sit in your chair and deliver the verdict properly.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6379
+        },
+        {
+          "speaker": "march",
+          "text": "Sit in that and you'll go flat by lunch.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2641
+        },
+        {
+          "speaker": "march",
+          "text": "And Warden of the Graft-Yard? Pick a title that doesn't smell of yeast.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3978
+        },
+        {
+          "speaker": "narrator",
+          "text": "Destiny has a smell, March, and it is yeast. Sit with it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3968
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, Your Routine Is Top Priority. Bring flour.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3415
+        }
+      ],
+      "part": {
+        "n": 3,
+        "of": 3
+      }
+    }
+  ]
+}
