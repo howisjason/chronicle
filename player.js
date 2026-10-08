@@ -7,6 +7,7 @@
 import { locate, hourFile, HOUR } from './timing.js';
 import { drawStage } from './people.js';
 import { setupClip } from './clip.js';
+import { setupPanels, updatePanels } from './panels.js';
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
@@ -130,7 +131,7 @@ function startSound() {
   mix.connect(audioCtx.destination);
   audioCtx.createMediaElementSource(voice).connect(mix);
   voice.play().catch(() => {});
-  $('sound').hidden = true;
+  $('power').hidden = true; // the "Turn on the TV" cover over the screen
 }
 $('sound').addEventListener('click', startSound);
 
@@ -162,6 +163,7 @@ function tick() {
   $('caption').textContent = marchLine ? '' : v.shown;
   $('caption').dataset.on = marchLine ? '0' : '1';
   paintStage(v);
+  updatePanels(v, day, t);
   const srcs = segment.sources || [];
   // Public sources show as they are; a day-note claim is marked as coming
   // from his own notes of the day, which are not public (the plan, step 6).
@@ -212,6 +214,7 @@ function planClip() {
   return { startMs, endMs, runs, audioBase: AUDIO_BASE, viewAt: (t) => viewAt(d, t) };
 }
 setupClip({ button: $('clip'), out: $('clip-out'), plan: planClip });
+setupPanels();
 
 function escapeHtml(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]); }
 
