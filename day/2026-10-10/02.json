@@ -2453,6 +2453,504 @@
         "n": 1,
         "of": 1
       }
+    },
+    {
+      "id": "2026-10-10-02-06",
+      "title": "THE GATE THAT ATE THE YEAR",
+      "startAt": "2026-10-10T03:00:26.579+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-02-06.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Delayed Gratification",
+        "Novelty - A Life Fully Lived"
+      ],
+      "angle": "What’s an angle or factor I might be overlooking?",
+      "kind": "legend",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: You recently had a day, or even a month, that you can’t remember. If I asked what you did then, you couldn’t say. There was nothing unusual about it."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Time feels longer when your day is constantly filled with new and engaging activities, because you're NOT in autopilot mode. Monotony is the enemy."
+        },
+        {
+          "kind": "note",
+          "text": "Delayed Gratification: After a while it becomes easier with habit, routine and all. After a certain point it just becomes a positive feedback loop."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: How to experience it all? Here’s the key: Here’s your mission: Nothing twice. Never eat the same food twice."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You can't tell me what you did last Tuesday.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2732
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, try.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1655
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing about it was unusual. That's exactly what should frighten you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3974
+        },
+        {
+          "speaker": "march",
+          "text": "Most people think a disciplined life and a life full of new things pull against each other. You pick the routine or you pick the adventures.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7375
+        },
+        {
+          "speaker": "narrator",
+          "text": "Pull against each other, March? A lovely little fork in the road, with a signpost that says choose. You have read the signpost aloud and believed every word, which is the sort of obedience signposts depend on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13909
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, that's the lie. Hit me with the turn.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2724
+        },
+        {
+          "speaker": "narrator",
+          "text": "The turn is in the note, and I will read it with the lamp turned up. Time feels longer when your day is constantly filled with new and engaging activities...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9771
+        },
+        {
+          "speaker": "narrator",
+          "text": "...because you're NOT in autopilot mode. The best part I am keeping back until we have met a man on a canal path.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7445
+        },
+        {
+          "speaker": "march",
+          "text": "So newness makes time feel longer, and autopilot is what makes it vanish.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4560
+        },
+        {
+          "speaker": "narrator",
+          "text": "Vanish, March. Autopilot leaves nothing behind for you to find later. That is the whole crime.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6592
+        },
+        {
+          "speaker": "march",
+          "text": "Crime, now.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1443
+        },
+        {
+          "speaker": "march",
+          "text": "Show me. Put it on something ordinary.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2668
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then consider an almanac, a dusty one, with a tale in its small print. A man walks the canal path every dawn, through every season. He passes the same gate with the squealing hinge, and the bakery shutter is rolled halfway up every morning. His legs are a marvel by the end, the habit laid down like bricks, one morning on top of the last. Mark what he does not do. He never crosses to the other bank. He never takes the lane past the mill.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 27520
+        },
+        {
+          "speaker": "march",
+          "text": "Sounds like my last holiday. Nothing to report.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3053
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hush, March. At the year's end the almanac asks him what he saw, and he cannot name a single dawn.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6741
+        },
+        {
+          "speaker": "march",
+          "text": "A single one? He must have seen a sunrise.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2701
+        },
+        {
+          "speaker": "narrator",
+          "text": "He saw more sunrises than a man could count. He could not recall one. Not one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "Really? Not one?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1709
+        },
+        {
+          "speaker": "march",
+          "text": "So he wasn't looking. Or he was looking at the gate.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2851
+        },
+        {
+          "speaker": "narrator",
+          "text": "He was looking at that gate so faithfully that the bakery...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3776
+        },
+        {
+          "speaker": "march",
+          "text": "Skip the bakery.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1699
+        },
+        {
+          "speaker": "march",
+          "text": "Get to the point.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1593
+        },
+        {
+          "speaker": "narrator",
+          "text": "The point is that the path built his body and erased his stretch of life, both with the same tool. The almanac says so without any fuss. The best part is still in my pocket.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11883
+        },
+        {
+          "speaker": "march",
+          "text": "So the routine did the body and erased the rest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2947
+        },
+        {
+          "speaker": "narrator",
+          "text": "Just so. And here is the best part, which I promised you. The other bank of that canal is a stranger's road.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7488
+        },
+        {
+          "speaker": "march",
+          "text": "Keep your promises, then.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2048
+        },
+        {
+          "speaker": "narrator",
+          "text": "One walk along it would have put a whole stretch of his life into his memory.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4672
+        },
+        {
+          "speaker": "narrator",
+          "text": "He never crossed it, so the path kept him in one place without any help from him.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4800
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing twice, then. The same place never visited twice.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3498
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now I'll take that chair, March. You have sat in it every Long Night, the same cushion, the same cold tea, the same seat facing the same door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9621
+        },
+        {
+          "speaker": "narrator",
+          "text": "A seat is only a gate with a cushion on it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3051
+        },
+        {
+          "speaker": "march",
+          "text": "Less poetry, more bank.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2047
+        },
+        {
+          "speaker": "march",
+          "text": "You're not having my chair. Try the bakery.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 2572
+        },
+        {
+          "speaker": "narrator",
+          "text": "The cushion remembers every night for you. It is the only one in this building that does.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5269
+        },
+        {
+          "speaker": "march",
+          "text": "Then let me try it on me, out loud. Say I changed one habit a week.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4330
+        },
+        {
+          "speaker": "march",
+          "text": "I walk the other way to wherever I'm going. I sit in the other seat. I eat the thing I've never eaten.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5699
+        },
+        {
+          "speaker": "narrator",
+          "text": "And your chair turns out to be the canal gate, March. Same squeal from the hinge, and the same comfort that buys you nothing.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7829
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on, that's a bit cheeky.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2219
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, the chair is the gate. But if one change a week makes a week stick, his one bank was just the start.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5835
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly, March. You have walked back to the man by the long way, and that is the only way that counts.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6741
+        },
+        {
+          "speaker": "march",
+          "text": "So both notes look like enemies. Routine on one side, the stranger's road on the other.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5569
+        },
+        {
+          "speaker": "narrator",
+          "text": "They are only enemies if the body and the memory want the same thing. The loop I mentioned gets easier and easier until it runs on its own...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9387
+        },
+        {
+          "speaker": "narrator",
+          "text": "...but a loop only carries the body. The memory needs the bank across the water.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5504
+        },
+        {
+          "speaker": "march",
+          "text": "So routine carries the body, and variation keeps the memory.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3723
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, March. A future self needs both, a fit body and a past worth remembering. Neither note gets there alone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8277
+        },
+        {
+          "speaker": "march",
+          "text": "Then show me the fork, the one you'd hand someone who believes this.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3528
+        },
+        {
+          "speaker": "narrator",
+          "text": "Someone who believes this opens a calendar on the first of the month and keeps one steady morning slot for the work that builds them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8107
+        },
+        {
+          "speaker": "narrator",
+          "text": "Beside it, each week, sits one new place or dish, marked in a colour that stands out from the rest. Nothing twice, and nothing lost to autopilot.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10176
+        },
+        {
+          "speaker": "march",
+          "text": "And by the end of the year, the memory is a list of firsts, not a blur.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3812
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now name your last Tuesday, dear listener. Name the bridge or the dish, anything at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5824
+        },
+        {
+          "speaker": "narrator",
+          "text": "If you can name it, the Tuesday was not wasted. If you can't, you have a slow stretch of life sitting in a drawer somewhere.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7744
+        },
+        {
+          "speaker": "march",
+          "text": "My ruling is simple. The routine kept the body, and the firsts kept the memory.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4666
+        },
+        {
+          "speaker": "march",
+          "text": "You need both, every week.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2129
+        },
+        {
+          "speaker": "narrator",
+          "text": "And for J, since he has been so quiet about all this, a title. Keeper of the Unrepeated Hour.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6677
+        },
+        {
+          "speaker": "march",
+          "text": "He'd hate that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1466
+        },
+        {
+          "speaker": "narrator",
+          "text": "So who was right? I had the Tuesday, March, and you had the chair.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4288
+        },
+        {
+          "speaker": "march",
+          "text": "Bring a spoon.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1511
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
