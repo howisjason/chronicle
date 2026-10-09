@@ -1,4 +1,4 @@
-> **Stamped 2026-10-10 06:22 · c17ba14** — true as of this commit; anything after it is unaccounted for.
+> **Stamped 2026-10-10 06:25 · c702bf7** — true as of this commit; anything after it is unaccounted for.
 
 # HANDOFF — chronicle
 
@@ -9,6 +9,8 @@ The fifth baton. The fourth one's "one job" (the writing rebuild) is done and li
 **Nothing is due on the writing: J's call (9 Oct, 9pm) is to let it run a few days and judge it from the logged scenes** ("we don't really have to make a definitive verdict right now"). When he comes back to it, read a spread of scenes from `day/<date>/*.json` with him, and measure with the snippet in the rebuild note's section 2 (lines, words, short and long turns) plus `inbox/costs.tsv` (labels `outline`, `write#N`, `talk#N`, `mend#N`, `truth`, `repair#N`).
 
 **The two Marches are live side by side (10 Oct, 6:20am, his ask):** the old pixel March in her seat, the new per-pixel March (`march-base.js`, the human-hunt engine adopted, every wiring change named in its header) in the narrator's seat, her mouth moving on his lines. Built by an Opus builder, passed by a fresh Sonnet judge, seen on the live site. Loose ends, none urgent: her mouth shapes on narrator lines vary only a little; the narrator's cast-card text still describes the old bearded storyteller; draw time measured only on the Mac (about 2.5 ms), never on a phone; after a seek her pose settles from a slightly different spot than a continuous run (harmless). Its screenshots sit untracked in `design/two-marches/`.
+
+**J's read of the two Marches (10 Oct, 6:23am):** "it does look a little bit janky right now", which he puts down to the page, the set and the layout all being made for the pixel sprites. He thinks it "pretty likely" he goes with the new models, and then the page's look changes with them, so nothing pixel-shaped should be polished now. **The next session opens with the clip scrubber** (his word; spec in the rebuild note, section 7), then the read-through of the logged scenes. He closed the session there: a side project, not to be overextended while real work waits.
 
 ## What changed on 9 Oct, ranked
 
@@ -27,7 +29,7 @@ Spend today: `python3 mac/usage.py`. Clock on: `launchctl list | grep chronicle`
 
 ## Open, in the order worth doing
 
-1. What he makes of the two Marches (his eyes). 2. The clip scrubber (page only, rebuild note section 7). 3. The schedule question: rotate the shows or keep the clock (his answer; rebuild note section 8). 4. The making pace: about 9 minutes of work buys about 6 minutes of show, so a long run shows replays between new scenes; if he minds, the cures are fewer dropped picks or writing two picks at once. 5. The clip on his phone (his to try). 6. The untracked `design/` files can be deleted (nothing reads them). Parked by his word: viewer questions on air; the journey (re-ask after about a week of the vault-only show).
+1. The clip scrubber (page only, rebuild note section 7; his pick for next time). 2. When he chooses the new models for good: restyle the page and the set to match them, and build the narrator (or a second host) on the base. 3. The schedule question: rotate the shows or keep the clock (his answer; rebuild note section 8). 4. The making pace: about 9 minutes of work buys about 6 minutes of show, so a long run shows replays between new scenes; if he minds, the cures are fewer dropped picks or writing two picks at once. 5. The clip on his phone (his to try). 6. The untracked `design/` files can be deleted (nothing reads them). Parked by his word: viewer questions on air; the journey (re-ask after about a week of the vault-only show).
 
 ## The one thing worth carrying forward
 
