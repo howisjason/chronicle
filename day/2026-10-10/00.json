@@ -2906,6 +2906,448 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-00-08",
+      "title": "THE MOUNTAIN WITH A MAST ON IT",
+      "startAt": "2026-10-10T01:03:26.368+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-00-08.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Focus On One Thing (No Shiny Object Syndrome)",
+        "Embodiment - Be Who You Strive To Be"
+      ],
+      "angle": "What would happen if this idea were merged with another one of my notes?",
+      "kind": "quick_fire",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Focus On One Thing: Do one thing. Do it well. Do it for a long time. That is how to become skilled and successful."
+        },
+        {
+          "kind": "note",
+          "text": "Focus On One Thing: Your destination is a huge mountain peak on the horizon. You can see it from everywhere. Yes to that mountain, and no to everything else."
+        },
+        {
+          "kind": "note",
+          "text": "Embodiment: Mental patients were asked to fill in a personality test acting as if they were a \"typical, well-adjusted person\"."
+        },
+        {
+          "kind": "note",
+          "text": "Focus On One Thing: Any business model works. It's not the model, it's the person behind the model that determines success."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Somewhere an advert promises the one trick that changes your whole working life. Before the jingle ends, you've opened a tab.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6948
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the eager man of new ideas. Every morning a fresh opportunity lands on the step like the milk, and a sensible soul seizes it before the wind changes. Find the right door and run through it at once.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13781
+        },
+        {
+          "speaker": "march",
+          "text": "That's the comfortable lie, isn't it? Jump on the good one fast and you win.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4258
+        },
+        {
+          "speaker": "narrator",
+          "text": "Don't you dare agree with it yet. I agree with nothing before I've read it, March.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5099
+        },
+        {
+          "speaker": "march",
+          "text": "Charming's not a plan.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1997
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cruel, and accurate.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1536
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then hear the thing itself. The note says: “Do one thing. Do it well. Do it for a long time. That is how to become skilled and successful.” Commands stacked on the table, and no room left for the shiny thing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13909
+        },
+        {
+          "speaker": "march",
+          "text": "So the trick isn't a trick. It's sticking with one thing long enough to get decent at it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4857
+        },
+        {
+          "speaker": "narrator",
+          "text": "You've said it plainer than I would, which is an insult I shall forgive.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4629
+        },
+        {
+          "speaker": "march",
+          "text": "Test it. Say someone keeps a notebook on the windowsill with a new business model on every page, and each one is dead by the end of the week. Count the pages out loud, narrator. One per turn.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 9423
+        },
+        {
+          "speaker": "narrator",
+          "text": "One.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1067
+        },
+        {
+          "speaker": "march",
+          "text": "Go on.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1166
+        },
+        {
+          "speaker": "narrator",
+          "text": "One. And another, and one more after that...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2965
+        },
+        {
+          "speaker": "march",
+          "text": "That's not a count, that's a sigh with ink on it. Keep going.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3519
+        },
+        {
+          "speaker": "narrator",
+          "text": "I decline to say the total aloud. It is embarrassing, March, and I am far too well bred.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6400
+        },
+        {
+          "speaker": "march",
+          "text": "Every page got a bright start and a quiet ending. Nobody stayed long enough to find out what the model could do.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6352
+        },
+        {
+          "speaker": "narrator",
+          "text": "The model was never the trouble. The note is quite clear: “Any business model works.” Then the person behind it decides.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8299
+        },
+        {
+          "speaker": "march",
+          "text": "So the page isn't the problem. The person holding the pen is.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3661
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now look out of that window, the very one you're standing at. Yonder, the hill. A mountain, March, the note's own mountain.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8085
+        },
+        {
+          "speaker": "narrator",
+          "text": "“Your destination is a huge mountain peak on the horizon. You can see it from everywhere. Yes to that mountain, and no to everything else.”",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9195
+        },
+        {
+          "speaker": "march",
+          "text": "Any hill with a radio mast on it, narrator, was there before the note. The hill didn't read the note.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5630
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the mast is a sign. Sent to whoever happens to be looking, and I, ever the looker, am looking.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6528
+        },
+        {
+          "speaker": "march",
+          "text": "You're being very unbearable.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2186
+        },
+        {
+          "speaker": "narrator",
+          "text": "Thank you, I try.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1515
+        },
+        {
+          "speaker": "narrator",
+          "text": "I'll give you the hard part, since you're so keen on plain truths. A sign is only a sign if you stay put long enough to see it again. Most people see it once, from a moving car, and call it destiny. Then they drive on...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14400
+        },
+        {
+          "speaker": "march",
+          "text": "...and the hill goes unvisited for years. There's the storyteller admitting the hill is a hill. Write that down.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5927
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am writing nothing. It's late and I am tired of biros.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4373
+        },
+        {
+          "speaker": "march",
+          "text": "Bring in the other note, the embodiment one. “Mental patients were asked to fill in a personality test acting as if they were a “typical, well-adjusted person”.” Then they started feeling it.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 9572
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the acting turned into feeling. Pretend long enough, March, and the feeling trots along behind you like a dog that was never called.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8789
+        },
+        {
+          "speaker": "march",
+          "text": "So the mountain's not a task list. It's who you've got to be to keep walking at it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4676
+        },
+        {
+          "speaker": "narrator",
+          "text": "The identity walks. The calendar merely keeps the record of the walk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4437
+        },
+        {
+          "speaker": "march",
+          "text": "Here's where they cross. Focus without the embodiment is willpower, gone by Thursday.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 4887
+        },
+        {
+          "speaker": "march",
+          "text": "Embodiment without focus is pretending. A well-adjusted person who never finishes a single thing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6307
+        },
+        {
+          "speaker": "narrator",
+          "text": "Both notes, and one crossing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2347
+        },
+        {
+          "speaker": "narrator",
+          "text": "The mountain needs a walker, and the walker needs a mountain, or he is merely a fellow exercising in a field.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6955
+        },
+        {
+          "speaker": "march",
+          "text": "Neither note shows that alone. Focus by itself is willpower. Embodiment by itself is a costume.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6096
+        },
+        {
+          "speaker": "narrator",
+          "text": "A costume with a mountain painted on the back of it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3264
+        },
+        {
+          "speaker": "march",
+          "text": "Showing off again.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1744
+        },
+        {
+          "speaker": "march",
+          "text": "Someone who believes this keeps one project on the shelf. Every new offer gets one question: does it move me toward the mountain, or away? They say no far more often than they expect to. Each no comes easier, because by then they've started to look like the one who stays.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12573
+        },
+        {
+          "speaker": "narrator",
+          "text": "You've built a whole fork out of a shelf, March. I am impressed.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4032
+        },
+        {
+          "speaker": "march",
+          "text": "Just take the compliment, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2447
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I'll take it, and I'll stop complaining about the stool. Mostly.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4523
+        },
+        {
+          "speaker": "march",
+          "text": "Mostly's a start. And don't ask me the score, because I keep it to myself.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4300
+        },
+        {
+          "speaker": "narrator",
+          "text": "I wouldn't dream of asking. I shall simply note that you keep one, the way a dog keeps a bone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6336
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then here is my pick for the one thing, March. The tin. The open one on the windowsill, and I shall stay devoted to it until I'm grey.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9003
+        },
+        {
+          "speaker": "march",
+          "text": "The tin was the one thing all along, narrator. You just had to stop calling it a kingdom.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5091
+        },
+        {
+          "speaker": "narrator",
+          "text": "A kingdom reduced to a biscuit tin. I am wounded, and devoted.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4565
+        },
+        {
+          "speaker": "march",
+          "text": "You keep Warden of the Open Tin. Keeper stays with the hinge oiler.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4118
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the stool and I are reconciled, for tonight.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3307
+        },
+        {
+          "speaker": "march",
+          "text": "It's gone past midnight, so put the kettle on and bring the tin. Up next, the other half of these notes: the one about becoming the person before the picture arrives.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8098
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
