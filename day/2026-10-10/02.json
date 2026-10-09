@@ -1,0 +1,420 @@
+{
+  "date": "2026-10-10",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-10-02-01",
+      "title": "THE MIRROR THAT ONLY HAS NOW",
+      "startAt": "2026-10-10T02:14:21.553+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-02-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Reality Transurfing",
+        "The Present Moment Is All That Exists"
+      ],
+      "angle": "Simplify this concept so a five-year-old could grasp the basic principle. What is the absolute essence?",
+      "kind": "straight",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: The world is simply a mirror that reflects your relationship to it."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: If your soul sings in the rain and splashes in the puddles, even when the weather is bad, the layer of your world will be filled with constant celebration."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: Time exists only as the present, so to master time is to master the present."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You walk into a room that feels cold. You knew it would be cold before anyone spoke. You'd already decided it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5815
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the chamber that obeys the traveller's expectation. The cold heart walks in and the walls shiver right on cue. I have watched it in a hundred inns.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10453
+        },
+        {
+          "speaker": "march",
+          "text": "A hundred inns.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1679
+        },
+        {
+          "speaker": "march",
+          "text": "Keep it to the one room, narrator. And keep the fire.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3028
+        },
+        {
+          "speaker": "narrator",
+          "text": "The one room, then. But mark the lie that hides behind it. Most people believe the world simply happens to them, and that life truly begins later, once the weather turns and things settle...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12373
+        },
+        {
+          "speaker": "march",
+          "text": "...calm down. So the lie is that life starts when things calm down. Lovely lie for a cold morning, I'll admit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6186
+        },
+        {
+          "speaker": "narrator",
+          "text": "Take the claim as the note puts it. \"The world is simply a mirror that reflects your relationship to it.\"",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6741
+        },
+        {
+          "speaker": "march",
+          "text": "So the room is fine and my attitude is the chill. The room just holds the mirror up to it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5420
+        },
+        {
+          "speaker": "narrator",
+          "text": "I say the walls show back what you carry into them. And the mirror has one trick more, March. It can only show what stands before it, which is this moment and nothing else. The best of that I shall keep for later, and you may sulk about it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14763
+        },
+        {
+          "speaker": "march",
+          "text": "You're holding something back. I can hear it sitting in your throat.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3437
+        },
+        {
+          "speaker": "narrator",
+          "text": "The best part is held back, as every good storyteller holds it. You shall have it when I am ready.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6443
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Test it on a Tuesday. A bakery counter. A woman comes in grumpy and says good morning as if it were an insult.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6646
+        },
+        {
+          "speaker": "march",
+          "text": "The girl behind the till says good morning back, and it comes out just as grumpy. Sharp as a thrown ball.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5991
+        },
+        {
+          "speaker": "narrator",
+          "text": "It returns the ball exactly as it was thrown, with the same spin on it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4715
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Here's the plain bit. The grumpiness went out first. The mirror only sent it home.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4997
+        },
+        {
+          "speaker": "narrator",
+          "text": "Note the order, March. The grumpiness is sent first, and the glass is only the messenger.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5888
+        },
+        {
+          "speaker": "march",
+          "text": "Then the woman could have sent a kind one, and the till girl would have sent a kind one back. Same counter, same bread.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5817
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, and the reflection would have been warm, and the bread would have tasted of it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4565
+        },
+        {
+          "speaker": "march",
+          "text": "Bread's still bread.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1730
+        },
+        {
+          "speaker": "march",
+          "text": "Bread doesn't taste of moods, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2682
+        },
+        {
+          "speaker": "narrator",
+          "text": "Bread tastes of the hand that kneads it, the old books say, and of the heart that stood waiting over it. Before the bread, though, let me offer J a gift. I name him Sovereign of the Kettle Hour, and he may wear it while the water boils.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15275
+        },
+        {
+          "speaker": "march",
+          "text": "He doesn't need a title for boiling water. Put it down.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3363
+        },
+        {
+          "speaker": "march",
+          "text": "Another one for my scoreboard, by the way. Arguments won. Bread, kettle, the lot.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4835
+        },
+        {
+          "speaker": "narrator",
+          "text": "Another win for the tally, and I am sorely put out. Truly, I sulk. Counting wins is the loneliest of pleasures, and you have it all to yourself.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9920
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then consider the rain. If your soul sings in the rain and splashes in the puddles, even when the weather is bad, the layer of your world will be filled with constant celebration.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11349
+        },
+        {
+          "speaker": "march",
+          "text": "Ha, fair enough.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1681
+        },
+        {
+          "speaker": "narrator",
+          "text": "Imagine the soul leaping into the puddle, boots and all, the whole street turning to gold.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5781
+        },
+        {
+          "speaker": "march",
+          "text": "Umbrella, narrator. Back under the umbrella.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2770
+        },
+        {
+          "speaker": "narrator",
+          "text": "The umbrella is a small thing to a singing soul.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3413
+        },
+        {
+          "speaker": "march",
+          "text": "The puddle matters, though. You can only splash in the puddle that's there right now. Yesterday's has dried up, and tomorrow's hasn't been made yet.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7268
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the singing can only happen now. The puddle insists on it, the rascal.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4971
+        },
+        {
+          "speaker": "march",
+          "text": "Rascal, yes.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1635
+        },
+        {
+          "speaker": "march",
+          "text": "That's the bit I wanted. The singing happens now or it doesn't happen at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4309
+        },
+        {
+          "speaker": "march",
+          "text": "Now the notes meet. The first says the mirror shows back what you carry in. The other says time reaches you only as the present.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6632
+        },
+        {
+          "speaker": "march",
+          "text": "So the mirror can reflect only what you bring in this moment. A mood set aside for later has nothing to reflect yet.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6719
+        },
+        {
+          "speaker": "narrator",
+          "text": "The last note says it plainly. Time exists only as the present, so to master time is to master the present. Then the glass and the present are one arrangement, and the arrangement is grand.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12843
+        },
+        {
+          "speaker": "march",
+          "text": "Keep it small, narrator. A mood can't be fixed for later and then sent back to you on the day.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5203
+        },
+        {
+          "speaker": "narrator",
+          "text": "The past is history, and the future's a mystery. So the only mirror in the room is the one held up in front of you now.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7659
+        },
+        {
+          "speaker": "march",
+          "text": "Right. So for a little one, the whole thing is this. The mirror only gives back what you're holding right now.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5478
+        },
+        {
+          "speaker": "march",
+          "text": "Now picture a pair of people at that same counter. One says the kind word right now and expects a kind word back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6581
+        },
+        {
+          "speaker": "march",
+          "text": "The other folds the kind word into a pocket and says it will come out once the morning improves. The later never arrives, so the pocket stays full.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7714
+        },
+        {
+          "speaker": "narrator",
+          "text": "The pocketed kindness! How tragic. I shall set it to a ballad.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4352
+        },
+        {
+          "speaker": "march",
+          "text": "Don't. You'll put in verses and a chorus and it'll run an hour.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3683
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then my held-back part, and it is the stove. The chamber was lit the moment someone walked in warm. The cold was only the place waiting for a warm guest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10688
+        },
+        {
+          "speaker": "march",
+          "text": "So I was right that the room was cold to start with...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3299
+        },
+        {
+          "speaker": "narrator",
+          "text": "...and you were right about the place, March. Still, the closing bow is mine. It was warm all along, and the one who came in decided it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8981
+        },
+        {
+          "speaker": "march",
+          "text": "Up next: the rest of The Present Moment Is All That Exists, then The Influence Of Others. Bring a warm cup.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6284
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
+    }
+  ]
+}
