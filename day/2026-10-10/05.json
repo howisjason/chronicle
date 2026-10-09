@@ -1,0 +1,428 @@
+{
+  "date": "2026-10-10",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-10-05-01",
+      "title": "THE LIST THAT FACED THE MIRROR",
+      "startAt": "2026-10-10T05:09:42.970+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-05-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Any Benefit Fallacy",
+        "Reality Transurfing"
+      ],
+      "angle": "What is the fundamental problem or need that this note/idea is trying to address? Is it addressing a symptom or the root cause? (Think: Five Whys)",
+      "kind": "straight",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Any Benefit Fallacy: Just because something offers _any_ positive outcome doesn’t justify its pursuit. This trap leads to overwhelming yourself with minor tasks or routines that distract from meaningful progress."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: The world is what you think of it. The world is simply a mirror that reflects your relationship to it."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: Whatever thoughts you send out into the world will return to you like a boomerang."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You finish a Sunday with a list. Water, a walk, a desk tidied, one podcast. Every line on it is decent. Then somebody asks what you moved closer to, and nothing comes. The list just sits there like a tab left open.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10531
+        },
+        {
+          "speaker": "narrator",
+          "text": "The comfortable truth, March, is that a benefit is a benefit. Water helps the body, a walk clears the head, a tidied desk is a small defeat of disorder. Stack enough of them and life grows richer, plank on plank, a sturdy ship built one board at a time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 17877
+        },
+        {
+          "speaker": "march",
+          "text": "Plank on plank. Okay. Where's the room for the real work supposed to go, then?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4527
+        },
+        {
+          "speaker": "narrator",
+          "text": "Between the planks, surely. There is always room between the planks...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4181
+        },
+        {
+          "speaker": "march",
+          "text": "That's a gap. Not a room.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2026
+        },
+        {
+          "speaker": "narrator",
+          "text": "Our note stands against the whole ship, and it does so in a single sentence. Hear it: 'Just because something offers _any_ positive outcome doesn't justify its pursuit.' Feel the weight of that word. Any.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13504
+        },
+        {
+          "speaker": "march",
+          "text": "So a helpful thing can still be the wrong thing to spend Sunday on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3874
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite so. The trouble lives in the bargain. The best of it I am holding back, the reason the bargain fails at all. I shall open that box once the case has been tried.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11605
+        },
+        {
+          "speaker": "march",
+          "text": "Holding it back again.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1890
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Let's say.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1749
+        },
+        {
+          "speaker": "march",
+          "text": "Take a Sunday page with a heading, Good Things. A long column in green felt pen, every entry true. Narrator, you cut the entries that eat the most hours and return the least.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 9097
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cut the walk? The walk is the heart of the page.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3413
+        },
+        {
+          "speaker": "march",
+          "text": "The walk gives back more than it takes. Take a reminder that pings you to stand every hour, the kind you set once and forget. Say it fires in the middle of a sentence. By the time you've stood and sat again, the thought has gone by.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 10626
+        },
+        {
+          "speaker": "narrator",
+          "text": "How dreadfully simple. You reduce a whole life to a clock and a chair, and call the sum a method.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6400
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch. A clock and a chair.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2046
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple. It's a test. Put each cut against what the week was for. If the week was for the thing you named on Monday, the stretch doesn't get the hour.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7530
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the stretch goes, and the water stays, because water costs a glass and a minute.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5397
+        },
+        {
+          "speaker": "march",
+          "text": "The water stays because it doesn't steal the hour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3011
+        },
+        {
+          "speaker": "march",
+          "text": "That's the whole test. What it costs against what it protects.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3280
+        },
+        {
+          "speaker": "narrator",
+          "text": "I said as much in my first breath. You merely arrived by a shorter road, with less of the scenery.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6571
+        },
+        {
+          "speaker": "march",
+          "text": "You said a good habit is a good habit. Those are different sentences.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3982
+        },
+        {
+          "speaker": "narrator",
+          "text": "Consider, then, a ship on a dark coast, with a mirror bolted to the wall of its cabin.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5845
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, here we go.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1700
+        },
+        {
+          "speaker": "narrator",
+          "text": "The captain polished that glass each dawn, and one night the wind came round off the rocks, and the hull went onto them, and the captain was found still polishing the mirror as the water rose...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11925
+        },
+        {
+          "speaker": "march",
+          "text": "Stop. The note says mirror. It says nothing about a wreck. Are we doing the note or the wreck?",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 4968
+        },
+        {
+          "speaker": "narrator",
+          "text": "The wreck is in the mirror's heart, March. Every polished thing ends on the rocks.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5099
+        },
+        {
+          "speaker": "march",
+          "text": "Then let's ask the mirror. Why does the sheet exist? So it looks good. Why does it need to look good? So someone sees it. Why does seeing matter?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6394
+        },
+        {
+          "speaker": "march",
+          "text": "Why, why, why. You stop at the glass. And the glass is what the sheet was facing.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4578
+        },
+        {
+          "speaker": "narrator",
+          "text": "Our other note sets the glass out plainly: 'The world is what you think of it. The world is simply a mirror that reflects your relationship to it.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9067
+        },
+        {
+          "speaker": "march",
+          "text": "So the sheet is built to be seen, and that's why it keeps spreading.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3628
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite so. It is the wanting to be seen doing good that multiplies the entries, and the habits merely hold the wanting up.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7936
+        },
+        {
+          "speaker": "march",
+          "text": "Put them together. The fallacy says the sheet is too long. The mirror says whatever you send out comes back. A whole Sunday of small good sent to everyone returns only scatter.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 8635
+        },
+        {
+          "speaker": "narrator",
+          "text": "Scatter. A boomerang thrown in every direction at once, returning in pieces to the thrower's feet.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6165
+        },
+        {
+          "speaker": "march",
+          "text": "And neither note shows that alone. The fallacy trims the list and stops. The mirror tells you something goes out, and nothing about why.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6734
+        },
+        {
+          "speaker": "march",
+          "text": "Together they show the trap sits in the wanting, not in the habits.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3639
+        },
+        {
+          "speaker": "narrator",
+          "text": "The wanting, yes. The water is innocent. Only the watcher is guilty.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4992
+        },
+        {
+          "speaker": "march",
+          "text": "The trap is wanting to be seen drinking it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2664
+        },
+        {
+          "speaker": "march",
+          "text": "Take someone who believes only the fallacy. They trim the entries, keep the same mirror, and next week the scatter returns in a new shape.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7289
+        },
+        {
+          "speaker": "march",
+          "text": "Take someone who believes both. They keep one short page and spend the rest of the week on the single thing that page points at.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6584
+        },
+        {
+          "speaker": "narrator",
+          "text": "From the outside the one who believes both looks idle, sitting on the deck with nothing in his hands.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6293
+        },
+        {
+          "speaker": "march",
+          "text": "Idle? He's facing one thing.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2217
+        },
+        {
+          "speaker": "march",
+          "text": "That's not idle.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1749
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the planner, March? Does the green felt pen hide a clue to your locked drawer?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5056
+        },
+        {
+          "speaker": "march",
+          "text": "No. One line left standing on the page. The thing you named on Monday.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4116
+        },
+        {
+          "speaker": "narrator",
+          "text": "Which was my point all along, and you were about to let me say it properly, and then...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5248
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you're right.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1753
+        },
+        {
+          "speaker": "narrator",
+          "text": "You interrupted me. A whole sentence about the deck was forming on the page, and you cut me off at the finest line I have written all night, then call it a schedule.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9941
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, Embodiment, and the rest of Reality Transurfing. Don't get lost in the mirror.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5205
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
+    }
+  ]
+}
