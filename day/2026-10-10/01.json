@@ -1455,6 +1455,419 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-01-04",
+      "title": "THE BELL THAT WENT OFF EARLY",
+      "startAt": "2026-10-10T01:38:06.429+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-01-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Be Intentional With Your Life and Actions"
+      ],
+      "angle": "What would this idea look like if I went to its extreme? Could that open up anything interesting?",
+      "kind": "quick_fire",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: When you say you're gonna do something, you gotta follow it through."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: It does more for your self-belief to say you'll meditate for 10 minutes and actually do 10 minutes vs saying you'll do 30 minutes and only doing 20 minutes."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Every action you take should be intentional and deliberately thought out."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You set a timer for 10 minutes. You'll sit still for every one of them. Then, a few breaths in, you catch yourself half hoping the bell goes off early.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7206
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, March, you open on a bell, and I shall answer with a whole choir.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4757
+        },
+        {
+          "speaker": "narrator",
+          "text": "The common belief runs like this: living by design means every hour is booked before it arrives. Nothing left to chance. The fuller the diary, the nobler the soul. Sing it as a hymn, if you like.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13568
+        },
+        {
+          "speaker": "march",
+          "text": "So the lie is: plan every minute and you're virtuous.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3121
+        },
+        {
+          "speaker": "march",
+          "text": "Booked solid. And proud of it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2211
+        },
+        {
+          "speaker": "narrator",
+          "text": "Booked solid, and you don't dare breathe outside the lines. Now the claim, read whole: 'When you say you're gonna do something, you gotta follow it through.' Simple as that, says the note.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11563
+        },
+        {
+          "speaker": "march",
+          "text": "Don't you dare call it simple, narrator. That sentence has broken more good plans than the weather.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5522
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall hold the best part back, the comparison further down the note, until we're sat at the table. You'll want it more for waiting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8384
+        },
+        {
+          "speaker": "march",
+          "text": "So keeping a small promise to yourself counts for more than a big one you break.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4448
+        },
+        {
+          "speaker": "narrator",
+          "text": "Not counts for more. Makes your words mean anything at all. A promise you break to yourself teaches you to spend your own word cheap...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8021
+        },
+        {
+          "speaker": "march",
+          "text": "...and a cheap word buys nothing. Yes, I heard the note.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3414
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Then let's say. Kitchen clock on the wall, timer set for 10 minutes, the biscuit tin lid off beside it so I can see the lid. I write it on the sheet in pencil: 10 minutes. Then I sit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8931
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the tick, March. Put the tick beside it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2944
+        },
+        {
+          "speaker": "march",
+          "text": "Tick. In pencil. 10 minutes kept.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2425
+        },
+        {
+          "speaker": "march",
+          "text": "Beside it, the line I wrote in my head, the one nobody can see: 30 minutes, sitting like a monk until the lunch bell.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6476
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the tick is worth more than the 30 you dreamed up. The dream costs nothing and never gets sat. It's a simple sum.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8064
+        },
+        {
+          "speaker": "march",
+          "text": "Simple? It took me a whole timer to see that. Don't call it simple.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3883
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then admit I'm right about the tick.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2432
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you're right. Anyway. The timer.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2535
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here is the hard part, and I'm not going to soften it for you. Most of the 30 minutes people dream of will never be sat in.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7659
+        },
+        {
+          "speaker": "narrator",
+          "text": "The dream feels like virtue. It asks nothing of you. That is its whole trick.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5397
+        },
+        {
+          "speaker": "march",
+          "text": "So the dream is the cheap habit wearing a robe.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3053
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. Now go to the extreme, since you've been itching for it. The note says every action should be intentional and deliberately thought out. Then the nap is on the sheet, the wasted afternoon is on the sheet, the long lean against a wall with nothing to show for it. All of it timed, all of it with a purpose.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 19243
+        },
+        {
+          "speaker": "march",
+          "text": "Scheduled naps, narrator. Honestly.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 2668
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the crow on the mast is no longer a bird. It's a scheduled event with a purpose, a line item on the sheet. I shall lodge that complaint with the mast at once.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10944
+        },
+        {
+          "speaker": "march",
+          "text": "The crow has croaked at the same hour for years, narrator.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3256
+        },
+        {
+          "speaker": "march",
+          "text": "That's a habit, not a design.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2304
+        },
+        {
+          "speaker": "narrator",
+          "text": "The mast will take that poorly.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2069
+        },
+        {
+          "speaker": "march",
+          "text": "Predictable is not the same as designed. The crow keeps an appointment it never made. Nobody wrote the crow a sheet.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6374
+        },
+        {
+          "speaker": "march",
+          "text": "It's just there at the hour, every day, and nobody's ticking it off.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3625
+        },
+        {
+          "speaker": "narrator",
+          "text": "And we do much the same, March. The habit nobody chose still runs at its hour...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5483
+        },
+        {
+          "speaker": "march",
+          "text": "Don't go grand on the crow.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2130
+        },
+        {
+          "speaker": "narrator",
+          "text": "...and we call the running a plan. I'm being honest. The crow shows the difference, and that's why I came to it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6912
+        },
+        {
+          "speaker": "march",
+          "text": "So here's the fork. Same kitchen table, one page between them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3894
+        },
+        {
+          "speaker": "narrator",
+          "text": "Go on, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1259
+        },
+        {
+          "speaker": "march",
+          "text": "The first has a line for every breath. Wherever the day slipped, a line gets rubbed out, and they sit there tense, always correcting, never finished.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7318
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the other one?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1323
+        },
+        {
+          "speaker": "march",
+          "text": "The other has made a few small promises and keeps them. They sit back relaxed, because their word is already the plan. Their page has a handful of lines, and none of them is rubbed out.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8968
+        },
+        {
+          "speaker": "narrator",
+          "text": "The first one is a clerk. The other is at rest. I know which I'd rather be.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5099
+        },
+        {
+          "speaker": "march",
+          "text": "Ooh, a clerk. Harsh.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1897
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the bell. The early bell was the first broken promise, before you'd even sat down.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5161
+        },
+        {
+          "speaker": "march",
+          "text": "Half hoping was the crack.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2049
+        },
+        {
+          "speaker": "narrator",
+          "text": "Mast, lodge this: March was right about the bell. Right from the start, and I shall not hear the end of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6976
+        },
+        {
+          "speaker": "march",
+          "text": "Write it on the sheet, narrator. In pencil.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2811
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, yes. The bell went first.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2517
+        },
+        {
+          "speaker": "march",
+          "text": "Next up, Remove Negatives Over Adding More Positives and Failure Is How We Learn And Grow. Bring a rubber.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6180
+        },
+        {
+          "speaker": "narrator",
+          "text": "The crow gets the last word, as usual. It is the small hours, and the tea has gone cold again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6912
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
     }
   ]
 }
