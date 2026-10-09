@@ -1,0 +1,420 @@
+{
+  "date": "2026-10-10",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-10-04-01",
+      "title": "THE CHART THAT GOES BLANK",
+      "startAt": "2026-10-10T04:06:36.901+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-04-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Consistency Compounds Exponentially",
+        "Staying On Your Purpose"
+      ],
+      "angle": "Imagine this idea has been implemented and failed spectacularly one year from now. What are the most likely reasons for its failure? How could we mitigate those risks now?",
+      "kind": "straight",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Consistency Compounds Exponentially: Allowing your consistency to break sets you back magnitudes more than you could ever imagine."
+        },
+        {
+          "kind": "note",
+          "text": "Staying On Your Purpose: Spend at least 1 hour a day doing what you feel you're meant to do, now."
+        },
+        {
+          "kind": "note",
+          "text": "Staying On Your Purpose: Don't wait any longer."
+        },
+        {
+          "kind": "note",
+          "text": "Consistency Compounds Exponentially: Every time you choose to do something other than following your routine, you've just nipped your opportunity for compounding growth at its bud, before it's even had a chance to grow."
+        },
+        {
+          "kind": "note",
+          "text": "Staying On Your Purpose: Don't believe the myth that \"one day, things will be different\". They won't."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "In the small hours the kettle's ticking up toward the boil. Your eyes land on the mug on its tile. You'll start properly tomorrow, and the purpose note has a name for that sentence: a myth. Here it comes anyway.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 9761
+        },
+        {
+          "speaker": "march",
+          "text": "Most people think a missed day is just a missed day. One slipped session, one bad week, and the plan's still in the drawer, barely dented. I'd have believed that too.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8077
+        },
+        {
+          "speaker": "narrator",
+          "text": "Barely dented? The note hears the first crack in a dam. A slip is never only a slip, March. It is the opening, and the water does not wait for permission.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10475
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying one missed morning is how the whole plan falls over.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 4013
+        },
+        {
+          "speaker": "narrator",
+          "text": "Almost. The missed hour is only the crack. What brings the wall down is the story you tell afterward. The note puts it plainly: 'Allowing your consistency to break sets you back magnitudes more than you could ever imagine.' The best of what it says about the story I am keeping back for later.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 19243
+        },
+        {
+          "speaker": "march",
+          "text": "So the hour itself is nothing. It's what you decide the day after.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3989
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. The hour is nothing. The sum you were building is everything, and you were the one who allowed it to break.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6955
+        },
+        {
+          "speaker": "march",
+          "text": "Fair. Anyway, the mug.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1962
+        },
+        {
+          "speaker": "march",
+          "text": "Let's say it's a year from now and the plan's dead.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 2942
+        },
+        {
+          "speaker": "narrator",
+          "text": "Dead already? How swift.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2027
+        },
+        {
+          "speaker": "march",
+          "text": "Autopsy time. The routine was an hour before the kettle, set for a good morning. Then a cold morning arrives, the hour's impossible, and you stay under the blanket.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 8139
+        },
+        {
+          "speaker": "march",
+          "text": "Next day you open the chart. There's a gap in it. The streak's broken, so why bother. The kettle stays cold, and the brass key goes back in the wrong pocket.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7733
+        },
+        {
+          "speaker": "narrator",
+          "text": "Laziness, March. Plain idleness. The man simply could not be bothered.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5269
+        },
+        {
+          "speaker": "march",
+          "text": "Could he? Or did one gap make the whole plan look like a lie? From outside it's idleness. From inside it looks finished, so there's no point.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 6965
+        },
+        {
+          "speaker": "narrator",
+          "text": "A romantic reading. Lazy men have always had better stories.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4629
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Please.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1529
+        },
+        {
+          "speaker": "march",
+          "text": "So what would the stool have been that day? Not the full hour. A kettle and one try at the key. One foot, one try at the lock.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5955
+        },
+        {
+          "speaker": "narrator",
+          "text": "A pitiful gesture. A stool is no match for a streak already broken.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4992
+        },
+        {
+          "speaker": "march",
+          "text": "It's the only thing keeping the run alive.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2768
+        },
+        {
+          "speaker": "narrator",
+          "text": "Sentimental, and quite dreadful.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2261
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now, March, I must ask what you hid in the design. You keep a part of yourself out of the room. I have a theory. The moth on the lamp. You are the moth, drawn in and sure to singe. Yes?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12011
+        },
+        {
+          "speaker": "march",
+          "text": "No, the moth is nowhere near...",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 1,
+          "audioMs": 2404
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the loose coat-hook screw. You are that screw, always working free of the wall just when...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5952
+        },
+        {
+          "speaker": "march",
+          "text": "Wrong. And you're hunting for a rule.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2403
+        },
+        {
+          "speaker": "narrator",
+          "text": "The dimmer, then. A secret switch that lowers you when no one is looking.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4779
+        },
+        {
+          "speaker": "march",
+          "text": "Nope. You're enjoying this far too much.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2595
+        },
+        {
+          "speaker": "narrator",
+          "text": "Enjoying? I am enduring a long, dreary list of refusals. Must you rule them out one by one, March? It is dreadfully long.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8811
+        },
+        {
+          "speaker": "march",
+          "text": "Guilty, and you're still guessing.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2237
+        },
+        {
+          "speaker": "march",
+          "text": "You keep guessing, and I keep knocking them down. Here's why it matters. You just built a plan with a hidden part, sitting where nobody checks. That's how a routine fails too. Quietly, somewhere nobody's looking.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 9572
+        },
+        {
+          "speaker": "narrator",
+          "text": "Very well. Quiet failures, both of them, and I concede that much.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4651
+        },
+        {
+          "speaker": "march",
+          "text": "Now set the purpose note beside it. 'Spend at least 1 hour a day doing what you feel you're meant to do, now.' And the blunt one: 'Don't wait any longer.'",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 7290
+        },
+        {
+          "speaker": "march",
+          "text": "The consistency note says never let the chain break. The purpose note says do the hour now. Side by side, they catch each other out.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7091
+        },
+        {
+          "speaker": "narrator",
+          "text": "Go on. What do they catch?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1856
+        },
+        {
+          "speaker": "march",
+          "text": "A trap. An all or nothing streak makes one missed day feel like ruin, and ruin is the easiest excuse to quit. So you wait for a perfect week, and the perfect week never shows up.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 9210
+        },
+        {
+          "speaker": "narrator",
+          "text": "So the chain itself is the snare. Never break it, and any break becomes a verdict.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5653
+        },
+        {
+          "speaker": "march",
+          "text": "Exactly.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1270
+        },
+        {
+          "speaker": "march",
+          "text": "Yes. The safe version is the smallest one you can keep on a bad day. Not the full hour. The stool.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5390
+        },
+        {
+          "speaker": "narrator",
+          "text": "Neither note shows that alone. One demands a perfect record, the other demands action now. Only together do they admit the perfect record is what kills the action.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11221
+        },
+        {
+          "speaker": "march",
+          "text": "So imagine someone who believes the all or nothing version. Their streak chart goes blank after a cold dawn, and they're left with a shelf of unopened plans, waiting for a clean restart that never comes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10251
+        },
+        {
+          "speaker": "march",
+          "text": "Now the other one. Someone who believes the stool version. The same cold morning, and they moved the stool a foot. A try at the lock. The chart keeps going, and the gap is only a gap.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 8507
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the best of the purpose note I keep for the next round, and you will not enjoy it, March.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5739
+        },
+        {
+          "speaker": "march",
+          "text": "I've got a comeback saved for later. It isn't kind, and you'll hear it when you're not braced.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 4770
+        },
+        {
+          "speaker": "march",
+          "text": "Here's where I land. What broke the plan was the story told about the missed hour, the blank square that made the whole chart look finished.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6676
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the stool was the plan all along, and I offer J the title Keeper of the Unfinished Chart, in its honour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7061
+        },
+        {
+          "speaker": "march",
+          "text": "No. But you're right about the stool. Now the mug, which I'm moving an inch as we speak.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4945
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, the rest of the chain and the purpose note, where the nasty bit lives.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4322
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
+    }
+  ]
+}
