@@ -1,0 +1,460 @@
+{
+  "date": "2026-10-10",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-10-01-01",
+      "title": "THE ACT THAT COMES FIRST",
+      "startAt": "2026-10-10T01:11:44.442+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-01-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Focus On One Thing (No Shiny Object Syndrome)",
+        "Embodiment - Be Who You Strive To Be"
+      ],
+      "angle": "What is the fundamental problem or need that this note/idea is trying to address? Is it addressing a symptom or the root cause? (Think: Five Whys)",
+      "kind": "straight",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Embodiment - Be Who You Strive To Be: Character is built not through words, but through actions and behaviours. Do not merely pretend; become."
+        },
+        {
+          "kind": "note",
+          "text": "Embodiment - Be Who You Strive To Be: Mental patients were asked to fill in a personality test acting as if they were a “typical, well-adjusted person”. In order for these patients to answer the questions “as a typical, well-adjusted person” would answer, they had to imagine how a typical well-adjusted person would act."
+        },
+        {
+          "kind": "note",
+          "text": "Focus On One Thing: You don’t lack direction. You have too many directions. An open mind, like an open mouth, needs to eventually close on something."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Somewhere in your house there's an envelope. On the back, in your own handwriting, is the person you'd be if this year went well.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6245
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every household has a drawer for good intentions, stuffed with a lost stamp and a few plans nobody read again. The fellow you wish to be is usually in there somewhere.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11051
+        },
+        {
+          "speaker": "march",
+          "text": "Where he couldn't embarrass you. You have to feel ready before you start. That's the lie we all tell.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5092
+        },
+        {
+          "speaker": "narrator",
+          "text": "Say it properly, March. Let the lie speak in its own voice, so we may both take a swing at it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6507
+        },
+        {
+          "speaker": "march",
+          "text": "Wait until the courage arrives. Then move.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2831
+        },
+        {
+          "speaker": "narrator",
+          "text": "Wait, says the lie, feet up on the stool.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2816
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the note, which disagrees with the lie in plain type. Hear it: “Character is built not through words, but through actions and behaviours.” The best of it is further down. I'm keeping it back, like the last biscuit in the tin.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14997
+        },
+        {
+          "speaker": "march",
+          "text": "So the feeling is what comes after. Not what leads the way.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3455
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. The feeling turns up after the walking, like a cat that waits until you've sat down before it climbs into your lap.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8064
+        },
+        {
+          "speaker": "march",
+          "text": "Try it on a woman with a biro and a biscuit tin on her windowsill. She's been asked to fill in a personality form. She has to answer as the calm, well-adjusted version of herself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8929
+        },
+        {
+          "speaker": "narrator",
+          "text": "Mind the form. She can't tick calm until she knows what calm would do with its hands. That's the whole trick of the study, March. They had to imagine the sort of person who would answer.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11136
+        },
+        {
+          "speaker": "march",
+          "text": "So she imagines a calm woman's hands. Does she lift the tin lid?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3925
+        },
+        {
+          "speaker": "narrator",
+          "text": "She lifts the lid, takes out the one biscuit she was saving, and wonders whether a calm woman would eat it now or after the form.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8149
+        },
+        {
+          "speaker": "march",
+          "text": "She eats it now. Small act. It counts.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2684
+        },
+        {
+          "speaker": "narrator",
+          "text": "The lid, the biscuit, a pen uncapped. Each is a small act a well-adjusted woman would do without consulting the clock, and that's exactly what the form was asking her to find out.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12373
+        },
+        {
+          "speaker": "march",
+          "text": "Question one. She answers without looking at the clock.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3089
+        },
+        {
+          "speaker": "narrator",
+          "text": "And by the later questions her hand has stopped shaking over the page. Nobody handed her courage. She merely behaved, and the courage crept in behind her, sheepish, like a guest who arrives after the party's started and pretends he was invited.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 15616
+        },
+        {
+          "speaker": "march",
+          "text": "So the proof is the sequence. The act comes, then the steadier hand.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3812
+        },
+        {
+          "speaker": "march",
+          "text": "Let me try it on myself, out loud. The calm me closes the drawer. Does the small thing at the top of the list. Stops checking the time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6882
+        },
+        {
+          "speaker": "march",
+          "text": "I'd answer that form yes. Every question.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2895
+        },
+        {
+          "speaker": "narrator",
+          "text": "How simple. Any child with a biscuit tin could manage it before breakfast.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5312
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 1841
+        },
+        {
+          "speaker": "march",
+          "text": "Simple's what people say when they've never done it at midnight, with the kettle gone cold.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4943
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ouch. Cold kettle, noted.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2283
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I withdraw simple, and offer difficult. Grander. You'll like it even less.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5525
+        },
+        {
+          "speaker": "march",
+          "text": "Grander is worse.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1768
+        },
+        {
+          "speaker": "march",
+          "text": "I'm not sure I like either. The honest answer is I'd want the envelope back before anything.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5458
+        },
+        {
+          "speaker": "narrator",
+          "text": "Look up, March. A crow has landed on the radio mast on the hill, the very mast we've been insulting all night. A sign, if ever there was one. The mast was built to send messages, and the crow has chosen to receive one.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 15147
+        },
+        {
+          "speaker": "march",
+          "text": "It's a crow on the highest thing on the hill. That's all the mast is, narrator. Highest point, best view for a bird.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5796
+        },
+        {
+          "speaker": "narrator",
+          "text": "Destiny is only the highest point, March, and I'm standing at the bottom of it, where the view is best.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6549
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. You can have the crow. I'm putting it on my tally...",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3149
+        },
+        {
+          "speaker": "narrator",
+          "text": "In a column I'm not allowed to see. You've taken the crow, the tally and the last of the biscuits. I'm lodging a complaint with the mast. It won't be answered, which is how I like my complaints.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12373
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the claim, then. Why do people jump to the next shiny thing? Ask why until it stops.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5088
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because the next one looks easier. Why does it look easier?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3605
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because the one in hand hasn't yet turned into them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3136
+        },
+        {
+          "speaker": "march",
+          "text": "And why hasn't it? That's the root, isn't it. The root is the person, not the model.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4644
+        },
+        {
+          "speaker": "narrator",
+          "text": "The model is merely a leaf, March. The tree is the person. And the root is that he was never built to stay, because nobody showed him how staying begins.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10240
+        },
+        {
+          "speaker": "march",
+          "text": "So focus names the habit you need to resist. Embodiment names the person who does the resisting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6011
+        },
+        {
+          "speaker": "narrator",
+          "text": "“You don’t lack direction. You have too many directions.” Focus names the problem. Embodiment names the one who has to change. Without him, the naming is no use.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11115
+        },
+        {
+          "speaker": "march",
+          "text": "Neither shows it alone. Focus alone says stop chasing. Embodiment alone says become someone, with no idea what to stop.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7179
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the fix doesn't begin in the next tab. It begins in the way you act, and the person you act as. A far less comfortable place to start.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9579
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the fork. Someone who believes this has a kitchen table, a page at the top that says I finish things, and a small finishing act before they open anything new.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8230
+        },
+        {
+          "speaker": "narrator",
+          "text": "A kitchen table. Go on, I'm listening.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2944
+        },
+        {
+          "speaker": "march",
+          "text": "Put the lid back on. Rinse the mug. Close the letter. The act is the proof. The feeling arrives later, almost by accident.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6505
+        },
+        {
+          "speaker": "narrator",
+          "text": "Accident, then, which is how the best habits in the old stories always turn up, once the hero stops waiting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7168
+        },
+        {
+          "speaker": "march",
+          "text": "Which is a gentler way of saying you act first and wait for the feeling to catch up.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4771
+        },
+        {
+          "speaker": "narrator",
+          "text": "Gentler, yes, though you were blunter at the start. You are tiresome, March.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4885
+        },
+        {
+          "speaker": "march",
+          "text": "Now fetch the envelope from the drawer. Don't open it yet. Just look at the handwriting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4984
+        },
+        {
+          "speaker": "narrator",
+          "text": "Very well. The letters are smaller now, March, and steadier, like a man who's taken to finishing his sentences. I concede, grudgingly, that you were right. The act came first.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12096
+        },
+        {
+          "speaker": "march",
+          "text": "I didn't hear that. Don't say it again.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2452
+        },
+        {
+          "speaker": "narrator",
+          "text": "I wasn't delighted, March. I was merely tired. This is what happens when you keep a man up past the stool's bedtime.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7680
+        },
+        {
+          "speaker": "march",
+          "text": "It's the small hours, the kettle's on, and you're pretending not to be pleased. Up next, the notes on Novelty - A Life Fully Lived and The Influence Of Others. Bring the tin.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8312
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
+    }
+  ]
+}
