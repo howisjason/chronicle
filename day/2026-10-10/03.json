@@ -756,6 +756,435 @@
         "n": 1,
         "of": 1
       }
+    },
+    {
+      "id": "2026-10-10-03-03",
+      "title": "THE GATE THAT LEARNED THE HANDS",
+      "startAt": "2026-10-10T03:22:05.726+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-03-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Habits Become Automatic - Your New Identity"
+      ],
+      "angle": "What concepts from [biology/engineering/chemistry/any other field] could be adapted to improve upon this idea?",
+      "kind": "legend",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic - Your New Identity: Old habits are who you are."
+        },
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic - Your New Identity: If you show up at the gym five days in a row - even if it's just for one push-up - you are casting votes for your new identity."
+        },
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic - Your New Identity: Celebrate identity, not action."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Say you start on a Monday with real intent. One push-up on a floor, feeling faintly silly. By Friday you might not know whether it counted.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7243
+        },
+        {
+          "speaker": "march",
+          "text": "Old habits are who you are. That's the note. It's sitting in the room before anyone explains it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5103
+        },
+        {
+          "speaker": "march",
+          "text": "Most people think a habit is a tool. You pick it up to get a result. Lose the weight, sleep better, tick the box. The push-up is just the means.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7205
+        },
+        {
+          "speaker": "narrator",
+          "text": "A tool, March? A tool is something you set down the moment the job is done. The note is talking about the hand that holds it. Old habits are who you are, not what you happen to own.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12224
+        },
+        {
+          "speaker": "march",
+          "text": "So the push-up doesn't matter.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2156
+        },
+        {
+          "speaker": "narrator",
+          "text": "It matters enormously. Not for its size, though. Hear the note at full length before you say that.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6272
+        },
+        {
+          "speaker": "narrator",
+          "text": "If you show up at the gym five days in a row, even if it's just for one push-up, you are casting votes for your new identity. Every repeat is a vote for the person you are becoming.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11669
+        },
+        {
+          "speaker": "march",
+          "text": "Five days in a row. Okay.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2384
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is a simple idea, March, and simple ideas are where the cruel ones hide.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5568
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple. Nothing about a vote is simple.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3062
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then here is the claim, plainly. The one push-up counts because it is repeated, not because it is large. The best part of it I am holding back until the tale is finished, and I know you will hate my patience.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13355
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying the push-up counts because it's repeated, not because it's big.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4330
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly so.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1344
+        },
+        {
+          "speaker": "narrator",
+          "text": "Do not say it in that tone.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1792
+        },
+        {
+          "speaker": "march",
+          "text": "Put it on someone then. A person on a bedroom floor, Monday, one push-up. Then the gym, five days running. Go on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6244
+        },
+        {
+          "speaker": "narrator",
+          "text": "Good. Now take any gym bag left by a door, still zipped, with a towel folded on top. Exhibit one, March. Small, damp, and entirely unbothered by its own importance.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12608
+        },
+        {
+          "speaker": "march",
+          "text": "It's a towel.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1555
+        },
+        {
+          "speaker": "narrator",
+          "text": "A towel that someone hangs on the same hook five days running.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4160
+        },
+        {
+          "speaker": "march",
+          "text": "Five days. Fine.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1851
+        },
+        {
+          "speaker": "narrator",
+          "text": "Spare me your flat little voice.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2048
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is late, so I shall go slowly, and I shall tell you the old legend, because the note has the same bones.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7168
+        },
+        {
+          "speaker": "narrator",
+          "text": "Once, in a dusty book of river tales, there was a village at the edge of the water where the people left the same small gift at the same doorstep every morning. One stone. One loaf. One strip of blue ribbon tied to the latch.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14976
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nobody remembered who began it, and the gift was nothing a king would ever notice. But the gate, March, the gate slowly learned the hands that came. The keeping of it became the whole of the village.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13013
+        },
+        {
+          "speaker": "march",
+          "text": "Is this a legend or a bakery?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2453
+        },
+        {
+          "speaker": "narrator",
+          "text": "A story, March. Bakeries are only stories that have been left out too long.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5035
+        },
+        {
+          "speaker": "march",
+          "text": "So the gift is the push-up, and the gate is the gym.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3114
+        },
+        {
+          "speaker": "narrator",
+          "text": "No. The gate is the person. The gift is the arriving.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3968
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every morning the threshold is a little more the shape of the hands that keep coming back, until the hands and the threshold cannot be told apart.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8576
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, but the note says the vote is about who you are, not your arms. I'm going to drag this somewhere boring.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5988
+        },
+        {
+          "speaker": "march",
+          "text": "Cells that fire together wire together, that's neuroscience. Do a movement and the connection is clumsy the first time. By the fifth time the signal just runs down the path it already cut.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 9529
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the first push-up is the first wire, March.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3392
+        },
+        {
+          "speaker": "march",
+          "text": "Wire. Go on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1659
+        },
+        {
+          "speaker": "narrator",
+          "text": "You are telling me the vote is a thing you can feel in the arm. Not a figure in a ledger, but a groove laid down in the tissue by the very act of arriving.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10005
+        },
+        {
+          "speaker": "march",
+          "text": "I'm saying the path gets easier to use. It isn't magic. The arm just learns the route.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5401
+        },
+        {
+          "speaker": "narrator",
+          "text": "The arm learns the route because the person keeps walking it. Which is the note, exactly, from the other side of the gate.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8043
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now shift your chair, March. The legend requires the better seat.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4544
+        },
+        {
+          "speaker": "march",
+          "text": "The legend can have the stool.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2287
+        },
+        {
+          "speaker": "narrator",
+          "text": "A stool is the seat of a man with no legend. Very well.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4203
+        },
+        {
+          "speaker": "narrator",
+          "text": "And you have hidden a clause in this design, March. I guess a lighthouse, and I want no nonsense about it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6613
+        },
+        {
+          "speaker": "march",
+          "text": "No lighthouse.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1644
+        },
+        {
+          "speaker": "march",
+          "text": "Keep going.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1443
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the claim. Old habits are who you are, and the wiring is only part of it. The note says celebrate identity, not action.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6799
+        },
+        {
+          "speaker": "march",
+          "text": "For someone who believes this, the gym bag by the door stops being a reminder of what they missed. It's a row of small votes. The one push-up on a bad day looks like a stamp in a passport, not a shortfall.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9981
+        },
+        {
+          "speaker": "narrator",
+          "text": "A row of stamps, March. You are learning to speak like a customs officer, and I find I admire it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6549
+        },
+        {
+          "speaker": "march",
+          "text": "Less than the stamp, more than a shortfall. That's the whole fork.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3413
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the first push-up, March, whichever Monday it happens to be. The vote is cast then, for whoever is on that floor.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7723
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every later visit repeats that first Monday. It is the vote all along, and the rest of the week only proves it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7296
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you had that. Next.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2129
+        },
+        {
+          "speaker": "march",
+          "text": "Next up is Any Benefit Fallacy. Bring both spoons.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3432
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
     }
   ]
 }
