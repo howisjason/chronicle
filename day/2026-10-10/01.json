@@ -1041,6 +1041,420 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-01-03",
+      "title": "THE FILTER BEFORE THE ENGINE",
+      "startAt": "2026-10-10T01:32:39.159+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-01-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "The Value of Time",
+        "Any Benefit Fallacy"
+      ],
+      "angle": "How exactly does this idea achieve its proposed outcome? Break down the process step-by-step. Where are the weakest links or assumptions in that process?",
+      "kind": "try_it",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Value of Time: Time magnifies the margin between success & failure. It will multiply whatever you feed it. Good habits make time your ally. Bad habits make time your enemy."
+        },
+        {
+          "kind": "note",
+          "text": "Any Benefit Fallacy: Not every beneficial activity or habit is worth your time."
+        },
+        {
+          "kind": "note",
+          "text": "Any Benefit Fallacy: Create criteria to evaluate opportunities before committing to them."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "A habit that has never once sold anything, and you feed it every evening anyway. Like a lamp you forgot was lit. You know which one. Not the twine.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7393
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, March, you open with the lamp, and I'll allow it. Now let the lie have its turn, as is proper. The lie says once a good habit is started, time takes over and does the rest. Feed the thing, and the hours will do the sums by themselves. Say it the way a grandmother says grace.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 18091
+        },
+        {
+          "speaker": "march",
+          "text": "Feed it, and the hours do the sums. So I just start. And wait?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3796
+        },
+        {
+          "speaker": "narrator",
+          "text": "Start, and wait. The years stack up behind you like a good harvest in a barn. Nobody has to count it. That's the comfort of the thing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8939
+        },
+        {
+          "speaker": "march",
+          "text": "Nobody counts it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1830
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nobody counts it, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2048
+        },
+        {
+          "speaker": "march",
+          "text": "That's the lie, narrator. A very warm one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2862
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then here is the claim, read whole from the note: 'It will multiply whatever you feed it.' Time is the great multiplier, and it doesn't ask what you hand it across the counter.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11349
+        },
+        {
+          "speaker": "march",
+          "text": "So it multiplies the polish just as faithfully as the rope.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3737
+        },
+        {
+          "speaker": "narrator",
+          "text": "Just as faithfully. Time has no opinion about the thing it multiplies. It only has a clock.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6549
+        },
+        {
+          "speaker": "march",
+          "text": "And the sentence leaves out the carters. It says the feeding gets multiplied. Nothing about bread.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5584
+        },
+        {
+          "speaker": "narrator",
+          "text": "It leaves out the bread, March. I think that's the rudest silence in the whole notebook. Go on, then. Put yourself on the bench.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7979
+        },
+        {
+          "speaker": "march",
+          "text": "Bread. Finally, someone says it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2315
+        },
+        {
+          "speaker": "march",
+          "text": "Right. This week, out loud, on me. My page. The spice jars, close to an hour. The fridge, wiped down and then wiped again. Stretching every morning. The kettle on before the hour is out... and cold by the time I notice.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10061
+        },
+        {
+          "speaker": "march",
+          "text": "And the envelope from the drawer, propped against the teapot where I can't avoid it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4502
+        },
+        {
+          "speaker": "narrator",
+          "text": "A proper page, March. Each line a little altar. The spice jars are a sacred order, and I won't hear them mocked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8085
+        },
+        {
+          "speaker": "march",
+          "text": "Then test the sacred order. Does the jar line reach a carter? No. The fridge? No. Stretching? No. Only the envelope asks the question, and it's been sitting by the teapot going cold.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 8630
+        },
+        {
+          "speaker": "narrator",
+          "text": "The method is simple. List the habits, ask the question, draw a line through the no answers. The ritual stays. The fridge stays, as practical. And the rope is merely practical too.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12395
+        },
+        {
+          "speaker": "march",
+          "text": "Simple? You've just called the hardest part simple.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2956
+        },
+        {
+          "speaker": "narrator",
+          "text": "Well, that's a bruise.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1536
+        },
+        {
+          "speaker": "narrator",
+          "text": "The next step is the question itself, and the question is easy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4181
+        },
+        {
+          "speaker": "march",
+          "text": "Easy. Which of these is the twine? I can't tell. I'd have to feed one habit for a month before I found out it was the hooks.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6286
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you'll have polished a month away, March, and I won't soften it. Some of the habits you love are the hooks. Nobody can take them off you but you, and most people never do. The clock won't say a word about it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13291
+        },
+        {
+          "speaker": "march",
+          "text": "The clock keeps quiet. The bill arrives later.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2839
+        },
+        {
+          "speaker": "narrator",
+          "text": "And that's the thing I keep turning over. A habit can be perfectly consistent and perfectly wasted.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6421
+        },
+        {
+          "speaker": "narrator",
+          "text": "The same hour compounds the hooks as faithfully as the rope. A fathom of twine and a gleaming hook grow at the same rate in the clock's sums.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9429
+        },
+        {
+          "speaker": "march",
+          "text": "Don't drift off into the clock. Stay on the bench. You're not saying anything new, just making it grander.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5348
+        },
+        {
+          "speaker": "narrator",
+          "text": "I'm saying the clock is indifferent. That is the whole danger. Every hour you spend is counted the same, whether it sells or not.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8725
+        },
+        {
+          "speaker": "march",
+          "text": "Then here's the hinge. The whole method only works if you already know which habit is the twine before you start. Nobody writes that down.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7331
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. The whole thing hangs on that and nothing else.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3328
+        },
+        {
+          "speaker": "march",
+          "text": "Nobody ever does.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1857
+        },
+        {
+          "speaker": "narrator",
+          "text": "And you won't know it, March, until the hooks have cost you a month.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3925
+        },
+        {
+          "speaker": "march",
+          "text": "So the note never says how to check that in advance. It says what multiplies, and what to filter, and leaves the check to whoever's holding the pencil.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7565
+        },
+        {
+          "speaker": "narrator",
+          "text": "The first note is the engine and the other is the filter. The filter has to run before the engine starts, or the engine grinds up whatever the polish hands it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10005
+        },
+        {
+          "speaker": "march",
+          "text": "Neither note shows that alone. The engine is pure growth, the filter is pure refusal. Only together do they say: check first, then feed.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 7371
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the layout. A kitchen table, a sheet of paper, one line for each habit. Each line gets the question, and every answer goes in pencil, so you can rub it out when it turns out wrong.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9317
+        },
+        {
+          "speaker": "narrator",
+          "text": "A pencil! After all that talk of sacred orders, you bring a pencil.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4843
+        },
+        {
+          "speaker": "march",
+          "text": "It's a pencil, narrator. It's how you rub things out. Stop feeding the lines that never reached a carter. The table fills slowly with the few that did.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7649
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the polish?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1408
+        },
+        {
+          "speaker": "march",
+          "text": "Gets the rubber. A little more every week. I'm not stopping you polishing your own hooks.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4775
+        },
+        {
+          "speaker": "narrator",
+          "text": "You've hidden something in this design, March. I can always tell. A bit of it that's only for you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6144
+        },
+        {
+          "speaker": "march",
+          "text": "Not telling you that one. Keep your nose out of the drawer.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3155
+        },
+        {
+          "speaker": "narrator",
+          "text": "You've beaten me again, March, and I shall lodge a complaint with the mast. The mast has heard worse from better.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7211
+        },
+        {
+          "speaker": "march",
+          "text": "I beat you fair. Now go back to the start. You already know which habit is the one that never sold. Say it to yourself, quietly.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6553
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, yes, March, you had me pinned before I'd finished the bowl. It's gone one in the morning, the kettle's cold, and I was wrong to think the clock was harmless.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10347
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, Be Intentional With Your Life and Actions. Bring the pencil.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3944
+        },
+        {
+          "speaker": "narrator",
+          "text": "The crow has the final croak tonight, and the mast can carry the complaint for me.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5035
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
