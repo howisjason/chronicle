@@ -1591,6 +1591,419 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-02-04",
+      "title": "THE ROPE HE RANG WRONG",
+      "startAt": "2026-10-10T02:40:24.969+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-02-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Learning - Best Practices"
+      ],
+      "angle": "What assumptions am I making in this idea?",
+      "kind": "legend",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Learning and memorisation is emotion dependent."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Just learn one thing, watch the one video, THEN APPLY IT."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Simplicity is the result of profound cultivation."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: You learn the MAJORITY of everything from actually DOING."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Simplicity is hacking away the unessential."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You're on a bus. Somebody's phone is leaking music across the aisle, and one line of a song you hated at school comes back to you word for word. The shopping list you wrote an hour ago? Gone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9035
+        },
+        {
+          "speaker": "march",
+          "text": "Most people will tell you the order is obvious. Learn the whole subject first. Every chapter, every video. Only then are you allowed to touch it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7571
+        },
+        {
+          "speaker": "narrator",
+          "text": "Like a driving test before you've sat in a car.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3200
+        },
+        {
+          "speaker": "narrator",
+          "text": "A rule people repeat to themselves, March, the way a child recites the alphabet to get to sleep. The bus has taken the list and handed back the song. The note explains the trade in one dry claim: 'Learning and memorisation is emotion dependent.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 16939
+        },
+        {
+          "speaker": "march",
+          "text": "So the song stuck because it made you feel something. The list made you feel nothing, so it fell out the back door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5969
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly. The spark is the glue, and the rest is paperwork. I shall keep the best part of the note back for later, March, so do not hurry me toward it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9877
+        },
+        {
+          "speaker": "march",
+          "text": "So the feeling does the remembering. And the rule about learning everything first is just a rule.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5453
+        },
+        {
+          "speaker": "narrator",
+          "text": "Feel first, March. Then the sitting down with the notes arrives as a kind of reward. Let us test it on something dull, in a cold place, with a bird for an audience.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11179
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear the legend. In a fen parish, before the rain, there was a church tower with a stone floor and a bell pull worn smooth at waist height by centuries of hands. A pigeon muttered in the rafters, and nobody answered it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14549
+        },
+        {
+          "speaker": "narrator",
+          "text": "A boy from the village was handed a card of change ringing patterns, rows of figures in crabbed ink, and told to memorise them before he touched the bell. Nobody thought to ask whether he was afraid of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13461
+        },
+        {
+          "speaker": "march",
+          "text": "Did he memorise the sheet, though? Or did he ring it wrong until his arms learned it without him?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5122
+        },
+        {
+          "speaker": "narrator",
+          "text": "A fair heckle from the desk, March. He could not hold the sheet in his head by Sunday. It was a map of a country he had never walked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8320
+        },
+        {
+          "speaker": "march",
+          "text": "Ha, fair.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1425
+        },
+        {
+          "speaker": "march",
+          "text": "So he rang it wrong.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 1830
+        },
+        {
+          "speaker": "narrator",
+          "text": "He rang it wrong a great deal, and the bell swung him off his feet more than once.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5013
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1009
+        },
+        {
+          "speaker": "narrator",
+          "text": "The learning happened in the pull, with the rope burning his palms. The note knows this: 'You learn the MAJORITY of everything from actually DOING.'",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9323
+        },
+        {
+          "speaker": "march",
+          "text": "So his arms learned and his head followed. The sheet didn't teach him. The pull did.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4856
+        },
+        {
+          "speaker": "narrator",
+          "text": "Just learn one row, ring one row, and let the rope tell him the rest. The rope had been waiting centuries for that boy, March, destiny worn into the wood. His palms blistered, and the blisters taught him the count faster than any master's copy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 15659
+        },
+        {
+          "speaker": "march",
+          "text": "Quick question, sorry. Does the boy feel anything up there, or does he just...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4266
+        },
+        {
+          "speaker": "narrator",
+          "text": "Oh, he feels, March. He feels the wood and the cold and the pigeon's opinion of him, all at once, and that is the lesson. A strong moment is a hook, and the card hangs on it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12160
+        },
+        {
+          "speaker": "march",
+          "text": "Just pull. Right. What am I assuming now? That he wanted to ring at all. That the feeling came first. Maybe he was terrified and it still worked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6818
+        },
+        {
+          "speaker": "narrator",
+          "text": "Terror is an emotion too, March. The note does not ask for a pleasant feeling, only a strong one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6549
+        },
+        {
+          "speaker": "narrator",
+          "text": "Terror still counts, and strong things stick.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2965
+        },
+        {
+          "speaker": "narrator",
+          "text": "The best part, now, since you've pushed me. The boy came back the next morning, pulled the same row, and it held. Nobody had told him to.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9131
+        },
+        {
+          "speaker": "march",
+          "text": "He came back. Wait. That's the bit I'd actually want to see.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3392
+        },
+        {
+          "speaker": "narrator",
+          "text": "The tutor, an old ringer with knuckles like walnuts, used to say everything worth knowing is simple.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6421
+        },
+        {
+          "speaker": "narrator",
+          "text": "'Simple, lad,' he'd say, tapping the wood with one finger.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3947
+        },
+        {
+          "speaker": "march",
+          "text": "Simple? Don't you dare call it simple. That is years of standing in the cold getting it wrong, and nobody in the pew gets to see that part.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 7073
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cultivation, I grant you. The note says as much: 'Simplicity is the result of profound cultivation.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7445
+        },
+        {
+          "speaker": "march",
+          "text": "Then say cultivation. Simple is what it looks like from the pew.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3904
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simplicity is the stripping away of what was never needed. Again the note: 'Simplicity is hacking away the unessential.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8149
+        },
+        {
+          "speaker": "narrator",
+          "text": "The tutor cut the card down to one row, then one pull, until only the bell was left.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5824
+        },
+        {
+          "speaker": "march",
+          "text": "Right, back to the cord. So the simplicity comes at the end, after the applying is done. He's finished, that's all.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5840
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have beaten me to my own sentence, March, and I shall register a complaint about it with the pigeon. Outrageous. Insufferable.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8704
+        },
+        {
+          "speaker": "march",
+          "text": "Put it in the complaints box.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2190
+        },
+        {
+          "speaker": "narrator",
+          "text": "Also, I thought of it first.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2027
+        },
+        {
+          "speaker": "march",
+          "text": "Think of someone who believes this. They walk into a lesson already buzzing, pick the one piece that thrills them, use it that same afternoon with their hands, and find next morning it has stuck. Someone who doesn't believe it sits through the whole syllabus bored, then wonders why none of it stays.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12927
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the one who does not believe it, March, will spend the whole term waiting for the feeling to arrive by post.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6720
+        },
+        {
+          "speaker": "narrator",
+          "text": "And so the rope comes back to the bowl, March. Chipped blue at the rim, worn smooth at the waist.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6144
+        },
+        {
+          "speaker": "narrator",
+          "text": "If the tutor were watching, he would say the thing he always said, in his crusty voice: 'You'll not get the spoon from the sheet, lad. Get your hands on it.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9429
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. You win the rope. The boy learned it by pulling it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3107
+        },
+        {
+          "speaker": "narrator",
+          "text": "At last. I was being generous, March, understand that.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3925
+        },
+        {
+          "speaker": "narrator",
+          "text": "Generosity is exhausting when one is surrounded by people who keep getting there first.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5824
+        },
+        {
+          "speaker": "march",
+          "text": "You were handing me the whole sheet, rope and all, and you've been dying to say so since the bus.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 4898
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, Philosophy Of Social Connection. Bring a spoon.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3490
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
     }
   ]
 }
