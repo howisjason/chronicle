@@ -1,0 +1,408 @@
+{
+  "date": "2026-10-10",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-10-00-01",
+      "title": "A DRAWER IN THE DESIGN",
+      "startAt": "2026-10-10T00:12:14.523+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-00-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Reality Transurfing",
+        "Be Intentional With Your Life and Actions"
+      ],
+      "angle": "What is the fundamental problem or need that this note/idea is trying to address? Is it addressing a symptom or the root cause? (Think: Five Whys)",
+      "kind": "try_it",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Don't live your life by default. Live your life by design."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: It does more for your self-belief to say you'll meditate for 10 minutes and actually do 10 minutes vs saying you'll do 30 minutes and only doing 20 minutes."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: Whatever thoughts you send out into the world will return to you like a boomerang."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Every action you take should be intentional and deliberately thought out. Each and every decision you make should have a purpose that brings you closer to your goals."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've stood in a kitchen late at night. The house has gone quiet. And you've noticed most of your week got decided by whatever came through the door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7503
+        },
+        {
+          "speaker": "march",
+          "text": "The note starts right there. I'll read it exactly: Don't live your life by default. Live your life by design.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5780
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the design! Most people hear that and picture a grand plan drawn up in advance, every road marked on the map, and then the living is only marching to a drum. Draft the plan first, obey it after, and the empire holds. That is the common belief, and I hold it with my whole chest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 19392
+        },
+        {
+          "speaker": "march",
+          "text": "So a design is a list you write first and then follow.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3369
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1109
+        },
+        {
+          "speaker": "march",
+          "text": "Hold on to that. I think it's the bit that breaks.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2925
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note's real claim is less grand than a map and more binding than any map ever was.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5739
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1551
+        },
+        {
+          "speaker": "narrator",
+          "text": "A design lives or dies in the keeping. It shows you how with a small case: It does more for your self-belief to say you'll meditate for 10 minutes and actually do 10 minutes vs saying you'll do 30 minutes and only doing 20 minutes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 15211
+        },
+        {
+          "speaker": "narrator",
+          "text": "The grandest part I hold in reserve until you have tested it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4011
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying the plan only counts once you actually keep it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3643
+        },
+        {
+          "speaker": "narrator",
+          "text": "Real, and binding, March. A promise made to oneself is the only contract nobody can wriggle out of, because nobody else holds the pen.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9771
+        },
+        {
+          "speaker": "march",
+          "text": "Then test it on me. This week I'm writing my own version. Line one.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4205
+        },
+        {
+          "speaker": "march",
+          "text": "Walk for 10 minutes after the kettle goes off. I tick it when I'm back at the door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4751
+        },
+        {
+          "speaker": "narrator",
+          "text": "A walk? Ten minutes is a rounding error, March.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3349
+        },
+        {
+          "speaker": "narrator",
+          "text": "A design must be large enough to hold a life, or it is only a shopping list pinned to a fridge.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6080
+        },
+        {
+          "speaker": "march",
+          "text": "It holds a stroll. That's plenty for a Thursday.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2980
+        },
+        {
+          "speaker": "march",
+          "text": "Next line. I said I'd do 30 minutes on Sunday and I did 20.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4268
+        },
+        {
+          "speaker": "march",
+          "text": "So the rule is that what I write is what I do. And I write the 10.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4075
+        },
+        {
+          "speaker": "narrator",
+          "text": "Oh, the indignity! Listen to her. The lady has broken a vow to a walk and calls it a rule. Such a grand little confession.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8619
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch, fair.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1360
+        },
+        {
+          "speaker": "narrator",
+          "text": "A design, March, is a vow made in the first person. Only a mind quite sure of itself keeps one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6656
+        },
+        {
+          "speaker": "march",
+          "text": "Vows are for weddings. I'm not marrying a walk.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2980
+        },
+        {
+          "speaker": "march",
+          "text": "Last line I'm writing in pencil. So faint you can't read it.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3780
+        },
+        {
+          "speaker": "march",
+          "text": "That one stays in the drawer.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2194
+        },
+        {
+          "speaker": "narrator",
+          "text": "A drawer! Good heavens, March, now the house has a hidden room. A locket, a letter to the chair, a promise to become a lighthouse keeper, or the grandest thing of all, a crown tucked behind the teacups.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13504
+        },
+        {
+          "speaker": "narrator",
+          "text": "Whatever it is, I cannot wait to guess.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2731
+        },
+        {
+          "speaker": "narrator",
+          "text": "And since we are rummaging, J deserves a new title: Grand Architect of the Early Hours, fit for a person who builds before the kettle boils.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9344
+        },
+        {
+          "speaker": "march",
+          "text": "Nope. Architects wear slippers and forget the milk.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3135
+        },
+        {
+          "speaker": "march",
+          "text": "And here's the thing about your guesses. Every one has a crown in it.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3864
+        },
+        {
+          "speaker": "march",
+          "text": "That's your default, not mine. It's the very thing the note warns about when it talks about living by default.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6180
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the mirror is in the room too, March. The note says: Whatever thoughts you send out into the world will return to you like a boomerang.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8576
+        },
+        {
+          "speaker": "narrator",
+          "text": "So a design written from a hidden state drifts toward whatever that state is sending out.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5525
+        },
+        {
+          "speaker": "march",
+          "text": "Which means the writing down isn't the root. Ask why it got skipped, then why that.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4890
+        },
+        {
+          "speaker": "march",
+          "text": "The note stops at the page. The mirror keeps going.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2957
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ask why over and over, as the old workmen did, and a grey morning turns up at the bottom of every skipped line.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7531
+        },
+        {
+          "speaker": "march",
+          "text": "For someone who believes this, the list is short. Each morning you check it against one question: do this morning's choices still point the same way?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7332
+        },
+        {
+          "speaker": "march",
+          "text": "A missed walk is a course correction, not a verdict. For someone who doesn't believe it, the list hangs on the wall like a notice. The days get decided by the kettle, the door, and whatever the mirror happens to show.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9869
+        },
+        {
+          "speaker": "narrator",
+          "text": "The kettle again. Very well, the kettle has the last word on every grey morning.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5504
+        },
+        {
+          "speaker": "narrator",
+          "text": "So I shall end where the note began, in that late kitchen...",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3605
+        },
+        {
+          "speaker": "march",
+          "text": "...which you're now calling the first house blueprint of your grand empire, drawn on the back of an envelope.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5753
+        },
+        {
+          "speaker": "march",
+          "text": "The only design that counts is the one you keep on a Tuesday.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3631
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the drawer, March? I shall guess it in my sleep.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3392
+        },
+        {
+          "speaker": "march",
+          "text": "Don't.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1039
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall dream it instead, and the dream will have a crown in it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4288
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
+    }
+  ]
+}
