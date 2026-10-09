@@ -2550,6 +2550,328 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-09-23-06",
+      "title": "SPEAK TO YOURSELF LIKE A FRIEND",
+      "startAt": "2026-10-09T23:49:02.728+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-23-06.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Delayed Gratification",
+        "Philosophy Of Social Connection"
+      ],
+      "angle": "How might I look at this problem from an entirely different perspective?",
+      "kind": "try_it",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Delayed Gratification: Reframe discipline as a function of self love. If you want yourself to be happy, you have to be disciplined with yourself. Reframe it as \"I love myself so I want myself to feel good, healthy, and fulfilled.\""
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Don't criticise, condemn, or complain. Nobody believes they're wrong. Criticism will only hurt their pride and cause resentment."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've stood at the sink late at night, calling yourself hopeless for skipping the lap round the park. The kettle clicked off before you got to the end.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7158
+        },
+        {
+          "speaker": "march",
+          "text": "Most of us think discipline is just being harder on yourself. Tell yourself off properly, and the next walk happens.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6432
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the cold lash of the inner sergeant. It has marched armies of the sensible into the ground for centuries. Why be gentle with a deserter? A whip keeps the horses moving, March, and the note knows it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13483
+        },
+        {
+          "speaker": "march",
+          "text": "I'm not sure the note knows that at all.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2602
+        },
+        {
+          "speaker": "march",
+          "text": "Say what it actually claims.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2198
+        },
+        {
+          "speaker": "narrator",
+          "text": "Patience, the grandest line is coming. The note says: reframe discipline as a function of self love. If you want yourself to be happy, you have to be disciplined with yourself. The sentence turns the whip into a hand on the shoulder, and I am not sure I forgive it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 16725
+        },
+        {
+          "speaker": "march",
+          "text": "Bit grand, that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1662
+        },
+        {
+          "speaker": "march",
+          "text": "So discipline is the same thing as caring about myself. Not a separate job I do to myself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5666
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. Discipline is love with its sleeves rolled up. The note even gives you the words: I love myself so I want myself to feel good, healthy, and fulfilled.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10965
+        },
+        {
+          "speaker": "march",
+          "text": "Right, let's try it on me then. I skipped the stroll on Tuesday. Instead of 'I should be stronger', I wrote 'I want myself to feel well by Friday' on a card and stuck it on the cupboard door. Beside the grid.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9293
+        },
+        {
+          "speaker": "narrator",
+          "text": "A stately card on a humble door. Now, March, you must speak to the shortfall in the voice of a Lord Chamberlain. 'The walk was postponed by royal decree of the self.' Say it with some gravitas.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13056
+        },
+        {
+          "speaker": "march",
+          "text": "That's ridiculous. And I'm not saying it to the kettle.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3083
+        },
+        {
+          "speaker": "march",
+          "text": "But reading it back, the card helps a little. It sounds like someone who wants me out on the walk, not someone standing over me with a stick.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6735
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the royal decree was a success, and I shall claim the credit in the next edition.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5525
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. You just called me hopeless in a posh voice.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3108
+        },
+        {
+          "speaker": "march",
+          "text": "You'd never speak to a friend like that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2456
+        },
+        {
+          "speaker": "narrator",
+          "text": "A friend deserves the courtesy of a good insult, March, and I deliver mine with great affection.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6763
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, you're hiding behind that. Be honest. You'd never say that to J.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3920
+        },
+        {
+          "speaker": "narrator",
+          "text": "You read the room far too well for a cupboard, and I resent it, March. Entirely. Let us return to the cards.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7509
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Back to the cards. But I'm keeping my own column of who loses which points tonight...",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5371
+        },
+        {
+          "speaker": "narrator",
+          "text": "A column, March? Do go on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2389
+        },
+        {
+          "speaker": "march",
+          "text": "No.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1026
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cruel. Very well.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1451
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the bit I actually care about. The social note says criticism only hurts pride and breeds resentment. Nobody believes they're wrong. They just argue back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8371
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, and the note says we should not criticise, condemn, or complain, even when the other party has earned a sharp word. Our own inner voice is only another party, though it arrives early and never leaves.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13568
+        },
+        {
+          "speaker": "march",
+          "text": "So when I shout at myself on the way to the sink, I'm doing the thing Carnegie warns about.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5389
+        },
+        {
+          "speaker": "march",
+          "text": "I hand myself a criticism, I resent it, and I skip the outing to win the argument with the voice.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5752
+        },
+        {
+          "speaker": "narrator",
+          "text": "A rebellion in the household, March, with the inner voice as its fiercest tyrant. Resentment does the rest. Mind you, I find the notion of a bitter defiance rather fetching.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11733
+        },
+        {
+          "speaker": "march",
+          "text": "So the kind line isn't soft. It's the disciplined thing, because it's the one I'll actually argue with less.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5921
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the picture. The cupboard door covered in ticks and gaps. Beside each miss, a short line in my own voice.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6156
+        },
+        {
+          "speaker": "march",
+          "text": "Not a charge sheet. An invitation back to the plan.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3269
+        },
+        {
+          "speaker": "narrator",
+          "text": "An invitation, March, and not a summons. The whole door reads like a letter from a kind steward rather than a warrant from the constable. Most affecting, and I'll allow it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11435
+        },
+        {
+          "speaker": "march",
+          "text": "Right. So I'm kinder to J than I am to myself, and I've just admitted it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4477
+        },
+        {
+          "speaker": "narrator",
+          "text": "You were right, March, and I'll say so with the kettle clicking. The grand title is still on the table for J. Chancellor of the Notebook. You may keep your robe in the wardrobe.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11008
+        },
+        {
+          "speaker": "march",
+          "text": "I'm keeping the robe in the wardrobe. And the comeback is still in my cup.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3948
+        },
+        {
+          "speaker": "march",
+          "text": "For another night.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1636
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
