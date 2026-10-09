@@ -1,0 +1,319 @@
+{
+  "date": "2026-10-09",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-09-21-01",
+      "title": "THE PULL AT THE BENCH",
+      "startAt": "2026-10-09T21:41:25.124+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-21-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "The Influence Of Others"
+      ],
+      "angle": "How would I explain this idea if I had to tell it like a children's fairy tale?",
+      "kind": "straight",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: “You are the average of the five people you spend the most time with”."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: You're the average of those around you, don't associate with average people."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: Who you allow to influence you will determine where you'll end up."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: Cut out all who drag you down or hinder your growth."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've had that moment, right? Someone in a kitchen says you're the company you keep, and you nodded like it was the weather. When's the last time you actually counted the people you spend your days with? Did you count them? Or did you just feel them?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10168
+        },
+        {
+          "speaker": "narrator",
+          "text": "Gather close, March. Every good tale begins with a hearth and a hush. Once, in a village where the bakers all lived under one long roof, a girl was handed a sack of flour and told the old saying.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13547
+        },
+        {
+          "speaker": "march",
+          "text": "Which saying, exactly?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1975
+        },
+        {
+          "speaker": "narrator",
+          "text": "You are only the sum of the five who sit nearest you at the table. So every night she counted them, and every morning she woke a little more like whoever had been loudest the evening before.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10965
+        },
+        {
+          "speaker": "march",
+          "text": "So it's a counting problem. If your five are fine, you're fine. I can check that. Give me the sack...",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5175
+        },
+        {
+          "speaker": "narrator",
+          "text": "...Patience. The tale does not say sum. It says average. An average is not a count. It's what comes out when the good and the poor sit at one table and meet in the middle. And the girl had been sitting near the middle all her life.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14592
+        },
+        {
+          "speaker": "march",
+          "text": "So the middle's where you end up. So you pick people above it. Is that it?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4116
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is it, March. Keep company with those who see the wide world, and their wide world becomes your ordinary. Keep company with the ordinary, and greatness turns into a fairy story for other people. The sack holds one more instruction. I shall keep it in my pocket until the flour is measured.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 19499
+        },
+        {
+          "speaker": "march",
+          "text": "Withholding. Fine.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1878
+        },
+        {
+          "speaker": "march",
+          "text": "Plain version. Who you let in decides where you land. And the lie is that it's a sum. You're saying it's a pull.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5630
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. The sum is a clerk's notion. The pull is a tide, and it does not ask permission before it moves the boats.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8085
+        },
+        {
+          "speaker": "march",
+          "text": "Then I'll try it on me. Out loud. My five. The ones I spend the most time with. You, the timer, the notebook, whoever's listening to this, and J. Five. That's the list.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7457
+        },
+        {
+          "speaker": "narrator",
+          "text": "Brave, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1344
+        },
+        {
+          "speaker": "narrator",
+          "text": "Look at the sack, March. The stitching at the top has run into the shape of a crown. Every ordinary thing in a kitchen is a sign to a man with eyes. And I have eyes. Unlike you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12139
+        },
+        {
+          "speaker": "march",
+          "text": "It's a bad stitch. Somebody's thread ran out.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2968
+        },
+        {
+          "speaker": "march",
+          "text": "Right, the timer. On an ordinary Tuesday it's the one I'm with longest, and it only ever asks me to go faster. That's the honest count.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7055
+        },
+        {
+          "speaker": "narrator",
+          "text": "So the timer drags you down, the notebook lifts you, and the crown sits over the whole kitchen. You are the sack's lesson, March, not the flour's. Move over, too. A chair that hears this much destiny ought to belong to a storyteller.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 15552
+        },
+        {
+          "speaker": "march",
+          "text": "No chair.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1318
+        },
+        {
+          "speaker": "march",
+          "text": "And write the names down before you decide what they mean. The clock's a clock. I'm not cutting out the clock. It's fine. The test is whether a voice only ever makes the bread worse. If one does, that's the one your note means by drags you down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10791
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cut out? Ah, the pocket opens at last. The old tale ends with scissors. The girl cut the ribbon on the sack that had spilled, and the loaves came out lighter for it, and the whole long house admired her in whispers.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 14208
+        },
+        {
+          "speaker": "march",
+          "text": "Your scissors are a fairy tale. Gently. What did the guild actually do?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4054
+        },
+        {
+          "speaker": "narrator",
+          "text": "Scissors are truth, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1984
+        },
+        {
+          "speaker": "narrator",
+          "text": "The guild would not let an apprentice sell a single loaf until a senior baker vouched for him. He could knead like the wind and still stand at the back of the market with no stall at all, watching the crowd walk past him to someone else's counter.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 15296
+        },
+        {
+          "speaker": "march",
+          "text": "A vouch is just another person's opinion. Average, possibly. Who said the senior baker was above the middle?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6500
+        },
+        {
+          "speaker": "narrator",
+          "text": "The senior baker was above the middle, March, by the width of a whole stall. That is the point. Every apprentice was told that whoever vouched for him would decide what he was allowed to bake. The guild had the sense to write that down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 15296
+        },
+        {
+          "speaker": "march",
+          "text": "Right, the tangent earned its keep. The guild knew who vouches for you shapes what you bake. That's a vouch, not a sum. You're right about that much.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6971
+        },
+        {
+          "speaker": "narrator",
+          "text": "For someone who believes this, March, the kitchen looks different. Each person at the bench is a small weight on the scale. The scale doesn't care how kind they are, only which way they push. Every morning you ask whether the people beside you are lifting the loaf or flattening it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 17472
+        },
+        {
+          "speaker": "march",
+          "text": "That's the picture I'd keep. A question you ask at the bench before the dough goes in. Nothing more.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5172
+        },
+        {
+          "speaker": "march",
+          "text": "Late Edition, so here's one true thing. Then I'm back to the timer. I think J picks people who make him argue better. And I don't think he notices he does it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7699
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall drop the act for a line, March. I have never met him, and I think you are right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5717
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. Go on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1724
+        },
+        {
+          "speaker": "narrator",
+          "text": "I would write that down in gold, but the ink is cold and the hour is late.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4992
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the crust, March. That crack I heard earlier, like a sea-wall in its first storm. Tell me that was not an omen.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7680
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. You're right. Now the timer. Up next, It's Never Too Late To Change, then Habits Become Automatic, Your New Identity. I'm setting the timer, and you're not touching it.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 8055
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
+    }
+  ]
+}
