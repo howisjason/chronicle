@@ -49,8 +49,8 @@ runs possible (J's call, 8 Oct 2026). The truth check is always Haiku. `--lab` w
 only into `inbox/lab<LAB_TAG>-day.json` (one file, not hour files); `CHRONICLE_MODEL` and `CHRONICLE_SHEETS`
 let a lab round try another writer or another folder of sheets. Lab calls count
 against the daily cap too. Each call's cost goes to `inbox/costs.tsv`. The Mac must be
-awake for new scenes; the page replays otherwise. The cloud way (a cloud session on
-the $250 credit) was removed the same day: one way to run, done well.
+awake for new scenes; the page replays otherwise. The cloud way (a cloud session) was
+removed the same day: one way to run, done well.
 
 **Voices.** March is `station/march_voice.py`, adopted whole from the shelved
 body (heart's throat, alice's movement, lifted; see its header). The narrator is

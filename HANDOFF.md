@@ -19,7 +19,7 @@ The fifth baton. The fourth one's "one job" (the writing rebuild) is done and li
 
 ## Verified versus unseen
 
-**VERIFIED:** 26 of 26 tests after every change; the voice loads and speaks; a lab scene voiced in 3.5 minutes for 5.2 minutes of speech; a fresh Sonnet grader confirmed 7 of 8 claims on the branch (the eighth was two unnamed word changes in `writer.md`, now named; its one crash path fixed in 5b9c247), stamped in `march-brain/notes/immune/graded.txt`. **REPORTED by the cost log:** about 5 cents a scene in the lab's best round. **VERIFIED live:** the first scene on the new writing aired at 21:41 on 9 Oct. **PROMISED:** a full day at the $2 cap on the new writing (the 9 Oct labs spent about $0.90 of that day's cap); the live pass rate over many picks; the two checker fixes are with a grader as this is stamped.
+**VERIFIED:** 27 of 27 tests after every change; the voice loads and speaks; a lab scene voiced in 3.5 minutes for 5.2 minutes of speech; a fresh Sonnet grader confirmed 7 of 8 claims on the branch (the eighth was two unnamed word changes in `writer.md`, now named; its one crash path fixed in 5b9c247), stamped in `march-brain/notes/immune/graded.txt`. **REPORTED by the cost log:** about 5 cents a scene in the lab's best round. **VERIFIED live:** the first scene on the new writing aired at 21:41 on 9 Oct. **PROMISED:** a full day at the $2 cap on the new writing (the 9 Oct labs spent about $0.90 of that day's cap); the live pass rate over many picks; the two checker fixes are with a grader as this is stamped.
 
 ## Facts that will rot: recipes, not values
 
