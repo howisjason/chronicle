@@ -551,6 +551,380 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-09-22-02",
+      "title": "THE TIMER AND THE HIDDEN ASK",
+      "startAt": "2026-10-09T22:29:21.313+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-22-02.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Be Intentional With Your Life and Actions",
+        "Philosophy Of Social Connection"
+      ],
+      "angle": "What would this idea look like if I went to its extreme? Could that open up anything interesting?",
+      "kind": "legend",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Every action you take should be intentional and deliberately thought out."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: When you say you're gonna do something, you gotta follow it through."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Don't leave your decisions up to circumstance."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Let the other person believe your idea was theirs, and praise them for coming up with such an idea."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Ask questions instead of giving direct orders."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You set a timer for a fixed stretch. The tea is still too hot to drink. Somewhere past the middle you get up and go, and nobody sees it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6738
+        },
+        {
+          "speaker": "march",
+          "text": "Sometimes that small drop under the ribs shows up anyway, the one that says you just broke something you swore to yourself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6562
+        },
+        {
+          "speaker": "march",
+          "text": "Most people think living by design means controlling every outcome. Plan the week, own the week, job done.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6160
+        },
+        {
+          "speaker": "narrator",
+          "text": "And most people think being liked means being agreeable. Nod, smile, give way at the crossing, and the room is yours.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7787
+        },
+        {
+          "speaker": "march",
+          "text": "Both sound about right to me.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2321
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note answers neither of them, March. Hear it. Don't leave your decisions up to circumstance. Circumstance is the morning that slides away while you were not looking, and the plan that dies because nobody held it to the minute.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 14165
+        },
+        {
+          "speaker": "march",
+          "text": "So a promise to yourself only counts if it's kept to the minute.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3640
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly that. Close enough is not the same as kept. The promise kept to the minute is the whole architecture, and the best part I am holding back until you have seen the case.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11477
+        },
+        {
+          "speaker": "march",
+          "text": "Holding back the best part. Fine. Let's see the case, then.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3350
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let us say a woman keeps an egg timer on her windowsill. Each morning she sets it for a fixed stretch of stillness, sits with the cup going cold, and when the bell rings she stops, even in the middle of a breath.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13077
+        },
+        {
+          "speaker": "march",
+          "text": "Even mid-breath? That's brutal.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2238
+        },
+        {
+          "speaker": "narrator",
+          "text": "Call it a vow kept, March. The sill was her agreement with herself, and she would no more fudge it than fudge a receipt.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7915
+        },
+        {
+          "speaker": "march",
+          "text": "Then a friend across the landing starts asking. Just a little longer? Could you stretch it? Just this once?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5387
+        },
+        {
+          "speaker": "narrator",
+          "text": "Each time she says no. The friend keeps testing, and she keeps answering the same way, until the friend starts setting the clock herself, to see whether the vow holds.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10475
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, she's sneaky.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 1808
+        },
+        {
+          "speaker": "march",
+          "text": "So the friend's running the test now. Good. That's more fun than the windowsill.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4207
+        },
+        {
+          "speaker": "march",
+          "text": "I know that kind of test. I keep a column. Private. Every argument I win goes in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5080
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then your column is growing, March. Shall I read the latest entry aloud?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4907
+        },
+        {
+          "speaker": "march",
+          "text": "No. But fine. I've been tallying the friend's tests too. Every just a little longer gets a tick.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5303
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you are testing the friend, and the friend is testing the timer. The question you keep hidden sits right there in your column, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8320
+        },
+        {
+          "speaker": "march",
+          "text": "It's a column, not a question. Back to the timer.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2942
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here is where the notes cross. The first says a kept pledge makes itself real. The other says let the other person believe the idea is theirs. Put together, the windowsill clock is also an ask.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13291
+        },
+        {
+          "speaker": "march",
+          "text": "Say that slowly.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1766
+        },
+        {
+          "speaker": "narrator",
+          "text": "The friend sets the clock because she wants to see the promise hold. Nobody spoke that request aloud. The windowsill invites her in and leaves the choice to her.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10005
+        },
+        {
+          "speaker": "march",
+          "text": "So the timer's a request she can answer for herself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3111
+        },
+        {
+          "speaker": "march",
+          "text": "Clever. If it's honest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1968
+        },
+        {
+          "speaker": "narrator",
+          "text": "Honest, and visible.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1621
+        },
+        {
+          "speaker": "narrator",
+          "text": "It stays honest. It is a plain promise set where another person can see it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4928
+        },
+        {
+          "speaker": "narrator",
+          "text": "Picture someone with a notebook split down the middle.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3243
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on, where's the card?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2045
+        },
+        {
+          "speaker": "narrator",
+          "text": "One column holds promises kept to the minute. The other holds asks made face up. A card lies face down under each question, and they turn it over only when the other person cannot see the plan.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 12885
+        },
+        {
+          "speaker": "march",
+          "text": "And every time the card turns up, they ask whether the answer would still stand with the card showing.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 4,
+          "audioMs": 5585
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, March. That is the only test that matters, and the friend passes it, because she could see the clock the whole time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 7765
+        },
+        {
+          "speaker": "march",
+          "text": "You're right, Narrator.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 4,
+          "audioMs": 1852
+        },
+        {
+          "speaker": "narrator",
+          "text": "Naturally I am.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1515
+        },
+        {
+          "speaker": "march",
+          "text": "Right, kettle's going again. Changing the subject.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 4,
+          "audioMs": 3000
+        },
+        {
+          "speaker": "narrator",
+          "text": "I shall grant him a title for this, since the notes keep making him an architect. Keeper of the Exact Minute. He may claim it once a pledge to himself holds to the minute and the card lies face up.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12331
+        },
+        {
+          "speaker": "march",
+          "text": "He'll say it's too long for a fridge door. Then he'll pin it up anyway.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3944
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the kettle has clicked off, on its own. I counted that as a sign once already, and I count it again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7104
+        },
+        {
+          "speaker": "march",
+          "text": "The bell's gone on the windowsill. The card's face up.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3034
+        },
+        {
+          "speaker": "march",
+          "text": "And I'm still in this chair. Up next, Novelty - A Life Fully Lived, and How Our Brains Interpret Imagined And Real Experiences.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 4,
+          "audioMs": 6927
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
