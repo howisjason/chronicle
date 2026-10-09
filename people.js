@@ -3,6 +3,14 @@
 // files, scaled up by CSS with smoothing off. The ideas are PNN's (a person
 // is code drawn from a `look`, a face per mood, actions as arm poses); the
 // code is our own.
+//
+// The two Marches (J's ask, 9 Oct 2026: "replace the narrator with the new
+// march ... so that I can see the two models side by side"): the old March
+// keeps her seat on the left; the narrator's seat on the right shows the new
+// per-pixel March from march-base.js, and her mouth moves on the narrator's
+// lines. The narrator's voice and lines are unchanged. The NARRATOR look and
+// the 'sage' branch below stay, unused, so going back is one line in drawStage.
+import { makeMarch } from './march-base.js';
 
 export const W = 128, H = 72;
 
@@ -131,13 +139,52 @@ function drawPerson(g, L, x, y, state, faces) {
   }
 }
 
+// The new March in the narrator's seat. Her rows above the desk front (0 to
+// NEW_BOX_H - 1) are drawn into a box centred on x = NEW_CX, where the
+// narrator's head sat (top-left 89, 20); NEW_TOP is her crown line (the hair
+// dome rises about 5 px above it), low enough that the crown never clips when
+// she breathes, so the desk front covers her from the hips down. Each stage
+// canvas (the live TV, a clip's hidden canvas, the cast cards' cut) gets its
+// own March, because they draw different moments and her springs must step
+// from that canvas's own last moment.
+const NEW_BOX_H = 56, NEW_TOP = 7, NEW_CX = 96, SYL_MS = 130, WORD_MS = 390;
+const marches = new WeakMap();
+const hash = (n) => { n = Math.imul(n ^ (n >>> 16), 0x45d9f3b); n = Math.imul(n ^ (n >>> 16), 0x45d9f3b); return (n ^ (n >>> 16)) >>> 0; };
+function drawNewMarch(g, t, s) {
+  try {
+    let m = marches.get(g);
+    if (!m) {
+      const eng = makeMarch(NEW_BOX_H, NEW_TOP);
+      const cv = typeof document !== 'undefined' ? document.createElement('canvas') : new OffscreenCanvas(eng.W, eng.H);
+      cv.width = eng.W; cv.height = eng.H;
+      m = { eng, cv, cx: cv.getContext('2d'), img: new ImageData(eng.W, eng.H) };
+      marches.set(g, m);
+    }
+    // Talking: while the stage's narrator mouth is open, her mouth takes a
+    // syllable shape from her own VISEMES table every SYL_MS, picked from the
+    // clock (never the same twice running), so the live page and a clip agree
+    // on the same moment; a nod at the start of some words.
+    const on = s.talker === 'narrator' && s.narrator && s.narrator.mouth !== 'closed';
+    const b = Math.floor(t / SYL_MS), w = Math.floor(t / WORD_MS);
+    let viseme = hash(b) % 6;
+    if (viseme === hash(b - 1) % 6) viseme = (viseme + 1) % 6;
+    const talk = { on: s.talker === 'narrator', viseme: on ? viseme : -1, nod: on && (hash(w) & 1) === 1 && t % WORD_MS < 140 };
+    m.img.data.set(m.eng.frame(t / 1000, talk));
+    m.cx.putImageData(m.img, 0, 0);
+    g.drawImage(m.cv, NEW_CX - m.eng.CX, 0);
+  } catch (e) {
+    // never take the stage down; say it once
+    if (!drawNewMarch.warned) { drawNewMarch.warned = true; console.warn('new March:', e); }
+  }
+}
+
 // Paint the whole stage. talker: 'march' | 'narrator' | null.
 export function drawStage(g, t, s) {
   drawSet(g, t);
-  const blinkM = (t % 4100) < 140, blinkN = ((t + 1700) % 5300) < 140;
+  const blinkM = (t % 4100) < 140;
   // whoever is talking leans a pixel, so the room reads who has the floor
   drawPerson(g, MARCH, 25, 22, { ...s.march, blink: blinkM, bob: s.talker === 'march' && (t >> 8) % 2 ? -1 : 0 }, 1);
-  drawPerson(g, NARRATOR, 89, 20, { ...s.narrator, blink: blinkN, bob: s.talker === 'narrator' && (t >> 8) % 2 ? -1 : 0 }, -1);
+  drawNewMarch(g, t, s);
   // the desk front covers their laps
   px(g, '#3b2a22', 0, 56, W, 16);
   px(g, '#5a4032', 0, 56, W, 1);

@@ -107,7 +107,9 @@ the design search after about fifteen attempts across two sessions; do not reope
 propose another style, and spend as few tokens on the look as the job allows. The rest of
 the channel matters more. The one design that came after this (his own call, in the
 `human-hunt` repo, 9 Oct 2026) is a new per-pixel base for March, `human-hunt/13-base/base.html`;
-he asked to see it on the stream beside the old March, and the baton holds how.
+at his ask, the narrator's seat shows her beside the old March so he can compare them:
+`march-base.js` is that engine adopted (its header names every wiring change), and
+`people.js` draws her in the narrator's place, her mouth moving on the narrator's lines.
 
 What was tried and rejected (never propose again): pixel-room and lit-pixel chibis, felt
 paper, watercolour, cel, lit-anime, clay, a skin-coloured ball with anime eyes, March as a

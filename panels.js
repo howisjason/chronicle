@@ -52,10 +52,12 @@ function showChanges(ms, n) {
 
 // --- the faces ---
 // Cut from the stage itself, drawn once at rest, so a change to a character in
-// people.js shows up here with no second drawing to keep in step. The boxes are
-// the head and shoulders around each head's top-left (25,22) and (89,20).
+// people.js shows up here with no second drawing to keep in step. March's box is
+// her head and shoulders around her head's top-left (25,22); the narrator's seat
+// now holds the new March (people.js), whose 28-px head fills the card from the
+// fringe to the chin, centred on x = 96.
 // Drawn at t = 1000 because t = 0 falls inside March's blink (grader, 8 Oct 2026).
-const CROP = { march: [19, 18], narrator: [83, 16] };
+const CROP = { march: [19, 18], narrator: [83, 9] };
 export function drawFaces(root = document) {
   const stage = document.createElement('canvas');
   stage.width = W; stage.height = H;
