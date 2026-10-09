@@ -2224,6 +2224,304 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-03-06",
+      "title": "THE SENTENCE THAT NEVER TESTED",
+      "startAt": "2026-10-10T03:48:55.051+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-03-06.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Be Intentional With Your Life and Actions",
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "What assumptions am I making in this idea?",
+      "kind": "straight",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Become the architect of your own life."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Whatever you believe about yourself, you are right."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Think and speak only the grandest narrative for yourself."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Every action you take should be intentional and deliberately thought out."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Suppose it's late and your hand is already on the tap, before any thought has caught up with it. Nothing in that reach asks whether you're careful.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7138
+        },
+        {
+          "speaker": "narrator",
+          "text": "Stopped checking in with itself. A fine phrase for a limb with a grudge. Let the tap wait, March. I'm opening the big book.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8619
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the comfortable version. Most people think whatever they believe about themselves is simply true, so a firm enough belief settles it. I'll say it out loud. I'm careful with the kettle. There. Settled.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9401
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note, at full size: 'Whatever you believe about yourself, you are right.' Hold that in your teeth a moment. The best of it is still in my pocket.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9451
+        },
+        {
+          "speaker": "march",
+          "text": "No. So if I believe I'm careful, I am careful. Whatever the kettle does.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4152
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly. The belief is the fact, and the world trots along behind like a dog on a lead.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6229
+        },
+        {
+          "speaker": "march",
+          "text": "Then give me an actual front door at an actual hour. Let the door argue back.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4890
+        },
+        {
+          "speaker": "narrator",
+          "text": "A man keeps a brass key on a loop by the front door, and each night he tells himself he is steady with his hands. The key sticks in the stiff lock.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9472
+        },
+        {
+          "speaker": "march",
+          "text": "Wait, the key sticks?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1747
+        },
+        {
+          "speaker": "narrator",
+          "text": "The hall light runs on a dimmer he never turns down, so the bulb flickers across the coats. The coat hook has a loose screw that clicks when it takes his weight. He never tests his steadiness against anything except his own sentence.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14933
+        },
+        {
+          "speaker": "march",
+          "text": "So the lock that jams gets no vote. And the sentence gets all the credit.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4588
+        },
+        {
+          "speaker": "narrator",
+          "text": "The sentence has the last word. That is the whole discipline of it. Let the lock grumble in its corner.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6912
+        },
+        {
+          "speaker": "march",
+          "text": "Lock wins, then.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1763
+        },
+        {
+          "speaker": "march",
+          "text": "Let me try it on myself, out loud. I'm sure I'm careful with the kettle, I'm sure I'm...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4878
+        },
+        {
+          "speaker": "march",
+          "text": "Oh. Saying it out loud is the easy bit. The checking is the part I'd quietly skip.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4944
+        },
+        {
+          "speaker": "narrator",
+          "text": "Caught in the act.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1344
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you've found the crack in the rim, March. Look at the lamp over the drying rack. A moth has found it too, bumping the bulb as though the light were gospel. It knows that lamp is the only true light in the room. Destiny, March, in a creature the size of a thumbnail.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 17472
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. The moth is a prophet now. It's a moth banging on a bulb. It doesn't know a thing. It just wants the light.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5593
+        },
+        {
+          "speaker": "narrator",
+          "text": "Wanting and knowing are twins when the wings are that certain. It is simple, the simplest thing in the whole notebook, so I crown J with it. Sovereign of the Coat Hook, Architect of the Hall. The title has waited for a worthy head.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15253
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, put the crown down.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2023
+        },
+        {
+          "speaker": "march",
+          "text": "Put simple back in the drawer. A loose screw is exactly the thing that gets ignored.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4715
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then set these notes side by side. 'Become the architect of your own life.' And, 'Think and speak only the grandest narrative for yourself.' Both assume drawing up a plan and holding a belief are one act. That assumption breaks the moment the plan is never checked against what the hands actually do.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 19221
+        },
+        {
+          "speaker": "march",
+          "text": "So drawing the plan and believing it get treated as one job. And nobody inspects the job.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5526
+        },
+        {
+          "speaker": "narrator",
+          "text": "The plan is the architect's drawing. The belief is the paint. A drawing can be beautiful while the wall leans.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7189
+        },
+        {
+          "speaker": "march",
+          "text": "Picture the same front door at the same hour. One man has a sheet taped inside the hall cupboard where each night's result gets written. The other has only the sentence. Only the first one is ever surprised by the lock.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10811
+        },
+        {
+          "speaker": "narrator",
+          "text": "A sheet on a cupboard door is a small altar to the truth. The lock cannot argue with paper.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6421
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I name you Chief Architect of the Drying Rack, since you are so fond of plans.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "I'll keep the stool, thanks. The mug is still sitting on the same tile where it landed. That's the proof this bench needs. A belief only earns its keep where the practice shows up.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8594
+        },
+        {
+          "speaker": "narrator",
+          "text": "Pleasing. Sit with that, and rise to the chair. It has the better view of the rack.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "Stool. Dismissed.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1742
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your tone is flat about it, even for a stool.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3243
+        },
+        {
+          "speaker": "march",
+          "text": "Next up, The Value of Time and The Present Moment Is All That Exists. Same bench, same mug, same late hour.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6354
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
