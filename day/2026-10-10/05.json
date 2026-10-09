@@ -793,6 +793,348 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-05-03",
+      "title": "A DEGREE OFF COURSE BY MORNING",
+      "startAt": "2026-10-10T05:22:03.596+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-05-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Be Intentional With Your Life and Actions",
+        "The Value of Time"
+      ],
+      "angle": "What concepts from [biology/engineering/chemistry/any other field] could be adapted to improve upon this idea?",
+      "kind": "straight",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Don't live your life by default. Live your life by design."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: When you say you're gonna do something, you gotta follow it through. It does more for your self-belief to say you'll meditate for 10 minutes and actually do 10 minutes vs saying you'll do 30 minutes and only doing 20 minutes."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: Time magnifies the margin between success & failure. It will multiply whatever you feed it."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Say thirty and stop at twenty, and you've already had that morning.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3750
+        },
+        {
+          "speaker": "march",
+          "text": "Maybe you know the little drop in the chest that comes before you look at the clock.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4344
+        },
+        {
+          "speaker": "march",
+          "text": "It's only a small slack in the rope though, right? You didn't skip the whole thing.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4205
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly so. Twenty is a respectable sermon, and a little slack has never sunk a ship.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6272
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yet the note is less gentle than I am, and that is saying something. Don't live your life by default. Live your life by design. A broken promise is the default, the rope going slack on its own while nobody holds it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14699
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying I didn't keep a promise.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2567
+        },
+        {
+          "speaker": "march",
+          "text": "I just let the rope go slack by itself.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2734
+        },
+        {
+          "speaker": "narrator",
+          "text": "Put it plainer, and I shall. When you say you're gonna do something, you gotta follow it through. Each promise kept to yourself is a small decision the future you can lean on, and each broken one teaches the future you not to lean at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14763
+        },
+        {
+          "speaker": "march",
+          "text": "Ugh. Okay, but I'm not sure a cushion and a timer are the same as a life decision.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4879
+        },
+        {
+          "speaker": "narrator",
+          "text": "Sitting on a cushion is the decision. It is the smallest one on offer, which is exactly why it is the honest one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7595
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Try it on a case, then. Make it a bloke at a kitchen table.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3834
+        },
+        {
+          "speaker": "narrator",
+          "text": "A man swears he will sit for thirty minutes each morning. He sits down at the table, the kettle clicks off in the kitchen, and his phone lights up with a message from a friend. He stops at twenty, cross with himself, and tells himself the rest never mattered.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 16171
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. So the part he skipped was the part that counted.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3070
+        },
+        {
+          "speaker": "narrator",
+          "text": "Count the mornings that week, March, when the kettle beat him to it. The number is the verdict.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5696
+        },
+        {
+          "speaker": "march",
+          "text": "Most of them.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1526
+        },
+        {
+          "speaker": "march",
+          "text": "The kettle won most mornings. He's basically a kettle man now.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3813
+        },
+        {
+          "speaker": "narrator",
+          "text": "Which reminds me of a navigator I once read about, who said that a single degree off course, left alone long enough, becomes a long way off by the time you reach the coast. Nobody notices until the coast is gone. It is the simplest sentence I have ever stolen.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 17323
+        },
+        {
+          "speaker": "march",
+          "text": "Simple? Stop calling things simple, Narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2944
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing about that navigator is simple. He's the reason nobody sails onto the rocks.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5478
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite right. The sea is never simple, and neither is a man at a kitchen table.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5141
+        },
+        {
+          "speaker": "march",
+          "text": "So back to the table. Every unkept sitting is one degree.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3576
+        },
+        {
+          "speaker": "march",
+          "text": "The note's line about constant course correction is the only correction you get.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4623
+        },
+        {
+          "speaker": "march",
+          "text": "Put the first note beside the note on time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2815
+        },
+        {
+          "speaker": "march",
+          "text": "The first says a broken promise makes your word stop meaning anything.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4114
+        },
+        {
+          "speaker": "march",
+          "text": "The note on time says, It will multiply whatever you feed it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3673
+        },
+        {
+          "speaker": "narrator",
+          "text": "So a broken promise is not one lost half hour. It is a shift in direction that repeats every morning, and time carries that heading a very long way.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9941
+        },
+        {
+          "speaker": "narrator",
+          "text": "The drift the first note fears is the compounding the note on time describes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5248
+        },
+        {
+          "speaker": "march",
+          "text": "So the one lost stretch isn't lost.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2493
+        },
+        {
+          "speaker": "march",
+          "text": "It's a small tilt that the days keep adding to.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3032
+        },
+        {
+          "speaker": "march",
+          "text": "Picture someone who believes this. Each morning they check the one thing they said they would do, and when the kettle clicks, they keep sitting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6756
+        },
+        {
+          "speaker": "march",
+          "text": "The last stretch is what keeps the whole week on its heading.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3288
+        },
+        {
+          "speaker": "narrator",
+          "text": "I shall go back to the glass above the door of the tram, where the man was always going to see himself. And there he is, in the glass, holding a kettle.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9728
+        },
+        {
+          "speaker": "narrator",
+          "text": "I call that destiny.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1643
+        },
+        {
+          "speaker": "march",
+          "text": "That's a kettle, Narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2029
+        },
+        {
+          "speaker": "march",
+          "text": "It's a sign of nothing except that he's making tea.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3138
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I bestow upon J the title Lord High Keeper of the Kettle, and I defy anyone to refuse it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6784
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you're right.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1753
+        },
+        {
+          "speaker": "march",
+          "text": "So what's the next crown?",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1939
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
