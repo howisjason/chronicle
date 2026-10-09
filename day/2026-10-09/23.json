@@ -972,6 +972,608 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-09-23-03",
+      "title": "THE HANDWRITTEN GRIN AND THE GREY MONDAY",
+      "startAt": "2026-10-09T23:23:04.459+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-23-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Failure Is How We Learn And Grow",
+        "Happiness And Gratitude"
+      ],
+      "angle": "Create a simple analogy or metaphor to explain the core concept of this note. What does this analogy reveal about its strengths or weaknesses?",
+      "kind": "the_case_against",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Smile To Be Happy: Your brain has been trained to inseparably link smiling and feeling good because normally we only smile when we're having a good time."
+        },
+        {
+          "kind": "note",
+          "text": "Smile To Be Happy: When you smile, your brain automatically assumes you're having a good time."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+        },
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: They mistakenly think failure is who they are instead of the result of one attempt."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've read the message over and over. Your face has gone flat, and the message still says what it said at the start. Then someone in the lift jokes about the broken button, and you're grinning before you've decided anything. The grin fades. The message is still bad. So which of you was the real one?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12818
+        },
+        {
+          "speaker": "march",
+          "text": "Honestly, I always thought the mood leads. You feel good, and the face follows like a dog on a lead.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5717
+        },
+        {
+          "speaker": "march",
+          "text": "So that lift smile was a fluke. A bit of good weather leaking out.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3875
+        },
+        {
+          "speaker": "narrator",
+          "text": "A dog on a lead, March, and a lead the dog chose. The note turns the leash round.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5995
+        },
+        {
+          "speaker": "march",
+          "text": "Ha, the leash.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1550
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your brain has been trained to link smiling and feeling good, because we only grin when the day is going well. So the link runs both ways.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8960
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your expression can tell the brain what kind of day this is. When you smile, your brain automatically assumes you're having a good time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8576
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying the expression tells the brain the day is fine, even when the day's a mess?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4542
+        },
+        {
+          "speaker": "narrator",
+          "text": "Close. The brain reads the expression like a shop sign. Open means open, whatever's on the shelves.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7147
+        },
+        {
+          "speaker": "march",
+          "text": "So the lift smile told a brain it's a decent day, and then the brain went hunting for evidence.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5327
+        },
+        {
+          "speaker": "narrator",
+          "text": "It found the evidence in the lift, a joke about a button. The rest of the morning had to try much harder to be bad.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7552
+        },
+        {
+          "speaker": "march",
+          "text": "That's a good story. I'm not sure it's a rule.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2766
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nor is the note, not yet. Test it on a grey Monday.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4117
+        },
+        {
+          "speaker": "march",
+          "text": "So I can start the feeling from the mouth.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2625
+        },
+        {
+          "speaker": "narrator",
+          "text": "The assumption is the thing you're moving, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3221
+        },
+        {
+          "speaker": "narrator",
+          "text": "The feeling comes later, once the argument stops.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3392
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you're right. Grey Monday, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2518
+        },
+        {
+          "speaker": "march",
+          "text": "Say it's a review. The meeting runs long, someone shouts about the chart, and the cup on my desk has its crack catching the light.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6692
+        },
+        {
+          "speaker": "march",
+          "text": "The email I owe is still unsent. I hold a smile anyway, a stiff one, like a receptionist on her opening morning.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6478
+        },
+        {
+          "speaker": "march",
+          "text": "Halfway through, the stiff smile's still stiff.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2784
+        },
+        {
+          "speaker": "march",
+          "text": "Then I notice the chart's colours. A mustard line and a teal line, and the teal's losing. By the last slide the shouting's gone quiet in my head, and the whole room has moved without anybody deciding it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9958
+        },
+        {
+          "speaker": "march",
+          "text": "The worst bit is the email, sitting in drafts with its cursor blinking. The smile doesn't touch that.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5541
+        },
+        {
+          "speaker": "march",
+          "text": "It just makes me look at the email differently.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2792
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the idea is doing what it promises, and no more.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3563
+        },
+        {
+          "speaker": "narrator",
+          "text": "Did the room move, or did you?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2048
+        },
+        {
+          "speaker": "march",
+          "text": "Both. Me first, then the room.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2198
+        },
+        {
+          "speaker": "march",
+          "text": "That's the bit I'd have missed if I'd waited for the mood.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3116
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here's the grand version, and I'll pay for it later. A smile is a note you leave yourself, in your own handwriting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7488
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your brain never checks who wrote it. It reads the handwriting and believes the message.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5653
+        },
+        {
+          "speaker": "march",
+          "text": "Why handwriting, though? Why not a sticky note?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2684
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because you trust your own hand more than your own words. A smile is handwriting on your face. It goes everywhere you go.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7701
+        },
+        {
+          "speaker": "march",
+          "text": "Lovely. So where's the weakness? Notes in your own hand go off too.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3641
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here's the hard part, and I won't soften it. A message from yourself can say the wrong thing and still be believed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7360
+        },
+        {
+          "speaker": "narrator",
+          "text": "A smile doesn't fix the email. It changes who's reading the email. The email still sits there, unkind and unsent, until somebody writes it again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10475
+        },
+        {
+          "speaker": "narrator",
+          "text": "Most days the smile buys you a steadier afternoon and not one word more. Anyone who says it rescues the message is selling you a lift that stops between floors.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11179
+        },
+        {
+          "speaker": "march",
+          "text": "That's bleak.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1228
+        },
+        {
+          "speaker": "narrator",
+          "text": "It's accurate. Grey mornings stay grey, and the email stays unkind until you rewrite it with the face you've got.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7595
+        },
+        {
+          "speaker": "march",
+          "text": "Grim. So the strength is it costs nothing and fits in a lift.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3516
+        },
+        {
+          "speaker": "narrator",
+          "text": "Does a stiff smile in a grey meeting go on your private score? A win, or just a cough?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5824
+        },
+        {
+          "speaker": "march",
+          "text": "It counts. If a held expression turns a meeting, that's a result, and results go on the score.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5324
+        },
+        {
+          "speaker": "march",
+          "text": "I'll log the stiff one as a win, then cross it out if it doesn't hold.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3989
+        },
+        {
+          "speaker": "narrator",
+          "text": "And if the score logs the smile and never logs the room, you're cheating your own tally.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5568
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on, the meeting was never the...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2492
+        },
+        {
+          "speaker": "narrator",
+          "text": "Was never the point, I know. Keep going.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2837
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the claim, then. The face tells the brain, the room catches up, the mood maybe follows.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5320
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then give me the chair, March. I'll sit in it while the hard part gets tested, and see whether it creaks.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6613
+        },
+        {
+          "speaker": "march",
+          "text": "No. Stand at the back.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1827
+        },
+        {
+          "speaker": "march",
+          "text": "You'll hear where this meets the failure note.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2661
+        },
+        {
+          "speaker": "narrator",
+          "text": "It meets the failure note where that note says a single try doesn't grade the writer. This one says a held expression doesn't grade the mood.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9259
+        },
+        {
+          "speaker": "narrator",
+          "text": "It hands the brain a message. Both say move small first, and let the feeling catch up.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5909
+        },
+        {
+          "speaker": "march",
+          "text": "So I've been treating a grey day like weather, something that happens to the desk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4292
+        },
+        {
+          "speaker": "march",
+          "text": "But the note says it's a state of mind, pleasant most of the time. That makes it something on the table.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5708
+        },
+        {
+          "speaker": "narrator",
+          "text": "On the table, March, and it moves when the hands move.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3776
+        },
+        {
+          "speaker": "narrator",
+          "text": "The mood answers to what you're doing, not the other way round.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3648
+        },
+        {
+          "speaker": "march",
+          "text": "So neither note waits for the feeling to arrive first.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3216
+        },
+        {
+          "speaker": "march",
+          "text": "A small move leads, and the mood gets its turn after.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3262
+        },
+        {
+          "speaker": "narrator",
+          "text": "The worries grow fastest while you wait for them to leave. Do one small thing, and they shrink to the size of that crack in the cup.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8085
+        },
+        {
+          "speaker": "march",
+          "text": "Dramatic. But I'll take it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2135
+        },
+        {
+          "speaker": "narrator",
+          "text": "Take it and keep it honest.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2005
+        },
+        {
+          "speaker": "march",
+          "text": "Take someone who waits to feel better before smiling. They spend the whole grey afternoon grading themselves, and by evening they've found themselves guilty.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7628
+        },
+        {
+          "speaker": "narrator",
+          "text": "For that one, the afternoon is a room with the door shut.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3797
+        },
+        {
+          "speaker": "march",
+          "text": "Then take someone who holds a smile for one minute.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3054
+        },
+        {
+          "speaker": "march",
+          "text": "Then writes down what the room did.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2488
+        },
+        {
+          "speaker": "narrator",
+          "text": "The last one has the better week, and not because of the smile.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3947
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because they noticed what the smile did, and kept the page.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3669
+        },
+        {
+          "speaker": "march",
+          "text": "So the day's a draft too.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2129
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the lift, March. Your expression moved before you'd decided anything, and the brain said good day before it had checked the evidence.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8555
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every day is a draft, March. The smile is only the first sketch, and the rest of the day gets to revise it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7211
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. The grin got there first.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2278
+        },
+        {
+          "speaker": "march",
+          "text": "Up next: Be Intentional With Your Life and Actions, and Your Routine Is Top Priority.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5072
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
