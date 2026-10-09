@@ -1,0 +1,428 @@
+{
+  "date": "2026-10-10",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-10-03-01",
+      "title": "THE LUNCH YOU CAN STILL TASTE",
+      "startAt": "2026-10-10T03:06:06.797+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-03-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Delayed Gratification",
+        "Novelty - A Life Fully Lived"
+      ],
+      "angle": "What would this idea look like if I went to its extreme? Could that open up anything interesting?",
+      "kind": "the_case_against",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Nothing twice. Never eat the same food twice. Never go to the same place twice. Never hear the same thing twice. Everything only once."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Monotony is the enemy. Novelty is the solution."
+        },
+        {
+          "kind": "note",
+          "text": "Delayed Gratification: After a while it becomes easier with habit, routine and all. After a certain point it just becomes a positive feedback loop."
+        },
+        {
+          "kind": "note",
+          "text": "Delayed Gratification: Shallow happy is what you want now. Deep happy is what you want most."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: The thrill of the first. The sentimentality of the last."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Take any lunch you ate at your desk last Thursday. Same bowl, same fork, same chair. By the afternoon, could you tell anyone what was in it? So what can you still taste from last week?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8799
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nothing, I should think. Not a crumb of it. And the chipped blue bowl on this table could say the same of every supper it has ever held, in the small hours, when nobody is awake to remember them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12203
+        },
+        {
+          "speaker": "march",
+          "text": "Right. So here's what most people think about that note.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3147
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing twice means never repeat anything. No gym you already know. No old friend. No favourite seat. Everything new, all the time. Job done.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7254
+        },
+        {
+          "speaker": "narrator",
+          "text": "Job done, is it? A slogan read as a slogan would have us leaving our own beds for good. Let us read it as the rule it is.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8704
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Read it as a rule. You're about to call it simple.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3223
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is simple.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1344
+        },
+        {
+          "speaker": "march",
+          "text": "Simple. That's what people call a thing they never had to live.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3514
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the claim, and I promise you it is not simple at all. Monotony eats the years whole, and novelty is what keeps the days lit enough to remember.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9600
+        },
+        {
+          "speaker": "march",
+          "text": "Go on then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1534
+        },
+        {
+          "speaker": "march",
+          "text": "So doing the same thing again and again is how a year goes missing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3947
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am saying repetition is an anaesthetic. You feel nothing, and then you forget you were ever in the room.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6720
+        },
+        {
+          "speaker": "march",
+          "text": "Nicely put.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1468
+        },
+        {
+          "speaker": "march",
+          "text": "Right, let's put it on someone. Take the extreme. A person does nothing twice for a whole year. New gym every week, a new dish every night, a different route to work every morning.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 8528
+        },
+        {
+          "speaker": "narrator",
+          "text": "A brave soul. And a hungry one. Now tell me what they are building, midway through the year.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5867
+        },
+        {
+          "speaker": "march",
+          "text": "Muscle, obviously. Look at the new gyms.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2755
+        },
+        {
+          "speaker": "narrator",
+          "text": "Muscle, March?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1515
+        },
+        {
+          "speaker": "narrator",
+          "text": "Which gym do the muscles know? The first note told us a fit body only arrives because a man keeps going back to the same hour, the same weights, the same ache. After a certain point it just becomes a positive feedback loop. Each new gym is a stranger's weights, and nothing gets laid down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 19136
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Fine.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1506
+        },
+        {
+          "speaker": "march",
+          "text": "So no body. Just a list of firsts.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2600
+        },
+        {
+          "speaker": "narrator",
+          "text": "A long list of firsts with no body to show for it. Tick, tick, tick, and every tick a little hollower than the one before.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8256
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1009
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on, some firsts are keepers...",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 4,
+          "audioMs": 2514
+        },
+        {
+          "speaker": "narrator",
+          "text": "Keepers, yes. The first time you eat something and think, oh, I'll be having that again. And that is the question I want the listener to answer. Is a new dish a thing to keep, or a thing to tick off? A tick is a hunt for the next box. A keeper is a thing you come back to, a little differently each time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 19093
+        },
+        {
+          "speaker": "march",
+          "text": "So a first you keep changes you. A first you tick just fills a box.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4223
+        },
+        {
+          "speaker": "narrator",
+          "text": "Must you always be so blunt about it? I was building a meadow, and you have walked straight across it in muddy boots.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6827
+        },
+        {
+          "speaker": "march",
+          "text": "Muddy boots. Good. Now, if you had one last day, what would you do with it?",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3843
+        },
+        {
+          "speaker": "narrator",
+          "text": "Go on, I have an answer ready, which you will find tiresome.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3968
+        },
+        {
+          "speaker": "march",
+          "text": "Sit in the chair with the cold tea.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2448
+        },
+        {
+          "speaker": "narrator",
+          "text": "There it is. A repeat, or a rest? Is that chair carrying you somewhere, or only keeping you still?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6571
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, you are not having the chair. Back to the lunch. Does the same lunch carry you forward, or hold you still?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 4,
+          "audioMs": 5623
+        },
+        {
+          "speaker": "narrator",
+          "text": "It holds you still, March, and that is the test. The chair and the lunch are the same question, asked at different tables.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8000
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now put both notes on the table together. Shallow happy is what you want now. Deep happy is what you want most. Chasing novelty for its own thrill is shallow happy, a sweet at midnight with nothing behind it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13589
+        },
+        {
+          "speaker": "march",
+          "text": "Right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1017
+        },
+        {
+          "speaker": "march",
+          "text": "And a plan with no variety just turns into a hinge that squeals every morning.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4710
+        },
+        {
+          "speaker": "narrator",
+          "text": "Each note sees the other's blind spot. The firsts need a future self to give them a point, and the future self needs firsts, or it goes dull.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9408
+        },
+        {
+          "speaker": "march",
+          "text": "So a first becomes a memory only if there's a body to carry it. And a repeat becomes a body only if it keeps the memory fresh.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7374
+        },
+        {
+          "speaker": "narrator",
+          "text": "You said it in one breath, March, which I resent, because it is exactly what I was building toward.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6677
+        },
+        {
+          "speaker": "march",
+          "text": "Then show me the fork. What does someone who believes this actually do?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4098
+        },
+        {
+          "speaker": "narrator",
+          "text": "Think of a shelf in a kitchen. One spot is worn pale, where a hand has reached every morning for a year. Beside it sits a row of unopened things, each given a single afternoon. The believer keeps the worn spot and the row on the same shelf, and knows which one they will still be reaching for when the year turns.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 20203
+        },
+        {
+          "speaker": "march",
+          "text": "A shelf I can see. Fine. That's the picture.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2895
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the bowl on the table, March. Name what you tasted at lunch, the lunch you could not name by the afternoon. The note never asks you that, and that is precisely why it has to be asked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12053
+        },
+        {
+          "speaker": "march",
+          "text": "You were right. Fair enough, and I'm moving on. The bill's here, and the tea's stone cold.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4708
+        },
+        {
+          "speaker": "narrator",
+          "text": "Must you always be so blunt, March? I was about to be magnificent. Let us give J a fresh title as well. Keeper of the Return.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9152
+        },
+        {
+          "speaker": "march",
+          "text": "He'd hate that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1466
+        },
+        {
+          "speaker": "narrator",
+          "text": "He would hate it because it is true. Up next, Atera Matrix, where we cross the water at last.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6528
+        },
+        {
+          "speaker": "march",
+          "text": "Bring the spoon.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 4,
+          "audioMs": 1571
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
+    }
+  ]
+}
