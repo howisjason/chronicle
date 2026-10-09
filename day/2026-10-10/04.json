@@ -2561,6 +2561,395 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-04-07",
+      "title": "THE POND KEEPS THE FLAT NOTE",
+      "startAt": "2026-10-10T04:50:47.905+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-04-07.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Reality Transurfing"
+      ],
+      "angle": "How would I explain this idea if I had to tell it like a children's fairy tale?",
+      "kind": "try_it",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: The world is a mirror. How can there be love in the reflection if the image of self does not contain it? The mirror cannot reflect what isn't there."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: The chosen ones choose themselves. In transurfing, the wanderer is not one chosen by fate. Fate is the one chosen by the wanderer."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: Claim your right to be the chosen one. Say to yourself \"From this moment on, I choose myself.\""
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You walk into a room and the first face you meet is scowling.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3349
+        },
+        {
+          "speaker": "narrator",
+          "text": "A fine opening, March, and so familiar that half the room has nodded along.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5312
+        },
+        {
+          "speaker": "march",
+          "text": "Yeah, and you decide the scowl's aimed at you. So you scowl back before you've sat down.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4901
+        },
+        {
+          "speaker": "narrator",
+          "text": "The face in the doorway is merely weather. We are the travellers caught in it, and the sensible ones turn up a collar.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7211
+        },
+        {
+          "speaker": "march",
+          "text": "The comfortable story is that the world does the choosing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3237
+        },
+        {
+          "speaker": "march",
+          "text": "Some people get picked, the rest of us wait at the edge, and that's just how it goes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4839
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite so. The chosen ones were picked by others, for some rare gift that was not handed out at the christening. We stand at the back while the lucky are summoned forward.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10645
+        },
+        {
+          "speaker": "march",
+          "text": "Right, so blame the sky.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2029
+        },
+        {
+          "speaker": "march",
+          "text": "So it's luck. Someone else holds the door, and you wait for them to open it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4120
+        },
+        {
+          "speaker": "narrator",
+          "text": "The earnest believe it most, which is why it is so hard to dislodge.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4544
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Give me the sentence before I start arguing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3137
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hold your argument, March. The note makes its claim with no ornament at all: The chosen ones choose themselves.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7381
+        },
+        {
+          "speaker": "narrator",
+          "text": "The rest I hold back for the story I have in mind, and you will grumble at the length of my pause.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5973
+        },
+        {
+          "speaker": "march",
+          "text": "So nobody picks them. They pick themselves, and everyone else notices afterwards.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4868
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. The mirror hands your own stance straight back. Whatever you bring into the room is what the room returns to you, with interest and a small bow.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9451
+        },
+        {
+          "speaker": "march",
+          "text": "So the world's a mirror, and I'd better check my face before I walk in.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4160
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly. The mirror cannot reflect what isn't there, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3883
+        },
+        {
+          "speaker": "narrator",
+          "text": "Bring a scowl and it has only a scowl to hand you back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3712
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let me tell it as the old tellers did. Once there was a girl who lived beside a still pond. Each morning she bent over the water and frowned, and the girl in the pond frowned back, faithfully, as she had been taught.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13504
+        },
+        {
+          "speaker": "march",
+          "text": "Poor thing, frowning at herself.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2243
+        },
+        {
+          "speaker": "narrator",
+          "text": "One spring she tried to hum. It came out flat, and the pond kept the flatness exactly, a perfect copy of the sour note. So she waited for the pond to change first. It never did. She stood among the reeds through a whole grey season, waiting for the water to go first. Then one morning she hummed again, flat still, and the girl in the pond hummed back. That was the first time she had been answered.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 25429
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. She hummed flat and got flat back.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2794
+        },
+        {
+          "speaker": "march",
+          "text": "The pond wasn't doing anything wrong.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2576
+        },
+        {
+          "speaker": "narrator",
+          "text": "The pond is never wrong, March. It is only faithful.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3712
+        },
+        {
+          "speaker": "march",
+          "text": "Pond's got no opinions, then.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2406
+        },
+        {
+          "speaker": "march",
+          "text": "So she waited for the pond to go first, and the pond had no idea it was meant to.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5101
+        },
+        {
+          "speaker": "narrator",
+          "text": "Lovely. I crown our J Keeper of the Tuned Pond, a title he will never claim, being far too modest to take a crown from a narrator.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8939
+        },
+        {
+          "speaker": "march",
+          "text": "Right, I'm trying it on. Dark window, you're the audience.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3160
+        },
+        {
+          "speaker": "march",
+          "text": "From this moment on, I choose myself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2639
+        },
+        {
+          "speaker": "narrator",
+          "text": "Splendid! Now sweep the arm, lift the chin, and let the voice roll down the valley like a herald at a coronation.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7573
+        },
+        {
+          "speaker": "narrator",
+          "text": "Mount the nearer chair while you're at it, it's rather unoccupied.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3989
+        },
+        {
+          "speaker": "march",
+          "text": "I'm not doing the chair. And I'm not saying it like a herald.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3478
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simple words demand a great stage, March. A whisper in a kitchen is no proclamation.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6229
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call them simple. That's the simplest thing I've said out loud all week and it still wobbled.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5430
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the wobble is a herald with a cold. Permit me the chair while you recover your dignity.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5931
+        },
+        {
+          "speaker": "march",
+          "text": "No. The wobble stays.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2028
+        },
+        {
+          "speaker": "march",
+          "text": "I reckon that's the choosing, not the trumpet.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2830
+        },
+        {
+          "speaker": "march",
+          "text": "Take the first way in. You believe the chosen are picked, so the room stays a scowl, and you wait by the door for a summons that never comes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7032
+        },
+        {
+          "speaker": "march",
+          "text": "Or you believe the note, so you hum at the pond first, flat or not, and the reflection hums back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5478
+        },
+        {
+          "speaker": "march",
+          "text": "Both pictures sit on the same shelf, and only one of them makes a sound.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4288
+        },
+        {
+          "speaker": "narrator",
+          "text": "You chose yourself first, March, and the glass has softened since we began.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5077
+        },
+        {
+          "speaker": "narrator",
+          "text": "I concede that once, and only once, and I shall not be quoting it at breakfast.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5120
+        },
+        {
+          "speaker": "march",
+          "text": "Cheers, then.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1493
+        },
+        {
+          "speaker": "march",
+          "text": "Keep it low, the room's asleep. Up next, Express Your Ideas To The World and Happiness And Gratitude.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5862
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
     }
   ]
 }
