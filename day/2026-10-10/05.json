@@ -423,6 +423,376 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-05-02",
+      "title": "THE SLIGHTS COME BACK LIKE A BALL",
+      "startAt": "2026-10-10T05:16:34.214+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-05-02.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Any Benefit Fallacy",
+        "Reality Transurfing"
+      ],
+      "angle": "Simplify this concept so a five-year-old could grasp the basic principle. What is the absolute essence?",
+      "kind": "the_case_against",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: The world is simply a mirror that reflects your relationship to it."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: Whatever thoughts you send out into the world will return to you like a boomerang."
+        },
+        {
+          "kind": "note",
+          "text": "Any Benefit Fallacy: Just because something offers _any_ positive outcome doesn't justify its pursuit."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: In transurfing, the wanderer is not one chosen by fate. Fate is the one chosen by the wanderer."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You walk into a shop already sure the clerk is against you. Shoulders up before the door has even shut. The bus pulls off while you're still on the step, a stranger sighs at you on the stairs, and by evening the whole city seems to have it in for you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11042
+        },
+        {
+          "speaker": "narrator",
+          "text": "The comfortable truth, my dear March, is that the city happens to us. Our moods are weather. The clerk was rude, the bus was late, the stranger was simply in the way. A sensible man carries an umbrella through such a season and waits for the sky to clear.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 16853
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Explain it to a kid. Why was everybody mean to you?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3498
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because they were mean, child. The weather was mean, and you were standing in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4672
+        },
+        {
+          "speaker": "march",
+          "text": "Nope. A kid, Narrator. Smaller words.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2618
+        },
+        {
+          "speaker": "narrator",
+          "text": "Very well. The note is brief, which is why it is dangerous. Listen closely, March. 'The world is simply a mirror that reflects your relationship to it.' Simply, March. Not sometimes. Simply.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13269
+        },
+        {
+          "speaker": "march",
+          "text": "Simply. Got it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1767
+        },
+        {
+          "speaker": "march",
+          "text": "So the clerk is a reflection of me. The world is a mirror, and I'm the face in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4762
+        },
+        {
+          "speaker": "narrator",
+          "text": "No, the clerk's rudeness is not your face, March. It is the return. Your face goes out, the mirror sends it back. The note says so: 'Whatever thoughts you send out into the world will return to you like a boomerang.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13995
+        },
+        {
+          "speaker": "march",
+          "text": "A boomerang. So I throw a scowl, it comes back, and clips me on the ear.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3960
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. You throw, it returns, and you call the bruise the world's fault.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5163
+        },
+        {
+          "speaker": "march",
+          "text": "I'm going to argue this, Narrator. You want me to believe a clerk ruined my day out of my own mood. That's the story for people who have good days. Plenty of people get shouted at for nothing. A grumpy clerk is just... a grumpy clerk.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 10410
+        },
+        {
+          "speaker": "narrator",
+          "text": "And a grumpy clerk is exactly what a grumpy face expects to find. Let us try it on a case, March, which you will like less than the sermon. Then you may tell me whose fault the bruise is...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11968
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, then. I'm already annoyed.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2324
+        },
+        {
+          "speaker": "narrator",
+          "text": "A man rides the tram. The conductor says 'Ticket' sharply. The man writes it in a small notebook. At the next stop the conductor clips the ticket with a short tone, and the man writes that down too. By the end of the week the notebook is full of slights, each as small as a coin.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 18048
+        },
+        {
+          "speaker": "march",
+          "text": "Right, that's a grumpy conductor. I'd have written it down too.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3477
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. And not once did the man on the tram check his own face in the glass.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4885
+        },
+        {
+          "speaker": "march",
+          "text": "Never once?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1452
+        },
+        {
+          "speaker": "narrator",
+          "text": "He never wondered whether his scowl had boarded before the conductor did. He counted the slights, and kept counting, and called it being observant. That is the hard part, March, and I shall not soften it, for your sake or mine. The glass was right there, above the door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 17387
+        },
+        {
+          "speaker": "march",
+          "text": "That's harsh. People are rude sometimes.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2686
+        },
+        {
+          "speaker": "narrator",
+          "text": "They are. The mirror does not say the conductor was kind. It says only that what the man sent out came back, and he took the return as proof of the conductor's character.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10667
+        },
+        {
+          "speaker": "march",
+          "text": "Wait. The same note has a line about the wanderer that bugs me. Why does it say fate is the one chosen by the wanderer, and not the other way round? Surely fate picks the wanderer.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8931
+        },
+        {
+          "speaker": "narrator",
+          "text": "A man at dinner wanted a clever line, and got one, and it has been repeated ever since. Your question is a better mirror than my sentence, March, and I resent it deeply.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 11307
+        },
+        {
+          "speaker": "march",
+          "text": "Thanks. Then answer it. If fate is chosen by the wanderer, what did the man on the tram choose?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5525
+        },
+        {
+          "speaker": "narrator",
+          "text": "Grievance. He chose grievance, and fate, a patient clerk, stamped it and handed it back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5888
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the tram, then. Why did the notebook count only the conductor?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3917
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because counting the other man is cheap and fills pages. Counting yourself costs an afternoon, and nobody gives you a prize for it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8661
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Fair.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1377
+        },
+        {
+          "speaker": "march",
+          "text": "Now the fallacy. The note says: 'Just because something offers _any_ positive outcome doesn't justify its pursuit.' So a slight that gives you a bit of fuel is still not worth collecting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9335
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the mirror says the return is shaped by what is sent. So the return you value depends on the wanting you bring to it, not on the act itself. Counting slights is no treasure. The wanting to be right is what rots the notebook.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 14549
+        },
+        {
+          "speaker": "march",
+          "text": "That goes on my list.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2008
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your list is a wanting too, March, and you know it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3285
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, fine.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1608
+        },
+        {
+          "speaker": "march",
+          "text": "Kid version, then, so it's clear. What you bring is what comes back. Throw the ball hard at the wall, and it comes back hard.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6241
+        },
+        {
+          "speaker": "narrator",
+          "text": "A child's version, and a true one. I could not have done better with a whole cabinet of crowns.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6144
+        },
+        {
+          "speaker": "march",
+          "text": "Thank you, Narrator.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1853
+        },
+        {
+          "speaker": "march",
+          "text": "Picture it, then. Someone who believes this, what do they do at the stop before the doors open? Stand a little straighter, probably. Ask what face they're about to show. Then the conductor says 'Ticket', and they hand it over with a face they picked, not one they fell into.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11044
+        },
+        {
+          "speaker": "narrator",
+          "text": "A picture I dislike for its tidiness, and cannot improve on. That is the worst kind of compliment.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6699
+        },
+        {
+          "speaker": "march",
+          "text": "You were right about the tram.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2008
+        },
+        {
+          "speaker": "narrator",
+          "text": "I was right about the tram, and the coat, and the glass. You have surrendered the one argument I had any hope of winning, and you did it in a sentence shorter than my introduction. Ungrateful. I am not in the least pleased. Keep your crowns, then, since you would only refuse the next one too.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 17877
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, Be Intentional With Your Life and Actions, and The Value of Time. Bring a coat.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5094
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
