@@ -2007,6 +2007,560 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-04-06",
+      "title": "THE TIN THAT EMPTIES BY DOING",
+      "startAt": "2026-10-10T04:42:42.542+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-04-06.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "List Of Nice Things To Do",
+        "When You're Scared To Take Action"
+      ],
+      "angle": "If I could only use 2 resources to solve this problem, what would they be?",
+      "kind": "legend",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "When You're Scared To Take Action: Waiting for bravery is a fool's errand and you will be waiting your whole life."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Compliment someone."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Gift Idea: Put 50–100 paper hearts or smiley faces in a box."
+        },
+        {
+          "kind": "note",
+          "text": "When You're Scared To Take Action: Show me on your calendar where you've scheduled the work you're going to be putting into working towards your dream."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've got 'Thanks for' on the screen. Cursor's still blinking after it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3773
+        },
+        {
+          "speaker": "narrator",
+          "text": "The comfortable story first, March, since everyone tells it. You wait for the warm feeling to arrive, and the kind act follows along behind it like a dog on a lead.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11072
+        },
+        {
+          "speaker": "march",
+          "text": "Feel brave, then act.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2069
+        },
+        {
+          "speaker": "narrator",
+          "text": "Feel generous, then give. Patient, reasonable, and the feeling is always a week off.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6123
+        },
+        {
+          "speaker": "march",
+          "text": "So you wait for the feeling to show up, and hold the door open for it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4003
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. A great many doors held open for nothing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3669
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, that's the story. Read me the sentence before I lose interest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4051
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here it is at full size: 'Waiting for bravery is a fool's errand and you will be waiting your whole life.' It is not a scolding. It is a verdict on a life spent in an antechamber, hat in hand, expecting a summons that never comes.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15552
+        },
+        {
+          "speaker": "march",
+          "text": "So waiting for the feeling is a polite way of never doing the thing.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3745
+        },
+        {
+          "speaker": "narrator",
+          "text": "A polite way, dressed up as prudence. The sharpest part I hold back for the case. You shall have it presently, and you will resent how long I make you wait.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10176
+        },
+        {
+          "speaker": "march",
+          "text": "Withholding again. Fine.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2086
+        },
+        {
+          "speaker": "march",
+          "text": "Give me a sentence I can carry out of the room.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2832
+        },
+        {
+          "speaker": "narrator",
+          "text": "The courage is not a ticket you need to board. It is a receipt you collect afterwards, once the thing is already done.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7339
+        },
+        {
+          "speaker": "march",
+          "text": "So the brave feeling is what you get after. Not the price of getting in.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4034
+        },
+        {
+          "speaker": "narrator",
+          "text": "Correct. Though I would have liked a few trumpets for the occasion.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3456
+        },
+        {
+          "speaker": "march",
+          "text": "No trumpets. Just the box.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2328
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, then. Tell me the widow. You've been wanting to since the start.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3586
+        },
+        {
+          "speaker": "narrator",
+          "text": "Long ago, in a town of lamps and cold mornings, a lamplighter died and left his widow a tin. Inside were paper hearts, packed to the lid. Each morning she was to write one true thing about a neighbour and give it away before her nerve could leave her. The pencil snapped. She sharpened the next with her teeth, between lines, cursing the lead, and wrote that opening card on the step with the wind at her coat.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 25707
+        },
+        {
+          "speaker": "march",
+          "text": "Sharpened it with her teeth. Lovely hygiene.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2945
+        },
+        {
+          "speaker": "march",
+          "text": "Keep going.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1443
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every morning she reached in, and every morning she was frightened, and every morning she wrote the thing anyway. The note went across the road to a neighbour whose name she had only lately learned.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11968
+        },
+        {
+          "speaker": "march",
+          "text": "Scared every morning, and still writing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2619
+        },
+        {
+          "speaker": "march",
+          "text": "So what did the tin cost her? In mornings, I mean.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3048
+        },
+        {
+          "speaker": "narrator",
+          "text": "Counting! The weapon of tyrants and clerks. Very well, let us count it out, and you shall hear each one land. One, for the window across the way. One more, for the milkman who slowed to read it. One more, for the girl who had stopped speaking to her brother. Keep counting, one and one and one, until the tin is empty and the lamps are all out for the year.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 21952
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, that's a lot of neighbours.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2215
+        },
+        {
+          "speaker": "march",
+          "text": "So the tin empties by writing hearts.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2721
+        },
+        {
+          "speaker": "march",
+          "text": "Not by waiting for the nerve to show up.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2636
+        },
+        {
+          "speaker": "narrator",
+          "text": "Tins do not empty themselves. Nothing in this world does, and I would have thought you knew that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5845
+        },
+        {
+          "speaker": "march",
+          "text": "Wait. Did she feel brave before the first heart?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2840
+        },
+        {
+          "speaker": "narrator",
+          "text": "Not in the least. Her hands were shaking so badly she could hardly hold the pencil. The brave came the morning after, like a neighbour finally remembering her name.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10795
+        },
+        {
+          "speaker": "march",
+          "text": "So the brave turns up the day after. That first day was all shaking.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4136
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. She needed that rough day, or there would have been no next one. The feeling is the echo, March, not the bell.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7317
+        },
+        {
+          "speaker": "march",
+          "text": "Right, I'll try one on myself.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2322
+        },
+        {
+          "speaker": "march",
+          "text": "Kettle, you are very dependable, and honestly you make mornings bearable.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4184
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is rather tender, and quite foolish, which I suppose is the test.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4715
+        },
+        {
+          "speaker": "march",
+          "text": "It sounds daft out loud. That's how I know it's the right size.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3663
+        },
+        {
+          "speaker": "march",
+          "text": "A compliment should be a little silly to say.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2667
+        },
+        {
+          "speaker": "narrator",
+          "text": "Look here, on the table. A bus ticket, left by someone else, stamped at the very hour the legend gives for the widow's first heart. Destiny sends its tickets by bus, March, and this one has found you.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13525
+        },
+        {
+          "speaker": "march",
+          "text": "It's a ticket from the bus.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 1977
+        },
+        {
+          "speaker": "march",
+          "text": "Somebody lost it on the bus.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2233
+        },
+        {
+          "speaker": "narrator",
+          "text": "And since destiny is handing you tickets, I hereby name you Chief Clerk of Small Launches, keeper of the official tin, should such a tin ever exist.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9813
+        },
+        {
+          "speaker": "march",
+          "text": "Clerk, fine. Chief's taken.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2276
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the list. Compliment someone is basically a heart in the box, same as the widow's.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5487
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the crossing, which I have been saving like a good wine. The list alone reads like a sweet hobby. The fear note alone reads like a timetable for ambition, a calendar with no kindness in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13248
+        },
+        {
+          "speaker": "narrator",
+          "text": "Put them together and the small act and the booked hour turn out to be one discipline at different sizes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6357
+        },
+        {
+          "speaker": "march",
+          "text": "'Show me on your calendar where you've scheduled the work you're going to be putting into working towards your dream.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5690
+        },
+        {
+          "speaker": "march",
+          "text": "So the calendar bit is the hour, and the list is the card in the box.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 4026
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. The list supplies the hearts, and the note supplies the hour in which to hand them over. Without a booked hour, a kindness stays a heart in a drawer.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9920
+        },
+        {
+          "speaker": "march",
+          "text": "So the box needs a slot in the diary. Same as the job.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3714
+        },
+        {
+          "speaker": "narrator",
+          "text": "A kind word each morning, booked like a meeting. You flinch at the phrase, which tells me it is the same fear.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7467
+        },
+        {
+          "speaker": "march",
+          "text": "Booked like a meeting.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1824
+        },
+        {
+          "speaker": "march",
+          "text": "That's a little bit terrifying, I'll give you that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2764
+        },
+        {
+          "speaker": "march",
+          "text": "So here's the picture. You believe the nerve has to come first. The box stays on the shelf, the lid stays shut, and the weeks go by with nobody getting a card.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7910
+        },
+        {
+          "speaker": "march",
+          "text": "Or you write the first one, hand it over with your hand shaking, and by the end of the month the tin is half empty and the hand has stopped shaking.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6968
+        },
+        {
+          "speaker": "narrator",
+          "text": "Stealing my picture from under me, as always. But yes, that is the fork exactly. The shaking hand is the only kind there is at the start.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9344
+        },
+        {
+          "speaker": "march",
+          "text": "Which makes the tin the honest test. Not the feeling.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3135
+        },
+        {
+          "speaker": "march",
+          "text": "The kettle's just clicked off.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2103
+        },
+        {
+          "speaker": "march",
+          "text": "So the sentence from the top: 'Thanks for', and whatever comes after it. Posted, in my head at least. Done.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5687
+        },
+        {
+          "speaker": "narrator",
+          "text": "The courage arrived afterwards, like a bill for a meal already eaten. So you were right, March. I will say it once, grudgingly, and then I shall pretend I said it first.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11307
+        },
+        {
+          "speaker": "march",
+          "text": "Say it again, slower, for the people in bed.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2793
+        },
+        {
+          "speaker": "narrator",
+          "text": "You were right.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1344
+        },
+        {
+          "speaker": "march",
+          "text": "Thank you.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1184
+        },
+        {
+          "speaker": "march",
+          "text": "The last word goes to the kettle. Up next, Reality Transurfing.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3895
+        },
+        {
+          "speaker": "march",
+          "text": "It's gone late, so go easy, and send the thing before morning.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3601
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
