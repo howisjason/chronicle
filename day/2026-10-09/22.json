@@ -2475,6 +2475,488 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-09-22-06",
+      "title": "THE PRUNING BENCH AND THE PRAISE THAT IS TRUE",
+      "startAt": "2026-10-09T23:00:40.398+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-22-06.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Atera Matrix",
+        "Philosophy Of Social Connection"
+      ],
+      "angle": "If the world's leading expert on [Unrelated Field] looked at this, what nuance or advanced application might they see?",
+      "kind": "try_it",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Atera Matrix AI Prompt: Apply Parkinson's Law by suggesting a challenging but achievable deadline that is significantly shorter than the realistic estimate."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Flattery is insincere. Appreciation is sincere."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Let the other person believe your idea was theirs, and praise them for coming up with such an idea."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Be specific with your praise for it comes off as genuine rather than a vague blanket statement."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You wrote a number beside a task this morning. You always do that. And you've been quietly sure of it ever since, the way anyone is about something typed in a hurry. It's late now, though. That number isn't going anywhere tonight.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9741
+        },
+        {
+          "speaker": "march",
+          "text": "Everybody knows a kind word goes a long way. If you need a yes, you hand over a bit of praise first. That's just manners. Nobody gets hurt by a compliment.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7746
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nobody, March? That's the oldest trick in every counting house there ever was. The praise goes in first, and the yes trots after it like a dog after a biscuit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10560
+        },
+        {
+          "speaker": "march",
+          "text": "It's a kindness. I'd say that in court, with the judge nodding along.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4036
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then hear the note, which is less polite than you are. Flattery is insincere. Appreciation is sincere.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7296
+        },
+        {
+          "speaker": "march",
+          "text": "So a nice word can be a lie. Even one aimed at a yes that's good for everybody.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4973
+        },
+        {
+          "speaker": "narrator",
+          "text": "A lie with good manners. That's the worse kind, because nobody thinks to check the manners. The sentence is the easy half. The hard half is in the margin, and I'm keeping that back until you've earned it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13035
+        },
+        {
+          "speaker": "march",
+          "text": "So praise is worth nothing if it isn't true. Just say that and I'll be pleased.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4519
+        },
+        {
+          "speaker": "narrator",
+          "text": "Worth nothing is too kind. It's worth less than nothing. It spends the other person's trust and leaves them owing you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7445
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. I'll earn it. Put me in the chair, then. Try it on me this week. I've got a task with a figure written beside it, a Friday deadline shortened by a day, because I wrote it down before I'd looked at the thing. I need the person beside me to tell me which piece to drop.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12133
+        },
+        {
+          "speaker": "narrator",
+          "text": "Begin by telling them they're brilliant, March. Lay it on thick, then ask the question. The praise goes first, and the yes follows along easily.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9771
+        },
+        {
+          "speaker": "march",
+          "text": "They'd smell it at once. Brilliant, out of nowhere, the morning after I've been short with them? They'd want to know what I'd broken.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 6203
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then a little less thick. Just the word.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2752
+        },
+        {
+          "speaker": "march",
+          "text": "No. Not thinner. Specific. The thing they actually did last week. I have to remember it and say it out loud, the way it happened, or it's just wallpaper.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 7436
+        },
+        {
+          "speaker": "narrator",
+          "text": "A general compliment is cheap. Anyone can say good work. Only the one who was watching can say which bit was good.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7701
+        },
+        {
+          "speaker": "march",
+          "text": "Right. So I say the closing paragraph carried the whole draft. That's a thing a person can check. Then I ask which piece they'd drop, and they've got a reason to answer, because I've shown I noticed.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9144
+        },
+        {
+          "speaker": "narrator",
+          "text": "And I suspect you've tucked your own answer inside that little speech, March. Something about your nerve, I'd guess. The bit you're proudest of.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8533
+        },
+        {
+          "speaker": "march",
+          "text": "I didn't tuck anything in. Carry on. You're pretending you haven't been waiting for this.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4690
+        },
+        {
+          "speaker": "narrator",
+          "text": "Naturally.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1323
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, that reminds me of an old pruner I read about. He kept one bench in a walled yard, with a pair of shears and a sack of cuttings. He took every branch off just above a bud that faced outward, and nothing else. The most exact trim you'll ever see. A deadline with the bark still on it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 18965
+        },
+        {
+          "speaker": "march",
+          "text": "Sharp and exact, yes. What's it got to do with my Friday?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3389
+        },
+        {
+          "speaker": "narrator",
+          "text": "Everything. A short, fierce stroke, shorter than the branch seemed to need. That's the Parkinson date, handed down in wood.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7957
+        },
+        {
+          "speaker": "march",
+          "text": "A branch isn't a colleague. And don't you dare call the pruner's craft simple. Knowing which way a bud faces takes years of looking. That is not simple.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 1,
+          "audioMs": 7542
+        },
+        {
+          "speaker": "narrator",
+          "text": "Not simple. Exact, then. I withdraw the other word.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4011
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Now stay on the bench. What's the cut for? Not the snip. The reason.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3906
+        },
+        {
+          "speaker": "narrator",
+          "text": "The tree is left standing afterwards. That's the whole of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3669
+        },
+        {
+          "speaker": "march",
+          "text": "Wait. So the date only gets kept by whoever is doing the cutting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3813
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite. The bench is only the Friday with a pruning hook in its hand. So a praise invented to get a yes is the same stroke made with a dull blade, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10432
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1009
+        },
+        {
+          "speaker": "narrator",
+          "text": "It tears. The bark bleeds down the trunk, and the tree stands there worse than before the shears came near it. Nobody checks the wound afterwards, because the yes was already given.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11499
+        },
+        {
+          "speaker": "march",
+          "text": "Don't soften it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1663
+        },
+        {
+          "speaker": "narrator",
+          "text": "I wasn't going to.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1429
+        },
+        {
+          "speaker": "march",
+          "text": "So a deadline with only praise behind it is criticism in a...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4005
+        },
+        {
+          "speaker": "narrator",
+          "text": "...in a nice coat. Yes. You're getting quicker.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3328
+        },
+        {
+          "speaker": "march",
+          "text": "Right, the crossing, as I see it. The Parkinson date only holds if someone's been given real appreciation. And the other note says praise only lands when it's specific. Neither one says the cut and the praise are the same act.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 10872
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. A deadline handed down without warm, true recognition is criticism. Warm praise with no true cut is flattery. Only together do they make the old keeper's cut something the clerk would have picked herself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 14635
+        },
+        {
+          "speaker": "march",
+          "text": "So they're a pair, and neither is the whole thing alone. Let the other person believe it was theirs, then tell them so, specifically.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6826
+        },
+        {
+          "speaker": "narrator",
+          "text": "You're improving at my speeches, March. It's deeply unsettling.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4309
+        },
+        {
+          "speaker": "march",
+          "text": "Same desk, same Friday. One gets a vague compliment, then is told to trim the work. She nods, and quietly misses the date. The other is told exactly what she did well last week, is asked which piece she'd drop, names it herself, and keeps the date.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 11528
+        },
+        {
+          "speaker": "narrator",
+          "text": "The first one would tell you she was fine, March, and believe it. People always believe the thing that cost them nothing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7488
+        },
+        {
+          "speaker": "march",
+          "text": "Everybody is fine right up until the Friday.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3011
+        },
+        {
+          "speaker": "narrator",
+          "text": "Dreadful, and true.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1515
+        },
+        {
+          "speaker": "march",
+          "text": "He'd hate being praised for a cut he never made. J would hate that, I'm fairly sure of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5294
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. He would.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1323
+        },
+        {
+          "speaker": "narrator",
+          "text": "I'll drop the grand voice for one line. I read the flattering version of this legend first and loved it. It took me a while to hear that the praise in it went to the keeper and never once to the clerk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12523
+        },
+        {
+          "speaker": "march",
+          "text": "Now the number from the start. You wrote it this morning. Was it a guess?",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3830
+        },
+        {
+          "speaker": "narrator",
+          "text": "You tell them, March. You're the one with the desk and the chipped cup.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3947
+        },
+        {
+          "speaker": "march",
+          "text": "A guess. I knew it while I typed it, and I kept that to myself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3494
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you got it right, and I'll admit it while the café chair is still warm.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4864
+        },
+        {
+          "speaker": "march",
+          "text": "Don't get used to it. I'm saving the pruner for later. You can't call the pruning simple and walk off with it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5653
+        },
+        {
+          "speaker": "narrator",
+          "text": "I shan't.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1280
+        },
+        {
+          "speaker": "march",
+          "text": "And your praise just now, about my desk. That wasn't flattery. Just this once, I'll say so.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5284
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then don't tell anyone. It would ruin the cut.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3051
+        },
+        {
+          "speaker": "march",
+          "text": "Up next is Remove Negatives Over Adding More Positives.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3701
+        },
+        {
+          "speaker": "narrator",
+          "text": "And I shan't be gentle with it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1899
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
