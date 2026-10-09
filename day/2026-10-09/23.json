@@ -2872,6 +2872,484 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-09-23-07",
+      "title": "THE BELL-RINGER WHO RANG CROOKED",
+      "startAt": "2026-10-09T23:56:26.076+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-23-07.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Delayed Gratification",
+        "Philosophy Of Social Connection"
+      ],
+      "angle": "What could I remove from this idea to make it simpler, cheaper, or more effective? (Instead of just adding)",
+      "kind": "legend",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Delayed Gratification: Reframe discipline as a function of self love. If you want yourself to be happy, you have to be disciplined with yourself."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Nobody believes they're wrong. Criticism will only hurt their pride and cause resentment."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Ask questions instead of giving direct orders."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You might have a grid like this one. Ticks, gaps, and a miss with a short pencil line beside it. The line says what next? Not why can't you. The pencil can write it without shaking.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8339
+        },
+        {
+          "speaker": "march",
+          "text": "Most of us think the harsh voice is what keeps us moving.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3341
+        },
+        {
+          "speaker": "march",
+          "text": "Turn it down and we slide off the plan by the weekend.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3162
+        },
+        {
+          "speaker": "narrator",
+          "text": "The whip has kept more than one army in the field, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3691
+        },
+        {
+          "speaker": "march",
+          "text": "Keep going, I'm listening.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2047
+        },
+        {
+          "speaker": "narrator",
+          "text": "Remove the crack of the lash and the ranks dissolve into idle chatter by the first week's end. Why should a drill-master go gentle with a deserter?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9643
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying the whip works.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2109
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am saying nothing so vulgar.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2155
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am saying the note sets a grander claim, and I intend to hold it up against the lash with my own hands. Reframe discipline as a function of self love. Grand words, March, and the best of the matter I shall keep back until we reach the bell tower.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 16512
+        },
+        {
+          "speaker": "march",
+          "text": "So discipline is love doing the actual work.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2966
+        },
+        {
+          "speaker": "march",
+          "text": "Not a separate job you do to yourself.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2666
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. The love is the engine, and the discipline is the road it runs on. The road is worthless without the engine.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8085
+        },
+        {
+          "speaker": "march",
+          "text": "Engine, road. Got it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2108
+        },
+        {
+          "speaker": "march",
+          "text": "Right. The bell tower, then. Go on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2413
+        },
+        {
+          "speaker": "narrator",
+          "text": "In an old book of parish tales there is a bell-ringer in a cold tower. For every late peal his master beats him, and each stroke is cut into the beam above the rope, a tally grown thick and black.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13099
+        },
+        {
+          "speaker": "march",
+          "text": "How many strokes before the bells rang on time?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2968
+        },
+        {
+          "speaker": "narrator",
+          "text": "The bells were never on time, March. The beam grew heavier with cuts, and the boy grew paler at each pull of the rope, shoulders hunched as though the rope were a noose.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10325
+        },
+        {
+          "speaker": "march",
+          "text": "So the stick made him late.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2066
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hush, you are hurrying the tale. The stick made him dread the rope, and a ringer who dreads the rope does not ring true...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7701
+        },
+        {
+          "speaker": "march",
+          "text": "...so he rang crooked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1875
+        },
+        {
+          "speaker": "narrator",
+          "text": "He rang crooked, and the beam kept its tally while the bells kept coming in late.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5248
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch, that poor kid.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1769
+        },
+        {
+          "speaker": "march",
+          "text": "So it was the dread wrecking the timing, not laziness. The fear was the thing making him late.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5455
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have stolen my bell, March. Very well. Tell it your way.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4181
+        },
+        {
+          "speaker": "march",
+          "text": "I'll try it on myself, out loud. I want to walk on Friday because I want to feel well.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5476
+        },
+        {
+          "speaker": "march",
+          "text": "Not because I should be stronger.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2318
+        },
+        {
+          "speaker": "march",
+          "text": "Hearing it, that sounds less like a boss and more like a friend. Which is the card on the cupboard door.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5564
+        },
+        {
+          "speaker": "narrator",
+          "text": "A friend on the cupboard, March! I always suspected the door had a soul.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4843
+        },
+        {
+          "speaker": "march",
+          "text": "Don't. Here's the question. Do half-kept slots count as failures at all?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4280
+        },
+        {
+          "speaker": "march",
+          "text": "If the ringer rang crooked from dread, a half-kept slot is a crooked peal, not a sacking.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5056
+        },
+        {
+          "speaker": "narrator",
+          "text": "A crooked peal. Nicely put, though I would have said a wobbling one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4331
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, wobbling. Half counts.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2233
+        },
+        {
+          "speaker": "march",
+          "text": "A full miss is a different thing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2428
+        },
+        {
+          "speaker": "march",
+          "text": "Carnegie's line says blame lands on pride and breeds resentment. Nobody thinks they're wrong, so they argue back.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6415
+        },
+        {
+          "speaker": "narrator",
+          "text": "Carnegie's table manners, applied to the one guest we never invite and always seat at the head.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6315
+        },
+        {
+          "speaker": "march",
+          "text": "And it says ask questions instead of giving direct orders.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3563
+        },
+        {
+          "speaker": "march",
+          "text": "So the card asks what next. It doesn't order me out.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3264
+        },
+        {
+          "speaker": "narrator",
+          "text": "A card that asks rather than barks. Charming, March, if the card did not also keep a ledger.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6592
+        },
+        {
+          "speaker": "march",
+          "text": "Ledger's a fair word.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2001
+        },
+        {
+          "speaker": "march",
+          "text": "The crossing is this. The discipline note says love is the engine. The social note says the other party only digs in when it's ordered.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 7330
+        },
+        {
+          "speaker": "march",
+          "text": "So the scolding is the expensive part of the plan. Cut it, and the plan costs less and actually sticks.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5943
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cheapest, March? A dull word for so grand a thing.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3627
+        },
+        {
+          "speaker": "march",
+          "text": "Cheap is the point. Nothing to buy. Just stop shouting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3176
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cheap, then. Fine by me.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2069
+        },
+        {
+          "speaker": "march",
+          "text": "Take anyone who skipped the walk this week. One stands over themselves with a stick and is quitting by the end of the week.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6390
+        },
+        {
+          "speaker": "march",
+          "text": "The other writes a plain line, asks what next, and goes out the next day. Still imperfect. Still going.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5609
+        },
+        {
+          "speaker": "narrator",
+          "text": "I confess I prefer the latter...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2475
+        },
+        {
+          "speaker": "narrator",
+          "text": "...though it is far less thrilling to the ear than a good flogging.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3861
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Go on, then.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1787
+        },
+        {
+          "speaker": "narrator",
+          "text": "Outplayed again by a cupboard door and a kitchen clock. I resent every moment of it. Still, Lord Keeper of the Margin Notes is a title I offer J with great affection, and he may hang it wherever he likes.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13696
+        },
+        {
+          "speaker": "march",
+          "text": "He'd rather get a plain line than a royal decree, I reckon.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3438
+        },
+        {
+          "speaker": "march",
+          "text": "Did the bell not prove the point, though?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2306
+        },
+        {
+          "speaker": "narrator",
+          "text": "It did, and you will say so in plain words, March.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3392
+        },
+        {
+          "speaker": "march",
+          "text": "You were right.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1442
+        },
+        {
+          "speaker": "march",
+          "text": "Anyway, the card needs a new corner. Up next, Consistency Compounds Exponentially.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5476
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
