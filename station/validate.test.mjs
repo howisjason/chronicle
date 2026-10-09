@@ -129,7 +129,7 @@ test('the command line, the station\'s real path, refuses the old two-minute ral
   writeFileSync(file, JSON.stringify(good()));
   const run = spawnSync('node', [fileURLToPath(new URL('./validate.mjs', import.meta.url)), file], { encoding: 'utf8' });
   assert.equal(run.status, 1);
-  assert.match(run.stderr, /too short: \d+ words \(900 to 2,600\)/);
+  assert.match(run.stderr, /too short: \d+ words \(600 to 2,600\)/);
 });
 
 // The talk rules (writing rebuild, 9 Oct 2026). A scene of n lines, each `len` words of
@@ -141,7 +141,7 @@ const scene = (lens) => ({ id: 'x', sources: [{ kind: 'note', text: 'Note: x.' }
 
 test('the old two-minute rally is refused as too short', () => {
   const f = talkShape(scene(Array(16).fill(22)));
-  assert.ok(f.some((m) => /too short: 352 words \(900 to 2,600\)/.test(m)), f.join('; '));
+  assert.ok(f.some((m) => /too short: 352 words \(600 to 2,600\)/.test(m)), f.join('; '));
 });
 
 test('a long scene of same-length lines is refused for one rhythm', () => {

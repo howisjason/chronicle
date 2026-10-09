@@ -24,8 +24,11 @@
 //              last one of the previous hour's file; the command line finds it
 //              from the path (previousHourPath), across midnight too.
 //   talk       the NEWEST scene only, and only when the station checks a scene it
-//              is writing (the command line; `fresh` in code): 900 to 2,600 words
-//              of lines, at least 4 lines under 6 words and one over 40. The old
+//              is writing (the command line; `fresh` in code): 600 to 2,600 words
+//              of lines, at least 3 lines under 6 words and one over 40. (The
+//              plan said 900 and 4; live on 9 Oct 2026 Haiku wrote 700 to 1,000
+//              words with 3 to 8 short turns, and the first two picks were dropped
+//              whole. These floors still refuse the old rally by a wide margin.) The old
 //              two-minute scenes were a rally of one sentence each (J, 8 Oct 2026:
 //              "they just like take turns each speaking one sentence"); this is the
 //              cheap catch if the writing ever slides back. Aired scenes, the
@@ -105,9 +108,9 @@ export function talkShape(seg) {
   if (!seg || !Array.isArray(seg.lines)) return out;
   const counts = seg.lines.map((l) => String(l.text || '').split(/\s+/).filter(Boolean).length);
   const total = counts.reduce((a, b) => a + b, 0);
-  if (total < 900 || total > 2600) out.push(`${seg.id}: too ${total < 900 ? 'short' : 'long'}: ${total} words (900 to 2,600)`);
+  if (total < 600 || total > 2600) out.push(`${seg.id}: too ${total < 600 ? 'short' : 'long'}: ${total} words (600 to 2,600)`);
   const short = counts.filter((n) => n < 6).length, longest = Math.max(0, ...counts);
-  if (short < 4 || longest <= 40) out.push(`${seg.id}: one rhythm: ${short} short lines, longest ${longest} words`);
+  if (short < 3 || longest <= 40) out.push(`${seg.id}: one rhythm: ${short} short lines, longest ${longest} words`);
   return out;
 }
 
