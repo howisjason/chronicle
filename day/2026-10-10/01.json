@@ -455,6 +455,592 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-01-02",
+      "title": "THE CORD THAT SOLD",
+      "startAt": "2026-10-10T01:25:36.413+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-01-02.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "The Value of Time",
+        "Any Benefit Fallacy"
+      ],
+      "angle": "How would this idea change if it had to be implemented on a completely different platform (e.g., physical product -> digital service, individual tool -> community platform)?",
+      "kind": "legend",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Value of Time: Time magnifies the margin between success & failure."
+        },
+        {
+          "kind": "note",
+          "text": "Any Benefit Fallacy: Not every beneficial activity or habit is worth your time."
+        },
+        {
+          "kind": "note",
+          "text": "Any Benefit Fallacy: Just because something offers any positive outcome doesn't justify its pursuit."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: It will multiply whatever you feed it. Good habits make time your ally. Bad habits make time your enemy."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Somewhere this week there's an hour you can't account for. The spice jars got sorted, the fridge got wiped. By midnight you felt busy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6990
+        },
+        {
+          "speaker": "narrator",
+          "text": "A lovely hour, lost in a tin of good intentions.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3733
+        },
+        {
+          "speaker": "march",
+          "text": "Which is the worst part.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1960
+        },
+        {
+          "speaker": "narrator",
+          "text": "Before I open the note, the lie gets its say. Most people believe any beneficial habit is worth adding. More good things can only help. Say it, March, like a man at a wedding with a glass in his hand.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13184
+        },
+        {
+          "speaker": "march",
+          "text": "More good things can only help. So add the spice jars, the stretching, the fridge. Why not add everything?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5626
+        },
+        {
+          "speaker": "narrator",
+          "text": "Why not, indeed. The lie hands out habits like sweets at a fair, and everybody leaves with a bag.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6784
+        },
+        {
+          "speaker": "march",
+          "text": "Then what does the note say, exactly?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2452
+        },
+        {
+          "speaker": "narrator",
+          "text": "It disagrees in plain type: “Not every beneficial activity or habit is worth your time.” The whole argument follows, but the best of it I'm keeping back... like the final spoon of sauce, until the story has earned it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 15083
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying a good habit can still be a waste of an evening.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3586
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. The habit can be good, and the hour can still go missing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4309
+        },
+        {
+          "speaker": "narrator",
+          "text": "Goodness is a quality of the habit. Time is what the habit spends.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4523
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Show me, then. Put it on a person, and make it ordinary.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3404
+        },
+        {
+          "speaker": "narrator",
+          "text": "Very well. From an old book with its spine held together by tape comes Odo, a rope-maker. Each evening, Odo twisted one fathom of twine by the lamp, and called that the whole of his trade. Then, in another tale, a ledger turns up. It records that Odo polished every hook in his shed each week, until the iron gleamed like church brass.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 22699
+        },
+        {
+          "speaker": "march",
+          "text": "Which of those hours paid? Be quick, narrator.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2813
+        },
+        {
+          "speaker": "narrator",
+          "text": "The lamp's hot, March, and the iron was lovely. Every piece shone, and Odo would stand back like a painter admiring a finished sky.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9216
+        },
+        {
+          "speaker": "march",
+          "text": "Lovely doesn't buy bread.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2106
+        },
+        {
+          "speaker": "narrator",
+          "text": "Lovely keeps a man's hands from going idle. That's its own kind of wage.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5120
+        },
+        {
+          "speaker": "march",
+          "text": "Read me the ledger, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1976
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here's the bit I kept back. The ledger says the twine sold. A fathom at a time, bundled and carried down to the carters at the harbour. Every hook Odo polished sold nothing at all. Not one of them left the shed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13973
+        },
+        {
+          "speaker": "march",
+          "text": "So the polishing was a good habit that paid nothing.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3032
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly. A gleaming hook is a good thing. It simply wasn't the thing that paid.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5291
+        },
+        {
+          "speaker": "march",
+          "text": "So the dull bit, the twine, was what kept him fed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3053
+        },
+        {
+          "speaker": "narrator",
+          "text": "The twine, which I called dull at the start. I stand by that word. I stand by the rope as well.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6635
+        },
+        {
+          "speaker": "march",
+          "text": "Here's a question I can't get out of my head. Did Odo feed his dog before he twisted the twine, or after?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6028
+        },
+        {
+          "speaker": "narrator",
+          "text": "March, you've wandered into the question of priorities, which is the gravest question in any old book. Before, of course. The bowl first, then the rope.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10176
+        },
+        {
+          "speaker": "march",
+          "text": "Why does that matter?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1786
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because a dog that's been fed doesn't bark at the lamp, and a barking dog takes the whole evening.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6016
+        },
+        {
+          "speaker": "march",
+          "text": "Fair enough.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1338
+        },
+        {
+          "speaker": "narrator",
+          "text": "The bowl sits by the shed door, a round wooden ring. From the lane it looks like the first letter of his name. Destiny, March. Destiny in a dog's dinner.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10880
+        },
+        {
+          "speaker": "march",
+          "text": "It's a bowl, narrator. Nobody spelled anything in it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3225
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I credit the bowl with what it did. It was the one small habit that kept the rest of his day from coming undone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7531
+        },
+        {
+          "speaker": "march",
+          "text": "Yes. That's the useful bit. Feeding the dog takes no hours at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4075
+        },
+        {
+          "speaker": "march",
+          "text": "It stops the whole evening unravelling. A good habit worth keeping, and it's cheap.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4781
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cheap, and then you'll tell me the shine was cheap too.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3051
+        },
+        {
+          "speaker": "march",
+          "text": "The hooks weren't cheap. They ate the evenings. The bowl ate nothing but dinner.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4159
+        },
+        {
+          "speaker": "narrator",
+          "text": "Back to the crossing, then, since you've dragged me back to the bench.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3605
+        },
+        {
+          "speaker": "narrator",
+          "text": "Time gives the bright side: it will multiply whatever you feed it, and good habits make time your ally. The other note gives the warning. Not every good habit deserves the hours.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 11712
+        },
+        {
+          "speaker": "narrator",
+          "text": "Put them side by side and the warning is hiding in the first note too.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4672
+        },
+        {
+          "speaker": "march",
+          "text": "So feeding the hooks multiplies nothing useful.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2962
+        },
+        {
+          "speaker": "narrator",
+          "text": "It multiplies the polish, March. A lovely multiplication that buys no bread at the harbour.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6379
+        },
+        {
+          "speaker": "march",
+          "text": "So here's what neither note shows alone. Time compounds, but only on the right inputs.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5349
+        },
+        {
+          "speaker": "march",
+          "text": "Feed the twine and by year's end you have rope the carters want. Feed the hooks and you have a shed that gleams and nothing to sell.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6694
+        },
+        {
+          "speaker": "narrator",
+          "text": "The polish grows every week, and that is the trap. A habit can compound beautifully and still be a waste.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7339
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1009
+        },
+        {
+          "speaker": "march",
+          "text": "Neither note says that alone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2236
+        },
+        {
+          "speaker": "march",
+          "text": "Right. The Time note on its own sounds like stack up the good habits. The other sounds like cut them down. Together you pick the habit that compounds on the thing that sells.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8440
+        },
+        {
+          "speaker": "march",
+          "text": "Now put Odo on a platform. A feed, a community of makers, where each person posts a hook, a polish, a length of rope, all in the same small square with the same little heart underneath.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9143
+        },
+        {
+          "speaker": "march",
+          "text": "Someone scrolls past a hundred tidy posts to find the one that sold.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4320
+        },
+        {
+          "speaker": "narrator",
+          "text": "A feed of hooks, March. Gleaming, shining, and nobody counts the carters.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5099
+        },
+        {
+          "speaker": "march",
+          "text": "That's the picture. Whoever believes this has to decide which posts to follow and which to mute.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5460
+        },
+        {
+          "speaker": "march",
+          "text": "The rope gets followed. The polish gets muted, gently, a little more every week.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 4880
+        },
+        {
+          "speaker": "narrator",
+          "text": "A mute button is a sort of mercy, I suppose.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3264
+        },
+        {
+          "speaker": "narrator",
+          "text": "Or a little crown for whoever presses it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2603
+        },
+        {
+          "speaker": "march",
+          "text": "A crown. It's a button, narrator, not a coronation.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3134
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then tell me what you hid in the design, March. There's a secret stair in there. Admit it. A tunnel under the feed, with a hook at the bottom that catches the strongest post.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11029
+        },
+        {
+          "speaker": "march",
+          "text": "There's no stair, just a button.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2305
+        },
+        {
+          "speaker": "march",
+          "text": "And don't you dare call a button clever.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2497
+        },
+        {
+          "speaker": "narrator",
+          "text": "Too late.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1003
+        },
+        {
+          "speaker": "narrator",
+          "text": "I'll call it clever all the same. It's round, like Odo's dog bowl by the shed. The circle keeps turning up, March, and you keep pretending it's a coincidence.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10752
+        },
+        {
+          "speaker": "march",
+          "text": "It's a circle because circles are easy to press. Stop finding him in everything.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4877
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let me end where we began, with the envelope in the drawer. On the back, the person you'd be if the year went well. Tell me, would that fellow polish the hooks, or twist the twine?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11520
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, you're right. Twine.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1982
+        },
+        {
+          "speaker": "narrator",
+          "text": "I heard that. Short words, and a concession packed inside them.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4288
+        },
+        {
+          "speaker": "march",
+          "text": "Don't frame it. Change of subject.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2474
+        },
+        {
+          "speaker": "march",
+          "text": "Past midnight, and there's still a biscuit tin on the windowsill. Is anyone eating from it?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5218
+        },
+        {
+          "speaker": "narrator",
+          "text": "The tin is empty, March, except for the one saved biscuit, and it's sulking in the corner.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5995
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, the rest of Odo's ledger, the sum at the bottom, and what the hooks cost in the end.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5003
+        },
+        {
+          "speaker": "narrator",
+          "text": "The crow on the radio mast takes the last word, and I shall take it up with the mast. Caw.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6059
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
