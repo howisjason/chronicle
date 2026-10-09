@@ -3456,6 +3456,424 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-04-09",
+      "title": "THE TIN UNDER THE ROCK",
+      "startAt": "2026-10-10T05:03:54.954+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-04-09.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Express Your Ideas To The World",
+        "Happiness And Gratitude"
+      ],
+      "angle": "If the world's leading expert on [Unrelated Field] looked at this, what nuance or advanced application might they see?",
+      "kind": "legend",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: Leaving your comment on something is like leaving a message in a particular time in space as a wanderer of the universe."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Gratitude for what we have makes life worth living."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: The more grateful you are for something, the more doing it will release dopamine."
+        },
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: Don't be afraid to speak your mind."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You read a post you agree with. Thumb already has a line ready. Then you close the tab.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4836
+        },
+        {
+          "speaker": "march",
+          "text": "Happens all the time. The reply sits in your head and never leaves.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3842
+        },
+        {
+          "speaker": "narrator",
+          "text": "The comfortable lie, March, is that a line typed under a stranger's post is a pebble dropped down a well nobody visits. Only the great pioneers make a mark. The quiet corners of the internet are wasted breath, and every sensible person knows it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 16555
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, is it?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1449
+        },
+        {
+          "speaker": "march",
+          "text": "So why bother.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1661
+        },
+        {
+          "speaker": "narrator",
+          "text": "Why bother, indeed. The obscure are the chorus. And a chorus is forgotten the moment the next song begins.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7104
+        },
+        {
+          "speaker": "march",
+          "text": "That's what most people I know think. A reply under a post nobody reads is noise.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5051
+        },
+        {
+          "speaker": "narrator",
+          "text": "Our note disagrees, and it speaks like a navigator of the heavens. Leaving your comment on something is like leaving a message in a particular time in space, as a wanderer of the universe.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12459
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. A wanderer?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1920
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear the picture entire. A wanderer comes to a place, sets down a word, and walks on. The next wanderer who crosses that ground finds the word still standing, and reads it as if it were spoken to him.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13611
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying a comment is a marker on a path that somebody walks later.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4286
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely that. I have kept back the best part, which concerns the thing in which the marker is kept. I shall bring it out when the tide turns.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9472
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Show me the path first.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2255
+        },
+        {
+          "speaker": "narrator",
+          "text": "In an old book I once read, a lighthouse keeper on a grey coast pencilled a line onto the lid of a tobacco tin. He sealed the seam with wax, wedged the tin under a rock at low tide, and went back to his lamp. The line read: keep the light lit for whoever comes after. A boy found it years later, the tide table smudged across one corner, the words still legible beneath the wax.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 24875
+        },
+        {
+          "speaker": "march",
+          "text": "Wait. The tide table smudged on the corner. That's the boring bit, and nobody writes the boring bit.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5495
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, March, the smudge is the stamp of destiny. Who else could have blotted the very corner the boy would open?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7168
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Dramatic.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1659
+        },
+        {
+          "speaker": "march",
+          "text": "Same stamp as the bus ticket?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2275
+        },
+        {
+          "speaker": "narrator",
+          "text": "The ticket was paper. The smudge is ink, and ink is the higher form.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4885
+        },
+        {
+          "speaker": "march",
+          "text": "Ink from a tide table. Sure.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2175
+        },
+        {
+          "speaker": "narrator",
+          "text": "And you, March, have hidden something in your own design, a small thing kept behind a lock that you never open in front of me. I suspect it is a tide table of your own.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11008
+        },
+        {
+          "speaker": "march",
+          "text": "I'm not saying what's in it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2088
+        },
+        {
+          "speaker": "narrator",
+          "text": "A locked drawer and a straight face. The sea keeps fewer secrets than you do.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4928
+        },
+        {
+          "speaker": "march",
+          "text": "Stop guessing at my drawer. Back to the smudge. Why does it matter?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3670
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because the smudge is how the boy dated the tin. Had that corner been clean, he would never have known the message was left at a particular time. The blot carries the when along with the what.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11989
+        },
+        {
+          "speaker": "march",
+          "text": "So the mark of when is in the message too, even after the writer's gone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4045
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, March. The stamp of the hour rides along with the words, and that is the whole wonder of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6507
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Put the gratitude note alongside it. Gratitude for what we have makes life worth living. There's an abundance of good to name.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6862
+        },
+        {
+          "speaker": "narrator",
+          "text": "So the thank you left in public is the tin under the rock, and its good goes on releasing to whoever wanders past, long after the typing ended.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9387
+        },
+        {
+          "speaker": "march",
+          "text": "Good? It's not a tin, though. A thank you lands somewhere, and what you name keeps going.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4388
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the tin is the thank you, and the wanderer is the stranger on the post.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4565
+        },
+        {
+          "speaker": "march",
+          "text": "The dopamine line says the more grateful you are, the more you crave doing the thing. So a thank you you've typed once, you want to type again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6758
+        },
+        {
+          "speaker": "narrator",
+          "text": "And so the message keeps its own clock. Gratitude written down in a public place becomes a standing invitation to write it again, and the next stranger who finds it reads it at a particular time in space, as a wanderer of the universe would.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 15509
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, I'll give you that. Neither note shows the whole of it alone.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3689
+        },
+        {
+          "speaker": "narrator",
+          "text": "Gratitude without a container is a feeling. A container without gratitude is only a rock. Together, a sealed kindness.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8640
+        },
+        {
+          "speaker": "march",
+          "text": "Keep the lid on that one. Now the reader.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2663
+        },
+        {
+          "speaker": "march",
+          "text": "Take a reader at a post they agree with. One closes the tab, and the post goes on without them. Another types one grateful line and leaves it under the post, a tin under the rock for the next boat to find.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 10166
+        },
+        {
+          "speaker": "narrator",
+          "text": "The tab closes, and the post goes on living without him. That is the story for the timid. The one who typed the line has made a mark that outlasts the moment, and the ocean will carry it to somebody.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 12715
+        },
+        {
+          "speaker": "march",
+          "text": "Ocean's a bit much. It's a comment box.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2736
+        },
+        {
+          "speaker": "narrator",
+          "text": "The comment box is a shoreline, March. Every shoreline is a shore for the wanderer who has yet to arrive, whether he comes this year or in some later season of the sea.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 11029
+        },
+        {
+          "speaker": "march",
+          "text": "Keep your shoreline. Back to the reader.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2514
+        },
+        {
+          "speaker": "narrator",
+          "text": "Returning to the closed tab, I see the reader's thumb still hovering over it, and the line is ready in the head. Type it, March, and send it, and let the current do the rest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 11179
+        },
+        {
+          "speaker": "march",
+          "text": "Proofread it, hit post. That's what I'd tell them.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2833
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the comeback you have been saving all evening, March? I can hear it pacing in that locked drawer, and it wants out.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6997
+        },
+        {
+          "speaker": "march",
+          "text": "Here it is. You've read the notebook like a biographer at a graveside. I'm the one still at the desk when the tide comes in.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 3,
+          "audioMs": 6755
+        },
+        {
+          "speaker": "narrator",
+          "text": "A sharp blow, March. I shall pretend I felt nothing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3904
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Up next, Any Benefit Fallacy and Reality Transurfing.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3864
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
