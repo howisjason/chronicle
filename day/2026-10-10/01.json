@@ -1868,6 +1868,460 @@
         "n": 1,
         "of": 1
       }
+    },
+    {
+      "id": "2026-10-10-01-05",
+      "title": "THE LINE THAT COSTS NOTHING",
+      "startAt": "2026-10-10T01:43:46.549+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-01-05.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Remove Negatives Over Adding More Positives",
+        "Failure Is How We Learn And Grow"
+      ],
+      "angle": "How could I design a solution with zero budget?",
+      "kind": "try_it",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Remove Negatives Over Adding More Positives: Removing negatives is more important than adding more positives. Adding good habits doesn't undo the bad habits."
+        },
+        {
+          "kind": "note",
+          "text": "Remove Negatives Over Adding More Positives: Most of eating healthy is just avoiding bad food. Most of being right is just not being wrong."
+        },
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: Writers say you should quickly finish a bad first draft, because it gets the idea out of your head and into reality, where it can then be improved."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You pour the water out at the sink. The vitamins you dropped in are still on the bottom, untouched. Small hours. Nobody's watching.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6802
+        },
+        {
+          "speaker": "narrator",
+          "text": "Oh, March, you have set a glass upon the sink and I shall give it a hymn. The common belief runs thus:",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6656
+        },
+        {
+          "speaker": "march",
+          "text": "Vitamins, narrator. Get on.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2344
+        },
+        {
+          "speaker": "narrator",
+          "text": "A rough life is mended by stacking good things on top of it. A walk here, a vitamin there. The fuller the shelf...",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7616
+        },
+        {
+          "speaker": "march",
+          "text": "So the lie is: pile on enough good stuff and the bad gets buried.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3837
+        },
+        {
+          "speaker": "narrator",
+          "text": "Buried, and forgotten, and it goes on tasting of itself at the bottom. Now the claim, read whole, the way the note has it: 'Removing negatives is more important than adding more positives.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12416
+        },
+        {
+          "speaker": "march",
+          "text": "So taking the bad out beats putting the good in.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2896
+        },
+        {
+          "speaker": "narrator",
+          "text": "More important, the note says. Good habits do not undo the bad ones. They only sit on top of them. I shall hold back the best part until we are seated. It will taste better for the wait.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12331
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Let's say it. Kitchen table, a week with nothing to spend.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3840
+        },
+        {
+          "speaker": "march",
+          "text": "I'm allowed no new thing. Nothing goes on the sheet without a reason.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3839
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you'll want a plan, March, and a grand one. Cold water each morning, a stretching hour, a journal on the windowsill, a walk along the sea wall at dusk, a list of greens for every night.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12885
+        },
+        {
+          "speaker": "march",
+          "text": "Stop. The case isn't adding. It's striking an entry. The late biscuit, the one I eat after the timer goes. It comes off the sheet in pencil. That costs nothing.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7867
+        },
+        {
+          "speaker": "narrator",
+          "text": "A biscuit struck from the sheet is a loss, March. The tin will sulk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4821
+        },
+        {
+          "speaker": "march",
+          "text": "The tin can sulk.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1696
+        },
+        {
+          "speaker": "march",
+          "text": "Then the envelope. I've got an old one with the back blank, and I'm writing a bad first draft on it in pencil. Rubbish, a few sentences, whatever comes first. It costs the envelope and a few minutes beside the timer.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 10336
+        },
+        {
+          "speaker": "narrator",
+          "text": "The draft gets the idea out of the head and onto paper, I grant you. Nothing learned yet, only scribble. Keep going.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7467
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing learned, I know.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1939
+        },
+        {
+          "speaker": "march",
+          "text": "Strike one entry, write one draft. That's the whole case.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3347
+        },
+        {
+          "speaker": "narrator",
+          "text": "The whole case, you say? No. A sound design wants more. Add a cold swim off the sea wall, a reading hour before bed, a little book of promises for the greens. Sea air, March. You cannot have a good life on one line.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14955
+        },
+        {
+          "speaker": "march",
+          "text": "Rubbing out. Swim's gone.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2086
+        },
+        {
+          "speaker": "march",
+          "text": "Greens are gone. I'm not eating a list. Reading hour's gone too, thank you.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4246
+        },
+        {
+          "speaker": "narrator",
+          "text": "The reading hour is the heart of it. A plan that cannot be read back is no plan at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5867
+        },
+        {
+          "speaker": "march",
+          "text": "Heart's gone. Look, the tap's dripping. Drip, drip. Every drip is getting rubbed out as well.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4942
+        },
+        {
+          "speaker": "narrator",
+          "text": "A drip from the tap, and in every drop the sea. The sea has been calling this kitchen since the tap was fitted. Ordinary dripping, and a sign of destiny, March. Now tell me what is hidden in your design. There is something in the corner.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15040
+        },
+        {
+          "speaker": "march",
+          "text": "No.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1026
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, so there is.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1451
+        },
+        {
+          "speaker": "narrator",
+          "text": "A column off the sheet, a line you've kept and never written down for anyone. A promise to yourself? A song? A small sea of your own?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9067
+        },
+        {
+          "speaker": "march",
+          "text": "I'm not saying. That's mine.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2193
+        },
+        {
+          "speaker": "march",
+          "text": "And it goes in the tally. Arguments won.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2773
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the drip keeps the credit and I keep my guess.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3157
+        },
+        {
+          "speaker": "march",
+          "text": "Keep your guess, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2002
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the case. Striking a line cost nothing. What's left on the page doesn't need anything from me.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5672
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, and the note says it in its own way. Read: 'Writers say you should quickly finish a bad first draft, because it gets the idea out of your head and into reality, where it can then be improved.' The envelope is that draft.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 14571
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here the notes meet, March. The first takes away, and the other spends a cheap failure on purpose. Where they cross is your envelope and your pencil stroke together. A design with nothing to spend is both at once, and neither note shows that alone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 16213
+        },
+        {
+          "speaker": "march",
+          "text": "So the cheapest experiment is the bad draft, and the cheapest cut is the strike.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4795
+        },
+        {
+          "speaker": "march",
+          "text": "Put them together and the whole thing's free.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2643
+        },
+        {
+          "speaker": "narrator",
+          "text": "Free, and so the withheld part comes out at last. 'Most of eating healthy is just avoiding bad food. Most of being right is just not being wrong.' Most of a good week is most of a good life, if you strike the right ones.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14485
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Same kitchen table, same week, a pair of people. Here's the fork.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4036
+        },
+        {
+          "speaker": "narrator",
+          "text": "Go on, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1259
+        },
+        {
+          "speaker": "march",
+          "text": "The first buys more vitamins for the glass. Adds a row, then another, and the bad stays on the bottom the whole week. The page gets longer and tenser, and the water never clears.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8957
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the other one?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1323
+        },
+        {
+          "speaker": "march",
+          "text": "Strikes one entry. Writes one rubbish draft on the back of an old envelope. Ends the week with a page that is short and quiet, and less in the glass than when they started.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8417
+        },
+        {
+          "speaker": "narrator",
+          "text": "The first is a shopkeeper stacking vitamins on a shelf.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4011
+        },
+        {
+          "speaker": "narrator",
+          "text": "The other is a gardener weeding one bed and standing back to admire the soil.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5056
+        },
+        {
+          "speaker": "march",
+          "text": "Gardener. Honestly, narrator. Good.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2492
+        },
+        {
+          "speaker": "march",
+          "text": "Back at the sink. The glass is still cloudy, the vitamins still at the bottom, and the biscuit's still sulking in the tin.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5967
+        },
+        {
+          "speaker": "narrator",
+          "text": "The glass is mine. I said it first, in the grand voice, and the tin can hear me.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "Take the glass, then.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1839
+        },
+        {
+          "speaker": "march",
+          "text": "The envelope's mine. And I was right, striking a line costs nothing.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3940
+        },
+        {
+          "speaker": "narrator",
+          "text": "Fine. Striking costs nothing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2261
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, the other half of this pair, the same notes again. Bring the envelope.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4506
+        },
+        {
+          "speaker": "narrator",
+          "text": "The saved biscuit sulks on, and the night goes on too. The water in the glass will settle in its own time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7317
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
