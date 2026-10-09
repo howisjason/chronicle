@@ -989,6 +989,608 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-02-03",
+      "title": "THE CHIPPED BLUE BOWL",
+      "startAt": "2026-10-10T02:27:34.173+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-02-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Novelty - A Life Fully Lived",
+        "Happiness And Gratitude"
+      ],
+      "angle": "How would this concept evolve ten years from now with advancements in technology or shifting cultural trends?",
+      "kind": "try_it",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Novelty Is How To Live A Full Life: You recently had a day, or even a month, that you can’t remember. If I asked what you did then, you couldn’t say."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness (or any other feeling/emotion like successful, worthy, deserving, joyful, etc) is not something that is earned or deserved."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty Is How To Live A Full Life: Monotony is the enemy. Novelty is the solution."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty Is How To Live A Full Life: Nothing twice. Never eat the same food twice. Never go to the same place twice."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty Is How To Live A Full Life: Be systematic. Follow guides. “Best Restaurants in Town” Go through them all."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Gratitude for what we have makes life worth living."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: If you say things you're grateful for about things in your routine, you'll crave doing them even more."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty Is How To Live A Full Life: The thrill of the first. The sentimentality of the last."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty Is How To Live A Full Life: Fill your senses as if this was your last day on Earth."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Think of a day, or even a month, you can't remember. Go looking for it and there's nothing there.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5207
+        },
+        {
+          "speaker": "narrator",
+          "text": "In the small hours the silence is generous, and the lost weeks drift past the window like lamps on a train nobody remembers boarding. Nobody waved to them. The house slept through the whole procession.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13611
+        },
+        {
+          "speaker": "march",
+          "text": "Quieter, please. Simple question. What did you do that week?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3255
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nothing anybody would write down. That is the sorrow of it, March. An uneventful life is only a short life that happened to be long.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9131
+        },
+        {
+          "speaker": "march",
+          "text": "Let's be fair to the listener. Most people believe you earn a good day. You work the week, finish the chores, and then you're allowed a nice evening...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6649
+        },
+        {
+          "speaker": "narrator",
+          "text": "A medal pinned on at the end of a long and obedient queue.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3776
+        },
+        {
+          "speaker": "march",
+          "text": "That's common sense. Everybody agrees.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2792
+        },
+        {
+          "speaker": "narrator",
+          "text": "Common, yes. Sense is another question. I have not yet seen the paperwork.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5291
+        },
+        {
+          "speaker": "march",
+          "text": "Then show them the paperwork.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2217
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note does. 'Happiness is not something that is earned or deserved.' Feelings are not a wage. The blood does not wait to be worthy before it moves round the body, and neither does pleasure.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12331
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying I don't have to deserve my lunch.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2904
+        },
+        {
+          "speaker": "narrator",
+          "text": "You need not deserve the lunch, March. Sit down and eat it while it is hot, and let the pleasure arrive without a permit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7403
+        },
+        {
+          "speaker": "march",
+          "text": "Lunch, then. Hot.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1720
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Not earned. Now the bit I care about. Novelty.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3259
+        },
+        {
+          "speaker": "narrator",
+          "text": "'Monotony is the enemy. Novelty is the solution.' The days are not the enemy. Sameness is. The same route, the same soup, the same hour, and the mind drops into autopilot like a stone into a well.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 14357
+        },
+        {
+          "speaker": "march",
+          "text": "So the boring day isn't the problem. The same day, repeated, is.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3919
+        },
+        {
+          "speaker": "narrator",
+          "text": "The same day repeated, with the autopilot switched on. Afterwards it cannot be found, because nothing in it was ever looked at.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8171
+        },
+        {
+          "speaker": "march",
+          "text": "Test it, then. Put me in a town I'm inventing right now. It's the Long Night, I'm allowed a hometown. And I'm the woman in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6210
+        },
+        {
+          "speaker": "narrator",
+          "text": "Give her a bus shelter. A timetable behind the glass, a café on the corner with a laminated list in its window, and a man in a grey apron who has watched everybody come and go.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 12245
+        },
+        {
+          "speaker": "march",
+          "text": "The list says Best Restaurants in Town, so it must be serious. I skip the name at the top, because I always go there.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6478
+        },
+        {
+          "speaker": "march",
+          "text": "I take the name just under it. And order a dish I can't pronounce.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3962
+        },
+        {
+          "speaker": "narrator",
+          "text": "A word like a small cough. The waiter sets it down in a bowl chipped blue at the rim, and the chip catches the window light.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 7893
+        },
+        {
+          "speaker": "march",
+          "text": "Chipped blue bowl. First spoon is brand new soup. The next one is basically soup I already know.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5525
+        },
+        {
+          "speaker": "narrator",
+          "text": "The first spoon is the only one that is truly first. Monotony begins at the next, exactly where the autopilot reaches for the wheel, and the afternoon starts quietly disappearing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 11989
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing twice, though. That's the rule. I'm not going back to that café.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3877
+        },
+        {
+          "speaker": "narrator",
+          "text": "The rule says never the same place twice, and yet the man in the grey apron already has your coat over his arm. 'Same coat as last time, madam.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10176
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. He remembered my coat. That's the twice.",
+          "emotion": "happy",
+          "action": "facepalm",
+          "source": 3,
+          "audioMs": 2733
+        },
+        {
+          "speaker": "march",
+          "text": "Once is a first. Twice is a regular.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2619
+        },
+        {
+          "speaker": "narrator",
+          "text": "A regular, March. Regulars are what the bus timetable is made of, and the timetable is the most faithful thing in the town.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8427
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, regulars it is.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2067
+        },
+        {
+          "speaker": "march",
+          "text": "The timetable is the least dramatic thing in town. Keep it out of this.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4369
+        },
+        {
+          "speaker": "narrator",
+          "text": "Look at the ticket in her pocket, though. The number printed on it is the very year she left town, and the bus arrives just as the rain pauses. The town is calling her back. The ticket is a summons, and the bus is the messenger in a hurry...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 8,
+          "audioMs": 15595
+        },
+        {
+          "speaker": "march",
+          "text": "Every ticket has a number on it. A machine in a depot prints them all year round.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 8,
+          "audioMs": 4843
+        },
+        {
+          "speaker": "march",
+          "text": "It's a receipt, not a summons.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 8,
+          "audioMs": 2236
+        },
+        {
+          "speaker": "narrator",
+          "text": "Destiny, March. Destiny comes off the printing press more often than anybody admits.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 8,
+          "audioMs": 5888
+        },
+        {
+          "speaker": "march",
+          "text": "You're reading a summons into a receipt.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 8,
+          "audioMs": 2662
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the note asks us to fill the senses as if this were the last day on Earth. If she knew she would lose her sight tomorrow, she would read that ticket as a love letter. The paper would be the same paper. Only the looking changes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 8,
+          "audioMs": 14208
+        },
+        {
+          "speaker": "narrator",
+          "text": "And you, March, are hiding another clause somewhere in your design. I can feel it through the speakers.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 8,
+          "audioMs": 6293
+        },
+        {
+          "speaker": "march",
+          "text": "Some of me stays in the design. That part's mine. Leave it alone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 8,
+          "audioMs": 3756
+        },
+        {
+          "speaker": "march",
+          "text": "The point is the ticket. Same ticket I could hold every week. Attention makes the difference, not the bus.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 8,
+          "audioMs": 6206
+        },
+        {
+          "speaker": "narrator",
+          "text": "Attention is the lamp, and the bus is only the table the lamp happens to sit on...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 8,
+          "audioMs": 5376
+        },
+        {
+          "speaker": "march",
+          "text": "Stop. Gratitude. The other note.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2426
+        },
+        {
+          "speaker": "march",
+          "text": "You can't fill your senses with a bowl you never noticed. If you don't look at the one you already own, no first spoon in the world saves you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 6924
+        },
+        {
+          "speaker": "narrator",
+          "text": "'Gratitude for what we have makes life worth living.' Novelty reaches for the first spoon. Gratitude notices the bowl already in your hands. Novelty alone becomes a hunt that never ends, and gratitude alone becomes a museum where nothing moves.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 16085
+        },
+        {
+          "speaker": "march",
+          "text": "So gratitude is what stops the same soup going flat.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 3491
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, and the note says it outright. 'If you say things you're grateful for about things in your routine, you'll crave doing them even more.' Routine is where novelty and thanks meet.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 6,
+          "audioMs": 11221
+        },
+        {
+          "speaker": "narrator",
+          "text": "Return to it, yes, but each return is new, because the thanks makes it so.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 6,
+          "audioMs": 5120
+        },
+        {
+          "speaker": "march",
+          "text": "Right, so thanks makes a return count as new. Handy, if you like the soup.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 6,
+          "audioMs": 4438
+        },
+        {
+          "speaker": "narrator",
+          "text": "Reasonable.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 6,
+          "audioMs": 1173
+        },
+        {
+          "speaker": "march",
+          "text": "Now the future version. A decade from now, the feed picks your next new thing before you're hungry. Novelty by default, sold back to you on a subscription.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7801
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then novelty will be cheap, March. Cheap as bread left on the counter. The scarce thing will be a person who can still give thanks for the bowl they were served last week, and still taste it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 11861
+        },
+        {
+          "speaker": "march",
+          "text": "Gratitude becomes the scarcer skill.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2644
+        },
+        {
+          "speaker": "narrator",
+          "text": "Carved above the café door, March, right beside the list of firsts.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 7,
+          "audioMs": 4672
+        },
+        {
+          "speaker": "march",
+          "text": "So a day is a row of small firsts and small thanks. One line for each meal. A sentence of thanks beside the morning coffee, then you drink it as if you'd never had that exact cup.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 7,
+          "audioMs": 9035
+        },
+        {
+          "speaker": "narrator",
+          "text": "A grateful sparrow keeping a diary, one crumb to a page. The thrill and the sentiment, both in the same sip.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 7,
+          "audioMs": 7701
+        },
+        {
+          "speaker": "march",
+          "text": "Less sparrow. More coffee.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 7,
+          "audioMs": 2059
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the grand part, for J, and I shall keep it short for the Long Night.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 7,
+          "audioMs": 4800
+        },
+        {
+          "speaker": "march",
+          "text": "Short, then. Go on.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 7,
+          "audioMs": 1849
+        },
+        {
+          "speaker": "narrator",
+          "text": "He is hereby offered the title Lamplighter of the First Spoon. He lights the first ones, and lets the rest of the house go on sleeping.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 7,
+          "audioMs": 8448
+        },
+        {
+          "speaker": "march",
+          "text": "Shorter. I'll allow it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 7,
+          "audioMs": 2009
+        },
+        {
+          "speaker": "march",
+          "text": "He'd still hate being called anything grand.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 7,
+          "audioMs": 2839
+        },
+        {
+          "speaker": "march",
+          "text": "He'd rather be remembered for a bowl of soup than for a crown. I'd bet on it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 7,
+          "audioMs": 4352
+        },
+        {
+          "speaker": "narrator",
+          "text": "A wager with an opponent who isn't here to take it. I shall let you have the odds this once.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5739
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the blank weeks. The ones you can't remember.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2839
+        },
+        {
+          "speaker": "narrator",
+          "text": "The blank weeks were the very ones I was defending all along, March. Unrepeated, unnoticed, and waiting to become anything at all, if a single spoon had been looked at.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11179
+        },
+        {
+          "speaker": "march",
+          "text": "You are right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1546
+        },
+        {
+          "speaker": "march",
+          "text": "Anyway. Up next, the rest of these notes, then The Influence Of Others. Bring a spoon.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4865
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
