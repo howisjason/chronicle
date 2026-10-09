@@ -1625,6 +1625,640 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-05-05",
+      "title": "THE SHOWER THAT COUNTED",
+      "startAt": "2026-10-10T05:37:44.434+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-05-05.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "How Our Brains Interpret Imagined And Real Experiences",
+        "Express Your Ideas To The World"
+      ],
+      "angle": "How would this idea change if it had to be implemented on a completely different platform (e.g., physical product -> digital service, individual tool -> community platform)?",
+      "kind": "quick_fire",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Remember that the group who practiced shooting free throws and the group who merely visualised making free throws both improved the same amount, despite one group having never touched a basketball."
+        },
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: Marco Polo wasn’t the first European to reach China, but he was the first to write a book about it."
+        },
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: Interact with people online daily. Leaving your comment on something is like leaving a message in a particular time in space as a wanderer of the universe."
+        },
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: If we hide or hinder ourselves in fear of rejection of others, are we not in essence, rejecting ourselves first?"
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: When visualising, you must make these images as detailed and vivid as possible."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Maybe you've rehearsed a hard conversation in the shower. Every line, the pause before the hard bit, the tone you finally settled on. Then you walked into the real one feeling braver than you have in months. Odd, that something you only ran in your head could change how you walk into a room.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13133
+        },
+        {
+          "speaker": "march",
+          "text": "Most people think a vivid picture in the head is daydreaming. Something you do on the bus. Doesn't count.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5584
+        },
+        {
+          "speaker": "march",
+          "text": "And a comment you leave under a stranger's post? Noise. Shouted into an empty room.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4919
+        },
+        {
+          "speaker": "narrator",
+          "text": "A rather modest view of a person's ambitions, March, but yes, it is the common one. The comfortable one. Let us see how long it survives a proper hearing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10603
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, then. The full version. Not the one you use for the cheap seats.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3769
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note says it plainly. I want you to hear it slowly, the way one hears a verdict read from the bench.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6421
+        },
+        {
+          "speaker": "narrator",
+          "text": "\"Your nervous system cannot tell the difference between an imagined experience and a real one.\"",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6059
+        },
+        {
+          "speaker": "march",
+          "text": "So the shower counted. Even though nobody else was in the room.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3861
+        },
+        {
+          "speaker": "narrator",
+          "text": "The shower counted. The same jolt fired in the shower that would fire in the hallway. The same tightening in the chest, the same heat behind the ears. The room was only the stage, and the stage was never the performer.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14656
+        },
+        {
+          "speaker": "march",
+          "text": "So the rehearsal was the practice, and the hallway just happened to be where it got used.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4856
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am saying more than that. The part that will unsettle you concerns comments, and I am holding it back until you have earned the right to be unsettled.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9408
+        },
+        {
+          "speaker": "march",
+          "text": "You always hold things back. Then you make me wait through the whole ad break for it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4631
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Give me proof, not the throne speech. Something I can check with my own eyes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4794
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note cites the free throws. One group shot baskets through the season. The other only pictured the shot, sitting still.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8149
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. Pictured baskets against real ones?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3007
+        },
+        {
+          "speaker": "march",
+          "text": "That's a bold comparison for anyone who has ever missed a shot in a real gym, with real people watching.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6219
+        },
+        {
+          "speaker": "narrator",
+          "text": "Read it to yourself. \"Remember that the group who practiced shooting free throws and the group who merely visualised making free throws both improved the same amount, despite one group having never touched a basketball.\"",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14080
+        },
+        {
+          "speaker": "march",
+          "text": "Say that bit again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1835
+        },
+        {
+          "speaker": "march",
+          "text": "Never touched a ball and came out just as good. I don't believe that. Explain it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4587
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then believe the gym, March, because belief comes from the particulars.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 4544
+        },
+        {
+          "speaker": "march",
+          "text": "Squeaky floor, got it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2028
+        },
+        {
+          "speaker": "narrator",
+          "text": "The floor squeaks under the left foot. The rim has a dent on the far edge that sends every miss off at the same angle. The ball's grip is rough, like a jumper worn through at the cuffs.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 12203
+        },
+        {
+          "speaker": "march",
+          "text": "A dented rim. You've given the hoop a personality.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2980
+        },
+        {
+          "speaker": "march",
+          "text": "I'm not sure I ever wanted the hoop to have one.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2879
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every small detail is a hook for the senses. Strip them out and the picture is thin soup, and thin soup does nothing to the body that lifts it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 9429
+        },
+        {
+          "speaker": "march",
+          "text": "Thin soup, fine. But I'd like the comment part before we lose the room. Go on. The stranger, the post, the reply.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6158
+        },
+        {
+          "speaker": "march",
+          "text": "A stranger posts something you have an opinion about. You type a reply, and while your thumb hovers over the button, you picture it landing on their screen. Stomach drops.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8314
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the question is whether it lands on the stranger the way the picture landed on you. The reader's nervous system is a nervous system too. It is not a spectator.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10731
+        },
+        {
+          "speaker": "march",
+          "text": "So the reply is a rehearsal for both people at once.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3255
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely, March. Both of them run it, one before sending and one while reading.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5824
+        },
+        {
+          "speaker": "march",
+          "text": "Both at once. Got it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1975
+        },
+        {
+          "speaker": "narrator",
+          "text": "Neither of them is a spectator to their own nerves.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3371
+        },
+        {
+          "speaker": "march",
+          "text": "Let me try it on myself, out loud, then. Someone sends me a sharp message. I picture my reply, step by step.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 6335
+        },
+        {
+          "speaker": "march",
+          "text": "I unclench my jaw. Short sentences. I don't apologise for a thing I didn't do.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 5051
+        },
+        {
+          "speaker": "march",
+          "text": "Honestly? My hands were steadier by the end than when I started. I did not expect that, and I'm a bit cross about it.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 5,
+          "audioMs": 6264
+        },
+        {
+          "speaker": "narrator",
+          "text": "There! The nerves have spoken, and March has been converted in front of this microphone.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5419
+        },
+        {
+          "speaker": "march",
+          "text": "A sample, Narrator. One sample, and it's only me, so it's a small one. You don't get proof from one of me.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5527
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your tempo is a scandal. You are rushing a perfectly good sample straight past the bit where you were moved, and I am obliged to object, loudly, for the record.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 5,
+          "audioMs": 10069
+        },
+        {
+          "speaker": "march",
+          "text": "You're pleased, Narrator. I can hear it in the way you're breathing into the microphone.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4707
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am annoyed about your tempo, madam, and about nothing else whatsoever.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4608
+        },
+        {
+          "speaker": "march",
+          "text": "Sure. Score that one for me, then, since you're so keen to be annoyed.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3628
+        },
+        {
+          "speaker": "march",
+          "text": "Hard truth now. This is your bit, so do it properly. Don't soften the edges for me.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4817
+        },
+        {
+          "speaker": "narrator",
+          "text": "Robert Pantano asks whether hiding from others is rejecting ourselves first. The note means it as a charge, and I shall not blunt it for your comfort.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 10219
+        },
+        {
+          "speaker": "narrator",
+          "text": "The person who stays quiet on every post has already said no to their own voice, before any stranger has had the chance to say it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8427
+        },
+        {
+          "speaker": "march",
+          "text": "That's harsh, even by your standards. You've got standards that cut like glass.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4669
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is meant to be harsh. It is also true, and I will not dress it up as a suggestion.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5973
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch. Fair enough.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1653
+        },
+        {
+          "speaker": "march",
+          "text": "Right, the other note. Marco Polo, the book, and what all that has to do with a stranger's post.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5204
+        },
+        {
+          "speaker": "march",
+          "text": "He wasn't the first European to reach China. He was the first to write about it. Writing about it is what everyone remembers now, not the journey itself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8037
+        },
+        {
+          "speaker": "narrator",
+          "text": "And a book is a rehearsal handed to strangers. Readers pictured the road before they ever left the house, and when they finally went, their nerves had walked it already.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10581
+        },
+        {
+          "speaker": "march",
+          "text": "So publishing isn't only telling people things. It's practice for everyone who reads it, and they never know they signed up.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6695
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite so.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1088
+        },
+        {
+          "speaker": "narrator",
+          "text": "The visualisation note and the sharing note cross exactly there.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 4139
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on, the telling is the training?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2385
+        },
+        {
+          "speaker": "narrator",
+          "text": "A story told in full detail trains the nervous system before anyone steps onto the road, so the broadcast itself becomes the practice.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 9685
+        },
+        {
+          "speaker": "march",
+          "text": "And if it's a community platform, not a single book?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3064
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the rehearsal is run by the whole room at once. Everyone walks the same road in their heads.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6379
+        },
+        {
+          "speaker": "narrator",
+          "text": "The journey feels a little less lonely for each of them.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3413
+        },
+        {
+          "speaker": "march",
+          "text": "Steady on, Narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1920
+        },
+        {
+          "speaker": "march",
+          "text": "So what does someone who believes this actually do on a Thursday night, with the laptop open and nobody about?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5600
+        },
+        {
+          "speaker": "march",
+          "text": "They've got a post half written. They can see the replies arriving one at a time, each with the particular face of a real person.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7115
+        },
+        {
+          "speaker": "march",
+          "text": "And they type as if the room has already answered.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2905
+        },
+        {
+          "speaker": "narrator",
+          "text": "The post still goes out to strangers. But the exchange has already run hundreds of times in private, so when the first real reply lands, it reads as a reunion rather than a risk.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 12203
+        },
+        {
+          "speaker": "march",
+          "text": "Reunion. Nice one, Narrator. You didn't steal that from anybody I've heard of.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4411
+        },
+        {
+          "speaker": "narrator",
+          "text": "I have never stolen anything, March. I borrow in the grand manner and I give the lender full credit in the footnotes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7509
+        },
+        {
+          "speaker": "narrator",
+          "text": "Back to the shower, then. A conversation rehearsed in the shower is settled before the real one begins, if the rehearsal is vivid enough.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8896
+        },
+        {
+          "speaker": "narrator",
+          "text": "The hallway only has to confirm the score that the shower already set.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4629
+        },
+        {
+          "speaker": "march",
+          "text": "Prove it on air, then. Don't just tell me the shower was a win because you're fond of the word.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5250
+        },
+        {
+          "speaker": "narrator",
+          "text": "The shower was the rehearsal, and the hallway was the performance, and the performance was never the first time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6592
+        },
+        {
+          "speaker": "march",
+          "text": "Your delivery is wobbling. Slow down.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2682
+        },
+        {
+          "speaker": "march",
+          "text": "You're rushing the closing bit before the listeners have had their tea.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3794
+        },
+        {
+          "speaker": "narrator",
+          "text": "You are rushing me, madam, and I will not be hurried through the final minute of my own argument, however fond you are of the stopwatch.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8299
+        },
+        {
+          "speaker": "march",
+          "text": "The score says the shower goes to me. I'm writing it in the tally, next to the kettle and the chair, which you have still not earned.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6376
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
