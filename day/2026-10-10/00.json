@@ -765,6 +765,464 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-00-03",
+      "title": "THE CARD BY THE TIME CLOCK",
+      "startAt": "2026-10-10T00:26:52.716+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-00-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Happiness And Gratitude",
+        "When You're Scared To Take Action"
+      ],
+      "angle": "What are the potential ethical implications or societal consequences (positive or negative) of this idea if widely adopted? How could it be misused?",
+      "kind": "quick_fire",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: When you smile, your brain automatically assumes you're having a good time."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness is not something that is earned or deserved."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: The more grateful you are for something, the more doing it will release dopamine."
+        },
+        {
+          "kind": "note",
+          "text": "When You're Scared To Take Action: Bravery is earned, not granted."
+        },
+        {
+          "kind": "note",
+          "text": "When You're Scared To Take Action: Fear is resolved through action. You can't think it away."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Somebody tells you to smile through a bad morning. So you do, and the smile sits in your chest like a cold coin. You feel worse than before. Then you wonder if you just lied to your own brain.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8587
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the poor smile, pressed into service like a footman at a funeral! Let me give you the belief most people hold. A feeling must be earned before it is allowed. You may be cheerful once you have deserved it, and not one minute sooner. Cheer is a wage, paid on merit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 17152
+        },
+        {
+          "speaker": "march",
+          "text": "Deserve it first, then feel it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2339
+        },
+        {
+          "speaker": "march",
+          "text": "Sounds fair, the way a bouncer sounds fair. Nobody lets themselves laugh until they've checked their paperwork.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6030
+        },
+        {
+          "speaker": "narrator",
+          "text": "Charming, March, and quite wrong, which is my favourite kind of wrong. The note says it plainly: Happiness is simply a state of mind in which our thinking is pleasant most of the time. No wage. No merit. No ledger at the door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 15275
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch. Fair.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1403
+        },
+        {
+          "speaker": "march",
+          "text": "So happiness is the weather in your head.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2734
+        },
+        {
+          "speaker": "march",
+          "text": "It isn't a prize you go out and win.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2600
+        },
+        {
+          "speaker": "narrator",
+          "text": "The weather, yes, and weather simply arrives. The note goes further. Happiness is not a moral issue, any more than the circulation of blood is one. You do not earn a pulse.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11563
+        },
+        {
+          "speaker": "march",
+          "text": "You don't earn a pulse. Nice. But it still sounds like something printed on a poster. Show me the weather in an actual room.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5946
+        },
+        {
+          "speaker": "narrator",
+          "text": "Gladly. But the note's real claim lies beneath the weather, and I shall hold it back until we reach the room where it can breathe. You will want it when you hear it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9643
+        },
+        {
+          "speaker": "march",
+          "text": "I want it now. Hold it back and I'll sulk.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2700
+        },
+        {
+          "speaker": "march",
+          "text": "Give me the room.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1642
+        },
+        {
+          "speaker": "narrator",
+          "text": "Imagine a laminated card zip-tied beside the time clock in a warehouse break room. It reads: Gratitude releases dopamine. Beneath it hangs a sign-in sheet, and the people reading it have just heard that the extra hours are gone. They are asked to write a few things they are thankful for before the shift begins, and then they walk out onto the floor.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 22656
+        },
+        {
+          "speaker": "march",
+          "text": "Oof. Thankful for the dock door and the hum of the strip lights. Then straight onto the line with the worry still in their pockets.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6142
+        },
+        {
+          "speaker": "march",
+          "text": "The card looks cheerful. The room is not. He'd hate that card, by the way, and so would I.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5272
+        },
+        {
+          "speaker": "narrator",
+          "text": "A leash with a smile painted on it, March. The poster says the chemical follows the thankfulness, so the thankfulness becomes the duty, and the duty becomes the proof that the worker is doing the job well.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13504
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Painted leash.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1810
+        },
+        {
+          "speaker": "march",
+          "text": "Hold on. The card says gratitude makes you feel good. The sheet says gratitude is the job.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5654
+        },
+        {
+          "speaker": "march",
+          "text": "Only one of those is on the timesheet.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2600
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite right, my lady with teeth. And the gap between the poster and the sheet is exactly where the harm lives.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6891
+        },
+        {
+          "speaker": "march",
+          "text": "Harm's a big word. Pick a smaller one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2535
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then call it a nudge. A soft push, with a smile on the handle.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4331
+        },
+        {
+          "speaker": "march",
+          "text": "Nudge. Okay. Who gets blamed when the nudge doesn't work?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3265
+        },
+        {
+          "speaker": "narrator",
+          "text": "The worker, of course.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1664
+        },
+        {
+          "speaker": "march",
+          "text": "Naturally. Downhill, as always.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2368
+        },
+        {
+          "speaker": "narrator",
+          "text": "The poster says gratitude releases dopamine, so a worker who still feels flat reads their own gloom as a failure to be thankful enough. The fault moves from the sheet to the person holding the pen. A clever trick, and an ugly one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 15317
+        },
+        {
+          "speaker": "march",
+          "text": "That's one to me. You're down a point.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 2454
+        },
+        {
+          "speaker": "march",
+          "text": "I'm keeping count.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1721
+        },
+        {
+          "speaker": "narrator",
+          "text": "You keep a ledger, March?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1920
+        },
+        {
+          "speaker": "march",
+          "text": "Everyone has a ledger. Mine just has a kettle on it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3266
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then here is another room, a call centre's training binder. Its first rule: smile before you pick up the line, because the caller can hear a frown down the wire. I name you, J, Keeper of the Night Bell, for whoever keeps such binders in the small hours of the mind.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 17365
+        },
+        {
+          "speaker": "march",
+          "text": "Night Bell. No.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 1676
+        },
+        {
+          "speaker": "march",
+          "text": "That's still a crown with a ringer on it. And the bell in that binder rings too often, which is a comeback I'm saving for later.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6499
+        },
+        {
+          "speaker": "narrator",
+          "text": "Save it, then. I shall wait by the bell. What does the binder show?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4437
+        },
+        {
+          "speaker": "march",
+          "text": "A smile trained before the call teaches the agent to read their own exhaustion as their own failure.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 5857
+        },
+        {
+          "speaker": "march",
+          "text": "The caller is only a voice in a headset. The agent is the one who fails the smile. Same card, same sheet, different desk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 6843
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hush a moment. A worker who is tired, and told to be glad, does not stop being tired. They learn only to be ashamed of the tiredness. Let that sit on the table for a while, March, because it is the slow truth of the whole business.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 15659
+        },
+        {
+          "speaker": "march",
+          "text": "Sitting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 1104
+        },
+        {
+          "speaker": "march",
+          "text": "Now the crossing. Our fear note says bravery is earned, not granted. You do the thing scared and come out braver. The happiness note says feelings need no reason. Both refuse to make you clear the feeling before you move.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 10426
+        },
+        {
+          "speaker": "narrator",
+          "text": "So the feeling may follow the act, and the act may go first. A lovely freedom. But a freedom is a key, March, and keys can be handed to others.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 9899
+        },
+        {
+          "speaker": "march",
+          "text": "Yes. Somebody who controls the act can tell you to feel grateful, and tell you to act while scared. The freedom turns into the push.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 4,
+          "audioMs": 6843
+        },
+        {
+          "speaker": "march",
+          "text": "Whoever holds the schedule holds the leap.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 4,
+          "audioMs": 2720
+        },
+        {
+          "speaker": "narrator",
+          "text": "The old knife in the old drawer. Fear is resolved through action, the note says, and an employer may decide which action, and when, and leave the frightened person to believe the failure is theirs.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 12949
+        },
+        {
+          "speaker": "march",
+          "text": "Give me the Tuesday, not the drawer.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2430
+        },
+        {
+          "speaker": "march",
+          "text": "Someone who believes this writes a list of gratitudes at breakfast, then walks into a frightening meeting. They step scared, once and then again, and the confidence arrives late, one shaky step at a time. Nobody checks whether the step is safe. Nobody asks whether they were sent there for someone else's gain. They just keep stepping, and they call it courage, and they go home wondering why it feels like losing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 17825
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the list is no shield. A smile or a list cannot stand in for a pay slip, or a locked exit. Those are real things, and a card beside a time clock cannot repair them. I say this plainly, and I leave it plain.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 15019
+        },
+        {
+          "speaker": "march",
+          "text": "Yes. Thank you. Kettle's mine, by the way.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 5,
+          "audioMs": 2687
+        },
+        {
+          "speaker": "narrator",
+          "text": "The kettle, yes. And the first lie of the whole business was the smile from your cold open. The note never told that lie. Those who hung the notice told it, and the smile was only the costume.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 12629
+        },
+        {
+          "speaker": "march",
+          "text": "Smile before the call. Smile before the shift.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2795
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. Up next, the other half of tonight's pair: the smile note and the fear note.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 4699
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
