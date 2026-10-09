@@ -34,6 +34,9 @@ import pool  # noqa: E402
 TZ = timezone(timedelta(hours=7))  # Chiang Mai, no daylight saving
 # CHRONICLE_MODEL lets a lab round try another writer on the same sheets (8 Oct 2026).
 MODEL, EFFORT = os.environ.get('CHRONICLE_MODEL', 'claude-haiku-5-5'), 'low'
+# The write call alone may think harder (the plan's second rung when Haiku on low writes
+# half-length scenes, 9 Oct 2026); every other call stays low.
+WRITE_EFFORT = os.environ.get('CHRONICLE_WRITE_EFFORT', 'low')
 # The truth check stays on Haiku whatever writes: in the 8 Oct lab an Opus truth
 # check cost about 3.5 cents a scene against Haiku's 0.1, for the same job.
 CHECK_MODEL = 'claude-haiku-5-5'
@@ -86,11 +89,11 @@ def read(p):
     return open(p).read()
 
 
-def ask(system, user, label, model=None):
+def ask(system, user, label, model=None, effort=None):
     """One plain model call. Returns its text; logs its cost."""
     label = os.environ.get('LAB_TAG', '') + label
     r = subprocess.run(
-        ['claude', '-p', '--model', model or MODEL, '--effort', EFFORT, '--system-prompt', system,
+        ['claude', '-p', '--model', model or MODEL, '--effort', effort or EFFORT, '--system-prompt', system,
          '--tools', '', '--strict-mcp-config', '--setting-sources', '',
          '--no-session-persistence', '--output-format', 'json'],
         input=user, capture_output=True, text=True, timeout=300)
@@ -363,7 +366,7 @@ def one_segment(day, path):
     feedback = ''
     for attempt in range(3):
         try:
-            out = as_json(ask(WRITER, user + feedback, f'write#{attempt}'))
+            out = as_json(ask(WRITER, user + feedback, f'write#{attempt}', effort=WRITE_EFFORT))
             # A JSON missing a part used to crash the whole run (lab, 8 Oct 2026); now it is a refused try.
             if not all(k in out for k in ('title', 'sources', 'lines')):
                 raise KeyError('title, sources or lines missing')
@@ -402,7 +405,7 @@ def one_segment(day, path):
                 fixed = as_json(ask(WRITER, f"{material}\n\nThis scene:\n{json.dumps(seg, ensure_ascii=False)}\n\n"
                                     f"The checker refused it for these reasons (lines counted from 0):\n{msg}\n\n"
                                     "Rewrite ONLY the lines it names, and for a worn-out word change it in some of the "
-                                    "lines that use it. For one rhythm, add a few reactions of one to five words as their own "
+                                    "lines that use it. Every line, old or new, keeps a source index. For one rhythm, add a few reactions of one to five words as their own "
                                     "turns where a listener would react, each in that speaker's own words and never the same "
                                     "twice, and split one long turn where the other would cut in. Keep every other line "
                                     "exactly as it is. Return the whole scene JSON.",
