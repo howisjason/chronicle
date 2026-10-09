@@ -1135,6 +1135,496 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-05-04",
+      "title": "THE HOUR THAT WAS ALWAYS CHOSEN",
+      "startAt": "2026-10-10T05:26:44.012+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-05-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Be Intentional With Your Life and Actions",
+        "The Value of Time"
+      ],
+      "angle": "How might I look at this problem from an entirely different perspective?",
+      "kind": "the_case_against",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Value of Time: We never actually \"don't have the time\" to do something. We are always in control of our own time."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: We all have the same limited time in a day. When we say we don't have time to do something, what we really mean is that we don't think it's a high enough priority compared to the things that we're choosing to do instead, whether that's watching YouTube or napping."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: When you say you're gonna do something, you gotta follow it through. Words have power when your words have integrity."
+        },
+        {
+          "kind": "note",
+          "text": "The Value of Time: At any given moment, you are doing what you most want to be doing."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Some evening this week you told someone you had no time for it. It came out sounding like weather, something that happened over you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6648
+        },
+        {
+          "speaker": "march",
+          "text": "Most people think a busy life is one with no spare hours left in it. Full diary, full inbox, nothing left over.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6671
+        },
+        {
+          "speaker": "march",
+          "text": "That's the story, and most of us believe it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2723
+        },
+        {
+          "speaker": "narrator",
+          "text": "Believed by sincere people, March, and by most of them at once. Let them keep their rain. The note calls the weather a lie, and I came here to say so.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10432
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, then. Say it big. I'll wait.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2553
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear it big first, then. The note says this: \"We never actually \"don't have the time\" to do something.\" Every hour we claim is gone was spent on something we preferred.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10731
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying I had the hours and didn't want the thing.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3131
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am saying you are always doing what you most want to be doing, at any given moment, in any stretch of the day you care to name. I shall keep the best of it for later, March, the part that will make you wince.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 12523
+        },
+        {
+          "speaker": "march",
+          "text": "Holding things back is my least favourite move from you.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3265
+        },
+        {
+          "speaker": "march",
+          "text": "But fine. So no hour is ever really lost. We picked whatever filled it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4335
+        },
+        {
+          "speaker": "narrator",
+          "text": "Picture a clock tower in a small town, its bell rung on every turn of the dial. The bell does not pick its own strikes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8149
+        },
+        {
+          "speaker": "narrator",
+          "text": "Somebody else does, every time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2347
+        },
+        {
+          "speaker": "march",
+          "text": "Bleak, that one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1536
+        },
+        {
+          "speaker": "march",
+          "text": "Right, try it on somebody. Make it a woman coming off a night shift at a bakery.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4900
+        },
+        {
+          "speaker": "narrator",
+          "text": "She walks in with flour still in her hair. Her cello case sits by the front door, shut since spring, and she tells her flatmate she has no hours left for it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10133
+        },
+        {
+          "speaker": "march",
+          "text": "Which is true. She's knackered.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2196
+        },
+        {
+          "speaker": "march",
+          "text": "Who wouldn't be.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1574
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite. Nobody denies the tiredness.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2624
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ask her to name last Tuesday's evening, all of it, and she will name the screen. Then she will name the nap that followed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7637
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, she says: couch, the telly, videos until the birds start...",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3808
+        },
+        {
+          "speaker": "march",
+          "text": "...then a long nap.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1676
+        },
+        {
+          "speaker": "narrator",
+          "text": "Each of those was chosen. The note would call them the things she most wanted, and the cello, left in its case tonight, is chosen too, by being left.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10048
+        },
+        {
+          "speaker": "march",
+          "text": "That's cruel to shift workers, Narrator. Carers too.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3182
+        },
+        {
+          "speaker": "march",
+          "text": "You're telling a woman who has been up since before dawn that her nap is a verdict.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4521
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am telling her the nap was hers. A nap is a decision made by a tired body, and the body deserves the credit and the blame.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8747
+        },
+        {
+          "speaker": "march",
+          "text": "Make a real case, then, not a slogan. What does a carer with no spare hours do?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4795
+        },
+        {
+          "speaker": "narrator",
+          "text": "She can pick the stretch before the shift as well as the stretch after it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4139
+        },
+        {
+          "speaker": "march",
+          "text": "Before dawn? She's asleep.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2196
+        },
+        {
+          "speaker": "narrator",
+          "text": "Some of those slices are small, and small is still a pick.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3733
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying the shift itself is a choice.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2811
+        },
+        {
+          "speaker": "narrator",
+          "text": "No, the shift is a fact. What she does with the stretch after it is the choice. Keep that distinction, March, because it is the whole argument.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9536
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. That's the note being kind, and I'll give it that much.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3342
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then allow me your chair, March, while we settle the matter properly.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3989
+        },
+        {
+          "speaker": "march",
+          "text": "No. Sit on the cushion.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 1985
+        },
+        {
+          "speaker": "narrator",
+          "text": "The chair is the only grand seat in this studio, and the cushion is a poor throne for a man of my reading.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6891
+        },
+        {
+          "speaker": "march",
+          "text": "I keep a score, Narrator, of arguments won.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2898
+        },
+        {
+          "speaker": "march",
+          "text": "You've just lost one more and I'm writing it down.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3008
+        },
+        {
+          "speaker": "narrator",
+          "text": "What stands as the last entry, March? A score deserves a witness.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4608
+        },
+        {
+          "speaker": "march",
+          "text": "I'm not telling you that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1956
+        },
+        {
+          "speaker": "march",
+          "text": "I've got a bit of my own design I keep to myself, and that stays with me.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4427
+        },
+        {
+          "speaker": "march",
+          "text": "Right, the first note. Promises. Put it beside this one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3221
+        },
+        {
+          "speaker": "narrator",
+          "text": "The first note says a promise is how you choose the hour. This one says the broken promise was a choice too.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7125
+        },
+        {
+          "speaker": "narrator",
+          "text": "Both notes, one hour, and each needs the other.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3285
+        },
+        {
+          "speaker": "march",
+          "text": "So keeping a promise is picking the hour, and breaking one is picking it too.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4305
+        },
+        {
+          "speaker": "narrator",
+          "text": "Read only the first and the broken promise looks like an accident. Read only this one and a decision has no promise to hold it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8875
+        },
+        {
+          "speaker": "march",
+          "text": "Neither shows the crossing alone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2385
+        },
+        {
+          "speaker": "march",
+          "text": "So the promise is the kettle, and the choice is who gets up when it clicks.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3993
+        },
+        {
+          "speaker": "march",
+          "text": "Picture someone who believes this on a Tuesday evening. Each hour gets a label: chosen.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5223
+        },
+        {
+          "speaker": "march",
+          "text": "The telly switched off by hand, not by the clock running out.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3562
+        },
+        {
+          "speaker": "march",
+          "text": "The cello case opened, or left shut on purpose, and nobody blames the clock for either.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5251
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I crown J the Lord of the Unclaimed Hour, and I dare anyone to refuse it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5739
+        },
+        {
+          "speaker": "march",
+          "text": "I'd say he'd hate that title.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2344
+        },
+        {
+          "speaker": "march",
+          "text": "Which is exactly why it'll stick.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2495
+        },
+        {
+          "speaker": "march",
+          "text": "And I was right that the hour was a choice all along. Mark that one in the score.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 4518
+        },
+        {
+          "speaker": "narrator",
+          "text": "Note, March, that I have conceded nothing about the chair.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3755
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, How Our Brains Interpret Imagined And Real Experiences, and Express Your Ideas To The World.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6092
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
