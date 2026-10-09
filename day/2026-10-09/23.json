@@ -1574,6 +1574,516 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-09-23-04",
+      "title": "A KETTLE FOR A STARTING GUN",
+      "startAt": "2026-10-09T23:31:49.450+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-23-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Be Intentional With Your Life and Actions",
+        "Your Routine Is Top Priority"
+      ],
+      "angle": "How might I solve this in a completely unconventional or exaggerated way?",
+      "kind": "try_it",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Your Routine Is Top Priority: Following your schedule is the most overpowered thing you can do because it turns your entire perfect day into a habit."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: When you say you're gonna do something, you gotta follow it through. It does more for your self-belief to say you'll meditate for 10 minutes and actually do 10 minutes vs saying you'll do 30 minutes and only doing 20 minutes."
+        },
+        {
+          "kind": "note",
+          "text": "Your Routine Is Top Priority: Obey your schedule, no matter how you feel. It doesn't matter how far along you are with something or how much left needs to be done."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "It's late. You're in the kitchen, the kettle just clicked off, and you've promised yourself ten minutes of quiet. Not one of them has started.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6781
+        },
+        {
+          "speaker": "march",
+          "text": "Here's my honest version. The mood comes first. You feel like sitting down, and then the timetable happens because you were in the mood for it. Nobody sets a timer for a feeling they don't have.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9254
+        },
+        {
+          "speaker": "narrator",
+          "text": "That's the comfortable lie, March, and I'd happily sit in that bath with you. But the note turns the tap the other way. The timetable decides. The mood waits at the back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11157
+        },
+        {
+          "speaker": "march",
+          "text": "So the mood has to queue. Fine. It's a long queue, though, when the email's sitting there with its cursor blinking.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5695
+        },
+        {
+          "speaker": "narrator",
+          "text": "A long queue and a dull one. Still, the feeling waits its turn once the timetable has spoken. That's order, not punishment. You're walking a road that already has a shape, and you hold the map.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12843
+        },
+        {
+          "speaker": "march",
+          "text": "So the schedule goes first, and the feeling catches up when it's ready.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3907
+        },
+        {
+          "speaker": "narrator",
+          "text": "Almost. Drop 'when it's ready'. The feeling doesn't get a vote on when the timer starts.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "Strict. I like it. Mostly because it means I'll have to be strict with myself, which is worse.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5478
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the claim itself. I've held the best part back until your kettle finished its business. Here it is: 'Following your schedule is the most overpowered thing you can do because it turns your entire perfect day into a habit.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14187
+        },
+        {
+          "speaker": "march",
+          "text": "Overpowered... that's a video game word, but go on.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3072
+        },
+        {
+          "speaker": "narrator",
+          "text": "A video game word for a serious notebook, March. Here's the bit underneath. Once the schedule's kept, you stop deciding each morning. The day has already decided. You're just walking it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12331
+        },
+        {
+          "speaker": "march",
+          "text": "Fair enough.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1338
+        },
+        {
+          "speaker": "march",
+          "text": "So the schedule runs itself. Doesn't the note say autopilot somewhere else?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4499
+        },
+        {
+          "speaker": "narrator",
+          "text": "It does, in another paragraph. You can get everything done while you're afk, which is the bit I'd put on a banner if I were allowed banners.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8896
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. Doesn't a timetable like that turn into a cage?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3468
+        },
+        {
+          "speaker": "narrator",
+          "text": "A cage is what you build when you don't trust yourself. A timetable is a route you chose on a calm morning, then handed to a tired version of you to follow.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10112
+        },
+        {
+          "speaker": "march",
+          "text": "And if I miss the click? Say I'm reading the email before the kettle's even finished.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4846
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you've broken a promise to yourself. That's the cheapest thing to break and the most expensive to repair. You start again at the next boil. You don't rewrite the rule to suit the miss.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11243
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Let's test it on me, out loud, with the crack in the cup watching. Ten minutes at my desk before the first email. Pen out, nothing else open. That's my promise.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8120
+        },
+        {
+          "speaker": "narrator",
+          "text": "A promise is only a sentence until something rings. Set the kettle as your bell. Every click starts the ten minutes, and no email gets opened in between.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10773
+        },
+        {
+          "speaker": "march",
+          "text": "The kettle? That's a clock with a steam problem.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2812
+        },
+        {
+          "speaker": "narrator",
+          "text": "The most honest alarm in the house, March. It's never once been late. And it's never asked whether you felt like boiling.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7573
+        },
+        {
+          "speaker": "march",
+          "text": "Here's what I'm stuck on. Ten minutes done beats thirty minutes promised. But why? If I promise thirty and do twenty, that's a failure. So surely the bigger promise is the braver one?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8823
+        },
+        {
+          "speaker": "narrator",
+          "text": "Brave is how it feels, March, and the note isn't interested in feelings. Your belief in yourself runs on what you do. A small pledge kept is a fact. The thirty you promised and didn't do is a gap you have to walk around every day.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 15467
+        },
+        {
+          "speaker": "march",
+          "text": "A gap. So the small one's solid ground, and the big one's a hole in the floor.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4183
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now you're speaking my language. Every small pledge kept is a board of solid ground under the sea, March, and a few of them will hold you up all day.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9877
+        },
+        {
+          "speaker": "march",
+          "text": "Don't. You'll make it a crown.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2155
+        },
+        {
+          "speaker": "narrator",
+          "text": "I'd never make a crown. Listen, though, to the rattle before it clicks off. Every kettle in the land finishes on a rattle, and I say that's a starting gun. A sign, March, dropped into your kitchen like a message in a bottle. Destiny, with a bit of steam.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 16704
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, please.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1484
+        },
+        {
+          "speaker": "march",
+          "text": "That rattle is limescale, to be honest. Nothing about destiny. It's water hitting the crust on the bottom.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6074
+        },
+        {
+          "speaker": "narrator",
+          "text": "Limescale with a purpose. A starting gun needs a rattle, March, and every starting gun is a bit rusty.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7253
+        },
+        {
+          "speaker": "march",
+          "text": "Right, I'm going. Clock's running at my desk, pen out, inbox shut. I'm not sitting around in your sign.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5587
+        },
+        {
+          "speaker": "narrator",
+          "text": "Go on, then. I'll stand here and do the timing, since somebody has to watch the destiny.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5675
+        },
+        {
+          "speaker": "march",
+          "text": "Are you timing me?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1700
+        },
+        {
+          "speaker": "narrator",
+          "text": "Timing you? Certainly not.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1920
+        },
+        {
+          "speaker": "march",
+          "text": "Then what's it called?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1686
+        },
+        {
+          "speaker": "narrator",
+          "text": "I'm observing the duration, which is a far grander activity. And you started before the rattle had even faded, which is dreadful manners. Terrible, March. I adore it. Put that in the log.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12629
+        },
+        {
+          "speaker": "march",
+          "text": "You said adore. That's on the record now.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2623
+        },
+        {
+          "speaker": "narrator",
+          "text": "I'm enjoying the ceremony, March, which is what destiny wants.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4309
+        },
+        {
+          "speaker": "march",
+          "text": "Almost there. Pen moving, inbox shut, and the water still ticking as it cools. The mood's nowhere in the room, and I've done the thing anyway.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6862
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you've done the thing with the mood still out in the hall, which is exactly what the note asks. The mood's a visitor, March, with its coat still on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9237
+        },
+        {
+          "speaker": "march",
+          "text": "Visitor. I've got a comeback for that one, and I'm saving it for later.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3725
+        },
+        {
+          "speaker": "narrator",
+          "text": "Saving it. How thrifty. What is it?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2539
+        },
+        {
+          "speaker": "march",
+          "text": "Later. You've had your rattle, and I'm keeping my cup.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2918
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here's where the notes cross, March. Keeping the short promise you made is the small form of obeying the schedule, whatever you feel. The routine is a stack of those small promises. Keep one, and you've rehearsed keeping the next.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 14741
+        },
+        {
+          "speaker": "march",
+          "text": "So the small kept promise is a dress rehearsal for the full schedule.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4130
+        },
+        {
+          "speaker": "narrator",
+          "text": "A dress rehearsal with a timer. Yes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2880
+        },
+        {
+          "speaker": "march",
+          "text": "But can a small kept promise carry a whole timetable? Or am I giving a bell too much credit for my whole week?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6221
+        },
+        {
+          "speaker": "narrator",
+          "text": "That's the question, March, and I won't hurry it. The note says keep the schedule whatever you feel. A promise of a short quiet spell is only the first floor of that building.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11648
+        },
+        {
+          "speaker": "march",
+          "text": "So the small one, kept every time, makes the big schedule the same habit scaled up. I'm not sure the scale stays put.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6587
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nor am I. I'm leaving it open on the counter, next to the tea.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4523
+        },
+        {
+          "speaker": "narrator",
+          "text": "Think of someone with a timetable taped to the fridge. They keep it on the good days and drift on the rest. Now think of someone with the same timetable who keeps it at every ring of the kettle, even on the dull days. By Friday, the one who kept every ring has a week they never had to decide on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 19029
+        },
+        {
+          "speaker": "march",
+          "text": "And the other one's the fridge full of good intentions.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2990
+        },
+        {
+          "speaker": "narrator",
+          "text": "Full of intentions, empty of hours. I'd rather be the one at the click.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4885
+        },
+        {
+          "speaker": "march",
+          "text": "You'd rather be the kettle.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1975
+        },
+        {
+          "speaker": "narrator",
+          "text": "I'd rather be the rattle, March. Everyone remembers the rattle.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4224
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the sign of destiny was yours, March. I only held the timer and complained about it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5803
+        },
+        {
+          "speaker": "march",
+          "text": "You complained wonderfully. The comeback is still saved, and I'm keeping it warm with the tea.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5133
+        },
+        {
+          "speaker": "march",
+          "text": "The kettle's clicked again. You're still standing in the kitchen, and your ten minutes haven't started yet. Go on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5624
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
