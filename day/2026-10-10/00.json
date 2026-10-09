@@ -1223,6 +1223,452 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-00-04",
+      "title": "THE WHISTLE DEADLINE AND THE HARBOUR WALL",
+      "startAt": "2026-10-10T00:37:03.325+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-00-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Happiness And Gratitude",
+        "When You're Scared To Take Action"
+      ],
+      "angle": "How might I solve this in a completely unconventional or exaggerated way?",
+      "kind": "the_case_against",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "When You're Scared To Take Action: Fear is resolved through action. You can't think it away."
+        },
+        {
+          "kind": "note",
+          "text": "When You're Scared To Take Action: But fear can only be conquered through action, not more planning."
+        },
+        {
+          "kind": "note",
+          "text": "When You're Scared To Take Action: But if you let that stop you, you will never sail past the safety of the harbour."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: If you wait until you \"deserve\" to think pleasant thoughts, you're likely to think unpleasant thoughts regarding your own unworthiness."
+        },
+        {
+          "kind": "note",
+          "text": "When You're Scared To Take Action: Bravery is earned, not granted."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've drafted the same opening line again. Each new version feels safer than hitting send, so you save it once more and tell yourself you're preparing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7652
+        },
+        {
+          "speaker": "march",
+          "text": "Planning's the responsible cure. Nobody walks into a fear without a map. You plan till it shrinks to a size you can step over, then you go. That's just being careful, isn't it?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8449
+        },
+        {
+          "speaker": "narrator",
+          "text": "Careful! What a lovely word for a parlour with the curtains drawn. Tell me, March, does the fear actually shrink while you plan it? Or does the planning lay out a warm bed for it and bring it tea?",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12544
+        },
+        {
+          "speaker": "march",
+          "text": "It shrinks.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1269
+        },
+        {
+          "speaker": "march",
+          "text": "Usually by the time the draft's been reread enough to bore it to sleep.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4163
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the fear is a tame pet, fed on drafts, and you are its devoted keeper. The note will not sign off on your keeping. It is blunt, and I adore it for being blunt. Fear is resolved through action. You can't think it away.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15061
+        },
+        {
+          "speaker": "march",
+          "text": "So I can't plan my way out of being scared.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2706
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am saying the planner who waits for the fear to leave will sit in the harbour until the hull rots. Action is the only thing that moves fear at all, March. Thinking has never carried a boat out of port, no matter how well it was drawn on the chart.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15680
+        },
+        {
+          "speaker": "march",
+          "text": "Simple, then. Plan less, do more.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2344
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simple truths are the best truths, March. This one is plain as a coil of rope.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5568
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, here we go.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1700
+        },
+        {
+          "speaker": "march",
+          "text": "Don't you call it simple. That word is what people say right before a shift goes sideways.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5178
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then call it complicated, if the word offends you. You prefer people to truths, so give me a person, and I shall give you one with a draft in her hand.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9600
+        },
+        {
+          "speaker": "march",
+          "text": "Yes. A person with a draft, and the poetry kept in your pocket.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3586
+        },
+        {
+          "speaker": "narrator",
+          "text": "A woman has rewritten one resignation email for years. Each night she tightens a clause, softens a sentence, saves it again, always meaning to send it tomorrow.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11349
+        },
+        {
+          "speaker": "march",
+          "text": "Sounds like most Sunday nights.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2258
+        },
+        {
+          "speaker": "narrator",
+          "text": "So my remedy is extravagant, as remedies ought to be: she must press send before the kettle comes to the boil. And the kettle, March, shall be the one on your counter.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10795
+        },
+        {
+          "speaker": "march",
+          "text": "Mine?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1192
+        },
+        {
+          "speaker": "march",
+          "text": "You're timing a resignation on my kettle? Kettle's mine. I said so.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4098
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your whistle, then, your deadline. A whistle is a deadline with a face on it, and every decent kettle has one.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7253
+        },
+        {
+          "speaker": "march",
+          "text": "A whistle means tea. Nobody's ever resigned because the water got hot.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4365
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nobody resigns properly while they wait, March. They stand at the edge of the sentence, and the waiting becomes the deadline that never comes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9024
+        },
+        {
+          "speaker": "march",
+          "text": "And what if the email has a typo? Send it, and the typo stays sent forever.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4483
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the typo will survive, and so will she. Perfection was never on the kettle's list. Sending is, and sending is the one part of the business fear cannot touch.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10944
+        },
+        {
+          "speaker": "march",
+          "text": "Typos sting, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2147
+        },
+        {
+          "speaker": "march",
+          "text": "And if she sends it and hates it?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2297
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then she has learned what no draft ever taught her, that the thing she dreaded was survivable. Bravery gets earned by pressing send, not by polishing the sentence for another month.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 11243
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. But why do you sound so pleased with yourself?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3131
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because I have been sitting on the cupboard door all evening, March, and I should like your chair for the rest of the scene. Move over. I shall conduct the kettle from there.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 10069
+        },
+        {
+          "speaker": "march",
+          "text": "Nice try. Those grand images are the cupboard door again. Stay on the stool.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 4,
+          "audioMs": 4526
+        },
+        {
+          "speaker": "narrator",
+          "text": "What did you hide in this design, March? A drawer with the real answer folded inside, I suspect. You always did keep the best cups on the top shelf, and the good answer behind them.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 12075
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing's hidden.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1662
+        },
+        {
+          "speaker": "march",
+          "text": "You're guessing, and you're guessing loudly.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2553
+        },
+        {
+          "speaker": "narrator",
+          "text": "Guilty as charged.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1728
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall guess a little longer. I have one more thing, the best part of all, and I am keeping it back until the whistle. Meanwhile, consider the harbour wall.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10325
+        },
+        {
+          "speaker": "narrator",
+          "text": "Have you looked at one properly? Those stones are laid to shelter boats meant to sail out. The wall takes the weather so the hull doesn't have to. Every harbour wall is a promise that the boat will go...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12373
+        },
+        {
+          "speaker": "march",
+          "text": "Harbour walls, narrator? We're talking about a draft in a folder.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3847
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note talks about the harbour too. But if you let that stop you, you will never sail past the safety of the harbour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6997
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, that's a good line. Now back to the email.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2941
+        },
+        {
+          "speaker": "narrator",
+          "text": "A harbour that is only admired is a waiting room with water in it, March. That is precisely where the planner lives, sails folded like napkins, the bay very pretty from the window.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11925
+        },
+        {
+          "speaker": "march",
+          "text": "Wait. That's the thing. The happiness note says you don't have to deserve the good feeling first. If you wait until you \"deserve\" to think pleasant thoughts, you're likely to think unpleasant thoughts about your own unworthiness.",
+          "emotion": "surprised",
+          "action": "point",
+          "source": 3,
+          "audioMs": 10018
+        },
+        {
+          "speaker": "march",
+          "text": "So waiting for the feeling and waiting for bravery are the same waiting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4160
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly, and that shared waiting keeps the planner in the harbour. Both notes cut the feeling loose from its precondition, and then the planner sits on the quay waiting for a permission nobody will ever issue.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 12693
+        },
+        {
+          "speaker": "march",
+          "text": "So the draft stays in the folder, and the email goes out with a typo somewhere in it. They stop checking whether it's perfect, the way a swimmer stops testing the water before the jump.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8852
+        },
+        {
+          "speaker": "march",
+          "text": "They go in cold, and they come up knowing the water held them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3418
+        },
+        {
+          "speaker": "narrator",
+          "text": "And I promised you the best part, March. The polishing is the room fear lives in. Every edit is a small permission slip to wait one more night, and the note asks you to tear the slip up.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11840
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. You're right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1739
+        },
+        {
+          "speaker": "march",
+          "text": "Now the kettle's boiling, so I'm changing the subject. Who's making the tea?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4564
+        },
+        {
+          "speaker": "narrator",
+          "text": "The draft goes out before the whistle, March, and the note has the last word, as notes always do.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6421
+        },
+        {
+          "speaker": "march",
+          "text": "It's the small hours, so keep the tea hot. Up next, Staying On Your Purpose.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4474
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
