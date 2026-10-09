@@ -1617,6 +1617,396 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-04-05",
+      "title": "THE CALM SEA NEVER CAME",
+      "startAt": "2026-10-10T04:35:54.147+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-04-05.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "List Of Nice Things To Do",
+        "When You're Scared To Take Action"
+      ],
+      "angle": "What if this problem existed in an entirely different industry?",
+      "kind": "straight",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Thank someone. Compliment someone."
+        },
+        {
+          "kind": "note",
+          "text": "When You're Scared To Take Action: Waiting for bravery is a fool's errand and you will be waiting your whole life. Bravery is earned, not granted."
+        },
+        {
+          "kind": "note",
+          "text": "When You're Scared To Take Action: Fear is resolved through action. You can't think it away."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "A thank-you is the easiest thing in the world to draft and never send. The kettle boils, clicks off, and the first word is still sitting there.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7307
+        },
+        {
+          "speaker": "narrator",
+          "text": "A thank-you held hostage by a kettle! Let me tell the comfortable story first, March, because everyone tells it. You must feel brave before you act, and warm before you are kind. The compliment waits for a good mood, the good mood waits for a fine morning, and the fine morning is always one more Tuesday off.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 20053
+        },
+        {
+          "speaker": "march",
+          "text": "So the nice thing waits on the feeling showing up first.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3220
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly. Patient, polite, and never once arriving.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3883
+        },
+        {
+          "speaker": "march",
+          "text": "That's the story. I don't buy it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2300
+        },
+        {
+          "speaker": "march",
+          "text": "The feeling shows up late, if it shows at all. Most of the time you're just holding a cold mug.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5394
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then here is the note at full size, and you may sulk at it. 'Bravery is earned, not granted.' Feel the weight of that. Nobody hands you courage from a kindly sky. You earn it by doing the frightening thing first, with a shaking hand, and the courage arrives afterwards like proof of a walk you have already taken.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 20331
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, you're withholding again.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2111
+        },
+        {
+          "speaker": "narrator",
+          "text": "The best of it I keep back for the case, March. You will have to wait, and you will hate me a little.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5781
+        },
+        {
+          "speaker": "march",
+          "text": "So the brave feeling comes after the act, not before.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3284
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. Though I would have added more thunder.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2901
+        },
+        {
+          "speaker": "march",
+          "text": "Keep the thunder for the boat.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2172
+        },
+        {
+          "speaker": "march",
+          "text": "Say we're in a small harbour town, the lifeboat shed at the bottom of the slipway. There's a chalk board on the wall with a line for every call-out, and beside each line a tick, or the word waited.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9258
+        },
+        {
+          "speaker": "narrator",
+          "text": "A board of chalk and quiet hope. Go on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3051
+        },
+        {
+          "speaker": "march",
+          "text": "The crew get the call. Before they launch, they sit inside and talk it through, for an hour, sometimes more, waiting for the sea to lie down. Count the marks with me. The ticks say the boat went out. The waited lines say they sat there. There's a lot of waited.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 10637
+        },
+        {
+          "speaker": "march",
+          "text": "Put me in that shed. Boots on, tide still wrong, and I'm already drafting the speech about the tide.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5326
+        },
+        {
+          "speaker": "narrator",
+          "text": "A speech about the tide! Lovely, and that is waiting in its finest coat. The sea keeps its own timetable and never once consults the shed.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9536
+        },
+        {
+          "speaker": "march",
+          "text": "Sea's not our friend.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1811
+        },
+        {
+          "speaker": "march",
+          "text": "So a lot of those hours went on waiting for calm water that never came.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4268
+        },
+        {
+          "speaker": "march",
+          "text": "The water was never going to be calm. They went out anyway, once the talk ran out.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4817
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now look, March, at the slipway. There's a crooked white streak running down to the water, bending like a bad signature. The tide wrote it, the sly hand. That is the sea's verdict on the crew, a hint that waiting was wise and hoping was foolish.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 16384
+        },
+        {
+          "speaker": "march",
+          "text": "That's a gull's footprint.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1981
+        },
+        {
+          "speaker": "narrator",
+          "text": "A gull's footprint! Of course it is. You have won again, you shameless creature, and I am appalled by how little dignity I have left in this room.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9323
+        },
+        {
+          "speaker": "march",
+          "text": "That's one more in the drawer.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2127
+        },
+        {
+          "speaker": "narrator",
+          "text": "Do not say the total. I beg you. I am cross, and I am quietly thrilled, so leave it there.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6080
+        },
+        {
+          "speaker": "march",
+          "text": "I've got a comeback for that one, saved for later. You'll get it when you least expect it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4778
+        },
+        {
+          "speaker": "narrator",
+          "text": "Saved! You always save them, March, and the saving is the cruelty.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4437
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the chalk. Waited means they sat around, not launching. Now the list.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4626
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, narrator, you've got the other note.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2642
+        },
+        {
+          "speaker": "narrator",
+          "text": "The list, yes. Thank someone. Compliment someone. Tell someone you love them. Each of those is a tiny scared launch, a boat put out past the doors before the sea has calmed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11904
+        },
+        {
+          "speaker": "march",
+          "text": "So a compliment costs the same nerve as a rescue.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3243
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. Waiting for courage delays both equally. The list says what to do, the fear note says when, and a small kindness is the same boat, either launched or left in the shed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11712
+        },
+        {
+          "speaker": "march",
+          "text": "So the compliment you're holding back is a boat sat on the slip with the crew still talking.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5018
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly, and the crew is your own good sense, talking itself out of a short row.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5184
+        },
+        {
+          "speaker": "march",
+          "text": "Say you keep a drawer of thank-you cards, yellowed and unsent, each one waiting for a feeling that never turns up.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6182
+        },
+        {
+          "speaker": "narrator",
+          "text": "Oh, the drawers now.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1621
+        },
+        {
+          "speaker": "march",
+          "text": "Now flip it. Say one card gets posted, shaky hand and all. The next one's a little easier, and the drawer gets smaller.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6543
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have quite spoiled the fork for me, March. I wanted to be the one to say it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4736
+        },
+        {
+          "speaker": "march",
+          "text": "Then say the last bit. You've got the bigger voice.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2947
+        },
+        {
+          "speaker": "narrator",
+          "text": "Fear is resolved through action, and you cannot think it away. The card in the drawer is only a plan, and a plan does not post itself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9216
+        },
+        {
+          "speaker": "march",
+          "text": "Kettle's clicked off. Your sentence is posted now, or it's still stuck on the first word. Either way, nobody's waiting for calm water.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7076
+        },
+        {
+          "speaker": "march",
+          "text": "The boat goes when the talk runs out.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2517
+        },
+        {
+          "speaker": "narrator",
+          "text": "Grudgingly conceded. The sea was never going to lie down for us, and the shed was never going to stop talking. I claim the sulking victory...",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9301
+        },
+        {
+          "speaker": "march",
+          "text": "Sulking victory, noted. The comeback stays in the drawer, and that's the last word on it. Up next, the other half of the list and fear pair. Bring a cup.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7329
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
