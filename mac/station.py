@@ -381,7 +381,7 @@ def one_segment(day, path):
             talked = as_json(ask(read(f'{SHEETS}/talk.md'), json.dumps(out, ensure_ascii=False), f'talk#{attempt}'))
             if all(k in talked for k in ('title', 'sources', 'lines')) and len(talked['lines']) >= len(out['lines']) // 2:
                 out = dict(out, lines=talked['lines'])
-        except (ValueError, KeyError, RuntimeError, subprocess.TimeoutExpired):
+        except (ValueError, KeyError, TypeError, RuntimeError, subprocess.TimeoutExpired):
             print(f'station: try {attempt + 1}: the talk pass failed; keeping the draft', flush=True)
         prev_end = end_of(before)
         soon = datetime.now(TZ) + timedelta(seconds=60)
