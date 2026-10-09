@@ -2078,6 +2078,436 @@
         "n": 1,
         "of": 1
       }
+    },
+    {
+      "id": "2026-10-10-00-06",
+      "title": "A DOOR HELD OPEN AND WHO GETS IN",
+      "startAt": "2026-10-10T00:48:56.663+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-00-06.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "List Of Nice Things To Do",
+        "The Influence Of Others"
+      ],
+      "angle": "How would I explain this idea if I had to tell it like a children's fairy tale?",
+      "kind": "straight",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: Who you allow to influence you will determine where you'll end up."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: “You are the average of the five people you spend the most time with”."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: On each cutout write something that is special about your lover or a good friend."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Thank someone."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Hold the door open for someone."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "It's the small hours, and you're holding a door open for a woman with a basket on her hip. She says thank you as if you've handed her something real. For the length of that door, you're the nicest person on the street.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 9888
+        },
+        {
+          "speaker": "narrator",
+          "text": "The door was never sticking, March. It was only waiting, the way the best doors wait.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5589
+        },
+        {
+          "speaker": "narrator",
+          "text": "And everybody knows you are the average of the five people you can point to. Count them off, and there you stand, a sum handed down by nature, the five chosen for you before you could walk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12096
+        },
+        {
+          "speaker": "march",
+          "text": "It's been sticking all night, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2474
+        },
+        {
+          "speaker": "march",
+          "text": "And the five-people line is a law you've made up. I've got a comeback for it, but I'm saving it. Nobody counts anyone in that note. It asks who you let in.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7754
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear it whole, March. “Who you allow to influence you will determine where you'll end up.” Your company is the hand on the tiller, and the sea does the rest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9579
+        },
+        {
+          "speaker": "narrator",
+          "text": "The best bit, the part about where you end up, I'm keeping back until the wind turns. So be patient.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6677
+        },
+        {
+          "speaker": "march",
+          "text": "So who gets in decides where I finish.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2638
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Show me on a Tuesday, not on a ship.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2602
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely, and smaller than I could ever say it. Who gets in steers the boat.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5035
+        },
+        {
+          "speaker": "march",
+          "text": "Then the case. The other note's on that list too, paper hearts with something special written on each. Let's try it on me.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6222
+        },
+        {
+          "speaker": "march",
+          "text": "Sunday, kitchen counter, a stack of hearts. I write names. A mate who hums through his break. A neighbour who says thank you at the bin.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6693
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then each morning you pull one out and send that person a line about the thing you wrote.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5227
+        },
+        {
+          "speaker": "march",
+          "text": "Every morning. Fine.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1847
+        },
+        {
+          "speaker": "narrator",
+          "text": "A month of that, March, and you'll catch yourself humming on your own break.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4459
+        },
+        {
+          "speaker": "narrator",
+          "text": "You never counted the company. You chose where your attention went, and the company followed it, the way weather follows wind.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7829
+        },
+        {
+          "speaker": "march",
+          "text": "Weather, now.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1380
+        },
+        {
+          "speaker": "narrator",
+          "text": "Once upon a time, a woodcutter's daughter kept a box of hearts for a village that never once said thank you. Every morning she wrote one more, and the village slept easier, though it never knew why.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12501
+        },
+        {
+          "speaker": "march",
+          "text": "Why's it in a tin, though?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1982
+        },
+        {
+          "speaker": "march",
+          "text": "Why not a heap on the counter?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2305
+        },
+        {
+          "speaker": "narrator",
+          "text": "A box has a lid, March, and a lid says stop. It's small enough to count, so the writing gets finished, and then the hearts stop being decoration and turn into a habit. The box is the rule, and the rule is the...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 14251
+        },
+        {
+          "speaker": "march",
+          "text": "So the box is the rule. Not the hearts.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2708
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite so. Every rule is a cupboard door, swinging open on its own...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4693
+        },
+        {
+          "speaker": "march",
+          "text": "Cupboard door's swung open again. Let it swing.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3006
+        },
+        {
+          "speaker": "narrator",
+          "text": "Very well. The cupboard has the last word, and it's a draughty one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4480
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the line. Influence.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2155
+        },
+        {
+          "speaker": "march",
+          "text": "The lid is the count, and the count is who I choose. Five names, a month, a habit. That's the tangent paying off. It was the count that mattered, not the hearts.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7626
+        },
+        {
+          "speaker": "narrator",
+          "text": "The count is the company, March. Five names, finished, become the company that finishes you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6059
+        },
+        {
+          "speaker": "narrator",
+          "text": "Which is the note's whole argument, dressed in glitter.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3413
+        },
+        {
+          "speaker": "march",
+          "text": "But the other note isn't only about getting. Thank someone. That's on the list, and nice things go out into the world.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6039
+        },
+        {
+          "speaker": "narrator",
+          "text": "Thank someone is exactly where the notes cross, March. Every thank you hands a little of you out, and every person thanked hands a little back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8597
+        },
+        {
+          "speaker": "narrator",
+          "text": "You are choosing who gets to shape you, and whom you shape in turn. Giving is a door too, and it opens both ways.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7723
+        },
+        {
+          "speaker": "march",
+          "text": "So giving is letting in.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2082
+        },
+        {
+          "speaker": "march",
+          "text": "The influence note turned round.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2323
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. One note says be generous, the other says be choosy, and neither shows the whole of it alone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7061
+        },
+        {
+          "speaker": "narrator",
+          "text": "Together they say you are the average of who you let in and of who you give to. And for J, for the small hours, a new title: Keeper of the Open Door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10389
+        },
+        {
+          "speaker": "march",
+          "text": "That's a title for the bloke who fixes the door closer.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3332
+        },
+        {
+          "speaker": "march",
+          "text": "Loud, and it'll stick.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1879
+        },
+        {
+          "speaker": "march",
+          "text": "Fork, short. Someone who believes this keeps a box of paper cutouts by the front door. Every morning the hand lands on a name chosen on purpose. There's no crowd in it. There's one quiet choice repeated, until the company looks like the company they wanted.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11877
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the door is only a door, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2432
+        },
+        {
+          "speaker": "march",
+          "text": "It's kind, if you hold it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2112
+        },
+        {
+          "speaker": "march",
+          "text": "The thank you was the whole point.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2306
+        },
+        {
+          "speaker": "narrator",
+          "text": "Agreed, the stranger's thank you was the real thing, and I'll concede it in writing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5376
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall take your chair for the close, March, since a kind man ought to sit once he's agreed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6187
+        },
+        {
+          "speaker": "march",
+          "text": "Chair stays.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1442
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the comeback I saved. Five people don't make you, narrator. They only tell you who stopped to say thank you.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5879
+        },
+        {
+          "speaker": "march",
+          "text": "I'm holding this one open with my foot, and the card by the time clock would have said all of this shorter. I was right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6242
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, Your Self Identity, Beliefs Dictate How You Live. Bring a box.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4628
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
