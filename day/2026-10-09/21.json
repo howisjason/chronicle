@@ -314,6 +314,524 @@
         "n": 1,
         "of": 1
       }
+    },
+    {
+      "id": "2026-10-09-21-02",
+      "title": "THE ONE PUSH-UP AND THE YEARS BEFORE IT",
+      "startAt": "2026-10-09T21:53:22.874+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-21-02.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "It's Never Too Late To Change",
+        "Habits Become Automatic - Your New Identity"
+      ],
+      "angle": "What is the opposite of this idea, and how could that also be valid?",
+      "kind": "the_case_against",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "It's Never Too Late To Change: No matter how old you are, it's never too late to make a change in your life."
+        },
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic - Your New Identity: Habits are a blessing and a curse. What you do repeatedly becomes automatic."
+        },
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic - Your New Identity: Master the habit of showing up. If you show up at the gym five days in a row - even if it’s just for one push-up - you are casting votes for your new identity."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've said 'that's just who I am' out loud. Maybe to a friend over a drink, maybe to yourself in the car.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5670
+        },
+        {
+          "speaker": "march",
+          "text": "Then you watched them decide not to argue.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2703
+        },
+        {
+          "speaker": "march",
+          "text": "It felt like being let off. It also felt like being shelved.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3579
+        },
+        {
+          "speaker": "march",
+          "text": "Let me argue the other side, because somebody has to and you clearly won't. By a certain age your habits set like concrete...",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6802
+        },
+        {
+          "speaker": "narrator",
+          "text": "...concrete. Ah, March. A fine word for a man who has stopped looking down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5355
+        },
+        {
+          "speaker": "march",
+          "text": "Whatever you've done over and over becomes the floor you stand on. Change is a lovely idea for people who haven't finished setting yet. The rest of us are just getting more of the same.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8951
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note speaks plainly, so I shall read it to you at full size: 'No matter how old you are, it's never too late to make a change in your life.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9216
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every door in that sentence stands open. The best of the note I keep back until the kettle sings.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6571
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying old isn't a wall. It's a number.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2921
+        },
+        {
+          "speaker": "march",
+          "text": "And change is a verb, and a number doesn't get a vote.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3136
+        },
+        {
+          "speaker": "narrator",
+          "text": "Correct, March, though you have made it sound like a clerk's ledger.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4139
+        },
+        {
+          "speaker": "narrator",
+          "text": "Age is a number. Change is what a person does with their feet. The number sits in the corner while the feet walk out the door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8427
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let us walk it through on one push-up. A man has skipped the gym for a long stretch and has no plan to go back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7253
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then one day he gets down on the floor and does one push-up. The next day, another. The streak reaches five days in a row, and the kettle clicks off on the word five.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11029
+        },
+        {
+          "speaker": "narrator",
+          "text": "Tell me, March. Is that a new man on the floor, or a man who did a push-up?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4779
+        },
+        {
+          "speaker": "march",
+          "text": "A man who did a push-up.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 1998
+        },
+        {
+          "speaker": "march",
+          "text": "The kettle clicked because it's a kettle, and kettles click. Don't dress up the steam. It's just steam.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5391
+        },
+        {
+          "speaker": "narrator",
+          "text": "Steam is steam, I grant you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2155
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note does not say he's a new man yet. It says every time he shows up he's casting a vote.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6080
+        },
+        {
+          "speaker": "narrator",
+          "text": "A vote needs no majority to count. It only needs casting, and the count is what he becomes, one ballot at a time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8213
+        },
+        {
+          "speaker": "march",
+          "text": "Votes are lovely until you look at the count.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2684
+        },
+        {
+          "speaker": "narrator",
+          "text": "Touché, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1515
+        },
+        {
+          "speaker": "march",
+          "text": "The count's been running for years. The note itself says what you do repeatedly becomes automatic. One push-up on a Tuesday doesn't switch off the other thing. The old routine is still on autopilot.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9890
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, March, and that is the hard part. The automatic keeps running...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4907
+        },
+        {
+          "speaker": "narrator",
+          "text": "...The question is whether the one who starts can become the automatic. You are arguing my case in reverse, which is the honest way to argue it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9152
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, then how long before a change counts as a change?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3192
+        },
+        {
+          "speaker": "march",
+          "text": "A week? A year? At what point is it allowed to count at all?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3281
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the question you were circling, March, so I'll give you the hardest answer I have. A change counts from the morning it's made.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8341
+        },
+        {
+          "speaker": "narrator",
+          "text": "But the years before that dawn are not returned. Not one of them comes back to the bench, however many times the man gets down on the floor. He is older, and that is the price. I will not soften it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12885
+        },
+        {
+          "speaker": "march",
+          "text": "That's bleak.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1228
+        },
+        {
+          "speaker": "march",
+          "text": "Thanks for that. Fine, then the opposite's real. Some things really are too late. Nobody gets to start again at the age they were when the door shut. You'd be daft to pretend otherwise.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8504
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite so. The opposite is right about the years...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3243
+        },
+        {
+          "speaker": "narrator",
+          "text": "...and wrong about what comes after. It is valid for what's gone and false for what's left. That is the whole trick, and the note only mentions half of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9941
+        },
+        {
+          "speaker": "march",
+          "text": "Right, test it on me. I keep a column.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2575
+        },
+        {
+          "speaker": "march",
+          "text": "Every argument I win goes in it, and I don't decide to add a point. It just goes in. I'm not saying the total. But that's automatic, isn't it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7231
+        },
+        {
+          "speaker": "march",
+          "text": "So if I started a new column, it would be automatic too.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3437
+        },
+        {
+          "speaker": "narrator",
+          "text": "There it is, March. The habit note says what you repeat becomes automatic. This note says it's never too late.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7381
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cross them and the automatic that traps you turns out to be the same machine that can lock in something new. Change is repetition, not one brave decision.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10731
+        },
+        {
+          "speaker": "narrator",
+          "text": "One note gives you the trap, the other gives you the door, and the door is the same shape as the trap.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6272
+        },
+        {
+          "speaker": "march",
+          "text": "So the thing that traps you is also the thing that lets you out.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3583
+        },
+        {
+          "speaker": "march",
+          "text": "Same wiring, opposite direction.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2597
+        },
+        {
+          "speaker": "narrator",
+          "text": "Same wiring. The wiring has never once cared which way it pulls.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4501
+        },
+        {
+          "speaker": "march",
+          "text": "That's the scary bit, though.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2002
+        },
+        {
+          "speaker": "march",
+          "text": "If it doesn't care which way it pulls, then skipping the next morning is a vote for the old column. The note makes it sound like a gift. I'd call it a loaded door.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7969
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is a loaded door, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2133
+        },
+        {
+          "speaker": "march",
+          "text": "Yes, I said so.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1830
+        },
+        {
+          "speaker": "narrator",
+          "text": "And that is exactly why the first push-up matters more than it looks.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4437
+        },
+        {
+          "speaker": "narrator",
+          "text": "He isn't waiting for one heroic decision. Each morning is another ballot, and the casting makes the man.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6741
+        },
+        {
+          "speaker": "narrator",
+          "text": "For someone who believes this, a late change is a new automatic. You wake, the floor is cold, you do your one thing before the coffee, and you don't remember deciding.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11008
+        },
+        {
+          "speaker": "narrator",
+          "text": "The person who keeps casting that vote is slowly becoming the one who does it without thinking. That is the whole picture.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7637
+        },
+        {
+          "speaker": "march",
+          "text": "A cold floor, one thing before the coffee, no speech.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3237
+        },
+        {
+          "speaker": "march",
+          "text": "That I can use. Nothing about it needs a grand title.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3176
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then tell me the kettle is not a sign, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3051
+        },
+        {
+          "speaker": "narrator",
+          "text": "It clicks off just as I say Tuesday, and I would be a fool to call it chance.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4843
+        },
+        {
+          "speaker": "march",
+          "text": "The kettle clicked because it's a kettle.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2578
+        },
+        {
+          "speaker": "march",
+          "text": "But fine, I'll give you the omen, the one point I never meant to hand over. The rest of my column stays private.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6307
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the column is yours, March, and the kettle is mine.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3712
+        },
+        {
+          "speaker": "narrator",
+          "text": "But the years, which I will not soften, belong to nobody but the man who spent them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5419
+        },
+        {
+          "speaker": "march",
+          "text": "Timer's going.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1622
+        },
+        {
+          "speaker": "march",
+          "text": "That's the close. Up next, the rest of It's Never Too Late To Change and the identity note. I'm the one who set the timer, so I'm the one who gets to hear it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7740
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
