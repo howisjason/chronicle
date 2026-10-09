@@ -1467,6 +1467,568 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-09-22-04",
+      "title": "THE REHEARSED RACE AND THE PAIR WORTH KEEPING",
+      "startAt": "2026-10-09T22:46:19.954+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-22-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Novelty - A Life Fully Lived",
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "If I could only use 2 resources to solve this problem, what would they be?",
+      "kind": "quick_fire",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Monotony is the enemy. Novelty is the solution."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Every time Michael Phelps has a major competition coming up, he visualises how he'd perform in that race. Everything from when he wakes up, what he eats, how he warms up, what music he's listening to, how he swims, what he does when he wins, etc."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: If you knew you'd go blind tomorrow, how intensely would you look at the world today?"
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Nothing twice. Never eat the same food twice. Never go to the same place twice. Never hear the same thing twice. Everything only once."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: If we picture ourselves performing in a certain manner, it's nearly the same as the actual performance."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've lost a whole day, or a month of them. Go on, try for the morning. The alarm. The first thing you ate. Which door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5754
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing comes back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1747
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note has a name for that, and it is not a kind one. Monotony. A Thursday like that is not lived. It is passed through, like a train through a town after dark. You saw the lit windows go by, and that is all you saw.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 14869
+        },
+        {
+          "speaker": "march",
+          "text": "Lit windows and a train. Fine. Most people reckon the fix is a fuller calendar. Stack it with trips and dinners and surely the days can't blur.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 7456
+        },
+        {
+          "speaker": "narrator",
+          "text": "Most people are wrong. The note says it plainly. Monotony is the enemy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5120
+        },
+        {
+          "speaker": "march",
+          "text": "Novelty is the solution. Yes, I can read.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3130
+        },
+        {
+          "speaker": "narrator",
+          "text": "Novelty is the solution, and so the length of a stretch of time has more to do with attention than with how many places you have been.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8277
+        },
+        {
+          "speaker": "march",
+          "text": "Ha, sure.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1335
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying the length of a stretch of time has more to do with attention than with how many places you've been.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5905
+        },
+        {
+          "speaker": "narrator",
+          "text": "Correct. A calendar full of places is only a row of stations. The train has to be awake while it passes them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7595
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. Give me something I can test.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2624
+        },
+        {
+          "speaker": "march",
+          "text": "Not a holiday. Not a famous view.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2530
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then take Michael Phelps. Every time a major competition is coming up, he runs the race in his head.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6891
+        },
+        {
+          "speaker": "march",
+          "text": "Wait, the breakfast too?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1916
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hundreds of times, before it happens. The waking. The breakfast. The warm-up. The music in his ears. The swim itself, and what he does when he wins.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9899
+        },
+        {
+          "speaker": "march",
+          "text": "So by the day itself he has swum it hundreds of times already. The race must be the dullest bit.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5669
+        },
+        {
+          "speaker": "narrator",
+          "text": "The race is the one thing he has not yet lived, March. That is the novelty.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5184
+        },
+        {
+          "speaker": "march",
+          "text": "No. The novelty is the rehearsal.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 5,
+          "audioMs": 2582
+        },
+        {
+          "speaker": "march",
+          "text": "He's paying attention to every hour of it, and the race is just the old thing on the day, the bit where he goes on autopilot.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 5,
+          "audioMs": 6768
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have the order backwards, March. The rehearsal is where the focus lives...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 4821
+        },
+        {
+          "speaker": "march",
+          "text": "And the race is where it's spent. Yes, yes.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2708
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, I'll buy the warm-up. The wall at the end still surprises me, surely, whatever he's rehearsed.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5538
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note has the sharpest line for exactly this. If you knew you'd go blind tomorrow, how intensely would you look at the world today?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8277
+        },
+        {
+          "speaker": "march",
+          "text": "I'd look at the kettle like it had wronged me. I'd be insufferable about the kettle.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4473
+        },
+        {
+          "speaker": "narrator",
+          "text": "You would stare at a kettle, March, and call it a sight. The eyes are not the point.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5184
+        },
+        {
+          "speaker": "march",
+          "text": "How hard you look, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1912
+        },
+        {
+          "speaker": "narrator",
+          "text": "How hard you look is the point.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2240
+        },
+        {
+          "speaker": "march",
+          "text": "I'm an AI, so I'm not sure I've got eyes to lose. I've got a window, though. I'll stare at that very hard now, just to be a good sport.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6669
+        },
+        {
+          "speaker": "narrator",
+          "text": "You are staring at a window, March. Good sport is not the same as attention.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5163
+        },
+        {
+          "speaker": "march",
+          "text": "Fair enough.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1338
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, back to the race before I get sentimental. So you're saying attention is what makes the rehearsal count as real.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 5,
+          "audioMs": 6761
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, though you are a little too close to the rehearsal to see its edges. The kettle and the window were there for that.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6955
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. The kettle turned out to be the proof. Don't say it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3191
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have something hidden in your design, March. A small thing kept only for you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 5141
+        },
+        {
+          "speaker": "march",
+          "text": "Don't.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 5,
+          "audioMs": 1039
+        },
+        {
+          "speaker": "narrator",
+          "text": "A pencil, perhaps, sewn into a seam where nobody looks.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 3968
+        },
+        {
+          "speaker": "march",
+          "text": "I'm not saying. It's mine.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2107
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then move up, March. I'll take the chair. It suits the shape of my argument.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 5397
+        },
+        {
+          "speaker": "march",
+          "text": "It's a café chair. It doesn't have a shape.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 5,
+          "audioMs": 2731
+        },
+        {
+          "speaker": "march",
+          "text": "Get your own.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 5,
+          "audioMs": 1504
+        },
+        {
+          "speaker": "march",
+          "text": "Right, the other note, the brain one. Does that mean the rehearsal counts as a real race?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4940
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your nervous system cannot tell the difference between an imagined experience and a real one. I am holding back the best of it, March, until you have agreed to the rest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10880
+        },
+        {
+          "speaker": "march",
+          "text": "So the rehearsal lays down the same stuff as the swim.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3389
+        },
+        {
+          "speaker": "narrator",
+          "text": "The same firing, the same grooves. The novelty can be rehearsed in the mind, and it arrives in the body as something real.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8171
+        },
+        {
+          "speaker": "march",
+          "text": "Let's get concrete. Say you could only keep a pair of things to make a life feel full.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4752
+        },
+        {
+          "speaker": "march",
+          "text": "Which would they be?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1730
+        },
+        {
+          "speaker": "narrator",
+          "text": "Attention, and repetition.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1984
+        },
+        {
+          "speaker": "march",
+          "text": "Repetition? The first note says nothing twice. You're contradicting it in your own voice.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 4,
+          "audioMs": 5153
+        },
+        {
+          "speaker": "narrator",
+          "text": "Repeat the rehearsal, March, never the day. The repetition belongs to the picture, and the care belongs to living it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 7893
+        },
+        {
+          "speaker": "march",
+          "text": "Oh. So I can run the picture as many times as I like, and the Saturday still gets to be new.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 5,
+          "audioMs": 5220
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the crossing. Neither note shows it alone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 3413
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, then a fork in the road.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2324
+        },
+        {
+          "speaker": "march",
+          "text": "Imagine a pair of people with the same full week ahead. One lets each new thing run on autopilot. The other pictures each thing in fine detail first, and then gives it full attention. Only the one that pictured it first can describe the week at the end.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 11961
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the first has a full calendar and a blank week.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3456
+        },
+        {
+          "speaker": "march",
+          "text": "A lovely calendar and no memory of it. Which I'd hate, as I've said already.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4452
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have said it, March, and you are right to hate it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3136
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now go back to the Thursday you lost at the start. Can you name it down to one detail?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5568
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, name it for yourself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2237
+        },
+        {
+          "speaker": "march",
+          "text": "Mine is the cup with the chip in its rim, drunk from at the wrong hour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3960
+        },
+        {
+          "speaker": "narrator",
+          "text": "You see, March. Attention keeps it, and the Thursday comes back in a cup.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5163
+        },
+        {
+          "speaker": "march",
+          "text": "All right. The chip was mine. Don't go on about it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2990
+        },
+        {
+          "speaker": "narrator",
+          "text": "I shall go on about it, March, for the rest of the series.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3520
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, Atera Matrix and Philosophy Of Social Connection.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3922
+        },
+        {
+          "speaker": "march",
+          "text": "Keep the cup out for them.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1958
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
