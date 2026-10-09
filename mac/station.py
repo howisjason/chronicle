@@ -8,8 +8,10 @@ his own "AI Prompts For Obsidian Notes" list ("What would happen if this idea
 were merged with another one of my notes? ... infinite combinations"). No daily
 progress, no commits, no session text.
 
-How (the PNN way): one plain headless `claude -p` call writes a scene (Haiku 5.5,
-no tools, no Claude Code instructions, our own sheets as the system prompt); the
+How (the PNN way): plain headless `claude -p` calls write a scene (Haiku 5.5, no
+tools, no Claude Code instructions, our own sheets as the system prompt): the
+script from station/writer.md, then the talk pass from station/talk.md, which
+rewrites it for how two people speak (writing rebuild, 9 Oct 2026); the
 checker (station/validate.mjs) and a second call, the truth check, guard it;
 Kokoro voices it on the Mac; the words are committed to main forever
 (day/<date>/<HH>.json, the transcripts), and the sound goes to the `audio` branch,
@@ -35,7 +37,10 @@ MODEL, EFFORT = os.environ.get('CHRONICLE_MODEL', 'claude-haiku-5-5'), 'low'
 # The truth check stays on Haiku whatever writes: in the 8 Oct lab an Opus truth
 # check cost about 3.5 cents a scene against Haiku's 0.1, for the same job.
 CHECK_MODEL = 'claude-haiku-5-5'
-GAPS = {'firstLeadMs': 1000, 'leadMs': 200, 'holdMs': 600}
+# Shorter gaps than the two-minute scenes had (writing rebuild, 9 Oct 2026): with one-word
+# reactions as their own turns, 200 ms before and 600 ms after every line dragged. The same
+# numbers live in station/voice.py and timing.js (DEFAULT_GAPS); change all three together.
+GAPS = {'firstLeadMs': 1000, 'leadMs': 150, 'holdMs': 350}
 ANGLES_FILE = '/Users/howisjason/Projects/personal/context/obsidian/💡 Meta/⚡️ AI Prompts For Obsidian Notes.md'
 AUDIO_KEEP = timedelta(hours=1)
 # The daily cap, in API-equivalent dollars of plan usage (J: track it on its
@@ -176,28 +181,26 @@ def show_at(when):
     return None
 
 
-def kind_for(run, show=None):
-    """Part 1 opens, the last part is the verdict, the parts between draw from the
-    rest without repeating within the run; inside a short show with its own kind,
-    every middle part is that kind."""
+def kind_for(show=None, last=None):
+    """The style of a scene's middle (writing rebuild, 9 Oct 2026: every scene now
+    walks the whole arc, so there is no open or verdict kind). Inside a short show
+    with its own kind, that kind. Otherwise `straight` twice as often as any other,
+    and never the kind of the scene before, so the show is not one shape all day."""
     k = kinds()
     if not k:
         return None
-    if run['n'] == 1:
-        return 'open'
-    if run['n'] == run['of']:
-        return 'verdict'
     if show and show.get('kind') in k:
         return show['kind']
-    used = run.get('kinds', [])
-    middle = [x for x in k if x not in ('open', 'verdict')]
-    return random.choice([x for x in middle if x not in used] or middle)
+    choices = [x for x in k if x != last] or list(k)
+    return random.choices(choices, [2 if x == 'straight' else 1 for x in choices])[0]
 
 
 def current_run(notes, recent_segs, show=None):
-    """A run is the same notes told over several scenes, each through a new angle
-    (PNN's shows run a topic in parts). A finished run starts a fresh pick: the
-    one its verdict already teased as "up next", if those notes are still in the pool."""
+    """A run is the same notes told through a new angle per scene: one scene for one
+    note, two for a merge of two (writing rebuild, 9 Oct 2026: a ten-minute scene holds
+    what a run of three to five two-minute scenes used to). A finished run starts a
+    fresh pick: the one its last scene teased as "up next", if those notes are still
+    in the pool."""
     run = json.load(open(RUN)) if os.path.exists(RUN) else None
     if run and run['n'] < run['of'] and all(n in notes for n in run['notes']):
         run['n'] += 1
@@ -209,9 +212,9 @@ def current_run(notes, recent_segs, show=None):
             chosen, angle = nxt
         else:
             chosen, angle = pick(notes, recent_segs)
-        run = {'notes': chosen, 'n': 1, 'of': random.randint(3, 5), 'angles': [angle], 'kinds': []}
-    run['kind'] = kind_for(run, show)
-    if run['n'] == run['of'] and run['kind']:
+        run = {'notes': chosen, 'n': 1, 'of': 1 if len(chosen) == 1 else 2, 'angles': [angle], 'kinds': []}
+    run['kind'] = kind_for(show, recent_segs[-1].get('kind') if recent_segs else None)
+    if run['n'] == run['of']:
         run['next'] = list(pick(notes, recent_segs + [{'notes': run['notes']}]))
     return run
 
@@ -329,13 +332,13 @@ def one_segment(day, path):
     prev = [{'speaker': l['speaker'], 'text': l['text']} for l in before[-1]['lines']] if before else []
     frame = ('Merge these two notes: find where their ideas cross, and what the crossing shows that neither shows alone.'
              if len(chosen) == 2 else 'Take this one note deeper than it goes on its own.')
-    part = (f"This is part {run['n']} of a run of {run['of']} on these notes"
-            + (' (the LAST part: close the run, no hand-off question).' if run['n'] == run['of'] else '.'))
+    # A merge of two notes is told in two scenes; the second must know it follows the first.
+    part = f"This is part {run['n']} of {run['of']} on these notes." if run['of'] > 1 else ''
     kind = run.get('kind')
     if kind:
-        part += f"\nThe kind of segment: {kinds().get(kind, '')}"
-        if kind == 'verdict' and run.get('next'):
-            part += f"\nUp next, to tease by name in the last line: {' and '.join(run['next'][0])}"
+        part += f"\nThe kind of middle: {kinds().get(kind, '')}"
+    if run['n'] == run['of'] and run.get('next'):
+        part += f"\nUp next, to tease by name in the last line: {' and '.join(run['next'][0])}"
     # Saying the hour now and then makes a replay feel live (PNN does); only the
     # part of the day, never the place.
     h = airs.astimezone(TZ).hour
@@ -358,6 +361,16 @@ def one_segment(day, path):
         except (ValueError, KeyError):
             feedback = '\n\nYour last answer was not one complete JSON object with title, memory, sources and lines. Answer with only the JSON.'
             continue
+        # The talk pass (writing rebuild, 9 Oct 2026): NotebookLM rewrites a sterile script
+        # for how people talk ("you cannot listen to two robots talking to each other").
+        # It may change only the lines; what it writes is checked and truth-checked like
+        # any draft, so anything it invents is caught. A broken answer keeps the draft.
+        try:
+            talked = as_json(ask(read(f'{SHEETS}/talk.md'), json.dumps(out, ensure_ascii=False), f'talk#{attempt}'))
+            if all(k in talked for k in ('title', 'sources', 'lines')) and len(talked['lines']) >= len(out['lines']) // 2:
+                out = dict(out, lines=talked['lines'])
+        except (ValueError, KeyError, RuntimeError, subprocess.TimeoutExpired):
+            print(f'station: try {attempt + 1}: the talk pass failed; keeping the draft', flush=True)
         prev_end = end_of(before)
         soon = datetime.now(TZ) + timedelta(seconds=60)
         start = max(prev_end, soon) if prev_end else soon
@@ -474,7 +487,7 @@ def write_replays():
 def publish(path):
     # `path` is the file the scene was written into, held from the start: if the
     # hour turns while it is voiced, it still goes out from the file it lives in.
-    subprocess.run([os.path.join(ROOT, 'station/.venv/bin/python'), 'station/voice.py', path, '--budget', '480'], check=True)
+    subprocess.run([os.path.join(ROOT, 'station/.venv/bin/python'), 'station/voice.py', path, '--budget', '900'], check=True)
     ok, msg = validate(path)
     if not ok:
         raise RuntimeError(f'checker refused after voicing: {msg}')

@@ -23,7 +23,7 @@ export function hourFile(ms) {
   const k = new Date(ms + 7 * HOUR).toISOString();
   return `day/${k.slice(0, 10)}/${k.slice(11, 13)}.json`;
 }
-export const DEFAULT_GAPS = { firstLeadMs: 1000, leadMs: 200, holdMs: 600 };
+export const DEFAULT_GAPS = { firstLeadMs: 1000, leadMs: 150, holdMs: 350 };
 
 export function speakMs(line) {
   if (Number.isFinite(line.audioMs) && line.audioMs > 0) return line.audioMs;

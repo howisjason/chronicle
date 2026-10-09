@@ -40,7 +40,7 @@ VOICEBIN = os.path.join('station', 'models', 'voices-v1.0.bin')
 if sys.platform == 'darwin' and os.path.isdir('/opt/homebrew/share/espeak-ng-data'):
     os.environ.setdefault('ESPEAK_DATA_PATH', '/opt/homebrew/share/espeak-ng-data')
     os.environ.setdefault('PHONEMIZER_ESPEAK_LIBRARY', '/opt/homebrew/lib/libespeak-ng.1.dylib')
-DEFAULT_GAPS = {'firstLeadMs': 1000, 'leadMs': 200, 'holdMs': 600}
+DEFAULT_GAPS = {'firstLeadMs': 1000, 'leadMs': 150, 'holdMs': 350}
 
 
 _march_style = None

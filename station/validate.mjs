@@ -13,7 +13,8 @@
 //              "single" are left alone; they read as articles more often than
 //              counts. Ordinals like "seventh" are matched to "7".
 //   worn out  the NEWEST scene only (aired ones are never judged again): a word
-//              one speaker uses in more than four of their lines, or a run of
+//              one speaker uses in more than max(4, their lines / 8) of their
+//              lines (the limit grows with ten-minute scenes), or a run of
 //              six words lifted from the scene before. Haiku grabs one word and
 //              wears it out ("madam" in nearly every narrator line, lab 8 Oct
 //              2026); catching it here costs the writer no extra words to read.
@@ -22,6 +23,13 @@
 //              newest scene is the first in its file, the scene before is the
 //              last one of the previous hour's file; the command line finds it
 //              from the path (previousHourPath), across midnight too.
+//   talk       the NEWEST scene only, and only when the station checks a scene it
+//              is writing (the command line; `fresh` in code): 900 to 2,600 words
+//              of lines, at least 4 lines under 6 words and one over 40. The old
+//              two-minute scenes were a rally of one sentence each (J, 8 Oct 2026:
+//              "they just like take turns each speaking one sentence"); this is the
+//              cheap catch if the writing ever slides back. Aired scenes, the
+//              sample and the old hours are never judged by it.
 //   forbidden  the mechanical half of forbidden.md: money marks, health and
 //              visa words, key-shaped strings, email addresses. The human half
 //              (names of people, clients) is the fresh reader's job
@@ -47,7 +55,9 @@ const FORBIDDEN = [
 
 // `before` is the scene aired just before this file's first one, if any; it is
 // only used when the file holds a single scene.
-export function validate(day, before = null) {
+// `fresh` marks the newest scene as one being written now (the station's command
+// line), so the talk rules apply to it.
+export function validate(day, before = null, { fresh = false } = {}) {
   const f = [];
   const need = (ok, msg) => { if (!ok) f.push(msg); };
   need(day && typeof day === 'object', 'not an object');
@@ -86,7 +96,19 @@ export function validate(day, before = null) {
   });
   const segs = day.segments;
   if (segs.length) f.push(...wornOut(segs[segs.length - 1], segs.length > 1 ? segs[segs.length - 2] : before));
+  if (segs.length && fresh) f.push(...talkShape(segs[segs.length - 1]));
   return f;
+}
+
+export function talkShape(seg) {
+  const out = [];
+  if (!seg || !Array.isArray(seg.lines)) return out;
+  const counts = seg.lines.map((l) => String(l.text || '').split(/\s+/).filter(Boolean).length);
+  const total = counts.reduce((a, b) => a + b, 0);
+  if (total < 900 || total > 2600) out.push(`${seg.id}: too ${total < 900 ? 'short' : 'long'}: ${total} words (900 to 2,600)`);
+  const short = counts.filter((n) => n < 6).length, longest = Math.max(0, ...counts);
+  if (short < 4 || longest <= 40) out.push(`${seg.id}: one rhythm: ${short} short lines, longest ${longest} words`);
+  return out;
 }
 
 const STOP = new Set(('the and that this with have from what your you are was were for not but his her him she they them then than there their here when where which who whom will would could should shall must about into over only just like also even very more most much some such been being does did done says said into onto upon its it\'s i\'m don\'t can\'t that\'s let\'s you\'re he\'d he\'s she\'s i\'ll i\'d we\'re isn\'t won\'t yes no not now one all any can may might our out own off too why how see say get got going make made know think well back still way thing things time once again another every each other same right okay fine good note notes notebook idea ideas bit man day way lot kind sort put').split(' '));
@@ -105,9 +127,12 @@ export function wornOut(seg, prev) {
       per[k] = (per[k] || 0) + 1;
     }
   }
+  const theirs = {};
+  for (const l of seg.lines) theirs[l.speaker] = (theirs[l.speaker] || 0) + 1;
   for (const [k, n] of Object.entries(per)) {
     const [who, w] = k.split(' ');
-    if (n > 4) out.push(`${seg.id}: worn out, ${who === 'march' ? 'March' : 'the narrator'} says "${w}" in ${n} lines (at most 4)`);
+    const most = Math.max(4, Math.ceil((theirs[who] || 0) / 8));
+    if (n > most) out.push(`${seg.id}: worn out, ${who === 'march' ? 'March' : 'the narrator'} says "${w}" in ${n} lines (at most ${most})`);
   }
   if (prev && Array.isArray(prev.lines)) {
     const grams = (t) => { const ws = words(t); const g = []; for (let i = 0; i + 6 <= ws.length; i++) g.push(ws.slice(i, i + 6).join(' ')); return g; };
@@ -142,7 +167,7 @@ if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split('/').pop()
   if (!file) { console.error('usage: node station/validate.mjs day/<date>/<HH>.json'); process.exit(2); }
   const prevFile = previousHourPath(file);
   const prevSegs = prevFile && existsSync(prevFile) ? JSON.parse(readFileSync(prevFile, 'utf8')).segments || [] : [];
-  const findings = validate(JSON.parse(readFileSync(file, 'utf8')), prevSegs[prevSegs.length - 1] || null);
+  const findings = validate(JSON.parse(readFileSync(file, 'utf8')), prevSegs[prevSegs.length - 1] || null, { fresh: true });
   if (findings.length) { console.error(`REFUSED ${file}:\n  ` + findings.join('\n  ')); process.exit(1); }
   console.log(`OK ${file}`);
 }
