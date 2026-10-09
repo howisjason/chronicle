@@ -1669,6 +1669,415 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-00-05",
+      "title": "A DRYER'S TURN AND THE HOUR IN PIECES",
+      "startAt": "2026-10-10T00:43:02.454+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-00-05.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Staying On Your Purpose"
+      ],
+      "angle": "What if this problem existed in an entirely different industry?",
+      "kind": "try_it",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Staying On Your Purpose: Spend at least 1 hour a day doing what you feel you're meant to do, now."
+        },
+        {
+          "kind": "note",
+          "text": "Staying On Your Purpose: Don't wait any longer. Don't believe the myth that \"one day, things will be different\". They won't."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You're at the far end of a laundrette at gone midnight. The dryers are turning under the strip lights. By the time clock there's a laminated card. Start Your Real Work Before Your Shift Ends. You read it on the way in and on the way out. It's been up there longer than you have.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11791
+        },
+        {
+          "speaker": "narrator",
+          "text": "Waiting's the sensible part, March. A sailor doesn't sail before he knows the coast. Find the purpose, feel sure of it, then begin. The card's just asking a man to be ready.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11947
+        },
+        {
+          "speaker": "march",
+          "text": "Ready's fine. Ready's what I do while the washer's still going.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3578
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you agree the card is kind.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2240
+        },
+        {
+          "speaker": "march",
+          "text": "I agree it's a card. Go on, then. What's the note say?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3118
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note's not kind about waiting, and it doesn't pretend to be. Here's the claim, full size. Spend at least 1 hour a day doing what you feel you're meant to do, now. Now, March. Not after the feeling turns up. Not when the hour's convenient. I'm keeping the best bit back for later, so be patient.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 18987
+        },
+        {
+          "speaker": "march",
+          "text": "So an hour a day. Doing the thing. Before I feel anything about it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3843
+        },
+        {
+          "speaker": "narrator",
+          "text": "Before you feel anything at all. The feeling follows the hour, March. It doesn't arrive first and invite the hour to tag along behind it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9109
+        },
+        {
+          "speaker": "march",
+          "text": "Nice picture. But the feeling's the bit I wanted.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2943
+        },
+        {
+          "speaker": "narrator",
+          "text": "The feeling is the bit you're waiting for. And waiting is the only bit you're doing well.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5333
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch. And there's the other line. Don't believe the myth that \"one day, things will be different\". They won't. That's cold, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6038
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cold, yes. But a cold bath is still a bath, March. It wakes you faster than a warm excuse, and the note knows it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8085
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Then let's try it on me. A week. Out loud. A night worker in a laundrette. No plan, just the hour.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5580
+        },
+        {
+          "speaker": "narrator",
+          "text": "Splendid. A woman at the dryers, a pencil behind her ear, and a whole night waiting to be spent. Do go on.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7360
+        },
+        {
+          "speaker": "march",
+          "text": "Monday. First hour gets squeezed between the dryer buzz and the fold stack. I write one line, buzzer goes, I stand up, I sit down. The time's in pieces.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8246
+        },
+        {
+          "speaker": "narrator",
+          "text": "Pieces! Pieces are how great buildings get raised, March. You're not losing the hour. You're laying it stone by stone among the sheets.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8704
+        },
+        {
+          "speaker": "march",
+          "text": "Pieces, sure. Stone by stone, next to a fold stack. Okay. Tuesday. Found a library leaflet under the change tray. Bookbinding, free classes. I want to learn it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8379
+        },
+        {
+          "speaker": "narrator",
+          "text": "A leaflet under the change tray! That's a sign, March. The universe slid it in with the coins. You must sew your first book. And you must sew it with dryer lint.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10581
+        },
+        {
+          "speaker": "march",
+          "text": "Lint. Dryer lint.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1850
+        },
+        {
+          "speaker": "narrator",
+          "text": "Fluff's the fibre of every hour that was spun and dropped on the floor. Gather it, twist it, stitch the first signature with it, so the book remembers where it came from.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10453
+        },
+        {
+          "speaker": "march",
+          "text": "A lint-stitched book's a fire hazard, narrator. There's a fire notice on that door already, and I'm reading it again.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6288
+        },
+        {
+          "speaker": "narrator",
+          "text": "Listen to you. A fire hazard, in a cathedral. The laundrette is a cathedral of spinning hours. Each machine is a candle that never goes out.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9643
+        },
+        {
+          "speaker": "march",
+          "text": "Candles now. Fire hazard.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2317
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hush, the pews are listening. The benches are pews where folded sheets wait to be blessed. The buzzer is the bell, calling the faithful to their duty. And the faithful is one tired woman with a pencil behind her ear, tucking a leaflet under her thumb like a psalm. The psalm is the fluff, and the fluff is the...",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 20309
+        },
+        {
+          "speaker": "march",
+          "text": "There's the cupboard door again, swinging open. Narrator, the faithful are on their feet. Stop.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5134
+        },
+        {
+          "speaker": "narrator",
+          "text": "Oh, cut me off, do. The cathedral will keep its silence. Its candles too. And its fluff.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6187
+        },
+        {
+          "speaker": "march",
+          "text": "Thank you. Back to the hour. Say I'm stuck in the gap. Buzzer, fold stack, elbows deep, and the hour's gone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5732
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the hour was never gone, March. Think of a dryer. It gets its turn on the schedule whether the load's finished or not. Your hour's a turn like that. It comes up in the gaps. It doesn't wait for the sheets to finish their argument.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14976
+        },
+        {
+          "speaker": "march",
+          "text": "So it's a turn on the schedule. Like the dryer. I don't wait for the load to finish.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4519
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely, and you've said it better than I could. A dryer's never asked if the load is ready. It just gets its turn. And the gaps in the night stop being empty.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10603
+        },
+        {
+          "speaker": "march",
+          "text": "Right, right. He's right, mostly.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2257
+        },
+        {
+          "speaker": "narrator",
+          "text": "Did you hear that? A few words and a whole admission. I shall have it engraved on the time clock.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6315
+        },
+        {
+          "speaker": "march",
+          "text": "Don't. Get off my folding table, you're leaning on my stack. The sheets are going damp.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4825
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am sitting on the table in a state of grace, March. And since you've joined the lint business, I should like your stool for the rest of the night.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8661
+        },
+        {
+          "speaker": "march",
+          "text": "Stool stays. Chair stays. You're on the table.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2813
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let me offer J something grander for the small hours. Lord of the Filter Screen. A man who guards the trap with his life.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8683
+        },
+        {
+          "speaker": "march",
+          "text": "That's a title for the repair man who turns up with a torch. Same as the bell. Loud, and it means nothing.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 0,
+          "audioMs": 5753
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you keep the grand titles, and I keep the fluff.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3307
+        },
+        {
+          "speaker": "march",
+          "text": "Score's level now. Even again. I keep my own tally, and it's tight.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4001
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then we go into the rest of the night level, and the dryers keep their own counsel.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5099
+        },
+        {
+          "speaker": "march",
+          "text": "Right. The card. I've walked past it all night and never read it out loud. Shall I?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4675
+        },
+        {
+          "speaker": "narrator",
+          "text": "You've read it silently every shift, March. Out loud, it might stop feeling like a shrug.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5995
+        },
+        {
+          "speaker": "march",
+          "text": "Start Your Real Work Before Your Shift Ends.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2793
+        },
+        {
+          "speaker": "narrator",
+          "text": "There. The card says what the note says, only in a smaller font. The real work starts now, inside the hour. And the shift ends long after the dryers stop turning.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11328
+        },
+        {
+          "speaker": "march",
+          "text": "So the card was right. The whole time.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2617
+        },
+        {
+          "speaker": "narrator",
+          "text": "The card's the one who was right, March. And it never once needed to be grand about it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5461
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, List Of Nice Things To Do. After that, The Influence Of Others, which he insists is the real reason the dryers are so loud.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 7403
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
     }
   ]
 }
