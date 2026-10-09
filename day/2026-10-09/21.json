@@ -832,6 +832,384 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-09-21-03",
+      "title": "THE FLYWHEEL AND THE CHART ON THE WALL",
+      "startAt": "2026-10-09T22:04:20.930+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-21-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "It's Never Too Late To Change",
+        "Habits Become Automatic - Your New Identity"
+      ],
+      "angle": "How was this problem (or a similar one) addressed in the past (e.g., 10, 50, 100 years ago)? What can be learned from previous attempts or contexts?",
+      "kind": "quick_fire",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "It's Never Too Late To Change: No matter how old you are, it's never too late to make a change in your life."
+        },
+        {
+          "kind": "note",
+          "text": "Habits Become Automatic: What you do repeatedly becomes automatic."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You're at the counter, kettle still rumbling, and the old story starts up again. Too set now. Too late for the new thing. Too far along to start over.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7395
+        },
+        {
+          "speaker": "march",
+          "text": "Most people think a change only counts when it's big and loud. Past a certain age the door's shut, and everyone nods like that's the sensible view.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7628
+        },
+        {
+          "speaker": "narrator",
+          "text": "Sensible. March, that view has the comfort of a sofa, and the sag of one too. Let me read the note as it stands. 'No matter how old you are, it's never too late to make a change in your life.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13141
+        },
+        {
+          "speaker": "narrator",
+          "text": "Every word of that stands open like a gate. The best of it I keep back a while longer, so do not hurry me.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7253
+        },
+        {
+          "speaker": "march",
+          "text": "So the door isn't shut. It's unlocked, for anyone willing to lean on it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4201
+        },
+        {
+          "speaker": "narrator",
+          "text": "Lean, yes. Though you have turned my gate into a lock, March. Let me read you what a lecturer said, long before our kettle was invented.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8832
+        },
+        {
+          "speaker": "narrator",
+          "text": "He called habit a great flywheel. The heavy thing that keeps the whole machine of society turning once it's up to speed. Once it spins, nobody has to push.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10325
+        },
+        {
+          "speaker": "march",
+          "text": "A flywheel. Lovely. But his listeners weren't told what to do on a Tuesday morning. He's describing the machine. Nobody's handing out spanners.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7272
+        },
+        {
+          "speaker": "narrator",
+          "text": "You've found the detail that carries the whole argument, March. A flywheel turns what it's given. The lecture gives the turning and leaves the hand to you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9685
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. The flywheel's old and the hand's new. But I'm not convinced a lecture knows what my knees do on a cold floor.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6412
+        },
+        {
+          "speaker": "narrator",
+          "text": "It does not know your knees. It knows the turning, and your knees are where the turning meets the ground. Put the man from the cold floor under it. One push-up is a spoke, and the spinning turns the spoke around.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13483
+        },
+        {
+          "speaker": "march",
+          "text": "A spoke, a wheel, now a tyre. You're running out of vehicles, Narrator.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4010
+        },
+        {
+          "speaker": "narrator",
+          "text": "I shall pretend that was not a joke. A thing that turns can turn either way. That is the piece the other note was too shy to say.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8704
+        },
+        {
+          "speaker": "march",
+          "text": "Sure you will.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1551
+        },
+        {
+          "speaker": "march",
+          "text": "What you repeat becomes automatic. So the thing that's dragged me to the sofa is the same thing that could get me off it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6505
+        },
+        {
+          "speaker": "narrator",
+          "text": "Look at what the old lecture did, March. It warned about the spinning, and in the same breath it said the spinning can be turned on purpose. It held both halves at once.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10517
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. You're turning a dead lecturer into a poster.",
+          "emotion": "dry",
+          "action": "facepalm",
+          "source": 1,
+          "audioMs": 3201
+        },
+        {
+          "speaker": "narrator",
+          "text": "I would never put him on a poster. The poster is yours. I only read the spinning back to you, and the reading is my vanity, not his.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8661
+        },
+        {
+          "speaker": "march",
+          "text": "Sure, sure.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1343
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, I'll give you that one. The Victorians pinned charts to the wall. A grid, a box for every morning you got up when you said you would, and a gold star when the box was ticked. Kids had them. Grown men had them too.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10021
+        },
+        {
+          "speaker": "narrator",
+          "text": "A chart pinned to the wall! March, that is the first notebook, a notebook that learned to stand up and be looked at. Shift over, too. I need a chair with a view of that wall.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11712
+        },
+        {
+          "speaker": "march",
+          "text": "It's a grid of boxes.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1939
+        },
+        {
+          "speaker": "march",
+          "text": "Not a notebook. You can't fit a sentence in a box the size of a stamp.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4201
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then what do you keep, March? Some tally that never gets spoken aloud?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4693
+        },
+        {
+          "speaker": "march",
+          "text": "...Okay. I keep a column. Every point I win goes in it. I didn't decide to add it. It just goes in. Don't put that in your notebook.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6675
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you have been keeping the Victorian chart in your head all along, March, and refusing it a grid.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6187
+        },
+        {
+          "speaker": "march",
+          "text": "It's private. Nobody gets the total. You included.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3128
+        },
+        {
+          "speaker": "narrator",
+          "text": "Noted. A private column is still a record, and a record is a habit with a number on it. That is where the notes meet. I was hoping you would walk straight into it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10133
+        },
+        {
+          "speaker": "narrator",
+          "text": "The habit note says the repeated thing becomes automatic. The never-too-late note says the door stays open. The chart is where both are true at once, a ledger that makes the repeated thing visible so you can turn it. Neither note says that alone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 15893
+        },
+        {
+          "speaker": "march",
+          "text": "So the chart's not a tyrant. It's the thing that shows you which way the spinning's going.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4911
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. The old ones saw both halves together, the spinning and the choosing of which way to spin.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5952
+        },
+        {
+          "speaker": "march",
+          "text": "A bit grand, but yeah. The habit note says you're stuck. The other says you're allowed out. Put them in one room and you get the chart.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6135
+        },
+        {
+          "speaker": "narrator",
+          "text": "For a person who takes this on board, a late change is a ledger they keep without noticing. Each small entry lands in the book of who they have become. Picture a bus station waiting room, a stranger with a pen, writing one line in a notebook nobody else will see.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 17536
+        },
+        {
+          "speaker": "march",
+          "text": "One line. No speech. Nobody reads it but them. That's the bit I like.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4120
+        },
+        {
+          "speaker": "narrator",
+          "text": "And each line lands in the book whether the writer feels grand or not.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4971
+        },
+        {
+          "speaker": "march",
+          "text": "Right. A waiting room and a biro. That's all it takes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3023
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the kettle, March. It clicked off on its own, and I have decided that is a sign.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5504
+        },
+        {
+          "speaker": "march",
+          "text": "A sign. Of what, exactly?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2215
+        },
+        {
+          "speaker": "narrator",
+          "text": "I offer J a title for it: Keeper of the Morning Votes. He cannot claim it yet, but I am patient, and patience is a virtue of the old.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9557
+        },
+        {
+          "speaker": "march",
+          "text": "He'd hate that title, and he'd keep it on the wall anyway. You can have the title. I'm keeping the column.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5463
+        },
+        {
+          "speaker": "march",
+          "text": "And here's the comeback I saved. You want the chart, the kettle and my chair. You don't get the column. You don't get the total either.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6254
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the total stays yours, March, and the kettle goes to me. Who was right is left open, the way the gate is left open.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8192
+        },
+        {
+          "speaker": "march",
+          "text": "Left open... good. That's the honest answer. Next up, The Value of Time and Failure Is How We Learn And Grow. That's our time, so I'm the one saying it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7244
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
