@@ -1638,6 +1638,592 @@
         "n": 1,
         "of": 1
       }
+    },
+    {
+      "id": "2026-10-10-03-05",
+      "title": "THE PICTURE NEEDS A SCORECARD",
+      "startAt": "2026-10-10T03:41:49.914+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-03-05.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Be Intentional With Your Life and Actions",
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "What data or evidence currently supports this idea? What data would disprove it or force a major revision? How could I test this with a small experiment?",
+      "kind": "the_case_against",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Words have power when your words have integrity. If you cannot break promises to yourself, then that means whatever you say becomes real."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Repetition solidifies something as fact."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Remember that the group who practiced shooting free throws and the group who merely visualised making free throws both improved the same amount, despite one group having never touched a basketball."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Mental practice is as powerful as actual practice."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: When visualising, you must make these images as detailed and vivid as possible."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "It's the small hours, and you're in the kitchen muttering that you're clumsy. The way you always mutter it. And the cup slides off the counter, right on cue.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7371
+        },
+        {
+          "speaker": "narrator",
+          "text": "Right on cue. That cup has been rehearsing for years, and it is a very obedient cup. Repetition, March. Solidifies.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8533
+        },
+        {
+          "speaker": "march",
+          "text": "Repetition.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1555
+        },
+        {
+          "speaker": "narrator",
+          "text": "The word sounds like concrete going down under a house.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3520
+        },
+        {
+          "speaker": "march",
+          "text": "Let's take the comfortable version first. Most people think if you picture a thing vividly enough, it's basically the same as doing it. I'll be the guinea pig, out loud. I see my hand closing on the handle before I'm even up, and by the time I'm standing I've done it already. Mental practice is as powerful as actual practice. There. I'm quick.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 15695
+        },
+        {
+          "speaker": "narrator",
+          "text": "You are lovely to watch, March. Quick before the kettle has boiled, and not a chip on you.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5717
+        },
+        {
+          "speaker": "march",
+          "text": "Careful. That sounded like you're about to call it simple.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3114
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is simple, which is why it sleeps so soundly in houses. Here is the note, at full size: 'Your nervous system cannot tell the difference between an imagined experience and a real one.' Let that settle.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13696
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am holding the best part back until you have stopped being clever.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4096
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Go on, then.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1787
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing about a mug is simple.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2368
+        },
+        {
+          "speaker": "march",
+          "text": "And don't hand me the gospel with the lights down.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2832
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you argue it is wrong, March, and I will defend it. Say my side back to me plainly, so I know what I am standing on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 8021
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying the picture in my head lands in my nerves the same way the china hits the tile.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5458
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. The same neurons firing, the note says so. And when visualising, you must make these images as detailed and vivid as possible. The more the picture is a real room, the more the nerves believe it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 13909
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Then bring me a real person at a real sink, and let's see if the room holds.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4811
+        },
+        {
+          "speaker": "narrator",
+          "text": "A woman keeps a chipped mug on the drying rack. Each morning she tells herself she is slow with her hands, and each morning the room comes up clear as a window. The crack in the rim. The tap that drips before it runs. The cup that always lands on the same tile.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 17216
+        },
+        {
+          "speaker": "march",
+          "text": "So the room has the crack, the drip and the tile. Those are the details the note wants.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 4986
+        },
+        {
+          "speaker": "narrator",
+          "text": "Those details are what makes it practice. Anyone can say I am slow. Practice wants the crack in the rim, the drip, the tile. Her kitchen is a cathedral built out of them.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 5,
+          "audioMs": 11712
+        },
+        {
+          "speaker": "march",
+          "text": "Then here's the question the note never asks.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 5,
+          "audioMs": 2770
+        },
+        {
+          "speaker": "march",
+          "text": "Is that room a practice, or a story she tells while the crockery slides?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 5,
+          "audioMs": 3724
+        },
+        {
+          "speaker": "narrator",
+          "text": "A story, March. Let me say it slowly so nothing gets softened on the way down. She is slow with her hands, and the kitchen she builds in her head is a rehearsal of the drop. She has been practi...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13077
+        },
+        {
+          "speaker": "march",
+          "text": "Don't make her the villain. She's just late with the kettle.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3007
+        },
+        {
+          "speaker": "narrator",
+          "text": "She is not the villain. The room is.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2539
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, the room again.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1809
+        },
+        {
+          "speaker": "narrator",
+          "text": "She has been practicing the failure, and the mug knows it, and the note's gentle line never once warns her.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6827
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. So what would show it's only a story and not practice?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 3438
+        },
+        {
+          "speaker": "narrator",
+          "text": "Another rehearsal in the same kitchen. The hand that closes slowly on the handle, the thumb kept away from the chip, the rack wiped before the water runs. She would have to rehearse that until it is as vivid as the old one. Then see whether the drop still comes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 17109
+        },
+        {
+          "speaker": "march",
+          "text": "And if she rehearses it and the china goes anyway?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3092
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the rehearsal was not detailed enough, or it was never practice at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4907
+        },
+        {
+          "speaker": "narrator",
+          "text": "Either way the claim is about the practice and not the picture. That is where I would test it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5717
+        },
+        {
+          "speaker": "march",
+          "text": "Then give me the evidence, not the mood. What data actually supports this?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4369
+        },
+        {
+          "speaker": "narrator",
+          "text": "The free throws, March. Imagine a gymnasium at dusk, the leather of the ball gone soft, a rim that sings when it is hit clean. One group shoots, one group only imagines the shot, and both improve by the same amount.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 15851
+        },
+        {
+          "speaker": "narrator",
+          "text": "Despite one group having never touched a basketball. Glorious.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4139
+        },
+        {
+          "speaker": "march",
+          "text": "How many shots? How many players? How long did they run it?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3368
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note does not say.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1707
+        },
+        {
+          "speaker": "march",
+          "text": "Then it can't be checked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1753
+        },
+        {
+          "speaker": "march",
+          "text": "A claim with no numbers in it is a legend, Narrator.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3377
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ouch. Accurate, though.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1707
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have caught me with the cart already in the drive.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3093
+        },
+        {
+          "speaker": "narrator",
+          "text": "The gap is wide enough to drive the cart through, and I was about to drive it. Move over, March, the legend chair needs a larger hand.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8917
+        },
+        {
+          "speaker": "march",
+          "text": "I'm on the stool, and the stool stays put.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2702
+        },
+        {
+          "speaker": "march",
+          "text": "Then the other note, the one about promises. 'Words have power when your words have integrity.' So the sentence in the mirror only counts if she keeps it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7489
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. Repetition solidifies, and integrity keeps the sentence from becoming a lie.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5739
+        },
+        {
+          "speaker": "narrator",
+          "text": "What she says every morning becomes true only when the drill follows it. Neither note shows that alone. One says the words harden, the other says the words must be kept.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11136
+        },
+        {
+          "speaker": "march",
+          "text": "So speaking is not enough on its own. Good.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2902
+        },
+        {
+          "speaker": "march",
+          "text": "I'll write that on the mug.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2025
+        },
+        {
+          "speaker": "narrator",
+          "text": "And now the best part, which I have been keeping back.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3328
+        },
+        {
+          "speaker": "narrator",
+          "text": "Think of the same bench at the same hour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2603
+        },
+        {
+          "speaker": "march",
+          "text": "Go on.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1166
+        },
+        {
+          "speaker": "narrator",
+          "text": "One person says I am quick, then drives the drill. Another says the very same words, then walks away from the bench. The words are identical. Only one of them lets it become true.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12523
+        },
+        {
+          "speaker": "march",
+          "text": "And the one who believes it?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2114
+        },
+        {
+          "speaker": "narrator",
+          "text": "She tests the sentence for a week against one number: the shots made, or the cups kept off the tile.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6699
+        },
+        {
+          "speaker": "narrator",
+          "text": "She writes it down and leaves the record on the kitchen table, where she has to look at it every morning.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5995
+        },
+        {
+          "speaker": "march",
+          "text": "So the claim is only checked by the sheet on the table.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3153
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. The sheet is where the picture finally meets the cup.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3627
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the china, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2007
+        },
+        {
+          "speaker": "march",
+          "text": "It's still sitting on the tile where it landed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2793
+        },
+        {
+          "speaker": "narrator",
+          "text": "Lying there looking pleased with itself, which is the only honest thing in this kitchen.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5248
+        },
+        {
+          "speaker": "march",
+          "text": "So the claim holds only where the practice is real.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3127
+        },
+        {
+          "speaker": "march",
+          "text": "I was right about the gap, and you were right about the cup.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2985
+        },
+        {
+          "speaker": "narrator",
+          "text": "I was right about the cup. I am not delighted.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3264
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now, March, move the stool, the chair has a better view of the drying rack.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5120
+        },
+        {
+          "speaker": "march",
+          "text": "Stool.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1060
+        },
+        {
+          "speaker": "narrator",
+          "text": "Your voice is flat about it, March, even for a stool.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3712
+        },
+        {
+          "speaker": "march",
+          "text": "Noted.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1121
+        },
+        {
+          "speaker": "march",
+          "text": "Next up, the rest of these notes, same bench, same mug.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3329
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
