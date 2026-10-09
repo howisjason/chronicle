@@ -34,9 +34,9 @@ import pool  # noqa: E402
 TZ = timezone(timedelta(hours=7))  # Chiang Mai, no daylight saving
 # CHRONICLE_MODEL lets a lab round try another writer on the same sheets (8 Oct 2026).
 MODEL, EFFORT = os.environ.get('CHRONICLE_MODEL', 'claude-haiku-5-5'), 'low'
-# The write call alone may think harder (the plan's second rung when Haiku on low writes
-# half-length scenes, 9 Oct 2026); every other call stays low.
-WRITE_EFFORT = os.environ.get('CHRONICLE_WRITE_EFFORT', 'low')
+# The write call alone thinks harder (the plan's second rung, measured 9 Oct 2026: on low,
+# 7 of 14 picks passed; on medium, 3 of 3, at about 5 cents a scene); every other call stays low.
+WRITE_EFFORT = os.environ.get('CHRONICLE_WRITE_EFFORT', 'medium')
 # The truth check stays on Haiku whatever writes: in the 8 Oct lab an Opus truth
 # check cost about 3.5 cents a scene against Haiku's 0.1, for the same job.
 CHECK_MODEL = 'claude-haiku-5-5'

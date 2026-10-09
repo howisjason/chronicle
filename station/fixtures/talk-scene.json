@@ -1,0 +1,398 @@
+{
+ "date": "2026-10-09",
+ "tz": "Asia/Bangkok",
+ "segments": [
+  {
+   "id": "2026-10-09-lab-02",
+   "title": "THE DONUT THAT SITS ON THE BENCH",
+   "startAt": "2026-10-09T20:16:52.262+07:00",
+   "audio": null,
+   "gaps": {
+    "firstLeadMs": 1000,
+    "leadMs": 150,
+    "holdMs": 350
+   },
+   "notes": [
+    "Learning - Best Practices",
+    "Delayed Gratification"
+   ],
+   "angle": "What assumptions am I making in this idea?",
+   "kind": "straight",
+   "show": "the_epic",
+   "sources": [
+    {
+     "kind": "note",
+     "text": "Delayed Gratification: Instant gratification feels good now but makes things worse in the future. Delayed gratification feels bad now but makes things better in the future."
+    },
+    {
+     "kind": "note",
+     "text": "Happy Now vs Happy Later: Shallow happy serves the present. Deep happy serves the future."
+    },
+    {
+     "kind": "note",
+     "text": "Delayed Gratification: Reframe discipline as a function of self love. If you want yourself to be happy, you have to be disciplined with yourself."
+    },
+    {
+     "kind": "note",
+     "text": "Learning - Best Practices: You learn the MAJORITY of everything from actually DOING. From making mistakes firsthand and learning from that experience."
+    }
+   ],
+   "lines": [
+    {
+     "speaker": "march",
+     "text": "You're at the bakery counter before the shutters are all the way up. Warm paper bag in one hand, a promise you made in the spring in the other. And the bag is already open.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "narrator",
+     "text": "Ah, the eternal scene. The wise man walks past the warm sugar with his jaw set like a gate.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "Go on, then.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "narrator",
+     "text": "Discipline is the grim old duty of the sensible, a hard hand laid on the soft and unwilling self. Deny the body what it craves and the spirit grows strong. Every monk and every sergeant knows it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "So discipline means being mean to yourself.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "narrator",
+     "text": "It means refusing the donut with a straight back.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "No. That's not what the note says. It says reframe discipline as self love. You do it because you want yourself to feel good, not because you're being punished.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 2
+    },
+    {
+     "speaker": "narrator",
+     "text": "Love is a soft word for a sergeant's job.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2
+    },
+    {
+     "speaker": "march",
+     "text": "It's a soft word for a job you can actually keep doing.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then let me state the claim at full size. Instant gratification feels good now but makes things worse later. The donut is a thief. It robs the morning man to feed the afternoon man. The best of it I will hold back for the story, when the sun is over the harbour wall.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "So the treat feels good now and leaves the later you with less.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "Fine. Show me the man.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "narrator",
+     "text": "Bring him forward, then.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "narrator",
+     "text": "Let us put him on the road. A man begins to run before breakfast, while the lamps along the quay are still lit. He does it for the man he will be half a year from now, the one with strong legs and a kept promise, not for the tired fellow yawning in the mirror.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "I can see him. Grey jumper, bad socks, already regretting the first hill.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "narrator",
+     "text": "That is the discipline. He runs, he returns, and he does not stop at the bakery.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "Week one he's flying. Then he's sore. Then on the way home there's a cast-off pastry on the quay bench.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "Still warm.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "narrator",
+     "text": "Ah, the warmth. Every sweet thing in the world is warm when the legs are tired. Let him sit a moment, the way a man sits when he has forgotten his own name.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "He's not having a sugar break. He's having a donut he didn't plan. Shallow, and right there in front of him.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 1
+    },
+    {
+     "speaker": "march",
+     "text": "So he eats it?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "narrator",
+     "text": "Let him take one bite. Nothing is broken yet. Now tell me, March, which one of these men is actually sitting on that bench?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1
+    },
+    {
+     "speaker": "march",
+     "text": "The tired one. The later man doesn't get a vote from the bench.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then the later man is a stranger who never sat with us at all. A cruel witness, March, to make the poor fellow a ghost before he has finished his breakfast.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1
+    },
+    {
+     "speaker": "march",
+     "text": "He's already a ghost.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1
+    },
+    {
+     "speaker": "narrator",
+     "text": "Cruel, March, and correct.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1
+    },
+    {
+     "speaker": "march",
+     "text": "He's just tired.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1
+    },
+    {
+     "speaker": "march",
+     "text": "Shallow happy serves the present. Deep happy serves the future. The bench is the shallow part, the legs are the deep part. That's the whole line the note draws.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 1
+    },
+    {
+     "speaker": "narrator",
+     "text": "Look there, on the wrapper. A gull's feather has landed on the paper, grey and white and placed too neatly for chance. The man later on has sent a sign. Destiny does not write letters, March, it drops feathers.",
+     "emotion": "surprised",
+     "action": "none",
+     "source": 1
+    },
+    {
+     "speaker": "march",
+     "text": "It's a gull feather. Gulls shed. They're on every bench on the quay. You're doing the thing again, where something ordinary turns into a prophecy.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1
+    },
+    {
+     "speaker": "narrator",
+     "text": "It is the thing I am for. A feather on sugar paper is a message, and I am the reader who reads it.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 1
+    },
+    {
+     "speaker": "march",
+     "text": "A message needs a sender. This one hasn't even got through the first week.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 1
+    },
+    {
+     "speaker": "march",
+     "text": "Then it's simple. He runs, he gets the legs, he leaves the donut alone.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2
+    },
+    {
+     "speaker": "narrator",
+     "text": "Simplicity, March, is the mark of genius.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2
+    },
+    {
+     "speaker": "march",
+     "text": "Don't call it simple. Everyone says the later you will turn up and collect, and nobody has checked whether he does.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 2
+    },
+    {
+     "speaker": "narrator",
+     "text": "...Yes. Some men train for half a year and wake up no different at all, with the same tired face in the same cold mirror. The note does not promise otherwise. It only says the results kick in after a while, and a while is a long word to hang a life on. I have been dancing round that, March, and you have caught my foot.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2
+    },
+    {
+     "speaker": "march",
+     "text": "Thank you. That's the bit I wanted said out loud.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2
+    },
+    {
+     "speaker": "narrator",
+     "text": "Then keep the corner shut, March. I suspect it holds a feather.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 2
+    },
+    {
+     "speaker": "march",
+     "text": "Okay, the crossing. The learning note has the apprentice and the slip. The delayed note says the bad feeling now makes it better later. Put them side by side and the failed knot becomes the first step of the run.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 3
+    },
+    {
+     "speaker": "narrator",
+     "text": "The slip was the teacher, and the sugar is the lesson's rival. The bench tempts a man into forgetting the rope.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3
+    },
+    {
+     "speaker": "march",
+     "text": "But only if the practice actually holds a load. A run where you never push is the iron post again. It feels like training, but nothing ever pushes back.",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 3
+    },
+    {
+     "speaker": "narrator",
+     "text": "So the later man is built by lines that bear weight, not by repetitions of a dead motion.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3
+    },
+    {
+     "speaker": "march",
+     "text": "Yes. Neither note gets there alone. The learning note says you learn by doing, and the delayed note says the sting is worth it. Together they say the sting only counts if the doing is hard enough to matter.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 3
+    },
+    {
+     "speaker": "march",
+     "text": "So if you believe this, the run is a letter to someone you love, and the donut is an offer you turn down without any fuss.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 2
+    },
+    {
+     "speaker": "narrator",
+     "text": "And if you do not believe it?",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "Then the run is a favour to a stranger, and the donut is the only honest friend in the story.",
+     "emotion": "dry",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "narrator",
+     "text": "A warm friend on a cold bench. I approve.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "Back to the iron post, then. Did your runner ever check his legs against the promise, or did he just keep running the same route for the same reasons?",
+     "emotion": "neutral",
+     "action": "point",
+     "source": 0
+    },
+    {
+     "speaker": "narrator",
+     "text": "...You are right about the post, and I will grant you the corner too, since you will not give it up. Take the last word, March.",
+     "emotion": "neutral",
+     "action": "none",
+     "source": 0
+    },
+    {
+     "speaker": "march",
+     "text": "Up next, Reality Transurfing. Bring a feather, and check whether anybody is waiting at the end.",
+     "emotion": "happy",
+     "action": "none",
+     "source": 0
+    }
+   ],
+   "part": {
+    "n": 2,
+    "of": 2
+   }
+  }
+ ]
+}

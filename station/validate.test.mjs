@@ -97,13 +97,21 @@ test('the first scene of an hour file is checked against the last scene of the h
   assert.ok(!validate(two, prev).some((m) => /the sailor is watching/.test(m)));
 });
 
+// A real ten-minute-era scene from the lab of 9 Oct 2026 (Haiku, medium effort on the write
+// call), the fixture for a scene the station should air.
+const talk = () => JSON.parse(readFileSync(new URL('./fixtures/talk-scene.json', import.meta.url), 'utf8'));
+
+test('a real scene from the new writing passes every rule, the talk rules included', () => {
+  assert.deepEqual(validate(talk(), null, { fresh: true }), []);
+});
+
 test('the command line finds the scene before in the previous hour file, across midnight', () => {
   const dir = mkdtempSync(join(tmpdir(), 'chron-'));
-  const prev = good();
+  const prev = talk();
   mkdirSync(join(dir, 'day/2026-10-08'), { recursive: true });
   mkdirSync(join(dir, 'day/2026-10-09'), { recursive: true });
   writeFileSync(join(dir, 'day/2026-10-08/23.json'), JSON.stringify(prev));
-  const d = good();
+  const d = talk();
   d.segments[0].id = 'next';
   d.segments[0].lines[1].text = prev.segments[0].lines[0].text;
   const file = join(dir, 'day/2026-10-09/00.json');
@@ -113,6 +121,15 @@ test('the command line finds the scene before in the previous hour file, across 
   assert.match(run.stderr, /repeats the scene before/);
   rmSync(join(dir, 'day/2026-10-08/23.json'));
   assert.equal(spawnSync('node', [fileURLToPath(new URL('./validate.mjs', import.meta.url)), file]).status, 0);
+});
+
+test('the command line, the station\'s real path, refuses the old two-minute rally as too short', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'chron-'));
+  const file = join(dir, 'rally.json');
+  writeFileSync(file, JSON.stringify(good()));
+  const run = spawnSync('node', [fileURLToPath(new URL('./validate.mjs', import.meta.url)), file], { encoding: 'utf8' });
+  assert.equal(run.status, 1);
+  assert.match(run.stderr, /too short: \d+ words \(900 to 2,600\)/);
 });
 
 // The talk rules (writing rebuild, 9 Oct 2026). A scene of n lines, each `len` words of
