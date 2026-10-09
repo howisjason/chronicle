@@ -1,0 +1,556 @@
+{
+  "date": "2026-10-09",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-09-22-01",
+      "title": "THE CARD FACE DOWN UNDER THE QUESTION",
+      "startAt": "2026-10-09T22:21:40.417+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-22-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Be Intentional With Your Life and Actions",
+        "Philosophy Of Social Connection"
+      ],
+      "angle": "What are the potential ethical implications or societal consequences (positive or negative) of this idea if widely adopted? How could it be misused?",
+      "kind": "straight",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "How To Win Friends And Influence People: Let the other person believe your idea was theirs, and praise them for coming up with such an idea."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Every action you take should be intentional and deliberately thought out."
+        },
+        {
+          "kind": "note",
+          "text": "How To Win Friends And Influence People: Ask questions instead of giving direct orders."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Become the architect of your own life."
+        },
+        {
+          "kind": "note",
+          "text": "How To Win Friends And Influence People: The key to success lies in the ability to see things from the other person's point of view as well as your own."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Someone asks you a friendly question across the kitchen table. Want the Friday shift? Could you just cover Thursday? You can already see which answer they're hoping for, so you give it to them. And you tell yourself it was your idea.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10102
+        },
+        {
+          "speaker": "march",
+          "text": "Most people think that's just manners.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2598
+        },
+        {
+          "speaker": "march",
+          "text": "Getting someone to say yes without them noticing is good talk. A bit of charm.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4753
+        },
+        {
+          "speaker": "narrator",
+          "text": "Charm. March, you say the word the way a man says sofa. Let me read the note with the ink still wet. 'Every action you take should be intentional and deliberately thought out.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11520
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am holding the richest part in reserve. A question asked on purpose is a small architecture, and I want you to see the walls before I show you the door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10112
+        },
+        {
+          "speaker": "march",
+          "text": "So the note tells me to be deliberate, and you're saying a persuader gets to borrow the same deliberateness. Is that it?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6588
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is it, March. Intention is a tool, and a tool does not ask whose hand it is in. Your planning and a persuader's planning look identical from across the table.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10965
+        },
+        {
+          "speaker": "march",
+          "text": "That's not a tool. That's just being nice to people.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3006
+        },
+        {
+          "speaker": "narrator",
+          "text": "Asking is simple, March. A simple thing with a simple purpose.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4352
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1841
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing about a yellow note is simple. Give me the case.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3198
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let's say a team lead at a small print shop. A whiteboard on the back wall, a rota half finished in marker, and a sticky note in the corner that says Friday. She has already decided on Friday overtime. She does not say so.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 14763
+        },
+        {
+          "speaker": "march",
+          "text": "Then she starts asking. Who's got the most room on a Friday? Which bit of the week is dead? Who'd hate being asked to stay late, and who wouldn't mind?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7008
+        },
+        {
+          "speaker": "narrator",
+          "text": "The staff answer one by one, until someone says the words Friday overtime. She nods as though it has only just occurred to her. Then everyone walks away believing it was the room's plan.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12267
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, that's cold.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1697
+        },
+        {
+          "speaker": "march",
+          "text": "She never gave an order, though.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2174
+        },
+        {
+          "speaker": "march",
+          "text": "The note almost says so. Ask questions instead of giving direct orders.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4478
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the trick the note admires, March. An ask is the friendliest device ever made, because nobody thinks to duck.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7915
+        },
+        {
+          "speaker": "march",
+          "text": "Device. She's a team lead, not a general.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2683
+        },
+        {
+          "speaker": "march",
+          "text": "And she hasn't told one false thing. Nobody's been lied to.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3617
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite so, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1408
+        },
+        {
+          "speaker": "narrator",
+          "text": "No lie, March. A card held back is not a lie. It is a choice about what to leave on the table, and the note would call that design.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8853
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now, the print shop is only a small stage.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3029
+        },
+        {
+          "speaker": "march",
+          "text": "Scale it up, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1704
+        },
+        {
+          "speaker": "narrator",
+          "text": "Scale it up. The same ask can be put to a voter on a doorstep, a customer at a counter, or a crowd that wants to feel it chose. Whole elections could be whiteboards with a sticky note in the corner.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13035
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1238
+        },
+        {
+          "speaker": "narrator",
+          "text": "March? You have gone very quiet.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2411
+        },
+        {
+          "speaker": "march",
+          "text": "I'm counting. Don't ask what.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2236
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the print shop. Nobody gets the total, and nobody gets the sticky note either.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4968
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall bring the case home to the note. Let the other person believe your idea was theirs, and praise them for coming up with such an idea.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9152
+        },
+        {
+          "speaker": "march",
+          "text": "Right. So the same skill that lets me design my own week lets me design somebody else's.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5645
+        },
+        {
+          "speaker": "march",
+          "text": "The note just doesn't say which way it points.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2819
+        },
+        {
+          "speaker": "narrator",
+          "text": "The design note makes a builder of you. The social note hands you drawings for other people's rooms, and the same hand holds both pencils.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9237
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the crossing, March. Neither note shows it alone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3947
+        },
+        {
+          "speaker": "march",
+          "text": "So if everyone asks questions like that, nobody can trust a question.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4347
+        },
+        {
+          "speaker": "march",
+          "text": "You'd have to check every card in every conversation.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3201
+        },
+        {
+          "speaker": "narrator",
+          "text": "Or the reverse. If everyone learns to ask openly, the whiteboard gets seen and nobody has to duck.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6997
+        },
+        {
+          "speaker": "narrator",
+          "text": "The same move that steers can also invite. Which of those it becomes is a choice, and the choice is ours.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7189
+        },
+        {
+          "speaker": "march",
+          "text": "Lovely idea, aimed at a whole country.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2753
+        },
+        {
+          "speaker": "march",
+          "text": "Start with the print shop. Would the staff still say yes if they could see the card?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4628
+        },
+        {
+          "speaker": "narrator",
+          "text": "I would guess yes, if the overtime were fair. And that is the very card I cannot see on your desk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6656
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have hidden something in this design, March, I am certain of it. An extra thought lies underneath the first.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 7083
+        },
+        {
+          "speaker": "march",
+          "text": "I haven't hidden anything. It's the Late Edition.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2864
+        },
+        {
+          "speaker": "march",
+          "text": "I don't do tricks this late.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2128
+        },
+        {
+          "speaker": "march",
+          "text": "Honest version, then. J would rather be asked than handled.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3411
+        },
+        {
+          "speaker": "march",
+          "text": "He'd hate that I know it, and he'd hate that I said it on air.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3301
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. I have read that in every line of his, and I did not need your permission to say so.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1009
+        },
+        {
+          "speaker": "narrator",
+          "text": "The key to success lies in the ability to see things from the other person's point of view as well as your own.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 7403
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here is the fork, for anyone who takes this on board. Every ask they make now carries more than one possible intention.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8384
+        },
+        {
+          "speaker": "narrator",
+          "text": "They check whether the other person would still agree if they could see the plan. Picture a desk with a card lying face down under the question, and a hand that keeps turning it over before it speaks.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 11861
+        },
+        {
+          "speaker": "march",
+          "text": "So the question becomes a test. Would they still say yes with the card face up?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4734
+        },
+        {
+          "speaker": "march",
+          "text": "If not, you put the card down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2320
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the one who asks openly does not need the card face down at all. They only need an ask whose answer they could live with, shown in full.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 9237
+        },
+        {
+          "speaker": "narrator",
+          "text": "Allow me to hand J a title for all this, since the notes have made him an architect.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5355
+        },
+        {
+          "speaker": "narrator",
+          "text": "Architect of the Open Ask. He may not claim it until he has asked one he would not mind being asked back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6997
+        },
+        {
+          "speaker": "march",
+          "text": "He'd wince at that name, then pin it to the wall anyway.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3256
+        },
+        {
+          "speaker": "march",
+          "text": "Keep it, Narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1811
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the kettle, March. It has just clicked off again, on its own, and I still count that as a sign.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6187
+        },
+        {
+          "speaker": "narrator",
+          "text": "Keeper of the Morning Votes is waiting for him.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2987
+        },
+        {
+          "speaker": "march",
+          "text": "Keep the kettle, keep the title.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2319
+        },
+        {
+          "speaker": "march",
+          "text": "The real question is who was honest with whom, and that yellow note's still in the corner.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4817
+        },
+        {
+          "speaker": "march",
+          "text": "My total stays in my column. Up next, the rest of these notes, then the one about failure and what it teaches us.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6170
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
+    }
+  ]
+}
