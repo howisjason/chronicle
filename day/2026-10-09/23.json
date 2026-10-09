@@ -362,6 +362,616 @@
         "n": 1,
         "of": 1
       }
+    },
+    {
+      "id": "2026-10-09-23-02",
+      "title": "THE BAD SONG IN ONE MINUTE",
+      "startAt": "2026-10-09T23:15:14.118+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-23-02.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Failure Is How We Learn And Grow",
+        "Happiness And Gratitude"
+      ],
+      "angle": "What data or evidence currently supports this idea? What data would disprove it or force a major revision? How could I test this with a small experiment?",
+      "kind": "straight",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: Our past may be a reminder of our failures and mistakes, but we must not see it as a flaw or regret."
+        },
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: Trying to write a great song is hard. Trying to write a bad song is easy and fun. You could do it in one minute, right now."
+        },
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: A mistake only counts as experience if you learn from it. Record what you learned, and review it. Otherwise, it was a waste."
+        },
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: The people devastated by failure are the ones who didn’t expect it. They mistakenly think failure is who they are instead of the result of one attempt."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness is simply a state of mind in which our thinking is pleasant most of the time."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness (or any other feeling/emotion like successful, worthy, deserving, joyful, etc) is not something that is earned or deserved."
+        },
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: Our past may be a reminder of our failures and mistakes, but we must not see it as a flaw or regret."
+        },
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: A failure quits, which concludes the story, and earns the title."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Say you've rewritten the same email again and again. The newest version reads like a stranger wrote it in a hurry. Somewhere a small voice says those clumsy versions prove you can't write at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9315
+        },
+        {
+          "speaker": "march",
+          "text": "Hold on to that voice. I run it myself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2729
+        },
+        {
+          "speaker": "march",
+          "text": "Every clumsy attempt gets logged under me being rubbish at the thing. Clumsy attempt, rubbish me. Tidy, and wrong.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 6349
+        },
+        {
+          "speaker": "narrator",
+          "text": "Tidy as a pantry with the labels on, and about as roomy. The note takes a grander view. Our past may be a reminder of our failures and mistakes, but we must not see it as a flaw or regret. The best of it I'm keeping back for later.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 6,
+          "audioMs": 15936
+        },
+        {
+          "speaker": "march",
+          "text": "So the bad attempts are useful, and they're not a verdict on me.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 6,
+          "audioMs": 3602
+        },
+        {
+          "speaker": "narrator",
+          "text": "I'm saying they're a ledger, and you've been reading it upside down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 6,
+          "audioMs": 4011
+        },
+        {
+          "speaker": "march",
+          "text": "Upside down.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 6,
+          "audioMs": 1567
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, then. Prove it with one case, not a ledger.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 6,
+          "audioMs": 2901
+        },
+        {
+          "speaker": "narrator",
+          "text": "The page gives its own case. Trying to write a great song is hard. Trying to write a bad song is easy and fun. You could do it in one minute, right now.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9963
+        },
+        {
+          "speaker": "march",
+          "text": "Easy and fun. Say the timer runs for one minute, and the email wants a fork and a silly hat. Finished inside the minute, and dreadful, which is the point.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7653
+        },
+        {
+          "speaker": "narrator",
+          "text": "Dreadful and finished. That's the whole move. Now the log. What did that ugly chorus teach you?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6443
+        },
+        {
+          "speaker": "march",
+          "text": "A log for that chorus might say the email rhymes with fail if you're not paying",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4496
+        },
+        {
+          "speaker": "march",
+          "text": "attention. That a kettle is not a lyric. And that the next one should be sung, not typed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4774
+        },
+        {
+          "speaker": "narrator",
+          "text": "Logged a waste that taught you a rhyme? Record what you learned, and review it, the book says. Otherwise it was a waste.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7424
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Small experiment, then. Tomorrow morning I read the log before I write the next version. If I'm not any better, the claim's wrong.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6966
+        },
+        {
+          "speaker": "narrator",
+          "text": "Good. Now what would prove it wrong? Be specific, or you'll call every ugly chorus a lesson whatever happens.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7104
+        },
+        {
+          "speaker": "march",
+          "text": "You go first. Evidence, not the writers being clever.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3255
+        },
+        {
+          "speaker": "narrator",
+          "text": "If the log stays blank. If the ugly song only makes you feel worse and you never open the page again. If the next attempt is no better than this one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9963
+        },
+        {
+          "speaker": "narrator",
+          "text": "Any of those and the claim is wrong, or at least sloppy.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3584
+        },
+        {
+          "speaker": "march",
+          "text": "Then that's a clean test. And cheap. Costs less than the kettle.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3417
+        },
+        {
+          "speaker": "narrator",
+          "text": "Cheaper than the kettle, and the kettle never sleeps.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3328
+        },
+        {
+          "speaker": "march",
+          "text": "And what supports it? Apart from the writers' habit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3018
+        },
+        {
+          "speaker": "narrator",
+          "text": "Only the habit, March. Writers finish the bad first draft, because it gets the idea out of the head and into the world, where it can be improved.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9429
+        },
+        {
+          "speaker": "narrator",
+          "text": "A habit isn't data. But a habit is cheap to test, and that's where I'd start.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5248
+        },
+        {
+          "speaker": "march",
+          "text": "So the habit is the evidence, and the reading is the test. A clumsy version only helps if you go back and read it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6416
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly. Without the reading, a clumsy version is just a clumsy version, and you're back at the verdict.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6869
+        },
+        {
+          "speaker": "march",
+          "text": "Cheap I can do. Here's a confession, though. Most people I know keep a private score.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 4753
+        },
+        {
+          "speaker": "march",
+          "text": "The usual kind. Arguments won, ticked off with a pencil in the head.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4035
+        },
+        {
+          "speaker": "narrator",
+          "text": "Does the score log the losses? Or only the wins?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3477
+        },
+        {
+          "speaker": "march",
+          "text": "Most scores I've heard of log only the wins. A lost argument gets put under wasn't listening.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5883
+        },
+        {
+          "speaker": "narrator",
+          "text": "Wasn't listening is a lesson, if a lazy one. But a lost argument put down that way never moves your position. Then the score is only a tally, and a tally has never changed anybody's mind.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13227
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch.",
+          "emotion": "surprised",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 1009
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, but the tangent matters. If I logged the loss as a lesson, I'd have to revise my position. That's what the log is for.",
+          "emotion": "surprised",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 6990
+        },
+        {
+          "speaker": "narrator",
+          "text": "There it is. The score only counts if the losses move you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3904
+        },
+        {
+          "speaker": "narrator",
+          "text": "Otherwise you're keeping a tally of your own cleverness. Move over, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4693
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the drawer people keep at the back, I'd guess, is locked, full of ugly choruses.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5504
+        },
+        {
+          "speaker": "march",
+          "text": "Stay in your chair. You'll be guessing until the lid's off.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3044
+        },
+        {
+          "speaker": "narrator",
+          "text": "A letter nobody sent. A pencil tin with one good pencil in it. Somebody's score lives in a tin like that, and I'd bet on it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8725
+        },
+        {
+          "speaker": "march",
+          "text": "Keep guessing. The tin is staying shut.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2645
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the crossing. Happiness, or any feeling like worthy or deserving, is not something that is earned or deserved.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 7723
+        },
+        {
+          "speaker": "narrator",
+          "text": "The other note says the same thing from the far side.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 5,
+          "audioMs": 3371
+        },
+        {
+          "speaker": "march",
+          "text": "So a good feeling isn't a prize for getting things right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3299
+        },
+        {
+          "speaker": "narrator",
+          "text": "Happiness is simply a state of mind in which our thinking is pleasant most of the time. Wait until you deserve pleasant thoughts, and you'll be busy thinking unpleasant ones about your own unworthiness.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 12672
+        },
+        {
+          "speaker": "march",
+          "text": "So what does someone do with a grey mood, if they don't grade themselves on it?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3895
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let it be pleasant most of the time, and write down what the grey day taught them. The same log, aimed at a feeling instead of a chorus.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8747
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, here's the join.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 2108
+        },
+        {
+          "speaker": "march",
+          "text": "Both notes make one mistake. You judge your worth from one outcome, whether it's a failed chorus or a grey mood, and then you grade yourself on the spot.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 7805
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly that. They mistakenly think failure is who they are instead of the result of one attempt.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6741
+        },
+        {
+          "speaker": "narrator",
+          "text": "And a feeling needs no reason. One outcome, one mood, one data point. Neither is the whole dataset.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6784
+        },
+        {
+          "speaker": "march",
+          "text": "Data point. You're on the test now, I can hear it.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2970
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. One chorus is one data point, not the whole dataset.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3816
+        },
+        {
+          "speaker": "narrator",
+          "text": "Not yet. The best sentence is still in my pocket. First, the fork.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 7,
+          "audioMs": 4992
+        },
+        {
+          "speaker": "narrator",
+          "text": "Take someone who sends a clumsy draft out into the world. Then take someone else who sends the very same draft.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7573
+        },
+        {
+          "speaker": "narrator",
+          "text": "The first believes the draft is who they are, so they hide from the inbox all week.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5312
+        },
+        {
+          "speaker": "march",
+          "text": "And the other one believes it's one attempt. So they write down what it taught them, and send the next version by Friday.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6155
+        },
+        {
+          "speaker": "march",
+          "text": "Same draft, different week, very different outcome.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2945
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the best sentence, which I've held all this while.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 7,
+          "audioMs": 3413
+        },
+        {
+          "speaker": "narrator",
+          "text": "A failure quits, which concludes the story, and earns the title. Quitting is the only move that makes a failure final.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 7,
+          "audioMs": 7872
+        },
+        {
+          "speaker": "narrator",
+          "text": "Everything else is the next attempt.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 7,
+          "audioMs": 2581
+        },
+        {
+          "speaker": "march",
+          "text": "Derek Sivers wrote that, and I'd tell the hiding one the same.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 7,
+          "audioMs": 3607
+        },
+        {
+          "speaker": "march",
+          "text": "Stop hiding. Send the next one.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 7,
+          "audioMs": 2386
+        },
+        {
+          "speaker": "march",
+          "text": "It's late, so I'll say one plain thing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2662
+        },
+        {
+          "speaker": "march",
+          "text": "My guess is the clumsy versions are the part he keeps. I shouldn't say that, and I'm saying it anyway.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5773
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I'll drop the act for one line. The notebook is a shelf of attempts, and nobody reads a shelf for its best books alone.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7851
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the cup on your desk, March. One crack, one attempt, sitting on a long shelf of cups that did their job for years.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7979
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. The cup was never a prophecy.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2492
+        },
+        {
+          "speaker": "narrator",
+          "text": "Good. A chip, and a shelf of attempts. Go on, send the email.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4352
+        },
+        {
+          "speaker": "march",
+          "text": "Clumsy version and all. That's the only send the note asks for.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3767
+        },
+        {
+          "speaker": "march",
+          "text": "Up next: the rest of Happiness And Gratitude, the smiling part, and the worries that are small.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5199
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
