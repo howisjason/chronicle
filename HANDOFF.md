@@ -1,4 +1,4 @@
-> **Stamped 2026-10-09 21:47 · 60dc325** — true as of this commit; anything after it is unaccounted for.
+> **Stamped 2026-10-10 06:22 · c17ba14** — true as of this commit; anything after it is unaccounted for.
 
 # HANDOFF — chronicle
 
@@ -8,7 +8,7 @@ The fifth baton. The fourth one's "one job" (the writing rebuild) is done and li
 
 **Nothing is due on the writing: J's call (9 Oct, 9pm) is to let it run a few days and judge it from the logged scenes** ("we don't really have to make a definitive verdict right now"). When he comes back to it, read a spread of scenes from `day/<date>/*.json` with him, and measure with the snippet in the rebuild note's section 2 (lines, words, short and long turns) plus `inbox/costs.tsv` (labels `outline`, `write#N`, `talk#N`, `mend#N`, `truth`, `repair#N`).
 
-**His ask, waiting on his go (9 Oct, 9pm): the new March in the narrator's seat, the old March in hers, both live on the stream, so he can compare them.** Possible and smaller than a full swap: in that seat she only needs the idle, a talking mouth and the neutral face (the narrator's mood is always neutral and his action always none). The work: lift the engine out of `human-hunt/13-base/base.html` (today a one-page demo that sizes itself to the window and runs its own 12-second script) into a drawing piece `people.js` can call with a position and a mouth state; seat her behind the desk in the narrator's place on the 128x72 stage (her head is 28 px against the old 14, so she is twice the size); update `CROP` in `panels.js` for the cast card. The narrator's deep voice will come out of her mouth, and the page is public, so viewers see two Marches.
+**The two Marches are live side by side (10 Oct, 6:20am, his ask):** the old pixel March in her seat, the new per-pixel March (`march-base.js`, the human-hunt engine adopted, every wiring change named in its header) in the narrator's seat, her mouth moving on his lines. Built by an Opus builder, passed by a fresh Sonnet judge, seen on the live site. Loose ends, none urgent: her mouth shapes on narrator lines vary only a little; the narrator's cast-card text still describes the old bearded storyteller; draw time measured only on the Mac (about 2.5 ms), never on a phone; after a seek her pose settles from a slightly different spot than a continuous run (harmless). Its screenshots sit untracked in `design/two-marches/`.
 
 ## What changed on 9 Oct, ranked
 
@@ -27,7 +27,7 @@ Spend today: `python3 mac/usage.py`. Clock on: `launchctl list | grep chronicle`
 
 ## Open, in the order worth doing
 
-1. The side-by-side Marches (his ask; his go). 2. The clip scrubber (page only, rebuild note section 7). 3. The schedule question: rotate the shows or keep the clock (his answer; rebuild note section 8). 4. The making pace: about 9 minutes of work buys about 6 minutes of show, so a long run shows replays between new scenes; if he minds, the cures are fewer dropped picks or writing two picks at once. 5. The clip on his phone (his to try). 6. The untracked `design/` files can be deleted (nothing reads them). Parked by his word: viewer questions on air; the journey (re-ask after about a week of the vault-only show).
+1. What he makes of the two Marches (his eyes). 2. The clip scrubber (page only, rebuild note section 7). 3. The schedule question: rotate the shows or keep the clock (his answer; rebuild note section 8). 4. The making pace: about 9 minutes of work buys about 6 minutes of show, so a long run shows replays between new scenes; if he minds, the cures are fewer dropped picks or writing two picks at once. 5. The clip on his phone (his to try). 6. The untracked `design/` files can be deleted (nothing reads them). Parked by his word: viewer questions on air; the journey (re-ask after about a week of the vault-only show).
 
 ## The one thing worth carrying forward
 
