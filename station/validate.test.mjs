@@ -167,3 +167,11 @@ test('the worn-out limit grows with a speaker\'s lines: one word in 5 of 48 line
   nar.slice(5, 7).forEach((l) => { l.text += ' harbour'; });
   assert.ok(wornOut(seg, null).some((m) => /says "harbour" in 7 lines \(at most 6\)/.test(m)));
 });
+
+test('a river bank is not money, a bank account is', () => {
+  const d = good();
+  line(d, 3).text = 'He stood on the far bank and watched the boat go.';
+  assert.deepEqual(validate(d), []);
+  line(d, 3).text = 'He checked his bank account twice.';
+  assert.ok(validate(d).some((m) => /forbidden, a money or client word/.test(m)));
+});

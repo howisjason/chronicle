@@ -105,7 +105,9 @@ invented line with the real inbox; it flagged exactly that line on 8 Oct 2026.
 how pnn.watch works (7 Oct 2026).md`). The ideas and the look, never PNN's code. J closed
 the design search after about fifteen attempts across two sessions; do not reopen it, do not
 propose another style, and spend as few tokens on the look as the job allows. The rest of
-the channel matters more.
+the channel matters more. The one design that came after this (his own call, in the
+`human-hunt` repo, 9 Oct 2026) is a new per-pixel base for March, `human-hunt/13-base/base.html`;
+he asked to see it on the stream beside the old March, and the baton holds how.
 
 What was tried and rejected (never propose again): pixel-room and lit-pixel chibis, felt
 paper, watercolour, cel, lit-anime, clay, a skin-coloured ball with anime eyes, March as a

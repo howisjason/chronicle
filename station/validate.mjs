@@ -53,7 +53,9 @@ const FORBIDDEN = [
   [/\b(?:visa|doctor|hospital|medicine|medication|prescription|diagnos\w*|therap\w*|insurance)\b/i, 'a health, medicine or visa word'],
   [/\b(?:sk|ghp|gho|github_pat|xox[abp])[-_][A-Za-z0-9_-]{8,}|\b[A-Fa-f0-9]{32,}\b/, 'a key-shaped string'],
   [/[\w.+-]+@[\w-]+\.[\w.]+/, 'an email address'],
-  [/\b(?:client|prospect|invoice|payment|rent|salary|debt|credit card|bank)\b/i, 'a money or client word'],
+  // "bank" only with a money word after it: "the far bank" of a river is the commonest picture
+  // the writer reaches for, and it dropped a whole live pick on 9 Oct 2026.
+  [/\b(?:client|prospect|invoice|payment|rent|salary|debt|credit card|bank (?:account|balance|loan|card|transfer)s?)\b/i, 'a money or client word'],
 ];
 
 // `before` is the scene aired just before this file's first one, if any; it is
@@ -114,7 +116,7 @@ export function talkShape(seg) {
   return out;
 }
 
-const STOP = new Set(('the and that this with have from what your you are was were for not but his her him she they them then than there their here when where which who whom will would could should shall must about into over only just like also even very more most much some such been being does did done says said into onto upon its it\'s i\'m don\'t can\'t that\'s let\'s you\'re he\'d he\'s she\'s i\'ll i\'d we\'re isn\'t won\'t yes no not now one all any can may might our out own off too why how see say get got going make made know think well back still way thing things time once again another every each other same right okay fine good note notes notebook idea ideas bit man day way lot kind sort put').split(' '));
+const STOP = new Set(('the and that this with have from what your you are was were for not but his her him she they them then than there their here when where which who whom will would could should shall must about into over only just like also even very more most much some such been being does did done says said into onto upon its it\'s i\'m don\'t can\'t that\'s let\'s you\'re he\'d he\'s she\'s i\'ll i\'d we\'re isn\'t won\'t yes no not now one all any can may might our out own off too why how see say get got going make made know think well back still way thing things time once again another every each other same right okay fine good note notes notebook idea ideas bit man day way lot kind sort put has had never always because before after really something nothing everything').split(' '));
 const NAMES = new Set(['march', 'narrator', 'j']);
 const words = (t) => String(t || '').toLowerCase().match(/[a-z][a-z']*/g) || [];
 
