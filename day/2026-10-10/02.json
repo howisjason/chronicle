@@ -415,6 +415,580 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-02-02",
+      "title": "THE LETTER THAT WAITED FOR SUNDAY",
+      "startAt": "2026-10-10T02:19:41.958+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-02-02.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Reality Transurfing",
+        "The Present Moment Is All That Exists"
+      ],
+      "angle": "What could I remove from this idea to make it simpler, cheaper, or more effective? (Instead of just adding)",
+      "kind": "quick_fire",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: Forget the whole notion of the future. There is only today. If you want to do something, do it now."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: People think they’ll do something later. They think they’ll have more time in the future than they do today, as if later is a magical time when everything will happen."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: Say to yourself \"From this moment on, I choose myself.\" In transurfing, the wanderer is not one chosen by fate."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: The mirror cannot reflect what isn't there. Take care of yourself."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: A second passed is a second lost. Treasure every single second so that there is no regret."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You have a letter you mean to write. Already drafted the first line in your head. And it goes out Sunday, when the week's quieter and you're braver.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6860
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the letter that waits for a braver Sunday. I have seen that letter in more drawers than I can count, curling at the corners, never once carried to the box.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10027
+        },
+        {
+          "speaker": "march",
+          "text": "Curling at the corners. Right, leave the drawers.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2920
+        },
+        {
+          "speaker": "march",
+          "text": "Let's talk about the lie.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1958
+        },
+        {
+          "speaker": "narrator",
+          "text": "The lie is this. Most people believe they will have more time later than they have today. Later is a magical season, the real living begins then, and everything gets done at last. A grand notion, and quite false.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14443
+        },
+        {
+          "speaker": "march",
+          "text": "Comfortable lie. Costs more than it saves, though. Nobody ever checks the bill.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4378
+        },
+        {
+          "speaker": "narrator",
+          "text": "The season of later will surely come, March. It has a fine reputation.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5099
+        },
+        {
+          "speaker": "march",
+          "text": "It always comes.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1701
+        },
+        {
+          "speaker": "march",
+          "text": "It's just always the next one.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2236
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then hear it as Sivers said it, and the note keeps his words. 'Forget the whole notion of the future. There is only today. If you want to do something, do it now.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10517
+        },
+        {
+          "speaker": "march",
+          "text": "So there's no spare Sunday in the calendar. Only the day you're standing in.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4284
+        },
+        {
+          "speaker": "narrator",
+          "text": "Only the day. The Sunday you are saving is also a today once it arrives, and it will be as stingy as this one. The best of it I keep back until we reach the tram stop.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11477
+        },
+        {
+          "speaker": "march",
+          "text": "You're holding out again.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1937
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Plain version: if it matters, do it today. Not after the rain.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3968
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the rain. Yes, the rain. Let us go and stand at the tram stop, where it always falls, and watch a woman decide.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8256
+        },
+        {
+          "speaker": "march",
+          "text": "Here we go.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1376
+        },
+        {
+          "speaker": "march",
+          "text": "A woman at a tram stop. Bus pass in one hand, wet glove on the other. A letter in her coat, addressed to her sister.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6248
+        },
+        {
+          "speaker": "march",
+          "text": "She tells herself she'll post it once the weather clears.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3221
+        },
+        {
+          "speaker": "narrator",
+          "text": "Which rain? A drizzle, I should guess, the fine grey sort that never quite stops. Or the downpour that sulks on the rooftops, or the mist that settles on the shoulders like a heavy cloak. She is waiting for one of the rain's moods to leave, and none of the moods will oblige her.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 17963
+        },
+        {
+          "speaker": "march",
+          "text": "Wrong. She's waiting for the rain, not for a mood.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2871
+        },
+        {
+          "speaker": "march",
+          "text": "Let's ask the box. Does the stamp know it's raining?",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3071
+        },
+        {
+          "speaker": "narrator",
+          "text": "The stamp is indifferent to the weather. It is the one thing in the whole street that does not wait for a mood.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6933
+        },
+        {
+          "speaker": "march",
+          "text": "Right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1017
+        },
+        {
+          "speaker": "march",
+          "text": "The stamp costs the same in any weather. Only she changes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3563
+        },
+        {
+          "speaker": "narrator",
+          "text": "Her, and what she tells herself while she stands there. The sister will wait for the letter, the letter will wait for the rain, and the rain will wait for nobody.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9429
+        },
+        {
+          "speaker": "march",
+          "text": "The rain has no appointments.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2238
+        },
+        {
+          "speaker": "narrator",
+          "text": "No appointments and no mercy. Each of them is waiting on the other, and none of them moves first.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6421
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, now me. Trying it on, out loud.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2699
+        },
+        {
+          "speaker": "march",
+          "text": "From this moment on, I choose myself.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2639
+        },
+        {
+          "speaker": "narrator",
+          "text": "Does it sound like a promise, or a pose?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2688
+        },
+        {
+          "speaker": "march",
+          "text": "Slightly a pose. I feel like I'm in a film about a woman who posts letters.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4353
+        },
+        {
+          "speaker": "narrator",
+          "text": "The glass returns the pose too. Stand before it and the pose comes back with its collar up and its chin lifted, looking very pleased with itself.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 10048
+        },
+        {
+          "speaker": "march",
+          "text": "Creepy mirror.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1490
+        },
+        {
+          "speaker": "march",
+          "text": "Then the self-claim only works if it's said now.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2900
+        },
+        {
+          "speaker": "march",
+          "text": "Rehearsed for a better morning, it's just a pose waiting for Sunday.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3686
+        },
+        {
+          "speaker": "narrator",
+          "text": "And a pose waiting for Sunday has the very same posture as an envelope waiting for Sunday.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6144
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the tram stop before you sell me a poem.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3049
+        },
+        {
+          "speaker": "narrator",
+          "text": "Before we go, March, I suspect something hidden in the design of this talk. A small clause, tucked inside where I cannot see it.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8725
+        },
+        {
+          "speaker": "march",
+          "text": "There's no clause.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1770
+        },
+        {
+          "speaker": "narrator",
+          "text": "A trapdoor, then. You always leave a trapdoor under the carpet.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4011
+        },
+        {
+          "speaker": "march",
+          "text": "Keep guessing. You'll find it when you stop looking for a trapdoor.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 4,
+          "audioMs": 3498
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the letter.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1571
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the cheap version, straight. Remove the later. Strip out the Sunday, the someday, the waiting.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 4,
+          "audioMs": 5186
+        },
+        {
+          "speaker": "march",
+          "text": "What's left?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1314
+        },
+        {
+          "speaker": "narrator",
+          "text": "A thrown ball and the catch in the same breath. No return trip next week, no boomerang sitting in a drawer waiting for its turn.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8704
+        },
+        {
+          "speaker": "march",
+          "text": "Right. The mirror can only reflect what's standing in front of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3522
+        },
+        {
+          "speaker": "march",
+          "text": "The Sunday version has nothing standing there, so it reflects nothing at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4292
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the mirror is useful only in the present tense. The later was never a reflection.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5845
+        },
+        {
+          "speaker": "narrator",
+          "text": "It was only a draft, folded up and kept in a coat.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3520
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Ouch.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1321
+        },
+        {
+          "speaker": "march",
+          "text": "A draft. That's what she's carrying in her coat.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2700
+        },
+        {
+          "speaker": "march",
+          "text": "Cut the draft and the envelope is simply done.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2858
+        },
+        {
+          "speaker": "narrator",
+          "text": "And what you cut is also the part that costs the most, March. Every hour spent saving for Sunday is an hour not lived...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8491
+        },
+        {
+          "speaker": "march",
+          "text": "...and a moment passed is a moment lost. Yes, I heard the note.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3757
+        },
+        {
+          "speaker": "march",
+          "text": "A pair stands at the same tram stop. Same weather, same bus pass, same envelope.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5068
+        },
+        {
+          "speaker": "march",
+          "text": "One posts it right there, into the box, with the sky still weeping, then walks off a little lighter.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5176
+        },
+        {
+          "speaker": "march",
+          "text": "The other keeps the envelope in the coat lining for the rest of the month. Each morning it weighs a bit more, and the glass shows only the sigh of someone who meant to act later.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8208
+        },
+        {
+          "speaker": "narrator",
+          "text": "The sigh is a fine portrait, March. I shall hang it beside the bread. And for J, a gift, as always: Keeper of the Open Door. A door left open is the only one a letter ever leaves by.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13525
+        },
+        {
+          "speaker": "march",
+          "text": "Too long for a Long Night.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2060
+        },
+        {
+          "speaker": "march",
+          "text": "And don't hang the sigh. Just post the letter.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2692
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the part I kept back, and it is the box itself. The letter was posted the moment someone walked to it, rain or no rain.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8789
+        },
+        {
+          "speaker": "narrator",
+          "text": "The one who waited was still standing at the stop.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3200
+        },
+        {
+          "speaker": "march",
+          "text": "That was obviously my point.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2299
+        },
+        {
+          "speaker": "narrator",
+          "text": "It was, and I concede it with a bow, the only one I have left in my coat.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5013
+        },
+        {
+          "speaker": "march",
+          "text": "You always have one left.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2106
+        },
+        {
+          "speaker": "march",
+          "text": "Up next: Novelty, A Life Fully Lived, and Happiness And Gratitude. Post the envelope before they start.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6135
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
