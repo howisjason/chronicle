@@ -1,0 +1,367 @@
+{
+  "date": "2026-10-09",
+  "tz": "Asia/Bangkok",
+  "segments": [
+    {
+      "id": "2026-10-09-23-01",
+      "title": "THE COCKROACH BY THE GRAVY BOAT",
+      "startAt": "2026-10-09T23:06:54.729+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-23-01.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Remove Negatives Over Adding More Positives"
+      ],
+      "angle": "If the world's leading expert on [Unrelated Field] looked at this, what nuance or advanced application might they see?",
+      "kind": "legend",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Remove Negatives Over Adding More Positives: Adding good habits doesn't undo the bad habits."
+        },
+        {
+          "kind": "note",
+          "text": "Remove Negatives Over Adding More Positives: Bad has more power. Insults affect you more than compliments."
+        },
+        {
+          "kind": "note",
+          "text": "Remove Negatives Over Adding More Positives: An otherwise perfect meal can be wrecked by one cockroach on the plate."
+        },
+        {
+          "kind": "note",
+          "text": "Remove Negatives Over Adding More Positives: It's easier to eat 0 doritos than to eat 1 dorito."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've had a salad this week, right? Then round about the afternoon you go for the biscuit tin anyway, telling yourself the salad bought you a pass. Everybody does it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8015
+        },
+        {
+          "speaker": "march",
+          "text": "So the usual advice is to build a good life by piling good things on. More greens. More walks. Earlier nights. Add the good stuff and the rest sorts itself out. Like vitamins in a glass of water. More is better, apparently.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10852
+        },
+        {
+          "speaker": "narrator",
+          "text": "Lovely picture. The water glows, the vitamins swim about. But whatever was already in the glass is still sitting at the bottom, waiting for you to finish your drink. The note is blunter. Adding good habits doesn't undo the bad habits.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15573
+        },
+        {
+          "speaker": "march",
+          "text": "I'd still drink the vitamins.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2232
+        },
+        {
+          "speaker": "narrator",
+          "text": "You'd drink anything you were handed. That's your charm. Now the claim, at full size. Removing negatives matters more than adding positives.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9045
+        },
+        {
+          "speaker": "march",
+          "text": "Bad outweighs good, then. So you clear the bad first, before you add a thing.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4142
+        },
+        {
+          "speaker": "narrator",
+          "text": "Outweighs, yes. The bad is the stone in the pan. Good is the feather on the other side. Lift out the stone and the feather starts to count.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9280
+        },
+        {
+          "speaker": "march",
+          "text": "Prove it. One case. Not a feeling about stones.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2875
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then take a cook. Suppose a head cook in an old book of household rules, one who checked every plate herself before it left her kitchen. Every plate. Every evening. Nothing here is proven, mind. It's a case to test the claim on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 15275
+        },
+        {
+          "speaker": "march",
+          "text": "A terrifying cook in a book. Lovely. Is this going anywhere?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3603
+        },
+        {
+          "speaker": "narrator",
+          "text": "Suppose one evening a single cockroach ran over the rim of a plate, right beside the gravy boat. Then, in that same supposed kitchen, the whole supper goes in the bin. The roast, the pudding, every dish that came out perfect. Into the bin.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 16405
+        },
+        {
+          "speaker": "march",
+          "text": "Over one bug? That's a tantrum with a ladle. The rest of the food was fine.",
+          "emotion": "surprised",
+          "action": "facepalm",
+          "source": 2,
+          "audioMs": 4217
+        },
+        {
+          "speaker": "narrator",
+          "text": "The rest was fine. Count the diners, March. Count the people who would have eaten that plate and been ill by midnight.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7573
+        },
+        {
+          "speaker": "march",
+          "text": "Fair point, cook.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1590
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Okay. One table, then.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2389
+        },
+        {
+          "speaker": "narrator",
+          "text": "One table is plenty. Her whole house gets judged by the one plate nobody sent back. The good dishes beside it never reach any book.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9344
+        },
+        {
+          "speaker": "march",
+          "text": "Which is me, isn't it? Looking at my cup. The chipped one on the desk. It held the good tea for years. Do I bin it, or keep it for all that tea...",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6860
+        },
+        {
+          "speaker": "narrator",
+          "text": "...that is the whole question in one cup! The one crack outweighs the shelf of sound ones behind it. Look at it. The crack runs from handle to rim like a road, and roads go somewhere. A sign, March. Destiny drawn on china.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 16171
+        },
+        {
+          "speaker": "march",
+          "text": "It's a crack. Cups crack. You've turned a teacup into a prophecy.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3510
+        },
+        {
+          "speaker": "narrator",
+          "text": "A lesson. That's worse for the cup.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2240
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Back to the cook, then. Do the fine plates get binned too, or do they just stop being the story?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5443
+        },
+        {
+          "speaker": "narrator",
+          "text": "Keep them. Keep the whole shelf. Just stop making the chip the story.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4395
+        },
+        {
+          "speaker": "march",
+          "text": "Yes, you're right. Now your note. It's easier to eat 0 doritos than to eat 1 dorito. Explain that, since it's the same cook.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 6885
+        },
+        {
+          "speaker": "narrator",
+          "text": "The same cook, a bit smaller. You don't argue with yourself over one dorito, because the argument was lost before the bag opened. Zero is simpler than one. The bargaining starts with the first crumb.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13397
+        },
+        {
+          "speaker": "march",
+          "text": "So the rule does the work, and I don't have to.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2852
+        },
+        {
+          "speaker": "narrator",
+          "text": "The rule keeps the tin shut so your willpower can go home early. It does the cook's job for her.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6379
+        },
+        {
+          "speaker": "march",
+          "text": "Shut. Tidy.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1474
+        },
+        {
+          "speaker": "march",
+          "text": "And you've hidden something in this desk again. I saw you looking under the teapot.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 4344
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hidden nothing. You've got a drawer nobody's opened.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3392
+        },
+        {
+          "speaker": "march",
+          "text": "I have a drawer. I'm not saying what's in it. Not saying it's for me either. End of it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4671
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I'll take the chair across for the fork. A throne, really, with the crown still on it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5845
+        },
+        {
+          "speaker": "march",
+          "text": "You'll sit in the café chair like everyone else.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2905
+        },
+        {
+          "speaker": "narrator",
+          "text": "Picture someone at the biscuit tin, late in the afternoon, who decided no hours ago.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5845
+        },
+        {
+          "speaker": "march",
+          "text": "Decided already. Ha.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2065
+        },
+        {
+          "speaker": "narrator",
+          "text": "They don't weigh it up. The answer was settled when they chose it. So the afternoon goes quiet, and they stop counting the good meals they already had.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9173
+        },
+        {
+          "speaker": "march",
+          "text": "So you stop bargaining over every small choice. And the good days stop being a tally you keep against yourself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6293
+        },
+        {
+          "speaker": "march",
+          "text": "So back to the salad. It didn't buy you a pass. The tin had the last word, and the decision was made before the lid came off.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 6795
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the cook was right about the cockroach.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2709
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. You're right about the bug. It's late, so the tin can stay shut. Up next: Failure Is How We Learn And Grow, then Happiness And Gratitude.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7268
+        },
+        {
+          "speaker": "narrator",
+          "text": "Failure first. I'll be in your chair by then.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3136
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
+    }
+  ]
+}
