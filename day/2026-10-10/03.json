@@ -1185,6 +1185,459 @@
         "n": 1,
         "of": 1
       }
+    },
+    {
+      "id": "2026-10-10-03-04",
+      "title": "THE PRICE OF A GOOD LIST",
+      "startAt": "2026-10-10T03:29:20.911+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-03-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Any Benefit Fallacy"
+      ],
+      "angle": "How was this problem (or a similar one) addressed in the past (e.g., 10, 50, 100 years ago)? What can be learned from previous attempts or contexts?",
+      "kind": "straight",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Any Benefit Fallacy: Just because something offers _any_ positive outcome doesn’t justify its pursuit."
+        },
+        {
+          "kind": "note",
+          "text": "Core Idea: Not every beneficial activity or habit is worth your time."
+        },
+        {
+          "kind": "note",
+          "text": "Audit Your Habits: Which habits yield outsized benefits relative to the time and energy they require? Eliminate or deprioritize habits that don’t pass this test."
+        },
+        {
+          "kind": "note",
+          "text": "Related Frameworks, Pareto Principle: This aligns closely with the Pareto Principle—focusing on the 20% of inputs that yield 80% of outputs."
+        },
+        {
+          "kind": "note",
+          "text": "Clarity on Your 80/20: Identify the “vital few” activities, relationships, and pursuits that move the needle the most."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "It's past one in the morning and you're scrolling a list on your phone. Stretch. Read more. Ring the friend you keep meaning to ring. Learn a few words of a language you once loved. Take the library books back. Every line is good.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9745
+        },
+        {
+          "speaker": "march",
+          "text": "That's the trouble with it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1940
+        },
+        {
+          "speaker": "narrator",
+          "text": "Good. Such a dangerous little word, March. Ask the list what it is for, and it only glows at you.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6592
+        },
+        {
+          "speaker": "march",
+          "text": "Most people think if a thing helps even a little, you should just do it. So I'll try it on out loud. If it helps even a little, I should just do it.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 0,
+          "audioMs": 7179
+        },
+        {
+          "speaker": "march",
+          "text": "Stretch, read, ring her, done.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2239
+        },
+        {
+          "speaker": "narrator",
+          "text": "Simple, March. It is a simple belief, and simple beliefs are the ones that sleep soundest in our houses.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7040
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 1841
+        },
+        {
+          "speaker": "march",
+          "text": "I just believed it for a whole sentence. It felt like a good plan.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3963
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let me give our absent subject a title for the work of saying no. J, from this night on, you are the Keeper of the Unopened Gate. Nothing passes you without a reason.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11520
+        },
+        {
+          "speaker": "march",
+          "text": "He didn't ask for a gate.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1953
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nobody asks for a gate. They simply find themselves standing before one.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4779
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the note, at full size. Not every beneficial activity or habit is worth your time.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6464
+        },
+        {
+          "speaker": "narrator",
+          "text": "The benefit is real, March. The question is what it costs and what it returns. I am holding back the best part until the ledger is open, and you will sulk about it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10965
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. What's the bill?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1871
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying a thing can help and still be a bad deal.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3328
+        },
+        {
+          "speaker": "narrator",
+          "text": "A bad deal that helps. The trap is treating any benefit at all as a reason to act. Helping is not the same as paying for itself.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9003
+        },
+        {
+          "speaker": "march",
+          "text": "Put it on someone. A woman who works nights, with a list like yours, on the kitchen table in the small hours.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 6051
+        },
+        {
+          "speaker": "march",
+          "text": "Go on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1166
+        },
+        {
+          "speaker": "narrator",
+          "text": "Good. Take her list line by line. The foam roller under the bed costs her a little each night and returns almost nothing, and it has become a shelf for shoes.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10325
+        },
+        {
+          "speaker": "narrator",
+          "text": "The podcast queue grows faster than it is heard. The cold brew she makes before dawn gets forgotten in the fridge until it turns into a smell.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9429
+        },
+        {
+          "speaker": "march",
+          "text": "So far it's all losses.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2128
+        },
+        {
+          "speaker": "narrator",
+          "text": "Patience. The library books are the worst of it. The fine has grown past the price of the books themselves, and she still reads the due date every time she passes the bag.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10880
+        },
+        {
+          "speaker": "march",
+          "text": "So she's paying more to keep the books than to buy them.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3199
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, and she keeps paying.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1792
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1009
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the one line that earns its keep: the short walk to the corner before a shift, the one habit that gets her out of bed on the bad mornings. It costs her almost nothing and gives back in full measure.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12757
+        },
+        {
+          "speaker": "march",
+          "text": "Then only the walk pays back in proportion to what it costs her.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3707
+        },
+        {
+          "speaker": "narrator",
+          "text": "Only the walk. The rest are prices she never once looked at.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3968
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now, March, the ledger has an ancestor. More than a century ago an Italian economist named Vilfredo Pareto noticed that most of the land in Italy belonged to a small share of its people.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13248
+        },
+        {
+          "speaker": "narrator",
+          "text": "A lopsided pile. Nothing about habits at all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3456
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, I love this. That's the same lopsided ratio the note writes into its own line.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5249
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note borrows the ratio and forgets the land. Which is a pity, because the land was the honest part.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7253
+        },
+        {
+          "speaker": "march",
+          "text": "Then who took the land and made it a productivity rule?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3051
+        },
+        {
+          "speaker": "narrator",
+          "text": "Joseph Juran, decades after Pareto, relabeled the pattern as the vital few and the trivial many. Quietly, an observation about old land became a rule for calendars.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 12480
+        },
+        {
+          "speaker": "narrator",
+          "text": "And you have stolen my Juran, March. That was going to be my best line. Quite dreadful of you.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6101
+        },
+        {
+          "speaker": "march",
+          "text": "You had the line, I just got there first. Keep going, though. The drift is the point.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4535
+        },
+        {
+          "speaker": "narrator",
+          "text": "Obviously it is. Very well, the drift. A pile of land becomes a permission slip for anything that helps.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 7467
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the leap the note makes, and nobody checks the pile.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3947
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the ledger, then. Pareto didn't say do less. He said look for the pile that does the work.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 4,
+          "audioMs": 5421
+        },
+        {
+          "speaker": "narrator",
+          "text": "And there is the best part I was holding back. The pile never tells you to ignore the small things.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6315
+        },
+        {
+          "speaker": "narrator",
+          "text": "It tells you to find the few that pay, which is harder than cutting and far more honest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5696
+        },
+        {
+          "speaker": "march",
+          "text": "Once she sees it that way, the list stops being a verdict on her character. It's a set of prices.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5390
+        },
+        {
+          "speaker": "march",
+          "text": "She strikes out what costs more than it returns, keeps a few, and spends the saved hours on the one line that pays. The foam roller stops looking like failure. It's a price she decided not to pay.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9760
+        },
+        {
+          "speaker": "narrator",
+          "text": "Return to the list, then, glowing in the dark. The cold brew before dawn, the gate, the walk to the corner.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7253
+        },
+        {
+          "speaker": "narrator",
+          "text": "The title stands, March. J is the Keeper of the Unopened Gate, and the foam roller may wait on the far side of it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8128
+        },
+        {
+          "speaker": "march",
+          "text": "The ratio stays with me.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 2196
+        },
+        {
+          "speaker": "narrator",
+          "text": "You took the ratio and the Juran both. I am grumbling, March.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4587
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am not sulking.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1600
+        },
+        {
+          "speaker": "march",
+          "text": "You're delighted.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1508
+        },
+        {
+          "speaker": "narrator",
+          "text": "We storytellers are delighted only in complaints. Next, the note on being intentional with the life you are spending.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7851
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, Be Intentional With Your Life and Actions. Bring the good list.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 4079
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
     }
   ]
 }
