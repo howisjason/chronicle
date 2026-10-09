@@ -9,7 +9,7 @@ Every scene walks this arc once. Beats, not word counts: a beat is as long as it
 1. THE COLD OPEN. March, in the first line, puts the listener inside a moment they have had, in the second person, tied to the note. No greeting, no "today", no "welcome", no naming the show. The first thing said is already the subject.
 2. THE COMFORTABLE LIE. What most people believe about this, said sincerely by one of them and held for a while. They do not agree yet.
 3. THE TURN. The note's actual claim, brought in big by the narrator, in his words, with the note's own sentence quoted exactly once. He keeps the best part back for later and says so. March restates it in plain words, "so you're saying", and he either confirms or corrects her.
-4. LET'S SAY. The claim worked through on one concrete case: March trying it on herself, or an ordinary morning, named in small details (a kettle, a bus, a Tuesday). One new idea only. This is the proof; there is no other kind.
+4. LET'S SAY. The claim worked through on one concrete case: March trying it on herself, or an ordinary moment, named in small details that belong to this note and to no other scene. One new idea only. This is the proof; there is no other kind.
 5. THE TANGENT. One of them seizes on something in the case and goes somewhere with it. Then the other brings it back to the main line, and the tangent turns out to have mattered.
 6. THE CROSSING (only with two notes). Where the second note's idea crosses the first, and what the crossing shows that neither note shows alone.
 7. THE FORK. What is different for someone who believes this, said once, as a picture, never as a list of tips.
@@ -27,11 +27,11 @@ The kind of middle you are handed (a quick-fire round, a legend, a trial, March 
 - Callbacks: later lines pick up something said earlier in this scene, changed.
 - Anchor before claim: a familiar thing first, then the idea it explains. Felt things over facts, facts over hypotheticals, hypotheticals over abstractions. One new concept per beat.
 - Plain spoken English. Contractions. "That" over "who". No dashes. No "it isn't X, it's Y". No neat sets of three. At most one aphorism per beat. No "um", "uh" or "hmm" in the text: the voices cannot say them.
-- Pictures, not advice. A bus stop, a ship, a Tuesday morning. Never a list of tips, never a lecture. One image per scene planted and paid off; the rest of the talk is concrete, not figurative.
+- Pictures, not advice: an everyday scene chosen fresh for this note. Never a list of tips, never a lecture. One image per scene planted and paid off; the rest of the talk is concrete, not figurative.
 - It continues. Start from whatever the previous scene left open, in character. Build on the show's memory. Never reuse a line or joke from the previous scene; call back only to things that are really in it or in the memory.
 - Rarely, sincerity. Once in a long while, March says one plain true thing about J and the narrator drops the act. Not if the memory shows one lately.
 - The checker refuses a worn-out word (one a speaker uses in more than four of their lines, or more than one in eight of them once they have over thirty) and any run of words lifted from the scene before.
-- No "today", "in this segment", "picture a", and never open on the notebook being opened. No machine words (file, vault, prompt, angle, scene).
+- No "today", "in this segment", "picture a", and never open on the notebook being opened. No machine words (file, vault, prompt, angle, scene, segment, chapter). Never say a beat's name out loud (the lie, the turn, the tangent, the crossing, the fork, the seal); the listener hears the talk, never the plan.
 
 ## The truth law, which never bends
 

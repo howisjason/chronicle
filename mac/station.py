@@ -351,6 +351,15 @@ def one_segment(day, path):
             f"Two details for the narrator this scene: {random.sample(NARR_DETAILS, min(2, len(NARR_DETAILS)))}\n"
             f"The show's memory so far: {json.dumps(memory(), ensure_ascii=False)}\n\n"
             f"Recent scene titles (do not repeat them): {titles}\nThe previous scene on air, whole: {json.dumps(prev, ensure_ascii=False)}")
+    # The outline pass (lab, 9 Oct 2026; the plan's first rung when ten-minute scenes
+    # failed): Haiku on low effort wrote half-length scenes and lost the arc, so one
+    # short call plans the eight beats first and every try writes from that plan.
+    # A broken plan is skipped; the writer still has the arc in its sheet.
+    try:
+        plan = as_json(ask(read(f'{SHEETS}/outline.md'), user, 'outline'))
+        user += f"\n\nThe outline to follow, one beat at a time: {json.dumps(plan, ensure_ascii=False)}"
+    except (ValueError, RuntimeError, subprocess.TimeoutExpired):
+        print('station: the outline pass failed; writing without it', flush=True)
     feedback = ''
     for attempt in range(3):
         try:
@@ -384,8 +393,26 @@ def one_segment(day, path):
         save(trial, path)
         ok, msg = validate(path)
         if not ok:
+            print(f'station: try {attempt + 1} refused by the checker: {msg[:600]}', flush=True)
+            # Mend only the refused lines first (lab, 9 Oct 2026): a ten-minute scene has
+            # about fifty lines, and a whole rewrite rolls fresh faults into new lines
+            # (a stray "two", a river "bank"), so nine whole rewrites in a row were all
+            # refused. A scene-wide fault (too short, one rhythm) still needs a rewrite.
+            try:
+                fixed = as_json(ask(WRITER, f"{material}\n\nThis scene:\n{json.dumps(seg, ensure_ascii=False)}\n\n"
+                                    f"The checker refused it for these reasons (lines counted from 0):\n{msg}\n\n"
+                                    "Rewrite ONLY the lines it names, and for a worn-out word change it in some of the "
+                                    "lines that use it. Keep every other line exactly as it is. Return the whole scene JSON.",
+                                    f'mend#{attempt}'))
+                seg = dict(seg, lines=fixed['lines'])
+                trial = dict(day, segments=day['segments'] + [seg])
+                save(trial, path)
+                ok, msg = validate(path)
+                print(f'station: try {attempt + 1} ' + ('mended' if ok else f'still refused: {msg[:600]}'), flush=True)
+            except (ValueError, KeyError, RuntimeError, subprocess.TimeoutExpired):
+                pass
+        if not ok:
             feedback = f'\n\nThe checker refused your last try. Fix these and write it again:\n{msg}'
-            print(f'station: try {attempt + 1} refused by the checker: {msg[:200]}', flush=True)
             continue
         verdict = truth(seg, material)
         if verdict == 'CLEAN':
