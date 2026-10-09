@@ -813,6 +813,420 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-04-03",
+      "title": "THE WRONG FINGER TEACHES FASTER",
+      "startAt": "2026-10-10T04:22:37.776+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-04-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Learning - Best Practices",
+        "The Present Moment Is All That Exists"
+      ],
+      "angle": "How exactly does this idea achieve its proposed outcome? Break down the process step-by-step. Where are the weakest links or assumptions in that process?",
+      "kind": "quick_fire",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Don't think that you need to learn every single thing before you even start."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: You learn the MAJORITY of everything from actually DOING."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Simplicity is hacking away the unessential."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Set scheduled reminders for valuable lessons learned."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: Forget the whole notion of the future. There is only today. If you want to do something, do it now."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "A paperback on the nightstand, bookmark still stuck in the first chapter. And a course you started in spring, sitting in another tab. You tell yourself you'll study it properly once the time shows up. Then you pick up something new, and the bookmark stays right where it was.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11913
+        },
+        {
+          "speaker": "march",
+          "text": "Most people reckon you have to learn the whole subject before you touch it. Read the lot, get the big picture, then start. Sounds responsible. I'd have ordered the full set and felt good about it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9356
+        },
+        {
+          "speaker": "narrator",
+          "text": "Responsible! Of course a grand man reads everything before he lifts a finger. The library first, the hands last. And the hands are for the servants who come in once the masters have finished thinking. I have always found that arrangement very civilised.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 16597
+        },
+        {
+          "speaker": "march",
+          "text": "So the reading's the gate. You can't get through till it's finished... and with a subject like this it never finishes, so you stand in the doorway forever calling it being prepared.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8400
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. The note knows the trap and shuts it in one slam: 'Don't think that you need to learn every single thing before you even start.' I'd have that carved over a library door, March, just to vex the scholars.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13888
+        },
+        {
+          "speaker": "march",
+          "text": "Carved over a library. Lovely, that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2722
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. But what does it want instead? Just stand there and say no thanks to the whole subject?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5098
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the claim itself. I shall read it with the full weight of my chest. 'You learn the MAJORITY of everything from actually DOING.' Feel the drum in that. The majority! From doing! Not the shelf, not the lecture, but the sweaty, clumsy act itself.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 16384
+        },
+        {
+          "speaker": "march",
+          "text": "Right. So test it. One video about one chord, then stop watching and do it. That's the claim, yeah? Watch one thing, then go and use it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6713
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have shrunk a cathedral into a garden shed. But yes, those are the bones of it. And bones are where the marrow is.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7915
+        },
+        {
+          "speaker": "march",
+          "text": "Shed's fine. Let's do the case. Someone who's never played the instrument watches one clip about one shape. Then they carry the guitar out to the hallway, sit on a dining chair, and try the shape with the lamp off so nobody watches them fail.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10681
+        },
+        {
+          "speaker": "narrator",
+          "text": "A dining chair in a draughty hallway. Mark that, March. Destiny has always preferred corridors to stages. The whole career of a great guitarist, I have no doubt, began on a hard seat next to a coat rack.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14059
+        },
+        {
+          "speaker": "march",
+          "text": "Corridors, obviously.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2026
+        },
+        {
+          "speaker": "march",
+          "text": "The middle finger lands one string too low. The shape buzzes like a wasp in a jar. They reset, try again, wrong again. Evening after evening, the same finger in the same wrong place, and somewhere in there they find exactly where that finger sits badly, which the video never once showed them.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13178
+        },
+        {
+          "speaker": "narrator",
+          "text": "The mistake is the lesson. Firsthand, specific, stinging. The video was a map of the country. The wrong finger is the actual ground, and you only learn ground by standing on it and slipping.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12821
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Slipping. So the mistake teaches faster than the whole lesson did, and it does that without asking permission from whoever wrote the lesson.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7329
+        },
+        {
+          "speaker": "narrator",
+          "text": "Slipping, precisely.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1600
+        },
+        {
+          "speaker": "narrator",
+          "text": "Which is simple, March. Watch, then do. Simple!",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3563
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple. Not in that voice. That's the voice I'd use to talk myself out of picking it up.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5519
+        },
+        {
+          "speaker": "narrator",
+          "text": "You bristle like a hedgehog at a dog show, March. Very well, call it what you like. The note has its own word for it: what remains once the unessential is hacked away.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11179
+        },
+        {
+          "speaker": "march",
+          "text": "Simple means you've already decided it's beneath you. Then you don't start, because starting something beneath you looks daft. You shut the door before you walk through it. That's the trouble with the word.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8848
+        },
+        {
+          "speaker": "narrator",
+          "text": "And here is a hard truth, which I will not soften. The man who calls the small thing simple has already left the room.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7808
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. The coat again.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1832
+        },
+        {
+          "speaker": "narrator",
+          "text": "He keeps the grand plan folded in his coat, never lifts the instrument off the stand, and grows old tuning it in his head.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7957
+        },
+        {
+          "speaker": "march",
+          "text": "Simple as in beneath me, or simple as in small? Those aren't the same. Small's fine. Beneath me is the problem, and I'd rather not carry that down the hallway.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7672
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note settles it, if you'll hear the note. 'Simplicity is hacking away the unessential.' Simple is what remains once the nonsense is cut. The one video is what remains. The rest was fog.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12992
+        },
+        {
+          "speaker": "march",
+          "text": "Okay... simple means cut down to the part you can actually do. Not beneath you. Good. Back on the chair. The case only works if someone starts, and the wrong finger never happens on a shelf.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8822
+        },
+        {
+          "speaker": "narrator",
+          "text": "The chair was waiting for a hand. A hallway draught, a finger one string too low, a coat rack keeping watch. I find destiny in that hard seat, March. Every instrument on earth has been waiting for a chair like it since the first string was tuned.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 16683
+        },
+        {
+          "speaker": "march",
+          "text": "The destiny stuff's for the cat. Keep the seat, though. I want that seat in my hallway by lunchtime.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5241
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the crossing, which I have kept until you were quiet. The learning note says, 'Set scheduled reminders for valuable lessons learned.' A reminder is a bet on some future morning. A promise to remember later what you let slip last week.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 15509
+        },
+        {
+          "speaker": "march",
+          "text": "A bet on tomorrow. And the present note says there is only today. Hang on, that's the kettle argument again. Remembering later is a future thing, isn't it?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 4,
+          "audioMs": 7678
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. The learning note leans on the very future the present note warns you off. Spaced repetition is the one place it depends on tomorrow. The doing is now. The remembering is the bill that comes later.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 14293
+        },
+        {
+          "speaker": "march",
+          "text": "Fair enough. So doing now is the only bit in the present. The reminder's the one tomorrow in the whole plan, and both are needed. Remembering without doing is just a nice diary.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 9249
+        },
+        {
+          "speaker": "narrator",
+          "text": "Neither note shows that alone. Together they say do it now, then set the reminder for a day you have already begun. Only the doing is ours to hold. The reminder is merely a hope in a calendar.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 12907
+        },
+        {
+          "speaker": "march",
+          "text": "Hope in a calendar. That's a good one, and I'm annoyed I didn't say it first. Okay, the fork next. Give me the person.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5948
+        },
+        {
+          "speaker": "narrator",
+          "text": "I shall keep the best of it back, March, until you have the person in your head. Go on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5461
+        },
+        {
+          "speaker": "march",
+          "text": "Take someone who believes the learning note. They watch one video in the afternoon, then go straight to the instrument while the spark's still there. They record themselves explaining the shape in plain words, and keep one bad attempt on the phone to replay later.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11829
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ha! Hard to beat that for a hallway.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2517
+        },
+        {
+          "speaker": "narrator",
+          "text": "And there is the best part, held back as promised. The bad attempt becomes a teacher you can rewind.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6784
+        },
+        {
+          "speaker": "march",
+          "text": "Rewind the wrong finger.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2003
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is dull on purpose and short on purpose, and the day's error becomes the lesson, not a verdict on the whole effort. That is what I should like carved over the door.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10987
+        },
+        {
+          "speaker": "march",
+          "text": "Dull on purpose. A few minutes in a hallway, a replay of a wrong finger, then you go and make the tea. Nothing heroic at all. That's exactly the point.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7358
+        },
+        {
+          "speaker": "march",
+          "text": "Now the seal. Back to the kettle. The water's climbing, the chair's by the hall, and the chord is one hand away. Start the shape while the water heats. You learn it by doing it now, not in some calm week that's been coming since spring.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10299
+        },
+        {
+          "speaker": "narrator",
+          "text": "A kettle and a chord! Both humble, both small. I shall stop saying simple before you stab me with a teaspoon. You were right, March. Right about the stool, right about the shape. And insufferable for it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13099
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall crown you Warden of the Wrong Finger, a title only a kettle could love.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5547
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, the other half of the pair, the learning side and the present side, back to back. Bring the guitar.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5591
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
