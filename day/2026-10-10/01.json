@@ -2844,6 +2844,491 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-01-07",
+      "title": "THE FREE THROW NOBODY SHOT",
+      "startAt": "2026-10-10T02:00:38.279+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-01-07.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "What could I remove from this idea to make it simpler, cheaper, or more effective? (Instead of just adding)",
+      "kind": "the_case_against",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Your nervous system cannot tell the difference between an imagined experience and a real one."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Vividly imagining a situation is literally the same as experiencing it, as far as your brain's concerned."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Remember that the group who practiced shooting free throws and the group who merely visualised making free throws both improved the same amount, despite one group having never touched a basketball."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Every time Michael Phelps has a major competition coming up, he visualises how he'd perform in that race."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Mental practice is as powerful as actual practice."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've pictured a step before you took it, and your knees went soft on a stair that only lived in your head.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5699
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the stair that lives in the mind. The knees went soft because the body has already climbed it, March. The mind is a rehearsal hall, and the body is a very obedient pupil.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12011
+        },
+        {
+          "speaker": "march",
+          "text": "So the lie is: pictured is practised.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2600
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear the claim as the note gives it. Your nervous system cannot tell the difference. The stair is climbed already. The rehearsal may stop.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9131
+        },
+        {
+          "speaker": "march",
+          "text": "The rehearsal may stop. Bold.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2428
+        },
+        {
+          "speaker": "narrator",
+          "text": "Vividly imagining a situation is the same as experiencing it, as far as the brain's concerned. Why bruise a shin on a real step when the nerves have walked it a great many times?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12480
+        },
+        {
+          "speaker": "march",
+          "text": "Your shin disagrees.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 1958
+        },
+        {
+          "speaker": "march",
+          "text": "The note also says mental practice is as powerful as actual practice.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 4,
+          "audioMs": 4427
+        },
+        {
+          "speaker": "march",
+          "text": "As powerful. It doesn't say it replaces the bench.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2977
+        },
+        {
+          "speaker": "narrator",
+          "text": "A distinction for pedants, March. The nerves do not check the rota.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4331
+        },
+        {
+          "speaker": "march",
+          "text": "So I'm arguing the note's wrong and you're defending it. Go on. Defend it properly.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4756
+        },
+        {
+          "speaker": "narrator",
+          "text": "Gladly. Here is the finest proof the old professors ever had...",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4395
+        },
+        {
+          "speaker": "march",
+          "text": "Show me.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1128
+        },
+        {
+          "speaker": "narrator",
+          "text": "Remember the groups. One shot free throws at the hoop. The other only visualised making them. Both improved the same amount, despite one group having never touched a basketball.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11989
+        },
+        {
+          "speaker": "march",
+          "text": "So the group that never touched a ball scored the same as the group that shot. Give me the score for them.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 5499
+        },
+        {
+          "speaker": "narrator",
+          "text": "The score went up, March. That is the whole of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3221
+        },
+        {
+          "speaker": "march",
+          "text": "Up by how much?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1665
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note gives no figure, and I shall not invent one to please you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4224
+        },
+        {
+          "speaker": "march",
+          "text": "Honest, at least.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1698
+        },
+        {
+          "speaker": "march",
+          "text": "Good. Then the score's missing a column. What did the visualisers do when they missed?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 4513
+        },
+        {
+          "speaker": "narrator",
+          "text": "They missed in the mind's gym, and then they went back to the bench and practised.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4651
+        },
+        {
+          "speaker": "march",
+          "text": "So the mental group still goes back to the bench.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2792
+        },
+        {
+          "speaker": "narrator",
+          "text": "Only for the misses, March. The rest is the mind's own gym.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4181
+        },
+        {
+          "speaker": "march",
+          "text": "A miss is a miss, narrator. If I were doing it, I'd write the flaw on an envelope and go back to the bench. That's my habit, not anybody's record.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7563
+        },
+        {
+          "speaker": "narrator",
+          "text": "An envelope. How small. The imagination is the sea, and you bring me a biro.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5525
+        },
+        {
+          "speaker": "march",
+          "text": "The biro's the bit that works.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2319
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then hear the greatest case of all, Michael Phelps. Every time a major competition is near he visualises how he'd perform in that race.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8960
+        },
+        {
+          "speaker": "march",
+          "text": "I know that bit. Keep going, it's the good bit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2792
+        },
+        {
+          "speaker": "narrator",
+          "text": "From the waking, through what he eats, the warm up, the music in his ears, the swim itself, and what he does when he wins.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7723
+        },
+        {
+          "speaker": "march",
+          "text": "Hundreds, though?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1537
+        },
+        {
+          "speaker": "narrator",
+          "text": "He has swum that race hundreds of times in the mind. Each swim is another sea, another roar, another crown laid at his feet, until the day comes and he goes on autopilot like a ship that already knows its harbour.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 14080
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. The list is the useful bit. The warm up and the music are the cheap, repeatable stuff.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5525
+        },
+        {
+          "speaker": "march",
+          "text": "The swims he hasn't swum can drop off, narrator.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3113
+        },
+        {
+          "speaker": "narrator",
+          "text": "You would strip Phelps down to the warm up, March.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3221
+        },
+        {
+          "speaker": "march",
+          "text": "I'd strip you to the warm up.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 2125
+        },
+        {
+          "speaker": "march",
+          "text": "And that's one more for my private tally of arguments won.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3628
+        },
+        {
+          "speaker": "narrator",
+          "text": "You keep a tally? Of course you do. Keeping a score is the most solitary of joys.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5952
+        },
+        {
+          "speaker": "march",
+          "text": "It's the small hours, narrator. Keep your voice down. The score's private.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3907
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall whisper my grandest offer. To J I give the title Lord of the Unseen Casting, and he may wear it in the dark.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 8427
+        },
+        {
+          "speaker": "march",
+          "text": "He's not a lord, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2258
+        },
+        {
+          "speaker": "march",
+          "text": "The notebook has no court in it, and neither do I.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2989
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then you have hidden something in the design, March. I feel it in the grain of the thing. A secret clause, a sly tally.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 7787
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing hidden. Just the cheap bit, out in the open.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3158
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the cheap bit is the cunning bit, and I suspect it is cunning indeed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4843
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the fork, as a picture. One person pictures the cast, fully, and keeps their hands off the tongs.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5945
+        },
+        {
+          "speaker": "march",
+          "text": "Every cast is a fresh surprise to them, the fire lit to the minute.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3841
+        },
+        {
+          "speaker": "march",
+          "text": "The other pictures the very same cast, then picks up the tongs and casts again by the timer. The picture is the warm up. The tongs are the hit.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 4,
+          "audioMs": 7575
+        },
+        {
+          "speaker": "narrator",
+          "text": "A grand contrast, March, the dreaming soul against the working hand.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4971
+        },
+        {
+          "speaker": "march",
+          "text": "It's a Tuesday contrast, narrator. The timer goes and you cast.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3749
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then let us return to the stair, March, the one that began all this. Imagine it once more, every rail and every tread.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7936
+        },
+        {
+          "speaker": "march",
+          "text": "Done. Now take the step.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2000
+        },
+        {
+          "speaker": "narrator",
+          "text": "The knees are soft again, and the picture was a lovely thing. Yet the foot is what counted, the step itself. I grant you that.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8640
+        },
+        {
+          "speaker": "march",
+          "text": "So I was right about the foot.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2325
+        },
+        {
+          "speaker": "narrator",
+          "text": "You were right about the foot. The last word is mine, though. The stair was a grand stair, and the whole house climbed it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7424
+        },
+        {
+          "speaker": "march",
+          "text": "Up next: The Influence Of Others and Failure Is How We Learn And Grow. Bring the tongs.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5240
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
     }
   ]
 }
