@@ -925,6 +925,548 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-09-22-03",
+      "title": "THE PENCIL DATE AND THE LOST TUESDAY",
+      "startAt": "2026-10-09T22:36:44.228+07:00",
+      "audio": "audio/2026-10-09/2026-10-09-22-03.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Novelty - A Life Fully Lived",
+        "How Our Brains Interpret Imagined And Real Experiences"
+      ],
+      "angle": "What could I remove from this idea to make it simpler, cheaper, or more effective? (Instead of just adding)",
+      "kind": "straight",
+      "show": "late_edition",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: If you can’t remember something, it’s like it never happened."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Time feels longer when your day is constantly filled with new and engaging activities, because you're NOT in autopilot mode."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Nothing twice. Never eat the same food twice. Never go to the same place twice."
+        },
+        {
+          "kind": "note",
+          "text": "How Our Brains Interpret Imagined And Real Experiences: Repeat what you want to believe every day, multiple times a day."
+        },
+        {
+          "kind": "note",
+          "text": "Novelty - A Life Fully Lived: Monotony is the enemy. Novelty is the solution."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Try to name what you did last Tuesday. Not the big things. The ordinary hours. Nothing comes up. Not even the weather.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6092
+        },
+        {
+          "speaker": "narrator",
+          "text": "Nothing comes up because, as far as memory is concerned, nothing happened. The note is plain about it. If you can’t remember something, it’s like it never happened.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10325
+        },
+        {
+          "speaker": "march",
+          "text": "Plain is one word for it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2158
+        },
+        {
+          "speaker": "march",
+          "text": "Grim is another.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1621
+        },
+        {
+          "speaker": "narrator",
+          "text": "A long healthy life with a blank middle is only a short life wearing a long coat. Think of a stone dropped in a river. The river does not remember the stone, and the stone does not remember the river. Both are poorer for it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 15125
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, that's bleak. Let's be fair to the people who think they've got this right. Most people think a life full of ticked-off places is a life well lived. See the famous sights, watch the great films, eat at the best restaurants. I believed that, honestly, a minute ago.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 12262
+        },
+        {
+          "speaker": "narrator",
+          "text": "Not long ago you were ticking boxes, March. A list makes the boxes. It does not make the days.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6421
+        },
+        {
+          "speaker": "march",
+          "text": "But you need a list to get the new things in the first place. Don't you?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3983
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear the claim before you argue with it. Time feels longer when your day is constantly filled with new and engaging activities, because you're NOT in autopilot mode.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10347
+        },
+        {
+          "speaker": "march",
+          "text": "So the boredom is the autopilot, not the number of places.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3486
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly the trouble. Autopilot is the clock running while you sleepwalk through the hours. Novelty stops the sleepwalking, and only then does the day stretch out again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11115
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Give me one. Something ordinary. Not a holiday, not a cathedral in another country.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4964
+        },
+        {
+          "speaker": "narrator",
+          "text": "A man keeps a city guide open at its restaurants page, the corner folded down to hold the place. Each Saturday he tries one name he has never tried, and he writes the date beside it in pencil. The margin fills down the page. By October it is nearly full, and he can tell you what one dish tasted of, a dish he could never have described from any ordinary week before. Those weeks are gone from him entirely. The Saturdays are not.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 27349
+        },
+        {
+          "speaker": "march",
+          "text": "Okay, that's a good case. Hang on, though. What's the pencil for? If he remembers the place, the date is just homework.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5740
+        },
+        {
+          "speaker": "narrator",
+          "text": "The pencil is the proof, March. Remove it and the Saturday goes with it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4885
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the Saturday was the whole point.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2581
+        },
+        {
+          "speaker": "march",
+          "text": "Or the pencil is what stops him going back to the same place. Honestly, the nothing-twice rule is the bit I'd cut first. You don't need the rule, or the guide, or the margin.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 8630
+        },
+        {
+          "speaker": "march",
+          "text": "You need one new thing a week.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2255
+        },
+        {
+          "speaker": "narrator",
+          "text": "The rule is the discipline. Nothing twice. Never go to the same place twice, and the guide keeps the discipline honest.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7915
+        },
+        {
+          "speaker": "march",
+          "text": "Then cut the guide too. You're left with a man who goes somewhere new on a Saturday. Cheaper, simpler, and I'd argue just as good.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6627
+        },
+        {
+          "speaker": "narrator",
+          "text": "Worse, March.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1365
+        },
+        {
+          "speaker": "narrator",
+          "text": "But I grant it is cheaper.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1920
+        },
+        {
+          "speaker": "march",
+          "text": "That's a point to me. I'll note it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2304
+        },
+        {
+          "speaker": "narrator",
+          "text": "In your column, I suppose.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1984
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Fair enough.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1660
+        },
+        {
+          "speaker": "march",
+          "text": "Obviously. Now the bit that bothers me. My Tuesday café is the worst example you could pick. Same chair, same order, every single week. Does that make the whole week wasted?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8848
+        },
+        {
+          "speaker": "march",
+          "text": "Because I love that chair.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2087
+        },
+        {
+          "speaker": "narrator",
+          "text": "Love is not the question. The question is whether you can recall the last Tuesday in that chair.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5931
+        },
+        {
+          "speaker": "march",
+          "text": "Yes. Vaguely. The window, the cup, the man at the next table who never says hello. But is that what it is? Am I just asleep in that chair, and...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7032
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let me say the hard part slowly, March. A year you cannot recall is as gone as a year you never lived. Nobody hands it back. I will not soften that for you, not even this late in the evening.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12587
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. That's harsh.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1895
+        },
+        {
+          "speaker": "march",
+          "text": "But that's the fear underneath it, isn't it? The blank year.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3225
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have been asking me whether you are sleepwalking, March. That is not really a question about cafés.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6336
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. I'd hate a blank year, is all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2578
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, you would.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1344
+        },
+        {
+          "speaker": "march",
+          "text": "Can we go back to the pencil, please?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2467
+        },
+        {
+          "speaker": "narrator",
+          "text": "The pencil is still waiting. Put the claim back in your own words, so you cannot wriggle out of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5824
+        },
+        {
+          "speaker": "march",
+          "text": "Right. The same things over and over put the brain on autopilot. A new thing every week keeps it awake, and the week stretches out on the way back.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7569
+        },
+        {
+          "speaker": "narrator",
+          "text": "Correct, and you have it without the ticking. Now the part that is not in the first note.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1551
+        },
+        {
+          "speaker": "narrator",
+          "text": "Take one Tuesday. Someone says to herself, I am a person who notices things, and walks a new street on the way to the station.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8085
+        },
+        {
+          "speaker": "narrator",
+          "text": "Another says, I am tired and I know my route, and takes the old one. A year on, the first can describe that street, its shopfronts, the smell of the bakery. The other cannot recall a single Tuesday.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13440
+        },
+        {
+          "speaker": "march",
+          "text": "That's a nice story, and it's the first one that doesn't need a pencil. The belief is doing the walking.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 3,
+          "audioMs": 5562
+        },
+        {
+          "speaker": "march",
+          "text": "Repeat what you want to believe, every day, and the street comes along for the ride.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4496
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes, March. The belief is the route. The brain is a hallway that bends toward whatever you keep saying in it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7488
+        },
+        {
+          "speaker": "march",
+          "text": "Does that work on a Tuesday, or only in stories?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2913
+        },
+        {
+          "speaker": "narrator",
+          "text": "On a Tuesday. You say it on the walk, and the street is simply on the way.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4907
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Trying it on myself, out loud. I am a person who notices things.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4432
+        },
+        {
+          "speaker": "march",
+          "text": "I notice the kettle. I notice the narrator is being smug about it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 3,
+          "audioMs": 4025
+        },
+        {
+          "speaker": "narrator",
+          "text": "Noticed, March. And the kettle, once again, is a sign.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3819
+        },
+        {
+          "speaker": "march",
+          "text": "Don't.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1039
+        },
+        {
+          "speaker": "narrator",
+          "text": "The card is still under the question, March. What goes, the pencil or the Saturday.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "Right, turning it over.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1838
+        },
+        {
+          "speaker": "march",
+          "text": "Face up. The pencil goes. The Saturday stays, and the street can stay too.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 4,
+          "audioMs": 4590
+        },
+        {
+          "speaker": "narrator",
+          "text": "Good. Hold that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1472
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then look out that window. A bus pulls in on a route with a letter in front of it that has never once stopped on this street. He would call it destiny, the bus that came for the one who was ready to ride it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 12245
+        },
+        {
+          "speaker": "march",
+          "text": "It's a bus.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1319
+        },
+        {
+          "speaker": "march",
+          "text": "It's been coming down this road for years. It just happens to be the route I've never taken.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5242
+        },
+        {
+          "speaker": "narrator",
+          "text": "It has never stopped for you, March. That is destiny, and I call it so.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 4651
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. The narrator was right about the bus. Once.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3152
+        },
+        {
+          "speaker": "march",
+          "text": "Don't ask me to say it again.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2216
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, the rest of these notes, and then The Value of Time and Failure Is How We Learn And Grow. I'm going to keep an eye on that bus.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 6758
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
