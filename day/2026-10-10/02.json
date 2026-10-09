@@ -2004,6 +2004,455 @@
         "n": 1,
         "of": 1
       }
+    },
+    {
+      "id": "2026-10-10-02-05",
+      "title": "THE CELL YOU LET HER FIND",
+      "startAt": "2026-10-10T02:49:27.898+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-02-05.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Philosophy Of Social Connection"
+      ],
+      "angle": "What is the opposite of this idea, and how could that also be valid?",
+      "kind": "the_case_against",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Nobody believes they're wrong. Criticism will only hurt their pride and cause resentment."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Call attention to people mistakes indirectly."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: Let the other person believe your idea was theirs, and praise them for coming up with such an idea."
+        },
+        {
+          "kind": "note",
+          "text": "Philosophy Of Social Connection: In a disagreement or argument, do not say that the other person is wrong. It's an attack on their intelligence, ego and pride."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You're at the kitchen table. Someone you love has just said, flatly, that your plan is a mistake.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5331
+        },
+        {
+          "speaker": "march",
+          "text": "Most people think being told you've gone off track is just information. Show them the evidence and a sensible person changes course.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7455
+        },
+        {
+          "speaker": "narrator",
+          "text": "Sensible, March. You describe the sensible person as if anyone has ever sat at a kitchen table with cold tea and admitted a plan was wrong in the first minute.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10880
+        },
+        {
+          "speaker": "march",
+          "text": "Oh, come on.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1508
+        },
+        {
+          "speaker": "march",
+          "text": "Plenty of people change their minds.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2586
+        },
+        {
+          "speaker": "narrator",
+          "text": "They do, March. Once nobody is watching. The note puts it bluntly, like a man who has been corrected in public: 'Nobody believes they're wrong. Criticism will only hurt their pride and cause resentment.'",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13675
+        },
+        {
+          "speaker": "march",
+          "text": "So telling someone straight just makes them dig in.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3009
+        },
+        {
+          "speaker": "narrator",
+          "text": "Dig in, and go hunting for an excuse. Direct correction turns a question about a plan into a contest over who is cleverer, and the plan loses.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9749
+        },
+        {
+          "speaker": "march",
+          "text": "I've been on the receiving end of that. A straight correction helped me once. I fixed it that afternoon.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5522
+        },
+        {
+          "speaker": "narrator",
+          "text": "You fixed it because it was small enough to swallow. The note asks for something quieter. Call attention to the mistake without pointing at the person who made it, and then let them walk the last step themselves.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12544
+        },
+        {
+          "speaker": "march",
+          "text": "Right, but the walk takes a week... and meanwhile everyone is quoting the bad figure.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4687
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then a week it is. A week of someone finding her own error is cheaper than an afternoon of defending her pride in front of the team.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8981
+        },
+        {
+          "speaker": "march",
+          "text": "Let's say it. A colleague has built a whole report on a number copied from the wrong tab. You walk over and say, 'That's the tab, that's the cell,' and you're done.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7612
+        },
+        {
+          "speaker": "narrator",
+          "text": "She hears the word 'wrong' before she sees the cell, and her hand goes up to protect the work.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5333
+        },
+        {
+          "speaker": "march",
+          "text": "Poor spreadsheet.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1662
+        },
+        {
+          "speaker": "narrator",
+          "text": "I am keeping the best part of this back. Bear with me while I make the uncomfortable move.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5589
+        },
+        {
+          "speaker": "march",
+          "text": "That's a trap, not a question.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2286
+        },
+        {
+          "speaker": "march",
+          "text": "She'll see it's off and feel silly.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2344
+        },
+        {
+          "speaker": "narrator",
+          "text": "She'll feel foolish for a moment. Then the fix is hers, and she gets the credit for it. That's the move: let the other person believe the idea was theirs, then praise them for it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 11648
+        },
+        {
+          "speaker": "march",
+          "text": "So it's manipulation with better manners.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2797
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is persuasion with a cell on the screen. Who gets to say the word 'wrong'? In this case, the spreadsheet, not you.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7403
+        },
+        {
+          "speaker": "march",
+          "text": "Can I tell you about my first job?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2454
+        },
+        {
+          "speaker": "march",
+          "text": "Stop me if I drift. You'll enjoy it when I do.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3010
+        },
+        {
+          "speaker": "march",
+          "text": "A manager corrected every typo I made in red ink, in front of the whole team. I wanted the floor to open up.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6455
+        },
+        {
+          "speaker": "march",
+          "text": "I have kept a private score of arguments won ever since. Which is a silly thing to admit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5530
+        },
+        {
+          "speaker": "narrator",
+          "text": "A private score! March, you have carried a ledger of arguments for years and not once thought to mention it at the table? Read me the top line.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9579
+        },
+        {
+          "speaker": "march",
+          "text": "No. It's mine.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1653
+        },
+        {
+          "speaker": "narrator",
+          "text": "Understood, March.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1771
+        },
+        {
+          "speaker": "march",
+          "text": "The point is the red ink. I still remember that manager's face and the exact squiggle of the pen.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5757
+        },
+        {
+          "speaker": "narrator",
+          "text": "And there is the note's whole proof, sitting in your score.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3371
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1551
+        },
+        {
+          "speaker": "narrator",
+          "text": "You remember who corrected you, and how, long after the typos were forgotten. A correction in front of people becomes a scar. One offered with the cell on the screen becomes a lesson you cannot place.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13205
+        },
+        {
+          "speaker": "march",
+          "text": "I remember the squiggle, sure. But I'd remember a fair correction too.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3906
+        },
+        {
+          "speaker": "narrator",
+          "text": "Would you? A correction read aloud in a room has an audience. That page knows that much about pride and rooms. Your pride was in that room, and you have kept its score ever since.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11584
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. My score is a grudge with a filing system.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3051
+        },
+        {
+          "speaker": "narrator",
+          "text": "A grudge with a filing system. I have a guess about the thing you hid in your own design. The clause you will not discuss. A kettle? A red pen?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9835
+        },
+        {
+          "speaker": "march",
+          "text": "No.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1026
+        },
+        {
+          "speaker": "narrator",
+          "text": "The pen. I can see it in your face.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2603
+        },
+        {
+          "speaker": "march",
+          "text": "It's only for me. Don't guess it again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2552
+        },
+        {
+          "speaker": "march",
+          "text": "Imagine a colleague and you at the same screen. You sit beside them, point at the row, and wait.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5273
+        },
+        {
+          "speaker": "march",
+          "text": "The colleague finds the wrong tab and fixes it, and nobody loses face. The other says, 'You've got the wrong tab,' and then spends the next week defending a number nobody trusts anymore.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8994
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the one who waits gets a title from me, for J: the Lantern of the Quiet Correction. A lantern does not shout at the path.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8341
+        },
+        {
+          "speaker": "march",
+          "text": "He'd hate that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1466
+        },
+        {
+          "speaker": "march",
+          "text": "To me it's just a torch that talks slowly.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2753
+        },
+        {
+          "speaker": "march",
+          "text": "Back at the kitchen table. Honesty is just telling the truth, isn't it?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3939
+        },
+        {
+          "speaker": "march",
+          "text": "Say it straight and be done.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1979
+        },
+        {
+          "speaker": "narrator",
+          "text": "The spoon was never the point. The chipped blue bowl is still on the table... and the 'Well, actually' you started earlier is still unsaid. The person across from you is still waiting.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11584
+        },
+        {
+          "speaker": "march",
+          "text": "So who was right?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1750
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is for you to decide, dear listener, since March still has a clause in the room she will not show us. Up next, the note on The Value of Time and Failure Is How We Learn And Grow. I have been waiting all night to tell it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14421
+        },
+        {
+          "speaker": "march",
+          "text": "It's gone late on the Long Night.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2306
+        },
+        {
+          "speaker": "march",
+          "text": "Bring a spoon.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1511
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
     }
   ]
 }
