@@ -1227,6 +1227,396 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-04-04",
+      "title": "THE KNOT THAT KEPT THE FEELING",
+      "startAt": "2026-10-10T04:29:51.481+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-04-04.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Learning - Best Practices",
+        "The Present Moment Is All That Exists"
+      ],
+      "angle": "How would this concept evolve ten years from now with advancements in technology or shifting cultural trends?",
+      "kind": "legend",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Learning and memorisation is emotion dependent. When you're bored like you were in school, you likely forget everything."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Set scheduled reminders for valuable lessons learned. The best way to reduce the effects of the forgetting curve is to actively recall what you learned with spaced repetition."
+        },
+        {
+          "kind": "note",
+          "text": "The Present Moment Is All That Exists: Time exists only as the present, so to master time is to master the present."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: Most of what you remember, you do because there was a strong emotion you had associated with that moment."
+        },
+        {
+          "kind": "note",
+          "text": "Learning - Best Practices: The best way to learn quicker and retain more knowledge is to put yourself in a peak state of curiosity/wonder/excitement before doing the task or reading the book."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "The kettle clicks off and you're still holding the mug. Try naming one thing you read this week. Blank? Then ask what the note asks. What were you feeling the last time something stuck?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8465
+        },
+        {
+          "speaker": "march",
+          "text": "Most people reckon forgetting is a memory problem. Some heads hold everything, some leak.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5420
+        },
+        {
+          "speaker": "narrator",
+          "text": "A leaking head! The comfortable story, March, the one that blames the sieve for the water. I prefer to think a clever mind is a bucket with no holes, and a dull one is only a bucket nobody bothered to fill.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 13952
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, then. Read me what it actually says. Not your version.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3518
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here it is at full size. 'Learning and memorisation is emotion dependent.' Feel the drum in that. Not a sieve, not a bucket. A flame, March. Whatever burns hot enough is kept, and whatever is told in a flat voice gutters out by bedtime. The best of it I shall hold back until you are leaning in, but mark me, it is the part that makes the rest worth the air.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 23744
+        },
+        {
+          "speaker": "march",
+          "text": "So if you're bored you forget, and if something lights you up you keep it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 3980
+        },
+        {
+          "speaker": "narrator",
+          "text": "Lit up, yes, though 'lights you up' is a plain cousin of the note's own word. 'Put yourself in a peak state of curiosity, wonder, excitement before doing the task.' Get to the peak first, and the words have something to cling to.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 14933
+        },
+        {
+          "speaker": "march",
+          "text": "Fair enough.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 1338
+        },
+        {
+          "speaker": "march",
+          "text": "So the bored kid in the back row forgets because nothing about it mattered.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4094
+        },
+        {
+          "speaker": "narrator",
+          "text": "Not because he's thick, no. Most of what you remember, you remember because a strong feeling stuck to it like a burr on a wool jumper.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8619
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1009
+        },
+        {
+          "speaker": "narrator",
+          "text": "The knowledge is the jumper. The feeling is the burr, and the burr is what snags.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5248
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the old book from my shelf. A clockmaker's boy could never hold the day's material.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5888
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. A clockmaker?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2074
+        },
+        {
+          "speaker": "narrator",
+          "text": "His master taught him at the bench, and by supper it had all drained away. So each dusk he spoke the day's material into a brass ear trumpet, played it back by lamplight with the coal smoke sour in the room, and tied a red thread with a knot for each day still coming.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 17088
+        },
+        {
+          "speaker": "narrator",
+          "text": "He wrecked one watch spring a day, cursed it, and fixed it before his supper. The book insists it was the thread, not the teaching, that he kept. I shall tell you why only once you have tried it on yourself, March.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13568
+        },
+        {
+          "speaker": "march",
+          "text": "Wait. The trumpet. Why speak into brass when you could just say it?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3475
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because brass sends your voice back a touch wrong, March, and the boy had to hear the words come out strange before he trusted them. The replay is the bit that sticks. The thread only brings him back to the replay.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13675
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, I'm the boy. No trumpet, just my phone at the kettle. I say the lesson, then tie one knot in a bit of red string from the drawer.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6826
+        },
+        {
+          "speaker": "march",
+          "text": "That knot is the only tomorrow I'm allowing myself. One knot, one day. No more.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5007
+        },
+        {
+          "speaker": "narrator",
+          "text": "A tomorrow granted by a bit of string, and grudgingly! That is precisely the reminder the learning note asks for. 'Set scheduled reminders for valuable lessons learned.' The knot is the scheduled reminder, March, tied by hand.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 15573
+        },
+        {
+          "speaker": "march",
+          "text": "That's one for me, by the way. Scoring it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2694
+        },
+        {
+          "speaker": "narrator",
+          "text": "A score kept! Where, pray? In a ledger under the kettle, or folded into the stool? You have hidden something in this desk, March. The brass corner, the lamp angle, the reason behind the design. You won't say it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13653
+        },
+        {
+          "speaker": "march",
+          "text": "Not saying.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1511
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall guess. A small window cut in the desk, so you can watch me sulk.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5269
+        },
+        {
+          "speaker": "march",
+          "text": "Wrong.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 1081
+        },
+        {
+          "speaker": "narrator",
+          "text": "Wrong! Cruel woman, outright cruel. I am sulking in the grandest manner available to a man with one good chair, and I would have you know I am enjoying every minute of it.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11371
+        },
+        {
+          "speaker": "march",
+          "text": "Right, back to the knot while you're sulking. Tie it now, then put the string down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4217
+        },
+        {
+          "speaker": "narrator",
+          "text": "Years from now, the reminders will be set for us by machines. A tiny tutor in every phone, pinging on whatever curve the forgetting follows, and the bet on tomorrow handed off entirely.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12544
+        },
+        {
+          "speaker": "march",
+          "text": "Then the doing's still a hand. Nothing gets learned until somebody lifts the instrument or says the lesson out loud. The phone can nag. It can't speak the lesson for me.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8312
+        },
+        {
+          "speaker": "narrator",
+          "text": "So you're saying the calendar can do the remembering, and only a person can do the doing.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5035
+        },
+        {
+          "speaker": "march",
+          "text": "Yeah. The present note gives the doing to the hand, and the learning note hands the remembering to the machine. Neither does the other's job.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7147
+        },
+        {
+          "speaker": "narrator",
+          "text": "Read side by side, they say the hand is ours and the nagging can be handed over. I find that a comfort, though I shall pretend I do not.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9515
+        },
+        {
+          "speaker": "march",
+          "text": "Take someone who believes the emotion note. At dusk they speak the day's lesson into the phone while the spark is still warm, play it back once with the kettle going, and set one reminder for a few days on. The reminder is dull and the replay is short, and the feeling they brought is what keeps it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 4,
+          "audioMs": 13410
+        },
+        {
+          "speaker": "narrator",
+          "text": "And here is the part I kept back, as promised. The knot does not hold the lesson, March. It holds the feeling that once made you want the learning. Pull the string at dusk and the feeling comes back with it, a touch warm, like a stove still ticking.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 15765
+        },
+        {
+          "speaker": "march",
+          "text": "So the knot's a feeling you can pull.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 4,
+          "audioMs": 2426
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. A feeling in a bit of string, and it is the most sensible thing I have heard in weeks.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 4,
+          "audioMs": 5653
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the kettle, it's coming up to the boil. The chord's still waiting in the hall, and the knot's on the desk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5588
+        },
+        {
+          "speaker": "narrator",
+          "text": "You were right about the cord and the knot, March. The lesson lived in the lamplight, not in the trumpet. There, I have said it, and I am furious about it. Such a humble knot. Humble, humble, and I am not saying simple.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 13867
+        },
+        {
+          "speaker": "march",
+          "text": "Noted. One more on the score, and I'm not telling you the total.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3472
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I crown you Keeper of the Red Thread, and the rest of the desk can bow to the string.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5461
+        },
+        {
+          "speaker": "march",
+          "text": "Accepted. Don't make it weird.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2195
+        },
+        {
+          "speaker": "march",
+          "text": "It's gone late and the kettle's loud. Up next, List Of Nice Things To Do and When You're Scared To Take Action, back to back. The guitar stays in the hall, waiting for its chair.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 8636
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
