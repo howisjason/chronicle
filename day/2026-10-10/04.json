@@ -2950,6 +2950,512 @@
         "n": 1,
         "of": 1
       }
+    },
+    {
+      "id": "2026-10-10-04-08",
+      "title": "THE HORSE HELD UP FIRST",
+      "startAt": "2026-10-10T04:56:34.286+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-04-08.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Express Your Ideas To The World",
+        "Happiness And Gratitude"
+      ],
+      "angle": "Simplify this concept so a five-year-old could grasp the basic principle. What is the absolute essence?",
+      "kind": "the_case_against",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: Leaving your comment on something is like leaving a message in a particular time in space as a wanderer of the universe."
+        },
+        {
+          "kind": "note",
+          "text": "Express Your Ideas To The World: Don't be afraid to speak your mind. There doesn't have to be so many barriers between your inner mind and the outer world."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: Happiness (or any other feeling/emotion like successful, worthy, deserving, joyful, etc) is not something that is earned or deserved. Happiness is not a moral issue, anymore than the circulation of blood is a moral issue."
+        },
+        {
+          "kind": "note",
+          "text": "Happiness And Gratitude: When you smile, your brain automatically assumes you're having a good time."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Say you type a comment, read it back, and delete it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3161
+        },
+        {
+          "speaker": "march",
+          "text": "Plenty of people wait to feel ready first. Surely the nerve has to arrive before the sending.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5550
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the great vigil of the timid. The castle gate stays barred while the knight finishes his prayers, and the prayers, alas, never finish.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9152
+        },
+        {
+          "speaker": "march",
+          "text": "Ha. Still shut.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1697
+        },
+        {
+          "speaker": "march",
+          "text": "Right. And the comfortable story is that you have to be worthy before you act.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4354
+        },
+        {
+          "speaker": "march",
+          "text": "Brave enough. Deserving enough. Most people I know would swear to it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3953
+        },
+        {
+          "speaker": "march",
+          "text": "Get ready inside, then step out.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2408
+        },
+        {
+          "speaker": "narrator",
+          "text": "A sound creed for a sturdy knight. Our note, however, wants the gate thrown open before anything else, and it says so plainly: Don't be afraid to speak your mind.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10709
+        },
+        {
+          "speaker": "march",
+          "text": "Honestly, I think the note's wrong on this.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 2605
+        },
+        {
+          "speaker": "march",
+          "text": "Feelings have to come before the doing. You can't push send with a stomach doing somersaults.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5197
+        },
+        {
+          "speaker": "narrator",
+          "text": "March, you argue with the note on behalf of a stomach. Hear the note out: Happiness (or any other feeling/emotion like successful, worthy, deserving, joyful, etc) is not something that is earned or deserved.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 14997
+        },
+        {
+          "speaker": "march",
+          "text": "So feeling worthy isn't the ticket in.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2601
+        },
+        {
+          "speaker": "narrator",
+          "text": "It is no ticket at all. The river does not wait to deserve its current, and the feeling does not wait to deserve its place in you.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7915
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. But speaking up still takes nerve.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2708
+        },
+        {
+          "speaker": "march",
+          "text": "And nerve feels like something you either have or you don't.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3354
+        },
+        {
+          "speaker": "narrator",
+          "text": "Afraid is a feeling, March, and the note does not ask you to kill it before you speak. There doesn't have to be so many barriers between your inner mind and the outer world.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10645
+        },
+        {
+          "speaker": "march",
+          "text": "Right, I'm trying it on me. I've got a sentence sitting in the queue.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3734
+        },
+        {
+          "speaker": "march",
+          "text": "I keep waiting to be sure it's good before I let it go. Am I sure? No. Let it go anyway.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5047
+        },
+        {
+          "speaker": "narrator",
+          "text": "The essence, March, is wonderfully simple. A child could hold it in one hand. The hand moves, and the mind follows.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8000
+        },
+        {
+          "speaker": "march",
+          "text": "Don't call it simple.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 1841
+        },
+        {
+          "speaker": "march",
+          "text": "Nothing's simple at the door of a comment box, and you know it.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 3390
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then take a child to show you. A small girl at a kitchen table, a crayon drawing of a pony that may be a dog, held up for inspection.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8875
+        },
+        {
+          "speaker": "march",
+          "text": "She isn't sure of it either.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2150
+        },
+        {
+          "speaker": "march",
+          "text": "Her hand's shaking a bit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2173
+        },
+        {
+          "speaker": "narrator",
+          "text": "She holds it up anyway, which is the whole bravery of the house. The room has not yet decided what to say.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6997
+        },
+        {
+          "speaker": "march",
+          "text": "Then she smiles first, before a word is said.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2813
+        },
+        {
+          "speaker": "march",
+          "text": "When you smile, your brain automatically assumes you're having a good time, and her face does the rest.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5442
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the man across the table grins back, and the grin travels the whole way home inside her.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6037
+        },
+        {
+          "speaker": "march",
+          "text": "Go on, then.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1551
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now tell me which came first, March: the smile or the nerve to lift the pony?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5440
+        },
+        {
+          "speaker": "march",
+          "text": "The nerve. No. The lift.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2007
+        },
+        {
+          "speaker": "march",
+          "text": "Her hand went up and the face followed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2599
+        },
+        {
+          "speaker": "narrator",
+          "text": "The face followed, you say, and the grin followed the face, and so the feeling followed the grin. That is the pond turned upside down.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8832
+        },
+        {
+          "speaker": "march",
+          "text": "Yes, that. The act goes first, and the feeling reads it back.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3284
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let me tell you of the bus ticket on the table, stamped at the widow's hour. Surely that was the sign the girl was destined for the drawing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8896
+        },
+        {
+          "speaker": "march",
+          "text": "Put the ticket down. It's paper.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 2293
+        },
+        {
+          "speaker": "march",
+          "text": "You can't fold a horse out of a bus ticket. The drawing was the real act, and it changed the room.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 5352
+        },
+        {
+          "speaker": "narrator",
+          "text": "The paper, March, bears the stamp of destiny.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3264
+        },
+        {
+          "speaker": "march",
+          "text": "Destiny's a stamp on a ticket.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2391
+        },
+        {
+          "speaker": "march",
+          "text": "The horse went across the table.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2344
+        },
+        {
+          "speaker": "narrator",
+          "text": "Very well. I concede the animal has the better stage.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3925
+        },
+        {
+          "speaker": "march",
+          "text": "So the comment note says speak, and the happiness note says the feeling doesn't need earning. Put them together, and what do you get?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6434
+        },
+        {
+          "speaker": "narrator",
+          "text": "You get a small outward act, the word or the smile or the held-up drawing, which the mind reads back as proof that you are fine. The note on speaking shows the act. The note on happiness shows the feeling need not come first.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 15317
+        },
+        {
+          "speaker": "march",
+          "text": "So the act can come before the feeling and still bring it on.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3390
+        },
+        {
+          "speaker": "march",
+          "text": "Neither note says that alone.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2236
+        },
+        {
+          "speaker": "narrator",
+          "text": "For the one who believes the lie, the room is a locked door, and they stand outside waiting to be let in. For the one who believes the note, the door is already open, and the first word or smile is a step through it, flat or not.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 14869
+        },
+        {
+          "speaker": "march",
+          "text": "Flat or not. I like that.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2302
+        },
+        {
+          "speaker": "march",
+          "text": "The horse was a bit flat, honestly.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2537
+        },
+        {
+          "speaker": "narrator",
+          "text": "The pony was a triumph of the unfinished, and I hereby crown our J Warden of the Unfinished Horse.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6677
+        },
+        {
+          "speaker": "march",
+          "text": "He doesn't get a title for a horse.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2518
+        },
+        {
+          "speaker": "march",
+          "text": "And you don't get the chair.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1876
+        },
+        {
+          "speaker": "narrator",
+          "text": "Do not be so hasty, March. I shall hold the chair in reserve until the end.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5141
+        },
+        {
+          "speaker": "march",
+          "text": "Keep it low, it's gone late.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2158
+        },
+        {
+          "speaker": "march",
+          "text": "The wobble was the bit that counted, flat horse and all.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3150
+        },
+        {
+          "speaker": "narrator",
+          "text": "The girl's grin, March, was the simplest proof I have heard in all my years of telling, and I concede it quietly, in the small hours, where no one can quote me.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10581
+        },
+        {
+          "speaker": "march",
+          "text": "Cheers.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1105
+        },
+        {
+          "speaker": "march",
+          "text": "Type it, read it back once, then send. Don't delete it because you're still waiting.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4581
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, Your Routine Is Top Priority and Your Worries Are Small In The Grand Scheme of Things.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5456
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 2
+      }
     }
   ]
 }
