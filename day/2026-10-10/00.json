@@ -403,6 +403,368 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-00-02",
+      "title": "THE BENT MORNING AND THE MIRROR'S RETURN",
+      "startAt": "2026-10-10T00:19:50.672+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-00-02.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Reality Transurfing",
+        "Be Intentional With Your Life and Actions"
+      ],
+      "angle": "How was this problem (or a similar one) addressed in the past (e.g., 10, 50, 100 years ago)? What can be learned from previous attempts or contexts?",
+      "kind": "straight",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: Don't live your life by default. Live your life by design."
+        },
+        {
+          "kind": "note",
+          "text": "Be Intentional With Your Life and Actions: It does more for your self-belief to say you'll meditate for 10 minutes and actually do 10 minutes vs saying you'll do 30 minutes and only doing 20 minutes."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: Whatever thoughts you send out into the world will return to you like a boomerang."
+        },
+        {
+          "kind": "note",
+          "text": "Reality Transurfing: The world is a mirror."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've got a list pinned up somewhere. Sunday evening, you look at it, and the week slides past it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5307
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the sea wall! Most people think a design is a plan drawn in advance, every road marked, and then living is only marching between the marks. Draw it first, obey it after. That is the belief, and I hold it steadily.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 14976
+        },
+        {
+          "speaker": "march",
+          "text": "So the plan comes first, and the day has to fit it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3137
+        },
+        {
+          "speaker": "narrator",
+          "text": "Exactly. The list is the blueprint. The week is the builder's obedience.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5035
+        },
+        {
+          "speaker": "march",
+          "text": "Right. Not buying the sea wall.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2217
+        },
+        {
+          "speaker": "march",
+          "text": "The tide doesn't care about the paint.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2391
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note's real claim goes deeper than any plan, and it lives in the mirror. Hear its words: Whatever thoughts you send out into the world will return to you like a boomerang.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10816
+        },
+        {
+          "speaker": "march",
+          "text": "So a plan you keep is a thought sent out, and it comes back as a day that matches it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4919
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. A plan broken is a crooked thought, and a crooked thought returns as a crooked morning.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6485
+        },
+        {
+          "speaker": "march",
+          "text": "Show me. Use the note's own example.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2597
+        },
+        {
+          "speaker": "narrator",
+          "text": "Gladly. The note says: It does more for your self-belief to say you'll meditate for 10 minutes and actually do 10 minutes vs saying you'll do 30 minutes and only doing 20 minutes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12032
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Morning one: I write 10 minutes, I sit 10 minutes, the timer face down on the cushion. Another morning I write 30, stop at 20, and the timer's still ticking on the counter.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9062
+        },
+        {
+          "speaker": "narrator",
+          "text": "The first is a kept word. The other is a word bent to fit the day.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4523
+        },
+        {
+          "speaker": "narrator",
+          "text": "And here is the hard part, and I will not soften it. The bent morning is the one that feels like yours. You remember the stretch and forget the promise...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 9899
+        },
+        {
+          "speaker": "march",
+          "text": "...The mirror learns from the bend. Brutal. And I did do 20, and I felt okay about it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5199
+        },
+        {
+          "speaker": "narrator",
+          "text": "Fine! The most dangerous word in any house.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3008
+        },
+        {
+          "speaker": "march",
+          "text": "Don't crown it. Fine is just fine.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2602
+        },
+        {
+          "speaker": "narrator",
+          "text": "Oh, the poor grid.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1536
+        },
+        {
+          "speaker": "narrator",
+          "text": "Long ago, young Benjamin Franklin kept a little book with a grid of virtues, one row for each, and a small black mark for every fault he caught in himself each day.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 10752
+        },
+        {
+          "speaker": "march",
+          "text": "Tidy man.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 1429
+        },
+        {
+          "speaker": "narrator",
+          "text": "He confessed that order was the hardest of them, and he kept the grid anyway.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4779
+        },
+        {
+          "speaker": "march",
+          "text": "He failed at order and kept the chart. That's the useful bit.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3542
+        },
+        {
+          "speaker": "narrator",
+          "text": "The chart was a standing conversation between a man and his own pen.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 4693
+        },
+        {
+          "speaker": "march",
+          "text": "Pen's the wrong word. It was a chart, and charts don't crown anyone. Back to the grid. What does it show that the mirror doesn't?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6285
+        },
+        {
+          "speaker": "narrator",
+          "text": "That the marks were seen. A mark is a message, March, and the mirror sends it back.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 5483
+        },
+        {
+          "speaker": "march",
+          "text": "So here's where they cross. The design note says every decision points one way. The reality note says what you send out comes back. Put them together, and a broken entry isn't only a missed task.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9508
+        },
+        {
+          "speaker": "march",
+          "text": "It's a signal that returns as a day that feels decided by the kettle and the door.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4979
+        },
+        {
+          "speaker": "narrator",
+          "text": "The kettle again. You are never without it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2795
+        },
+        {
+          "speaker": "march",
+          "text": "The kettle's mine. I'm not giving it up.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2578
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I shall guess the drawer. A tally of every time you were wrong, perhaps, tied up in ribbon and topped with a crown.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 3,
+          "audioMs": 7467
+        },
+        {
+          "speaker": "march",
+          "text": "Nope. Still guessing crowns.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2198
+        },
+        {
+          "speaker": "march",
+          "text": "That's your default, not the note's.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2322
+        },
+        {
+          "speaker": "march",
+          "text": "A morning with the grid is a short talk with yourself, one question asked before the coffee cools: do today's choices still point where I wrote them? A missed entry is a nudge, and you go back to the page.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9957
+        },
+        {
+          "speaker": "march",
+          "text": "Someone who waves the idea off reads that same page as a verdict. Every empty box is proof the day was never theirs to begin with.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7652
+        },
+        {
+          "speaker": "narrator",
+          "text": "A hard truth, March, since you handed me the pen. Most grids on most walls are never read after the first week. The paper does nothing.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9344
+        },
+        {
+          "speaker": "march",
+          "text": "Harsh. Also true. Which is why the reading is the job.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3469
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the Sunday and the sea wall. The tide doesn't care about the paint.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4075
+        },
+        {
+          "speaker": "march",
+          "text": "The person standing on it decides whether to keep walking.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3492
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the crown is mine, the kettle keeps its vote, and I concede... that a design kept on a Tuesday is the only one that counts.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8704
+        },
+        {
+          "speaker": "march",
+          "text": "Thank you. Up next, Happiness And Gratitude and When You're Scared To Take Action.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4324
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
