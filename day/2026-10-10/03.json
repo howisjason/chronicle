@@ -2522,6 +2522,359 @@
         "n": 2,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-03-07",
+      "title": "THE STOOL ONE FOOT NEARER",
+      "startAt": "2026-10-10T04:01:06.676+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-03-07.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "It's Never Too Late To Change"
+      ],
+      "angle": "Cross Pollination: Find the intersection of key ideas between two or more notes.",
+      "kind": "legend",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "It's Never Too Late To Change: Often times, we feel like we are who we are."
+        },
+        {
+          "kind": "note",
+          "text": "It's Never Too Late To Change: No matter how old you are, it's never too late to make a change in your life."
+        },
+        {
+          "kind": "note",
+          "text": "It's Never Too Late To Change: Tomorrow can be a new chapter in our life."
+        },
+        {
+          "kind": "note",
+          "text": "It's Never Too Late To Change: Either curse the world for being unfair or do all that you can to improve yourself, no matter how little."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "Midnight. You're halfway through filling the kettle, and you can't tell whether you decided to sleep early or only meant to. Every night you pour the same amount, stand in the same spot, and feel the same small verdict settle over the room. That's who you are. Years of it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11766
+        },
+        {
+          "speaker": "march",
+          "text": "Most people believe that once they're set in their ways, the rest of their life is decided. Old habits, old limits, a tap you always reach for the same way. I'll say it lightly. Too late.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9078
+        },
+        {
+          "speaker": "march",
+          "text": "Done.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1049
+        },
+        {
+          "speaker": "narrator",
+          "text": "The note, at full size: 'No matter how old you are, it's never too late to make a change in your life.' Read that slowly and it does not ask permission. The years already spent are no lock on the years still to come, and it refuses the stale excuse you have been feeding yourself. The best of it I am keeping for the gatekeeper, and you will see why. Let the kettle wait.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 23531
+        },
+        {
+          "speaker": "march",
+          "text": "So you're saying a grown person can still change. After decades of being the same person.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5417
+        },
+        {
+          "speaker": "narrator",
+          "text": "Precisely. The door was never locked from the inside. A man can be grey at the temples and still take a new road home. I have read the old books, March, and they are full of late beginnings.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12501
+        },
+        {
+          "speaker": "march",
+          "text": "Show me one. Not a king. A real one with a real hook.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 3169
+        },
+        {
+          "speaker": "narrator",
+          "text": "In an old book there is a gatekeeper, a grey man at a narrow gate above a salt road. A lamp hangs over his post, flickering, and the hook beside it has a loose screw that knocks whenever it takes his weight. He decided long ago that he was simply too old to be steady. So for one whole winter he blamed the lamp for flickering, the hook for knocking, and the weather for the draught under the gate. Every morning the latch stuck, and every morning he called it fate.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 27285
+        },
+        {
+          "speaker": "march",
+          "text": "Fate. Sure.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1333
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. Where's the stool? You said there was a stool.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2900
+        },
+        {
+          "speaker": "narrator",
+          "text": "The stool stood by the wall where it had always stood, a foot from where it ought to be. Nobody had thought to move it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6976
+        },
+        {
+          "speaker": "march",
+          "text": "Nobody moved it. Of course.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2234
+        },
+        {
+          "speaker": "march",
+          "text": "A foot. And the draught, where's that coming from?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2708
+        },
+        {
+          "speaker": "narrator",
+          "text": "From under the gate, obviously. The legend is not concerned with draughts.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5013
+        },
+        {
+          "speaker": "march",
+          "text": "It should be. Cold feet and a stiff lock, then he says he's too old. That's not age. That's a man wanting a reason to sit down. What did he change?",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 7226
+        },
+        {
+          "speaker": "narrator",
+          "text": "He moved the stool one foot nearer the door, and tried the key once more before dawn. Only that. And the key turned, though he had sworn for years that the lock was broken and merely needed asking again.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 13141
+        },
+        {
+          "speaker": "march",
+          "text": "One foot. That's the whole change?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2302
+        },
+        {
+          "speaker": "narrator",
+          "text": "The whole beginning. He was past the age he thought was too late, and he began anyway, with a stool and one more try at the lock.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 8469
+        },
+        {
+          "speaker": "march",
+          "text": "Right.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1017
+        },
+        {
+          "speaker": "march",
+          "text": "So the change was small, and it started at an age he'd already written off. That's the claim, isn't it?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5373
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is the claim. Small, late, and real. The lock was never the age. It was the story he told about the age.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8128
+        },
+        {
+          "speaker": "march",
+          "text": "Hold on. Was he too old to learn steadiness at all?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3110
+        },
+        {
+          "speaker": "march",
+          "text": "I'd bet he could have. Same way I'd bet that lamp just needs a new screw and a bit of patience.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5431
+        },
+        {
+          "speaker": "narrator",
+          "text": "Some of those winters are gone, March. The mornings he spent cursing the lamp will not come back, and the note does not pretend they will. He lost them. Nothing in that old book softens it, and I will not soften it for you either. He still has to turn the handle.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 16427
+        },
+        {
+          "speaker": "march",
+          "text": "Okay. That's a harder one than I wanted at this hour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 3068
+        },
+        {
+          "speaker": "march",
+          "text": "But it's the bit that matters. The late start still counts.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3224
+        },
+        {
+          "speaker": "narrator",
+          "text": "Naturally it counts. I said so in the first breath.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 3477
+        },
+        {
+          "speaker": "march",
+          "text": "You said it in the first breath, then wandered off down a salt road for ages.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4557
+        },
+        {
+          "speaker": "march",
+          "text": "Put it to me. I have a mug that always lands on the same tile, and every evening I tell myself I'll move it to the rack. I won't. Tomorrow I move it one inch. That's my stool.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 8524
+        },
+        {
+          "speaker": "narrator",
+          "text": "A mug is a very small gatekeeper.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 3,
+          "audioMs": 2560
+        },
+        {
+          "speaker": "march",
+          "text": "Imagine someone who believes it's too late. They pour the kettle the same way every night, stand in the same spot, and wait for the world to rearrange itself.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 8206
+        },
+        {
+          "speaker": "march",
+          "text": "Someone who believes the note moves the stool a single foot, tries the lock once more tomorrow, and counts that as the whole beginning. Same kettle. Different night.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 7929
+        },
+        {
+          "speaker": "march",
+          "text": "There's a part of how I'm built that I keep to myself. I'm not going to explain it tonight.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5198
+        },
+        {
+          "speaker": "narrator",
+          "text": "Mysterious, March. The gatekeeper would have liked you.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3371
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now return to the kettle, the moth, and the brass latch. Who was right about the lamp? The grumbling man, or the one who moved the stool?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 8576
+        },
+        {
+          "speaker": "march",
+          "text": "You're right.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1260
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I offer J a title worthy of that lamp. Duke of the Dimmer. The keeper of a respectable light, low enough not to wake the coats.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 9173
+        },
+        {
+          "speaker": "march",
+          "text": "No.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1026
+        },
+        {
+          "speaker": "march",
+          "text": "Duke is too grand for a man who moved a stool. Next up, Consistency Compounds Exponentially and Staying On Your Purpose.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 1,
+          "audioMs": 6825
+        }
+      ],
+      "part": {
+        "n": 1,
+        "of": 1
+      }
     }
   ]
 }
