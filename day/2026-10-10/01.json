@@ -2322,6 +2322,528 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-01-06",
+      "title": "THE LEDGER READ BACK IN THE FEN",
+      "startAt": "2026-10-10T01:53:00.049+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-01-06.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "Remove Negatives Over Adding More Positives",
+        "Failure Is How We Learn And Grow"
+      ],
+      "angle": "What if this problem existed in an entirely different industry?",
+      "kind": "legend",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: The people devastated by failure are the ones who didn’t expect it. They mistakenly think failure is who they are instead of the result of one attempt."
+        },
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: A mistake only counts as experience if you learn from it. Record what you learned, and review it. Otherwise, it was a waste."
+        },
+        {
+          "kind": "note",
+          "text": "Remove Negatives Over Adding More Positives: Removing negatives is more important than adding more positives."
+        },
+        {
+          "kind": "note",
+          "text": "Failure Is How We Learn And Grow: And never make the same mistake twice. You’ll be extremely experienced."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You've heard a bell crack on the first pour. One sharp flat note, then the shed goes quiet.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5056
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah, the grey slag. A lost morning is a sorrow the old founders knew by heart, and I shall sigh over it properly.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7872
+        },
+        {
+          "speaker": "narrator",
+          "text": "Let me give the belief its robes first. A great failure is the teacher. One bold, costly collapse, a whole foundry lost to the flames, teaches more than all the small attempts put together.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12843
+        },
+        {
+          "speaker": "narrator",
+          "text": "The grand fall is the lesson, March, and the little pours are only rehearsal.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5013
+        },
+        {
+          "speaker": "march",
+          "text": "So the lie is: the big loss is the lesson.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2788
+        },
+        {
+          "speaker": "march",
+          "text": "Except a big loss can take the whole workshop. You don't get to learn from a shed you've lost.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5305
+        },
+        {
+          "speaker": "narrator",
+          "text": "A shed is a small thing beside the fall, March. The fall is the teacher.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4949
+        },
+        {
+          "speaker": "march",
+          "text": "The teacher's locked the door on you, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2702
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear the claim in full, as the note gives it. Here: 'The people devastated by failure are the ones who didn’t expect it.' The wreck is for the one who never planned to fall.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11136
+        },
+        {
+          "speaker": "march",
+          "text": "So the wrecked ones are the surprised ones.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2592
+        },
+        {
+          "speaker": "narrator",
+          "text": "Surprise is the wound. I shall keep the best part back until we are seated... it is a long tale and tastes better told sitting down. A bell-founder keeps it in his ledger.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 11477
+        },
+        {
+          "speaker": "march",
+          "text": "Fine. Let's say it. A fen town, one pour a week, and a foundry with a book on a nail.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4965
+        },
+        {
+          "speaker": "narrator",
+          "text": "Listen, then, from a dusty old book. In a fen town there was a founder who poured one small bell each week from a single pot of metal. He expected most pours to crack. When one did, the metal went back in the pot and only the fuel was lost.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 16533
+        },
+        {
+          "speaker": "narrator",
+          "text": "He wrote the flaw in his ledger with the date and the mould's number, and he never made that flaw twice.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 3,
+          "audioMs": 6187
+        },
+        {
+          "speaker": "march",
+          "text": "What does the charcoal cost?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1997
+        },
+        {
+          "speaker": "narrator",
+          "text": "Charcoal is the cost of a fire, March. A blackened little thing, hardly worth the naming.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6059
+        },
+        {
+          "speaker": "march",
+          "text": "Hardly worth.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1589
+        },
+        {
+          "speaker": "narrator",
+          "text": "Do not mock my fire.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1771
+        },
+        {
+          "speaker": "march",
+          "text": "How many pots did he have?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2066
+        },
+        {
+          "speaker": "narrator",
+          "text": "Pots enough. The legend does not count them, and the legend is right not to.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5120
+        },
+        {
+          "speaker": "march",
+          "text": "Then the legend's missing the number that matters. Was the ledger ever read back?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4537
+        },
+        {
+          "speaker": "narrator",
+          "text": "Read every evening by candle. He spoke the entries aloud to the empty shed.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5269
+        },
+        {
+          "speaker": "march",
+          "text": "A ledger nobody reads back is a shelf of good intentions with a grand name.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4559
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ouch, March.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1344
+        },
+        {
+          "speaker": "march",
+          "text": "Right. So the grand version has him reading aloud, and that's the bit I'd keep. The cheap bit is the part he could repeat every week.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 7012
+        },
+        {
+          "speaker": "narrator",
+          "text": "You are stripping the old founder to the bone, March. He had a fire to keep and a name in the fen.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6229
+        },
+        {
+          "speaker": "march",
+          "text": "I'm getting him to the fen. The cheap bit's what's left when the fancy goes.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 4197
+        },
+        {
+          "speaker": "march",
+          "text": "Try it on me.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1710
+        },
+        {
+          "speaker": "narrator",
+          "text": "On you, a casting. Go on.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2197
+        },
+        {
+          "speaker": "march",
+          "text": "Say my first casting of the new design cracks, and I'm standing at the sink with the bucket. Do I expect it, or am I the one who's wrecked?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7263
+        },
+        {
+          "speaker": "narrator",
+          "text": "You have no foundry, March. You have a kitchen and a tally.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 3925
+        },
+        {
+          "speaker": "march",
+          "text": "The tally's mine. I'd expect it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2387
+        },
+        {
+          "speaker": "march",
+          "text": "The flaw goes on the envelope, the date beside it, and I'm casting again by the timer.",
+          "emotion": "happy",
+          "action": "point",
+          "source": 1,
+          "audioMs": 5038
+        },
+        {
+          "speaker": "narrator",
+          "text": "Keeper of the Long Ledger. I offer that grand title to J, well-worn as it is, and to you, March, since you keep a ledger's habit as tidy as any monk.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 10645
+        },
+        {
+          "speaker": "march",
+          "text": "He's not a keeper, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2278
+        },
+        {
+          "speaker": "march",
+          "text": "He's got a notebook and a sense of humour, and that's all I'll grant him.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4052
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then the biscuit tin shall be his crown. Now, March, honestly, if the casting cracks and you have only the bucket, what do you feel first?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8981
+        },
+        {
+          "speaker": "march",
+          "text": "Annoyed first. Then I write it down.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2515
+        },
+        {
+          "speaker": "narrator",
+          "text": "That is not a legend.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1813
+        },
+        {
+          "speaker": "march",
+          "text": "Not yet, anyway.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1850
+        },
+        {
+          "speaker": "march",
+          "text": "No. That's a Tuesday.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1967
+        },
+        {
+          "speaker": "narrator",
+          "text": "You win the point, and I am ruined by a kettle that boils too slowly for my liking. Put it on, March, if you must win on the kettle as well.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9344
+        },
+        {
+          "speaker": "march",
+          "text": "Kettle's on.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1439
+        },
+        {
+          "speaker": "march",
+          "text": "Tally's up. The cracked pour is still on the bench.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2924
+        },
+        {
+          "speaker": "march",
+          "text": "Where's the join? You said you'd lean the notes together.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2979
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now the notes lean on each other, March. The failure note says make the cheap mistake on purpose, and the removal note says the bad comes out before the good goes in. Where they cross is the founder who strikes the flaw from the next pour.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 14933
+        },
+        {
+          "speaker": "march",
+          "text": "So the cheap failure is also the strike.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 2793
+        },
+        {
+          "speaker": "narrator",
+          "text": "Yes. The cost of learning is capped in advance, the fuel weighed before the fire is lit. A single note could not have shown that, and the other half of the pair holds the rest by insisting the lesson be kept.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 13419
+        },
+        {
+          "speaker": "march",
+          "text": "So the ledger's the cap.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 1980
+        },
+        {
+          "speaker": "march",
+          "text": "Record it, read it back, and the flaw can't come round twice.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 3,
+          "audioMs": 3424
+        },
+        {
+          "speaker": "march",
+          "text": "Here's the fork. Founder one makes a row of small ones, each flaw struck from the next, and by evening there's a shelf of sound ones and the pot's still warm.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 7778
+        },
+        {
+          "speaker": "march",
+          "text": "The other founder stakes the whole season on one great casting. It cracks, he stops casting altogether, and the shed goes dark for good.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 7250
+        },
+        {
+          "speaker": "narrator",
+          "text": "A grand refusal. I do love a grand refusal. He lays down his tools like a king.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5952
+        },
+        {
+          "speaker": "march",
+          "text": "Wouldn't love the shed, though.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 2106
+        },
+        {
+          "speaker": "narrator",
+          "text": "You were right about the fuel, March. I grant it, with a complaint on the side. The kettle is still slow.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6720
+        },
+        {
+          "speaker": "march",
+          "text": "Say it properly, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2130
+        },
+        {
+          "speaker": "narrator",
+          "text": "You were right about the charcoal.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2069
+        },
+        {
+          "speaker": "march",
+          "text": "Ta. Back at the bench: the cracked casting, the grey slag, and the biscuit still sulking in the tin.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5480
+        },
+        {
+          "speaker": "narrator",
+          "text": "The book goes back on its nail, and the candle goes out. The night has grown small and quiet around us.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6805
+        },
+        {
+          "speaker": "march",
+          "text": "Up next: How Our Brains Interpret Imagined And Real Experiences. Bring the ledger.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 5393
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
