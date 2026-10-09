@@ -397,12 +397,15 @@ def one_segment(day, path):
             # Mend only the refused lines first (lab, 9 Oct 2026): a ten-minute scene has
             # about fifty lines, and a whole rewrite rolls fresh faults into new lines
             # (a stray "two", a river "bank"), so nine whole rewrites in a row were all
-            # refused. A scene-wide fault (too short, one rhythm) still needs a rewrite.
+            # refused. One rhythm is mended by adding reactions; too short needs a rewrite.
             try:
                 fixed = as_json(ask(WRITER, f"{material}\n\nThis scene:\n{json.dumps(seg, ensure_ascii=False)}\n\n"
                                     f"The checker refused it for these reasons (lines counted from 0):\n{msg}\n\n"
                                     "Rewrite ONLY the lines it names, and for a worn-out word change it in some of the "
-                                    "lines that use it. Keep every other line exactly as it is. Return the whole scene JSON.",
+                                    "lines that use it. For one rhythm, add a few reactions of one to five words as their own "
+                                    "turns where a listener would react, each in that speaker's own words and never the same "
+                                    "twice, and split one long turn where the other would cut in. Keep every other line "
+                                    "exactly as it is. Return the whole scene JSON.",
                                     f'mend#{attempt}'))
                 seg = dict(seg, lines=fixed['lines'])
                 trial = dict(day, segments=day['segments'] + [seg])
