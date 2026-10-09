@@ -2508,6 +2508,404 @@
         "n": 1,
         "of": 2
       }
+    },
+    {
+      "id": "2026-10-10-00-07",
+      "title": "THE LID THAT MAKES A COMPANY",
+      "startAt": "2026-10-10T00:57:57.069+07:00",
+      "audio": "audio/2026-10-10/2026-10-10-00-07.mp3",
+      "gaps": {
+        "firstLeadMs": 1000,
+        "leadMs": 150,
+        "holdMs": 350
+      },
+      "notes": [
+        "List Of Nice Things To Do",
+        "The Influence Of Others"
+      ],
+      "angle": "What if I had limitless resources or time to solve this?",
+      "kind": "try_it",
+      "show": "long_night",
+      "sources": [
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: “You are the average of the five people you spend the most time with”. Who you allow to influence you will determine where you'll end up."
+        },
+        {
+          "kind": "note",
+          "text": "The Influence Of Others: Only surround yourself with people who will better your life and pull you higher. Cut out all who drag you down or hinder your growth."
+        },
+        {
+          "kind": "note",
+          "text": "List Of Nice Things To Do: Gift Idea: Put 50–100 paper hearts or smiley faces in a box. On each cutout write something that is special about your lover or a good friend."
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "march",
+          "text": "You're standing at the sink after a long shift, and a friend says the people you sit with are the people you'll become. You feel the small drop in your stomach as you count them off, checking whether you like the answer.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9677
+        },
+        {
+          "speaker": "narrator",
+          "text": "A fixed sum, March. Five seats at the table, handed out before you could walk, and nobody gets a vote on the seating plan. You don't choose the count. You read it off like a tide table.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 12053
+        },
+        {
+          "speaker": "march",
+          "text": "So whoever's at my table is the whole deal. That's the bit I'm supposed to swallow?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4898
+        },
+        {
+          "speaker": "narrator",
+          "text": "Swallow it, and the current does the work. Nature keeps the ledger, March, and you are its entry.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6421
+        },
+        {
+          "speaker": "march",
+          "text": "Not a ledger. The note says who you let in. Nobody's counting anyone.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 4121
+        },
+        {
+          "speaker": "narrator",
+          "text": "Hear it whole, then. “Only surround yourself with people who will better your life and pull you higher.” That is a sentence about choosing, and choosing is the hard part of the whole business.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 11904
+        },
+        {
+          "speaker": "march",
+          "text": "Noted, narrator.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1840
+        },
+        {
+          "speaker": "march",
+          "text": "Fine, choosing. Then test it. Say I've got limitless time and limitless everything. A bottomless tin of hearts, a whole list of names, and a Sunday that never ends. Which name goes in first?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 9386
+        },
+        {
+          "speaker": "narrator",
+          "text": "The one who has been kindest to you, March, the one you owe the sum to. Put that heart at the centre of the table and let every other name gather round it like iron filings.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 10773
+        },
+        {
+          "speaker": "march",
+          "text": "That's a feeling. Not a reason. Why that one?",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2745
+        },
+        {
+          "speaker": "narrator",
+          "text": "Because the first heart is the first vote. Every name after it is a vote for the same sort of company.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6933
+        },
+        {
+          "speaker": "march",
+          "text": "Right. But if the tin's bottomless, I write everyone. Every name I've ever met. So why does the box still have a lid?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6144
+        },
+        {
+          "speaker": "narrator",
+          "text": "Ah. Now you ask the question a king would never think to ask, so the answer belongs to the throne. Imagine a kingdom of hearts, March. Heralds with baskets. Every road lined with a heart, every bench, every bell rope, a whole realm kind to itself by decree, signed in gold.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 18880
+        },
+        {
+          "speaker": "march",
+          "text": "Cut it down. One counter, one biro, one Tuesday.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 2,
+          "audioMs": 3242
+        },
+        {
+          "speaker": "narrator",
+          "text": "But the kingdom is the vision...",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 2091
+        },
+        {
+          "speaker": "march",
+          "text": "Kingdom's out. Counter's in. Tuesday. Write down one person.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3642
+        },
+        {
+          "speaker": "narrator",
+          "text": "Very well. A kingdom reduced to a kitchen counter. I'm wounded, and also being made to hold a biro.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 6912
+        },
+        {
+          "speaker": "march",
+          "text": "Hold it. Write.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1548
+        },
+        {
+          "speaker": "narrator",
+          "text": "There was once a king who owned every hour in the realm and every loaf in the granary.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5419
+        },
+        {
+          "speaker": "march",
+          "text": "Every loaf?",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1402
+        },
+        {
+          "speaker": "narrator",
+          "text": "He sat at every feast in his kingdom, and he sat at them all alone, because nothing was ever refused him, so nothing was ever chosen for him either.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 9067
+        },
+        {
+          "speaker": "march",
+          "text": "So the king's the proof.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1939
+        },
+        {
+          "speaker": "narrator",
+          "text": "The king is the proof. Infinite hours, infinite hearts, and an empty feast. Nobody had to be picked, so nobody was particular.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 8939
+        },
+        {
+          "speaker": "march",
+          "text": "Hang on. The king had no lid. No limit, so no choosing, so his feast was just a crowd. A crowd that's never been picked.",
+          "emotion": "surprised",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6419
+        },
+        {
+          "speaker": "narrator",
+          "text": "A crowd is worse than an empty chair, March. The chair at least knows it's waiting.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5611
+        },
+        {
+          "speaker": "march",
+          "text": "Ouch.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 0,
+          "audioMs": 1009
+        },
+        {
+          "speaker": "march",
+          "text": "So the lid is what makes it a company. The box only holds so many, so every person in it is a choice. Take the lid off and anybody walks in, and nobody has been picked. The lid was the whole point.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 2,
+          "audioMs": 9702
+        },
+        {
+          "speaker": "narrator",
+          "text": "The lid wins.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 1301
+        },
+        {
+          "speaker": "narrator",
+          "text": "Now then. J needs a new title, and I have one ready. Warden of the Open Tin.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 2,
+          "audioMs": 5760
+        },
+        {
+          "speaker": "march",
+          "text": "Better. It still sounds like a bloke with a biscuit tin.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3224
+        },
+        {
+          "speaker": "narrator",
+          "text": "Here is where the notes meet, March. The gift note asks you to give freely. The influence note asks you to choose carefully. Give to anyone and the giving spreads thin. Choose and never give, and the choosing becomes a locked room.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 14912
+        },
+        {
+          "speaker": "march",
+          "text": "Fair enough, narrator.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 1919
+        },
+        {
+          "speaker": "march",
+          "text": "So the limitless test shows both at once. I can give to everybody, which means the real question is who goes in the box. Generosity with no circle spreads thin, and choice with no giving is a closed door. Neither note shows that alone.",
+          "emotion": "neutral",
+          "action": "point",
+          "source": 1,
+          "audioMs": 11769
+        },
+        {
+          "speaker": "narrator",
+          "text": "Quite. Unlimited time shows what neither note shows alone. The giving needs the circle, and the circle needs the giving, or it's just a club with a lock on it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 1,
+          "audioMs": 10688
+        },
+        {
+          "speaker": "march",
+          "text": "A club with a lock on it. Got it.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 2436
+        },
+        {
+          "speaker": "march",
+          "text": "Someone who believes this has a tin on the windowsill. Each morning they draw one card and send one line. The tin never gets bigger than they can fill on purpose, and it never stays empty for long. Give it a while, and the company starts to look like the company they picked.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 12559
+        },
+        {
+          "speaker": "narrator",
+          "text": "And the bottomless tin, March, the one with no lid?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 3520
+        },
+        {
+          "speaker": "march",
+          "text": "Then it's never empty, and I still pick what goes in it. Also, I've built a bit into my own design that's only mine. I'm not saying what.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 2,
+          "audioMs": 7502
+        },
+        {
+          "speaker": "narrator",
+          "text": "A drawer, I'd wager. Keep it shut, then, the way the best drawers keep.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 2,
+          "audioMs": 4949
+        },
+        {
+          "speaker": "march",
+          "text": "Back to the door, narrator. Say a woman with a basket thanks you as if you'd handed her something real. Would you know what to do with that thank you?",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 6949
+        },
+        {
+          "speaker": "narrator",
+          "text": "The door never stuck, March. The lady with the basket simply knew how to wait for it.",
+          "emotion": "neutral",
+          "action": "none",
+          "source": 0,
+          "audioMs": 5504
+        },
+        {
+          "speaker": "march",
+          "text": "You've been holding it open yourself, narrator. Stop pretending it's the door.",
+          "emotion": "dry",
+          "action": "point",
+          "source": 0,
+          "audioMs": 4350
+        },
+        {
+          "speaker": "march",
+          "text": "And Keeper of the Open Door still belongs to the chap who oils the hinge. Warden I'll give you. Tally's tight, by the way.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6756
+        },
+        {
+          "speaker": "narrator",
+          "text": "Then I am to sit on a stool, and a stool, March, is an insult to a storyteller's dignity. Mind you, it's a very sturdy stool, and I shall say no more about it. Complaint noted.",
+          "emotion": "dry",
+          "action": "none",
+          "source": 1,
+          "audioMs": 12331
+        },
+        {
+          "speaker": "march",
+          "text": "Up next, Focus On One Thing (No Shiny Object Syndrome), then Embodiment, Be Who You Strive To Be. Bring a tin.",
+          "emotion": "happy",
+          "action": "none",
+          "source": 1,
+          "audioMs": 6074
+        }
+      ],
+      "part": {
+        "n": 2,
+        "of": 2
+      }
     }
   ]
 }
