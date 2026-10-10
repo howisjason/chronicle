@@ -4,7 +4,7 @@ The seventh and last baton. **The channel is shelved for the foreseeable future 
 
 ## Why
 
-The taste test ran on 10 Oct: a cheap model made 160 short posts from the approved notes, 20 were drawn at random, and J judged them not good enough to be worth doing. J's rule for the project was quality and affordability together, with no time from him; the test showed the cheap writer fails on quality. A stronger writer was not tested. The full result, the reasons and his words live in his private vault note named in the old baton (`The channel - the rethink and the taste test (10 Oct 2026).md`, section 7), not here, because this repo is public.
+The taste test ran on 10 Oct: a cheap model made 160 short posts from the approved notes, 20 were drawn at random, and the writing did not meet the bar. A stronger writer was not tested. The full result, the reasons and his words live in his private vault note named in the old baton (`The channel - the rethink and the taste test (10 Oct 2026).md`, section 7), not here, because this repo is public.
 
 ## State left behind
 
