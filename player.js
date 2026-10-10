@@ -101,7 +101,7 @@ function paintStage(v) {
 
 // --- the stand-in voice ---
 // Every live sound goes through one mix node to the speakers. The Clip button
-// never touches it: it rebuilds the past's sound in its own graph (clip.js).
+// never touches it: it rebuilds the past's sound in its own graphs (clip.js).
 let audioCtx = null, mix = null;
 function blip(speaker) {
   if (!audioCtx) return;
@@ -205,7 +205,7 @@ function showCaption(v) {
 
 let day = null, loadedAt = 0, lastTyped = -1, lastLineKey = '';
 function tick() {
-  if (!day || previewing) return;
+  if (!day || clipping) return;
   const t = now();
   const g = REPLAY_ID ? null : gapAt(day, t);
   if (g) {
@@ -254,14 +254,14 @@ function tick() {
   }).join('');
 }
 
-// The Clip button opens a strip of the last fifteen minutes this viewer watched;
-// they pick 5 to 60 seconds of it (clip.js). The show is data, so the past is
-// re-rendered exactly as it aired rather than kept in a rolling recording.
-// clipRange() takes a snapshot at the press (the minute poll may swap `day`
-// while the strip is open) and hands clip.js the range, the scenes in it, a
-// picture function, the captions of any window, the live-screen preview, and
-// plan(startMs, endMs): the window's sound to rebuild, as runs of one scene
-// (an MP3 slice where the scene was voiced) and blips for the rest.
+// The Clip button opens an editor over the last fifteen minutes this viewer
+// watched; they pick 5 to 60 seconds of it while watching it play (clip.js). The
+// show is data, so the past is re-rendered exactly as it aired rather than kept
+// in a rolling recording. clipRange() takes a snapshot at the press (the minute
+// poll may swap `day` while the editor is open) and hands clip.js the range, the
+// scenes in it, a picture function, and plan(startMs, endMs): the window's
+// sound to rebuild, as runs of one scene (an MP3 slice where the scene was
+// voiced) and blips for the rest.
 const CLIP_BACK_MS = 15 * 60 * 1000;
 function clipRange() {
   const d = day, maxMs = now();
@@ -277,25 +277,12 @@ function clipRange() {
     const firstLive = (d.segments || []).map((s) => Date.parse(s.startAt)).filter((s) => s >= minMs && s < maxMs);
     if (firstLive.length) minMs = Math.min(...firstLive);
   }
-  // The scenes that aired inside the range, so the strip can show where each begins.
+  // The scenes that aired inside the range, so the timeline can show where each begins.
   const scenes = (d.segments || []).map((s) => ({ startMs: Date.parse(s.startAt), title: s.title, totalMs: layout(s).totalMs }))
     .filter((s) => s.startMs < maxMs && s.startMs + s.totalMs > minMs);
   return {
     minMs, maxMs, scenes,
     viewAt: (t) => clipView(d, t),
-    // Every line heard in the window, once each, so the viewer can find the one they meant.
-    linesIn(a, b) {
-      const lines = [], seen = new Set();
-      for (let t = a; t < b; t += 250) {
-        const at = clipLocate(d, t);
-        if (!at) continue;
-        const k = `${at.segment.id}:${at.lineIndex}`;
-        if (!seen.has(k)) { seen.add(k); lines.push({ speaker: at.line.speaker, text: at.line.text }); }
-      }
-      return lines;
-    },
-    preview: (t) => showPreview(d, t),
-    endPreview,
     plan: (startMs, endMs) => planClip(d, startMs, endMs),
   };
 }
@@ -309,28 +296,18 @@ const inGap = (d, t) => (REPLAY_ID ? null : gapAt(d, t));
 const clipLocate = (d, t) => (inGap(d, t) ? null : locate(d, t));
 const clipView = (d, t) => (inGap(d, t) ? null : viewAt(d, t));
 
-// While a handle is dragged the TV shows that moment instead of live (the card,
-// in a bumper slot); on release the tick takes the screen back.
-let previewing = false;
-function showPreview(d, t) {
-  previewing = true;
-  $('standby').hidden = true;
-  $('power').hidden = true; // the cover would hide the preview
-  // The name card belongs to the live line, so it hides while previewing.
-  $('lowerThird').dataset.on = '0';
-  $('capName').textContent = '';
-  const g = inGap(d, t);
-  if (g) { showBumper(g, true); showCaption({ speaker: '', shown: '' }); return; }
-  $('bumper').hidden = true;
-  const v = viewAt(d, t);
-  if (!v) return;
-  $('title').textContent = v.title;
-  showCaption(v);
-  paintStage(v);
+// Clip mode takes the screen: the live voice stops and the tick stops painting
+// (so no blips and no jingle either), and the viewer hears only the clip they
+// are trimming. J on his phone, 10 Oct 2026: "you hear the new stuff going on
+// while you have to read the text of what you're trying to clip." Leaving it,
+// the tick puts the screen and the voice back on the clock, in sync.
+let clipping = false;
+function pauseLive() {
+  clipping = true;
+  if (!voice.paused) voice.pause();
 }
-function endPreview() {
-  previewing = false;
-  $('power').hidden = !!audioCtx; // the cover comes back if the TV was never turned on
+function resumeLive() {
+  clipping = false;
   tick();
 }
 
@@ -355,7 +332,7 @@ function planClip(d, startMs, endMs) {
   }
   return { startMs, endMs, runs, audioBase: AUDIO_BASE, viewAt: (t) => clipView(d, t) };
 }
-setupClip({ button: $('clip'), strip: $('clip-strip'), out: $('clip-out'), range: clipRange });
+setupClip({ button: $('clip'), strip: $('clip-strip'), out: $('clip-out'), range: clipRange, live: { pause: pauseLive, resume: resumeLive } });
 setupPanels();
 
 function escapeHtml(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]); }
