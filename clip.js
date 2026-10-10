@@ -1,9 +1,14 @@
-// clip.js: the Clip button. Like Twitch, it clips what JUST happened: the
-// thirty seconds before the press, made in the viewer's own browser (no
-// server, no cost): the pixel stage scaled up, the scene title, the caption
-// typed out, and a "Watch live" mark, with the sound as it aired (the real
-// voice, or the blips). Every clip carries the address, so every share points
-// back here. The idea is PNN's; the code is our own.
+// clip.js: the Clip button. Like Twitch, it clips what the viewer just
+// watched: a press opens a strip of the last fifteen minutes (never before the
+// page loaded), they drag a window of 5 to 60 seconds onto the moment, the TV
+// previews the frame under the handle, and the window's lines show below so
+// they can find the one they meant (J's spec, 8 Oct 2026; the first version
+// took the thirty seconds before the press and clipped the wrong moment).
+// Made in the viewer's own browser (no server, no cost): the pixel stage
+// scaled up, the scene title, the caption typed out, and a "Watch live" mark,
+// with the sound as it aired (the real voice, or the blips). Every clip
+// carries the address, so every share points back here. The idea is PNN's;
+// the code is our own.
 //
 // How the past is possible: the show is data. Every scene's lines, timing and
 // start are in the hour files, so player.js can say what was on screen at any
@@ -73,11 +78,19 @@ function drawFrame(g, stage, s) {
   g.textAlign = 'left';
 }
 
-// Wire the button. plan() (player.js) returns, for a press now:
-// { startMs, endMs, runs, audioBase, viewAt(t) }, where each run is one scene
-// played straight through: { audio, atMs, intoMs, durMs, blips[] }, atMs being
-// where in the clip it starts and intoMs where in its scene (and MP3).
-export function setupClip({ button, out, plan }) {
+const MIN_MS = 5 * 1000, MAX_MS = 60 * 1000, FIRST_MS = 30 * 1000;
+const clamp = (x, lo, hi) => Math.min(Math.max(x, lo), hi);
+// "1:05" for 65 seconds.
+const mmss = (ms) => { const s = Math.round(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
+
+// Wire the button and the strip. range() (player.js) returns, for a press now:
+// { minMs, maxMs, scenes[], viewAt(t), linesIn(a, b), preview(t), endPreview(),
+// plan(startMs, endMs) }. plan returns { startMs, endMs, runs, audioBase,
+// viewAt(t) }, where each run is one scene played straight through:
+// { audio, atMs, intoMs, durMs, blips[] }, atMs being where in the clip it
+// starts and intoMs where in its scene (and MP3).
+export function setupClip({ button, strip, out, range }) {
   const type = pickType();
   const AC = window.AudioContext || window.webkitAudioContext;
   if (!type || !HTMLCanvasElement.prototype.captureStream) { button.hidden = true; return; }
@@ -90,9 +103,115 @@ export function setupClip({ button, out, plan }) {
   const sg = stage.getContext('2d');
   let job = null;
 
-  button.addEventListener('click', async () => {
-    if (job) { job.stop(); return; } // a second press ends the clip early
-    const p = plan();
+  const close = () => { strip.hidden = true; strip.innerHTML = ''; button.setAttribute('aria-expanded', 'false'); };
+  button.setAttribute('aria-expanded', 'false');
+  button.addEventListener('click', () => {
+    if (job) return; // the strip's own button stops a clip being made
+    if (!strip.hidden) { close(); return; }
+    const r = range();
+    if (!r) return;
+    strip.hidden = false;
+    button.setAttribute('aria-expanded', 'true');
+    if (r.maxMs - r.minMs < MIN_MS) {
+      strip.innerHTML = '<p class="cs-help">Watch a few more seconds first: a clip is made from what you watched here, at least 5 seconds of it.</p>';
+      return;
+    }
+    openStrip(r);
+  });
+
+  // The strip: scene bands along a track of the range, a pink window with a
+  // handle outside each edge (outside, so a 5-second window on a phone still
+  // has two handles a thumb can tell apart), and the window's lines below.
+  function openStrip(r) {
+    const span = r.maxMs - r.minMs;
+    const sel = { a: Math.max(r.minMs, r.maxMs - FIRST_MS), b: r.maxMs };
+    const pct = (t) => `${((t - r.minMs) / span) * 100}%`;
+    strip.innerHTML = `
+      <p class="cs-help">Drag the pink window onto the moment, or drag its edges. A clip is 5 to 60 seconds.</p>
+      <div class="cs-rail"><div class="cs-track">
+        ${r.scenes.map((s, i) => `<span class="cs-scene${i % 2 ? ' odd' : ''}" title="${esc(s.title)}"
+          style="left:${pct(Math.max(s.startMs, r.minMs))};right:${100 - ((Math.min(s.startMs + s.totalMs, r.maxMs) - r.minMs) / span) * 100}%"></span>`).join('')}
+        <div class="cs-win"><span class="cs-h cs-a" aria-label="Start of the clip"></span><span class="cs-h cs-b" aria-label="End of the clip"></span></div>
+      </div></div>
+      <div class="cs-scale"><span>${mmss(span)} ago</span><span>when you pressed Clip</span></div>
+      <p class="cs-len"></p>
+      <ol class="cs-lines"></ol>
+      <p class="cs-go"><button class="cs-make">Make the clip</button> <button class="cs-cancel">Cancel</button></p>`;
+    const track = strip.querySelector('.cs-track'), win = strip.querySelector('.cs-win');
+    const len = strip.querySelector('.cs-len'), lines = strip.querySelector('.cs-lines');
+    const make = strip.querySelector('.cs-make');
+
+    // The window's lines are re-read once per frame at most while dragging.
+    let linesDue = false;
+    const render = () => {
+      win.style.left = pct(sel.a);
+      win.style.width = `${((sel.b - sel.a) / span) * 100}%`;
+      len.textContent = `${Math.round((sel.b - sel.a) / 1000)} seconds, from ${mmss(r.maxMs - sel.a)} to ${mmss(r.maxMs - sel.b)} before you pressed Clip`;
+      if (linesDue) return;
+      linesDue = true;
+      requestAnimationFrame(() => {
+        linesDue = false;
+        lines.innerHTML = r.linesIn(sel.a, sel.b).map((l) => `<li class="${l.speaker === 'march' ? 'm' : 'n'}">${esc(l.text)}</li>`).join('');
+      });
+    };
+    render();
+
+    // One drag at a time: the start handle, the end handle, or the whole window.
+    // The TV previews the edge being moved (the start, for the whole window).
+    let drag = null;
+    const begin = (e, kind) => {
+      if (job) return;
+      e.preventDefault();
+      e.stopPropagation();
+      track.setPointerCapture(e.pointerId);
+      drag = { kind, x0: e.clientX, a0: sel.a, b0: sel.b, w: track.getBoundingClientRect().width };
+      r.preview(kind === 'b' ? sel.b - 1 : sel.a);
+    };
+    strip.querySelector('.cs-a').addEventListener('pointerdown', (e) => begin(e, 'a'));
+    strip.querySelector('.cs-b').addEventListener('pointerdown', (e) => begin(e, 'b'));
+    win.addEventListener('pointerdown', (e) => begin(e, 'win'));
+    // A tap on the bare track moves the window there (same length), then drags it.
+    track.addEventListener('pointerdown', (e) => {
+      if (job || drag) return;
+      const rect = track.getBoundingClientRect();
+      const t = r.minMs + ((e.clientX - rect.left) / rect.width) * span;
+      const w = sel.b - sel.a;
+      sel.a = clamp(t - w / 2, r.minMs, r.maxMs - w);
+      sel.b = sel.a + w;
+      render();
+      begin(e, 'win');
+    });
+    track.addEventListener('pointermove', (e) => {
+      if (!drag) return;
+      const dt = ((e.clientX - drag.x0) / drag.w) * span;
+      if (drag.kind === 'a') sel.a = clamp(drag.a0 + dt, Math.max(r.minMs, sel.b - MAX_MS), sel.b - MIN_MS);
+      else if (drag.kind === 'b') sel.b = clamp(drag.b0 + dt, sel.a + MIN_MS, Math.min(r.maxMs, sel.a + MAX_MS));
+      else {
+        const w = drag.b0 - drag.a0;
+        sel.a = clamp(drag.a0 + dt, r.minMs, r.maxMs - w);
+        sel.b = sel.a + w;
+      }
+      render();
+      r.preview(drag.kind === 'b' ? sel.b - 1 : sel.a);
+    });
+    const end = () => { if (drag) { drag = null; r.endPreview(); } };
+    track.addEventListener('pointerup', end);
+    track.addEventListener('pointercancel', end);
+
+    strip.querySelector('.cs-cancel').addEventListener('click', () => {
+      if (job) { job.cancelled = true; job.stop(); }
+      close();
+    });
+    make.addEventListener('click', () => {
+      if (job) { job.stop(); return; } // a second press ends the clip early
+      record(r.plan(sel.a, sel.b), make);
+    });
+  }
+
+  // Film the window: the recorder from the first version, unchanged but for
+  // where its progress shows (the strip's own button) and the strip closing
+  // once the file is handed over.
+  async function record(p, button) {
     if (!p) return;
     // The last clip's video is let go before the next, so clips don't pile up in memory.
     if (lastClipUrl) URL.revokeObjectURL(lastClipUrl);
@@ -114,10 +233,22 @@ export function setupClip({ button, out, plan }) {
         .then((b) => ac.decodeAudioData(b)).catch(() => null)
       : null)));
     button.disabled = false;
+    // Cancel pressed while the sound was fetched: the strip is gone, so no clip.
+    if (strip.hidden) { if (ac) ac.close(); return; }
 
     // Everything is placed on the audio clock from T0, and the picture reads
     // the same clock, so sound and picture cannot drift apart.
     const T0 = ac ? ac.currentTime + 0.3 : 0;
+    // A silent tone under the whole clip keeps the sound track alive: a window
+    // with no voice and no blips (all inside the "Up next" card) came out with no
+    // sound track and half its length (10 Oct 2026).
+    if (dest) {
+      const o = ac.createOscillator(), hush = ac.createGain();
+      hush.gain.value = 0;
+      o.connect(hush).connect(dest);
+      o.start(T0);
+      o.stop(T0 + durMs / 1000 + 1);
+    }
     if (dest) p.runs.forEach((r, i) => {
       if (buffers[i]) {
         const src = ac.createBufferSource();
@@ -173,16 +304,19 @@ export function setupClip({ button, out, plan }) {
     const finish = () => {
       stream.getTracks().forEach((t) => t.stop());
       if (ac) ac.close();
+      const cancelled = job.cancelled;
       job = null;
-      button.textContent = 'Clip';
-      if (!chunks.length) return;
+      button.textContent = 'Make the clip';
+      // Cancel throws the clip away; a stop keeps what was made so far.
+      if (!chunks.length || cancelled) return;
       const ext = type.startsWith('video/mp4') ? 'mp4' : 'webm';
       const file = new File(chunks, `chronicle-clip-${Date.now()}.${ext}`, { type: type.split(';')[0] });
       handOver(file, out);
+      close();
     };
     rec.onstop = finish;
     button.textContent = `Making your clip... 0 of ${total}s (tap to stop)`;
-  });
+  }
 }
 
 // Hand the file over: a Share button where the browser can share files

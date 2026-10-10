@@ -189,9 +189,16 @@ function showBumper(g) {
 const blipDue = (at, lastTyped) => at.typed !== lastTyped && at.phase === 'speak'
   && at.line.text[at.typed - 1] && at.line.text[at.typed - 1] !== ' ';
 
+function showCaption(v) {
+  const marchLine = v.speaker === 'march';
+  $('march-caption').textContent = marchLine ? v.shown : '';
+  $('caption').textContent = marchLine ? '' : v.shown;
+  $('caption').dataset.on = marchLine ? '0' : '1';
+}
+
 let day = null, loadedAt = 0, lastTyped = -1, lastLineKey = '';
 function tick() {
-  if (!day) return;
+  if (!day || previewing) return;
   const t = now();
   const g = REPLAY_ID ? null : gapAt(day, t);
   if (g) {
@@ -228,10 +235,7 @@ function tick() {
     $('mode').innerHTML = mode === 'replay' ? 'Watching a replay · <a href="./">back to live</a>'
       : mode === 'off' ? 'Off air · replaying the last scenes' : 'Real notes. AI hosts.';
   }
-  const marchLine = line.speaker === 'march';
-  $('march-caption').textContent = marchLine ? v.shown : '';
-  $('caption').textContent = marchLine ? '' : v.shown;
-  $('caption').dataset.on = marchLine ? '0' : '1';
+  showCaption(v);
   paintStage(v);
   updatePanels(v, day, t);
   const srcs = segment.sources || [];
@@ -243,32 +247,90 @@ function tick() {
   }).join('');
 }
 
-// The Clip button clips what JUST aired, like Twitch: the thirty seconds before
-// the press. The show is data, so the past is re-rendered exactly as it aired
-// rather than kept in a rolling recording. planClip hands clip.js the window,
-// a picture function for any moment in it, and the sound to rebuild: runs of
-// one scene (an MP3 slice where the scene was voiced) and blips for the rest.
-const CLIP_MS = 30 * 1000;
-function planClip() {
-  const d = day, endMs = now(); // a snapshot: the minute poll may swap `day` mid-clip
+// The Clip button opens a strip of the last fifteen minutes this viewer watched;
+// they pick 5 to 60 seconds of it (clip.js). The show is data, so the past is
+// re-rendered exactly as it aired rather than kept in a rolling recording.
+// clipRange() takes a snapshot at the press (the minute poll may swap `day`
+// while the strip is open) and hands clip.js the range, the scenes in it, a
+// picture function, the captions of any window, the live-screen preview, and
+// plan(startMs, endMs): the window's sound to rebuild, as runs of one scene
+// (an MP3 slice where the scene was voiced) and blips for the rest.
+const CLIP_BACK_MS = 15 * 60 * 1000;
+function clipRange() {
+  const d = day, maxMs = now();
   if (!d) return null;
   // Never before this viewer loaded the page (a clip is of what they watched)...
-  let startMs = Math.max(endMs - CLIP_MS, loadedAt);
+  let minMs = Math.max(maxMs - CLIP_BACK_MS, loadedAt);
   // ...nor, when the press is live, before the station went live: the replay
   // loop that filled the gap before is not what aired.
-  const atEnd = locate(d, endMs - 1);
+  const atEnd = locate(d, maxMs - 1);
   if (!atEnd) return null;
-  const atStart = locate(d, startMs);
+  const atStart = locate(d, minMs);
   if (!atEnd.replay && atStart && atStart.replay) {
-    const firstLive = (d.segments || []).map((s) => Date.parse(s.startAt)).filter((s) => s >= startMs && s < endMs);
-    if (firstLive.length) startMs = Math.min(...firstLive);
+    const firstLive = (d.segments || []).map((s) => Date.parse(s.startAt)).filter((s) => s >= minMs && s < maxMs);
+    if (firstLive.length) minMs = Math.min(...firstLive);
   }
+  // The scenes that aired inside the range, so the strip can show where each begins.
+  const scenes = (d.segments || []).map((s) => ({ startMs: Date.parse(s.startAt), title: s.title, totalMs: layout(s).totalMs }))
+    .filter((s) => s.startMs < maxMs && s.startMs + s.totalMs > minMs);
+  return {
+    minMs, maxMs, scenes,
+    viewAt: (t) => clipView(d, t),
+    // Every line heard in the window, once each, so the viewer can find the one they meant.
+    linesIn(a, b) {
+      const lines = [], seen = new Set();
+      for (let t = a; t < b; t += 250) {
+        const at = clipLocate(d, t);
+        if (!at) continue;
+        const k = `${at.segment.id}:${at.lineIndex}`;
+        if (!seen.has(k)) { seen.add(k); lines.push({ speaker: at.line.speaker, text: at.line.text }); }
+      }
+      return lines;
+    },
+    preview: (t) => showPreview(d, t),
+    endPreview,
+    plan: (startMs, endMs) => planClip(d, startMs, endMs),
+  };
+}
+
+// In the bumper slot between scenes the live page showed the "Up next" card, but
+// locate() answers with a replay-loop scene nobody saw then; a clip took those
+// seconds from that other scene (seen 10 Oct 2026, a 54-second gap filmed as
+// "THE CHART THAT GOES BLANK"). So the clip reads the past through these two:
+// nothing on the stage and no sound while the card was up.
+const inGap = (d, t) => (REPLAY_ID ? null : gapAt(d, t));
+const clipLocate = (d, t) => (inGap(d, t) ? null : locate(d, t));
+const clipView = (d, t) => (inGap(d, t) ? null : viewAt(d, t));
+
+// While a handle is dragged the TV shows that moment instead of live (the card,
+// in a bumper slot); on release the tick takes the screen back.
+let previewing = false;
+function showPreview(d, t) {
+  previewing = true;
+  $('standby').hidden = true;
+  $('power').hidden = true; // the cover would hide the preview
+  const g = inGap(d, t);
+  if (g) { showBumper(g); showCaption({ speaker: '', shown: '' }); return; }
+  $('bumper').hidden = true;
+  const v = viewAt(d, t);
+  if (!v) return;
+  $('title').textContent = v.title;
+  showCaption(v);
+  paintStage(v);
+}
+function endPreview() {
+  previewing = false;
+  $('power').hidden = !!audioCtx; // the cover comes back if the TV was never turned on
+  tick();
+}
+
+function planClip(d, startMs, endMs) {
   // Walk the window at the live tick's 50 ms step, cutting it into runs of one
   // scene played straight through, and noting where the blips would have gone.
   const runs = [];
   let run = null, key = '', typed = -1;
   for (let t = startMs; t < endMs; t += 50) {
-    const at = locate(d, t);
+    const at = clipLocate(d, t);
     if (!at) continue;
     const into = at.msIntoSegment;
     if (!run || run.id !== at.segment.id || Math.abs(into - (run.intoMs + (t - startMs - run.atMs))) > 200) {
@@ -281,9 +343,9 @@ function planClip() {
     if (blipDue(at, typed)) run.blips.push({ atMs: t - startMs, speaker: at.line.speaker });
     typed = at.typed;
   }
-  return { startMs, endMs, runs, audioBase: AUDIO_BASE, viewAt: (t) => viewAt(d, t) };
+  return { startMs, endMs, runs, audioBase: AUDIO_BASE, viewAt: (t) => clipView(d, t) };
 }
-setupClip({ button: $('clip'), out: $('clip-out'), plan: planClip });
+setupClip({ button: $('clip'), strip: $('clip-strip'), out: $('clip-out'), range: clipRange });
 setupPanels();
 
 function escapeHtml(s) { return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]); }
