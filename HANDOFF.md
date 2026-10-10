@@ -1,4 +1,4 @@
-> **Stamped 2026-10-10 18:52 · 1a5dc00** — true as of this commit; anything after it is unaccounted for.
+> **Stamped 2026-10-10 18:56 · 75f2dac** — true as of this commit; anything after it is unaccounted for.
 
 # HANDOFF — chronicle
 
@@ -32,9 +32,8 @@ None new in the machinery. One in method: a fetch tool's or search engine's summ
 
 ## Open flags, live seams, his words
 
-- **OPEN, his:** the line for what may go out without him (his rule of 28 Aug: anything a stranger sees goes to him first). The private note, section 6.
+- **OPEN, his:** what may be published without his look. His private note, section 6.
 - **OPEN, his:** the station's clock is still loaded and writes up to the daily cap whenever it is on; switching it off is the Dock button's job and his call.
-- **His words, standing:** this is a side project worked in gaps; "24/7 is just like this far off fantasy dream"; it runs with no time from him or it is shelved.
 - **Live seam:** none; nothing is mid-edit.
 
 ## Still outstanding, in the order worth doing
