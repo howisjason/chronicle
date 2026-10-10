@@ -171,23 +171,16 @@ function gapAt(d, t) {
   return { next: next.s, ms: next.start - t };
 }
 const DISCLAIMER = 'Every word is written by AI and every voice is made by AI, from his real notes. Ideas may be stretched; his life is never invented.';
-// Two marks, because a clip preview may show another gap's card: cardFor is
-// whose text is on the card, bumperFor is which live gap already had its jingle.
-// quiet (a preview) rewrites the card but never jingles or marks the live gap
-// (the grader's catches, 10 Oct 2026).
-let bumperFor = '', cardFor = '';
-function showBumper(g, quiet) {
+let bumperFor = '';
+function showBumper(g) {
   $('bumper').hidden = false;
-  if (cardFor !== g.next.id) {
-    cardFor = g.next.id;
-    // The first scene of an hour gets the disclaimer card (PNN's top-of-hour card).
-    const top = /-\d{2}-01$/.test(g.next.id);
-    $('bumperLabel').textContent = top ? 'A WORD FROM CHRONICLE' : 'UP NEXT';
-    $('bumperTitle').textContent = top ? 'Real notes. AI hosts.' : g.next.title;
-    $('bumperTease').textContent = top ? DISCLAIMER : (g.next.notes || []).length ? `From his notes: ${g.next.notes.join(' and ')}` : '';
-  }
-  if (quiet || bumperFor === g.next.id) return;
+  if (bumperFor === g.next.id) return;
   bumperFor = g.next.id;
+  // The first scene of an hour gets the disclaimer card (PNN's top-of-hour card).
+  const top = /-\d{2}-01$/.test(g.next.id);
+  $('bumperLabel').textContent = top ? 'A WORD FROM CHRONICLE' : 'UP NEXT';
+  $('bumperTitle').textContent = top ? 'Real notes. AI hosts.' : g.next.title;
+  $('bumperTease').textContent = top ? DISCLAIMER : (g.next.notes || []).length ? `From his notes: ${g.next.notes.join(' and ')}` : '';
   jingle();
 }
 

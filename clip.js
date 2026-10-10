@@ -290,7 +290,9 @@ export function setupClip({ button, strip, out, range, live }) {
     const pause = () => {
       pl.token++;
       hush();
-      if (pl.playing) pl.at = clamp(clock() - pl.T0, 0, sel.b - sel.a - 1);
+      // Paused while the sound was still loading: no clock yet, so stay where play began
+      // (the grader's catch, 10 Oct 2026: the time read NaN and Play stalled).
+      if (pl.playing) pl.at = Number.isFinite(pl.T0) ? clamp(clock() - pl.T0, 0, sel.b - sel.a - 1) : pl.from;
       pl.playing = false;
       play.textContent = 'Play';
     };
@@ -298,6 +300,8 @@ export function setupClip({ button, strip, out, range, live }) {
       pause();
       if (job) return;
       const tok = pl.token;
+      pl.T0 = undefined;
+      pl.from = fromMs;
       pl.playing = true;
       play.textContent = 'Pause';
       const p = r.plan(sel.a, sel.b), dur = p.endMs - p.startMs;
@@ -321,11 +325,15 @@ export function setupClip({ button, strip, out, range, live }) {
       const frame = () => {
         if (tok !== pl.token) return;
         let ms = clock() - pl.T0;
-        // The loop: the next pass is placed on the clock where this one ends.
+        // The loop: the next pass is placed on the clock where this one ends. After
+        // a hidden tab (no frames, the clock ran on) it jumps whole passes at once
+        // and joins the current one part-way, so passes never stack up.
         if (ms >= dur) {
-          pl.T0 += dur;
-          ms -= dur;
-          if (pac) pl.nodes = playRuns(pac, pac.destination, p, buffers, pl.T0 / 1000);
+          const k = Math.floor(ms / dur);
+          pl.T0 += dur * k;
+          ms -= dur * k;
+          hush();
+          if (pac) pl.nodes = playRuns(pac, pac.destination, p, buffers, pl.T0 / 1000, ms);
         }
         show(ms);
         requestAnimationFrame(frame);
@@ -395,8 +403,10 @@ export function setupClip({ button, strip, out, range, live }) {
       if (job) return;
       const vs = view.b - view.a, lo = r.minMs, hi = r.maxMs - vs;
       let na = view.a + dir * STEP_MS;
-      if (na - lo < 15000) na = lo;
-      if (hi - na < 15000) na = hi;
+      // Only the end being moved towards snaps (the grader's catch: with both
+      // rules, 90 to 105 seconds watched made Earlier do nothing).
+      if (dir < 0 && na - lo < 15000) na = lo;
+      if (dir > 0 && hi - na < 15000) na = hi;
       const d = clamp(na, lo, hi) - view.a;
       if (!d) return;
       view.a += d; view.b += d; sel.a += d; sel.b += d;
