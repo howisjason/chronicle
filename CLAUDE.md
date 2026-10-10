@@ -1,5 +1,7 @@
 # CLAUDE.md — the channel's manual (public repo: nothing private, ever)
 
+**SHELVED for the foreseeable future (10 Oct 2026).** The station's clock is switched off and stays off; the page stays up and replays the last scenes it finds. Nothing here is to be repaired or extended unless J reopens it. The rest of this manual describes the station as it ran.
+
 This repo is public. Nothing about J's money, people, clients, health or plans
 goes in any file here, including this one. The map of where it stands lives in his private vault: `personal/context/obsidian/🌱
 Brain Dump/The channel - where it stands (8 Oct 2026).md`; the first night's plan
