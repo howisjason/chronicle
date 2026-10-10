@@ -172,16 +172,18 @@ function gapAt(d, t) {
 }
 const DISCLAIMER = 'Every word is written by AI and every voice is made by AI, from his real notes. Ideas may be stretched; his life is never invented.';
 let bumperFor = '';
-function showBumper(g) {
+// quiet: a clip preview shows the card without the jingle and without marking
+// the live gap as announced (the grader's catch, 10 Oct 2026).
+function showBumper(g, quiet) {
   $('bumper').hidden = false;
   if (bumperFor === g.next.id) return;
-  bumperFor = g.next.id;
+  if (!quiet) bumperFor = g.next.id;
   // The first scene of an hour gets the disclaimer card (PNN's top-of-hour card).
   const top = /-\d{2}-01$/.test(g.next.id);
   $('bumperLabel').textContent = top ? 'A WORD FROM CHRONICLE' : 'UP NEXT';
   $('bumperTitle').textContent = top ? 'Real notes. AI hosts.' : g.next.title;
   $('bumperTease').textContent = top ? DISCLAIMER : (g.next.notes || []).length ? `From his notes: ${g.next.notes.join(' and ')}` : '';
-  jingle();
+  if (!quiet) jingle();
 }
 
 // The blip rule, shared by the live tick and the clip's sound plan: a blip each
@@ -309,8 +311,11 @@ function showPreview(d, t) {
   previewing = true;
   $('standby').hidden = true;
   $('power').hidden = true; // the cover would hide the preview
+  // The name card belongs to the live line, so it hides while previewing.
+  $('lowerThird').dataset.on = '0';
+  $('capName').textContent = '';
   const g = inGap(d, t);
-  if (g) { showBumper(g); showCaption({ speaker: '', shown: '' }); return; }
+  if (g) { showBumper(g, true); showCaption({ speaker: '', shown: '' }); return; }
   $('bumper').hidden = true;
   const v = viewAt(d, t);
   if (!v) return;

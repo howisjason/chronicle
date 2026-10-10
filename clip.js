@@ -82,7 +82,8 @@ const MIN_MS = 5 * 1000, MAX_MS = 60 * 1000, FIRST_MS = 30 * 1000;
 const clamp = (x, lo, hi) => Math.min(Math.max(x, lo), hi);
 // "1:05" for 65 seconds.
 const mmss = (ms) => { const s = Math.round(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
-const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
+// Quotes too: a scene title goes inside a title="..." attribute.
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 
 // Wire the button and the strip. range() (player.js) returns, for a press now:
 // { minMs, maxMs, scenes[], viewAt(t), linesIn(a, b), preview(t), endPreview(),
@@ -233,8 +234,9 @@ export function setupClip({ button, strip, out, range }) {
         .then((b) => ac.decodeAudioData(b)).catch(() => null)
       : null)));
     button.disabled = false;
-    // Cancel pressed while the sound was fetched: the strip is gone, so no clip.
-    if (strip.hidden) { if (ac) ac.close(); return; }
+    // Cancel pressed while the sound was fetched: the strip is gone (or a new
+    // one replaced it, taking this button with the old one), so no clip.
+    if (strip.hidden || !button.isConnected) { if (ac) ac.close(); return; }
 
     // Everything is placed on the audio clock from T0, and the picture reads
     // the same clock, so sound and picture cannot drift apart.
@@ -277,7 +279,9 @@ export function setupClip({ button, strip, out, range }) {
     const draw = (ms) => {
       const t = p.startMs + Math.min(Math.max(ms, 0), durMs - 1);
       const v = p.viewAt(t);
+      // Nothing on (the "Up next" card's seconds): a dark stage, not the last frame drawn.
       if (v) drawStage(sg, v.stageT, v.stage);
+      else { sg.fillStyle = '#0b0b10'; sg.fillRect(0, 0, W, H); }
       drawFrame(g, stage, v || {});
     };
     draw(0);
