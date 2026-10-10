@@ -1,4 +1,4 @@
-> **Stamped 2026-10-10 06:25 · c702bf7** — true as of this commit; anything after it is unaccounted for.
+> **Stamped 2026-10-10 10:20 · a751396** — true as of this commit; anything after it is unaccounted for.
 
 # HANDOFF — chronicle
 
@@ -6,11 +6,15 @@ The fifth baton. The fourth one's "one job" (the writing rebuild) is done and li
 
 ## The one job next
 
-**Nothing is due on the writing: J's call (9 Oct, 9pm) is to let it run a few days and judge it from the logged scenes** ("we don't really have to make a definitive verdict right now"). When he comes back to it, read a spread of scenes from `day/<date>/*.json` with him, and measure with the snippet in the rebuild note's section 2 (lines, words, short and long turns) plus `inbox/costs.tsv` (labels `outline`, `write#N`, `talk#N`, `mend#N`, `truth`, `repair#N`).
+**The read-through of the writing is next: J's call (9 Oct, 9pm) was to let it run a few days and judge it from the logged scenes** ("we don't really have to make a definitive verdict right now"). Read a spread of scenes from `day/<date>/*.json` with him, and measure with the snippet in the rebuild note's section 2 (lines, words, short and long turns) plus `inbox/costs.tsv` (labels `outline`, `write#N`, `talk#N`, `mend#N`, `truth`, `repair#N`).
 
 **The two Marches are live side by side (10 Oct, 6:20am, his ask):** the old pixel March in her seat, the new per-pixel March (`march-base.js`, the human-hunt engine adopted, every wiring change named in its header) in the narrator's seat, her mouth moving on his lines. Built by an Opus builder, passed by a fresh Sonnet judge, seen on the live site. Loose ends, none urgent: her mouth shapes on narrator lines vary only a little; the narrator's cast-card text still describes the old bearded storyteller; draw time measured only on the Mac (about 2.5 ms), never on a phone; after a seek her pose settles from a slightly different spot than a continuous run (harmless). Its screenshots sit untracked in `design/two-marches/`.
 
-**J's read of the two Marches (10 Oct, 6:23am):** "it does look a little bit janky right now", which he puts down to the page, the set and the layout all being made for the pixel sprites. He thinks it "pretty likely" he goes with the new models, and then the page's look changes with them, so nothing pixel-shaped should be polished now. **The next session opens with the clip scrubber** (his word; spec in the rebuild note, section 7), then the read-through of the logged scenes. He closed the session there: a side project, not to be overextended while real work waits.
+**J's read of the two Marches (10 Oct, 6:23am):** "it does look a little bit janky right now", which he puts down to the page, the set and the layout all being made for the pixel sprites. He thinks it "pretty likely" he goes with the new models, and then the page's look changes with them, so nothing pixel-shaped should be polished now.
+
+**How J works this project (10 Oct, 9:52am):** a side project done in the gaps, one message at a time while his other sessions run, never a dedicated block. Take one step per message and keep each step small enough to land in a gap. **The next step is the read-through of the logged scenes, with him** (his pick, after the scrubber).
+
+**The clip scrubber is live (10 Oct, a751396).** Clip opens a strip of the last 15 minutes watched; a 5 to 60 second window is dragged, the TV previews the moving edge, the window's lines list below, and "Make the clip" films it. The manual's clip row describes it. The browser test also caught an old fault, fixed: the "Up next" card's seconds were clipped from an unrelated replay scene; they are a dark frame now. Untested on his Android (his to try); the gap's dark frame could become the real "Up next" card when the page is restyled.
 
 ## What changed on 9 Oct, ranked
 
@@ -21,7 +25,7 @@ The fifth baton. The fourth one's "one job" (the writing rebuild) is done and li
 
 ## Verified versus unseen
 
-**VERIFIED:** 27 of 27 tests after every change; the voice loads and speaks; a lab scene voiced in 3.5 minutes for 5.2 minutes of speech; a fresh Sonnet grader confirmed 7 of 8 claims on the branch (the eighth was two unnamed word changes in `writer.md`, now named; its one crash path fixed in 5b9c247), stamped in `march-brain/notes/immune/graded.txt`. **REPORTED by the cost log:** about 5 cents a scene in the lab's best round. **VERIFIED live:** the first scene on the new writing aired at 21:41 on 9 Oct; the two checker fixes graded correct by a second Sonnet grader (ledger, 9 Oct evening). **PROMISED:** a full day at the $2 cap on the new writing (the 9 Oct labs spent about $0.90 of that day's cap); the live pass rate over many picks.
+**VERIFIED:** 27 of 27 tests after every change; the voice loads and speaks; a lab scene voiced in 3.5 minutes for 5.2 minutes of speech; a fresh Sonnet grader confirmed 7 of 8 claims on the branch (the eighth was two unnamed word changes in `writer.md`, now named; its one crash path fixed in 5b9c247), stamped in `march-brain/notes/immune/graded.txt`. **REPORTED by the cost log:** about 5 cents a scene in the lab's best round. **VERIFIED live:** the first scene on the new writing aired at 21:41 on 9 Oct; the two checker fixes graded correct by a second Sonnet grader (ledger, 9 Oct evening). **VERIFIED (clip scrubber, 10 Oct):** in headless Chromium on a local copy, the window held at 60 and at 5 seconds under hard drags, an 8-second window made a 7.997-second MP4 with sound, Cancel left no clip, phone-width handles measured 34 by 64; on the live site the strip opened with its lines and a clip was made; a fresh Sonnet grader passed it over three rounds (its six catches fixed in e73e378 and a751396). **PROMISED:** a full day at the $2 cap on the new writing (the 9 Oct labs spent about $0.90 of that day's cap); the live pass rate over many picks.
 
 ## Facts that will rot: recipes, not values
 
@@ -29,7 +33,7 @@ Spend today: `python3 mac/usage.py`. Clock on: `launchctl list | grep chronicle`
 
 ## Open, in the order worth doing
 
-1. The clip scrubber (page only, rebuild note section 7; his pick for next time). 2. When he chooses the new models for good: restyle the page and the set to match them, and build the narrator (or a second host) on the base. 3. The schedule question: rotate the shows or keep the clock (his answer; rebuild note section 8). 4. The making pace: about 9 minutes of work buys about 6 minutes of show, so a long run shows replays between new scenes; if he minds, the cures are fewer dropped picks or writing two picks at once. 5. The clip on his phone (his to try). 6. The untracked `design/` files can be deleted (nothing reads them). Parked by his word: viewer questions on air; the journey (re-ask after about a week of the vault-only show).
+1. The read-through of the logged scenes with him (above). 2. When he chooses the new models for good: restyle the page and the set to match them, and build the narrator (or a second host) on the base. 3. The schedule question: rotate the shows or keep the clock (his answer; rebuild note section 8). 4. The making pace: about 9 minutes of work buys about 6 minutes of show, so a long run shows replays between new scenes; if he minds, the cures are fewer dropped picks or writing two picks at once. 5. The clip strip on his Android (his to try). 6. The untracked `design/` files can be deleted (nothing reads them). Parked by his word: viewer questions on air; the journey (re-ask after about a week of the vault-only show).
 
 ## The one thing worth carrying forward
 
