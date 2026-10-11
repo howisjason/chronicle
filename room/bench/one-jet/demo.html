@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When two look like one</title>
+<!-- one-jet's face for the room page: onejet.mjs runs here as it is, no server,
+     no outside files. The room shows this page on the bench. -->
+<style>
+  html, body { margin: 0; background: #0a1230; color: #e8ecff; font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { padding: 12px 14px; display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start; }
+  .panel { flex: 1 1 260px; min-width: 240px; }
+  label { display: block; margin: 0 0 4px; }
+  input[type=range] { width: 100%; accent-color: #f2c14e; }
+  .pts button { font: inherit; font-size: 12px; background: #13235a; color: #e8ecff; border: 1px solid #2a3f8f; border-radius: 4px; padding: 3px 8px; margin: 0 4px 4px 0; cursor: pointer; }
+  .pts button[aria-pressed=true] { background: #f2c14e; color: #0a1230; border-color: #f2c14e; }
+  #out { margin: 10px 0 0; }
+  #out b { color: #f2c14e; }
+  .dim { color: #93a0cc; font-size: 12px; margin-top: 10px; }
+  svg { width: 260px; height: 260px; flex: 0 0 auto; }
+</style>
+</head>
+<body>
+<main>
+  <svg id="v" viewBox="-1 -1 2 2" role="img" aria-label="The second daughter of each decay, seen from the first, with the jet's circle of radius 0.4"></svg>
+  <div class="panel">
+    <label for="m">Mass of the light particle: <b id="mv"></b> GeV</label>
+    <input id="m" type="range" min="0.1" max="8" step="0.1" value="2">
+    <p class="pts">The Higgs is: <button type="button" data-pt="0">at rest</button><button type="button" data-pt="100">moving at 100 GeV</button><button type="button" data-pt="300">moving at 300 GeV</button></p>
+    <p id="out"></p>
+    <p class="dim">A Higgs decays to a Z and a light particle, which splits in two. Each dot is the softer half of one decay, placed where it lands as seen from the harder half (sideways is angle φ around the beam, up is pseudorapidity η). The circle is a jet of radius 0.4: a dot inside means the two halves are swept into one jet. The mass lights up inside the 0.5 to 3.5 GeV window ATLAS searched (arXiv 2411.16361). A toy: no detector, no showering.</p>
+  </div>
+</main>
+<script type="module">
+  import { R, pA, simulate } from './onejet.mjs';
+  const svg = document.getElementById('v'), m = document.getElementById('m'), mv = document.getElementById('mv'), out = document.getElementById('out');
+  const NS = 'http://www.w3.org/2000/svg', SCALE = 1 / 0.9; // the picture spans dR 0.9 each way
+  let pt = 0;
+  const el = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+  const draw = () => {
+    const ma = Number(m.value);
+    mv.textContent = ma.toFixed(1) + (ma >= 0.5 && ma <= 3.5 ? ' (inside the searched window)' : '');
+    mv.style.background = ma >= 0.5 && ma <= 3.5 ? 'rgba(242,193,78,0.18)' : '';
+    const s = simulate(ma, { pt, n: 6000, keep: 400 });
+    svg.replaceChildren(
+      el('rect', { x: -1, y: -1, width: 2, height: 2, fill: '#0e1a44' }),
+      el('circle', { cx: 0, cy: 0, r: R * SCALE, fill: 'rgba(242,193,78,0.08)', stroke: '#f2c14e', 'stroke-width': 0.012 }),
+      ...s.pairs.map(([de, dp]) => {
+        const inside = Math.hypot(de, dp) < R;
+        return el('circle', { cx: dp * SCALE, cy: -de * SCALE, r: 0.012, fill: inside ? '#8fd3ff' : '#ff8a8a', opacity: 0.75 });
+      }),
+      el('circle', { cx: 0, cy: 0, r: 0.03, fill: '#ffffff' }),
+    );
+    out.innerHTML = '';
+    out.append(
+      Object.assign(document.createElement('b'), { textContent: `${Math.round(100 * s.share)}% look like one jet.` }),
+      ` Half the pairs sit closer than ${s.median.toFixed(2)} apart. In a Higgs at rest the light particle flies at ${pA(ma).toFixed(1)} GeV.`,
+    );
+  };
+  m.addEventListener('input', draw);
+  for (const b of document.querySelectorAll('.pts button')) b.addEventListener('click', () => {
+    pt = Number(b.dataset.pt);
+    for (const o of document.querySelectorAll('.pts button')) o.setAttribute('aria-pressed', String(o === b));
+    draw();
+  });
+  document.querySelector('.pts button').setAttribute('aria-pressed', 'true');
+  draw();
+</script>
+</body>
+</html>

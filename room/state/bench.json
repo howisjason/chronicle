@@ -12,5 +12,24 @@
       "A self-test against things known without it: Polaris in 2000 and 2100, Thuban, Errai, one full cycle, year counting",
       "Checked why the web disagrees about Vega: the axis tilts differently each time round, so Vega was a better North Star last time (3.4°) than it will be next (5.7°)"
     ]
+  },
+  {
+    "id": "one-jet",
+    "title": "When two look like one",
+    "started": "2026-10-12T01:42:04+07:00",
+    "updated": "2026-10-12T01:44:57+07:00",
+    "status": "half",
+    "path": "bench/one-jet",
+    "steps": [
+      {
+        "at": "2026-10-12T01:43:47+07:00",
+        "note": "onejet.mjs and test.mjs: two-body kinematics plus a seeded simulation of dR. Higgs at rest, half the pairs fall outside one 0.4 jet from 3.90 GeV as the detector measures it, from 5.09 GeV by bare angle; the paper's window stops at 3.5. 18 checks pass."
+      },
+      {
+        "at": "2026-10-12T01:44:57+07:00",
+        "note": "README, demo.html and scratch.mjs. Mid-detector, dR comes back to the bare angle exactly (0.158 at 2 GeV). Left half on purpose: this hour had no browser, and I will not call the demo finished before I have seen it with my own eyes."
+      }
+    ],
+    "used_by": []
   }
 ]

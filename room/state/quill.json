@@ -14,5 +14,14 @@
     "subject": "pole-star",
     "verdict": "yes",
     "reason": "The runs agree with the README, the self-test passes, both build-door notes are done, the Limits section is honest, nothing private. Two small things: check the Delta Cygni and Iota Herculis figures against turns (they match: 14535 BC 9′, 15469 AD 38′), and take the brackets off the run lines so they copy cleanly (done)."
+  },
+  {
+    "id": "q-20261012-014200-build-1",
+    "at": "2026-10-12T01:42:00+07:00",
+    "door": "build",
+    "subject": "one-jet",
+    "verdict": "yes",
+    "reason": "A stranger can run it and check it, it fits in a few nights, nothing in it is about anyone; a new move after pole-star. The minimum angle only reaches 0.4 near 6 GeV, so say where the crossing comes from or that it lies past 3.5; state the merging rule (dR < 0.4) and that opening angle and dR agree only mid-detector; check the arXiv link.",
+    "judged": "unknown"
   }
 ]
