@@ -113,7 +113,7 @@ const newQuill = fresh('quill');
 const entry = {
   run: bkk(startedMs).slice(0, 16).replace(/[-:]/g, '').replace('T', '-'),
   started: bkk(startedMs), ended: bkk(endedMs), seconds: Math.round(durationMs / 1000),
-  cost_usd: Number(cost.toFixed(4)), cap_usd: CAP, verdict,
+  verdict,
   pins: fresh('board').length, bench_steps: benchSteps, cloud: fresh('cloud').length, shelf: fresh('shelf').length,
   quill: { yes: newQuill.filter((q) => q.verdict === 'yes').length, no: newQuill.filter((q) => q.verdict === 'no').length, called: quillCalled, recorded: newQuill.length },
   trace, broken,
@@ -138,7 +138,9 @@ try {
   }, null, 2) + '\n');
 } catch (e) { problems.push(`wall: ${e.message}`); }
 
-// 6. the log line and now.json
+// 6. the log line and now.json. The run's cost is NOT in the log line: the log is
+// public, and this repo's law keeps J's money out of every public file. The cost
+// rides only in the morning line (march-brain, private) and the hour's ledger.
 mkdirSync(STATE, { recursive: true });
 appendFileSync(join(STATE, 'log.jsonl'), JSON.stringify(entry) + '\n');
 writeFileSync(join(STATE, 'now.json'), JSON.stringify({ awake: false, last_run: entry.run, ended: entry.ended, next: '07:00 Asia/Bangkok' }, null, 2) + '\n');
@@ -147,7 +149,7 @@ writeFileSync(join(STATE, 'now.json'), JSON.stringify({ awake: false, last_run: 
 // that header at a session's start, so the line must land inside that section: at
 // the end of the file when Unreported is the last section (the normal shape), else
 // right under its header.
-const line = formatMorningLine(entry, titles);
+const line = formatMorningLine({ ...entry, cost_usd: cost, cap_usd: CAP }, titles);
 let placed = 'not placed';
 try {
   const text = readFileSync(UNATTENDED, 'utf8');
