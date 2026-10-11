@@ -4,6 +4,8 @@
 //   POST /letter  {text, name, to}     a letter to March, the narrator, or the desk
 //   GET  /watch?v=<random id>          a ping a minute; answers how many are watching
 //   GET  /take    (Bearer DOOR_KEY)    the station takes the oldest waiting item
+//   POST /used    {id}                 March's room: someone pressed "I used this" on a bench card
+//   GET  /used                         the room: {counts: {id: n}}, which log-run.mjs copies into state/used.json
 // Everything lives in one Durable Object. Viewer pings are kept in memory only:
 // a count of the last 90 seconds needs no storage, and KV's 1,000 writes a day
 // would not survive one viewer pinging every minute. Questions and letters are
@@ -35,8 +37,10 @@ export class Desk {
     this.env = env;
     this.sql = state.storage.sql;
     this.sql.exec(`CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, kind TEXT, text TEXT, name TEXT, too TEXT, at INTEGER, taken INTEGER DEFAULT 0)`);
+    this.sql.exec(`CREATE TABLE IF NOT EXISTS used (id TEXT PRIMARY KEY, n INTEGER)`);
     this.seen = new Map(); // viewer id -> last ping, memory only
     this.lastSend = new Map(); // ip -> last send, memory only
+    this.pressed = new Map(); // "ip|id|day" -> 1, memory only: one press per address per build per day
   }
 
   async fetch(req) {
@@ -64,6 +68,27 @@ export class Desk {
       const too = kind === 'letter' && TO.includes(b.to) ? b.to : 'desk';
       this.sql.exec('INSERT INTO items (kind, text, name, too, at) VALUES (?, ?, ?, ?, ?)', kind, text, name, too, now);
       return json(req, { ok: true });
+    }
+    // The room's bench test needs a number: has anything on the bench been used?
+    // An id is a bench id (small letters, digits, dashes). A Durable Object that
+    // restarts forgets the press map, so the one-a-day limit is best effort; the
+    // counts themselves are in SQLite and survive.
+    if (req.method === 'POST' && url.pathname === '/used') {
+      let b;
+      try { b = await req.json(); } catch { return json(req, { error: 'That did not go through.' }, 400); }
+      const id = String(b.id || '');
+      if (!/^[a-z0-9-]{1,40}$/.test(id)) return json(req, { error: 'Not a bench id.' }, 400);
+      const key = `${req.headers.get('cf-connecting-ip') || '?'}|${id}|${new Date(now).toISOString().slice(0, 10)}`;
+      if (this.pressed.has(key)) return json(req, { error: 'Once a day is plenty, thank you.' }, 429);
+      if (this.pressed.size > 5000) this.pressed.clear();
+      this.pressed.set(key, 1);
+      this.sql.exec('INSERT INTO used (id, n) VALUES (?, 1) ON CONFLICT(id) DO UPDATE SET n = n + 1', id);
+      return json(req, { ok: true });
+    }
+    if (req.method === 'GET' && url.pathname === '/used') {
+      const counts = {};
+      for (const r of this.sql.exec('SELECT id, n FROM used').toArray()) counts[r.id] = r.n;
+      return json(req, { counts });
     }
     if (req.method === 'GET' && url.pathname === '/take') {
       if (!this.env.DOOR_KEY || req.headers.get('authorization') !== `Bearer ${this.env.DOOR_KEY}`) return json(req, { error: 'no' }, 401);

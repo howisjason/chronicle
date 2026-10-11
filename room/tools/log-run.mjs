@@ -5,7 +5,8 @@
 // Node, no dependencies, zero model calls, so the receipts cost nothing.
 //
 // What it writes, and nothing else: state/log.jsonl (one line a run), state/now.json,
-// and ONE line under "## Unreported"
+// state/used.json (the "I used this" presses, copied from the door so the page has
+// them when the door is down), and ONE line under "## Unreported"
 // in march-brain/inner-life/unattended.md, which the next morning's first reply reads
 // out to J (his ask, 11 Oct 2026: say what changed and how much of the cap was used).
 // It never rewrites a state file March wrote; one that will not parse is named in
@@ -29,12 +30,12 @@
 // copy kept here means there is no second copy to drift. If a morning's push
 // failed, the next morning counts both nights together; that is the honest reading.
 // Only items without "private": true are counted: the log is public.
-import { readFileSync, writeFileSync, appendFileSync, existsSync, readdirSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, appendFileSync, existsSync, readdirSync, mkdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { homedir } from 'node:os';
-import { buildTrace, mergeTraces, visible, validate, formatMorningLine, STATE_NAMES } from '../lib.mjs';
+import { buildTrace, mergeTraces, visible, validate, formatMorningLine, STATE_NAMES, DOOR } from '../lib.mjs';
 
 const ROOM = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHRON = join(ROOM, '..');
@@ -119,6 +120,25 @@ const entry = {
   trace, broken,
 };
 
+// 4b. the "I used this" presses: the door's counts, copied into state/used.json
+// ({id: n}). A door that is down never fails the run; it is named in the problems
+// and yesterday's file stays. used_new (presses since the last commit) rides only
+// in the morning line.
+let usedNew = 0;
+try {
+  const r = await fetch(`${DOOR}/used`, { signal: AbortSignal.timeout(10000) });
+  const counts = (await r.json()).counts;
+  if (!r.ok || !counts || typeof counts !== 'object') throw new Error(`HTTP ${r.status}`);
+  // only ids on the bench: the door counts any id anyone sends, so a made-up one never reaches the page
+  const onBench = new Set(visible(now.bench).map((i) => i.id));
+  const clean = Object.fromEntries(Object.entries(counts).filter(([k, v]) => onBench.has(k) && Number.isInteger(v) && v > 0));
+  let old = {};
+  try { old = JSON.parse(execFileSync('git', ['-C', CHRON, 'show', 'HEAD:room/state/used.json'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })); } catch { old = {}; }
+  const sum = (o) => Object.values(o || {}).reduce((n, v) => n + (Number(v) || 0), 0);
+  usedNew = Math.max(0, sum(clean) - sum(old));
+  writeFileSync(join(STATE, 'used.json'), JSON.stringify(clean, null, 2) + '\n');
+} catch (e) { problems.push(`the door's /used did not answer (${e.message}); used.json left as it was`); }
+
 // 5. the log line and now.json. The run's cost is NOT in the log line: the log is
 // public, and this repo's law keeps J's money out of every public file. The cost
 // rides only in the morning line (march-brain, private) and the hour's ledger.
@@ -130,7 +150,7 @@ writeFileSync(join(STATE, 'now.json'), JSON.stringify({ awake: false, last_run: 
 // that header at a session's start, so the line must land inside that section: at
 // the end of the file when Unreported is the last section (the normal shape), else
 // right under its header.
-const line = formatMorningLine({ ...entry, cost_usd: cost, cap_usd: CAP }, titles);
+const line = formatMorningLine({ ...entry, cost_usd: cost, cap_usd: CAP, used_new: usedNew }, titles);
 let placed = 'not placed';
 try {
   const text = readFileSync(UNATTENDED, 'utf8');

@@ -13,6 +13,9 @@ const ROOM = '/chronicle/room/';
 // The room's own drawer (git-ignored, never published) is private the same way.
 const PRIVATE = ['/inner-life/diary/', '/inner-life/memory/', ROOM + 'drawer/'];
 
+// The channel's one server door (door/worker.js); the room uses its /used and /now routes.
+export const DOOR = 'https://chronicle-door.jaceebo.workers.dev';
+
 const pathOf = (input) => String((input && (input.file_path || input.path || input.notebook_path)) || '');
 
 // One tool call -> where March stands while making it (the plan's table, 11 Oct 2026).
@@ -144,12 +147,13 @@ export function formatMorningLine(e, titles = {}) {
   const spend = `$${cost.toFixed(2)} of ${money(cap)} used (${pct}%), ${e.verdict || 'no verdict'}`;
   const steps = e.bench_steps || [];
   const q = e.quill || {};
-  const nothing = !e.pins && !steps.length && !e.cloud && !e.shelf && !q.recorded && !q.called;
+  const used = Number(e.used_new) > 0 ? `, used: ${e.used_new}` : '';
+  const nothing = !e.pins && !steps.length && !e.cloud && !e.shelf && !q.recorded && !q.called && !used;
   if (nothing) return `- **${day} — the room:** nothing new in the room; ${spend}.`;
   const bench = steps.length
     ? steps.map((s) => `"${titles[s.id] || s.id}" +${s.n} steps (${s.status})`).join(', ')
     : 'nothing new';
   return `- **${day} — the room:** ${e.pins || 0} pins, bench: ${bench}, ${e.cloud || 0} in the cloud, ` +
-    `${e.shelf || 0} on the shelf, Quill: ${q.yes || 0} yes / ${q.no || 0} no; ${spend}.`;
+    `${e.shelf || 0} on the shelf, Quill: ${q.yes || 0} yes / ${q.no || 0} no${used}; ${spend}.`;
 }
 

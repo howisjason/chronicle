@@ -1,6 +1,8 @@
 // room.js: draws March's room from its plain files. Reads state/*.json,
 // state/log.jsonl (desk.json is the launcher's), shelf/*.md and a build's demo.html or demo.txt; writes
-// nothing; fetches nothing outside this repo. Every list passes through visible() first, so an item
+// nothing to the repo. The one thing it sends: a press of "I used this" on a bench
+// card goes to the door (POST /used), whose counts it reads back (GET /used,
+// else state/used.json, the copy log-run.mjs keeps). Every list passes through visible() first, so an item
 // marked "private": true is never drawn (the real drawer is room/drawer/, which
 // git never publishes; the flag is the second fence).
 //
@@ -18,7 +20,7 @@
 // no legs that walk on the base yet, so she slides between spots. Then she idles
 // at the bench. Clicking a place in the picture opens the list it names below.
 import { makeMarch } from '../march-base.js';
-import { visible, validate } from './lib.mjs';
+import { visible, validate, DOOR } from './lib.mjs';
 
 const W = 320, H = 160, FLOOR = 140;
 const cv = document.getElementById('room');
@@ -50,6 +52,17 @@ const get = async (path, kind) => {
   } catch { return { ok: false }; }
 };
 const S = {};
+// The "I used this" counts: the door's when it answers, else the copy log-run.mjs keeps.
+let USED = {};
+async function loadUsed() {
+  try {
+    const r = await fetch(`${DOOR}/used`, { cache: 'no-cache' });
+    const c = r.ok ? (await r.json()).counts : null;
+    if (c && typeof c === 'object') { USED = c; return; }
+  } catch { /* the door is down; the file below */ }
+  const f = await get('state/used.json');
+  if (f.ok && f.data && typeof f.data === 'object' && !Array.isArray(f.data)) USED = f.data;
+}
 
 // ------------------------------------------------------------------ small DOM helpers (text only; never her words as HTML)
 const el = (tag, attrs = {}, ...kids) => {
@@ -108,11 +121,24 @@ function drawLists() {
   const bench = listOf('bench', 'bench');
   if (bench) document.getElementById('bench').replaceChildren(...bench.map((b) => {
     const path = safe(String(b.path || '').replace(/\/$/, ''), 'bench');
-    const used = Array.isArray(b.used_by) && b.used_by.length ? ` · used ${b.used_by.length}×` : '';
+    // "used" is the presses on the button plus the uses March typed by hand (used_by)
+    const typed = Array.isArray(b.used_by) ? b.used_by.length : 0;
+    const usedText = () => { const n = (USED[b.id] || 0) + typed; return n ? ` · used ${n}×` : ''; };
+    const usedSpan = el('span', { class: 'used' }, usedText());
+    const press = el('button', { type: 'button', class: 'usedbtn' }, 'I used this');
+    press.addEventListener('click', async () => {
+      press.disabled = true;
+      try {
+        const r = await fetch(`${DOOR}/used`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: b.id }) });
+        press.textContent = r.ok ? 'thank you' : ((await r.json().catch(() => ({}))).error || 'that did not go through');
+        await loadUsed();
+        usedSpan.textContent = usedText();
+      } catch { press.textContent = 'that did not go through'; }
+    });
     const face = el('div');
     const card = el('div', { class: 'card' }, el('b', {}, b.title || b.id), el('span', { class: 'tag' }, b.status || '?'), face,
-      el('div', { class: 'meta' }, `${Array.isArray(b.steps) ? b.steps.length : 0} steps${used} · started ${day(b.started)} · `,
-        path ? el('a', { href: `https://github.com/howisjason/chronicle/tree/main/room/${path}` }, 'the files') : ''));
+      el('div', { class: 'meta' }, `${Array.isArray(b.steps) ? b.steps.length : 0} steps`, usedSpan, ` · started ${day(b.started)} · `,
+        path ? el('a', { href: `https://github.com/howisjason/chronicle/tree/main/room/${path}` }, 'the files') : '', ' ', press));
     if (path) showFace(path, face);
     return card;
   }));
@@ -303,6 +329,7 @@ function tick(ms) {
   const files = await Promise.all([...names.map((n) => get(`state/${n}.json`)), get('state/log.jsonl', 'jsonl')]);
   names.forEach((n, k) => { S[n] = files[k]; });
   S.log = files[names.length];
+  await loadUsed();
   try { drawLists(); } catch (e) { console.warn('lists', e); }
   try { await document.fonts.load('8px Silkscreen'); } catch { /* the fallback font draws the labels */ }
   planReplay();

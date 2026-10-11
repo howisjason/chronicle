@@ -118,6 +118,7 @@ test('the morning line, exactly', () => {
     '- **2026-10-12 — the room:** 2 pins, bench: "A clock that knows the moon" +3 steps (half), 1 in the cloud, 0 on the shelf, Quill: 2 yes / 1 no; $1.23 of $4 used (31%), clean.');
   const zero = { started: '2026-10-13T07:02:00+07:00', cost_usd: 0.31, cap_usd: 4, verdict: 'clean', pins: 0, bench_steps: [], cloud: 0, shelf: 0, quill: { yes: 0, no: 0, called: 0, recorded: 0 } };
   assert.equal(formatMorningLine(zero), '- **2026-10-13 — the room:** nothing new in the room; $0.31 of $4 used (8%), clean.');
+  assert.equal(formatMorningLine({ ...zero, used_new: 2 }), '- **2026-10-13 — the room:** 0 pins, bench: nothing new, 0 in the cloud, 0 on the shelf, Quill: 0 yes / 0 no, used: 2; $0.31 of $4 used (8%), clean.');
 });
 
 // The room command, run against a COPY of state/ (ROOM_STATE), never the real lists.
