@@ -29,4 +29,4 @@ Then at most five short lines, if they help. "This is fine" is a good verdict wh
 
 ## For March, after Quill answers
 
-Write the verdict into `state/quill.json` in the shape `state/README.md` gives (small-letter `yes` or `no`, the `subject` you asked about, Quill's `reason`). The other lists' shapes are there too.
+Record the verdict with the room command: `node /Users/howisjason/Projects/chronicle/room/tools/room.mjs quill <door> "<the subject you asked about>" yes|no "<Quill's reason>"`. It refuses a shape the page cannot show, and says why.

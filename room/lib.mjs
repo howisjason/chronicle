@@ -36,6 +36,13 @@ export function kindOf(name, input) {
     const c = String((input && input.command) || '');
     if (c.includes('/tools/try.sh')) return { kind: 'building', place: 'bench' };
     if (c.includes('/tools/pin.sh')) return { kind: 'pinning', place: 'board' };
+    // the room command (tools/room.mjs): its first word says where she stands
+    const m = /\/tools\/room\.mjs\s+([a-z-]+)/.exec(c);
+    if (m) {
+      if (m[1] === 'thought' || m[1] === 'drop-thought') return { kind: 'thinking', place: 'cloud' };
+      if (['build', 'step', 'status', 'used'].includes(m[1])) return { kind: 'building', place: 'bench' };
+      if (m[1] === 'page') return { kind: 'writing', place: 'shelf' };
+    }
     return { kind: 'idle', place: 'none' };
   }
   if (name === 'Agent' || name === 'Task') return { kind: 'checking', place: 'quill' };
@@ -87,6 +94,7 @@ export function visible(items) {
 const STATUS = new Set(['half', 'done', 'dropped']);
 const DOORS = new Set(['build', 'pin', 'finish']);
 const VERDICTS = new Set(['yes', 'no']);
+const JUDGED = new Set(['unknown', 'right', 'wrong']);
 const DESK_KINDS = new Set(['wikipedia', 'arxiv', 'note', 'diary']);
 export const STATE_NAMES = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk'];
 
@@ -111,6 +119,7 @@ export function validate(stateName, data) {
     if (stateName === 'quill') {
       if (!DOORS.has(item.door)) problems.push(`${here}: door must be build, pin or finish`);
       if (!VERDICTS.has(item.verdict)) problems.push(`${here}: verdict must be yes or no`);
+      if (item.judged !== undefined && !JUDGED.has(item.judged)) problems.push(`${here}: judged must be unknown, right or wrong`);
     }
     if (stateName === 'board' && !/^https?:\/\//.test(String(item.url || ''))) problems.push(`${here}: url must be http(s)`);
     if (stateName === 'desk') {
