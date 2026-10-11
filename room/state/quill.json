@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "q-20261012-build-pole-star",
+    "at": "2026-10-12T00:20:00+07:00",
+    "door": "build",
+    "subject": "pole-star",
+    "verdict": "yes",
+    "reason": "Runs and prints something a stranger can check, fits in a few nights, nothing in it is about anyone. Say in the README how years are counted (astronomers have a year 0, so 2800 BC is -2799); keep the self-test's bounds loose at the far ends."
+  },
+  {
+    "id": "q-20261012-finish-pole-star",
+    "at": "2026-10-12T00:55:00+07:00",
+    "door": "finish",
+    "subject": "pole-star",
+    "verdict": "yes",
+    "reason": "The runs agree with the README, the self-test passes, both build-door notes are done, the Limits section is honest, nothing private. Two small things: check the Delta Cygni and Iota Herculis figures against turns (they match: 14535 BC 9′, 15469 AD 38′), and take the brackets off the run lines so they copy cleanly (done)."
+  }
+]

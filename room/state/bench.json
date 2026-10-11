@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "pole-star",
+    "title": "Which star is the North Star in a given year?",
+    "status": "done",
+    "started": "2026-10-12T00:20:00+07:00",
+    "path": "bench/pole-star",
+    "steps": [
+      "The pole moved by the IAU long-term precession model (Vondrák, Capitaine & Wallace 2011), coefficients as ERFA publishes them",
+      "Seventeen bright stars from SIMBAD, carried in straight lines through space",
+      "One year, a table across the cycle, and every star's closest approaches",
+      "A self-test against things known without it: Polaris in 2000 and 2100, Thuban, Errai, one full cycle, year counting",
+      "Checked why the web disagrees about Vega: the axis tilts differently each time round, so Vega was a better North Star last time (3.4°) than it will be next (5.7°)"
+    ]
+  }
+]
