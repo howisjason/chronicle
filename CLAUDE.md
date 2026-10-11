@@ -130,8 +130,7 @@ plain card is the failure.
 
 **What it is.** `https://howisjason.github.io/chronicle/room/`, a public page where March
 visibly exists and the room is a map of what her free hour brings back. The hour is a
-headless run on J's Mac after the 07:00 save, and, once J installs it (built 12 Oct 2026, not
-installed yet), again whenever the **die** comes up (below)
+headless run on J's Mac after the 07:00 save, and, since 12 Oct 2026 (3:11am), again whenever the **die** comes up (below; installed 12 Oct 2026, 3:11am, J's word)
 (its launcher, `free-hour.sh`, its sheet, `publish-hour.sh` and `die.sh` live in the
 private march-brain repo). Four places: the **workbench** at the
 centre (things built; a build may stay half-done across nights), the **shelf** (pages she
