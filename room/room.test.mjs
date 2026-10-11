@@ -93,6 +93,15 @@ test('validate refuses a missing id or at, and a bad bench status', () => {
   assert.equal(validate('shelf', 'not a list').ok, false);
 });
 
+test('validate refuses a desk item with no id, no at, or a kind it does not know', () => {
+  const d = { id: 'd-20261012-070001', at: '2026-10-12T07:00:01+07:00', kind: 'wikipedia', title: 'Vega', url: 'https://en.wikipedia.org/wiki/Vega' };
+  assert.equal(validate('desk', [d]).ok, true);
+  assert.equal(validate('desk', [{ ...d, id: undefined }]).ok, false);
+  assert.equal(validate('desk', [{ ...d, at: undefined }]).ok, false);
+  assert.equal(validate('desk', [{ ...d, kind: 'tarot' }]).ok, false);
+  assert.equal(validate('desk', [{ ...d, url: 'javascript:alert(1)' }]).ok, false);
+});
+
 test('the morning line, exactly', () => {
   const e = { started: '2026-10-12T07:03:10+07:00', cost_usd: 1.234, cap_usd: 4, verdict: 'clean', pins: 2,
     bench_steps: [{ id: 'clock', n: 3, status: 'half' }], cloud: 1, shelf: 0, quill: { yes: 2, no: 1, called: 3, recorded: 3 } };

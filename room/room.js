@@ -1,5 +1,5 @@
 // room.js: draws March's room from its plain files. Reads state/*.json,
-// state/log.jsonl, shelf/*.md and a build's demo.html or demo.txt; writes
+// state/log.jsonl (desk.json is the launcher's), shelf/*.md and a build's demo.html or demo.txt; writes
 // nothing; fetches nothing outside this repo. Every list passes through visible() first, so an item
 // marked "private": true is never drawn (the real drawer is room/drawer/, which
 // git never publishes; the flag is the second fence).
@@ -141,6 +141,14 @@ function drawLists() {
   if (quill) document.getElementById('quill').replaceChildren(el('table', {},
     el('tr', {}, el('th', {}, 'when'), el('th', {}, 'door'), el('th', {}, 'what'), el('th', {}, 'verdict'), el('th', {}, 'why')),
     ...quill.map((q) => el('tr', {}, el('td', {}, day(q.at)), el('td', {}, q.door || ''), el('td', {}, q.subject || ''), el('td', {}, q.verdict === 'no' ? 'NO' : q.verdict || ''), el('td', {}, q.reason || '')))));
+  // the desk: what the clock put out before the newest hour, and the few before it
+  const desk = listOf('desk', 'desk');
+  if (desk) {
+    const item = (d) => { const href = /^https?:\/\//.test(String(d.url || '')) ? d.url : null; return [href ? el('a', { href, rel: 'noopener' }, d.title || href) : (d.title || ''), el('span', { class: 'dim small' }, ` · ${d.kind || ''}, ${day(d.at)}`)]; };
+    const [last, ...older] = desk.slice(-6).reverse();
+    document.getElementById('desk').replaceChildren(el('p', {}, 'On the desk last time: ', ...item(last)),
+      ...(older.length ? [el('ul', {}, ...older.map((d) => el('li', {}, ...item(d))))] : []));
+  }
   // the log: the last 14 hours, oldest first
   const log = S.log;
   if (!log || !log.ok) say('log', 'this file could not be read', 'bad');
@@ -256,8 +264,7 @@ for (const h of document.querySelectorAll('.fold > h2')) h.addEventListener('cli
 cv.addEventListener('click', (ev) => {
   const r = cv.getBoundingClientRect(), x = (ev.clientX - r.left) * W / r.width, y = (ev.clientY - r.top) * H / r.height;
   const hit = HIT.find((b) => x >= b.x && x < b.x + b.w && y >= b.y && y < b.y + b.h);
-  if (hit && hit.open === 's-desk') openFold('s-log', true);      // the desk has no list of its own; the log is the nearest thing
-  else if (hit) openFold(hit.open, true);
+  if (hit) openFold(hit.open, true);
 });
 
 function tick(ms) {
@@ -292,7 +299,7 @@ function tick(ms) {
 
 // ------------------------------------------------------------------ go
 (async () => {
-  const names = ['bench', 'shelf', 'board', 'cloud', 'quill'];
+  const names = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk'];
   const files = await Promise.all([...names.map((n) => get(`state/${n}.json`)), get('state/log.jsonl', 'jsonl')]);
   names.forEach((n, k) => { S[n] = files[k]; });
   S.log = files[names.length];

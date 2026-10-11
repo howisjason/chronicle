@@ -87,10 +87,11 @@ export function visible(items) {
 const STATUS = new Set(['half', 'done', 'dropped']);
 const DOORS = new Set(['build', 'pin', 'finish']);
 const VERDICTS = new Set(['yes', 'no']);
-export const STATE_NAMES = ['bench', 'shelf', 'board', 'cloud', 'quill'];
+const DESK_KINDS = new Set(['wikipedia', 'arxiv', 'note', 'diary']);
+export const STATE_NAMES = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk'];
 
 // A state file's shape. March writes these by hand in the hour, so a slip is
-// expected; the page and the script report problems and carry on.
+// expected (desk.json is the launcher's, free-hour.sh); the page and the script report problems and carry on.
 export function validate(stateName, data) {
   const problems = [];
   if (!Array.isArray(data)) return { ok: false, problems: [`${stateName}: not a list`] };
@@ -112,6 +113,10 @@ export function validate(stateName, data) {
       if (!VERDICTS.has(item.verdict)) problems.push(`${here}: verdict must be yes or no`);
     }
     if (stateName === 'board' && !/^https?:\/\//.test(String(item.url || ''))) problems.push(`${here}: url must be http(s)`);
+    if (stateName === 'desk') {
+      if (!DESK_KINDS.has(item.kind)) problems.push(`${here}: kind must be wikipedia, arxiv, note or diary`);
+      if (item.url !== undefined && !/^https?:\/\//.test(String(item.url))) problems.push(`${here}: url must be http(s)`);
+    }
   });
   return { ok: problems.length === 0, problems };
 }

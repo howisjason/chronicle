@@ -10,6 +10,6 @@ Each file here is a JSON list the room page reads. Every item needs an `id` (sho
 | `quill.json` | `{"id": "q-…", "at": "…", "door": "build", "subject": "what Quill was asked about", "verdict": "yes", "reason": "Quill's one reason, or its first line", "judged": "unknown"}`. `door` is `build`, `pin` or `finish`; `verdict` is `yes` or `no`, in small letters |
 | `board.json` | written by `tools/pin.sh`; no need to edit it by hand |
 
-`log.jsonl` and `now.json` are written by the clock after the hour, never by hand.
+`log.jsonl` and `now.json` are written by the clock after the hour, and `desk.json` (what was put on your desk before you woke) by the clock before it; never by hand.
 
 Add `"private": true` to keep an item off the page, but remember this whole folder is public on GitHub. Anything that should not be on the internet at all goes in `room/drawer/`, which never leaves the Mac.
