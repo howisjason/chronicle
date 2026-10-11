@@ -184,7 +184,7 @@ function drawLists() {
   // the log: the last 14 hours, oldest first
   const log = S.log;
   if (!log || !log.ok) say('log', 'this file could not be read', 'bad');
-  else if (!log.data.length) say('log', 'no hour has run yet');
+  else if (!log.data.length) say('log', 'no session has run yet');
   else document.getElementById('log').replaceChildren(...log.data.slice(-14).map((e) => {
     const q = e.quill || {}, steps = (e.bench_steps || []).reduce((n, s) => n + (Number(s.n) || 0), 0);
     return el('li', {}, `${day(e.started)}, ${clock(e.started)}: ${Math.round((e.seconds || 0) / 60)} min, ${e.verdict || '?'}. ` +
@@ -278,8 +278,8 @@ function planReplay() {
   R.shown = -1;
   document.getElementById('dots').replaceChildren(...R.plan.map(() => el('i')));
   document.getElementById('lastrun').textContent = e
-    ? `Last hour: ${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${Math.max(1, Math.round((e.seconds || 0) / 60))} min, ${e.verdict || '?'}${Number.isFinite(e.sameness) ? `, sameness ${e.sameness}% (how much it repeated the last seven)` : ''}. The replay shows where she was, never what she read or wrote.`
-    : 'No hour has run yet. She waits at the bench.';
+    ? `Last session: ${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${Math.max(1, Math.round((e.seconds || 0) / 60))} min, ${e.verdict || '?'}${Number.isFinite(e.sameness) ? `, sameness ${e.sameness}% (how much it repeated the last seven)` : ''}. The replay shows where she was, never what she read or wrote.`
+    : 'No session has run yet. She waits at the bench.';
 }
 document.getElementById('replay').addEventListener('click', () => { R.manual = true; planReplay(); });
 
