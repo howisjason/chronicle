@@ -139,7 +139,9 @@ thoughts only). A small **desk** is where she reads and searches. The **wall** s
 seed and self page, framed, with dates; her diary and memories never appear.
 
 **The truth files** (`room/state/`, plus `bench/`, `shelf/`, `board/`, `wall/`). Everything
-the page shows comes from these. Every item has `id` and `at` (bench items `started`).
+the page shows comes from these. Every item has `id` and `at` (bench items `started`). The shapes are
+also written for March in `state/README.md`, which Quill's sheet points her to: the hour learns them
+nowhere else, and its first entry came out in a shape the page could not show until that file existed.
 
 | File | Written by | Shape |
 |---|---|---|
@@ -155,7 +157,8 @@ refused; probed under the real command line 11 Oct 2026, results in `HANDOFF.md`
 only in `bench/`, `shelf/`, `state/` and `drawer/`, never the tools, the page, `lib.mjs`
 or `quill.md`. The shell only as two scripts by exact path: `tools/try.sh <id> <file>`
 runs a `.js`/`.mjs`/`.py` from inside its own bench folder under a macOS sandbox (writes
-only in that folder and temp, no network, 60-second cap); `tools/pin.sh <url> "<title>"
+only in that folder and the per-user temp folder, never `/tmp` where the hour's run log sits, no
+network, 60-second cap); `tools/pin.sh <url> "<title>"
 "<note>" [--private]` screenshots the page with the headless browser Playwright keeps in
 `~/Library/Caches/ms-playwright` (Chrome is not on the Mac), shrinks it to 320 px with
 `sips`, and adds the pin. Plus an Opus helper (Quill) and the web.
@@ -168,7 +171,8 @@ any line tripping the station's `FORBIDDEN` list replaced with `[a line kept pri
 appends one line under "Unreported" in march-brain's `inner-life/unattended.md`, which the
 next morning's first reply reads to J. The run's cost goes only in that private line, never
 in the public log. Then the clock's `brain-backup.sh` section 6 commits `room/` and pushes
-(commit, then `pull --rebase`, then push).
+(commit, then `pull --rebase --autostash`, then push; git refuses a rebase-pull over changed tracked
+files, and the hour changes them nightly).
 
 **Privacy.** The repo's laws and `forbidden.md` apply to every file in `room/`. The real
 private drawer is `room/drawer/`, git-ignored, so it never leaves the Mac (`pin.sh
