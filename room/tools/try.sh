@@ -12,7 +12,8 @@
 # WHAT IT CANNOT DO. The file must resolve inside room/bench/<bench-id>/ (a ../
 # or a link out is refused). It runs `node` or `python3 -I` from inside that
 # folder, under a macOS sandbox that allows writes only in that folder and the
-# temp folders, and allows no network at all, so a build can neither touch
+# per-user temp folder (never /tmp, where the hour's own run log sits: the
+# grader's catch, 12 Oct 2026), and allows no network at all, so a build can neither touch
 # anything else on the Mac nor send anything out. A 60-second cap stops a loop
 # (macOS has no `timeout`; perl's alarm does the same job).
 set -u
@@ -42,7 +43,7 @@ PROFILE="(version 1)
 (allow default)
 (deny network*)
 (deny file-write*)
-(allow file-write* (subpath \"$DIR\") (subpath \"/private/tmp\") (subpath \"/private/var/folders\")
+(allow file-write* (subpath \"$DIR\") (subpath \"/private/var/folders\")
   (literal \"/dev/null\") (literal \"/dev/tty\") (regex #\"^/dev/fd/\"))"
 
 cd "$DIR" || exit 2
