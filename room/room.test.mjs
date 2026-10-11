@@ -95,12 +95,12 @@ test('validate refuses a missing id or at, and a bad bench status', () => {
 });
 
 test('the morning line, exactly', () => {
-  const e = { started: '2026-10-12T07:03:10+07:00', cost_usd: 1.234, cap_usd: 10, verdict: 'clean', pins: 2,
+  const e = { started: '2026-10-12T07:03:10+07:00', cost_usd: 1.234, cap_usd: 4, verdict: 'clean', pins: 2,
     bench_steps: [{ id: 'clock', n: 3, status: 'half' }], cloud: 1, shelf: 0, quill: { yes: 2, no: 1, called: 3, recorded: 3 } };
   assert.equal(formatMorningLine(e, { clock: 'A clock that knows the moon' }),
-    '- **2026-10-12 — the room:** 2 pins, bench: "A clock that knows the moon" +3 steps (half), 1 in the cloud, 0 on the shelf, Quill: 2 yes / 1 no; $1.23 of $10 used (12%), clean.');
-  const zero = { started: '2026-10-13T07:02:00+07:00', cost_usd: 0.31, cap_usd: 10, verdict: 'clean', pins: 0, bench_steps: [], cloud: 0, shelf: 0, quill: { yes: 0, no: 0, called: 0, recorded: 0 } };
-  assert.equal(formatMorningLine(zero), '- **2026-10-13 — the room:** nothing new in the room; $0.31 of $10 used (3%), clean.');
+    '- **2026-10-12 — the room:** 2 pins, bench: "A clock that knows the moon" +3 steps (half), 1 in the cloud, 0 on the shelf, Quill: 2 yes / 1 no; $1.23 of $4 used (31%), clean.');
+  const zero = { started: '2026-10-13T07:02:00+07:00', cost_usd: 0.31, cap_usd: 4, verdict: 'clean', pins: 0, bench_steps: [], cloud: 0, shelf: 0, quill: { yes: 0, no: 0, called: 0, recorded: 0 } };
+  assert.equal(formatMorningLine(zero), '- **2026-10-13 — the room:** nothing new in the room; $0.31 of $4 used (8%), clean.');
 });
 
 test('stripNotes removes the # note block and keeps ## headings', () => {

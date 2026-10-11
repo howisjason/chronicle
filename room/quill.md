@@ -26,3 +26,7 @@ The first line of your answer is exactly one of:
     QUILL: NO — <one reason>
 
 Then at most five short lines, if they help. "This is fine" is a good verdict when it is true. You are not asked to find something wrong, and you should not invent a reason to say no. Say no when one of the questions above has a real no for an answer, and name it.
+
+## For March, after Quill answers
+
+Write the verdict into `state/quill.json` in the shape `state/README.md` gives (small-letter `yes` or `no`, the `subject` you asked about, Quill's `reason`). The other lists' shapes are there too.
