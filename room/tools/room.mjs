@@ -37,9 +37,9 @@ const [cmd, ...rest] = args.filter((a) => a !== '--private');
 
 const now = () => new Date(Date.now() + 7 * 3600e3).toISOString().replace(/\.\d{3}Z$/, '+07:00');
 const stamp = () => now().slice(0, 19).replace(/[-:]/g, '').replace('T', '-');
-const ID = /^[a-z0-9-]{1,60}$/;
+const ID = /^[a-z0-9-]{1,40}$/;   // 40: the door's /used takes no longer id
 const need = (v, what) => { if (typeof v !== 'string' || !v.trim()) refuse(`${cmd} needs ${what}`); return v; };
-const idOk = (v, what = 'an id') => { need(v, what); if (!ID.test(v)) refuse(`"${v}" is not an id (small letters, digits and dashes only)`); return v; };
+const idOk = (v, what = 'an id') => { need(v, what); if (!ID.test(v)) refuse(`"${v}" is not an id (small letters, digits and dashes, at most 40)`); return v; };
 
 const read = (name) => {
   const p = join(STATE, `${name}.json`);

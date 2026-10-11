@@ -25,8 +25,8 @@
 // The session id is in the run's last JSON line.
 //
 // "NEW SINCE LAST RUN" is the difference between the state files now and the same
-// files at chronicle's last commit (the clock commits the room right after this
-// script, brain-backup.sh section 6). Comparing against git rather than against a
+// files at chronicle's last commit (march-brain's publish-hour.sh commits the room
+// right after this script, for both the 07:00 clock and the die). Comparing against git rather than against a
 // copy kept here means there is no second copy to drift. If a morning's push
 // failed, the next morning counts both nights together; that is the honest reading.
 // Only items without "private": true are counted: the log is public.
