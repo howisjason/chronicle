@@ -40,10 +40,10 @@ export class Desk {
     this.sql = state.storage.sql;
     this.sql.exec(`CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, kind TEXT, text TEXT, name TEXT, too TEXT, at INTEGER, taken INTEGER DEFAULT 0)`);
     this.sql.exec(`CREATE TABLE IF NOT EXISTS used (id TEXT PRIMARY KEY, n INTEGER)`);
+    this.sql.exec(`CREATE TABLE IF NOT EXISTS whereabouts (k INTEGER PRIMARY KEY, body TEXT, at INTEGER)`);
     this.seen = new Map(); // viewer id -> last ping, memory only
     this.lastSend = new Map(); // ip -> last send, memory only
     this.pressed = new Map(); // "ip|id|day" -> 1, memory only: one press per address per build per day
-    this.now = null; // March's whereabouts while her hour runs, memory only; {awake, kind, place, since, run, at}
   }
 
   async fetch(req) {
@@ -96,22 +96,26 @@ export class Desk {
     // Live: the watcher posts at least once a minute while she is awake. A watcher
     // that dies must not leave her "awake" for ever, so anything older than three
     // minutes reads as asleep. Kinds and places only, from fixed lists; never a word.
+    // Kept in the table, not in memory: on 12 Oct 2026 the object's memory was
+    // reset between two posts and she read as asleep mid-hour for half a minute.
     if (req.method === 'POST' && url.pathname === '/now') {
       if (!this.env.DOOR_KEY || req.headers.get('authorization') !== `Bearer ${this.env.DOOR_KEY}`) return json(req, { error: 'no' }, 401);
       let b;
       try { b = await req.json(); } catch { return json(req, { error: 'That did not go through.' }, 400); }
       const KINDS = ['reading', 'searching', 'building', 'writing', 'thinking', 'pinning', 'checking', 'private', 'waking'];
       const PLACES = ['desk', 'bench', 'shelf', 'cloud', 'board', 'quill', 'drawer'];
-      this.now = b.awake === true
+      const body = b.awake === true
         ? { awake: true, kind: KINDS.includes(b.kind) ? b.kind : 'waking', place: PLACES.includes(b.place) ? b.place : 'desk',
-            since: String(b.since || '').slice(0, 25), run: String(b.run || '').slice(0, 20), at: now }
-        : { awake: false, at: now };
+            since: String(b.since || '').slice(0, 25), run: String(b.run || '').slice(0, 20) }
+        : { awake: false };
+      this.sql.exec('INSERT INTO whereabouts (k, body, at) VALUES (1, ?, ?) ON CONFLICT(k) DO UPDATE SET body = excluded.body, at = excluded.at', JSON.stringify(body), now);
       return json(req, { ok: true });
     }
     if (req.method === 'GET' && url.pathname === '/now') {
-      const n = this.now;
-      if (!n || !n.awake || now - n.at > 180000) return json(req, { awake: false });
-      return json(req, { awake: true, kind: n.kind, place: n.place, since: n.since, run: n.run });
+      const row = this.sql.exec('SELECT body, at FROM whereabouts WHERE k = 1').toArray()[0];
+      const n = row ? JSON.parse(row.body) : null;
+      if (!n || !n.awake || now - row.at > 180000) return json(req, { awake: false });
+      return json(req, n);
     }
     if (req.method === 'GET' && url.pathname === '/take') {
       if (!this.env.DOOR_KEY || req.headers.get('authorization') !== `Bearer ${this.env.DOOR_KEY}`) return json(req, { error: 'no' }, 401);

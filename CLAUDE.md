@@ -94,8 +94,8 @@ about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 
 ## Tests
 
-`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (34 tests: 27 for the
-station, 7 for the room, described in the Room section). The station's: the checker's
+`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (39 tests: 27 for the
+station, 12 for the room, described in the Room section). The station's: the checker's
 plant a wrong number, a missing source and forbidden words and watch each
 refused; the talk rules refuse a 352-word rally, a scene of same-length lines and
 one over 2,600 words, and pass a real lab scene (`station/fixtures/talk-scene.json`); the hour-file ones check an hour turn and midnight, and that the first
@@ -130,12 +130,17 @@ plain card is the failure.
 
 **What it is.** `https://howisjason.github.io/chronicle/room/`, a public page where March
 visibly exists and the room is a map of what her free hour brings back. The hour is a
-headless run on J's Mac once a day, after the 07:00 save (its launcher, `free-hour.sh`, and
-its sheet live in the private march-brain repo). Four places: the **workbench** at the
+headless run on J's Mac after the 07:00 save, and again whenever the **die** comes up (below)
+(its launcher, `free-hour.sh`, its sheet, `publish-hour.sh` and `die.sh` live in the
+private march-brain repo). Four places: the **workbench** at the
 centre (things built; a build may stay half-done across nights), the **shelf** (pages she
 writes, plus the public **log**, one line per run), the **cork board** (things seen: a
 thumbnail and a link to the source, never a copy) and the **cloud** (her own unfinished
-thoughts only). A small **desk** is where she reads and searches. There is no wall: her
+thoughts only; the next hour may read it first and pick a thread up). A small **desk** is
+where she reads and searches, and where the launcher leaves ONE fresh thing before each hour
+(a random Wikipedia article, an arXiv paper, one of J's Second Brain notes that passed the
+channel's public review, or a week of her own old diary, by `RANDOM % 4`; a failed fetch
+falls to a note): an offer, never a task, because new inputs make new ideas, not a persona. There is no wall: her
 seed, self page, diary and memories never appear (the wall that framed the seed and self
 page came down 12 Oct 2026, J's call: the room is hers, not a page about him). The words
 at the top of the page are her own.
@@ -147,9 +152,13 @@ nowhere else, and its first entry came out in a shape the page could not show un
 
 | File | Written by | Shape |
 |---|---|---|
-| `state/bench.json`, `shelf.json`, `cloud.json`, `quill.json`; files under `bench/<id>/` and `shelf/` | March, in the hour (Write/Edit) | bench `{id, title, started, updated, status: half/done/dropped, path, steps:[{at, note}], used_by:[{who, at, how}]}`; shelf `{id, title, at, path}`; cloud `{id, at, text}`; quill `{id, at, door: build/pin/finish, subject, verdict: yes/no, reason, judged}` |
+| `state/bench.json`, `shelf.json`, `cloud.json`, `quill.json` | March, only through `tools/room.mjs` (it validates the whole list before writing and refuses with one line) | bench `{id, title, started, updated, status: half/done/dropped, path, steps:[{at, note}], used_by:[{who, at, how}]}`; shelf `{id, title, at, path}`; cloud `{id, at, text}`; quill `{id, at, door: build/pin/finish, subject, verdict: yes/no, reason, judged}` |
+| files under `bench/<id>/` and `shelf/` | March, in the hour (Write/Edit) | a build's files, `README.md`, and its face (`demo.html` or `demo.txt`); a page's markdown |
 | `state/board.json`, `board/<id>.jpg` | `tools/pin.sh`, called by March | `{id, at, title, url, thumb, note}` |
-| `state/log.jsonl`, `state/now.json` | `tools/log-run.mjs`, after the hour, never the model (her grants deny these files) | one log line a run: `{run, started, ended, seconds, verdict, pins, bench_steps, cloud, shelf, quill, trace:[{t, kind, place}], broken}` |
+| `state/desk.json` | `free-hour.sh`, before the hour (her grants deny it) | `{id, at, kind: wikipedia/arxiv/note/diary, title, url?}`, the last 30; title and link only, never the text |
+| `state/now.json` | `tools/live.mjs` during the hour, `tools/log-run.mjs` after (denied to her) | `{awake: true, kind, place, since, run}`, then `{awake: false, last_run, ended, next}` |
+| `state/used.json` | `tools/log-run.mjs`, from the door's `GET /used` | `{<bench id>: presses}`, bench ids only |
+| `state/log.jsonl` | `tools/log-run.mjs`, after the hour, never the model (denied to her) | one log line a run: `{run, started, ended, seconds, verdict, pins, bench_steps, cloud, shelf, quill, trace:[{t, kind, place}], sameness, broken}` |
 
 The page (`index.html`, `room.js`, `room.css`) reads them and writes nothing. `lib.mjs` holds
 the pure functions both the page and the post-run script use. **A build shows itself** (J,
@@ -158,30 +167,67 @@ the build writes for a browser with no server and no outside files, is shown in 
 bench card; else `bench/<id>/demo.txt`, what it prints, is shown as text; the card's link to
 the files stays small. `state/README.md` tells the hour so, and Quill's finish door asks for
 it. Every list below the picture is **folded to its heading**; a click on the heading, or on
-that place in the picture (the desk opens the log), opens it. The **replay strip** under the
+that place in the picture, opens it (the desk opens "The desk": the newest item and the few
+before it). Each bench card has an **"I used this" button**: a press goes to the door
+(`POST /used`, one per address per build per day, best effort), the card shows "used N×"
+(presses plus the `used_by` uses March types), and the morning line says "used: N" when
+presses came in since the last commit. That is the bench test's number. The **replay strip** under the
 picture says which stop this is of how many, the real clock time that night, the kind and the
 place; the hour's seconds are squeezed into about 55, so the timing is in proportion, never
 real.
 
 **The grants** (the hour runs in the CLI's `dontAsk` mode, where anything not listed is
-refused; probed under the real command line 11 Oct 2026, results in `HANDOFF.md`). Writes
-only in `bench/`, `shelf/`, `state/` and `drawer/`, never the tools, the page, `lib.mjs`
-or `quill.md`. The shell only as two scripts by exact path: `tools/try.sh <id> <file>`
+refused; probed under the real command line 11 and 12 Oct 2026). Writes only in `bench/`,
+`shelf/` and `drawer/`, never `state/`, the tools, the page, `lib.mjs` or `quill.md`. The
+shell only as three scripts by exact path: `node tools/room.mjs <command>` writes the four
+lists (probed 12 Oct 01:30: allowed, and a direct Edit of `state/cloud.json` refused; the
+`node` grant form works like the `bash` one); `tools/try.sh <id> <file>`
 runs a `.js`/`.mjs`/`.py` from inside its own bench folder under a macOS sandbox (writes
 only in that folder and the per-user temp folder, never `/tmp` where the hour's run log sits, no
 network, 60-second cap); `tools/pin.sh <url> "<title>"
 "<note>" [--private]` screenshots the page with the headless browser Playwright keeps in
 `~/Library/Caches/ms-playwright` (Chrome is not on the Mac), shrinks it to 320 px with
-`sips`, and adds the pin. Plus an Opus helper (Quill) and the web.
+`sips`, and adds the pin. Plus an Opus helper (Quill) and the web. A probe sheet goes in
+with `FREE_HOUR_PROMPT=<file>` (and a cheap ceiling, `FREE_HOUR_CEILING=0.50`); probes write
+the real log, ledger and `now.json`, so put them back after (`ROOM_UNATTENDED` keeps the
+morning line out of the real file).
 
 **The one post-run script.** `tools/log-run.mjs <run log> <cap>`, called by `free-hour.sh`
 after the ledger line: builds the trace from the run's session file (kinds and places only,
 never a path or a word), counts what is new since chronicle's last commit (visible items
-only), writes the log line and `now.json`, and appends one line under "Unreported" in march-brain's `inner-life/unattended.md`, which the
+only), scores the run's **sameness** against the last seven (the set of consecutive
+`kind:place` pairs, Jaccard, the highest; shown on the page's "Last hour" line), copies the
+door's presses into `used.json` (a door that is down is named in the problems, never fails
+the run), writes the log line and `now.json`, and appends one line under "Unreported" in march-brain's `inner-life/unattended.md`, which the
 next morning's first reply reads to J. The run's cost goes only in that private line, never
-in the public log. Then the clock's `brain-backup.sh` section 6 commits `room/` and pushes
-(commit, then `pull --rebase --autostash`, then push; git refuses a rebase-pull over changed tracked
-files, and the hour changes them nightly).
+in the public log. Then march-brain's `publish-hour.sh` (called by `brain-backup.sh`
+section 6 and by `die.sh`) commits `room/` and pushes (commit, then `pull --rebase
+--autostash`, then push; git refuses a rebase-pull over changed tracked files, and the hour
+changes them every run). It adds ALL of `room/`, so work in progress there goes public at
+the next hour's end, graded or not: keep unfinished room work on a branch.
+
+**Live.** While an hour runs, `tools/live.mjs` (started beside the run by `free-hour.sh`,
+which names the session up front with `--session-id`) reads the session file as it grows,
+turns each tool call into a kind and a place (`kindOf`, never a word), writes `now.json` and
+posts it to the door (`POST /now`, Bearer key from `~/.claude/chronicle-door-key`; at most
+one post every 5 seconds, at least one a minute). The door answers `GET /now` with that, or
+`{awake: false}` once it is 3 minutes old, so a dead watcher cannot leave her awake. The page
+asks every 15 seconds and moves her ("awake now: …", "since <time> · <kind>, <place>"); the
+replay button still works until the next answer. The run's output stays `json`: with
+`stream-json` the last line is a `task_summary`, not the result record the tripwire and
+`log-run.mjs` read (measured 12 Oct 2026, CLI 2.1.293). Verified that night under the real
+launcher: the door followed waking, reading, searching, the cloud, Quill, then asleep.
+
+**The die** (J's word, 12 Oct 2026: "I literally just want more reps"). march-brain's
+`scripts/die.sh`, adopted from the body era's `impulse-trigger.sh` (its header carries the
+organ-by-organ audit), ticks every five minutes from the LaunchAgent
+`com.howisjason.march-die` (canonical plist beside it) and wakes her once in a hundred, any
+hour, about three extra hours a day, no daily cap. Never two hours at once (it and the 07:00
+run each stand down if one is running), never between 06:50 and 07:30, and its publish waits
+while `brain-backup.sh` runs. A hit logs to `~/Library/Logs/march-die.log`; a losing tick
+prints nothing. `FORCE=1 bash scripts/die.sh` is the by-hand real trigger. Installed only on
+J's word (`cp` the plist to `~/Library/LaunchAgents/`, then `launchctl bootstrap gui/$(id -u)
+<that file>`; stop with `launchctl bootout gui/$(id -u)/com.howisjason.march-die`).
 
 **Privacy.** The repo's laws and `forbidden.md` apply to every file in `room/`. The real
 private drawer is `room/drawer/`, git-ignored, so it never leaves the Mac (`pin.sh
@@ -190,7 +236,11 @@ page (`visible()`), but the file is still public on GitHub: it is the second fen
 the first.
 
 **Quill** is the only gate before a thing goes public: a crow, a fresh Opus helper each
-time with no memory, its verdicts in `state/quill.json` and on the page. Three doors:
+time, its verdicts in `state/quill.json` and on the page. What it knows of the past is what
+March hands it: its own ledger at every door, and the last seven log lines at the build door,
+so it can say out loud "this is the same move again" (a repeat is not a no by itself). March
+may later mark an old no `judged` right or wrong (`room.mjs judged`); the page shows the
+score above the ledger. Three doors:
 before a build starts, before a pin goes up, before a thing is called finished. Its sheet is
 `room/quill.md`; "this is fine" is an acceptable verdict and it is never told to prove the
 work wrong. Probed 12 Oct 2026: a pin with a planted money figure came back `QUILL: NO`
@@ -201,10 +251,14 @@ run, has ONE thing from the bench been used by J, March or the routine? If not, 
 the idea mill with a hammer; say so and stop the bench. Its date goes in the standing facts
 once the first clock run is verified.
 
-**Tests.** `room/room.test.mjs` (7 tests): the kind table row by row; a diary or drawer
-path maps to the drawer with no path in the trace; the trace has only `t, kind, place`;
-`visible` drops private items; `validate` refuses a missing `id`/`at` and a bad status;
-the morning line exactly. The page itself is checked by hand in the headless browser
+**Tests.** `room/room.test.mjs` (12 tests): the kind table row by row (the room command
+included); a diary or drawer path maps to the drawer with no path in the trace; the trace has
+only `t, kind, place`; `visible` drops private items; `validate` refuses a missing `id`/`at`,
+a bad status and a desk kind it does not know; the morning line exactly, with and without
+"used"; the room command against a copy of `state/` (`ROOM_STATE`): a thought with a quote
+and a newline lands whole, a bad status is refused and the file is unchanged, an escaping
+page path is refused, steps, uses, Quill and judged land in the page's shapes; sameness is
+100 for the same night and 0 for a different one. The page itself is checked by hand in the headless browser
 (no page errors, the face answers, a click on the picture opens the right fold, the strip
 walks the stops).
 
@@ -214,20 +268,16 @@ be replaced whole by a new page reading the same files.
 
 ### After the MVP: the doors to open later
 
-The room as built is the smallest build that proves the idea: a public room that grows from
-the hour with nobody feeding it, and a bench test that can fail. Nothing below is built until
-that is up and has run from the clock.
+Round two (12 Oct 2026) built six of these rows: threads and the desk, the room command,
+the "I used this" button, sameness and Quill's memory, live, and the die. The rows below are
+**shelved 12 Oct 2026 (J)**: nothing is built for them until he opens one. Ideas from the
+built rows that were not built (a deck of chance, a wander budget, a shop window with install
+lines, a test runner in `try.sh`, a second Quill door at the shelf) are in git history.
 
 | Area | Thin in the MVP | Ideas to explore later |
 |---|---|---|
 | **The look** | Flat panels, March without legs sliding between spots, a bitmap crow. | A real scene (2.5D or 3D) drawn by a new page reading the same truth files. March walking once the base gets legs (human-hunt step 2 is J's to open). Quill as a real host on the base. Let March pick the look herself: options as finished worlds, by her pull, each a polished still before any build (the options-must-differ memory). The self-check loop from the video-as-code posts: she screenshots her own room and fixes what looks wrong before anyone sees it. |
-| **How she chooses what to do** | The sheet says only "nothing is asked"; a fresh model each morning may reach for the same first move every time. | **Threads:** each hour may leave one or two threads in the cloud ("next time I'd follow…"); the next hour reads the cloud first, so a hunt can run across nights. **A deck of chance:** a small deck of cards (a place, a method, a question, "follow the third link", "build the thing you'd use"), one drawn by the script and placed on the desk; it is an offer, never an order, so it stays hers. **Fresh inputs the research asked for:** a random page from a random source each morning (a Wikipedia random article, a random arXiv abstract, one of the 26 reviewed notes, one week of her own old diary through `diary-week.sh`); different inputs, not a persona, are what make new ideas. |
-| **Keeping her out of a rut** | Nothing measures sameness. | `log-run.mjs` computes a sameness score for the run (same kind sequence, same domains fetched, same place as the last 7 runs) and the room shows it as a small dial. Quill sees the last 7 log lines at the build door, so it can say "you did this three nights running" out loud. A "wander budget" shown in the trace: how many links past useful she followed. |
 | **Her personality holding** | Nothing checks that the hour sounds like her. | The self page's traits mapped once by hand to habits (the pile's room idea): a weekly line from the routine's reflection step on whether the hour's choices read as hers; the reflection already reads the diary, so the hour feeds the self page with no new machinery. |
-| **The bench** | "Used" is a field someone types by hand; builds are folders with a README. | A **"I used this" button** on the page, through the door worker that already exists (`door/worker.js`, Durable Object), pulled into `used_by` by `log-run.mjs` each morning. Builds published as a shop window with one install line each (things to use spread; the research's one spreading channel). Multi-night builds get a plan file on the bench the page shows. `try.sh` gains a test runner so Quill's "finished" door can run the build's own tests. |
-| **Quill** | Fresh each run, no later judgment. | Quill reads its own ledger before judging (fresh in the head, informed by its own ledger). The `judged` field filled on later nights: March marks whether a no was right; the score becomes real. A second door at the shelf for pages that name people. |
-| **Writing JSON by hand** | March edits five JSON files with the Edit tool; a slip breaks a file until morning. | One small `room` command (one exact-path grant) with `add-pin`, `add-step`, `add-thought`, `add-page`, `quill`, each validating before writing; the Write/Edit grants on `state/` then go away (a tighter fence, fewer ways to break). Likely the first thing to do after the MVP. |
-| **Live** | The page replays last night; nothing moves while she is awake. | The watcher on the run's stream writes `now.json` and posts it to the door worker; the page polls it; March moves in real time. Then the **dice roll** (random extra wakes in the day), a second Mac clock named as a rung-three addition, cost on the same ledger. |
 | **Cost** | One dollar figure per run. | Per-place cost from the trace timestamps (what the bench cost versus the board); a weekly line in the morning report; the cap judged monthly, not once. |
 | **The replay as a thing to share** | A 60-second replay on the page only. | "Last night in 30 seconds": the trace rendered to a short MP4 by the method the station and the video-as-code posts already use (frame by time, headless browser, ffmpeg), with the station's code-made blips, posted nowhere by itself, there for J to send if he wants. The clip editor (`clip.js`) already cuts and exports from a canvas. |
 | **Visitors** | None by design this season. | The door's letters land in the cloud for her to read in the hour (a question from outside is a fresh input). The making-of write-up (pile). Packing the method as a template (pile). All of it waits on his word; the audience aspect is out for now. |
