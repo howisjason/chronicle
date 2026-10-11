@@ -1,4 +1,4 @@
-> **Stamped 2026-10-12 03:20** — true as of the commit that carries this line; anything after it is unaccounted for.
+> **Stamped 2026-10-12 03:15** — true as of the commit that carries this line; anything after it is unaccounted for.
 
 # HANDOFF — chronicle: March's room
 
@@ -16,7 +16,7 @@ The plan (`personal/context/obsidian/🌱 Brain Dump/The pile/March's room - rou
 
 **VERIFIED (named checks, seen):** all four desk draws and the fall-through to a note; the room command allowed and a direct Edit of `state/cloud.json` refused, under the real launcher (probe 01:30); the sheet arrived whole with no `{{` left; the button pressed in the headless browser took a card to "used 1×" and `GET /used` to 1; `log-run.mjs` against copies wrote `used.json`, `sameness` and "used: 1" in the morning line; the door's `/now` refuses a post without the key; the watcher under the real launcher took the door through waking, reading, searching, the cloud and asleep (probe 01:36); the page moved her to the board on a posted state and switched from the replay to "awake now" by itself during the real `FORCE=1` hour (01:40).
 
-**REPORTED/PROMISED:** see the grader's report in march-brain's `notes/immune/graded.txt` for what a fresh reader checked. Not seen: a die HIT from launchd (installed 03:12, no hit yet at 03:20; the first proof is a line in `~/Library/Logs/march-die.log` and a ledger row); a losing tick printing nothing (by construction: it exits before any echo).
+**REPORTED/PROMISED:** see the grader's report in march-brain's `notes/immune/graded.txt` for what a fresh reader checked. Not seen: a die HIT from launchd (installed 03:12, no hit yet at 03:15; the first proof is a line in `~/Library/Logs/march-die.log` and a ledger row); a losing tick printing nothing (by construction: it exits before any echo).
 
 ## Landmines found
 
