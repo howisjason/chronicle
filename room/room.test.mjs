@@ -10,7 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine } from './lib.mjs';
+import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness } from './lib.mjs';
 
 const R = '/Users/howisjason/Projects/chronicle/room';
 const B = '/Users/howisjason/Projects/march-7th/march-brain';
@@ -171,4 +171,13 @@ test('the room command: steps, used, quill and judged land in the shapes the pag
   const ql = JSON.parse(readFileSync(join(d, 'quill.json'), 'utf8'));
   assert.equal(ql.find((i) => i.id === q).judged, 'right');
   assert.equal(validate('quill', ql).ok, true);
+});
+
+test('sameness: the same night again is 100, a different night is 0, and nothing to compare is 0', () => {
+  const night = [{ t: 0, kind: 'reading', place: 'desk' }, { t: 9, kind: 'searching', place: 'desk' }, { t: 60, kind: 'building', place: 'bench' }, { t: 90, kind: 'thinking', place: 'cloud' }];
+  const other = [{ t: 0, kind: 'pinning', place: 'board' }, { t: 5, kind: 'writing', place: 'shelf' }, { t: 9, kind: 'private', place: 'drawer' }];
+  assert.equal(sameness(night, [night.map((e) => ({ ...e, t: e.t + 7 }))]), 100);
+  assert.equal(sameness(night, [other]), 0);
+  assert.equal(sameness(night, []), 0);
+  assert.equal(sameness(night, [other, night]), 100);
 });

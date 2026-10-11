@@ -89,6 +89,29 @@ export function mergeTraces(...traces) {
   return out;
 }
 
+// How much this run repeats the last ones, 0 to 100: the set of consecutive
+// kind:place pairs in this trace against each earlier trace (Jaccard), the
+// highest one. 0 when there is nothing to compare. It reads only what the public
+// log already holds, so it adds no word and no domain.
+export function sameness(trace, previousTraces = []) {
+  const pairs = (tr) => {
+    const steps = (Array.isArray(tr) ? tr : []).filter((e) => e && e.kind).map((e) => `${e.kind}:${e.place}`);
+    const out = new Set();
+    for (let n = 1; n < steps.length; n++) out.add(`${steps[n - 1]}>${steps[n]}`);
+    return out;
+  };
+  const mine = pairs(trace);
+  let best = 0;
+  for (const prev of previousTraces || []) {
+    const theirs = pairs(prev);
+    const union = new Set([...mine, ...theirs]).size;
+    if (!union) continue;
+    const both = [...mine].filter((x) => theirs.has(x)).length;
+    best = Math.max(best, both / union);
+  }
+  return Math.round(best * 100);
+}
+
 // The private drawer: anything marked private never reaches the page.
 export function visible(items) {
   return Array.isArray(items) ? items.filter((i) => i && i.private !== true) : [];

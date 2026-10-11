@@ -164,9 +164,15 @@ function drawLists() {
   const cloud = listOf('cloud', 'cloud');
   if (cloud) document.getElementById('cloud').replaceChildren(...cloud.map((c) => el('li', {}, c.text || '', el('span', { class: 'dim small' }, ` · ${day(c.at)}`))));
   const quill = listOf('quill', 'quill');
-  if (quill) document.getElementById('quill').replaceChildren(el('table', {},
-    el('tr', {}, el('th', {}, 'when'), el('th', {}, 'door'), el('th', {}, 'what'), el('th', {}, 'verdict'), el('th', {}, 'why')),
-    ...quill.map((q) => el('tr', {}, el('td', {}, day(q.at)), el('td', {}, q.door || ''), el('td', {}, q.subject || ''), el('td', {}, q.verdict === 'no' ? 'NO' : q.verdict || ''), el('td', {}, q.reason || '')))));
+  if (quill) {
+    // Quill's score: the no's March has since judged right or wrong
+    const nos = quill.filter((q) => q.verdict === 'no'), right = nos.filter((q) => q.judged === 'right').length, wrong = nos.filter((q) => q.judged === 'wrong').length;
+    document.getElementById('quill').replaceChildren(
+      el('p', { class: 'small' }, `${right + wrong} no's judged so far: ${right} right, ${wrong} wrong.`),
+      el('table', {},
+        el('tr', {}, el('th', {}, 'when'), el('th', {}, 'door'), el('th', {}, 'what'), el('th', {}, 'verdict'), el('th', {}, 'why'), el('th', {}, 'judged')),
+        ...quill.map((q) => el('tr', {}, el('td', {}, day(q.at)), el('td', {}, q.door || ''), el('td', {}, q.subject || ''), el('td', {}, q.verdict === 'no' ? 'NO' : q.verdict || ''), el('td', {}, q.reason || ''), el('td', {}, q.judged && q.judged !== 'unknown' ? q.judged : '')))));
+  }
   // the desk: what the clock put out before the newest hour, and the few before it
   const desk = listOf('desk', 'desk');
   if (desk) {
@@ -272,7 +278,7 @@ function planReplay() {
   R.shown = -1;
   document.getElementById('dots').replaceChildren(...R.plan.map(() => el('i')));
   document.getElementById('lastrun').textContent = e
-    ? `Last hour: ${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${Math.max(1, Math.round((e.seconds || 0) / 60))} min, ${e.verdict || '?'}. The replay shows where she was, never what she read or wrote.`
+    ? `Last hour: ${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${Math.max(1, Math.round((e.seconds || 0) / 60))} min, ${e.verdict || '?'}${Number.isFinite(e.sameness) ? `, sameness ${e.sameness}% (how much it repeated the last seven)` : ''}. The replay shows where she was, never what she read or wrote.`
     : 'No hour has run yet. She waits at the bench.';
 }
 document.getElementById('replay').addEventListener('click', planReplay);

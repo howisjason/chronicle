@@ -35,7 +35,7 @@ import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { homedir } from 'node:os';
-import { buildTrace, mergeTraces, visible, validate, formatMorningLine, STATE_NAMES, DOOR } from '../lib.mjs';
+import { buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, STATE_NAMES, DOOR } from '../lib.mjs';
 
 const ROOM = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHRON = join(ROOM, '..');
@@ -117,7 +117,10 @@ const entry = {
   verdict,
   pins: fresh('board').length, bench_steps: benchSteps, cloud: fresh('cloud').length, shelf: fresh('shelf').length,
   quill: { yes: newQuill.filter((q) => q.verdict === 'yes').length, no: newQuill.filter((q) => q.verdict === 'no').length, called: quillCalled, recorded: newQuill.length },
-  trace, broken,
+  trace,
+  // against the last seven runs' traces, read from this same public log
+  sameness: sameness(trace, jsonl(join(STATE, 'log.jsonl')).slice(-7).map((e) => e.trace)),
+  broken,
 };
 
 // 4b. the "I used this" presses: the door's counts, copied into state/used.json
