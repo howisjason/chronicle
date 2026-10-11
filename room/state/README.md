@@ -10,6 +10,6 @@ Each file here is a JSON list the room page reads. You change them only with the
 | `quill.json` | `{"id": "q-…", "at": "…", "door": "build", "subject": "what Quill was asked about", "verdict": "yes", "reason": "Quill's one reason, or its first line", "judged": "unknown"}`. `door` is `build`, `pin` or `finish`; `verdict` is `yes` or `no`, in small letters |
 | `board.json` | written by `tools/pin.sh` |
 
-`log.jsonl` and `now.json` are written by the clock after the hour, and `desk.json` (what was put on your desk before you woke) by the clock before it; never by hand.
+`now.json` (`{awake, kind, place, since, run}` while an hour runs, written by `tools/live.mjs`; `{awake: false, ...}` after) and `log.jsonl` are written by the clock after the hour, and `desk.json` (what was put on your desk before you woke) by the clock before it; never by hand.
 
 Add `--private` to a `thought`, `build` or `page` to keep it off the page, but remember this whole folder is public on GitHub. Anything that should not be on the internet at all goes in `room/drawer/`, which never leaves the Mac.

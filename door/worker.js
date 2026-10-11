@@ -6,6 +6,8 @@
 //   GET  /take    (Bearer DOOR_KEY)    the station takes the oldest waiting item
 //   POST /used    {id}                 March's room: someone pressed "I used this" on a bench card
 //   GET  /used                         the room: {counts: {id: n}}, which log-run.mjs copies into state/used.json
+//   POST /now     (Bearer DOOR_KEY)    the room's watcher (room/tools/live.mjs): where March is while awake
+//   GET  /now                          the room page, every 15 seconds: that, or {awake: false} once it is 3 minutes old
 // Everything lives in one Durable Object. Viewer pings are kept in memory only:
 // a count of the last 90 seconds needs no storage, and KV's 1,000 writes a day
 // would not survive one viewer pinging every minute. Questions and letters are
@@ -41,6 +43,7 @@ export class Desk {
     this.seen = new Map(); // viewer id -> last ping, memory only
     this.lastSend = new Map(); // ip -> last send, memory only
     this.pressed = new Map(); // "ip|id|day" -> 1, memory only: one press per address per build per day
+    this.now = null; // March's whereabouts while her hour runs, memory only; {awake, kind, place, since, run, at}
   }
 
   async fetch(req) {
@@ -89,6 +92,26 @@ export class Desk {
       const counts = {};
       for (const r of this.sql.exec('SELECT id, n FROM used').toArray()) counts[r.id] = r.n;
       return json(req, { counts });
+    }
+    // Live: the watcher posts at least once a minute while she is awake. A watcher
+    // that dies must not leave her "awake" for ever, so anything older than three
+    // minutes reads as asleep. Kinds and places only, from fixed lists; never a word.
+    if (req.method === 'POST' && url.pathname === '/now') {
+      if (!this.env.DOOR_KEY || req.headers.get('authorization') !== `Bearer ${this.env.DOOR_KEY}`) return json(req, { error: 'no' }, 401);
+      let b;
+      try { b = await req.json(); } catch { return json(req, { error: 'That did not go through.' }, 400); }
+      const KINDS = ['reading', 'searching', 'building', 'writing', 'thinking', 'pinning', 'checking', 'private', 'waking'];
+      const PLACES = ['desk', 'bench', 'shelf', 'cloud', 'board', 'quill', 'drawer'];
+      this.now = b.awake === true
+        ? { awake: true, kind: KINDS.includes(b.kind) ? b.kind : 'waking', place: PLACES.includes(b.place) ? b.place : 'desk',
+            since: String(b.since || '').slice(0, 25), run: String(b.run || '').slice(0, 20), at: now }
+        : { awake: false, at: now };
+      return json(req, { ok: true });
+    }
+    if (req.method === 'GET' && url.pathname === '/now') {
+      const n = this.now;
+      if (!n || !n.awake || now - n.at > 180000) return json(req, { awake: false });
+      return json(req, { awake: true, kind: n.kind, place: n.place, since: n.since, run: n.run });
     }
     if (req.method === 'GET' && url.pathname === '/take') {
       if (!this.env.DOOR_KEY || req.headers.get('authorization') !== `Bearer ${this.env.DOOR_KEY}`) return json(req, { error: 'no' }, 401);

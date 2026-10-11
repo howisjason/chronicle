@@ -32,7 +32,7 @@ g.imageSmoothingEnabled = false;
 // checking moment leaves her where she is and brings Quill to her.
 const SPOT = { shelf: 42, drawer: 42, cloud: 112, bench: 160, desk: 228, board: 284 };
 const CAPTION = { reading: 'reading', searching: 'searching', building: 'building', writing: 'writing',
-  thinking: 'thinking', pinning: 'pinning', checking: 'checking with Quill', private: 'something private' };
+  thinking: 'thinking', pinning: 'pinning', checking: 'checking with Quill', private: 'something private', waking: 'waking up' };
 const AT = { shelf: 'at the shelf', drawer: 'at the drawer', cloud: 'under the cloud', bench: 'at the bench', desk: 'at the desk', board: 'at the board', quill: 'with Quill' };
 // what a click on the picture opens: each place's box in the 320x160 canvas, and the section it names
 const HIT = [                                                        // Quill's perch first: it overlaps the board's top edge
@@ -281,7 +281,21 @@ function planReplay() {
     ? `Last hour: ${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${Math.max(1, Math.round((e.seconds || 0) / 60))} min, ${e.verdict || '?'}${Number.isFinite(e.sameness) ? `, sameness ${e.sameness}% (how much it repeated the last seven)` : ''}. The replay shows where she was, never what she read or wrote.`
     : 'No hour has run yet. She waits at the bench.';
 }
-document.getElementById('replay').addEventListener('click', planReplay);
+document.getElementById('replay').addEventListener('click', () => { R.manual = true; planReplay(); });
+
+// ------------------------------------------------------------------ live
+// While her hour runs, the watcher (tools/live.mjs) tells the door where she is;
+// the page asks every 15 seconds and moves her there. The replay button still
+// works, and the next answer from the door takes over again. When the door is
+// down, the now.json the clock commits is the fallback (it says she is asleep).
+let LIVE = null;
+async function askNow() {
+  let n = null;
+  try { const r = await fetch(`${DOOR}/now`, { cache: 'no-cache' }); if (r.ok) n = await r.json(); } catch { /* the door is down */ }
+  if (!n) { const f = await get('state/now.json'); n = f.ok ? f.data : null; }
+  LIVE = n && n.awake === true && CAPTION[n.kind] ? n : null;
+  if (LIVE) R.manual = false;
+}
 
 // ------------------------------------------------------------------ the folds
 // Every list below the picture is folded to its heading; a click on the heading
@@ -301,6 +315,7 @@ cv.addEventListener('click', (ev) => {
 
 function tick(ms) {
   const t = ms / 1000, rt = t - R.t0;
+  if (LIVE && !R.manual) return liveTick(t);
   let now = null;
   for (const s of R.plan) if (s.at <= rt) now = s;
   const done = !R.plan.length || rt > R.plan[R.plan.length - 1].at + 4;
@@ -329,6 +344,25 @@ function tick(ms) {
   requestAnimationFrame(tick);
 }
 
+// awake right now: she stands where the watcher last saw her
+function liveTick(t) {
+  if (R.shown !== 'live' || R.liveKey !== LIVE.kind + LIVE.place + LIVE.since) {
+    R.shown = 'live'; R.liveKey = LIVE.kind + LIVE.place + LIVE.since;
+    document.getElementById('dots').replaceChildren();
+    document.getElementById('step').textContent = `since ${clock(LIVE.since)} · ${CAPTION[LIVE.kind]}, ${AT[LIVE.place] || LIVE.place}`;
+  }
+  const target = SPOT[LIVE.place] ?? R.x;
+  R.x += Math.sign(target - R.x) * Math.min(Math.abs(target - R.x), 1.6);
+  const checking = LIVE.kind === 'checking';
+  const qt = checking ? { x: R.x + 12, y: FLOOR - 52 } : PERCH;
+  q.x += (qt.x - q.x) * 0.08; q.y += (qt.y - q.y) * 0.08;
+  drawSet();
+  drawMarch(R.x, t);
+  drawCrow(q.x, q.y, Math.hypot(qt.x - q.x, qt.y - q.y) > 2 || (checking && Math.floor(t * 3) % 2) ? 1 : 0);
+  document.getElementById('caption').textContent = `awake now: ${CAPTION[LIVE.kind]}`;
+  requestAnimationFrame(tick);
+}
+
 // ------------------------------------------------------------------ go
 (async () => {
   const names = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk'];
@@ -338,6 +372,8 @@ function tick(ms) {
   await loadUsed();
   try { drawLists(); } catch (e) { console.warn('lists', e); }
   try { await document.fonts.load('8px Silkscreen'); } catch { /* the fallback font draws the labels */ }
+  await askNow();
+  setInterval(askNow, 15000);
   planReplay();
   requestAnimationFrame(tick);
 })();
