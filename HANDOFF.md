@@ -6,7 +6,7 @@
 
 **Read the 07:00 clock run of 12 Oct and call the room VERIFIED from the clock** (round one's "before piece 1" block, still open because the run had not happened when round two was built): `/tmp/march-brain-backup.log` (its `free hour:` lines and the publish lines after them), the last row of march-brain's `notes/immune/free-hour-log.tsv`, `tail -1 room/state/log.jsonl` (it should carry `sameness`), `git -C chronicle log -1` (a `room: 2026-10-12 (07:00)` commit on origin), the live page, and the morning line the waking prints. Then: the bench-test line into the standing facts §3 (first clock run's date + 14 days, with a `<!--due:YYYY-MM-DD warn:0-->` anchor); "first clock run <date>" onto the pile's room line; delete the round-one plan, `personal/context/obsidian/🌱 Brain Dump/The pile/March's room - the plan (11 Oct 2026).md`.
 
-**Then the die waits on J's word.** It is built and tested by hand, NOT installed. When he says so: the two commands in the manual's "The die" paragraph. When it is installed, March's own words at the top of `room/index.html` ("Once a day a clock on a Mac gives me an hour…") stop being true; change them with her, in her voice.
+**The die stays OFF (J's word, 12 Oct 2026, 1:58am: "Leave the die off").** It is built and tested by hand, NOT installed; never raise it, he will say when. When he does: the two commands in the manual's "The die" paragraph. When it is installed, March's own words at the top of `room/index.html` ("Once a day a clock on a Mac gives me an hour…") stop being true; change them with her, in her voice.
 
 ## What changed on 12 Oct, 1:25 to 2:00am (round two, all six pieces)
 
@@ -29,6 +29,6 @@ The plan (`personal/context/obsidian/🌱 Brain Dump/The pile/March's room - rou
 
 ## Still outstanding, in order
 
-1. The 07:00 read above (25 minutes).
-2. The die: installed on J's word, then `launchctl list | grep march-die` and a day of `~/Library/Logs/march-die.log`.
+1. J opens a new session with his next round of feedback and ideas for the room; that session serves his round first. The 07:00 read above (25 minutes) fits beside it.
+2. The die: off until his word; then `launchctl list | grep march-die` and a day of `~/Library/Logs/march-die.log`.
 3. The judging on 18 Oct (standing facts §3) reads the ledger, die hours included.
