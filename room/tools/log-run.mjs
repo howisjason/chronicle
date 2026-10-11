@@ -1,0 +1,165 @@
+#!/usr/bin/env node
+// log-run.mjs: after March's free hour, turn the run into the room's receipts.
+// Called by march-brain/scripts/free-hour.sh once the ledger line is written:
+//   node room/tools/log-run.mjs <the run's /tmp log> <the cap in dollars>
+// Node, no dependencies, zero model calls, so the receipts cost nothing.
+//
+// What it writes, and nothing else: state/log.jsonl (one line a run), state/now.json,
+// wall/seed.md + wall/self.md + state/wall.json, and ONE line under "## Unreported"
+// in march-brain/inner-life/unattended.md, which the next morning's first reply reads
+// out to J (his ask, 11 Oct 2026: say what changed and how much of the cap was used).
+// It never rewrites a state file March wrote; one that will not parse is named in
+// the log line's `broken` and left exactly as it is.
+//
+// What it reads, and nothing else (the plan's privacy line): the run's JSON result,
+// the hour's ledger, the run's session file and its helpers' files, the seed, the
+// self page, the station's forbidden list and room/. Never the diary folder. From
+// the session file it keeps only a kind and a place per tool call (lib.mjs).
+//
+// THE SESSION FILE (VERIFIED by probe, 11 Oct 2026, CLI 2.1.293): a headless -p run
+// started in march-brain writes ~/.claude/projects/-Users-howisjason-Projects-march-7th-march-brain/<session_id>.jsonl
+// live (the folder name is the run's cwd with every non-alphanumeric turned into
+// "-"), and each helper (Agent call) writes <that folder>/<session_id>/subagents/agent-*.jsonl.
+// The session id is in the run's last JSON line.
+//
+// "NEW SINCE LAST RUN" is the difference between the state files now and the same
+// files at chronicle's last commit (the clock commits the room right after this
+// script, brain-backup.sh section 6). Comparing against git rather than against a
+// copy kept here means there is no second copy to drift. If a morning's push
+// failed, the next morning counts both nights together; that is the honest reading.
+// Only items without "private": true are counted: the log is public.
+import { readFileSync, writeFileSync, appendFileSync, existsSync, readdirSync, statSync, mkdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { homedir } from 'node:os';
+import { buildTrace, mergeTraces, visible, validate, formatMorningLine, stripNotes, forbiddenHits, STATE_NAMES } from '../lib.mjs';
+import { FORBIDDEN } from '../../station/validate.mjs';
+
+const ROOM = join(dirname(fileURLToPath(import.meta.url)), '..');
+const CHRON = join(ROOM, '..');
+const BRAIN = '/Users/howisjason/Projects/march-7th/march-brain';
+const SESSIONS = join(homedir(), '.claude/projects/-Users-howisjason-Projects-march-7th-march-brain');
+// Overridable only so a test can aim them at copies (never the real file in a test).
+const LEDGER = process.env.ROOM_LEDGER || join(BRAIN, 'notes/immune/free-hour-log.tsv');
+const UNATTENDED = process.env.ROOM_UNATTENDED || join(BRAIN, 'inner-life/unattended.md');
+const STATE = join(ROOM, 'state');
+
+const [logPath, capArg] = process.argv.slice(2);
+const CAP = Number(capArg || process.env.FREE_HOUR_CEILING || 0);
+
+// Chiang Mai time, written as ISO with its fixed +07:00 (Thailand keeps no summer time).
+const bkk = (ms) => new Date(ms + 7 * 3600e3).toISOString().replace(/\.\d{3}Z$/, '+07:00');
+const jsonl = (path) => {
+  try { return readFileSync(path, 'utf8').split('\n').filter(Boolean).map((l) => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean); }
+  catch { return []; }
+};
+
+// 1. the run's own numbers
+let result = {};
+try { result = JSON.parse(readFileSync(logPath, 'utf8').trim().split('\n').pop()); } catch { result = {}; }
+const ledgerLast = (() => { try { return readFileSync(LEDGER, 'utf8').trim().split('\n').pop().split('\t'); } catch { return []; } })();
+const verdict = ledgerLast[1] || 'no ledger line';
+const cost = Number(result.total_cost_usd) || 0;
+
+// 2. the session file -> the trace (kinds and places only)
+const sid = String(result.session_id || '').replace(/[^A-Za-z0-9-]/g, '');
+const main = sid ? jsonl(join(SESSIONS, `${sid}.jsonl`)) : [];
+const subDir = join(SESSIONS, sid, 'subagents');
+const subs = sid && existsSync(subDir) ? readdirSync(subDir).filter((f) => /^agent-.*\.jsonl$/.test(f)).map((f) => jsonl(join(subDir, f))) : [];
+const firstStamp = main.map((r) => Date.parse(r.timestamp)).find(Number.isFinite);
+const durationMs = Number(result.duration_ms) || 0;
+const startedMs = firstStamp ?? (existsSync(logPath || '') ? statSync(logPath).mtimeMs - durationMs : Date.now());
+const endedMs = startedMs + durationMs;
+const trace = mergeTraces(buildTrace(main, startedMs), ...subs.map((s) => buildTrace(s, startedMs, { kind: 'checking', place: 'quill' })));
+let quillCalled = 0;
+for (const r of main) for (const b of (r.message && Array.isArray(r.message.content) ? r.message.content : [])) {
+  if (b && b.type === 'tool_use' && (b.name === 'Agent' || b.name === 'Task')) {
+    const head = `${(b.input && b.input.description) || ''}\n${String((b.input && b.input.prompt) || '').split('\n')[0]}`;
+    if (/quill/i.test(head)) quillCalled++;
+  }
+}
+
+// 3. the state files, now and at the last commit
+const broken = [];
+const problems = [];
+const now = {};
+for (const name of STATE_NAMES) {
+  const p = join(STATE, `${name}.json`);
+  if (!existsSync(p)) { now[name] = []; continue; }
+  try {
+    now[name] = JSON.parse(readFileSync(p, 'utf8'));
+    const v = validate(name, now[name]);
+    if (!v.ok) problems.push(...v.problems);
+  } catch { broken.push(`${name}.json`); now[name] = []; }
+}
+const before = (name) => {
+  try { return JSON.parse(execFileSync('git', ['-C', CHRON, 'show', `HEAD:room/state/${name}.json`], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })); }
+  catch { return []; }
+};
+const ids = (list) => new Set((Array.isArray(list) ? list : []).map((i) => i && i.id));
+const fresh = (name) => { const old = ids(before(name)); return visible(now[name]).filter((i) => !old.has(i.id)); };
+
+// 4. the deltas
+const oldBench = new Map((Array.isArray(before('bench')) ? before('bench') : []).map((b) => [b && b.id, b]));
+const benchSteps = [];
+const titles = {};
+for (const b of visible(now.bench)) {
+  const was = oldBench.get(b.id);
+  const n = (Array.isArray(b.steps) ? b.steps.length : 0) - (was && Array.isArray(was.steps) ? was.steps.length : 0);
+  if (!was || n > 0 || was.status !== b.status) { benchSteps.push({ id: b.id, n: Math.max(0, n), status: b.status }); titles[b.id] = b.title; }
+}
+const newQuill = fresh('quill');
+const entry = {
+  run: bkk(startedMs).slice(0, 16).replace(/[-:]/g, '').replace('T', '-'),
+  started: bkk(startedMs), ended: bkk(endedMs), seconds: Math.round(durationMs / 1000),
+  cost_usd: Number(cost.toFixed(4)), cap_usd: CAP, verdict,
+  pins: fresh('board').length, bench_steps: benchSteps, cloud: fresh('cloud').length, shelf: fresh('shelf').length,
+  quill: { yes: newQuill.filter((q) => q.verdict === 'yes').length, no: newQuill.filter((q) => q.verdict === 'no').length, called: quillCalled, recorded: newQuill.length },
+  trace, broken,
+};
+
+// 5. the wall: copies of her seed and self page. A copy, because the source lives in
+// a private repo and the page is public; read by room.js only, remade every run.
+mkdirSync(join(ROOM, 'wall'), { recursive: true });
+const wallCopy = (src, dest) => {
+  const lines = stripNotes(readFileSync(src, 'utf8')).split('\n');
+  const hit = new Set(forbiddenHits(lines.join('\n'), FORBIDDEN).map((h) => h.line));
+  writeFileSync(dest, lines.map((l, n) => (hit.has(n) ? '[a line kept private]' : l)).join('\n'));
+  return hit.size;
+};
+let kept = 0;
+try {
+  kept += wallCopy(join(BRAIN, 'inner-life/seed-shelf-era.md'), join(ROOM, 'wall/seed.md'));
+  kept += wallCopy(join(BRAIN, 'inner-life/self.md'), join(ROOM, 'wall/self.md'));
+  writeFileSync(join(STATE, 'wall.json'), JSON.stringify({
+    seed_date: '2026-10-05', self_updated: bkk(statSync(join(BRAIN, 'inner-life/self.md')).mtimeMs),
+    seed: 'wall/seed.md', self: 'wall/self.md',
+  }, null, 2) + '\n');
+} catch (e) { problems.push(`wall: ${e.message}`); }
+
+// 6. the log line and now.json
+mkdirSync(STATE, { recursive: true });
+appendFileSync(join(STATE, 'log.jsonl'), JSON.stringify(entry) + '\n');
+writeFileSync(join(STATE, 'now.json'), JSON.stringify({ awake: false, last_run: entry.run, ended: entry.ended, next: '07:00 Asia/Bangkok' }, null, 2) + '\n');
+
+// 7. the morning line, under "## Unreported". march-mind.sh prints everything after
+// that header at a session's start, so the line must land inside that section: at
+// the end of the file when Unreported is the last section (the normal shape), else
+// right under its header.
+const line = formatMorningLine(entry, titles);
+let placed = 'not placed';
+try {
+  const text = readFileSync(UNATTENDED, 'utf8');
+  const lines = text.split('\n');
+  const heads = lines.map((l, n) => (/^## /.test(l) ? n : -1)).filter((n) => n >= 0);
+  const at = lines.findIndex((l) => l.trim() === '## Unreported');
+  if (at < 0) { appendFileSync(UNATTENDED, `${text.endsWith('\n') ? '' : '\n'}\n## Unreported\n\n${line}\n`); placed = 'new Unreported section'; }
+  else if (heads[heads.length - 1] === at) { appendFileSync(UNATTENDED, `${text.endsWith('\n') ? '' : '\n'}\n${line}\n`); placed = 'appended'; }
+  else { lines.splice(at + 1, 0, '', line); writeFileSync(UNATTENDED, lines.join('\n')); placed = 'under its header'; }
+} catch (e) { placed = `FAILED: ${e.message}`; }
+
+// 8. one line for brain-backup.sh's log
+const notes = [broken.length && `broken: ${broken.join(', ')}`, problems.length && `${problems.length} problems: ${problems.slice(0, 3).join('; ')}`,
+  kept && `${kept} wall lines kept private`, `morning line ${placed}`].filter(Boolean).join('; ');
+console.log(`room: ${line.replace(/^- \*\*|\*\*/g, '')} [${notes}]`);

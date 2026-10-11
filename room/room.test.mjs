@@ -30,6 +30,7 @@ test('kindOf follows the plan table, row by row', () => {
     [['Agent', { description: 'Quill', prompt: '...' }], { kind: 'checking', place: 'quill' }],
     [['Edit', { file_path: `${B}/inner-life/diary/2026-10-12.md` }], { kind: 'private', place: 'drawer' }],
     [['Write', { file_path: `${B}/inner-life/memory/x.md` }], { kind: 'private', place: 'drawer' }],
+    [['Write', { file_path: `${R}/drawer/cloud.json` }], { kind: 'private', place: 'drawer' }],
     [['ToolSearch', { query: 'select:WebSearch' }], { kind: 'idle', place: 'none' }],
     [['Bash', { command: 'echo hi' }], { kind: 'idle', place: 'none' }],
     [['Edit', { file_path: `${R}/state/quill.json` }], { kind: 'idle', place: 'none' }],

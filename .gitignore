@@ -10,3 +10,5 @@ station/.venv/
 audio/
 __pycache__/
 .wrangler/
+# March's room: the private drawer never leaves the Mac (room/tools/pin.sh --private, and anything she files there by hand).
+room/drawer/

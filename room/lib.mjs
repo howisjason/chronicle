@@ -10,7 +10,8 @@
 // The room's own folder, matched as a path fragment so the same rule holds
 // for the live Mac path and for test paths.
 const ROOM = '/chronicle/room/';
-const PRIVATE = ['/inner-life/diary/', '/inner-life/memory/'];
+// The room's own drawer (git-ignored, never published) is private the same way.
+const PRIVATE = ['/inner-life/diary/', '/inner-life/memory/', ROOM + 'drawer/'];
 
 const pathOf = (input) => String((input && (input.file_path || input.path || input.notebook_path)) || '');
 
