@@ -48,7 +48,7 @@ const WORDS = { two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, 
   second: 2, third: 3, fourth: 4, fifth: 5, sixth: 6, seventh: 7, eighth: 8, ninth: 9, tenth: 10,
   eleventh: 11, twelfth: 12, thirteenth: 13, fourteenth: 14, fifteenth: 15, sixteenth: 16,
   seventeenth: 17, eighteenth: 18, nineteenth: 19, twentieth: 20 };
-const FORBIDDEN = [
+export const FORBIDDEN = [
   [/[$€£฿]\s?\d|\b\d+\s?(?:cad|usd|thb|baht|dollars?|bucks)\b/i, 'a money figure'],
   [/\b(?:visa|doctor|hospital|medicine|medication|prescription|diagnos\w*|therap\w*|insurance)\b/i, 'a health, medicine or visa word'],
   [/\b(?:sk|ghp|gho|github_pat|xox[abp])[-_][A-Za-z0-9_-]{8,}|\b[A-Fa-f0-9]{32,}\b/, 'a key-shaped string'],
