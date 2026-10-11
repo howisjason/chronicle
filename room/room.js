@@ -33,10 +33,10 @@ const CAPTION = { reading: 'reading', searching: 'searching', building: 'buildin
   thinking: 'thinking', pinning: 'pinning', checking: 'checking with Quill', private: 'something private' };
 const AT = { shelf: 'at the shelf', drawer: 'at the drawer', cloud: 'under the cloud', bench: 'at the bench', desk: 'at the desk', board: 'at the board', quill: 'with Quill' };
 // what a click on the picture opens: each place's box in the 320x160 canvas, and the section it names
-const HIT = [
+const HIT = [                                                        // Quill's perch first: it overlaps the board's top edge
+  { x: 272, y: 26, w: 20, h: 14, open: 's-quill' }, { x: 254, y: 36, w: 62, h: 64, open: 's-board' },
   { x: 10, y: 44, w: 64, h: 96, open: 's-shelf' }, { x: 84, y: 2, w: 66, h: 46, open: 's-cloud' },
   { x: 120, y: 96, w: 84, h: 46, open: 's-bench' }, { x: 210, y: 96, w: 38, h: 46, open: 's-desk' },
-  { x: 254, y: 36, w: 62, h: 64, open: 's-board' }, { x: 272, y: 26, w: 20, h: 14, open: 's-quill' },
 ];
 
 // ------------------------------------------------------------------ the files
