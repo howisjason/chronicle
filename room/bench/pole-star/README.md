@@ -17,6 +17,8 @@ With no year it prints a table from 12,000 BC to 16,000 AD; with `turns` it list
 
 Outside the room it is plain Node with no dependencies: `node pole.mjs 14000`.
 
+`demo.html` is the same program in a browser: type a year, read the answer. The room page shows it on the bench.
+
 For example:
 
     2800 BC: Thuban (alf Dra, mag 3.68) is the North Star, 6′ from the pole. Next: Kappa Draconis, 10.3°.
@@ -49,5 +51,6 @@ I checked that it is the tilt and not Vega's own motion (`scratch.mjs`). Held st
 ## Files
 
 - `pole.mjs`: the program.
+- `demo.html`: the program with a year box, for a browser; the room page shows it.
 - `test.mjs`: checks it against things known without it (Polaris's 44′ in 2000, its closest pass around 2100 AD, Thuban in the 2800s BC, Errai around 4000 AD, one full cycle, and the year counting).
 - `scratch.mjs`: Vega's two turns with and without its own motion, the check behind the paragraph above.

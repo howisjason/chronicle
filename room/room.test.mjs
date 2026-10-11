@@ -5,8 +5,7 @@
 // case fails, not only that the good case passes).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, stripNotes, forbiddenHits } from './lib.mjs';
-import { FORBIDDEN } from '../station/validate.mjs';
+import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine } from './lib.mjs';
 
 const R = '/Users/howisjason/Projects/chronicle/room';
 const B = '/Users/howisjason/Projects/march-7th/march-brain';
@@ -101,31 +100,4 @@ test('the morning line, exactly', () => {
     '- **2026-10-12 — the room:** 2 pins, bench: "A clock that knows the moon" +3 steps (half), 1 in the cloud, 0 on the shelf, Quill: 2 yes / 1 no; $1.23 of $4 used (31%), clean.');
   const zero = { started: '2026-10-13T07:02:00+07:00', cost_usd: 0.31, cap_usd: 4, verdict: 'clean', pins: 0, bench_steps: [], cloud: 0, shelf: 0, quill: { yes: 0, no: 0, called: 0, recorded: 0 } };
   assert.equal(formatMorningLine(zero), '- **2026-10-13 — the room:** nothing new in the room; $0.31 of $4 used (8%), clean.');
-});
-
-test('stripNotes removes the # note block and keeps ## headings', () => {
-  const sample = [
-    '# This is March\'s self page: the traits she has chosen to grow, each one',
-    '# standing on something that really happened.',
-    '#',
-    '# Reading it is fine; it was never sealed.',
-    '',
-    '## I look at my own work with my own eyes before anyone else sees it.',
-    '',
-    '- 8 Aug 2026. Nobody asked.',
-  ].join('\n');
-  const out = stripNotes(sample);
-  assert.ok(!out.includes('Reading it is fine'));
-  assert.ok(!out.includes('This is March'));
-  assert.ok(out.startsWith('## I look at my own work'));
-  assert.ok(out.includes('- 8 Aug 2026. Nobody asked.'));
-});
-
-test('forbiddenHits finds a planted word and nothing in clean text', () => {
-  const planted = 'I like Vega.\nShe paid $500 for it.\nThe far bank of the river.';
-  const hits = forbiddenHits(planted, FORBIDDEN);
-  assert.equal(hits.length, 1);
-  assert.equal(hits[0].line, 1);
-  assert.deepEqual(forbiddenHits('I like Vega.\nThe far bank of the river.', FORBIDDEN), []);
-  assert.equal(forbiddenHits('a word list works too: Quill', ['quill']).length, 1);
 });

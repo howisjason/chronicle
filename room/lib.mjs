@@ -139,27 +139,3 @@ export function formatMorningLine(e, titles = {}) {
     `${e.shelf || 0} on the shelf, Quill: ${q.yes || 0} yes / ${q.no || 0} no; ${spend}.`;
 }
 
-// J's margin notes at the top of the seed and the self page are `# ` lines
-// (and bare `#`), notes TO him, never part of her page. They are dropped up to
-// the first real line; after that every line is hers, `##` headings included.
-export function stripNotes(md) {
-  const lines = String(md).split('\n');
-  let k = 0;
-  while (k < lines.length && (/^#( |$)/.test(lines[k]) || lines[k].trim() === '')) k++;
-  return lines.slice(k).join('\n');
-}
-
-// Lines of `text` that trip the forbidden list. `words` is a list of
-// [RegExp, what] pairs (station/validate.mjs's FORBIDDEN) or plain strings.
-export function forbiddenHits(text, words) {
-  const hits = [];
-  String(text).split('\n').forEach((line, n) => {
-    for (const w of words || []) {
-      const re = Array.isArray(w) ? w[0] : w instanceof RegExp ? w : null;
-      const what = Array.isArray(w) ? w[1] : String(w);
-      const hit = re ? re.test(line) : line.toLowerCase().includes(String(w).toLowerCase());
-      if (hit) { hits.push({ line: n, what }); break; }
-    }
-  });
-  return hits;
-}

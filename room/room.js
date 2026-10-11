@@ -1,6 +1,6 @@
 // room.js: draws March's room from its plain files. Reads state/*.json,
-// state/log.jsonl, wall/*.md and shelf/*.md; writes nothing; fetches nothing
-// outside this repo. Every list passes through visible() first, so an item
+// state/log.jsonl, shelf/*.md and a build's demo.html or demo.txt; writes
+// nothing; fetches nothing outside this repo. Every list passes through visible() first, so an item
 // marked "private": true is never drawn (the real drawer is room/drawer/, which
 // git never publishes; the flag is the second fence).
 //
@@ -11,8 +11,12 @@
 //
 // The picture: on load the page replays the last run's trace (log.jsonl's last
 // line), about a minute for the whole hour, moving March to each entry's place
-// with a one-word caption of what she was doing. March has no legs that walk on
-// the base yet, so she slides between spots. Then she idles at the bench.
+// with a one-word caption of what she was doing, and a strip under the picture
+// saying which stop this is, the real clock time that night, and the place (J,
+// 12 Oct 2026: the replay alone did not say what was going on). The hour's
+// seconds are squeezed into about 55: in proportion, never real time. March has
+// no legs that walk on the base yet, so she slides between spots. Then she idles
+// at the bench. Clicking a place in the picture opens the list it names below.
 import { makeMarch } from '../march-base.js';
 import { visible, validate } from './lib.mjs';
 
@@ -27,6 +31,13 @@ g.imageSmoothingEnabled = false;
 const SPOT = { shelf: 42, drawer: 42, cloud: 112, bench: 160, desk: 228, board: 284 };
 const CAPTION = { reading: 'reading', searching: 'searching', building: 'building', writing: 'writing',
   thinking: 'thinking', pinning: 'pinning', checking: 'checking with Quill', private: 'something private' };
+const AT = { shelf: 'at the shelf', drawer: 'at the drawer', cloud: 'under the cloud', bench: 'at the bench', desk: 'at the desk', board: 'at the board', quill: 'with Quill' };
+// what a click on the picture opens: each place's box in the 320x160 canvas, and the section it names
+const HIT = [
+  { x: 10, y: 44, w: 64, h: 96, open: 's-shelf' }, { x: 84, y: 2, w: 66, h: 46, open: 's-cloud' },
+  { x: 120, y: 96, w: 84, h: 46, open: 's-bench' }, { x: 210, y: 96, w: 38, h: 46, open: 's-desk' },
+  { x: 254, y: 36, w: 62, h: 64, open: 's-board' }, { x: 272, y: 26, w: 20, h: 14, open: 's-quill' },
+];
 
 // ------------------------------------------------------------------ the files
 const get = async (path, kind) => {
@@ -96,11 +107,14 @@ function md(text, box) {
 function drawLists() {
   const bench = listOf('bench', 'bench');
   if (bench) document.getElementById('bench').replaceChildren(...bench.map((b) => {
-    const path = safe(b.path, 'bench');
+    const path = safe(String(b.path || '').replace(/\/$/, ''), 'bench');
     const used = Array.isArray(b.used_by) && b.used_by.length ? ` · used ${b.used_by.length}×` : '';
-    return el('div', { class: 'card' }, el('b', {}, b.title || b.id), el('span', { class: 'tag' }, b.status || '?'),
-      ` ${Array.isArray(b.steps) ? b.steps.length : 0} steps${used} · started ${day(b.started)} `,
-      path ? el('a', { href: `https://github.com/howisjason/chronicle/tree/main/room/${path}` }, 'open') : '');
+    const face = el('div');
+    const card = el('div', { class: 'card' }, el('b', {}, b.title || b.id), el('span', { class: 'tag' }, b.status || '?'), face,
+      el('div', { class: 'meta' }, `${Array.isArray(b.steps) ? b.steps.length : 0} steps${used} · started ${day(b.started)} · `,
+        path ? el('a', { href: `https://github.com/howisjason/chronicle/tree/main/room/${path}` }, 'the files') : ''));
+    if (path) showFace(path, face);
+    return card;
   }));
   const board = listOf('board', 'board');
   if (board) document.getElementById('board').replaceChildren(...board.map((p) => {
@@ -139,15 +153,14 @@ function drawLists() {
   }));
 }
 
-async function drawWall() {
-  const w = S.wall;
-  if (!w || !w.ok) { say('seed', 'this file could not be read', 'bad'); say('self', 'this file could not be read', 'bad'); return; }
-  const seed = await get(safe(w.data.seed, 'wall', '.md') || 'wall/seed.md', 'text');
-  const self = await get(safe(w.data.self, 'wall', '.md') || 'wall/self.md', 'text');
-  document.getElementById('seedDate').textContent = `Her first page · written ${day(w.data.seed_date)}`;
-  document.getElementById('selfDate').textContent = `What she chose to grow · last changed ${day(w.data.self_updated)}`;
-  if (seed.ok) md(seed.data, document.getElementById('seed')); else say('seed', 'this file could not be read', 'bad');
-  if (self.ok) md(self.data, document.getElementById('self')); else say('self', 'this file could not be read', 'bad');
+// A build shows itself when it can (J, 12 Oct 2026: a showcase, not a link to
+// GitHub): bench/<id>/demo.html, a page the build wrote for a browser, is shown in
+// place; else bench/<id>/demo.txt, what the build prints, is shown as text; else
+// nothing but the link. The hour learns this from state/README.md.
+async function showFace(path, into) {
+  const has = async (f) => { try { return (await fetch(`${path}/${f}`, { method: 'HEAD', cache: 'no-cache' })).ok; } catch { return false; } };
+  if (await has('demo.html')) { into.append(el('iframe', { src: `${path}/demo.html`, title: 'the build, running', loading: 'lazy' })); into.parentElement.classList.add('faced'); }
+  else if (await has('demo.txt')) { const f = await get(`${path}/demo.txt`, 'text'); if (f.ok) { into.append(el('pre', {}, f.data)); into.parentElement.classList.add('faced'); } }
 }
 
 // ------------------------------------------------------------------ the picture
@@ -219,13 +232,33 @@ function planReplay() {
   const tr = e && Array.isArray(e.trace) ? e.trace.filter((s) => s && CAPTION[s.kind]) : [];
   const first = tr.length ? tr[0].t : 0, span = tr.length ? Math.max(1, tr[tr.length - 1].t - first) : 1;
   let at = 0;
-  R.plan = tr.map((s, n) => { at = Math.max(n ? at + 2.5 : 0, ((s.t - first) / span) * 55); return { at, kind: s.kind, place: s.place }; });
+  const t0 = e ? new Date(e.started).getTime() : NaN;
+  R.plan = tr.map((s, n) => { at = Math.max(n ? at + 2.5 : 0, ((s.t - first) / span) * 55); return { at, kind: s.kind, place: s.place, when: t0 + s.t * 1000 }; });
   R.t0 = performance.now() / 1000;
+  R.shown = -1;
+  document.getElementById('dots').replaceChildren(...R.plan.map(() => el('i')));
   document.getElementById('lastrun').textContent = e
     ? `Last hour: ${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${Math.max(1, Math.round((e.seconds || 0) / 60))} min, ${e.verdict || '?'}. The replay shows where she was, never what she read or wrote.`
     : 'No hour has run yet. She waits at the bench.';
 }
 document.getElementById('replay').addEventListener('click', planReplay);
+
+// ------------------------------------------------------------------ the folds
+// Every list below the picture is folded to its heading; a click on the heading
+// or on its place in the picture opens it (and lights the heading for a moment).
+const openFold = (id, scroll) => {
+  const sec = document.getElementById(id);
+  if (!sec) return;
+  sec.classList.add('open');
+  if (scroll) { sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); sec.classList.add('lit'); setTimeout(() => sec.classList.remove('lit'), 1200); }
+};
+for (const h of document.querySelectorAll('.fold > h2')) h.addEventListener('click', () => h.parentElement.classList.toggle('open'));
+cv.addEventListener('click', (ev) => {
+  const r = cv.getBoundingClientRect(), x = (ev.clientX - r.left) * W / r.width, y = (ev.clientY - r.top) * H / r.height;
+  const hit = HIT.find((b) => x >= b.x && x < b.x + b.w && y >= b.y && y < b.y + b.h);
+  if (hit && hit.open === 's-desk') openFold('s-log', true);      // the desk has no list of its own; the log is the nearest thing
+  else if (hit) openFold(hit.open, true);
+});
 
 function tick(ms) {
   const t = ms / 1000, rt = t - R.t0;
@@ -234,6 +267,15 @@ function tick(ms) {
   const done = !R.plan.length || rt > R.plan[R.plan.length - 1].at + 4;
   const place = done ? 'bench' : now ? now.place : R.plan[0].place;
   const kind = done ? null : now ? now.kind : null;
+  // the strip: which stop this is, when it really happened, where
+  const n = done || !now ? -1 : R.plan.indexOf(now);
+  if (n !== R.shown) {
+    R.shown = n;
+    [...document.getElementById('dots').children].forEach((d, k) => { d.className = n < 0 ? 'past' : k < n ? 'past' : k === n ? 'now' : ''; });
+    document.getElementById('step').textContent = n < 0
+      ? (R.plan.length ? `${R.plan.length} stops in the hour; press Replay to watch them again` : '')
+      : `stop ${n + 1} of ${R.plan.length} · ${clock(now.when)} · ${CAPTION[now.kind]}, ${AT[now.place] || now.place}`;
+  }
   const target = SPOT[place] ?? R.x;                                   // 'quill' leaves her where she is
   R.x += Math.sign(target - R.x) * Math.min(Math.abs(target - R.x), 1.6);
   // Quill hops to her during a check, and back to its perch after
@@ -250,11 +292,11 @@ function tick(ms) {
 
 // ------------------------------------------------------------------ go
 (async () => {
-  const names = ['bench', 'shelf', 'board', 'cloud', 'quill', 'wall'];
+  const names = ['bench', 'shelf', 'board', 'cloud', 'quill'];
   const files = await Promise.all([...names.map((n) => get(`state/${n}.json`)), get('state/log.jsonl', 'jsonl')]);
   names.forEach((n, k) => { S[n] = files[k]; });
   S.log = files[names.length];
-  for (const [fn, what] of [[drawLists, 'lists'], [drawWall, 'wall']]) { try { await fn(); } catch (e) { console.warn(what, e); } }
+  try { drawLists(); } catch (e) { console.warn('lists', e); }
   try { await document.fonts.load('8px Silkscreen'); } catch { /* the fallback font draws the labels */ }
   planReplay();
   requestAnimationFrame(tick);

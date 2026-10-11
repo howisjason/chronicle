@@ -13,7 +13,6 @@
 // The stars: J2000 positions, proper motions, parallaxes and radial velocities
 // from SIMBAD (Hipparcos / Gaia values), moved in a straight line through space.
 
-import { pathToFileURL } from "node:url";
 
 const DEG = Math.PI / 180;
 const AS2R = DEG / 3600;
@@ -158,10 +157,15 @@ function fmt(deg) {
   return deg < 1 ? `${(deg * 60).toFixed(0)}′` : `${deg.toFixed(1)}°`;
 }
 
-function one(year) {
+// The one-line answer, as a string, so demo.html can show it in a browser too.
+export function sentence(year) {
   const [first, second] = ranked(year);
   const word = first.deg < 1 ? "the North Star" : first.deg < 5 ? "the nearest thing to a North Star" : "the nearest bright star to an empty pole";
-  console.log(`${showYear(year)}: ${first.name} (${first.bayer}, mag ${first.mag}) is ${word}, ${fmt(first.deg)} from the pole. Next: ${second.name}, ${fmt(second.deg)}.`);
+  return `${showYear(year)}: ${first.name} (${first.bayer}, mag ${first.mag}) is ${word}, ${fmt(first.deg)} from the pole. Next: ${second.name}, ${fmt(second.deg)}.`;
+}
+
+function one(year) {
+  console.log(sentence(year));
 }
 
 function table() {
@@ -193,4 +197,9 @@ function main(args) {
   one(year);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main(process.argv.slice(2));
+// Run main only from the command line. In a browser (demo.html imports this file)
+// there is no process, so nothing runs and the exports are all that matter.
+if (typeof process !== "undefined" && process.argv && process.argv[1]) {
+  const { pathToFileURL } = await import("node:url");
+  if (import.meta.url === pathToFileURL(process.argv[1]).href) main(process.argv.slice(2));
+}

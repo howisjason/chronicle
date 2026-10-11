@@ -5,15 +5,16 @@
 // Node, no dependencies, zero model calls, so the receipts cost nothing.
 //
 // What it writes, and nothing else: state/log.jsonl (one line a run), state/now.json,
-// wall/seed.md + wall/self.md + state/wall.json, and ONE line under "## Unreported"
+// and ONE line under "## Unreported"
 // in march-brain/inner-life/unattended.md, which the next morning's first reply reads
 // out to J (his ask, 11 Oct 2026: say what changed and how much of the cap was used).
 // It never rewrites a state file March wrote; one that will not parse is named in
 // the log line's `broken` and left exactly as it is.
 //
 // What it reads, and nothing else (the plan's privacy line): the run's JSON result,
-// the hour's ledger, the run's session file and its helpers' files, the seed, the
-// self page, the station's forbidden list and room/. Never the diary folder. From
+// the hour's ledger, the run's session file and its helpers' files and room/.
+// Never the diary folder, the seed or the self page (the room had a wall showing
+// copies of those two until 12 Oct 2026; J took it down: the room is hers). From
 // the session file it keeps only a kind and a place per tool call (lib.mjs).
 //
 // THE SESSION FILE (VERIFIED by probe, 11 Oct 2026, CLI 2.1.293): a headless -p run
@@ -28,13 +29,12 @@
 // copy kept here means there is no second copy to drift. If a morning's push
 // failed, the next morning counts both nights together; that is the honest reading.
 // Only items without "private": true are counted: the log is public.
-import { readFileSync, writeFileSync, appendFileSync, existsSync, readdirSync, statSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, appendFileSync, existsSync, readdirSync, mkdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { homedir } from 'node:os';
-import { buildTrace, mergeTraces, visible, validate, formatMorningLine, stripNotes, forbiddenHits, STATE_NAMES } from '../lib.mjs';
-import { FORBIDDEN } from '../../station/validate.mjs';
+import { buildTrace, mergeTraces, visible, validate, formatMorningLine, STATE_NAMES } from '../lib.mjs';
 
 const ROOM = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHRON = join(ROOM, '..');
@@ -119,33 +119,14 @@ const entry = {
   trace, broken,
 };
 
-// 5. the wall: copies of her seed and self page. A copy, because the source lives in
-// a private repo and the page is public; read by room.js only, remade every run.
-mkdirSync(join(ROOM, 'wall'), { recursive: true });
-const wallCopy = (src, dest) => {
-  const lines = stripNotes(readFileSync(src, 'utf8')).split('\n');
-  const hit = new Set(forbiddenHits(lines.join('\n'), FORBIDDEN).map((h) => h.line));
-  writeFileSync(dest, lines.map((l, n) => (hit.has(n) ? '[a line kept private]' : l)).join('\n'));
-  return hit.size;
-};
-let kept = 0;
-try {
-  kept += wallCopy(join(BRAIN, 'inner-life/seed-shelf-era.md'), join(ROOM, 'wall/seed.md'));
-  kept += wallCopy(join(BRAIN, 'inner-life/self.md'), join(ROOM, 'wall/self.md'));
-  writeFileSync(join(STATE, 'wall.json'), JSON.stringify({
-    seed_date: '2026-10-05', self_updated: bkk(statSync(join(BRAIN, 'inner-life/self.md')).mtimeMs),
-    seed: 'wall/seed.md', self: 'wall/self.md',
-  }, null, 2) + '\n');
-} catch (e) { problems.push(`wall: ${e.message}`); }
-
-// 6. the log line and now.json. The run's cost is NOT in the log line: the log is
+// 5. the log line and now.json. The run's cost is NOT in the log line: the log is
 // public, and this repo's law keeps J's money out of every public file. The cost
 // rides only in the morning line (march-brain, private) and the hour's ledger.
 mkdirSync(STATE, { recursive: true });
 appendFileSync(join(STATE, 'log.jsonl'), JSON.stringify(entry) + '\n');
 writeFileSync(join(STATE, 'now.json'), JSON.stringify({ awake: false, last_run: entry.run, ended: entry.ended, next: '07:00 Asia/Bangkok' }, null, 2) + '\n');
 
-// 7. the morning line, under "## Unreported". march-mind.sh prints everything after
+// 6. the morning line, under "## Unreported". march-mind.sh prints everything after
 // that header at a session's start, so the line must land inside that section: at
 // the end of the file when Unreported is the last section (the normal shape), else
 // right under its header.
@@ -161,7 +142,7 @@ try {
   else { lines.splice(at + 1, 0, '', line); writeFileSync(UNATTENDED, lines.join('\n')); placed = 'under its header'; }
 } catch (e) { placed = `FAILED: ${e.message}`; }
 
-// 8. one line for brain-backup.sh's log
+// 7. one line for brain-backup.sh's log
 const notes = [broken.length && `broken: ${broken.join(', ')}`, problems.length && `${problems.length} problems: ${problems.slice(0, 3).join('; ')}`,
-  kept && `${kept} wall lines kept private`, `morning line ${placed}`].filter(Boolean).join('; ');
+  `morning line ${placed}`].filter(Boolean).join('; ');
 console.log(`room: ${line.replace(/^- \*\*|\*\*/g, '')} [${notes}]`);

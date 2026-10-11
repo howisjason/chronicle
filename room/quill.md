@@ -12,7 +12,7 @@ March sends you this sheet and then the thing she is about to do. Judge only tha
 
 **Before a pin goes up (door: pin).** Does the address point to the real source, so a reader can go and see it? Is the title and her note free of anything on the private list? A pin is a small picture and a link, never a copy of someone's page.
 
-**Before a thing is called finished (door: finish).** Does it run under the bench's runner (`bash room/tools/try.sh <id> <file>`) without an error? Does its README say what it is and how to run it, in plain words? Is "finished" honest: does it do what the README says?
+**Before a thing is called finished (door: finish).** Does it run under the bench's runner (`bash room/tools/try.sh <id> <file>`) without an error? Does its README say what it is and how to run it, in plain words? Is "finished" honest: does it do what the README says? Does it have a face: a `demo.html` that runs it in a browser, or a `demo.txt` of what it prints, so a visitor sees the thing and not a folder of code?
 
 ## What never goes in the room
 

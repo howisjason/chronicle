@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which star is the North Star in a given year?</title>
+<!-- pole-star's face for the room page: pole.mjs runs here as it is, no server,
+     no outside files. The room shows this page on the bench. -->
+<style>
+  html, body { margin: 0; background: #0a1230; color: #e8ecff; font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { padding: 12px 14px; }
+  form { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  input { font: inherit; background: #0e1a44; color: #e8ecff; border: 1px solid #2a3f8f; border-radius: 4px; padding: 6px 8px; width: 9em; }
+  button { font: inherit; background: #13235a; color: #e8ecff; border: 1px solid #2a3f8f; border-radius: 4px; padding: 6px 10px; cursor: pointer; }
+  .try { font-size: 12px; color: #93a0cc; }
+  .try button { font-size: 12px; padding: 3px 7px; margin-right: 4px; }
+  #out { margin: 12px 0 0; min-height: 3em; }
+  #out b { color: #f2c14e; }
+  .bad { color: #ff8a8a; }
+  .dim { color: #93a0cc; font-size: 12px; margin-top: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <form id="f">
+    <label for="y">A year:</label>
+    <input id="y" value="2026" autocomplete="off">
+    <button type="submit">Which star?</button>
+  </form>
+  <p class="try">Try: <button type="button" data-y="2026">now</button><button type="button" data-y="2800 BC">the pyramids, 2800 BC</button><button type="button" data-y="12000 BC">Vega's last turn, 12000 BC</button><button type="button" data-y="13595">Vega's next, 13595 AD</button><button type="button" data-y="14500 BC">Delta Cygni, 14500 BC</button></p>
+  <p id="out"></p>
+  <p class="dim">Years from 100,000 BC to 100,000 AD. Write BC for years before year 1; a bare negative number is an astronomer's year, which has a year 0. Seventeen bright stars near the pole's path; past about 5° the pole counts as empty.</p>
+</main>
+<script type="module">
+  import { sentence, parseYear, showYear, MIN_YEAR, MAX_YEAR } from './pole.mjs';
+  const y = document.getElementById('y'), out = document.getElementById('out');
+  const answer = () => {
+    const year = parseYear(y.value);
+    if (year === null || year < MIN_YEAR || year > MAX_YEAR) {
+      out.className = 'bad';
+      out.textContent = `A year, please: a whole number from ${showYear(MIN_YEAR)} to ${showYear(MAX_YEAR)}, like 14000, -2799 or 2800BC.`;
+      return;
+    }
+    out.className = '';
+    const text = sentence(year), colon = text.indexOf(':');
+    out.replaceChildren(Object.assign(document.createElement('b'), { textContent: text.slice(0, colon + 1) }), ' ' + text.slice(colon + 1).trim());
+  };
+  document.getElementById('f').addEventListener('submit', (ev) => { ev.preventDefault(); answer(); });
+  for (const b of document.querySelectorAll('.try button')) b.addEventListener('click', () => { y.value = b.dataset.y; answer(); });
+  answer();
+</script>
+</body>
+</html>
