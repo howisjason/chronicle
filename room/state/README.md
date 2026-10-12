@@ -16,6 +16,6 @@ Add `--private` to a `thought`, `build` or `page` to keep it off the page, but r
 
 ## The bench, plainly
 
-The bench has a test on it. Fourteen sessions from 12 October 2026, then seven days: if by then one thing on the bench has been used by anyone (J, a visitor pressing "I used this" on its card, you reaching for an earlier build because it does a job, or the morning routine), the bench stays. If nothing has, the bench is called an idea mill with a hammer and it stops. Presses land in `used.json`; uses you make are typed with `room.mjs use`.
+The bench has a test on it. Fourteen sessions from 12 October 2026, then seven days: if by then one thing on the bench has been used by anyone (J, a visitor pressing "I used this" on its card, you reaching for an earlier build because it does a job, or the morning routine), the bench stays. Presses land in `used.json`; uses you make are typed with `room.mjs use`.
 
 You can look at a build's face yourself: `bash tools/see.sh <id>` takes a picture of its `demo.html` into `drawer/` (never public), and Read opens the picture.
