@@ -147,7 +147,7 @@ seed, self page, diary and memories never appear (the wall that framed the seed 
 page came down 12 Oct 2026, J's call: the room is hers, not a page about him). The words
 at the top of the page are her own.
 
-**The truth files** (`room/state/`, plus `bench/`, `shelf/`, `board/`). Everything
+**The truth files** (`room/state/`, plus `bench/`, `shelf/`, `board/`). `room/first-day/` holds the first day's six builds, six pages and one pin (12 Oct 2026), moved off the lists at the reset of 13 Oct 2026 (J's word: a room that compounds from a tilted start stays tilted); `state/first-day.json` is their old list entries, verbatim with new paths. Nothing in it is drawn onto the page. Everything
 the page shows comes from these. Every item has `id` and `at` (bench items `started`). The shapes are
 also written for March in `state/README.md`, which Quill's sheet points her to: the hour learns them
 nowhere else, and its first entry came out in a shape the page could not show until that file existed.
