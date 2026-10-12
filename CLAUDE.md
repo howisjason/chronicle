@@ -229,6 +229,8 @@ prints nothing. `FORCE=1 bash scripts/die.sh` is the by-hand real trigger. Insta
 J's word (`cp` the plist to `~/Library/LaunchAgents/`, then `launchctl bootstrap gui/$(id -u)
 <that file>`; stop with `launchctl bootout gui/$(id -u)/com.howisjason.march-die`).
 
+**Publishing.** GitHub Pages serves `main` as plain files: `.nojekyll` at the root keeps Jekyll off, because Jekyll read a pair of curly braces in a markdown file as a template and failed every build for nine hours on 12 Oct 2026 while the page silently stayed old. After any push, `gh run list --limit 1` must show `success`; the page is not live until it does.
+
 **Privacy.** The repo's laws and `forbidden.md` apply to every file in `room/`. The real
 private drawer is `room/drawer/`, git-ignored, so it never leaves the Mac (`pin.sh
 --private` files there). A `"private": true` mark on an item in `state/` keeps it off the
