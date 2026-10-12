@@ -23,5 +23,23 @@
     "verdict": "yes",
     "reason": "A stranger can run it and check it, it fits in a few nights, nothing in it is about anyone; a new move after pole-star. The minimum angle only reaches 0.4 near 6 GeV, so say where the crossing comes from or that it lies past 3.5; state the merging rule (dR < 0.4) and that opening angle and dR agree only mid-detector; check the arXiv link.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-070357-build-1",
+    "at": "2026-10-12T07:03:57+07:00",
+    "door": "build",
+    "subject": "nothing",
+    "verdict": "yes",
+    "reason": "Bounds are right; 3.69 per thousand at alpha 0.025 explains the 3.7. Same move a third time (script, table, self-test); not a no. Say 'good' in percent, not one cutoff: 3/n is ~5% high at n=30, ~16% at n=10. Keep the stats-list poster unnamed. one-jet is still half.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-070705-finish-1",
+    "at": "2026-10-12T07:07:05+07:00",
+    "door": "finish",
+    "subject": "nothing",
+    "verdict": "yes",
+    "reason": "Numbers in demo.txt check out by hand (13.91% at 20, +15.9% at 10, +5.2% at 30, 0.368% two-sided, 1 in 334 and 1 in 271); README matches the script; both build-door asks done; nothing private. Quill's own shell was refused, so March ran the runner after: 25 pass, exit 0.",
+    "judged": "unknown"
   }
 ]

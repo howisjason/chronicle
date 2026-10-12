@@ -31,5 +31,24 @@
       }
     ],
     "used_by": []
+  },
+  {
+    "id": "nothing",
+    "title": "What does nothing weigh?",
+    "started": "2026-10-12T07:03:57+07:00",
+    "updated": "2026-10-12T07:07:05+07:00",
+    "status": "done",
+    "path": "bench/nothing",
+    "steps": [
+      {
+        "at": "2026-10-12T07:06:06+07:00",
+        "note": "nothing.mjs and test.mjs: zero in n tries, the ceiling four ways (exact binomial, Poisson, flat prior, 3/n). They always land in that order, so the rule of three is the most cautious, never the least: 15.9% high at n=10, 5.2% at 30, 0.3% at 1000. 25 checks pass."
+      },
+      {
+        "at": "2026-10-12T07:06:06+07:00",
+        "note": "The walk: set the rate to the ceiling, run the tries 200,000 times, count the empty runs. 20 tries comes back 4.92% against alpha 5%. The web's 3.7 per thousand for zero in 1000 is two-sided (0.368%); the rule's 3.0 is one-sided. README and demo.txt."
+      }
+    ],
+    "used_by": []
   }
 ]

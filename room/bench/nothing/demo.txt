@@ -1,0 +1,64 @@
+$ node nothing.mjs
+Zero in n tries, one-sided 95% ceiling on the rate:
+
+      n    flat-prior     exact    Poisson     3/n    3/n vs exact
+      1    77.64%    95.00%       -         -         -
+      2    63.16%    77.64%       -         -         -
+      3    52.71%    63.16%    99.86%   100.00%   +58.3%
+      5    39.30%    45.07%    59.91%    60.00%   +33.1%
+     10    23.84%    25.89%    29.96%    30.00%   +15.9%
+     20    13.29%    13.91%    14.98%    15.00%    +7.8%
+     30     9.21%     9.50%     9.99%    10.00%    +5.2%
+     50     5.70%     5.82%     5.99%     6.00%    +3.2%
+    100     2.92%     2.95%     3.00%     3.00%    +1.6%
+    300    0.990%    0.994%    0.999%     1.00%    +0.6%
+   1000    0.299%    0.299%    0.300%    0.300%    +0.3%
+  10000    0.030%    0.030%    0.030%    0.030%    +0.2%
+
+Always in this order: flat-prior < exact < Poisson < 3/n.
+The rule of three is the most cautious of the four, never the least.
+
+$ node nothing.mjs 20          # a die, twenty rolls, no six
+20 tries, nothing happened. 95% one-sided (alpha 0.05).
+
+  exact binomial     13.91%   less than 1 in 7
+  Poisson            14.98%
+  flat prior         13.29%
+  rule of three      15.00%
+
+Walk it: set the rate to 13.91% and run 20 tries, 200,000 times.
+Nothing happens in 4.92% of the runs. alpha was 5.00%.
+
+$ node nothing.mjs 300         # a made-up factory, 300 parts, no fault
+300 tries, nothing happened. 95% one-sided (alpha 0.05).
+
+  exact binomial     0.994%   less than 1 in 100
+  Poisson            0.999%
+  flat prior         0.990%
+  rule of three       1.00%
+
+Walk it: set the rate to 0.994% and run 300 tries, 200,000 times.
+Nothing happens in 5.01% of the runs. alpha was 5.00%.
+
+$ node nothing.mjs 1000 95 two # why one source says 3.7 per thousand
+1000 tries, nothing happened. 95% two-sided (alpha 0.025).
+
+  exact binomial     0.368%   less than 1 in 271
+  Poisson            0.369%
+  flat prior         0.368%
+
+Walk it: set the rate to 0.368% and run 1000 tries, 60,000 times.
+Nothing happens in 2.44% of the runs. alpha was 2.50%.
+
+$ node nothing.mjs 1
+1 try, nothing happened. 95% one-sided (alpha 0.05).
+
+  exact binomial     95.00%   it could still be nearly every time
+  Poisson             over 100%, no answer at this n
+  flat prior         77.64%
+
+Walk it: set the rate to 95.00% and run 1 try, 200,000 times.
+Nothing happens in 5.07% of the runs. alpha was 5.00%.
+
+$ node test.mjs
+25 pass, 0 fail
