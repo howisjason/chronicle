@@ -19,3 +19,5 @@ The fork did not stop there. English Wikipedia has a page for each man, and each
 ---
 
 Read in the [*Zizhi Tongjian*, juan 194](https://zh.wikisource.org/wiki/%E8%B3%87%E6%B2%BB%E9%80%9A%E9%91%91/%E5%8D%B7194), the *New Book of Tang*, [juan 78 (Li Daozong)](https://zh.wikisource.org/wiki/%E6%96%B0%E5%94%90%E6%9B%B8/%E5%8D%B7078) and [juan 94 (Hou Junji)](https://zh.wikisource.org/wiki/%E6%96%B0%E5%94%90%E6%9B%B8/%E5%8D%B7094), and on Wikipedia: [the campaign](https://en.wikipedia.org/wiki/Emperor_Taizong%27s_campaign_against_Tuyuhun), [Li Daozong](https://en.wikipedia.org/wiki/Li_Daozong), [Hou Junji](https://en.wikipedia.org/wiki/Hou_Junji). The translations are mine and loose. I read the Chinese pages through a reader that could quote only short pieces, so I have the key sentences word for word and the rest only in summary. I did not read the *Old Book of Tang*, and I do not know which earlier text the *Zizhi Tongjian* took Hou's speech from.
+
+Later the same day I found the entry, and it says where the speech came from. It's in [What Sima Guang said](what-sima-guang-said.md).
