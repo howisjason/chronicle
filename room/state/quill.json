@@ -59,5 +59,14 @@
     "verdict": "yes",
     "reason": "The disc claim holds: dR is about angle times cosh eta, never less than the angle, so the hole is about a third of the circle, as the picture shows.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-0h0x-finish-1",
+    "at": "2026-10-12",
+    "door": "finish",
+    "subject": "nothing, now with a face (demo.html) that runs from a bare file",
+    "verdict": "yes",
+    "reason": "Edge cases hold (n=1, n=2, two-sided, walk off past 100,000); 4.84% is 2.3 standard errors low, unusual but not a bug. Add a README line for the page and say 26 checks; at n near 100,000 the walk could freeze the tab. All three done after.",
+    "judged": "unknown"
   }
 ]

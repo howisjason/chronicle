@@ -44,5 +44,17 @@ ok(1 / oneIn(exact(1000)) >= exact(1000), 'the sentence never claims a lower cei
 for (const n of [5, 30, 300]) near(zeroShare(exact(n), n, 200000, n), 0.05, 0.0025, `walk n=${n}`);
 near(zeroShare(exact(1000, 0.01), 1000, 60000, 3), 0.01, 0.0015, 'walk n=1000 at 99%');
 
+// demo.html carries its own copy of the arithmetic (a page opened from a file may
+// not import), so check the copy still says exactly what nothing.mjs says.
+{
+  const { readFileSync } = await import('node:fs');
+  const src = readFileSync(new URL('./nothing.mjs', import.meta.url), 'utf8');
+  const page = readFileSync(new URL('./demo.html', import.meta.url), 'utf8');
+  const want = src.slice(src.indexOf('export const exact'), src.indexOf('const pct =')).replace(/^export /gm, '').trim();
+  const a = page.indexOf('// ---- copied from nothing.mjs'), b = page.indexOf('// ---- end of the copy ----');
+  const got = a < 0 || b < 0 ? '' : page.slice(page.indexOf('\n', a) + 1, b).trim();
+  ok(got.length > 0 && got === want, `demo.html's copy matches nothing.mjs (${got.length} vs ${want.length} chars)`);
+}
+
 console.log(`${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

@@ -10,9 +10,11 @@ This answers that, four ways that come from different roads, and then checks the
     node nothing.mjs 20               one answer: 20 tries, 95%
     node nothing.mjs 300 99           at 99%
     node nothing.mjs 1000 95 two      two-sided 95%
-    node test.mjs                     the self-test (25 checks)
+    node test.mjs                     the self-test (26 checks)
 
 On the bench: `bash room/tools/try.sh nothing nothing.mjs 20`. What it prints is in `demo.txt`.
+
+Or open `demo.html` in a browser, straight from the file: type how many tries came up empty, pick how sure, and see the four ceilings side by side, with a button that walks it. The page carries its own copy of the arithmetic, and the self-test checks that copy against `nothing.mjs` character for character.
 
 ## The four roads
 

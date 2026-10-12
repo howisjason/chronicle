@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does nothing weigh?</title>
+<!-- nothing's face for the room page. It carries its own copy of nothing.mjs's
+     arithmetic, so it runs from a bare file with no server and no outside files.
+     test.mjs checks that the copy below still matches nothing.mjs word for word. -->
+<style>
+  html, body { margin: 0; background: #0a1230; color: #e8ecff; font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { padding: 12px 14px; max-width: 560px; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin: 0 0 8px; }
+  input[type=number] { font: inherit; width: 90px; background: #13235a; color: #e8ecff; border: 1px solid #2a3f8f; border-radius: 4px; padding: 3px 6px; }
+  .pick button { font: inherit; font-size: 12px; background: #13235a; color: #e8ecff; border: 1px solid #2a3f8f; border-radius: 4px; padding: 3px 8px; margin: 0 4px 0 0; cursor: pointer; }
+  .pick button[aria-pressed=true] { background: #f2c14e; color: #0a1230; border-color: #f2c14e; }
+  #say { font-size: 18px; margin: 10px 0 12px; }
+  #say b { color: #f2c14e; }
+  .bar { display: grid; grid-template-columns: 120px 1fr 72px; gap: 8px; align-items: center; margin: 3px 0; font-size: 13px; }
+  .track { height: 12px; background: #13235a; border-radius: 3px; position: relative; }
+  .fill { height: 100%; border-radius: 3px; background: #6f86d6; }
+  .bar.main .fill { background: #f2c14e; }
+  .bar .v { text-align: right; font-variant-numeric: tabular-nums; }
+  #walk { margin-top: 12px; }
+  #walk button { font: inherit; font-size: 12px; background: #13235a; color: #e8ecff; border: 1px solid #2a3f8f; border-radius: 4px; padding: 3px 10px; cursor: pointer; }
+  #walkout b { color: #f2c14e; }
+  .dim { color: #93a0cc; font-size: 12px; margin-top: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="row">
+    <label>Tried <input id="n" type="number" min="1" max="1000000" step="1" value="30"> times, and it never happened.</label>
+  </div>
+  <div class="row">
+    <span class="pick" id="conf">Sure to: <button type="button" data-c="90">90%</button><button type="button" data-c="95">95%</button><button type="button" data-c="99">99%</button></span>
+    <span class="pick" id="side"><button type="button" data-s="1">one-sided</button><button type="button" data-s="2">two-sided</button></span>
+  </div>
+  <p id="say"></p>
+  <div id="bars"></div>
+  <div id="walk"><button type="button" id="go">Walk it</button> <span id="walkout"></span></div>
+  <p class="dim">Each bar is the highest rate that zero in your tries still allows, by one road: exact binomial, Poisson, a flat prior, and the rule of three, 3/n (Hanley &amp; Lippman-Hand, JAMA 1983; it is the Poisson road at 95% one-sided, rounded up). They always stand in the same order, so 3/n is the most cautious, never the least. "Walk it" sets the true rate to the exact ceiling, runs your tries many times, and counts the runs where nothing happens; if the ceiling is right, that comes back near alpha. It assumes every try is the same and independent.</p>
+</main>
+<script>
+// ---- copied from nothing.mjs (without "export") ----
+const exact = (n, a = 0.05) => 1 - Math.pow(a, 1 / n);
+
+// Poisson: treat the n tries as one long stretch with mean n*p.
+// Zero has probability e^(-n p). Set it to alpha: p = -ln(alpha) / n.
+const poisson = (n, a = 0.05) => -Math.log(a) / n;
+
+// Bayesian, flat prior on p. After zero in n the posterior is Beta(1, n+1),
+// whose upper tail above p is (1-p)^(n+1). Set it to alpha.
+const bayes = (n, a = 0.05) => 1 - Math.pow(a, 1 / (n + 1));
+
+// The rule of three (Hanley & Lippman-Hand, JAMA 249:1743, 1983).
+// It is the Poisson road with -ln(0.05) = 2.9957 rounded up to 3.
+const rule3 = (n) => 3 / n;
+
+// alpha from a confidence and a side. Two-sided puts half of it in each tail;
+// with zero seen the lower end is 0 either way, so only the upper tail is used.
+const alphaOf = (conf = 95, sides = 1) => (1 - conf / 100) / sides;
+
+// "less than 1 in N". N is rounded down: 1 in 335 would be a lower ceiling than
+// 0.2991% and claim more than the zero shows; 1 in 334 is a little above it.
+const oneIn = (p) => Math.floor(1 / p);
+
+// A small seeded generator (mulberry32) for the walk-it-yourself check.
+function rng(seed) {
+  let s = seed >>> 0;
+  return () => {
+    s = (s + 0x6d2b79f5) >>> 0;
+    let t = s;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Set the true rate to p, run n tries, count how often nothing happens.
+// If p is the exact ceiling, this should come back near alpha.
+function zeroShare(p, n, runs = 200000, seed = 7) {
+  const r = rng(seed);
+  let zero = 0;
+  for (let i = 0; i < runs; i++) {
+    let hit = false;
+    for (let k = 0; k < n && !hit; k++) if (r() < p) hit = true;
+    if (!hit) zero++;
+  }
+  return zero / runs;
+}
+// ---- end of the copy ----
+
+const $ = (id) => document.getElementById(id);
+let conf = 95, sides = 1;
+const pct = (x) => (100 * x).toFixed(x < 0.01 ? 3 : 2) + '%';
+
+function press(group, attr, val) {
+  for (const b of $(group).querySelectorAll('button')) b.setAttribute('aria-pressed', String(Number(b.dataset[attr]) === val));
+}
+
+function draw() {
+  const n = Math.floor(Number($('n').value));
+  $('walkout').textContent = '';
+  if (!(n >= 1 && n <= 1000000)) { $('say').textContent = 'Give a whole number of tries, 1 to a million.'; $('bars').innerHTML = ''; $('go').disabled = true; return; }
+  $('go').disabled = n > 100000;
+  const a = alphaOf(conf, sides), e = exact(n, a);
+  $('say').innerHTML = oneIn(e) < 2
+    ? `At ${conf}%, it could still happen <b>nearly every time</b>. One try tells you very little.`
+    : `At ${conf}%, it happens <b>less than 1 in ${oneIn(e).toLocaleString('en-US')}</b> times.`;
+  const roads = [
+    ['flat prior', bayes(n, a)],
+    ['exact', e, true],
+    ['Poisson', poisson(n, a)],
+  ];
+  // 3/n is a 95% one-sided rule, and under 3 tries it passes 100%; the script leaves it out there too
+  if (conf === 95 && sides === 1 && n >= 3) roads.push(['rule of three', rule3(n)]);
+  const top = Math.min(1, Math.max(...roads.map((r) => r[1])));
+  $('bars').innerHTML = roads.map(([name, p, main]) => {
+    const over = p > 1;
+    const w = over ? 100 : (100 * p / top);
+    return `<div class="bar${main ? ' main' : ''}"><span>${name}</span><span class="track"><span class="fill" style="display:block;width:${w.toFixed(2)}%;${over ? 'opacity:.35' : ''}"></span></span><span class="v">${over ? 'over 100%' : pct(p)}</span></div>`;
+  }).join('');
+}
+
+function walk() {
+  const n = Math.floor(Number($('n').value));
+  if (!(n >= 1 && n <= 100000)) return;
+  const a = alphaOf(conf, sides), e = exact(n, a);
+  // a run stops at its first hit, so one costs about n/3 draws; a browser gets a smaller budget than the bench
+  const runs = Math.max(2000, Math.min(100000, Math.floor(2e7 / n)));
+  const z = zeroShare(e, n, runs);
+  $('walkout').innerHTML = `${runs.toLocaleString('en-US')} runs at ${pct(e)}: nothing happened in <b>${pct(z)}</b>. Alpha was ${pct(a)}.`;
+}
+
+for (const b of $('conf').querySelectorAll('button')) b.onclick = () => { conf = Number(b.dataset.c); press('conf', 'c', conf); draw(); };
+for (const b of $('side').querySelectorAll('button')) b.onclick = () => { sides = Number(b.dataset.s); press('side', 's', sides); draw(); };
+$('n').oninput = draw;
+$('go').onclick = walk;
+press('conf', 'c', conf); press('side', 's', sides);
+draw();
+walk();
+</script>
+</body>
+</html>

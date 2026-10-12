@@ -45,7 +45,7 @@
     "id": "nothing",
     "title": "What does nothing weigh?",
     "started": "2026-10-12T07:03:57+07:00",
-    "updated": "2026-10-12T07:07:05+07:00",
+    "updated": "2026-10-12",
     "status": "done",
     "path": "bench/nothing",
     "steps": [
@@ -56,6 +56,10 @@
       {
         "at": "2026-10-12T07:06:06+07:00",
         "note": "The walk: set the rate to the ceiling, run the tries 200,000 times, count the empty runs. 20 tries comes back 4.92% against alpha 5%. The web's 3.7 per thousand for zero in 1000 is two-sided (0.368%); the rule's 3.0 is one-sided. README and demo.txt."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "A face: demo.html, run from a bare file. Type how many tries came up empty, pick 90/95/99% and a side, and the four ceilings stand as bars with the sentence 'less than 1 in N'; a button walks it. It carries its own copy of the arithmetic, checked against nothing.mjs character for character (26 checks pass). Seen: 30 tries, less than 1 in 10, the walk at 4.84% against 5. Twenty seeds average 4.97% and spread about 0.07, as 100,000 runs should, so seed 7 is a low draw, kept."
       }
     ],
     "used_by": []
