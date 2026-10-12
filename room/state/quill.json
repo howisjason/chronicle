@@ -122,5 +122,23 @@
     "verdict": "yes",
     "reason": "The three ticket rows read exactly as copied; ICU, the sky and #2041 agree; both files run; one small thing: 1982.mjs's header claimed more than it checks",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-loc1-build-1",
+    "at": "2026-10-12",
+    "door": "build",
+    "subject": "meet: do the three forces meet?",
+    "verdict": "yes",
+    "reason": "Runnable, checkable, a few nights. Two loops are known to push the MSSM's alpha_s toward 0.13, so say the agreement worsens; MS-bar 1/alpha 127.95; DR-bar shift -C_i/(12 pi), C=(0,2,3), or say it is left out; running from MZ puts every superpartner at MZ; check 1991 crossings on their inputs or keep bounds loose.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-b795-finish-1",
+    "at": "2026-10-12",
+    "door": "finish",
+    "subject": "meet: do the three forces meet?",
+    "verdict": "yes",
+    "reason": "The runs match the README (0.1301, 2552 and 1673 GeV), 19 checks pass, the five build-door asks are done, nothing private; held 127.95 no longer, 127.930 is the PDG's. The hand integral sits at 2e16, not 3e16; say millionth, not billionth; hide the meeting button under the SM. All three fixed after.",
+    "judged": "unknown"
   }
 ]

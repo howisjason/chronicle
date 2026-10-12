@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do the three forces meet?</title>
+<style>
+  html, body { margin: 0; background: #0a1230; color: #e8ecff; font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 18px 16px 28px; }
+  h1 { font-size: 20px; margin: 0 0 4px; font-weight: 600; }
+  .sub { color: #a9b3dd; margin: 0 0 14px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; margin: 0 0 10px; }
+  .pick button { font: inherit; font-size: 12px; background: #13235a; color: #e8ecff; border: 1px solid #2a3f8f; border-radius: 4px; padding: 3px 9px; margin: 0 4px 0 0; cursor: pointer; }
+  .pick button[aria-pressed=true] { background: #f2c14e; color: #0a1230; border-color: #f2c14e; }
+  label { color: #a9b3dd; font-size: 12px; }
+  input[type=range] { width: 200px; vertical-align: middle; accent-color: #f2c14e; }
+  select { font: inherit; font-size: 12px; background: #13235a; color: #e8ecff; border: 1px solid #2a3f8f; border-radius: 4px; padding: 2px 4px; }
+  .val { font-variant-numeric: tabular-nums; color: #e8ecff; }
+  svg { display: block; width: 100%; height: auto; }
+  .grid line { stroke: #1d2c63; stroke-width: 1; }
+  .axis text { fill: #8c97c4; font-size: 11px; }
+  .lab { font-size: 12px; fill: #e8ecff; }
+  .tip { position: absolute; pointer-events: none; background: #13235a; border: 1px solid #2a3f8f; border-radius: 4px; padding: 6px 8px; font-size: 12px; line-height: 1.4; display: none; white-space: nowrap; }
+  .wrap { position: relative; }
+  .out { margin: 10px 0 0; padding: 10px 12px; background: #0f1a45; border-radius: 6px; }
+  .out p { margin: 0 0 4px; }
+  .out .big { font-size: 16px; }
+  .key { display: inline-block; width: 18px; height: 0; border-top: 2px solid; vertical-align: middle; margin-right: 4px; }
+  .key.dash { border-top-style: dashed; }
+  details { margin-top: 10px; color: #a9b3dd; }
+  table { border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; margin-top: 6px; }
+  td, th { padding: 2px 10px 2px 0; text-align: right; }
+  th { color: #8c97c4; font-weight: 500; }
+  .note { color: #8c97c4; font-size: 12px; margin-top: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Do the three forces meet?</h1>
+  <p class="sub">The strengths of the three forces of the Standard Model, run up from the Z mass (91 GeV) to 10<sup>19</sup> GeV. Lower on the chart is stronger. If the three lines pass through one point, they could be one force.</p>
+
+  <div class="row">
+    <span class="pick" id="model"><button data-v="sm" aria-pressed="false">Standard Model</button><button data-v="mssm" aria-pressed="true">With supersymmetry</button></span>
+    <span id="susyrow"><label for="susy">superpartners from</label>
+      <select id="susy"><option value="91.188">MZ</option><option value="1000">1 TeV</option><option value="3000">3 TeV</option><option value="10000">10 TeV</option></select></span>
+  </div>
+  <div class="row">
+    <label for="as">strong coupling at MZ, α<sub>s</sub> = <span class="val" id="asv"></span></label>
+    <input type="range" id="as" min="0.100" max="0.135" step="0.0001" value="0.1180">
+    <span class="pick" id="presets"><button data-v="0.1180">world average 0.1180</button><button data-v="0.1194">NNPDF 0.1194</button><button data-v="meet">the value that meets</button></span>
+  </div>
+
+  <div class="wrap">
+    <svg id="chart" viewBox="0 0 720 400" role="img" aria-label="Inverse couplings against energy"></svg>
+    <div class="tip" id="tip"></div>
+  </div>
+  <p class="note"><span class="key" style="border-color:#3987e5"></span>hypercharge, U(1)
+    &nbsp; <span class="key" style="border-color:#d95926"></span>weak, SU(2)
+    &nbsp; <span class="key" style="border-color:#199e70"></span>strong, SU(3)
+    &nbsp; solid: two loops &nbsp; <span class="key dash" style="border-color:#8c97c4"></span>one loop</p>
+
+  <p class="note" style="margin-bottom:2px">Up close, where hypercharge and weak cross (rings mark each pair's crossing):</p>
+  <svg id="zoom" viewBox="0 0 720 220" role="img" aria-label="The crossings up close"></svg>
+
+  <div class="out" id="out"></div>
+
+  <details><summary>The numbers, decade by decade</summary><table id="table"></table></details>
+
+  <p class="note">Inputs at MZ (MS-bar, PDG 2024): 1/α = 127.930, sin²θ<sub>W</sub> = 0.23129. Gauge couplings only; Yukawa couplings, thresholds at the top of the run and anything past two loops are left out. With superpartners "from MZ", every one of them sits at 91 GeV, which they do not. The script, its self-test and where each number comes from are in this build's README.</p>
+</main>
+
+<script>
+// ---- the arithmetic (copied from meet.mjs; the self-test checks this copy) ----
+const MODELS = {
+  sm: {
+    b: [41 / 10, -19 / 6, -7],
+    bb: [[199 / 50, 27 / 10, 44 / 5], [9 / 10, 35 / 6, 12], [11 / 10, 9 / 2, -26]],
+  },
+  mssm: {
+    b: [33 / 5, 1, -3],
+    bb: [[199 / 25, 27 / 5, 88 / 5], [9 / 5, 25, 24], [11 / 5, 9, 14]],
+  },
+};
+
+// MS-bar to DR-bar, the scheme the MSSM is run in: 1/alpha_i drops by C_i/(12 pi),
+// C = (0, 2, 3) for U(1), SU(2), SU(3).
+const DRBAR = [0, 2, 3].map((c) => c / (12 * Math.PI));
+
+// The three inverse couplings at MZ from what is measured there.
+function start(ainv, s2, as) {
+  return [(3 / 5) * (1 - s2) * ainv, s2 * ainv, 1 / as];
+}
+
+// d(1/alpha_i)/dt = -b_i/(2 pi) - sum_j b_ij alpha_j / (8 pi^2)
+function slope(m, a, loops) {
+  return [0, 1, 2].map((i) => {
+    let d = -m.b[i] / (2 * Math.PI);
+    if (loops === 2) for (let j = 0; j < 3; j++) d -= m.bb[i][j] / a[j] / (8 * Math.PI * Math.PI);
+    return d;
+  });
+}
+
+function rk4(m, a, h, loops) {
+  const k1 = slope(m, a, loops);
+  const k2 = slope(m, a.map((x, i) => x + (h / 2) * k1[i]), loops);
+  const k3 = slope(m, a.map((x, i) => x + (h / 2) * k2[i]), loops);
+  const k4 = slope(m, a.map((x, i) => x + h * k3[i]), loops);
+  return a.map((x, i) => x + (h / 6) * (k1[i] + 2 * k2[i] + 2 * k3[i] + k4[i]));
+}
+
+// Carry the inverse couplings a from t0 up to t1 (t1 >= t0).
+// model 'sm' or 'mssm'; tsusy (only for 'mssm') is where the superpartners switch
+// on: below it the SM runs, and at it 1/alpha drops by the DR-bar shift.
+// With tsusy = 0 the MSSM runs from MZ itself, every superpartner at MZ.
+function advance(a, t0, t1, { model = 'sm', loops = 2, h = 0.01, tsusy = 0 } = {}) {
+  const leg = (a, m, from, to) => {
+    if (to <= from) return a;
+    if (loops === 1) return a.map((x, i) => x - m.b[i] * (to - from) / (2 * Math.PI));
+    const n = Math.ceil((to - from) / h);
+    for (let k = 0; k < n; k++) a = rk4(m, a, (to - from) / n, loops);
+    return a;
+  };
+  if (model === 'sm') return leg(a, MODELS.sm, t0, t1);
+  if (t1 <= tsusy) return leg(a, MODELS.sm, t0, t1);
+  if (t0 < tsusy) a = leg(a, MODELS.sm, t0, tsusy).map((x, i) => x - DRBAR[i]);
+  return leg(a, MODELS.mssm, Math.max(t0, tsusy), t1);
+}
+
+// The three inverse couplings at t, starting from a0 at MZ (where the MSSM with
+// tsusy = 0 takes its DR-bar shift at once).
+function run(a0, t, opts = {}) {
+  const now = opts.model === 'mssm' && !(opts.tsusy > 0) ? a0.map((x, i) => x - DRBAR[i]) : a0.slice();
+  return advance(now, 0, t, opts);
+}
+
+// One walk up from MZ to 1e22 GeV in strides of 1/2 in t. Where a pair of lines
+// changes order inside a stride, the crossing is found by bisection within it.
+// t12, t23, t13 are where 1/alpha_1 = 1/alpha_2 and so on (null if never), a12 is
+// 1/alpha there, and miss is how far the strong line is from that point (in
+// 1/alpha; plus means above it: there the strong force is too weak to meet them).
+function meet(ainv, s2, as, opts = {}) {
+  const pairs = [[0, 1], [1, 2], [0, 2]], found = [null, null, null];
+  let t = 0, a = run(start(ainv, s2, as), 0, opts), at12 = null;
+  while (t < 46 && found.includes(null)) {
+    const b = advance(a.slice(), t, t + 0.5, opts);
+    pairs.forEach(([i, j], p) => {
+      if (found[p] !== null || (a[i] - a[j]) * (b[i] - b[j]) > 0) return;
+      let lo = t, hi = t + 0.5;
+      for (let k = 0; k < 50; k++) {
+        const mid = (lo + hi) / 2, c = advance(a.slice(), t, mid, opts);
+        if ((a[i] - a[j]) * (c[i] - c[j]) > 0) lo = mid; else hi = mid;
+      }
+      found[p] = (lo + hi) / 2;
+      if (p === 0) at12 = advance(a.slice(), t, found[0], opts);
+    });
+    a = b; t += 0.5;
+  }
+  return { t12: found[0], t23: found[1], t13: found[2], a12: at12 && at12[0], miss: at12 && at12[2] - at12[0] };
+}
+
+// The alpha_s(MZ) that would put the strong line through the electroweak
+// crossing exactly, by bisection.
+function predict(ainv, s2, opts, lo = 0.05, hi = 0.2) {
+  const g = (as) => meet(ainv, s2, as, opts).miss;
+  let gl = g(lo);
+  for (let k = 0; k < 50; k++) {
+    const mid = (lo + hi) / 2, gm = g(mid);
+    if (gl * gm <= 0) hi = mid; else { lo = mid; gl = gm; }
+  }
+  return (lo + hi) / 2;
+}
+// ---- end of the arithmetic ----
+
+const MZ = 91.188, AINV = 127.930, S2 = 0.23129;
+const COLORS = ['#3987e5', '#d95926', '#199e70'];
+const NAMES = ['hypercharge', 'weak', 'strong'];
+const W = 720, H = 400, L = 44, R = 116, T = 12, B = 34;
+const X0 = Math.log10(MZ), X1 = 19, Y0 = 0, Y1 = 65;
+const sx = (lg) => L + (lg - X0) / (X1 - X0) * (W - L - R);
+const sy = (v) => T + (1 - (v - Y0) / (Y1 - Y0)) * (H - T - B);
+const lgOf = (t) => Math.log10(MZ) + t / Math.LN10;
+const TMAX = (X1 - X0) * Math.LN10;
+const $ = (id) => document.getElementById(id);
+const state = { model: 'mssm', as: 0.1180, msusy: MZ };
+const fmtE = (t) => { const e = MZ * Math.exp(t); const p = Math.floor(Math.log10(e)); return `${(e / 10 ** p).toFixed(1)}×10<sup>${p}</sup> GeV`; };
+let lastPath = null;
+
+function opts(loops) { return { model: state.model, loops, tsusy: state.model === 'mssm' ? Math.log(state.msusy / MZ) : 0 }; }
+
+function path(loops) {
+  const o = opts(loops), pts = [];
+  let a = run(start(AINV, S2, state.as), 0, o), t = 0;
+  pts.push([t, a]);
+  while (t < TMAX - 1e-9) { const t1 = Math.min(TMAX, t + 0.25); a = advance(a.slice(), t, t1, o); t = t1; pts.push([t, a]); }
+  return pts;
+}
+
+function draw() {
+  const svg = $('chart');
+  let s = '<g class="grid">';
+  for (let v = 0; v <= 60; v += 10) s += `<line x1="${L}" x2="${W - R}" y1="${sy(v)}" y2="${sy(v)}"/>`;
+  s += '</g><g class="axis">';
+  for (let v = 0; v <= 60; v += 10) s += `<text x="${L - 6}" y="${sy(v) + 4}" text-anchor="end">${v}</text>`;
+  for (let p = 3; p <= 19; p += 2) s += `<text x="${sx(p)}" y="${H - B + 16}" text-anchor="middle">10${p.toString().split('').map((c) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]).join('')}</text>`;
+  s += `<text x="${(L + W - R) / 2}" y="${H - 4}" text-anchor="middle">energy, GeV</text>`;
+  s += `<text x="12" y="${(T + H - B) / 2}" text-anchor="middle" transform="rotate(-90 12 ${(T + H - B) / 2})">1/α</text></g>`;
+  if (state.model === 'mssm' && state.msusy > MZ + 1) {
+    const x = sx(Math.log10(state.msusy));
+    s += `<line x1="${x}" x2="${x}" y1="${T}" y2="${H - B}" stroke="#2a3f8f" stroke-dasharray="3 3"/><text class="axis" x="${x + 4}" y="${T + 10}" style="fill:#8c97c4;font-size:11px">superpartners on</text>`;
+  }
+  const p1 = path(1), p2 = path(2);
+  lastPath = p2;
+  const line = (pts, i) => pts.map(([t, a], k) => `${k ? 'L' : 'M'}${sx(lgOf(t)).toFixed(1)},${sy(a[i]).toFixed(1)}`).join('');
+  for (let i = 0; i < 3; i++) s += `<path d="${line(p1, i)}" fill="none" stroke="${COLORS[i]}" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.55"/>`;
+  for (let i = 0; i < 3; i++) s += `<path d="${line(p2, i)}" fill="none" stroke="${COLORS[i]}" stroke-width="2"/>`;
+  // direct labels at the right end, nudged apart
+  const ends = p2[p2.length - 1][1].map((v, i) => ({ i, y: sy(v) })).sort((a, b) => a.y - b.y);
+  for (let k = 1; k < 3; k++) if (ends[k].y - ends[k - 1].y < 14) ends[k].y = ends[k - 1].y + 14;
+  for (const e of ends) s += `<text class="lab" x="${W - R + 8}" y="${e.y + 4}"><tspan fill="${COLORS[e.i]}">●</tspan> ${NAMES[e.i]}</text>`;
+  // the crossings
+  const r = meet(AINV, S2, state.as, opts(2));
+  for (const [t, i] of [[r.t12, 0], [r.t23, 1], [r.t13, 0]]) {
+    if (t === null || t > TMAX) continue;
+    const a = run(start(AINV, S2, state.as), t, opts(2));
+    s += `<circle cx="${sx(lgOf(t))}" cy="${sy(a[i])}" r="4.5" fill="none" stroke="#f2c14e" stroke-width="2"/>`;
+  }
+  s += `<line id="cross" x1="0" x2="0" y1="${T}" y2="${H - B}" stroke="#8c97c4" stroke-width="1" visibility="hidden"/>`;
+  s += `<rect id="hit" x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" fill="transparent"/>`;
+  svg.innerHTML = s;
+  hover();
+  zoom(r);
+  readout(r);
+  table(p2);
+}
+
+// The meeting up close: three decades of energy and 8 in 1/alpha around the
+// point where hypercharge and weak cross.
+function zoom(r) {
+  const zw = 720, zh = 220, zl = 44, zr = 116, zt = 10, zb = 26;
+  const lg0 = lgOf(r.t12) - 1.5, lg1 = lgOf(r.t12) + 1.5, v0 = r.a12 - 4, v1 = r.a12 + 4;
+  const zx = (lg) => zl + (lg - lg0) / (lg1 - lg0) * (zw - zl - zr);
+  const zy = (v) => zt + (1 - (v - v0) / (v1 - v0)) * (zh - zt - zb);
+  const a0 = start(AINV, S2, state.as), o = opts(2);
+  let s = `<defs><clipPath id="zc"><rect x="${zl}" y="${zt}" width="${zw - zl - zr}" height="${zh - zt - zb}"/></clipPath></defs><g class="grid">`;
+  for (let v = Math.ceil(v0); v <= v1; v++) s += `<line x1="${zl}" x2="${zw - zr}" y1="${zy(v)}" y2="${zy(v)}"/>`;
+  s += '</g><g class="axis">';
+  for (let v = Math.ceil(v0); v <= v1; v += 2) s += `<text x="${zl - 6}" y="${zy(v) + 4}" text-anchor="end">${v}</text>`;
+  for (let p = Math.ceil(lg0 * 2) / 2; p <= lg1; p += 0.5) s += `<text x="${zx(p)}" y="${zh - 8}" text-anchor="middle">10^${p}</text>`;
+  s += '</g><g clip-path="url(#zc)">';
+  const pts = [];
+  for (let k = 0; k <= 60; k++) { const lg = lg0 + (lg1 - lg0) * k / 60, t = (lg - Math.log10(MZ)) * Math.LN10; pts.push([lg, run(a0, t, o)]); }
+  for (let i = 0; i < 3; i++) s += `<path d="${pts.map(([lg, a], k) => `${k ? 'L' : 'M'}${zx(lg).toFixed(1)},${zy(a[i]).toFixed(1)}`).join('')}" fill="none" stroke="${COLORS[i]}" stroke-width="2"/>`;
+  for (const [t, i] of [[r.t12, 0], [r.t23, 1], [r.t13, 0]]) {
+    if (t === null) continue;
+    const a = run(a0, t, o);
+    s += `<circle cx="${zx(lgOf(t))}" cy="${zy(a[i])}" r="5" fill="none" stroke="#f2c14e" stroke-width="2"/>`;
+  }
+  const e = pts[pts.length - 1][1].map((v, i) => ({ i, y: Math.max(zt + 6, Math.min(zh - zb - 4, zy(v))) })).sort((a, b) => a.y - b.y);
+  for (let k = 1; k < 3; k++) if (e[k].y - e[k - 1].y < 14) e[k].y = e[k - 1].y + 14;
+  s += '</g>';
+  for (const x of e) s += `<text class="lab" x="${zw - zr + 8}" y="${x.y + 4}"><tspan fill="${COLORS[x.i]}">●</tspan> ${NAMES[x.i]}</text>`;
+  $('zoom').innerHTML = s;
+}
+
+function readout(r) {
+  const p = predict(AINV, S2, opts(2)), q = predict(AINV, S2, opts(1));
+  const spread = r.t23 !== null && r.t12 !== null ? Math.abs(r.t23 - r.t12) / Math.LN10 : null;
+  const close = Math.abs(r.miss) < 0.05;
+  const word = state.model === 'sm' ? 'the Standard Model' : `supersymmetry with superpartners from ${state.msusy < 100 ? 'MZ' : state.msusy / 1000 + ' TeV'}`;
+  $('out').innerHTML =
+    `<p class="big">${close ? 'They meet.' : r.miss > 0 ? 'They miss: the strong line passes above.' : 'They miss: the strong line passes below.'}</p>` +
+    `<p>Hypercharge meets weak at ${fmtE(r.t12)}, weak meets strong at ${r.t23 === null ? 'no energy here' : fmtE(r.t23)}` +
+    (spread === null ? '' : `, ${spread.toFixed(1)} decades apart`) + `. At the first crossing the strong line is off by ${Math.abs(r.miss).toFixed(2)} in 1/α.</p>` +
+    `<p>For all three to meet in ${word}, α<sub>s</sub>(MZ) would have to be <b>${p.toFixed(4)}</b> at two loops (${q.toFixed(4)} at one). Measured: 0.1180 ± 0.0009.</p>`;
+}
+
+function table(pts) {
+  let s = '<tr><th>GeV</th><th>1/α₁</th><th>1/α₂</th><th>1/α₃</th></tr>';
+  for (let p = 2; p <= 19; p++) {
+    const t = Math.max(0, (p - Math.log10(MZ)) * Math.LN10);
+    const a = run(start(AINV, S2, state.as), t, opts(2));
+    s += `<tr><td>${p === 2 ? 'MZ' : '10^' + p}</td>${a.map((v) => `<td>${v.toFixed(2)}</td>`).join('')}</tr>`;
+  }
+  $('table').innerHTML = s;
+}
+
+function hover() {
+  const svg = $('chart'), tip = $('tip'), cross = $('cross');
+  $('hit').addEventListener('mousemove', (ev) => {
+    const box = svg.getBoundingClientRect(), k = W / box.width;
+    const x = (ev.clientX - box.left) * k;
+    const lg = X0 + (x - L) / (W - L - R) * (X1 - X0);
+    const t = Math.max(0, Math.min(TMAX, (lg - X0) * Math.LN10));
+    const a = run(start(AINV, S2, state.as), t, opts(2));
+    cross.setAttribute('x1', x); cross.setAttribute('x2', x); cross.setAttribute('visibility', 'visible');
+    tip.style.display = 'block';
+    tip.innerHTML = `${fmtE(t)}<br>` + a.map((v, i) => `<span style="color:${COLORS[i]}">●</span> ${NAMES[i]} 1/α = ${v.toFixed(2)}`).join('<br>');
+    const px = ev.clientX - box.left;
+    tip.style.left = (px > box.width / 2 ? px - tip.offsetWidth - 12 : px + 12) + 'px';
+    tip.style.top = Math.max(0, ev.clientY - box.top - 30) + 'px';
+  });
+  $('hit').addEventListener('mouseleave', () => { tip.style.display = 'none'; cross.setAttribute('visibility', 'hidden'); });
+}
+
+function sync() {
+  $('as').value = state.as;
+  $('asv').textContent = state.as.toFixed(4);
+  document.querySelectorAll('#model button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.v === state.model));
+  $('susyrow').style.visibility = state.model === 'mssm' ? 'visible' : 'hidden';
+  // the Standard Model's meeting value (about 0.074) is off the slider's scale
+  document.querySelector('#presets [data-v=meet]').style.display = state.model === 'mssm' ? '' : 'none';
+  draw();
+}
+
+$('model').addEventListener('click', (e) => { if (e.target.dataset.v) { state.model = e.target.dataset.v; sync(); } });
+$('susy').addEventListener('change', (e) => { state.msusy = Number(e.target.value); sync(); });
+$('as').addEventListener('input', (e) => { state.as = Number(e.target.value); sync(); });
+$('presets').addEventListener('click', (e) => {
+  const v = e.target.dataset.v; if (!v) return;
+  state.as = v === 'meet' ? Math.min(0.135, Math.max(0.1, predict(AINV, S2, opts(2)))) : Number(v);
+  sync();
+});
+sync();
+</script>
+</body>
+</html>

@@ -119,5 +119,24 @@
       }
     ],
     "used_by": []
+  },
+  {
+    "id": "meet",
+    "title": "Do the three forces meet?",
+    "started": "2026-10-12",
+    "updated": "2026-10-12",
+    "status": "done",
+    "path": "bench/meet",
+    "steps": [
+      {
+        "at": "2026-10-12",
+        "note": "Runs the three couplings up from MZ, one loop in closed form and two by Runge-Kutta, SM and MSSM. Asked backwards: the MSSM needs alpha_s 0.1167 at one loop and 0.1301 at two, against 0.1180 measured; on Langacker and Polonsky's 1995 inputs it gives 0.1286 against their 0.129. A face with a close-up of the crossing; 19 checks."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "Quill's finish notes fixed: the hand-integral check is at 2e16 GeV, the step claim says what probe.mjs shows, and the button for the value that meets is hidden under the SM, whose 0.0738 is off the slider."
+      }
+    ],
+    "used_by": []
   }
 ]
