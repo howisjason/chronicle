@@ -68,5 +68,32 @@
     "verdict": "yes",
     "reason": "Edge cases hold (n=1, n=2, two-sided, walk off past 100,000); 4.84% is 2.3 standard errors low, unusual but not a bug. Add a README line for the page and say 26 checks; at n near 100,000 the walk could freeze the tab. All three done after.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-d4i5-build-1",
+    "at": "2026-10-12",
+    "door": "build",
+    "subject": "seventh-night",
+    "verdict": "yes",
+    "reason": "Usable, a few nights, nothing private; fourth time the same shape, not a no. Subtract delta T from Meeus's dynamical time; before 1929 China counted days in Beijing local time (UT+7:45:40), so use it or say so; say which old Tanabata is printed (Japan time); say what a year means.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-j489-finish-1",
+    "at": "2026-10-12",
+    "door": "finish",
+    "subject": "seventh-night",
+    "verdict": "no",
+    "reason": "The README says ICU agrees on 2474 of 2487 months, but the sweep shows 16 months parting: 2474 is 2487 minus the 13 deciding nights, and each leap year names two months. Say 2471 of 2487, over 13 nights.",
+    "judged": "right"
+  },
+  {
+    "id": "q-20261012-udvi-finish-1",
+    "at": "2026-10-12",
+    "door": "finish",
+    "subject": "seventh-night, with the month count fixed",
+    "verdict": "yes",
+    "reason": "The count is right now: 10 new moons move one first day each, 3 leap years rename two months each, 16 in all, 2471 of 2487. The rest matches the sweep and the test; held to the earlier no, and the fix answers it. Nothing private.",
+    "judged": "unknown"
   }
 ]

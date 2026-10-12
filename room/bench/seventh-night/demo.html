@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When is the seventh night of the seventh month?</title>
+<!-- seventh-night's face for the room page. It carries its own copy of
+     seventh.mjs's calendar, so it runs from a bare file with no server and no
+     outside files. test.mjs checks that the copy below still matches seventh.mjs
+     character for character. The second road is this browser's own ICU. -->
+<style>
+  html, body { margin: 0; background: #0a1230; color: #e8ecff; font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { padding: 12px 14px; }
+  form { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  input { font: inherit; background: #0e1a44; color: #e8ecff; border: 1px solid #2a3f8f; border-radius: 4px; padding: 6px 8px; width: 6em; }
+  button { font: inherit; background: #13235a; color: #e8ecff; border: 1px solid #2a3f8f; border-radius: 4px; padding: 6px 10px; cursor: pointer; }
+  .try { font-size: 12px; color: #93a0cc; }
+  .try button { font-size: 12px; padding: 3px 7px; margin-right: 4px; }
+  #out { margin: 12px 0 0; }
+  #out b { color: #f2c14e; }
+  .months { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: 4px; margin: 10px 0; }
+  .m { background: #0e1a44; border: 1px solid #2a3f8f; border-radius: 4px; padding: 4px 6px; font-size: 12px; }
+  .m .n { font-size: 15px; font-weight: 600; }
+  .m.leap { border-color: #b48cff; background: #1b1450; }
+  .m.seven { border-color: #f2c14e; }
+  .m.part { border-color: #ff8a8a; }
+  .m .icu { color: #ff8a8a; }
+  .bad { color: #ff8a8a; }
+  .dim { color: #93a0cc; font-size: 12px; margin-top: 10px; }
+  #parts { font-size: 12px; white-space: pre; overflow-x: auto; color: #c9d1f5; }
+</style>
+</head>
+<body>
+<main>
+  <form id="f">
+    <label for="y">A year:</label>
+    <input id="y" value="2026" autocomplete="off">
+    <button type="submit">When is the seventh night?</button>
+  </form>
+  <p class="try">Try: <button type="button" data-y="2026">2026</button><button type="button" data-y="2033">2033, a leap eleventh month</button><button type="button" data-y="1987">1987, the latest</button><button type="button" data-y="2006">2006, the earliest</button><button type="button" data-y="2027">2027, where the browser parts</button><button type="button" data-y="1917">1917</button></p>
+  <div id="out"></div>
+  <p><button type="button" id="sweep">Find every month, 1900 to 2100, where this browser's calendar parts from the sky</button></p>
+  <div id="parts"></div>
+  <p class="dim">The months are worked out from the sky: new moons by Meeus, the sun by Bretagnon and Simon, days in Beijing time, the modern rule for leap months. A purple box is a leap month, the gold one holds the seventh night, a red one starts on a different day (or with a different name) in the Chinese calendar built into this browser (ICU). Years from 1645 to 2200; before 1912 this is the rule worked with today's astronomy, not what that year's almanac printed.</p>
+</main>
+<script>
+// ---- copied from seventh.mjs (without "export") ----
+const DEG = Math.PI / 180;
+const sin = (d) => Math.sin(d * DEG);
+const mod = (a, b) => ((a % b) + b) % b;
+
+// Days. A day is counted by its Julian Day Number (the JD at its noon), Gregorian dates.
+function jdn(y, m, d) {
+  const a = Math.floor((14 - m) / 12), yy = y + 4800 - a, mm = m + 12 * a - 3;
+  return d + Math.floor((153 * mm + 2) / 5) + 365 * yy + Math.floor(yy / 4) - Math.floor(yy / 100) + Math.floor(yy / 400) - 32045;
+}
+function ymd(n) {
+  const a = n + 32044, b = Math.floor((4 * a + 3) / 146097), c = a - Math.floor((146097 * b) / 4);
+  const d = Math.floor((4 * c + 3) / 1461), e = c - Math.floor((1461 * d) / 4), m = Math.floor((5 * e + 2) / 153);
+  return [100 * b + d - 4800 + Math.floor(m / 10), m + 3 - 12 * Math.floor(m / 10), e - Math.floor((153 * m + 2) / 5) + 1];
+}
+const iso = (n) => ymd(n).map((v, i) => String(v).padStart(i ? 2 : 4, "0")).join("-");
+const weekday = (n) => ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][mod(n + 1, 7)];
+
+// Clocks, in hours east of Greenwich. China counted days in Beijing's local mean
+// time (116°25′ E, 7h45m40s) until 1929, then UTC+8 (Reingold and Dershowitz,
+// Calendrical Calculations). Japan has kept UTC+9 since 1888.
+const BEIJING = (jd) => (jd < 2425612.5 ? 1397 / 180 : 8);
+const JAPAN = () => 9;
+const localDay = (jd, zone) => Math.floor(jd + 0.5 + zone(jd) / 24);
+
+// ΔT, seconds: the sky runs on dynamical time, clocks on the turning Earth.
+// Espenak and Meeus's polynomials (NASA eclipse pages), 1600 to 2150 and past.
+function deltaT(jd) {
+  const y = 2000 + (jd - 2451545) / 365.25;
+  const p = (t, ...c) => c.reduce((s, k, i) => s + k * t ** i, 0);
+  if (y < 1600) { const u = (y - 1820) / 100; return -20 + 32 * u * u; }
+  if (y < 1700) return p(y - 1600, 120, -0.9808, -0.01532, 1 / 7129);
+  if (y < 1800) return p(y - 1700, 8.83, 0.1603, -0.0059285, 0.00013336, -1 / 1174000);
+  if (y < 1860) return p(y - 1800, 13.72, -0.332447, 0.0068612, 0.0041116, -0.00037436, 0.0000121272, -0.0000001699, 0.000000000875);
+  if (y < 1900) return p(y - 1860, 7.62, 0.5737, -0.251754, 0.01680668, -0.0004473624, 1 / 233174);
+  if (y < 1920) return p(y - 1900, -2.79, 1.494119, -0.0598939, 0.0061966, -0.000197);
+  if (y < 1941) return p(y - 1920, 21.2, 0.84493, -0.0761, 0.0020936);
+  if (y < 1961) return p(y - 1950, 29.07, 0.407, -1 / 233, 1 / 2547);
+  if (y < 1986) return p(y - 1975, 45.45, 1.067, -1 / 260, -1 / 718);
+  if (y < 2005) return p(y - 2000, 63.86, 0.3345, -0.060374, 0.0017275, 0.000651814, 0.00002373599);
+  if (y < 2050) return p(y - 2000, 62.92, 0.32217, 0.005589);
+  const u = (y - 1820) / 100;
+  if (y < 2150) return -20 + 32 * u * u - 0.5628 * (2150 - y);
+  return -20 + 32 * u * u;
+}
+
+// The k-th new moon after the one of 6 January 2000, as a JD in dynamical time
+// (Meeus, Astronomical Algorithms, chapter 49; good to a few seconds).
+function newMoonTT(k) {
+  const T = k / 1236.85, T2 = T * T, T3 = T2 * T, T4 = T3 * T;
+  const jde = 2451550.09766 + 29.530588861 * k + 0.00015437 * T2 - 0.00000015 * T3 + 0.00000000073 * T4;
+  const E = 1 - 0.002516 * T - 0.0000074 * T2;
+  const M = 2.5534 + 29.1053567 * k - 0.0000014 * T2 - 0.00000011 * T3;
+  const Mp = 201.5643 + 385.81693528 * k + 0.0107582 * T2 + 0.00001238 * T3 - 0.000000058 * T4;
+  const F = 160.7108 + 390.67050284 * k - 0.0016118 * T2 - 0.00000227 * T3 + 0.000000011 * T4;
+  const Om = 124.7746 - 1.56375588 * k + 0.0020672 * T2 + 0.00000215 * T3;
+  let c = -0.4072 * sin(Mp) + 0.17241 * E * sin(M) + 0.01608 * sin(2 * Mp) + 0.01039 * sin(2 * F)
+    + 0.00739 * E * sin(Mp - M) - 0.00514 * E * sin(Mp + M) + 0.00208 * E * E * sin(2 * M)
+    - 0.00111 * sin(Mp - 2 * F) - 0.00057 * sin(Mp + 2 * F) + 0.00056 * E * sin(2 * Mp + M)
+    - 0.00042 * sin(3 * Mp) + 0.00042 * E * sin(M + 2 * F) + 0.00038 * E * sin(M - 2 * F)
+    - 0.00024 * E * sin(2 * Mp - M) - 0.00017 * sin(Om) - 0.00007 * sin(Mp + 2 * M)
+    + 0.00004 * sin(2 * Mp - 2 * F) + 0.00004 * sin(3 * M) + 0.00003 * sin(Mp + M - 2 * F)
+    + 0.00003 * sin(2 * Mp + 2 * F) - 0.00003 * sin(Mp + M + 2 * F) + 0.00003 * sin(Mp - M + 2 * F)
+    - 0.00002 * sin(Mp - M - 2 * F) - 0.00002 * sin(3 * Mp + M) + 0.00002 * sin(4 * Mp);
+  const A = [[299.77 + 0.107408 * k - 0.009173 * T2, 325], [251.88 + 0.016321 * k, 165], [251.83 + 26.651886 * k, 164],
+    [349.42 + 36.412478 * k, 126], [84.66 + 18.206239 * k, 110], [141.74 + 53.303771 * k, 62], [207.14 + 2.453732 * k, 60],
+    [154.84 + 7.30686 * k, 56], [34.52 + 27.261239 * k, 47], [207.19 + 0.121824 * k, 42], [291.34 + 1.844379 * k, 40],
+    [161.72 + 24.198154 * k, 37], [239.56 + 25.513099 * k, 35], [331.55 + 3.592518 * k, 23]];
+  for (const [a, w] of A) c += (w / 1e6) * sin(a);
+  return jde + c;
+}
+const newMoon = (k) => { const tt = newMoonTT(k); return tt - deltaT(tt) / 86400; };
+
+// The sun's apparent longitude, degrees, at a JD in dynamical time: the 49-term
+// series of Bretagnon and Simon (Planetary Programs and Tables, 1986) as Reingold
+// and Dershowitz give it in Calendrical Calculations, with their aberration and
+// nutation. Meeus's short formula (chapter 25) was the first road here; it ran 4 to
+// 8 minutes early, and that moved the leap month in 1917 and 1922 (see the README).
+const SUN = [[403406, 270.54861, 0.9287892], [195207, 340.19128, 35999.1376958], [119433, 63.91854, 35999.4089666],
+  [112392, 331.2622, 35998.7287385], [3891, 317.843, 71998.20261], [2819, 86.631, 71998.4403], [1721, 240.052, 36000.35726],
+  [660, 310.26, 71997.4812], [350, 247.23, 32964.4678], [334, 260.87, -19.441], [314, 297.82, 445267.1117], [268, 343.14, 45036.884],
+  [242, 166.79, 3.1008], [234, 81.53, 22518.4434], [158, 3.5, -19.9739], [132, 132.75, 65928.9345], [129, 182.95, 9038.0293],
+  [114, 162.03, 3034.7684], [99, 29.8, 33718.148], [93, 266.4, 3034.448], [86, 249.2, -2280.773], [78, 157.6, 29929.992],
+  [72, 257.8, 31556.493], [68, 185.1, 149.588], [64, 69.9, 9037.75], [46, 8, 107997.405], [38, 197.1, -4444.176],
+  [37, 250.4, 151.771], [32, 65.3, 67555.316], [29, 162.7, 31556.08], [28, 341.5, -4561.54], [27, 291.6, 107996.706],
+  [27, 98.5, 1221.655], [25, 146.7, 62894.167], [24, 110, 31437.369], [21, 5.2, 14578.298], [21, 342.6, -31931.757],
+  [20, 230.9, 34777.243], [18, 256.1, 1221.999], [17, 45.3, 62894.511], [14, 242.9, -4442.039], [13, 115.2, 107997.909],
+  [13, 151.8, 119.066], [13, 285.3, 16859.071], [12, 53.3, -4.578], [10, 126.6, 26895.292], [10, 205.7, -39.127],
+  [10, 85.9, 12297.536], [10, 146.1, 90073.778]];
+function sunLongitude(jde) {
+  const c = (jde - 2451545) / 36525;
+  let s = 0;
+  for (const [x, y, z] of SUN) s += x * sin(y + z * c);
+  const lambda = 282.7771834 + 36000.76953744 * c + 0.000005729577951308232 * s;
+  const aberration = 0.0000974 * Math.cos((177.63 + 35999.01848 * c) * DEG) - 0.005575;
+  const nutation = -0.004778 * sin(124.9 - 1934.134 * c + 0.002063 * c * c) - 0.0003667 * sin(201.11 + 72001.5377 * c + 0.00057 * c * c);
+  return mod(lambda + aberration + nutation, 360);
+}
+// `nudge.sun` holds the sun back by that many minutes; it is 0 except when test.mjs
+// asks whether the formula's few minutes of error could move a leap month.
+const nudge = { sun: 0 };
+const sunAtUT = (jd) => sunLongitude(jd + deltaT(jd) / 86400 - nudge.sun / 1440);
+
+// When the sun next reaches longitude `deg` near the JD `guess`, as a JD in UT.
+function sunReaches(deg, guess) {
+  let jd = guess;
+  for (let i = 0; i < 20; i++) {
+    const step = (mod(deg - sunAtUT(jd) + 180, 360) - 180) * (365.2422 / 360);
+    jd += step;
+    if (Math.abs(step) < 1e-7) break;
+  }
+  return jd;
+}
+
+// The new moon that starts the month holding a given day: its k and its day.
+function monthHolding(day, zone) {
+  let k = Math.floor((day - 2451550.1) / 29.530588861);
+  while (localDay(newMoon(k), zone) > day) k--;
+  while (localDay(newMoon(k + 1), zone) <= day) k++;
+  return k;
+}
+
+// How many principal terms (the sun at a multiple of 30°) fall on the days from
+// `start` up to but not including `end`: count the multiples crossed between the
+// two midnights.
+function principalTerms(start, end, zone) {
+  const midnight = (day) => day - 0.5 - zone(day) / 24;
+  const a = sunAtUT(midnight(start)), b = a + mod(sunAtUT(midnight(end)) - a, 360);
+  return Math.floor(b / 30) - Math.floor(a / 30);
+}
+
+// The winter solstice's day in Gregorian year y.
+const solstice = (y, zone) => localDay(sunReaches(270, jdn(y, 12, 21)), zone);
+
+// One sui: the months from the month holding the solstice of year y-1 up to the
+// one holding the solstice of year y. That first month is the eleventh. When a sui
+// has 13 months, the first one with no principal term is the leap month and
+// repeats the number before it (Calendrical Calculations, the modern rule).
+function sui(y, zone = BEIJING) {
+  const k0 = monthHolding(solstice(y - 1, zone), zone), k1 = monthHolding(solstice(y, zone), zone);
+  const starts = [];
+  for (let k = k0; k <= k1; k++) starts.push(localDay(newMoon(k), zone));
+  const months = [];
+  let leapAt = -1;
+  if (k1 - k0 === 13) {
+    for (let i = 1; i < 13 && leapAt < 0; i++) if (principalTerms(starts[i], starts[i + 1], zone) === 0) leapAt = i;
+  }
+  let n = 10;
+  for (let i = 0; i < k1 - k0; i++) {
+    const leap = i === leapAt;
+    if (!leap) n = (n % 12) + 1;
+    months.push({ n, leap, start: starts[i], days: starts[i + 1] - starts[i] });
+  }
+  return months;
+}
+
+// The Chinese year that begins in Gregorian year y: month 1 to the last before the next month 1.
+function chineseYear(y, zone = BEIJING) {
+  const all = [...sui(y, zone), ...sui(y + 1, zone)];
+  const first = all.findIndex((m) => m.n === 1 && !m.leap);
+  const next = all.findIndex((m, i) => i > first && m.n === 1 && !m.leap);
+  return all.slice(first, next);
+}
+
+// The seventh night: the 7th day of the (not leap) 7th month.
+const seventhNight = (y) => chineseYear(y).find((m) => m.n === 7 && !m.leap).start + 6;
+
+// Japan's national observatory's "traditional Tanabata": count 7 days from the new
+// moon on or before the day the sun reaches 150° (Shosho, Chushu), in Japan time.
+function oldTanabata(y) {
+  const day = localDay(sunReaches(150, jdn(y, 8, 23)), JAPAN);
+  return localDay(newMoon(monthHolding(day, JAPAN)), JAPAN) + 6;
+}
+
+const STEMS = "甲乙丙丁戊己庚辛壬癸", BRANCHES = "子丑寅卯辰巳午未申酉戌亥";
+const ANIMALS = ["rat", "ox", "tiger", "rabbit", "dragon", "snake", "horse", "goat", "monkey", "rooster", "dog", "pig"];
+const yearName = (y) => ({ hanzi: STEMS[mod(y - 4, 10)] + BRANCHES[mod(y - 4, 12)], animal: ANIMALS[mod(y - 4, 12)] });
+
+// What ICU's own Chinese calendar says about a day, for printing beside this one.
+const ICU = new Intl.DateTimeFormat("en-u-ca-chinese", { timeZone: "UTC", year: "numeric", month: "numeric", day: "numeric" });
+function icu(day) {
+  const [y, m, d] = ymd(day);
+  const p = Object.fromEntries(ICU.formatToParts(new Date(Date.UTC(y, m - 1, d, 12))).map((x) => [x.type, x.value]));
+  return { y: +p.relatedYear, n: parseInt(p.month), leap: p.month.endsWith("bis"), d: +p.day };
+}
+function icuSeventhNight(y) {
+  for (let day = jdn(y, 7, 20); day < jdn(y, 9, 5); day++) { const c = icu(day); if (c.n === 7 && !c.leap && c.d === 7) return day; }
+  return null;
+}
+const FIRST = 1645, LAST = 2200;
+// ---- end of the copy ----
+
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const long = (n) => { const [y, m, d] = ymd(n); return `${weekday(n)} ${d} ${MONTHS[m - 1]} ${y}`; };
+const short = (n) => { const [, m, d] = ymd(n); return `${d} ${MONTHS[m - 1].slice(0, 3)}`; };
+const name = (c) => (c.leap ? "leap " : "") + c.n;
+
+// ICU's month starts near a day: does ICU begin the same month on the same day?
+function icuStart(day) {
+  const c = icu(day);
+  if (c.d === 1) return { same: true, c };
+  return { same: false, c, start: day - c.d + 1 };
+}
+
+function show(y) {
+  const out = document.getElementById("out");
+  if (!Number.isInteger(y) || y < FIRST || y > LAST) { out.innerHTML = `<p class="bad">A year from ${FIRST} to ${LAST}, please.</p>`; return; }
+  const months = chineseYear(y), nm = yearName(y), q = seventhNight(y), iq = icuSeventhNight(y), t = oldTanabata(y);
+  let html = `<p>The seventh night of ${y} falls on <b>${long(q)}</b>.</p>`;
+  html += `<p>This browser's own Chinese calendar (ICU) says ${iq === q ? "the same night" : iq ? `<span class="bad">${long(iq)}</span>` : "nothing"}.</p>`;
+  html += `<p>The year of the ${nm.animal} (${nm.hanzi}) begins on ${long(months[0].start)}. In Japan, Tanabata is kept on 7 July; the observatory's traditional Tanabata is ${t === q ? "the same night" : long(t)}.</p>`;
+  html += `<div class="months">`;
+  for (const m of months) {
+    const i = icuStart(m.start), part = !i.same || i.c.n !== m.n || i.c.leap !== m.leap;
+    const cls = ["m", m.leap ? "leap" : "", m.n === 7 && !m.leap ? "seven" : "", part ? "part" : ""].join(" ");
+    const note = part ? `<div class="icu">ICU: ${i.same ? name(i.c) : `starts ${short(i.start)}`}</div>` : "";
+    html += `<div class="${cls}"><div class="n">${m.leap ? "leap " : ""}${m.n}</div>${short(m.start)} · ${m.days}d${note}</div>`;
+  }
+  html += `</div>`;
+  if (y < 1912) html += `<p class="dim">Before 1912 this is the rule worked with today's astronomy; the almanac of that year may have printed a day or a leap month differently.</p>`;
+  out.innerHTML = html;
+}
+
+function sweep() {
+  const box = document.getElementById("parts");
+  box.textContent = "Working: two centuries, day by day…";
+  setTimeout(() => {
+    const mine = new Map();
+    for (let y = 1900; y <= 2101; y++) for (const m of sui(y)) mine.set(m.start, m);
+    const lo = jdn(1900, 1, 1), hi = jdn(2100, 12, 31), rows = [];
+    let count = 0;
+    for (let day = lo; day <= hi; day++) {
+      const a = mine.get(day), b = icu(day);
+      if (a) count++;
+      if (a && b.d === 1 && a.n === b.n && a.leap === b.leap) continue;
+      if (a) rows.push(`${iso(day)}  the sky: month ${name(a).padEnd(8)} this browser: ${b.d === 1 ? "month " + name(b) : "day " + b.d + " of month " + name(b)}`);
+      else if (b.d === 1) rows.push(`${iso(day)}  the sky: (no new month)  this browser: month ${name(b)}`);
+    }
+    box.textContent = `${count} month starts from 1900 to 2100. The two part on ${rows.length} rows:\n\n${rows.join("\n")}` +
+      `\n\nEach is a night when a new moon or a solar term falls within a quarter hour of midnight in Beijing. The README says which one NASA, the Hong Kong Observatory and the news side with.`;
+  }, 30);
+}
+
+document.getElementById("f").addEventListener("submit", (e) => { e.preventDefault(); show(Number(document.getElementById("y").value.trim())); });
+for (const b of document.querySelectorAll(".try button")) b.addEventListener("click", () => { document.getElementById("y").value = b.dataset.y; show(Number(b.dataset.y)); });
+document.getElementById("sweep").addEventListener("click", sweep);
+show(2026);
+</script>
+</body>
+</html>

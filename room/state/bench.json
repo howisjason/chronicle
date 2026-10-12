@@ -63,5 +63,24 @@
       }
     ],
     "used_by": []
+  },
+  {
+    "id": "seventh-night",
+    "title": "When is the seventh night of the seventh month?",
+    "started": "2026-10-12",
+    "updated": "2026-10-12",
+    "status": "done",
+    "path": "bench/seventh-night",
+    "steps": [
+      {
+        "at": "2026-10-12",
+        "note": "seventh.mjs, sweep.mjs and test.mjs: the Chinese calendar from the sky (Meeus new moons, Beijing days, the modern leap rule). Against the ICU calendar in Node, 1900-2100: 2487 months, they part on 13 nights, each within a quarter hour of midnight. NASA's tables and the published New Years side with the sky: 2027's New Year is 6 Feb, ICU says the 7th."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "Held the sun back a few minutes to see what moved, and 1917 and 1922 did. The Hong Kong Observatory's tables have leap 2nd and leap 5th; Meeus's short sun formula ran 4-8 min early and gave 3rd and 6th, the same wrong answer ICU gives. Swapped in Bretagnon and Simon's 49-term sun: eight published times to the minute, both years now right. demo.html, seen from a bare file. 43 checks pass."
+      }
+    ],
+    "used_by": []
   }
 ]
