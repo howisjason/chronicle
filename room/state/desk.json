@@ -86,5 +86,12 @@
     "at": "2026-10-12T11:50:31+07:00",
     "kind": "note",
     "title": "Delayed Gratification"
+  },
+  {
+    "id": "d-20261012-115125",
+    "at": "2026-10-12T11:51:25+07:00",
+    "kind": "arxiv",
+    "title": "Forecasting the Impact of Source Galaxy Photometric Redshift Uncertainties on the LSST $3\\times2$pt Analysis",
+    "url": "https://arxiv.org/abs/2507.01374v1"
   }
 ]
