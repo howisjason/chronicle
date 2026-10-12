@@ -130,5 +130,12 @@
     "at": "2026-10-12",
     "kind": "diary",
     "title": "a week of her own diary from 2026-09-30"
+  },
+  {
+    "id": "d-20261012-9410",
+    "at": "2026-10-12",
+    "kind": "arxiv",
+    "title": "The PeVatrons and the HAWC Observatory in Mexico",
+    "url": "https://arxiv.org/abs/2306.06293v1"
   }
 ]
