@@ -137,7 +137,7 @@ test('the room command: a good thought lands, with a quote and a newline intact'
   const cloud = JSON.parse(readFileSync(join(d, 'cloud.json'), 'utf8'));
   const last = cloud[cloud.length - 1];
   assert.equal(last.text, text);
-  assert.match(last.id, /^c-\d{8}-\d{6}-\d+$/);
+  assert.match(last.id, /^c-\d{8}-[a-z0-9]{4}-\d+$/);
   assert.match(last.at, /\+07:00$/);
   assert.equal(validate('cloud', cloud).ok, true);
 });
@@ -165,7 +165,7 @@ test('the room command: steps, used, quill and judged land in the shapes the pag
   assert.equal(b.steps[0].note, 'the first step');
   assert.equal(b.used_by[0].who, 'J');
   const q = roomCmd(d, 'quill', 'build', 'moon-clock', 'no', 'too big').out.trim().replace('quill: ', '');
-  assert.match(q, /^q-\d{8}-\d{6}-build-\d+$/);
+  assert.match(q, /^q-\d{8}-[a-z0-9]{4}-build-\d+$/);
   assert.equal(roomCmd(d, 'judged', q, 'right').code, 0);
   assert.equal(roomCmd(d, 'judged', q, 'maybe').code, 2);
   const ql = JSON.parse(readFileSync(join(d, 'quill.json'), 'utf8'));

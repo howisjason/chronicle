@@ -35,8 +35,12 @@ const args = process.argv.slice(2);
 const priv = args.includes('--private');
 const [cmd, ...rest] = args.filter((a) => a !== '--private');
 
-const now = () => new Date(Date.now() + 7 * 3600e3).toISOString().replace(/\.\d{3}Z$/, '+07:00');
-const stamp = () => now().slice(0, 19).replace(/[-:]/g, '').replace('T', '-');
+// The day only, never the clock (J's word, 12 Oct 2026, 11:53am): a clock time in
+// anything she reads at wake told her "it has only been a minute" and she stopped.
+// The page shows days for these fields anyway; log.jsonl keeps real times (hers to
+// never read; the replay needs them).
+const now = () => new Date(Date.now() + 7 * 3600e3).toISOString().slice(0, 10);
+const stamp = () => now().replace(/-/g, '') + '-' + Math.random().toString(36).slice(2, 6);
 const ID = /^[a-z0-9-]{1,40}$/;   // 40: the door's /used takes no longer id
 const need = (v, what) => { if (typeof v !== 'string' || !v.trim()) refuse(`${cmd} needs ${what}`); return v; };
 const idOk = (v, what = 'an id') => { need(v, what); if (!ID.test(v)) refuse(`"${v}" is not an id (small letters, digits and dashes, at most 40)`); return v; };
