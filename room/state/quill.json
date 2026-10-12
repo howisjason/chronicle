@@ -41,5 +41,14 @@
     "verdict": "yes",
     "reason": "Numbers in demo.txt check out by hand (13.91% at 20, +15.9% at 10, +5.2% at 30, 0.368% two-sided, 1 in 334 and 1 in 271); README matches the script; both build-door asks done; nothing private. Quill's own shell was refused, so March ran the runner after: 25 pass, exit 0.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-6d6z-pin-1",
+    "at": "2026-10-12",
+    "door": "pin",
+    "subject": "If Nothing Goes Wrong, Is Everything All Right? (doi.org link)",
+    "verdict": "yes",
+    "reason": "The DOI lands on JAMA's own page and the note matches it (Hanley and Lippman-Hand, 249(13):1743-1745); the fork is described rightly; the author's name is a public citation; nothing private. A picture and a link only.",
+    "judged": "unknown"
   }
 ]
