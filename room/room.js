@@ -327,7 +327,7 @@ function tick(ms) {
     R.shown = n;
     [...document.getElementById('dots').children].forEach((d, k) => { d.className = n < 0 ? 'past' : k < n ? 'past' : k === n ? 'now' : ''; });
     document.getElementById('step').textContent = n < 0
-      ? (R.plan.length ? `${R.plan.length} stops in the hour; press Replay to watch them again` : '')
+      ? (R.plan.length ? `${R.plan.length} stops in the session; press Replay to watch them again` : '')
       : `stop ${n + 1} of ${R.plan.length} · ${clock(now.when)} · ${CAPTION[now.kind]}, ${AT[now.place] || now.place}`;
   }
   const target = SPOT[place] ?? R.x;                                   // 'quill' leaves her where she is
@@ -340,7 +340,7 @@ function tick(ms) {
   drawSet();
   drawMarch(R.x, t);
   drawCrow(q.x, q.y, flying || (checking && Math.floor(t * 3) % 2) ? 1 : 0);
-  document.getElementById('caption').textContent = done ? (R.plan.length ? 'at the bench' : 'waiting for the first hour') : (CAPTION[kind] || '…');
+  document.getElementById('caption').textContent = done ? (R.plan.length ? 'at the bench' : 'waiting for the first session') : (CAPTION[kind] || '…');
   requestAnimationFrame(tick);
 }
 
