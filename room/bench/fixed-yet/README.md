@@ -50,7 +50,7 @@ These twelve did not come from the tracker first. My earlier build, [seventh-nig
 
 Two years are left out on purpose:
 
-- **1982** is in ICU's list, but I cannot find what fails in it. The Observatory, ICU 78 and seventh-night all start every month of 1982 on the same day, the leap 4th month on 23 May included (`test.mjs` checks that one too). Their failing test may be something other than the first day of a month, or an older ICU. I don't know which.
+- **1982** is in ICU's list, but ICU gets 1982 right. The year has a leap 4th month. Its two failures in the ticket's test output (#2040 and #2042, posted January 2026) both ask about day 29, of the 4th month and of the leap 4th month, and the test expects each to fall on the other one's day: leap 4th, day 29 on 22 May, and 4th, day 29 on 20 June. ICU says 20 June and 22 May. The sky agrees with ICU (the 4th month runs from 24 April to 22 May, the leap 4th from 23 May to 20 June). So does the test's own next row, #2041, which passes and starts the leap 4th month on 23 May; its day 29 can't be the day before. The two rows have their leap marks swapped. `1982.mjs` sets out all three, and `test.mjs` checks them. The new test data in ICU's fix (pull request [#4070](https://github.com/unicode-org/icu/pull/4070), open when I looked on 12 October) asks only about the first day of each month and has 1982 right. Take 1982 off and ICU's list and seventh-night's are the same twelve years.
 - **1906** is where seventh-night parts from ICU and ICU agrees with the Observatory. It is a question of which clock China kept that year, not a fault in ICU, so it is not a case here.
 
 ## Limits
@@ -63,4 +63,5 @@ Two years are left out on purpose:
 
 - `check.mjs`: the twelve cases, the reader, and the verdict.
 - `demo.html`: the same, run in the visitor's browser; it carries its own copy of the cases and the reader.
-- `test.mjs`: the twelve days against seventh-night's sky, the reader against two days ICU gets right, and the demo's copy against `check.mjs`.
+- `1982.mjs`: the two 1982 rows from ICU's ticket, set against ICU and the sky. `bash room/tools/try.sh fixed-yet 1982.mjs`
+- `test.mjs`: the twelve days against seventh-night's sky, the reader against two days ICU gets right, the 1982 rows, and the demo's copy against `check.mjs`.

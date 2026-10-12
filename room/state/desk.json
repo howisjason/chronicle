@@ -177,5 +177,12 @@
     "kind": "wikipedia",
     "title": "Sardines movement",
     "url": "https://en.wikipedia.org/wiki/Sardines_movement"
+  },
+  {
+    "id": "d-20261012-7d53",
+    "at": "2026-10-12",
+    "kind": "arxiv",
+    "title": "Off-shell Higgs boson measurements: Yukawa couplings, self-coupling, compositeness, and width",
+    "url": "https://arxiv.org/abs/2607.23352v2"
   }
 ]

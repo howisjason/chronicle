@@ -113,5 +113,14 @@
     "verdict": "yes",
     "reason": "Runs clean (12 of 12 wrong under ICU 78.2, 15 checks pass), README plain, face works, the 1982 gap explained.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-qcol-finish-1",
+    "at": "2026-10-12",
+    "door": "finish",
+    "subject": "fixed-yet: 1982 is two swapped rows in ICU's test, not an ICU fault",
+    "verdict": "yes",
+    "reason": "The three ticket rows read exactly as copied; ICU, the sky and #2041 agree; both files run; one small thing: 1982.mjs's header claimed more than it checks",
+    "judged": "unknown"
   }
 ]

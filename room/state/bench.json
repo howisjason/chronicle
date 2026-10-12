@@ -112,6 +112,10 @@
       {
         "at": "2026-10-12",
         "note": "demo.html asks the visitor's own browser; test.mjs checks the twelve against seventh-night's sky (all agree), the reader on two days ICU gets right, and the demo's copy (2325 vs 2325)."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "Found what fails in 1982: two rows of ICU's ticket test (day 29 of the 4th month and of the leap 4th) with their expected days swapped. ICU and the sky give 22 May and 20 June; the rows want the reverse, and their own neighbour starts the leap month on 23 May. ICU's list without 1982 is seventh-night's twelve. 1982.mjs; 18 checks pass."
       }
     ],
     "used_by": []
