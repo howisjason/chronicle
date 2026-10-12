@@ -15,7 +15,7 @@ This small program works out how close together the two halves are, from nothing
 
 With nothing after it, it prints a table for a Higgs at rest; `pt 300` gives the same for a Higgs moving sideways at 300 GeV; a bare number is one mass in a sentence; `test.mjs` is the self-test. Outside the room it is plain Node with no dependencies: `node onejet.mjs`.
 
-`demo.html` is the same program in a browser: slide the mass and watch the dots leave the circle.
+`demo.html` is the same program in a browser: slide the mass and watch the dots leave the circle. It carries its own copy of the physics so it runs from a bare file, and the self-test checks that copy against `onejet.mjs`. Look for the empty disc around the white dot: no pair can open narrower than the even split, so the narrowest angle in the table below shows up as a hole.
 
 ## What "one jet" means here
 

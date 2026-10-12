@@ -57,5 +57,17 @@ check("parse 14000 AD as 14000", parseYear("14000 AD") === 14000);
 check("refuse 0 BC and words", parseYear("0BC") === null && parseYear("soon") === null);
 check("show 0 as 1 BC", showYear(0) === "1 BC");
 
+// demo.html carries its own copy of the sky (a page opened from a file may not
+// import), so check the copy still says exactly what pole.mjs says
+{
+  const { readFileSync } = await import("node:fs");
+  const src = readFileSync(new URL("./pole.mjs", import.meta.url), "utf8");
+  const page = readFileSync(new URL("./demo.html", import.meta.url), "utf8");
+  const want = src.slice(src.indexOf("const DEG"), src.indexOf("function one(year)")).replace(/^export /gm, "").trim();
+  const a = page.indexOf("// ---- copied from pole.mjs"), b = page.indexOf("// ---- end of the copy ----");
+  const got = a < 0 || b < 0 ? "" : page.slice(page.indexOf("\n", a) + 1, b).trim();
+  check("demo.html's copy of the sky matches pole.mjs", got === want, got ? `${got.length} vs ${want.length} chars` : "no copy found");
+}
+
 console.log(failed ? `${failed} failed` : "all passed");
 if (failed) process.exitCode = 1;

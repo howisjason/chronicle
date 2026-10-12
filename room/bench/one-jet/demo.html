@@ -4,8 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>When two look like one</title>
-<!-- one-jet's face for the room page: onejet.mjs runs here as it is, no server,
-     no outside files. The room shows this page on the bench. -->
+<!-- one-jet's face for the room page. It carries its own copy of onejet.mjs's
+     physics, so it runs from a bare file with no server and no outside files
+     (an import of ./onejet.mjs is refused from file://). test.mjs checks that
+     the copy below still matches onejet.mjs word for word. -->
 <style>
   html, body { margin: 0; background: #0a1230; color: #e8ecff; font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
   main { padding: 12px 14px; display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start; }
@@ -24,22 +26,130 @@
 <main>
   <svg id="v" viewBox="-1 -1 2 2" role="img" aria-label="The second daughter of each decay, seen from the first, with the jet's circle of radius 0.4"></svg>
   <div class="panel">
-    <label for="m">Mass of the light particle: <b id="mv"></b> GeV</label>
+    <label for="m">Mass of the light particle: <b id="mv"></b></label>
     <input id="m" type="range" min="0.1" max="8" step="0.1" value="2">
     <p class="pts">The Higgs is: <button type="button" data-pt="0">at rest</button><button type="button" data-pt="100">moving at 100 GeV</button><button type="button" data-pt="300">moving at 300 GeV</button></p>
     <p id="out"></p>
     <p class="dim">A Higgs decays to a Z and a light particle, which splits in two. Each dot is the softer half of one decay, placed where it lands as seen from the harder half (sideways is angle φ around the beam, up is pseudorapidity η). The circle is a jet of radius 0.4: a dot inside means the two halves are swept into one jet. The mass lights up inside the 0.5 to 3.5 GeV window ATLAS searched (arXiv 2411.16361). A toy: no detector, no showering.</p>
   </div>
 </main>
-<script type="module">
-  import { R, pA, simulate } from './onejet.mjs';
+<script>
+// ---- copied from onejet.mjs (without "export") ----
+const MH = 125.1, MZ = 91.19, R = 0.4;
+
+// momentum of "a" in the Higgs rest frame (the standard two-body formula)
+function pA(ma, mh = MH, mz = MZ) {
+  const s = mh * mh, lo = (mz + ma) ** 2, hi = (mz - ma) ** 2;
+  if (!(ma >= 0) || s < lo) return NaN;
+  return Math.sqrt((s - lo) * (s - hi)) / (2 * mh);
+}
+
+// opening angle between the two daughters of a particle of mass ma and momentum p,
+// when they come out at decay angle c = cos(theta*) to its flight in its own frame.
+// From m^2 = 2 E1 E2 (1 - cos theta): cos theta = 1 - 2 / (gamma^2 (1 - beta^2 c^2)).
+function opening(ma, p, c) {
+  if (ma === 0) return 0;
+  const E = Math.hypot(ma, p), g = E / ma, b = p / E;
+  const cos = 1 - 2 / (g * g * (1 - b * b * c * c));
+  return Math.acos(Math.max(-1, Math.min(1, cos)));
+}
+
+// the narrowest it can be: an even split (c = 0), where tan(theta/2) = m/p
+const minAngle = (ma, p) => 2 * Math.atan(ma / p);
+
+// c is spread evenly over -1..1, and the angle grows with |c|, so half of all
+// decays open wider than the angle at |c| = 1/2
+const medianAngle = (ma, p) => opening(ma, p, 0.5);
+
+// the share of decays that open less than r
+function shareInside(ma, p, r = R) {
+  if (ma === 0) return 1;
+  const E = Math.hypot(ma, p), g = E / ma, b = p / E;
+  const c2 = (1 - 2 / (g * g * (1 - Math.cos(r)))) / (b * b);
+  return c2 <= 0 ? 0 : Math.min(1, Math.sqrt(c2));
+}
+
+// the mass at which f(ma) reaches r, by halving; null if it never does below mh - mz
+function crossing(f, r = R, mh = MH, mz = MZ) {
+  let lo = 1e-6, hi = mh - mz - 1e-6;
+  if (f(hi) < r) return null;
+  for (let i = 0; i < 80; i++) { const mid = (lo + hi) / 2; if (f(mid) < r) lo = mid; else hi = mid; }
+  return (lo + hi) / 2;
+}
+
+// ---- the detector's view: Delta R in (eta, phi), by simulation ----
+
+// a small seeded generator, so the same run prints the same numbers
+function rng(seed) {
+  let s = seed >>> 0;
+  return () => {
+    s = (s + 0x6d2b79f5) >>> 0;
+    let t = s;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const direction = (u, v) => {
+  const c = 2 * u - 1, s = Math.sqrt(1 - c * c), phi = 2 * Math.PI * v;
+  return [s * Math.cos(phi), s * Math.sin(phi), c];
+};
+
+// boost the four-vector [E, x, y, z] by velocity b = [bx, by, bz]
+function boost([E, x, y, z], [bx, by, bz]) {
+  const b2 = bx * bx + by * by + bz * bz;
+  if (b2 === 0) return [E, x, y, z];
+  const g = 1 / Math.sqrt(1 - b2), bp = bx * x + by * y + bz * z, k = (g - 1) * bp / b2 + g * E;
+  return [g * (E + bp), x + k * bx, y + k * by, z + k * bz];
+}
+
+const eta = ([, x, y, z]) => Math.atanh(z / Math.hypot(x, y, z));
+const phi = ([, x, y]) => Math.atan2(y, x);
+// how far b sits from a in (eta, phi), phi wrapped into -pi..pi
+function offset(a, b) {
+  let dphi = phi(b) - phi(a);
+  if (dphi > Math.PI) dphi -= 2 * Math.PI;
+  if (dphi < -Math.PI) dphi += 2 * Math.PI;
+  return [eta(b) - eta(a), dphi];
+}
+const deltaR = (a, b) => Math.hypot(...offset(a, b));
+
+// Higgs made in the middle of the detector (eta 0) moving sideways at pt;
+// "a" goes off in a random direction in the Higgs frame, its daughters in a random
+// direction in its own. Only "a"s with |eta| < etaMax count (the tracker's reach).
+// With keep: n, it also hands back the first n pairs as [d_eta, d_phi] of the
+// softer daughter seen from the harder one (the demo draws these).
+function simulate(ma, { pt = 0, n = 20000, seed = 7, etaMax = 2.5, r = R, keep = 0 } = {}) {
+  const rand = rng(seed), p = pA(ma), Ea = Math.hypot(ma, p), EH = Math.hypot(MH, pt);
+  const bH = [pt / EH, 0, 0];
+  const drs = [], pairs = [];
+  let inside = 0;
+  for (let i = 0; i < n; i++) {
+    const d = direction(rand(), rand());
+    const a = boost([Ea, p * d[0], p * d[1], p * d[2]], bH);
+    const e = direction(rand(), rand());
+    if (Math.abs(eta(a)) > etaMax) continue;
+    const ba = [a[1] / a[0], a[2] / a[0], a[3] / a[0]], h = ma / 2;
+    const d1 = boost([h, h * e[0], h * e[1], h * e[2]], ba);
+    const d2 = boost([h, -h * e[0], -h * e[1], -h * e[2]], ba);
+    const off = d1[0] >= d2[0] ? offset(d1, d2) : offset(d2, d1), dr = Math.hypot(...off);
+    drs.push(dr);
+    if (pairs.length < keep) pairs.push(off);
+    if (dr < r) inside++;
+  }
+  drs.sort((x, y) => x - y);
+  return { kept: drs.length, share: drs.length ? inside / drs.length : NaN, median: drs[Math.floor(drs.length / 2)], pairs };
+}
+// ---- end of the copy ----
+
   const svg = document.getElementById('v'), m = document.getElementById('m'), mv = document.getElementById('mv'), out = document.getElementById('out');
   const NS = 'http://www.w3.org/2000/svg', SCALE = 1 / 0.9; // the picture spans dR 0.9 each way
   let pt = 0;
   const el = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
   const draw = () => {
     const ma = Number(m.value);
-    mv.textContent = ma.toFixed(1) + (ma >= 0.5 && ma <= 3.5 ? ' (inside the searched window)' : '');
+    mv.textContent = ma.toFixed(1) + ' GeV' + (ma >= 0.5 && ma <= 3.5 ? ' (inside the searched window)' : '');
     mv.style.background = ma >= 0.5 && ma <= 3.5 ? 'rgba(242,193,78,0.18)' : '';
     const s = simulate(ma, { pt, n: 6000, keep: 400 });
     svg.replaceChildren(

@@ -43,5 +43,17 @@ check('the narrowest-angle crossing really is where it reaches R',
   check('a faster Higgs makes the pairs narrower', simulate(2, { pt: 300 }).median < s.median);
 }
 
+// demo.html carries its own copy of the physics (a page opened from a file may not
+// import), so check the copy still says exactly what onejet.mjs says
+{
+  const { readFileSync } = await import('node:fs');
+  const src = readFileSync(new URL('./onejet.mjs', import.meta.url), 'utf8');
+  const page = readFileSync(new URL('./demo.html', import.meta.url), 'utf8');
+  const want = src.slice(src.indexOf('export const MH'), src.indexOf('// ---- words and tables ----')).replace(/^export /gm, '').trim();
+  const a = page.indexOf('// ---- copied from onejet.mjs'), b = page.indexOf('// ---- end of the copy ----');
+  const got = a < 0 || b < 0 ? '' : page.slice(page.indexOf('\n', a) + 1, b).trim();
+  check("demo.html's copy of the physics matches onejet.mjs", got === want, got ? `${got.length} vs ${want.length} chars` : 'no copy found');
+}
+
 console.log(failed ? `${failed} failed` : 'all ok');
 if (failed) process.exitCode = 1;

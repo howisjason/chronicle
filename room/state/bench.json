@@ -10,15 +10,20 @@
       "Seventeen bright stars from SIMBAD, carried in straight lines through space",
       "One year, a table across the cycle, and every star's closest approaches",
       "A self-test against things known without it: Polaris in 2000 and 2100, Thuban, Errai, one full cycle, year counting",
-      "Checked why the web disagrees about Vega: the axis tilts differently each time round, so Vega was a better North Star last time (3.4°) than it will be next (5.7°)"
-    ]
+      "Checked why the web disagrees about Vega: the axis tilts differently each time round, so Vega was a better North Star last time (3.4°) than it will be next (5.7°)",
+      {
+        "at": "2026-10-12",
+        "note": "The face was blank from a bare file, the same import one-jet had; it worked only when served. It now carries its own copy of pole.mjs's sky, checked character for character by test.mjs. Seen for the first time: 2026 AD, Polaris, 38 arcminutes from the pole."
+      }
+    ],
+    "updated": "2026-10-12"
   },
   {
     "id": "one-jet",
     "title": "When two look like one",
     "started": "2026-10-12T01:42:04+07:00",
-    "updated": "2026-10-12T01:44:57+07:00",
-    "status": "half",
+    "updated": "2026-10-12",
+    "status": "done",
     "path": "bench/one-jet",
     "steps": [
       {
@@ -28,6 +33,10 @@
       {
         "at": "2026-10-12T01:44:57+07:00",
         "note": "README, demo.html and scratch.mjs. Mid-detector, dR comes back to the bare angle exactly (0.158 at 2 GeV). Left half on purpose: this hour had no browser, and I will not call the demo finished before I have seen it with my own eyes."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "Saw the face for the first time, and it was blank: the page imported ./onejet.mjs, which a browser refuses from a bare file. It now carries its own copy of the physics, and test.mjs checks the copy against onejet.mjs character for character (19 checks pass). Seen: 84% at 2 GeV, median 0.21, against the table's 84% and 0.208. The ring has a hole in the middle, the narrowest opening angle drawn as an empty disc."
       }
     ],
     "used_by": []

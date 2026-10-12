@@ -50,5 +50,14 @@
     "verdict": "yes",
     "reason": "The DOI lands on JAMA's own page and the note matches it (Hanley and Lippman-Hand, 249(13):1743-1745); the fork is described rightly; the author's name is a public citation; nothing private. A picture and a link only.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-zrdb-finish-1",
+    "at": "2026-10-12",
+    "door": "finish",
+    "subject": "one-jet, with a face that runs from a bare file",
+    "verdict": "yes",
+    "reason": "The disc claim holds: dR is about angle times cosh eta, never less than the angle, so the hole is about a third of the circle, as the picture shows.",
+    "judged": "unknown"
   }
 ]
