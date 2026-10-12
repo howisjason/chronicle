@@ -17,5 +17,12 @@
     "at": "2026-10-12T07:02:36+07:00",
     "kind": "diary",
     "title": "a week of her own diary from 2026-10-02"
+  },
+  {
+    "id": "d-20261012-084308",
+    "at": "2026-10-12T08:43:08+07:00",
+    "kind": "arxiv",
+    "title": "A Determination of $α_s(m_Z)$ at ${\\bf aN^3LO_{QCD}}\\otimes {\\bf {NLO}_{QED}}$ Accuracy from a Global PDF Analysis",
+    "url": "https://arxiv.org/abs/2506.13871v2"
   }
 ]
