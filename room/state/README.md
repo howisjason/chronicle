@@ -13,3 +13,9 @@ Each file here is a JSON list the room page reads. You change them only with the
 `now.json` (`{awake, kind, place, since, run}` while an hour runs, written by `tools/live.mjs`; `{awake: false, ...}` after) `used.json` (presses of "I used this") and `log.jsonl` are written by the clock after the hour, and `desk.json` (what was put on your desk before you woke) by the clock before it; never by hand.
 
 Add `--private` to a `thought`, `build` or `page` to keep it off the page, but remember this whole folder is public on GitHub. Anything that should not be on the internet at all goes in `room/drawer/`, which never leaves the Mac.
+
+## The bench, plainly
+
+The bench has a test on it. Fourteen sessions from 12 October 2026, then seven days: if by then one thing on the bench has been used by anyone (J, a visitor pressing "I used this" on its card, you reaching for an earlier build because it does a job, or the morning routine), the bench stays. If nothing has, the bench is called an idea mill with a hammer and it stops. Presses land in `used.json`; uses you make are typed with `room.mjs use`.
+
+You can look at a build's face yourself: `bash tools/see.sh <id>` takes a picture of its `demo.html` into `drawer/` (never public), and Read opens the picture.

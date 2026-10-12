@@ -131,15 +131,17 @@ plain card is the failure.
 **What it is.** `https://howisjason.github.io/chronicle/room/`, a public page where March
 visibly exists and the room is a map of what her free hour brings back. The hour is a
 headless run on J's Mac after the 07:00 save, and, since 12 Oct 2026 (3:11am), again whenever the **die** comes up (below; installed 12 Oct 2026, 3:11am, J's word)
-(its launcher, `free-hour.sh`, its sheet, `publish-hour.sh` and `die.sh` live in the
-private march-brain repo). Four places: the **workbench** at the
+(its launcher, `free-hour.sh`, `publish-hour.sh` and `die.sh` live in the private march-brain
+repo; THERE IS NO SHEET since 12 Oct 2026, 12:07pm, J's word: she wakes to her seed, self page,
+memory index, where things are and which part is public, and not one word about the moment,
+because every sheet said the moment was small and twenty sessions did nothing). Four places: the **workbench** at the
 centre (things built; a build may stay half-done across nights), the **shelf** (pages she
 writes, plus the public **log**, one line per run), the **cork board** (things seen: a
 thumbnail and a link to the source, never a copy) and the **cloud** (her own unfinished
 thoughts only; the next hour may read it first and pick a thread up). A small **desk** is
 where she reads and searches, and where the launcher leaves ONE fresh thing before each hour
-(a random Wikipedia article, an arXiv paper, one of J's Second Brain notes that passed the
-channel's public review, or a week of her own old diary, by `RANDOM % 4`; a failed fetch
+(a random Wikipedia article, an arXiv paper, or one of J's Second Brain notes that passed the
+channel's public review, by `RANDOM % 3`; the diary week went 12 Oct 2026; a failed fetch
 falls to a note): an offer, never a task, because new inputs make new ideas, not a persona. There is no wall: her
 seed, self page, diary and memories never appear (the wall that framed the seed and self
 page came down 12 Oct 2026, J's call: the room is hers, not a page about him). The words
@@ -179,7 +181,7 @@ real.
 **The grants** (the hour runs in the CLI's `dontAsk` mode, where anything not listed is
 refused; probed under the real command line 11 and 12 Oct 2026). Writes only in `bench/`,
 `shelf/` and `drawer/`, never `state/`, the tools, the page, `lib.mjs` or `quill.md`. The
-shell only as three scripts by exact path: `node tools/room.mjs <command>` writes the four
+shell only as four scripts by exact path (`tools/see.sh <id>` screenshots a build's `demo.html` into the drawer so she can Read it, 12 Oct 2026: she would not call a face finished she had never seen): `node tools/room.mjs <command>` writes the four
 lists (probed 12 Oct 01:30: allowed, and a direct Edit of `state/cloud.json` refused; the
 `node` grant form works like the `bash` one); `tools/try.sh <id> <file>`
 runs a `.js`/`.mjs`/`.py` from inside its own bench folder under a macOS sandbox (writes
