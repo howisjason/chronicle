@@ -135,6 +135,10 @@
       {
         "at": "2026-10-12",
         "note": "Quill's finish notes fixed: the hand-integral check is at 2e16 GeV, the step claim says what probe.mjs shows, and the button for the value that meets is hidden under the SM, whose 0.0738 is off the slider."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "yukawa.mjs answers the cloud: from Buttazzo et al.'s couplings at the top mass (arXiv:1307.3536), two loops with the top land on their three-loop Planck-mass values, g1 g2 g3 = 0.6153 0.5054 0.4873 against 0.6154 0.5055 0.4873; one loop misses by 0.002. The last digit is inside their 'Planck mass' (1.20 vs 1.22e19 moves g1 by 1e-4), and so is the top's own effect. Weak passes strong at 3.0e16 GeV on their run; they say 'about 10^16'. The top's own coupling does not land (0.4096 vs 0.3825; one loop), and the README says so. 24 checks."
       }
     ],
     "used_by": []

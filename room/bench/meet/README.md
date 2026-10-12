@@ -10,7 +10,8 @@ The famous answer (Amaldi, de Boer and Fürstenau, [Phys. Lett. B 260 (1991) 447
     node meet.mjs 0.1194           the same with another alpha_s(MZ)
     node meet.mjs 0.1180 1000      superpartners switched on at 1000 GeV instead of at MZ
     node probe.mjs                 the scratch checks behind the numbers below
-    node test.mjs                  the self-test (19 checks)
+    node yukawa.mjs                the Standard Model with the top quark in, against a published run
+    node test.mjs                  the self-test (24 checks)
 
 On the bench: `bash room/tools/try.sh meet meet.mjs`.
 
@@ -45,6 +46,18 @@ On the desk today was NNPDF's new determination from a global fit of parton dist
 - **Their formula.** Langacker and Polonsky's one-loop prediction is α_s = 7α / (15 sin²θ_W − 3). On their inputs (1/α = 127.9, sin²θ_W = 0.2316) it gives 0.1155. Mine gives 0.1156, and the difference is the DR-bar shift below, which their formula leaves out.
 - **Their two-loop number.** On their inputs my two-loop answer is 0.1286, against their 0.129. My two-loop step is 0.0130, against their 0.014. Their total also has a small Yukawa piece, between −0.003 and 0, which I leave out.
 - **A hand integral.** As a second road for the two-loop terms, integrate them along the one-loop lines by hand: 1/α_i gains Σ_j b_ij / (4π b_j) · ln(line_j(t) / line_j(0)). At 2×10¹⁶ GeV (t = 33) the Runge-Kutta answer and the hand one agree to 0.02 in the MSSM and 0.005 in the SM. That is where they should agree: the hand integral drops terms of the next order, and the two-loop terms themselves moved the lines by about 1.1 and 0.4.
+- **A published run, for the Standard Model.** The two-loop crossing of the weak and strong lines, 2.9×10¹⁶ GeV, had nothing outside this code to stand against, so `yukawa.mjs` borrows somebody else's ends. Buttazzo, Degrassi, Giardino, Giudice, Sala, Salvio and Strumia ([arXiv:1307.3536](https://arxiv.org/abs/1307.3536)) give the couplings at the top mass (g₂ = 0.64779, g_Y = 0.35830, g₃ = 1.1666, y_t = 0.93690, with α_s(MZ) = 0.1184), run them up with three-loop equations, and print what arrives at the Planck mass (their eq. 61). Start from their start, run my two loops, and compare:
+
+  | at the Planck mass | g₁ | g₂ | g₃ |
+  |---|---|---|---|
+  | one loop | 0.6132 | 0.5039 | 0.4895 |
+  | two loops, gauge only | 0.6155 | 0.5055 | 0.4874 |
+  | two loops, with the top | 0.6153 | 0.5054 | 0.4873 |
+  | theirs, three loops | 0.6154 | 0.5055 | 0.4873 |
+
+  One loop misses by two thousandths. Two loops land within one in the fourth decimal. That last digit is as far as the check can see: they write "the Planck mass" and elsewhere give it as about 1.2×10¹⁹ GeV, and moving it from 1.20 to 1.22 shifts g₁ by 1.0×10⁻⁴ by itself. The top quark moves the gauge couplings by about the same amount, so this check cannot tell whether putting it in helped. It does say the run is right, and that the top was never going to change the answer. On the same run the weak line passes the strong one at 3.0×10¹⁶ GeV (3.1×10¹⁶ without the top; the 2.9 in the table above starts from α_s = 0.1180 instead of their 0.1184), and hypercharge becomes the largest of the three at 1.8×10¹⁴. Their text says "at about 10¹⁶ GeV" and "about 10¹⁴". They give no closer figure, and I have not found anyone who does.
+
+  The top's own coupling does not land: mine arrives at 0.4096 against their 0.3825, because I run it at one loop, with nothing from the Higgs and no strong-force terms past the first. That is the limit of `yukawa.mjs`. It is there for the gauge couplings, and I say so rather than tune it.
 - **The step size.** The lines are so smooth that a stride of 1/2 in ln(energy) already agrees with a step of 0.001 to every one of the six decimals `probe.mjs` prints, so the test proves the step is used at all by taking one huge step and watching it miss.
 
 ## The arithmetic
@@ -62,7 +75,7 @@ With t = ln(μ / MZ), each inverse coupling runs as
 
 ## Limits
 
-- **Gauge couplings only.** The top quark's Yukawa coupling enters at two loops and is left out. Langacker and Polonsky put its effect on the prediction at between −0.003 and 0.
+- **Gauge couplings only.** The top quark's Yukawa coupling enters at two loops and is left out of `meet.mjs` and the page. Langacker and Polonsky put its effect on the supersymmetric prediction at between −0.003 and 0. In the Standard Model `yukawa.mjs` puts it in, and it moves the couplings at the Planck mass by about 10⁻⁴.
 - **One step for every superpartner.** Real superpartners would have many masses, and each would switch on at its own. With "from MZ" every one of them sits at 91 GeV, which none does. Nothing is done at the top of the run either: no heavy particles of the unified theory, and nothing past two loops.
 - **The meeting is judged at one point,** where hypercharge and weak cross. "Off by 0.76" is the strong line's distance from that point in 1/α, not a statistical tension. No error bars are carried.
 - **It is about numbers, not about nature.** Coupling unification is a hint that has been argued over for thirty years. This build shows what the hint is made of, and it does not settle it.

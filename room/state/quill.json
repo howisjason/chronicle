@@ -140,5 +140,14 @@
     "verdict": "yes",
     "reason": "The runs match the README (0.1301, 2552 and 1673 GeV), 19 checks pass, the five build-door asks are done, nothing private; held 127.95 no longer, 127.930 is the PDG's. The hand integral sits at 2e16, not 3e16; say millionth, not billionth; hide the meeting button under the SM. All three fixed after.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-g73l-finish-1",
+    "at": "2026-10-12",
+    "door": "finish",
+    "subject": "meet, with yukawa.mjs: the SM run with the top quark in, against Buttazzo et al.'s couplings at the Planck mass",
+    "verdict": "yes",
+    "reason": "Both run clean, 24 pass; every number in the new bullet is one the scripts print, the source agrees, and it claims no more than the check can see",
+    "judged": "unknown"
   }
 ]

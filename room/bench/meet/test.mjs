@@ -97,5 +97,27 @@ try { page = readFileSync(new URL('./demo.html', import.meta.url), 'utf8'); } ca
 const got = cut(page, '// ---- the arithmetic', '// ---- end of the arithmetic');
 ok(got.length > 0 && got === want, `demo.html's copy matches meet.mjs (${got.length} vs ${want.length} chars)`);
 
+// 12. yukawa.mjs: with the top left out, its own walk is meet.mjs's walk.
+const Y = await import('./yukawa.mjs');
+const mine = Y.climb(Y.MPL, { top: false }).s.slice(0, 3), theirsWalk = Y.viaMeet(Y.MPL);
+ok(mine.every((x, i) => near(x, theirsWalk[i], 1e-9)), 'yukawa.mjs without the top walks exactly as meet.mjs does');
+
+// 13. From Buttazzo et al.'s start at Mt, two loops with the top land on their
+// three-loop couplings at the Planck mass (arXiv:1307.3536, eq. 61) to 3e-4.
+const top = Y.climb(Y.MPL), th = [Y.THEIRS.g1, Y.THEIRS.g2, Y.THEIRS.g3];
+ok(top.g.every((g, i) => near(g, th[i], 3e-4)), `at M_Pl, g1 g2 g3 = ${top.g.map((g) => g.toFixed(4)).join(' ')}, theirs ${th.join(' ')}`);
+const flat = Y.oneLoop(Y.MPL);
+ok(flat.g.some((g, i) => !near(g, th[i], 1e-3)), `one loop alone does not (g3 ${flat.g[2].toFixed(4)})`);
+
+// 14. Their "Planck mass" is about 1.2e19 GeV. 1.20e19 against 1.22e19 moves g1
+// most, since its line is steepest; the shift must stay below the 3e-4 of check 13.
+const lo = Y.climb(1.20e19), shift = lo.g.map((g, i) => Math.abs(g - top.g[i]));
+ok(Math.max(...shift) < 2e-4, `M_Pl 1.20e19 against 1.22e19 moves g1 g2 g3 by ${shift.map((x) => x.toExponential(1)).join(' ')}`);
+
+// 15. Their text: g1 is the largest from about 1e14 GeV, and g2 overcomes g3 at
+// about 1e16 (the order of magnitude is all they give).
+ok(near(Math.log10(top.cross[1]), 14, 0.5) && near(Math.log10(top.cross[2]), 16, 0.5),
+  `g1 passes g3 at ${top.cross[1].toExponential(1)}, g2 passes g3 at ${top.cross[2].toExponential(1)} GeV`);
+
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);
