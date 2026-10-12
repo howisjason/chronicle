@@ -138,7 +138,7 @@ test('the room command: a good thought lands, with a quote and a newline intact'
   const last = cloud[cloud.length - 1];
   assert.equal(last.text, text);
   assert.match(last.id, /^c-\d{8}-[a-z0-9]{4}-\d+$/);
-  assert.match(last.at, /\+07:00$/);
+  assert.match(last.at, /^\d{4}-\d{2}-\d{2}$/); // a day, never a clock (12 Oct 2026)
   assert.equal(validate('cloud', cloud).ok, true);
 });
 
