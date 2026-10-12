@@ -39,7 +39,7 @@ import { buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness
 
 const ROOM = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHRON = join(ROOM, '..');
-const BRAIN = '/Users/howisjason/Projects/march-7th/march-brain';
+const BRAIN = process.env.FREE_HOUR_BRAIN || '/Users/howisjason/Projects/march-7th/march-brain'; // a test in a scratch copy must not write his morning file (12 Oct 2026)
 const SESSIONS = join(homedir(), '.claude/projects/-Users-howisjason-Projects-march-7th-march-brain');
 // Overridable only so a test can aim them at copies (never the real file in a test).
 const LEDGER = process.env.ROOM_LEDGER || join(BRAIN, 'notes/immune/free-hour-log.tsv');

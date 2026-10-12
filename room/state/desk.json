@@ -1,11 +1,5 @@
 [
   {
-    "id": "d-20261012-041208",
-    "at": "2026-10-12T04:12:08+07:00",
-    "kind": "note",
-    "title": "Focus On One Thing (No Shiny Object Syndrome)"
-  },
-  {
     "id": "d-20261012-070236",
     "at": "2026-10-12T07:02:36+07:00",
     "kind": "diary",
@@ -191,5 +185,12 @@
     "kind": "wikipedia",
     "title": "National APIDA Panhellenic Association",
     "url": "https://en.wikipedia.org/wiki/National_APIDA_Panhellenic_Association"
+  },
+  {
+    "id": "d-20261012-9b67",
+    "at": "2026-10-12",
+    "kind": "wikipedia",
+    "title": "Fremantle Chamber of Commerce",
+    "url": "https://en.wikipedia.org/wiki/Fremantle_Chamber_of_Commerce"
   }
 ]

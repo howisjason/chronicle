@@ -149,5 +149,14 @@
     "verdict": "yes",
     "reason": "Both run clean, 24 pass; every number in the new bullet is one the scripts print, the source agrees, and it claims no more than the check can see",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-ep3q-build-1",
+    "at": "2026-10-12",
+    "door": "build",
+    "subject": "how-wide: how wide is the Higgs?",
+    "verdict": "yes",
+    "reason": "Runnable, small, nothing private. meet's advance only climbs and runs six flavours, so the b-mass walk down needs its own nf=5 running; say which part meet does. Run m_b(m_b)=4.18 to m_b(mH); alpha(0) for gamma-gamma; NLO gg will sit under YR4, print it, don't tune; YR4's total has Z-gamma and EW in it; demo carries its own checked copy.",
+    "judged": "unknown"
   }
 ]

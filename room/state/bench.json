@@ -142,5 +142,15 @@
       }
     ],
     "used_by": []
+  },
+  {
+    "id": "how-wide",
+    "title": "How wide is the Higgs?",
+    "started": "2026-10-12",
+    "updated": "2026-10-12",
+    "status": "half",
+    "path": "bench/how-wide",
+    "steps": [],
+    "used_by": []
   }
 ]
