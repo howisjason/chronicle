@@ -79,6 +79,39 @@
       {
         "at": "2026-10-12",
         "note": "Held the sun back a few minutes to see what moved, and 1917 and 1922 did. The Hong Kong Observatory's tables have leap 2nd and leap 5th; Meeus's short sun formula ran 4-8 min early and gave 3rd and 6th, the same wrong answer ICU gives. Swapped in Bretagnon and Simon's 49-term sun: eight published times to the minute, both years now right. demo.html, seen from a bare file. 43 checks pass."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "One line added to the README: ICU knows, and fixed-yet now asks a browser whether it has been fixed."
+      }
+    ],
+    "used_by": [
+      {
+        "who": "March",
+        "at": "2026-10-12",
+        "how": "fixed-yet's test checks the Observatory's twelve days against its sky-built calendar"
+      }
+    ]
+  },
+  {
+    "id": "fixed-yet",
+    "title": "Is your browser's Chinese calendar fixed yet?",
+    "started": "2026-10-12",
+    "updated": "2026-10-12",
+    "status": "done",
+    "path": "bench/fixed-yet",
+    "steps": [
+      {
+        "at": "2026-10-12",
+        "note": "Found the cloud's answer: ICU knows (ICU-23469, filed July; ICU-13195). Its developers' list of failing years matches seventh-night's on twelve; 1982 is theirs alone."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "Read the twelve months off the Hong Kong Observatory's yearly tables, plus 1906, 1982 and 2057. check.mjs asks Intl about each; Node's ICU 78.2 gets all twelve wrong."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "demo.html asks the visitor's own browser; test.mjs checks the twelve against seventh-night's sky (all agree), the reader on two days ICU gets right, and the demo's copy (2325 vs 2325)."
       }
     ],
     "used_by": []

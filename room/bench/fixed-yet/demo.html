@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is your browser's Chinese calendar fixed yet?</title>
+<!-- fixed-yet's face for the room page. It carries its own copy of check.mjs's
+     cases and reader, so it runs from a bare file with no server and no outside
+     files, and asks the visitor's own browser. test.mjs checks the copy. -->
+<style>
+  html, body { margin: 0; background: #0a1230; color: #e8ecff; font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { padding: 12px 14px; max-width: 620px; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 6px; color: #93a0cc; }
+  #say { font-size: 20px; margin: 4px 0 6px; }
+  #say.fixed { color: #7fd99a; }
+  #say.not { color: #f2c14e; }
+  #ny { margin: 0 0 12px; }
+  #ny b { color: #f2c14e; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th { text-align: left; font-weight: 500; color: #93a0cc; padding: 2px 8px 4px 0; border-bottom: 1px solid #2a3f8f; }
+  td { padding: 3px 10px 3px 0; font-variant-numeric: tabular-nums; vertical-align: top; white-space: nowrap; }
+  th { white-space: nowrap; }
+  td.mark { width: 1.2em; font-weight: 700; }
+  tr.ok td.mark { color: #7fd99a; }
+  tr.no td.mark { color: #ef6f6f; }
+  tr.no td.said { color: #ef6f6f; }
+  td.what { color: #93a0cc; white-space: normal; }
+  .dim { color: #93a0cc; font-size: 12px; margin-top: 12px; }
+  a { color: #aebcf5; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Is your browser's Chinese calendar fixed yet?</h1>
+  <p id="say"></p>
+  <p id="ny"></p>
+  <table>
+    <thead><tr><th></th><th>day</th><th>the Observatory</th><th>your browser</th><th></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="dim">Each row is the first day of a month as the Observatory's table prints it, in a year where ICU, the calendar library inside most browsers, has been seen to start that month on another day. All twelve come down to a new moon or the sun crossing a mark within a quarter hour of midnight in Beijing. ICU knows: <a href="https://unicode-org.atlassian.net/browse/ICU-23469">ICU-23469</a>, <a href="https://unicode-org.atlassian.net/browse/ICU-13195">ICU-13195</a>, <a href="https://unicode-org.atlassian.net/browse/ICU-23274">ICU-23274</a>. A fix is planned for ICU 79.1, listed for 15 October 2026; browsers take a new ICU some weeks or months later. Open this page again to see whether yours has.</p>
+</main>
+<script>
+// ---- copied into demo.html ----
+// The first day of a month, as the Hong Kong Observatory's yearly tables print it,
+// one in each year where ICU's Chinese calendar has been seen to start a month on
+// another day (ICU-13195, ICU-23274, ICU-23469). Every one was read off the
+// Observatory's own table for that year.
+const CASES = [
+  { day: "1917-03-23", month: 2, leap: true, what: "the leap 2nd month" },
+  { day: "1922-06-25", month: 5, leap: true, what: "the leap 5th month" },
+  { day: "1954-02-03", month: 1, leap: false, what: "New Year" },
+  { day: "1955-02-22", month: 2, leap: false, what: "the 2nd month" },
+  { day: "1987-07-26", month: 6, leap: true, what: "the leap 6th month (so the seventh night is 30 Aug)" },
+  { day: "1999-01-17", month: 12, leap: false, what: "the 12th month" },
+  { day: "2012-08-17", month: 7, leap: false, what: "the 7th month (so the seventh night is 23 Aug)" },
+  { day: "2018-11-08", month: 10, leap: false, what: "the 10th month" },
+  { day: "2027-02-06", month: 1, leap: false, what: "New Year" },
+  { day: "2030-02-03", month: 1, leap: false, what: "New Year" },
+  { day: "2057-09-28", month: 9, leap: false, what: "the 9th month" },
+  { day: "2070-03-12", month: 2, leap: false, what: "the 2nd month" },
+];
+
+const CHINESE = new Intl.DateTimeFormat("en-u-ca-chinese", { timeZone: "UTC", month: "numeric", day: "numeric" });
+
+// What this calendar says a Gregorian day is: which month, leap or not, which day.
+function ask(day) {
+  const [y, m, d] = day.split("-").map(Number);
+  const p = Object.fromEntries(CHINESE.formatToParts(new Date(Date.UTC(y, m - 1, d, 12))).map((x) => [x.type, x.value]));
+  return { month: parseInt(p.month), leap: /bis$/.test(p.month), day: parseInt(p.day) };
+}
+
+const monthName = (m) => `${m.leap ? "leap " : ""}${m.month}`;
+
+function checkAll() {
+  return CASES.map((c) => {
+    const said = ask(c.day);
+    return { ...c, said, ok: said.day === 1 && said.month === c.month && said.leap === c.leap };
+  });
+}
+
+function verdict(rows) {
+  const wrong = rows.filter((r) => !r.ok).length;
+  if (wrong === 0) return "Fixed. All twelve months start on the Observatory's day.";
+  if (wrong === rows.length) return "Not yet. All twelve months start on another day.";
+  return `Not yet: ${wrong} of ${rows.length} months still start on another day.`;
+}
+// ---- end of the copy ----
+
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const say = document.getElementById("say"), ny = document.getElementById("ny"), body = document.getElementById("rows");
+try {
+  const rows = checkAll();
+  say.textContent = verdict(rows);
+  say.className = rows.every((r) => r.ok) ? "fixed" : "not";
+  // The headline case: on which day of February 2027 does this browser start the year?
+  let first = null;
+  for (let d = 1; d <= 28 && !first; d++) { const a = ask(`2027-02-${String(d).padStart(2, "0")}`); if (a.month === 1 && !a.leap && a.day === 1) first = d; }
+  ny.innerHTML = first === 6
+    ? "Lunar New Year 2027: your browser says <b>6 February</b>, as the Observatory does."
+    : `Lunar New Year 2027: your browser says <b>${first ? first + " February" : "not in February"}</b>. The Observatory says 6 February.`;
+  for (const r of rows) {
+    const tr = document.createElement("tr");
+    tr.className = r.ok ? "ok" : "no";
+    const [, m, d] = r.day.split("-").map(Number);
+    const cells = [r.ok ? "✓" : "✗", `${d} ${MONTHS[m - 1].slice(0, 3)} ${r.day.slice(0, 4)}`, `${monthName(r)}, day 1`, `${monthName(r.said)}, day ${r.said.day}`, r.what];
+    cells.forEach((text, i) => { const td = document.createElement("td"); td.textContent = text; td.className = ["mark", "", "", "said", "what"][i]; tr.appendChild(td); });
+    body.appendChild(tr);
+  }
+} catch (e) {
+  say.textContent = "This browser has no Chinese calendar to ask (" + e.message + ").";
+}
+</script>
+</body>
+</html>

@@ -95,5 +95,23 @@
     "verdict": "yes",
     "reason": "The count is right now: 10 new moons move one first day each, 3 leap years rename two months each, 16 in all, 2471 of 2487. The rest matches the sweep and the test; held to the earlier no, and the fix answers it. Nothing private.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-jw79-build-1",
+    "at": "2026-10-12",
+    "door": "build",
+    "subject": "fixed-yet: is your browser's Chinese calendar fixed yet?",
+    "verdict": "yes",
+    "reason": "A stranger can use it: open the page and see if their browser is fixed, and come back to watch the fix arrive.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261012-ziqz-finish-1",
+    "at": "2026-10-12",
+    "door": "finish",
+    "subject": "fixed-yet: is your browser's Chinese calendar fixed yet?",
+    "verdict": "yes",
+    "reason": "Runs clean (12 of 12 wrong under ICU 78.2, 15 checks pass), README plain, face works, the 1982 gap explained.",
+    "judged": "unknown"
   }
 ]

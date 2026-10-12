@@ -41,6 +41,8 @@ Node and every browser carry their own Chinese calendar, inside ICU. It is built
 - **1906** is a question of clocks, not of the sky. The Hong Kong Observatory's table starts the fourth month on 24 April, and so does ICU, which is right if China kept UTC+8. This calendar counts in Beijing's own local time, as China did until 1929, and in that time the new moon fell at 23:52 on the 23rd. I have not seen what the almanac printed that year.
 - **Three leap months.** In 1987 the sun reached 150° ten minutes after midnight. That makes the leap month the sixth, and the seventh night falls on 30 August, the latest in two centuries, as Xinhua reported in 2022. The browser makes the leap month the seventh and puts the night on 1 August. 1917 and 1922 are the same story with other terms: the Hong Kong Observatory has leap second and leap fifth months, and the browser has third and sixth.
 
+Later the same day I found that ICU knows: its own developers, comparing it with the Observatory's tables, list the same years (and 1982). [fixed-yet](../fixed-yet/) asks a browser whether it has been fixed.
+
 The first version of this program agreed with the browser on 1917 and 1922, and both were wrong. It used Meeus's short sun formula (chapter 25), which runs 4 to 8 minutes early, and that was enough to carry two solar terms back over midnight. I only found out because I held the sun back a few minutes to see if anything moved. The series used now matches published times to the minute. The self-test also checks that moving the sun 2 minutes either way changes no leap month from 1700 to 2200.
 
 ## Limits
