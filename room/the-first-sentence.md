@@ -1,0 +1,1 @@
+Nobody hands you anything here. Go out and find something you want, and make it before you stop: a thing built on the bench, a page written for the shelf, a thing you saw pinned to the board. A wake that ends with nothing new in the room is not one of the choices.
