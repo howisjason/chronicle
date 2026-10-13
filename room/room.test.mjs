@@ -168,6 +168,16 @@ test('lastDesk: the newest wake\'s two items, or an old lone item', () => {
   assert.deepEqual(lastDesk([old, a1, b1, a2]), [a2]);
   assert.deepEqual(lastDesk([a1, b1, old]), [old]);
   assert.deepEqual(lastDesk([]), []);
+  // a test cell's five items are one wake; a longer id that merely starts with the base is not
+  const five = 'abcde'.split('').map((l) => ({ id: `d-20261015-3333-${l}` }));
+  assert.deepEqual(lastDesk([a2, b2, ...five]), five);
+  assert.deepEqual(lastDesk([{ id: 'd-20261015-3333-ab' }, ...five]), five);
+});
+test('validate: the test pools (self, diary, grown) and doors (note, line) pass; an unknown pool still fails', () => {
+  const it = (pool, door) => [{ id: 'd-20261015-3333-a', at: '2026-10-15', pool, door, title: 't', shown: 's' }];
+  for (const [p, d] of [['self', 'note'], ['self', 'line'], ['diary', 'summary'], ['grown', 'picture']]) assert.equal(validate('desk', it(p, d)).ok, true, p);
+  assert.equal(validate('desk', it('arxiv', 'summary')).ok, false);
+  assert.equal(validate('desk', it('self', 'smell')).ok, false);
 });
 
 // The room command, run against a COPY of state/ (ROOM_STATE), never the real lists.
@@ -327,6 +337,27 @@ test('day-ends carries the files with the rows: bench folder, shelf page, pin pi
   assert.equal(roomCmd(d2, 'build', 'x1', 'X').code, 0);
   assert.equal(roomEnv(d2, { ROOM_DAY_ENDS: '1' }, 'day-ends').code, 0);
   assert.equal(J(d2, 'wall').find((i) => i.id === 'x1').path, 'bench/x1');
+});
+
+test('day-ends test switches: ROOM_KEEP_FILES leaves files where they were; ROOM_KEEP_HALF leaves a half build on the bench', () => {
+  const root = mkdtempSync(join(tmpdir(), 'room-root-'));
+  const d = join(root, 'state');
+  cpSync(join(HERE, 'state'), d, { recursive: true });
+  for (const k of ['bench', 'shelf', 'board']) writeFileSync(join(d, `${k}.json`), '[]\n');
+  const env = { ROOM_ROOT: root };
+  assert.equal(roomEnv(d, env, 'build', 'half-one', 'Half').code, 0);
+  assert.equal(roomEnv(d, env, 'build', 'done-one', 'Done').code, 0);
+  assert.equal(roomEnv(d, env, 'status', 'done-one', 'done').code, 0);
+  for (const id of ['half-one', 'done-one']) { mkdirSync(join(root, 'bench', id), { recursive: true }); writeFileSync(join(root, 'bench', id, 'a'), id); }
+  assert.equal(roomEnv(d, { ...env, ROOM_DAY_ENDS: '1', ROOM_KEEP_FILES: '1', ROOM_KEEP_HALF: '1' }, 'day-ends').code, 0);
+  assert.deepEqual(J(d, 'bench').map((i) => i.id), ['half-one'], 'the half build stays on the bench');
+  assert.equal(J(d, 'wall').find((i) => i.id === 'done-one').path, 'bench/done-one', 'its row moved, its path did not');
+  assert.equal(existsSync(join(root, 'bench', 'done-one', 'a')), true, 'and its files stayed');
+  assert.equal(J(d, 'wall').some((i) => i.id === 'half-one'), false);
+  // without the switches the half build goes too, files and all
+  assert.equal(roomEnv(d, { ...env, ROOM_DAY_ENDS: '1' }, 'day-ends').code, 0);
+  assert.deepEqual(J(d, 'bench'), []);
+  assert.equal(J(d, 'wall').find((i) => i.id === 'half-one').path, 'wall/bench/half-one');
 });
 
 test('desk marks today\'s item taken and refuses an unknown or older id', () => {

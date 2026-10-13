@@ -165,6 +165,8 @@ switch (cmd) {
       // lists are appended oldest first, the wall is newest first
       for (const item of [...read(kind)].reverse()) {
         if (!item || has.has(`${kind}:${item.id}`)) continue;  // already moved by a run that stopped halfway
+        // ROOM_KEEP_HALF=1 (the levers test, cell B2): a half-done build stays on the bench
+        if (process.env.ROOM_KEEP_HALF && kind === 'bench' && item.status === 'half') continue;
         moved.push({ ...item, kind, day: String(item[when] || '').slice(0, 10) });
       }
     }
@@ -178,7 +180,8 @@ switch (cmd) {
     // path or thumb follows. Never overwrites; a stop halfway is picked up next time
     // (the file is already there, so the row is pointed at it). With ROOM_STATE (the
     // tests) files move only when ROOM_ROOT names the copy's room folder.
-    const FILES = process.env.ROOM_STATE ? process.env.ROOM_ROOT : ROOM;
+    // ROOM_KEEP_FILES=1 (the levers test, cell B1) is the old sweep: rows move, files stay.
+    const FILES = process.env.ROOM_KEEP_FILES ? null : process.env.ROOM_STATE ? process.env.ROOM_ROOT : ROOM;
     const carry = (rel) => {
       const r = String(rel).replace(/\/$/, '');
       if (!FILES || !/^(bench|shelf|board)\/[A-Za-z0-9._-]+$/.test(r)) return rel;
@@ -195,7 +198,10 @@ switch (cmd) {
     }
     // the wall first, then the emptying: a stop in between leaves duplicates the next run skips
     writeFileSync(join(STATE, 'wall.json'), JSON.stringify([...moved, ...wall], null, 2) + '\n');
-    for (const kind of ['bench', 'shelf', 'board']) writeFileSync(join(STATE, `${kind}.json`), '[]\n');
+    for (const kind of ['bench', 'shelf', 'board']) {
+      const keep = process.env.ROOM_KEEP_HALF && kind === 'bench' ? read('bench').filter((i) => i && i.status === 'half') : [];
+      writeFileSync(join(STATE, `${kind}.json`), JSON.stringify(keep, null, 2) + '\n');
+    }
     console.log(`day-ends: ${moved.length} moved to the wall`);
     break;
   }

@@ -145,14 +145,14 @@ export function sameness(trace, previousTraces = []) {
   return Math.round(best * 100);
 }
 
-// The newest wake's desk: the launcher (free-hour.sh) draws two items a wake with
-// ids <base>-a and <base>-b, so the last item's base names the wake. A desk item
-// from before the second day has no such ending and stands alone.
+// The newest wake's desk: the launcher (free-hour.sh) draws two items a wake (a test
+// cell may draw up to ten) with ids <base>-a, <base>-b, ..., so the last item's base
+// names the wake. A desk item from before the second day has no such ending and stands alone.
 export function lastDesk(items) {
   const list = Array.isArray(items) ? items.filter((i) => i && typeof i.id === 'string') : [];
   if (!list.length) return [];
-  const m = /^(.*)-[ab]$/.exec(list[list.length - 1].id);
-  return m ? list.filter((i) => i.id === `${m[1]}-a` || i.id === `${m[1]}-b`) : [list[list.length - 1]];
+  const m = /^(.*)-[a-z]$/.exec(list[list.length - 1].id);
+  return m ? list.filter((i) => i.id.length === m[1].length + 2 && i.id.startsWith(`${m[1]}-`) && /[a-z]$/.test(i.id)) : [list[list.length - 1]];
 }
 
 // This wake's draw for the morning line: the newest pair, but only items that were
@@ -177,8 +177,9 @@ const VERDICTS = new Set(['yes', 'no']);
 const JUDGED = new Set(['unknown', 'right', 'wrong']);
 // Desk items from before the second day carry `kind`; from it on, `pool` and `door`.
 const DESK_KINDS = new Set(['wikipedia', 'arxiv', 'note', 'diary']);
-export const DESK_POOLS = new Set(['wikipedia', 'archive', 'commons', 'wiktionary']);
-export const DESK_DOORS = new Set(['summary', 'picture', 'first-sentence', 'coordinates', 'one-word', 'title']);
+// self, diary and grown are the levers test's pools (scratch cells D2, G6, D7; free-hour.sh draws them only in a test)
+export const DESK_POOLS = new Set(['wikipedia', 'archive', 'commons', 'wiktionary', 'self', 'diary', 'grown']);
+export const DESK_DOORS = new Set(['summary', 'picture', 'first-sentence', 'coordinates', 'one-word', 'title', 'note', 'line']);
 const WALL_KINDS = new Set(['bench', 'shelf', 'board']);
 export const STATE_NAMES = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk', 'wall'];
 
@@ -212,8 +213,8 @@ export function validate(stateName, data) {
       if (item.pool === undefined) {
         if (!DESK_KINDS.has(item.kind)) problems.push(`${here}: kind must be wikipedia, arxiv, note or diary`);
       } else {
-        if (!DESK_POOLS.has(item.pool)) problems.push(`${here}: pool must be wikipedia, archive, commons or wiktionary`);
-        if (!DESK_DOORS.has(item.door)) problems.push(`${here}: door must be summary, picture, first-sentence, coordinates, one-word or title`);
+        if (!DESK_POOLS.has(item.pool)) problems.push(`${here}: pool must be wikipedia, archive, commons, wiktionary (or a test's self, diary, grown)`);
+        if (!DESK_DOORS.has(item.door)) problems.push(`${here}: door must be summary, picture, first-sentence, coordinates, one-word, title (or a test's note, line)`);
         if (typeof item.shown !== 'string' || !item.shown) problems.push(`${here}: no shown`);
         if (item.taken !== undefined && !Number.isFinite(Date.parse(item.taken))) problems.push(`${here}: taken must be a time`);
       }
