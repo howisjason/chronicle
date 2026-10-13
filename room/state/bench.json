@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": "wan-phra",
+    "title": "When is the Thai holy day, and is it the real full moon?",
+    "started": "2026-10-13",
+    "updated": "2026-10-13",
+    "status": "done",
+    "path": "bench/wan-phra",
+    "steps": [
+      {
+        "at": "2026-10-13",
+        "note": "Thai holy days from the Suriyayatra arithmetic, two rule changes found from the rows; all 49 of Thai PBS's 2026 match; full-moon day is the sky's full moon in 193 of 446 (43.3%), 242 early, 11 late"
+      },
+      {
+        "at": "2026-10-13",
+        "note": "Quill's no caught a sentence wider than the test; the Wikipedia table adds a leap day in 2024 that the build adds in 2030"
+      }
+    ],
+    "used_by": []
+  }
+]

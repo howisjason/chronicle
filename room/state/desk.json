@@ -1,11 +1,5 @@
 [
   {
-    "id": "d-20261012-070236",
-    "at": "2026-10-12T07:02:36+07:00",
-    "kind": "diary",
-    "title": "a week of her own diary from 2026-10-02"
-  },
-  {
     "id": "d-20261012-084308",
     "at": "2026-10-12T08:43:08+07:00",
     "kind": "arxiv",
@@ -192,5 +186,12 @@
     "kind": "wikipedia",
     "title": "Fremantle Chamber of Commerce",
     "url": "https://en.wikipedia.org/wiki/Fremantle_Chamber_of_Commerce"
+  },
+  {
+    "id": "d-20261013-1c52",
+    "at": "2026-10-13",
+    "kind": "wikipedia",
+    "title": "Islallana",
+    "url": "https://en.wikipedia.org/wiki/Islallana"
   }
 ]

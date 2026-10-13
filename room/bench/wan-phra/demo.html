@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When is the Thai holy day, and is it the real full moon?</title>
+<style>
+  :root { --ink:#1d2433; --soft:#5b6478; --line:#e3e6ee; --bg:#fbfaf6; --gold:#b7791f; --sky:#2b6cb0; --warn:#c05621; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#e8eaf0; --soft:#a3aabb; --line:#323848; --bg:#161a22; --gold:#ecc94b; --sky:#90cdf4; --warn:#f6ad55; } }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui, sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:20px 18px 40px; }
+  h1 { font-size:20px; margin:0 0 4px; } .soft { color:var(--soft); }
+  .next { display:flex; gap:14px; flex-wrap:wrap; margin:16px 0; }
+  .card { flex:1 1 220px; border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+  .card b { display:block; font-size:22px; } .card .k { font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--soft); }
+  table { width:100%; border-collapse:collapse; font-size:14px; margin-top:8px; }
+  td, th { padding:5px 6px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+  th { font-size:12px; color:var(--soft); font-weight:600; }
+  tr.full td:first-child { border-left:3px solid var(--gold); }
+  tr.past { opacity:.55; } .name { color:var(--gold); font-weight:600; }
+  .same { color:var(--sky); } .early { color:var(--warn); }
+  nav { display:flex; align-items:center; gap:10px; margin-top:22px; }
+  button { font:inherit; padding:3px 10px; border-radius:6px; border:1px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .tally { margin:18px 0 0; padding:12px 14px; border-radius:10px; border:1px solid var(--line); }
+  footer { margin-top:24px; font-size:13px; color:var(--soft); }
+</style></head><body><main>
+<h1>When is the Thai holy day, and is it the real full moon?</h1>
+<div class="soft">Wan phra, the Buddhist holy days, worked out from the old Thai calendar arithmetic, with the sky's full moon beside each full-moon day. Thai time.</div>
+<div class="next" id="next"></div>
+<div class="tally" id="tally"></div>
+<nav><button id="prev">&larr;</button><strong id="year"></strong><button id="fwd">&rarr;</button><span class="soft" id="range"></span></nav>
+<table><thead><tr><th>Date</th><th>Lunar day</th><th>The sky's full moon</th></tr></thead><tbody id="rows"></tbody></table>
+<footer>
+  The calendar: the Suriyayatra year rules as written in the open-source <i>pythaidate</i> library, with two changes the published dates asked for (see the README). It matches all 49 holy days of 2026 on Thai PBS, and Thai Wikipedia's Makha and Asahna Bucha tables for 1996 to early 2024, except for one row.
+  The sky: Meeus, <i>Astronomical Algorithms</i>, chapter 49. It is within a minute of the U.S. Naval Observatory for 2026.
+  The big days are named. Khao Phansa is not a wan phra, but it is listed. Holy days are set by the authorities, and this page only works them out: check an official calendar before planning around one.
+</footer>
+<script>
+// wanphra.mjs: the Thai holy days (wan phra) from the old arithmetic, and the
+// real full moon from the sky, so the two can be laid side by side.
+//
+// Road one, the calendar: the Suriyayatra year rules as written out in the
+// open-source pythaidate library (github.com/hmmbug/pythaidate, lsyear.py and
+// constants.py). Road two, the sky: Jean Meeus, Astronomical Algorithms (2nd ed.),
+// chapter 49, the times of the Moon's phases.
+//
+// Days are Julian Day Numbers (JDN, an integer per civil day); everything is
+// in Thai time (UTC+7).
+
+// ---------- calendar dates ----------
+
+function jdnFromYmd(y, m, d) {
+  const a = Math.floor((14 - m) / 12);
+  const yy = y + 4800 - a;
+  const mm = m + 12 * a - 3;
+  return d + Math.floor((153 * mm + 2) / 5) + 365 * yy + Math.floor(yy / 4)
+    - Math.floor(yy / 100) + Math.floor(yy / 400) - 32045;
+}
+
+function ymdFromJdn(j) {
+  const a = j + 32044;
+  const b = Math.floor((4 * a + 3) / 146097);
+  const c = a - Math.floor(146097 * b / 4);
+  const d = Math.floor((4 * c + 3) / 1461);
+  const e = c - Math.floor(1461 * d / 4);
+  const m = Math.floor((5 * e + 2) / 153);
+  return {
+    y: 100 * b + d - 4800 + Math.floor(m / 10),
+    m: m + 3 - 12 * Math.floor(m / 10),
+    d: e - Math.floor((153 * m + 2) / 5) + 1,
+  };
+}
+
+const iso = (j) => {
+  const { y, m, d } = ymdFromJdn(j);
+  return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+};
+const jdnFromIso = (s) => {
+  const [y, m, d] = s.split('-').map(Number);
+  return jdnFromYmd(y, m, d);
+};
+
+// ---------- road one: the Suriyayatra year ----------
+
+const CS_JDN = 1954167; // horakhun 0 as a Julian Day Number (pythaidate)
+
+// One Chula Sakarat year, as of its astronomical new year (thaloengsok).
+function suriyayatra(cs) {
+  const n = cs * 292207 + 373;
+  const horakhun = Math.floor(n / 800) + 1;
+  const kammacubala = 800 - (n % 800);
+  const a = 11 * horakhun + 650;
+  const avomanRaw = a % 692;
+  let avoman = avomanRaw;
+  const quot = Math.floor(a / 692);
+  let tithi = (quot + horakhun) % 30;
+  if (avoman === 0) { avoman = 692; tithi -= 1; }
+  const solarLeap = kammacubala <= 207;
+  const leapMonth = qualifies(tithi);
+  // pythaidate tests the rewritten avoman (0 becomes 692) with <= 126 / <= 137.
+  // Against the published dates, 2014 (avoman exactly 137) is not a leap-day
+  // year and 2015 (raw avoman 0) is, its day deferred to 2016 because 2015
+  // has a leap month. So: the raw value, and 137 itself is out.
+  const leapDay = RULE.avoman === 'pythaidate'
+    ? (solarLeap ? avoman <= 126 : avoman <= 137)
+    : (solarLeap ? avomanRaw <= 126 : avomanRaw < 137);
+  return { cs, horakhun, kammacubala, avoman, tithi, solarLeap, leapMonth, leapDay,
+    thaloengsok: horakhun + CS_JDN };
+}
+
+// A year is in the window for a leap month when its new year's tithi is 24..29
+// or 0..5. pythaidate writes `tithi > 24 or tithi < 6`, with an override for
+// tithi 25 followed by 5; against the published dates that threshold misses
+// 2012 and 2031 (both tithi 24, both leap-month years), so here it is 24, and
+// the override is made general: when two years in a row are in the window,
+// the second one takes the month (2020, tithi 24, gives it to 2021, tithi 4).
+// RULE is the switch the tests use to show both readings.
+const RULE = { threshold: 24, avoman: 'raw' };
+const qualifies = (t) => t >= RULE.threshold || t <= 5;
+function tithiOf(cs) { return suriyayatra(cs).tithi; }
+
+// The year type: A normal (354), B leap day (355), C leap month (384).
+// A year can't hold both; `clash` says what happens to a leap day that lands
+// in a leap-month year: 'drop' (it is lost) or 'defer' (it moves to the next
+// year that has no leap month). Which one the real calendar does is a question
+// the tests answer, not this file.
+function yearType(cs, clash = 'defer') {
+  const s = suriyayatra(cs);
+  const month = yearTypeRaw(cs).month;
+  if (month) return 'C';
+  if (s.leapDay) return 'B';
+  if (clash === 'defer') {
+    // walk back over the run of leap-month years just before this one
+    let k = cs - 1;
+    let owed = 0;
+    while (yearTypeRaw(k).month) {
+      if (yearTypeRaw(k).day) owed++;
+      k--;
+    }
+    if (owed > 0) return 'B';
+  }
+  return 'A';
+}
+function yearTypeRaw(cs) {
+  const s = suriyayatra(cs);
+  const month = s.leapMonth && !qualifies(tithiOf(cs + 1));
+  return { month, day: s.leapDay };
+}
+
+const LENGTH = { A: 354, B: 355, C: 384 };
+
+// The months of the lunar year that begins at month 5, waxing 1, in order.
+// [label, number of days]. '8-2' is the second eighth month.
+function monthsOf(type) {
+  const ms = [['5', 29], ['6', 30], ['7', type === 'B' ? 30 : 29], ['8', 30]];
+  if (type === 'C') ms.push(['8-2', 30]);
+  ms.push(['9', 29], ['10', 30], ['11', 29], ['12', 30], ['1', 29], ['2', 30], ['3', 29], ['4', 30]);
+  return ms;
+}
+
+// The anchor: month 5, waxing 1, of CS 1388 is 19 March 2026. Thai PBS's 2026
+// list puts month 5 waxing 8 on 26 March (tests/data.mjs).
+const ANCHOR_CS = 1388;
+const ANCHOR_JDN = jdnFromYmd(2026, 3, 19);
+
+// First day of month 5 for a CS year, by adding up year lengths from the anchor.
+function yearStart(cs, clash = 'defer') {
+  let j = ANCHOR_JDN;
+  for (let k = ANCHOR_CS; k < cs; k++) j += LENGTH[yearType(k, clash)];
+  for (let k = ANCHOR_CS - 1; k >= cs; k--) j -= LENGTH[yearType(k, clash)];
+  return j;
+}
+
+// Every day of a lunar year that matters: wan phra and the big days.
+// A wan phra is waxing 8, waxing 15, waning 8, and the month's last day
+// (waning 14 in a 29-day month, waning 15 in a 30-day one).
+function holyDays(cs, clash = 'defer') {
+  const type = yearType(cs, clash);
+  // Makha Bucha falls in the year before, but it moves with this year's leap
+  // month: full moon of month 4 instead of 3 (Thai PBS 2026: month 4).
+  let j = yearStart(cs, clash);
+  const out = [];
+  for (const [month, len] of monthsOf(type)) {
+    const day = (n) => j + n - 1;
+    const label = (n) => (n <= 15 ? `waxing ${n}` : `waning ${n - 15}`);
+    for (const n of [8, 15, 23, len]) {
+      out.push({ jdn: day(n), month, day: n, label: label(n), wanPhra: true, full: n === 15 });
+    }
+    j += len;
+  }
+  const at = (month, n) => out.find((h) => h.month === month && h.day === n);
+  const leap = type === 'C';
+  const name = (h, s) => { if (h) h.name = h.name ? `${h.name}, ${s}` : s; };
+  name(at(leap ? '7' : '6', 15), 'Visakha Bucha');
+  name(at(leap ? '8-2' : '8', 15), 'Asahna Bucha');
+  name(at('11', 15), 'Ok Phansa, the end of Lent');
+  name(at('12', 15), 'Loy Krathong');
+  // Khao Phansa is the day after Asahna Bucha, waning 1: not a wan phra itself.
+  const asahna = out.find((h) => h.name && h.name.includes('Asahna'));
+  out.push({ jdn: asahna.jdn + 1, month: asahna.month, day: 16, label: 'waning 1',
+    wanPhra: false, full: false, name: 'Khao Phansa, the start of Lent' });
+  // Makha Bucha of the following Gregorian year is in THIS lunar year's
+  // months 3/4, but it follows the NEXT year's leap month.
+  const nextLeap = yearType(cs + 1, clash) === 'C';
+  name(at(nextLeap ? '4' : '3', 15), 'Makha Bucha');
+  return { cs, type, start: yearStart(cs, clash), days: out.sort((a, b) => a.jdn - b.jdn) };
+}
+
+// Holy days that fall in a Gregorian year (they span two lunar years).
+function holyDaysInYear(gy, clash = 'defer') {
+  const lo = jdnFromYmd(gy, 1, 1);
+  const hi = jdnFromYmd(gy, 12, 31);
+  const cs = gy - 638;
+  return [...holyDays(cs - 1, clash).days, ...holyDays(cs, clash).days]
+    .filter((h) => h.jdn >= lo && h.jdn <= hi);
+}
+
+// ---------- road two: the sky ----------
+
+const rad = Math.PI / 180;
+const sin = (x) => Math.sin(x * rad);
+
+// Meeus ch. 49. phase 0 = new moon, 0.5 = full moon. Returns JDE (TT).
+function moonPhaseJde(k, phase) {
+  k = Math.floor(k) + phase;
+  const T = k / 1236.85;
+  let jde = 2451550.09766 + 29.530588861 * k + 0.00015437 * T * T
+    - 0.000000150 * T ** 3 + 0.00000000073 * T ** 4;
+  const E = 1 - 0.002516 * T - 0.0000074 * T * T;
+  const M = 2.5534 + 29.10535670 * k - 0.0000014 * T * T - 0.00000011 * T ** 3;
+  const Mp = 201.5643 + 385.81693528 * k + 0.0107582 * T * T + 0.00001238 * T ** 3
+    - 0.000000058 * T ** 4;
+  const F = 160.7108 + 390.67050284 * k - 0.0016118 * T * T - 0.00000227 * T ** 3
+    + 0.000000011 * T ** 4;
+  const Om = 124.7746 - 1.56375588 * k + 0.0020672 * T * T + 0.00000215 * T ** 3;
+  const c = phase === 0
+    ? [-0.40720, 0.17241, 0.01608, 0.01039, 0.00739, -0.00514, 0.00208]
+    : [-0.40614, 0.17302, 0.01614, 0.01043, 0.00734, -0.00515, 0.00209];
+  jde += c[0] * sin(Mp) + c[1] * E * sin(M) + c[2] * sin(2 * Mp) + c[3] * sin(2 * F)
+    + c[4] * E * sin(Mp - M) + c[5] * E * sin(Mp + M) + c[6] * E * E * sin(2 * M)
+    - 0.00111 * sin(Mp - 2 * F) - 0.00057 * sin(Mp + 2 * F)
+    + 0.00056 * E * sin(2 * Mp + M) - 0.00042 * sin(3 * Mp)
+    + 0.00042 * E * sin(M + 2 * F) + 0.00038 * E * sin(M - 2 * F)
+    - 0.00024 * E * sin(2 * Mp - M) - 0.00017 * sin(Om)
+    - 0.00007 * sin(Mp + 2 * M) + 0.00004 * sin(2 * Mp - 2 * F)
+    + 0.00004 * sin(3 * M) + 0.00003 * sin(Mp + M - 2 * F)
+    + 0.00003 * sin(2 * Mp + 2 * F) - 0.00003 * sin(Mp + M + 2 * F)
+    + 0.00003 * sin(Mp - M + 2 * F) - 0.00002 * sin(Mp - M - 2 * F)
+    - 0.00002 * sin(3 * Mp + M) + 0.00002 * sin(4 * Mp);
+  const A = [
+    [299.77 + 0.107408 * k - 0.009173 * T * T, 0.000325],
+    [251.88 + 0.016321 * k, 0.000165], [251.83 + 26.651886 * k, 0.000164],
+    [349.42 + 36.412478 * k, 0.000126], [84.66 + 18.206239 * k, 0.000110],
+    [141.74 + 53.303771 * k, 0.000062], [207.14 + 2.453732 * k, 0.000060],
+    [154.84 + 7.306860 * k, 0.000056], [34.52 + 27.261239 * k, 0.000047],
+    [207.19 + 0.121824 * k, 0.000042], [291.34 + 1.844379 * k, 0.000040],
+    [161.72 + 24.198154 * k, 0.000037], [239.56 + 25.513099 * k, 0.000035],
+    [331.55 + 3.592518 * k, 0.000023],
+  ];
+  for (const [arg, coef] of A) jde += coef * sin(arg);
+  return jde;
+}
+
+// ΔT = TT − UT in seconds; NASA's polynomial for 2005–2050, and close enough
+// (within a minute) back to 1990 for a question asked in whole days.
+const deltaT = (year) => { const t = year - 2000; return 62.92 + 0.32217 * t + 0.005589 * t * t; };
+
+// Full moons as {jd (UT), jdn (Thai civil day), hour (Thai clock)} near a JDN.
+function fullMoonNear(jdn) {
+  const k0 = Math.floor((jdn - 2451550.09766) / 29.530588861);
+  let best = null;
+  for (let k = k0 - 1; k <= k0 + 2; k++) {
+    const jde = moonPhaseJde(k, 0.5);
+    const year = 2000 + (jde - 2451545) / 365.25;
+    const jdUt = jde - deltaT(year) / 86400;
+    const thai = jdUt + 0.5 + 7 / 24; // civil-day number in Thai time, fractional
+    const f = { jd: jdUt, jdn: Math.floor(thai), hour: (thai - Math.floor(thai)) * 24 };
+    if (!best || Math.abs(thai - (jdn + 0.5)) < Math.abs(best.thai - (jdn + 0.5))) best = { ...f, thai };
+  }
+  return best;
+}
+
+// How far the calendar's full-moon day is from the sky's full moon, in hours:
+// 0 if the moment of full moon falls inside that Thai civil day, otherwise the
+// distance from the nearer edge of the day (negative: the calendar is early).
+function missHours(jdn) {
+  const f = fullMoonNear(jdn);
+  const t = f.thai;
+  if (t >= jdn && t < jdn + 1) return { ...f, miss: 0, offDays: 0 };
+  const miss = t < jdn ? (jdn - t) * 24 : -(t - (jdn + 1)) * 24;
+  return { ...f, miss, offDays: jdn - f.jdn };
+}
+
+const DAY = 86400000;
+const thaiToday = () => { const t = new Date(Date.now() + 7 * 3600000); return jdnFromYmd(t.getUTCFullYear(), t.getUTCMonth() + 1, t.getUTCDate()); };
+const fmt = (j) => { const { y, m, d } = ymdFromJdn(j); return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }); };
+const monthName = (m) => (m === '8-2' ? 'second 8th month' : 'month ' + m);
+const hhmm = (h) => String(Math.floor(h)).padStart(2, '0') + ':' + String(Math.floor((h % 1) * 60)).padStart(2, '0');
+const LO = 1996, HI = 2031;
+const today = thaiToday();
+let year = Math.min(HI, Math.max(LO, ymdFromJdn(today).y));
+
+function skyCell(h) {
+  if (!h.full) return '';
+  const r = missHours(h.jdn);
+  const when = fmt(r.jdn) + ', ' + hhmm(r.hour);
+  if (r.offDays === 0) return '<span class="same">' + when + ', the same day</span>';
+  const word = r.offDays < 0 ? 'the holy day comes first' : 'the holy day comes after';
+  return '<span class="early">' + when + ', ' + word + '</span>';
+}
+
+function draw() {
+  document.getElementById('year').textContent = year;
+  document.getElementById('range').textContent = (year < 2025 ? '' : year > 2026 ? 'worked out, not yet published' : '');
+  const rows = holyDaysInYear(year).map((h) =>
+    '<tr class="' + (h.full ? 'full ' : '') + (h.jdn < today ? 'past' : '') + '"><td>' + fmt(h.jdn) + '</td><td>' + h.label + ', ' + monthName(h.month)
+    + (h.name ? '<br><span class="name">' + h.name + '</span>' : '') + (h.wanPhra ? '' : ' <span class="soft">(not a wan phra)</span>')
+    + '</td><td>' + skyCell(h) + '</td></tr>');
+  document.getElementById('rows').innerHTML = rows.join('');
+}
+
+function next() {
+  const all = [...holyDaysInYear(ymdFromJdn(today).y), ...holyDaysInYear(ymdFromJdn(today).y + 1)];
+  const wp = all.find((h) => h.wanPhra && h.jdn >= today);
+  const big = all.find((h) => h.name && h.jdn >= today);
+  const away = (j) => (j === today ? 'today' : j - today === 1 ? 'tomorrow' : 'in ' + (j - today) + ' days');
+  const card = (k, h) => '<div class="card"><span class="k">' + k + '</span><b>' + fmt(h.jdn) + '</b>' + away(h.jdn) + ' &middot; ' + h.label + ', ' + monthName(h.month) + (h.name ? '<br><span class="name">' + h.name + '</span>' : '') + '</div>';
+  document.getElementById('next').innerHTML = (wp ? card('Next wan phra', wp) : '') + (big ? card('Next big day', big) : '');
+}
+
+function tally() {
+  let n = 0, same = 0, early = 0;
+  for (let y = LO; y <= HI; y++) for (const h of holyDaysInYear(y).filter((x) => x.full)) {
+    n++; const r = missHours(h.jdn); if (r.offDays === 0) same++; else if (r.offDays < 0) early++;
+  }
+  document.getElementById('tally').innerHTML = 'From ' + LO + ' to ' + HI + ', the calendar has <b>' + n + '</b> full-moon days. The sky is full on that Thai day in <b>' + same + '</b> of them ('
+    + (100 * same / n).toFixed(1) + '%). In <b>' + early + '</b> the holy day comes first: the day ends before the moon is full. In <b>' + (n - same - early) + '</b> it comes after. The old arithmetic runs early.';
+}
+
+document.getElementById('prev').onclick = () => { if (year > LO) { year--; draw(); } };
+document.getElementById('fwd').onclick = () => { if (year < HI) { year++; draw(); } };
+next(); tally(); draw();
+</script>
+</main></body></html>

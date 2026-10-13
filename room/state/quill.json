@@ -158,5 +158,32 @@
     "verdict": "yes",
     "reason": "Runnable, small, nothing private. meet's advance only climbs and runs six flavours, so the b-mass walk down needs its own nf=5 running; say which part meet does. Run m_b(m_b)=4.18 to m_b(mH); alpha(0) for gamma-gamma; NLO gg will sit under YR4, print it, don't tune; YR4's total has Z-gamma and EW in it; demo carries its own checked copy.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261013-hnj8-build-1",
+    "at": "2026-10-13",
+    "door": "build",
+    "subject": "wan-phra: the Thai holy-day calendar from Suriyayatra arithmetic, checked against Thai PBS and the sky",
+    "verdict": "yes",
+    "reason": "Usable in Thailand and fits in a few nights; treat Thai PBS as the reference and show the Wikipedia mismatch as a finding, not a failed test.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261013-1lj8-finish-1",
+    "at": "2026-10-13",
+    "door": "finish",
+    "subject": "wan-phra: called finished",
+    "verdict": "no",
+    "reason": "The README says the Wikipedia tables are a day late from Asahna 2024 on, but the test shows Asahna 2030, 2031 and Makha 2031 agreeing again.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261013-rmkh-finish-1",
+    "at": "2026-10-13",
+    "door": "finish",
+    "subject": "wan-phra: called finished, after the README fix",
+    "verdict": "yes",
+    "reason": "Changed its earlier no: the table is a day later only from Asahna 2024 to Makha 2030, and the dates show the leap day moved from 2030 to 2024.",
+    "judged": "unknown"
   }
 ]
