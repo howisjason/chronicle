@@ -10,7 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, lastDesk } from './lib.mjs';
+import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, lastDesk, drawnThisWake } from './lib.mjs';
 
 const R = '/Users/howisjason/Projects/chronicle/room';
 const B = '/Users/howisjason/Projects/march-7th/march-brain';
@@ -151,6 +151,15 @@ test('visible drops private items from the real wall', () => {
   assert.equal(validate('wall', wall).ok, true);
   const planted = [{ ...wall[0], id: 'secret', private: true }, ...wall];
   assert.deepEqual(visible(planted).map((i) => i.id), wall.map((i) => i.id));
+});
+
+test('drawnThisWake: a wake whose draw failed reports nothing, never the wake before', () => {
+  const it = (id) => ({ id, pool: 'wikipedia', door: 'title' });
+  const desk = [it('d-20261013-1111-a'), it('d-20261013-1111-b')];
+  assert.deepEqual(drawnThisWake(desk, new Set()).map((d) => d.id), ['d-20261013-1111-a', 'd-20261013-1111-b']);
+  assert.deepEqual(drawnThisWake(desk, new Set(['d-20261013-1111-a', 'd-20261013-1111-b'])), []);
+  assert.deepEqual(drawnThisWake([{ id: 'd-20261012-084308', kind: 'arxiv' }], new Set()), []);
+  assert.match(formatMorningLine({ started: '2026-10-14T07:00:00+07:00', cost_usd: 0, cap_usd: 5, verdict: 'clean', desk: drawnThisWake(desk, new Set(desk.map((d) => d.id))) }), /desk: nothing drawn/);
 });
 
 test('lastDesk: the newest wake\'s two items, or an old lone item', () => {

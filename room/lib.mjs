@@ -123,6 +123,14 @@ export function lastDesk(items) {
   return m ? list.filter((i) => i.id === `${m[1]}-a` || i.id === `${m[1]}-b`) : [list[list.length - 1]];
 }
 
+// This wake's draw for the morning line: the newest pair, but only items that were
+// not already there at the last commit (publish-hour.sh commits after every run).
+// A wake whose every pool failed wrote nothing, and must read "nothing drawn",
+// never the wake before's pair.
+export function drawnThisWake(items, oldIds) {
+  return lastDesk(items).filter((d) => d.pool && !oldIds.has(d.id));
+}
+
 // The private drawer: anything marked private never reaches the page.
 export function visible(items) {
   return Array.isArray(items) ? items.filter((i) => i && i.private !== true) : [];

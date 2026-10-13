@@ -35,7 +35,7 @@ import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { homedir } from 'node:os';
-import { buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, lastDesk, STATE_NAMES, DOOR } from '../lib.mjs';
+import { buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, drawnThisWake, STATE_NAMES, DOOR } from '../lib.mjs';
 
 const ROOM = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHRON = join(ROOM, '..');
@@ -117,7 +117,7 @@ const newQuill = fresh('quill');
 const newVerdicts = newQuill.filter((q) => q.door !== 'talk');
 const talks = newQuill.length - newVerdicts.length;
 // the desk this wake: the two items the launcher drew and the one she took up, if any
-const desk = lastDesk(now.desk).filter((d) => d.pool);
+const desk = drawnThisWake(now.desk, ids(before('desk')));
 const took = desk.filter((d) => d.taken).map((d) => d.title).join('" and "');
 const entry = {
   run: bkk(startedMs).slice(0, 16).replace(/[-:]/g, '').replace('T', '-'),
