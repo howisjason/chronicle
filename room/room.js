@@ -124,9 +124,11 @@ function md(text, box) {
 }
 
 // ------------------------------------------------------------------ the cards (today's lists and the wall draw the same way)
-// Quill's newest verdict on a build, at any door but a talk
+// Quill's newest verdict on a build, at any door but a talk. Her ledger names a build
+// by its id, alone or followed by a colon, comma or space ("meet: do the three forces meet?").
 const verdictOn = (id) => {
-  const q = S.quill && S.quill.ok ? visible(S.quill.data).filter((x) => x.subject === id && x.door !== 'talk') : [];
+  const names = (subject) => subject === id || [':', ',', ' '].some((c) => String(subject || '').startsWith(id + c));
+  const q = S.quill && S.quill.ok ? visible(S.quill.data).filter((x) => names(x.subject) && x.door !== 'talk') : [];
   const v = q[q.length - 1];
   return v ? ` · Quill at ${v.door}: ${v.verdict === 'no' ? 'NO' : 'yes'}` : '';
 };
