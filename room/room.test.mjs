@@ -10,7 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness } from './lib.mjs';
+import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, lastDesk } from './lib.mjs';
 
 const R = '/Users/howisjason/Projects/chronicle/room';
 const B = '/Users/howisjason/Projects/march-7th/march-brain';
@@ -42,6 +42,7 @@ test('kindOf follows the plan table, row by row', () => {
     [['Bash', { command: `node ${R}/tools/room.mjs page on-vega "On Vega" shelf/on-vega.md` }], { kind: 'writing', place: 'shelf' }],
     [['Bash', { command: `node ${R}/tools/room.mjs quill pin "x" yes "y"` }], { kind: 'idle', place: 'none' }],
     [['Edit', { file_path: `${R}/state/quill.json` }], { kind: 'idle', place: 'none' }],
+    [['Bash', { command: `node ${R}/tools/room.mjs desk d-20261014-ab12-a` }], { kind: 'reading', place: 'desk' }],
   ];
   for (const [[name, input], want] of rows) assert.deepEqual(kindOf(name, input), want, `${name} ${JSON.stringify(input)}`);
 });
@@ -112,13 +113,52 @@ test('validate refuses a desk item with no id, no at, or a kind it does not know
 });
 
 test('the morning line, exactly', () => {
+  const desk = [{ pool: 'wikipedia', door: 'summary' }, { pool: 'commons', door: 'picture' }];
   const e = { started: '2026-10-12T07:03:10+07:00', cost_usd: 1.234, cap_usd: 4, verdict: 'clean', pins: 2,
-    bench_steps: [{ id: 'clock', n: 3, status: 'half' }], cloud: 1, shelf: 0, quill: { yes: 2, no: 1, called: 3, recorded: 3 } };
+    bench_steps: [{ id: 'clock', n: 3, status: 'half' }], cloud: 1, shelf: 0, quill: { yes: 2, no: 1, called: 3, recorded: 3 }, desk, took: 'Vega', talks: 1 };
   assert.equal(formatMorningLine(e, { clock: 'A clock that knows the moon' }),
-    '- **2026-10-12 — the room:** 2 pins, bench: "A clock that knows the moon" +3 steps (half), 1 in the cloud, 0 on the shelf, Quill: 2 yes / 1 no; $1.23 of $4 used (31%), clean.');
-  const zero = { started: '2026-10-13T07:02:00+07:00', cost_usd: 0.31, cap_usd: 4, verdict: 'clean', pins: 0, bench_steps: [], cloud: 0, shelf: 0, quill: { yes: 0, no: 0, called: 0, recorded: 0 } };
-  assert.equal(formatMorningLine(zero), '- **2026-10-13 — the room:** nothing new in the room; $0.31 of $4 used (8%), clean.');
-  assert.equal(formatMorningLine({ ...zero, used_new: 2 }), '- **2026-10-13 — the room:** 0 pins, bench: nothing new, 0 in the cloud, 0 on the shelf, Quill: 0 yes / 0 no, used: 2; $0.31 of $4 used (8%), clean.');
+    '- **2026-10-12 — the room:** 2 pins, bench: "A clock that knows the moon" +3 steps (half), 1 in the cloud, 0 on the shelf, Quill: 2 yes / 1 no, desk: wikipedia/summary, commons/picture; took "Vega"; talks: 1; $1.23 of $4 used (31%), clean.');
+  const zero = { started: '2026-10-13T07:02:00+07:00', cost_usd: 0.31, cap_usd: 4, verdict: 'clean', pins: 0, bench_steps: [], cloud: 0, shelf: 0, quill: { yes: 0, no: 0, called: 0, recorded: 0 }, desk, talks: 0 };
+  assert.equal(formatMorningLine(zero), '- **2026-10-13 — the room:** nothing new in the room, desk: wikipedia/summary, commons/picture; took neither; talks: 0; $0.31 of $4 used (8%), clean.');
+  assert.equal(formatMorningLine({ ...zero, used_new: 2 }), '- **2026-10-13 — the room:** 0 pins, bench: nothing new, 0 in the cloud, 0 on the shelf, Quill: 0 yes / 0 no, desk: wikipedia/summary, commons/picture; took neither; talks: 0, used: 2; $0.31 of $4 used (8%), clean.');
+  // a talk with Quill is something new, even with nothing else made
+  assert.match(formatMorningLine({ ...zero, talks: 2 }), /Quill: 0 yes \/ 0 no, desk: .*; talks: 2;/);
+  assert.match(formatMorningLine({ ...zero, desk: [] }), /desk: nothing drawn; took neither/);
+});
+
+test('validate: the second day\'s desk, wall and Quill doors, and the bad cases refused', () => {
+  const d = { id: 'd-20261014-ab12-a', at: '2026-10-14', pool: 'commons', door: 'picture', title: 'File:Owl.jpg', url: 'https://commons.wikimedia.org/wiki/File:Owl.jpg', shown: 'https://upload.wikimedia.org/x/Owl.jpg' };
+  assert.equal(validate('desk', [d]).ok, true);
+  assert.equal(validate('desk', [{ ...d, taken: '2026-10-14' }]).ok, true);
+  assert.equal(validate('desk', [{ ...d, pool: 'openstreetmap' }]).ok, false);
+  assert.equal(validate('desk', [{ ...d, door: 'smell' }]).ok, false);
+  assert.equal(validate('desk', [{ ...d, shown: '' }]).ok, false);
+  assert.equal(validate('desk', [{ ...d, taken: 'soon' }]).ok, false);
+  const w = { id: 'clock', title: 'A clock', started: '2026-10-12', status: 'done', path: 'bench/clock', kind: 'bench', day: '2026-10-12' };
+  assert.equal(validate('wall', [w, { ...w, kind: 'shelf', path: 'shelf/clock.md' }]).ok, true); // same id, two kinds
+  assert.equal(validate('wall', [w, w]).ok, false);
+  assert.equal(validate('wall', [{ ...w, kind: 'cloud' }]).ok, false);
+  assert.equal(validate('wall', [{ ...w, day: undefined }]).ok, false);
+  assert.equal(validate('wall', [{ ...w, path: undefined }]).ok, false);
+  assert.equal(validate('wall', [{ id: 'p', title: 't', kind: 'board', day: '2026-10-12', url: 'file:///etc/hosts' }]).ok, false);
+  const q = { id: 'q1', at: '2026-10-14', door: 'talk', subject: 'x', verdict: 'yes', reason: 'y' };
+  assert.equal(validate('quill', [q, { ...q, id: 'q2', door: 'sentence' }]).ok, true);
+  assert.equal(validate('quill', [{ ...q, door: 'chat' }]).ok, false);
+});
+
+test('visible drops private items from the real wall', () => {
+  const wall = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'state/wall.json'), 'utf8'));
+  assert.equal(validate('wall', wall).ok, true);
+  const planted = [{ ...wall[0], id: 'secret', private: true }, ...wall];
+  assert.deepEqual(visible(planted).map((i) => i.id), wall.map((i) => i.id));
+});
+
+test('lastDesk: the newest wake\'s two items, or an old lone item', () => {
+  const old = { id: 'd-20261012-084308' }, a1 = { id: 'd-20261013-1111-a' }, b1 = { id: 'd-20261013-1111-b' }, a2 = { id: 'd-20261014-2222-a' }, b2 = { id: 'd-20261014-2222-b' };
+  assert.deepEqual(lastDesk([old, a1, b1, a2, b2]), [a2, b2]);
+  assert.deepEqual(lastDesk([old, a1, b1, a2]), [a2]);
+  assert.deepEqual(lastDesk([a1, b1, old]), [old]);
+  assert.deepEqual(lastDesk([]), []);
 });
 
 // The room command, run against a COPY of state/ (ROOM_STATE), never the real lists.
@@ -151,7 +191,7 @@ test('the room command refuses a bad status and leaves the file exactly as it wa
   assert.match(r.out, /^refused: /);
   assert.equal(readFileSync(join(d, 'bench.json'), 'utf8'), before);
   assert.equal(roomCmd(d, 'build', 'Bad Id!', 'x').code, 2);
-  assert.equal(roomCmd(d, 'quill', 'door-nobody-keeps', 'x', 'yes', 'y').code, 2);
+  assert.equal(roomCmd(d, 'quill', 'door-nobody-keeps', 'x', 'yes', 'y', 'NOTEBOOK: a line').code, 2);
   assert.equal(roomCmd(d, 'page', 'escape', 'x', 'shelf/../../tools/room.mjs').code, 2);
   assert.equal(roomCmd(d, 'page', 'nothing-yet', 'x', 'shelf/not-written.md').code, 2);
 });
@@ -164,7 +204,7 @@ test('the room command: steps, used, quill and judged land in the shapes the pag
   const b = JSON.parse(readFileSync(join(d, 'bench.json'), 'utf8')).find((i) => i.id === 'moon-clock');
   assert.equal(b.steps[0].note, 'the first step');
   assert.equal(b.used_by[0].who, 'J');
-  const q = roomCmd(d, 'quill', 'build', 'moon-clock', 'no', 'too big').out.trim().replace('quill: ', '');
+  const q = roomCmd(d, 'quill', 'build', 'moon-clock', 'no', 'too big', 'NOTEBOOK: shown a clock, said too big').out.trim().replace('quill: ', '');
   assert.match(q, /^q-\d{8}-[a-z0-9]{4}-build-\d+$/);
   assert.equal(roomCmd(d, 'judged', q, 'right').code, 0);
   assert.equal(roomCmd(d, 'judged', q, 'maybe').code, 2);
@@ -180,4 +220,67 @@ test('sameness: the same night again is 100, a different night is 0, and nothing
   assert.equal(sameness(night, [other]), 0);
   assert.equal(sameness(night, []), 0);
   assert.equal(sameness(night, [other, night]), 100);
+});
+
+const roomEnv = (dir, env, ...args) => {
+  try { return { code: 0, out: execFileSync('node', [join(HERE, 'tools/room.mjs'), ...args], { env: { ...process.env, ROOM_STATE: dir, ...env }, encoding: 'utf8' }) }; }
+  catch (e) { return { code: e.status, out: String(e.stdout) }; }
+};
+const J = (d, name) => JSON.parse(readFileSync(join(d, `${name}.json`), 'utf8'));
+
+test('day-ends moves the bench, shelf and board to the front of the wall, empties them, and is safe twice', () => {
+  const d = copyState();
+  writeFileSync(join(d, 'shelf.json'), '[]\n'); writeFileSync(join(d, 'board.json'), '[]\n');
+  const wallBefore = J(d, 'wall');
+  assert.equal(roomCmd(d, 'build', 'tide-clock', 'A tide clock').code, 0);
+  mkdirSync(join(d, '..', 'shelf'), { recursive: true });
+  writeFileSync(join(d, 'board.json'), JSON.stringify([{ id: '20261014-0700-aa11', at: '2026-10-14', title: 'A pin', url: 'https://example.com', thumb: 'board/x.jpg', note: 'n' }]));
+  const benchBefore = J(d, 'bench');
+  assert.equal(roomCmd(d, 'day-ends').code, 2, 'refused without the launcher\'s word');
+  assert.deepEqual(J(d, 'bench'), benchBefore, 'and nothing moved');
+  const r = roomEnv(d, { ROOM_DAY_ENDS: '1' }, 'day-ends');
+  assert.equal(r.code, 0, r.out);
+  assert.match(r.out, new RegExp(`${benchBefore.length + 1} moved`));
+  for (const k of ['bench', 'shelf', 'board']) assert.deepEqual(J(d, k), []);
+  const wall = J(d, 'wall');
+  assert.equal(wall.length, wallBefore.length + benchBefore.length + 1);
+  const tide = wall.find((i) => i.id === 'tide-clock');
+  assert.equal(tide.kind, 'bench'); assert.match(tide.day, /^\d{4}-\d{2}-\d{2}$/); assert.equal(tide.title, 'A tide clock');
+  assert.equal(wall.find((i) => i.kind === 'board').title, 'A pin');
+  assert.deepEqual(wall.slice(-wallBefore.length), wallBefore, 'the old wall stays behind the new things, untouched');
+  assert.equal(validate('wall', wall).ok, true);
+  const again = roomEnv(d, { ROOM_DAY_ENDS: '1' }, 'day-ends');
+  assert.match(again.out, /0 moved/);
+  assert.deepEqual(J(d, 'wall'), wall);
+  // an id on the wall cannot be built again (its files still sit at bench/<id>/)
+  assert.equal(roomCmd(d, 'build', 'tide-clock', 'Again').code, 2);
+  // a build on the wall can still be marked used
+  assert.equal(roomCmd(d, 'used', 'tide-clock', 'March', 'read a tide').code, 0);
+  assert.equal(J(d, 'wall').find((i) => i.id === 'tide-clock').used_by[0].how, 'read a tide');
+});
+
+test('desk marks today\'s item taken and refuses an unknown or older id', () => {
+  const d = copyState();
+  const item = (id, pool) => ({ id, at: '2026-10-14', pool, door: 'title', title: id, shown: id });
+  writeFileSync(join(d, 'desk.json'), JSON.stringify([item('d-20261013-1111-a', 'wikipedia'), item('d-20261013-1111-b', 'archive'), item('d-20261014-2222-a', 'commons'), item('d-20261014-2222-b', 'wiktionary')]));
+  assert.equal(roomCmd(d, 'desk', 'd-20261099-0000-a').code, 2);
+  assert.equal(roomCmd(d, 'desk', 'd-20261013-1111-a').code, 2, 'yesterday\'s desk is not today\'s');
+  const before = readFileSync(join(d, 'desk.json'), 'utf8');
+  assert.equal(readFileSync(join(d, 'desk.json'), 'utf8'), before);
+  assert.equal(roomCmd(d, 'desk', 'd-20261014-2222-b').code, 0);
+  const desk = J(d, 'desk');
+  assert.match(desk[3].taken, /^\d{4}-\d{2}-\d{2}$/);
+  assert.equal(desk[2].taken, undefined);
+});
+
+test('quill: talk and sentence doors, and the notebook line lands verbatim without its label', () => {
+  const d = copyState();
+  assert.equal(roomCmd(d, 'quill', 'talk', 'a question about tides', 'yes', 'Shiny.').code, 2, 'no notebook line, refused');
+  assert.equal(roomCmd(d, 'quill', 'talk', 'a question about tides', 'yes', 'Shiny.', 'NOTEBOOK: she asked about tides; second sea thing this week').code, 0);
+  assert.equal(roomCmd(d, 'quill', 'sentence', 'the new words', 'no', 'writes grace back in', 'NOTEBOOK: shown a new first sentence, said no').code, 0);
+  const lines = readFileSync(join(d, 'quill-notebook.md'), 'utf8').trim().split('\n');
+  assert.match(lines[0], /^- \d{4}-\d{2}-\d{2}  talk  she asked about tides; second sea thing this week$/);
+  assert.match(lines[1], /^- \d{4}-\d{2}-\d{2}  sentence  shown a new first sentence, said no$/);
+  const ql = J(d, 'quill');
+  assert.deepEqual(ql.slice(-2).map((q) => q.door), ['talk', 'sentence']);
 });

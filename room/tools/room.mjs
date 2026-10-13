@@ -16,19 +16,32 @@
 //   node room.mjs status <id> half|done|dropped       bench
 //   node room.mjs used <id> "<who>" "<how>"           bench: someone used it
 //   node room.mjs page <id> "<title>" shelf/<file>.md [--private]
-//   node room.mjs quill build|pin|finish "<subject>" yes|no "<reason>"
+//   node room.mjs quill build|pin|finish|talk|sentence "<subject>" yes|no "<reason>" "<Quill's NOTEBOOK line>"
+//                                                     (a talk asks no verdict: pass yes)
 //   node room.mjs judged <quill-id> right|wrong       an old verdict, judged later
+//   node room.mjs desk <desk-id>                      the desk: the item you took up
 //
-// It writes state/{cloud,bench,shelf,quill}.json and nothing else. board.json is
-// pin.sh's; log.jsonl, now.json, desk.json and used.json are the clock's.
-// ROOM_STATE points it at a copy of state/ for the tests only.
-import { readFileSync, writeFileSync, existsSync, realpathSync } from 'node:fs';
+// It writes state/{cloud,bench,shelf,quill}.json, `taken` on today's desk items,
+// `used_by` on a bench item already on the wall, and appends Quill's notebook line
+// to quill-notebook.md; nothing else. board.json is pin.sh's; log.jsonl, now.json
+// and used.json are the clock's, and so is the rest of desk.json.
+//
+//   ROOM_DAY_ENDS=1 node room.mjs day-ends            the launcher's, before each wake
+// moves everything on the bench, shelf and board onto the front of wall.json and
+// empties those three, so she wakes to an empty room and the page keeps it all
+// (J's decision 1, 13 Oct 2026). It needs ROOM_DAY_ENDS=1 because her grant names
+// this file with any words after it, and a wall-sweep in the middle of her session
+// would take her own work off "today" before the page showed it.
+// ROOM_STATE points it at a copy of state/ for the tests only (the notebook then
+// lives in that copy too).
+import { readFileSync, writeFileSync, appendFileSync, existsSync, realpathSync } from 'node:fs';
 import { dirname, join, resolve, relative, isAbsolute } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validate } from '../lib.mjs';
+import { validate, lastDesk } from '../lib.mjs';
 
 const ROOM = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const STATE = process.env.ROOM_STATE || join(ROOM, 'state');
+const NOTEBOOK = process.env.ROOM_STATE ? join(STATE, 'quill-notebook.md') : join(ROOM, 'quill-notebook.md');
 
 const refuse = (why) => { console.log(`refused: ${why}`); process.exit(2); };
 const args = process.argv.slice(2);
@@ -64,6 +77,8 @@ const freshId = (list, prefix, middle = '') => {
   for (let n = 1; ; n++) { const id = `${prefix}-${stamp()}${middle ? `-${middle}` : ''}-${n}`; if (!ids.has(id)) return id; }
 };
 const mark = (item) => (priv ? { ...item, private: true } : item);
+// an id already on the wall is taken for good: its files still sit at bench/<id>/ or shelf/
+const onWall = (kind, id) => read('wall').some((i) => i && i.kind === kind && i.id === id);
 
 switch (cmd) {
   case 'thought': {
@@ -81,6 +96,7 @@ switch (cmd) {
   case 'build': {
     const list = read('bench'), id = idOk(rest[0]);
     if (list.some((i) => i && i.id === id)) refuse(`bench already has "${id}"`);
+    if (onWall('bench', id)) refuse(`"${id}" is already on the wall; pick another id`);
     const at = now();
     write('bench', [...list, mark({ id, title: need(rest[1], 'a title, in quotes'), started: at, updated: at, status: 'half', path: `bench/${id}`, steps: [], used_by: [] })], `bench: ${id}`);
     break;
@@ -100,9 +116,14 @@ switch (cmd) {
     break;
   }
   case 'used': {
-    const list = read('bench'), b = find(list, idOk(rest[0]), 'bench');
+    // a build used again is most often one already on the wall (the bench test)
+    const id = idOk(rest[0]);
+    const bench = read('bench'), wall = read('wall');
+    const name = bench.some((i) => i && i.id === id) ? 'bench' : 'wall';
+    const list = name === 'bench' ? bench : wall;
+    const b = list.find((i) => i && i.id === id && (name === 'bench' || i.kind === 'bench')) || refuse(`no build "${id}" on the bench or the wall`);
     b.used_by = [...(Array.isArray(b.used_by) ? b.used_by : []), { who: need(rest[1], 'who used it'), at: now(), how: need(rest[2], 'how it was used') }];
-    write('bench', list, `bench: ${b.id} used ${b.used_by.length}×`);
+    write(name, list, `${name}: ${b.id} used ${b.used_by.length}×`);
     break;
   }
   case 'page': {
@@ -113,14 +134,47 @@ switch (cmd) {
     if (rel.startsWith('..') || isAbsolute(rel)) refuse('the path must stay inside shelf/');
     if (!existsSync(full) || relative(realpathSync(join(ROOM, 'shelf')), realpathSync(full)).startsWith('..')) refuse(`${path} does not exist yet; write the page first`);
     if (list.some((i) => i && i.id === id)) refuse(`shelf already has "${id}"`);
+    if (onWall('shelf', id)) refuse(`"${id}" is already on the wall; pick another id`);
     write('shelf', [...list, mark({ id, title, at: now(), path })], `shelf: ${id}`);
     break;
   }
   case 'quill': {
-    const list = read('quill'), door = need(rest[0], 'a door: build, pin or finish');
+    const list = read('quill'), door = need(rest[0], 'a door: build, pin, finish, talk or sentence');
     const item = { id: freshId(list, 'q', /^[a-z]+$/.test(door) ? door : 'x'), at: now(), door, subject: need(rest[1], 'the subject, in quotes'),
       verdict: need(rest[2], 'yes or no'), reason: need(rest[3], "Quill's reason, in quotes"), judged: 'unknown' };
+    // Quill's notebook (quill.md): its own NOTEBOOK line, verbatim, one line a call,
+    // dated by the day only (J's word, 12 Oct 2026: no clock time in what she reads)
+    const note = need(rest[4], "Quill's NOTEBOOK line, in quotes, as the fifth word").replace(/^\s*NOTEBOOK:\s*/i, '').replace(/\s+/g, ' ').trim();
+    if (!note) refuse("Quill's NOTEBOOK line is empty");
     write('quill', [...list, item], `quill: ${item.id}`);
+    appendFileSync(NOTEBOOK, `- ${now()}  ${door}  ${note}\n`);
+    break;
+  }
+  case 'desk': {
+    const list = read('desk'), id = idOk(rest[0], 'a desk id');
+    const d = lastDesk(list).find((i) => i.id === id) || refuse(`"${id}" is not on today's desk`);
+    d.taken = now();
+    write('desk', list, `desk: took ${d.id}`);
+    break;
+  }
+  case 'day-ends': {
+    if (process.env.ROOM_DAY_ENDS !== '1') refuse('day-ends is the launcher\'s, before a wake');
+    const wall = read('wall'), moved = [];
+    const has = new Set(wall.map((i) => i && `${i.kind}:${i.id}`));
+    for (const [kind, when] of [['bench', 'started'], ['shelf', 'at'], ['board', 'at']]) {
+      // lists are appended oldest first, the wall is newest first
+      for (const item of [...read(kind)].reverse()) {
+        if (!item || has.has(`${kind}:${item.id}`)) continue;  // already moved by a run that stopped halfway
+        moved.push({ ...item, kind, day: String(item[when] || '').slice(0, 10) });
+      }
+    }
+    moved.sort((a, b) => (a.day < b.day ? 1 : a.day > b.day ? -1 : 0));
+    const v = validate('wall', [...moved, ...wall]);
+    if (!v.ok) refuse(v.problems.join('; '));
+    // the wall first, then the emptying: a stop in between leaves duplicates the next run skips
+    writeFileSync(join(STATE, 'wall.json'), JSON.stringify([...moved, ...wall], null, 2) + '\n');
+    for (const kind of ['bench', 'shelf', 'board']) writeFileSync(join(STATE, `${kind}.json`), '[]\n');
+    console.log(`day-ends: ${moved.length} moved to the wall`);
     break;
   }
   case 'judged': {

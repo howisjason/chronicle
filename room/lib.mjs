@@ -45,6 +45,7 @@ export function kindOf(name, input) {
       if (m[1] === 'thought' || m[1] === 'drop-thought') return { kind: 'thinking', place: 'cloud' };
       if (['build', 'step', 'status', 'used'].includes(m[1])) return { kind: 'building', place: 'bench' };
       if (m[1] === 'page') return { kind: 'writing', place: 'shelf' };
+      if (m[1] === 'desk') return { kind: 'reading', place: 'desk' };
     }
     return { kind: 'idle', place: 'none' };
   }
@@ -112,17 +113,34 @@ export function sameness(trace, previousTraces = []) {
   return Math.round(best * 100);
 }
 
+// The newest wake's desk: the launcher (free-hour.sh) draws two items a wake with
+// ids <base>-a and <base>-b, so the last item's base names the wake. A desk item
+// from before the second day has no such ending and stands alone.
+export function lastDesk(items) {
+  const list = Array.isArray(items) ? items.filter((i) => i && typeof i.id === 'string') : [];
+  if (!list.length) return [];
+  const m = /^(.*)-[ab]$/.exec(list[list.length - 1].id);
+  return m ? list.filter((i) => i.id === `${m[1]}-a` || i.id === `${m[1]}-b`) : [list[list.length - 1]];
+}
+
 // The private drawer: anything marked private never reaches the page.
 export function visible(items) {
   return Array.isArray(items) ? items.filter((i) => i && i.private !== true) : [];
 }
 
 const STATUS = new Set(['half', 'done', 'dropped']);
-const DOORS = new Set(['build', 'pin', 'finish']);
+// talk and sentence (the second day, J's yes 13 Oct 2026): a talk asks no verdict
+// (its verdict is a placeholder "yes" the page does not draw); sentence is the door
+// before her first sentence changes.
+const DOORS = new Set(['build', 'pin', 'finish', 'talk', 'sentence']);
 const VERDICTS = new Set(['yes', 'no']);
 const JUDGED = new Set(['unknown', 'right', 'wrong']);
+// Desk items from before the second day carry `kind`; from it on, `pool` and `door`.
 const DESK_KINDS = new Set(['wikipedia', 'arxiv', 'note', 'diary']);
-export const STATE_NAMES = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk'];
+export const DESK_POOLS = new Set(['wikipedia', 'archive', 'commons', 'wiktionary']);
+export const DESK_DOORS = new Set(['summary', 'picture', 'first-sentence', 'coordinates', 'one-word', 'title']);
+const WALL_KINDS = new Set(['bench', 'shelf', 'board']);
+export const STATE_NAMES = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk', 'wall'];
 
 // A state file's shape. March writes these by hand in the hour, so a slip is
 // expected (desk.json is the launcher's, free-hour.sh); the page and the script report problems and carry on.
@@ -133,24 +151,39 @@ export function validate(stateName, data) {
   data.forEach((item, n) => {
     const here = `${stateName}[${n}]`;
     if (!item || typeof item !== 'object') { problems.push(`${here}: not an object`); return; }
+    // the wall holds three kinds side by side, so an id is unique within its kind
+    const key = stateName === 'wall' ? `${item.kind}:${item.id}` : item.id;
     if (typeof item.id !== 'string' || !item.id) problems.push(`${here}: no id`);
-    else if (seen.has(item.id)) problems.push(`${here}: id "${item.id}" used twice`);
-    else seen.add(item.id);
-    const atField = stateName === 'bench' ? 'started' : 'at';
+    else if (seen.has(key)) problems.push(`${here}: id "${item.id}" used twice`);
+    else seen.add(key);
+    const atField = stateName === 'bench' ? 'started' : stateName === 'wall' ? 'day' : 'at';
     if (typeof item[atField] !== 'string' || !Number.isFinite(Date.parse(item[atField]))) problems.push(`${here}: no ${atField}`);
     if (stateName === 'bench') {
       if (!STATUS.has(item.status)) problems.push(`${here}: status must be half, done or dropped`);
       if (item.steps !== undefined && !Array.isArray(item.steps)) problems.push(`${here}: steps must be a list`);
     }
     if (stateName === 'quill') {
-      if (!DOORS.has(item.door)) problems.push(`${here}: door must be build, pin or finish`);
+      if (!DOORS.has(item.door)) problems.push(`${here}: door must be build, pin, finish, talk or sentence`);
       if (!VERDICTS.has(item.verdict)) problems.push(`${here}: verdict must be yes or no`);
       if (item.judged !== undefined && !JUDGED.has(item.judged)) problems.push(`${here}: judged must be unknown, right or wrong`);
     }
     if (stateName === 'board' && !/^https?:\/\//.test(String(item.url || ''))) problems.push(`${here}: url must be http(s)`);
     if (stateName === 'desk') {
-      if (!DESK_KINDS.has(item.kind)) problems.push(`${here}: kind must be wikipedia, arxiv, note or diary`);
+      if (item.pool === undefined) {
+        if (!DESK_KINDS.has(item.kind)) problems.push(`${here}: kind must be wikipedia, arxiv, note or diary`);
+      } else {
+        if (!DESK_POOLS.has(item.pool)) problems.push(`${here}: pool must be wikipedia, archive, commons or wiktionary`);
+        if (!DESK_DOORS.has(item.door)) problems.push(`${here}: door must be summary, picture, first-sentence, coordinates, one-word or title`);
+        if (typeof item.shown !== 'string' || !item.shown) problems.push(`${here}: no shown`);
+        if (item.taken !== undefined && !Number.isFinite(Date.parse(item.taken))) problems.push(`${here}: taken must be a time`);
+      }
       if (item.url !== undefined && !/^https?:\/\//.test(String(item.url))) problems.push(`${here}: url must be http(s)`);
+    }
+    if (stateName === 'wall') {
+      if (!WALL_KINDS.has(item.kind)) problems.push(`${here}: kind must be bench, shelf or board`);
+      if (typeof item.title !== 'string') problems.push(`${here}: no title`);
+      if (item.kind === 'board' && !/^https?:\/\//.test(String(item.url || ''))) problems.push(`${here}: url must be http(s)`);
+      if (item.kind !== 'board' && (typeof item.path !== 'string' || !item.path)) problems.push(`${here}: no path`);
     }
   });
   return { ok: problems.length === 0, problems };
@@ -171,12 +204,15 @@ export function formatMorningLine(e, titles = {}) {
   const steps = e.bench_steps || [];
   const q = e.quill || {};
   const used = Number(e.used_new) > 0 ? `, used: ${e.used_new}` : '';
-  const nothing = !e.pins && !steps.length && !e.cloud && !e.shelf && !q.recorded && !q.called && !used;
-  if (nothing) return `- **${day} — the room:** nothing new in the room; ${spend}.`;
+  // the desk's record (the second day): what was drawn, through which door, what she took
+  const drawn = (e.desk || []).map((d) => `${d.pool}/${d.door}`).join(', ') || 'nothing drawn';
+  const desk = `desk: ${drawn}; took ${e.took ? `"${e.took}"` : 'neither'}; talks: ${Number(e.talks) || 0}`;
+  const nothing = !e.pins && !steps.length && !e.cloud && !e.shelf && !q.recorded && !q.called && !used && !Number(e.talks);
+  if (nothing) return `- **${day} — the room:** nothing new in the room, ${desk}; ${spend}.`;
   const bench = steps.length
     ? steps.map((s) => `"${titles[s.id] || s.id}" +${s.n} steps (${s.status})`).join(', ')
     : 'nothing new';
   return `- **${day} — the room:** ${e.pins || 0} pins, bench: ${bench}, ${e.cloud || 0} in the cloud, ` +
-    `${e.shelf || 0} on the shelf, Quill: ${q.yes || 0} yes / ${q.no || 0} no${used}; ${spend}.`;
+    `${e.shelf || 0} on the shelf, Quill: ${q.yes || 0} yes / ${q.no || 0} no, ${desk}${used}; ${spend}.`;
 }
 
