@@ -85,6 +85,7 @@ about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 - A lab run's calls count against the live daily cap (8 Oct 2026: the labs used $1.42 of that day's $2).
 - **The voice model must be real files, never links into a session's scratch folder.** On 9 Oct 2026 both files in `station/models/` were links into a wiped scratch folder, so every scene would have failed at voicing; they are copies now (a spare set sits in `~/.local/kokoro/`).
 - A worktree of this repo needs `inbox`, `station/models` and `station/.venv` linked from the main checkout; `.gitignore`'s folder patterns do not match links, so never `git add -A` there.
+- **Room work on a branch goes in a worktree, never a `git switch` of the real checkout.** The 07:00 clock and the die run the launcher and `publish-hour.sh` from `~/Projects/chronicle` and `~/Projects/march-7th/march-brain` as they stand, so a switched checkout runs the untested branch on the live room and commits the night's room to that branch, which Pages never serves (13 Oct 2026, the second day's build: `git worktree add -b <branch> ~/Projects/march-7th/<name>/chronicle main`).
 - A `+` in a `?at=` URL arrives as a space; `player.js` restores it.
 - Two watchers pulling the same clone at once leave it dirty; `git checkout --
   day/` then pull.
