@@ -27,14 +27,14 @@
 // and used.json are the clock's, and so is the rest of desk.json.
 //
 //   ROOM_DAY_ENDS=1 node room.mjs day-ends            the launcher's, before each wake
-// moves everything on the bench, shelf and board onto the front of wall.json and
-// empties those three, so she wakes to an empty room and the page keeps it all
+// moves everything on the bench, shelf and board onto the front of wall.json, their
+// files into wall/ (the levers plan, 13 Oct 2026), and empties those three, so she wakes to an empty room and the page keeps it all
 // (J's decision 1, 13 Oct 2026). It needs ROOM_DAY_ENDS=1 because her grant names
 // this file with any words after it, and a wall-sweep in the middle of her session
 // would take her own work off "today" before the page showed it.
 // ROOM_STATE points it at a copy of state/ for the tests only (the notebook then
 // lives in that copy too).
-import { readFileSync, writeFileSync, appendFileSync, existsSync, realpathSync } from 'node:fs';
+import { readFileSync, writeFileSync, appendFileSync, existsSync, realpathSync, renameSync, mkdirSync } from 'node:fs';
 import { dirname, join, resolve, relative, isAbsolute } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validate, lastDesk } from '../lib.mjs';
@@ -171,6 +171,28 @@ switch (cmd) {
     moved.sort((a, b) => (a.day < b.day ? 1 : a.day > b.day ? -1 : 0));
     const v = validate('wall', [...moved, ...wall]);
     if (!v.ok) refuse(v.problems.join('; '));
+    // The files go with the row (the levers plan, step 0.1, 13 Oct 2026): a build's
+    // folder left in bench/ was one search away, and in Test D she found the wan-phra
+    // folder that way, so the room was empty on the lists only. bench/<id>, shelf/<f>.md
+    // and board/<id>.jpg move to wall/bench/, wall/shelf/, wall/board/, and the row's
+    // path or thumb follows. Never overwrites; a stop halfway is picked up next time
+    // (the file is already there, so the row is pointed at it). With ROOM_STATE (the
+    // tests) files move only when ROOM_ROOT names the copy's room folder.
+    const FILES = process.env.ROOM_STATE ? process.env.ROOM_ROOT : ROOM;
+    const carry = (rel) => {
+      const r = String(rel).replace(/\/$/, '');
+      if (!FILES || !/^(bench|shelf|board)\/[A-Za-z0-9._-]+$/.test(r)) return rel;
+      const from = join(FILES, r), to = join(FILES, 'wall', r);
+      if (existsSync(to)) return `wall/${r}`;
+      if (!existsSync(from)) return rel;
+      mkdirSync(dirname(to), { recursive: true });
+      renameSync(from, to);
+      return `wall/${r}`;
+    };
+    for (const m of moved) {
+      if (typeof m.path === 'string') m.path = carry(m.path);
+      if (typeof m.thumb === 'string') m.thumb = carry(m.thumb);
+    }
     // the wall first, then the emptying: a stop in between leaves duplicates the next run skips
     writeFileSync(join(STATE, 'wall.json'), JSON.stringify([...moved, ...wall], null, 2) + '\n');
     for (const kind of ['bench', 'shelf', 'board']) writeFileSync(join(STATE, `${kind}.json`), '[]\n');

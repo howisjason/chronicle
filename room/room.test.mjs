@@ -5,7 +5,7 @@
 // case fails, not only that the good case passes).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, cpSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { mkdtempSync, cpSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
@@ -261,11 +261,50 @@ test('day-ends moves the bench, shelf and board to the front of the wall, emptie
   const again = roomEnv(d, { ROOM_DAY_ENDS: '1' }, 'day-ends');
   assert.match(again.out, /0 moved/);
   assert.deepEqual(J(d, 'wall'), wall);
-  // an id on the wall cannot be built again (its files still sit at bench/<id>/)
+  // an id on the wall cannot be built again (its files moved to wall/bench/<id>/)
   assert.equal(roomCmd(d, 'build', 'tide-clock', 'Again').code, 2);
   // a build on the wall can still be marked used
   assert.equal(roomCmd(d, 'used', 'tide-clock', 'March', 'read a tide').code, 0);
   assert.equal(J(d, 'wall').find((i) => i.id === 'tide-clock').used_by[0].how, 'read a tide');
+});
+
+test('day-ends carries the files with the rows: bench folder, shelf page, pin picture; never overwrites, never climbs out', () => {
+  const root = mkdtempSync(join(tmpdir(), 'room-root-'));
+  const d = join(root, 'state');
+  cpSync(join(HERE, 'state'), d, { recursive: true });
+  for (const k of ['bench', 'shelf', 'board']) writeFileSync(join(d, `${k}.json`), '[]\n');
+  const env = { ROOM_ROOT: root };
+  assert.equal(roomEnv(d, env, 'build', 'tide-clock', 'A tide clock').code, 0);
+  assert.equal(roomEnv(d, env, 'build', 'kept', 'Its wall twin exists').code, 0);
+  mkdirSync(join(root, 'bench', 'tide-clock'), { recursive: true }); writeFileSync(join(root, 'bench', 'tide-clock', 'README.md'), 'tide');
+  mkdirSync(join(root, 'bench', 'kept'), { recursive: true }); writeFileSync(join(root, 'bench', 'kept', 'README.md'), 'new');
+  mkdirSync(join(root, 'wall', 'bench', 'kept'), { recursive: true }); writeFileSync(join(root, 'wall', 'bench', 'kept', 'README.md'), 'old');
+  mkdirSync(join(root, 'shelf'), { recursive: true }); writeFileSync(join(root, 'shelf', 'on-tides.md'), '# On tides');
+  writeFileSync(join(d, 'shelf.json'), JSON.stringify([{ id: 'on-tides', title: 'On tides', at: '2026-10-14', path: 'shelf/on-tides.md' }]));
+  mkdirSync(join(root, 'board'), { recursive: true }); writeFileSync(join(root, 'board', 'p1.jpg'), 'jpg');
+  writeFileSync(join(d, 'board.json'), JSON.stringify([
+    { id: 'p1', at: '2026-10-14', title: 'A pin', url: 'https://example.com', thumb: 'board/p1.jpg', note: 'n' },
+    { id: 'p2', at: '2026-10-14', title: 'A bad pin', url: 'https://example.com', thumb: 'board/../../escape.jpg', note: 'n' }]));
+  const r = roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends');
+  assert.equal(r.code, 0, r.out);
+  const wall = J(d, 'wall');
+  const row = (kind, id) => wall.find((i) => i.kind === kind && i.id === id);
+  assert.equal(row('bench', 'tide-clock').path, 'wall/bench/tide-clock');
+  assert.equal(readFileSync(join(root, 'wall', 'bench', 'tide-clock', 'README.md'), 'utf8'), 'tide');
+  assert.equal(existsSync(join(root, 'bench', 'tide-clock')), false, 'the bench folder is gone from bench/');
+  assert.equal(row('shelf', 'on-tides').path, 'wall/shelf/on-tides.md');
+  assert.equal(existsSync(join(root, 'shelf', 'on-tides.md')), false);
+  assert.equal(row('board', 'p1').thumb, 'wall/board/p1.jpg');
+  // the bad cases: a path that climbs out is left alone; an existing wall folder is never overwritten
+  assert.equal(row('board', 'p2').thumb, 'board/../../escape.jpg');
+  assert.equal(readFileSync(join(root, 'wall', 'bench', 'kept', 'README.md'), 'utf8'), 'old', 'never overwritten');
+  assert.equal(row('bench', 'kept').path, 'wall/bench/kept');
+  // without ROOM_ROOT the test copy moves no files at all (a test never touches the real room)
+  const d2 = copyState();
+  writeFileSync(join(d2, 'bench.json'), '[]\n');
+  assert.equal(roomCmd(d2, 'build', 'x1', 'X').code, 0);
+  assert.equal(roomEnv(d2, { ROOM_DAY_ENDS: '1' }, 'day-ends').code, 0);
+  assert.equal(J(d2, 'wall').find((i) => i.id === 'x1').path, 'bench/x1');
 });
 
 test('desk marks today\'s item taken and refuses an unknown or older id', () => {

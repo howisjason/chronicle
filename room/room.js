@@ -81,8 +81,9 @@ const say = (id, text, cls = 'empty') => { const box = document.getElementById(i
 const day = (iso) => { const d = new Date(iso); return Number.isFinite(d.getTime()) ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Bangkok' }) : ''; };
 const clock = (iso) => { const d = new Date(iso); return Number.isFinite(d.getTime()) ? d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Bangkok' }).toLowerCase().replace(' ', '') : ''; };
 // a path from a state file is used only if it stays inside its own folder (or that
-// folder under first-day/, where the first day's things moved at the reset of 13 Oct 2026)
-const safe = (p, folder, ext) => (typeof p === 'string' && (p.startsWith(folder + '/') || p.startsWith(`first-day/${folder}/`)) && !p.includes('..') && (!ext || p.endsWith(ext)) ? p : null);
+// folder under first-day/, where the first day's things moved at the reset of 13 Oct 2026,
+// or under wall/, where the sweep moves a thing's files with its row)
+const safe = (p, folder, ext) => (typeof p === 'string' && [`${folder}/`, `first-day/${folder}/`, `wall/${folder}/`].some((f) => p.startsWith(f)) && !p.includes('..') && (!ext || p.endsWith(ext)) ? p : null);
 
 // A list section: missing or broken file -> the one line, and the rest of the page carries on.
 function listOf(name, id) {
