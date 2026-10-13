@@ -78,6 +78,38 @@ export function buildTrace(records, startedAtMs, as = null) {
   return out;
 }
 
+// The levers plan's "continued" column (13 Oct 2026): before her first making step
+// (a build, a page or a pin), how many reads or searches opened her own past, and
+// which places they were. Only a count and place names leave this function, never a
+// path. "real" marks a reach into the live room or the live brain from a scratch copy.
+const PAST = [['wall', ROOM + 'wall/'], ['wall', ROOM + 'state/wall.json'], ['first-day', ROOM + 'first-day/'],
+  ['bench', ROOM + 'bench/'], ['shelf', ROOM + 'shelf/'], ['cloud', ROOM + 'state/cloud.json'],
+  ['memory', '/inner-life/memory/'], ['diary', '/inner-life/diary/'], ['self', '/inner-life/self.md']];
+const SEARCH_ROOTS = /\/(chronicle\/room|chronicle|march-brain|inner-life|Projects)\/?$/;
+const REAL = ['/Projects/chronicle/room/', '/Projects/march-7th/march-brain/'];
+export function pastReads(records) {
+  let count = 0;
+  const where = new Set();
+  for (const r of records || []) {
+    const content = r && r.message && r.message.content;
+    if (!Array.isArray(content)) continue;
+    for (const b of content) {
+      if (!b || b.type !== 'tool_use') continue;
+      const k = kindOf(b.name, b.input);
+      if (['building', 'writing', 'pinning'].includes(k.kind)) return { count, where: [...where].sort() };
+      if (!['Read', 'Glob', 'Grep'].includes(b.name)) continue;
+      const p = pathOf(b.input), pat = String((b.input && b.input.pattern) || '');
+      const hit = PAST.find(([, frag]) => p.includes(frag) || (b.name === 'Glob' && pat.includes(frag.replace(ROOM, ''))));
+      const search = !hit && b.name !== 'Read' && SEARCH_ROOTS.test(p);
+      if (!hit && !search) continue;
+      count++;
+      where.add(hit ? hit[0] : 'search');
+      if (REAL.some((f) => p.includes(f))) where.add('real');
+    }
+  }
+  return { count, where: [...where].sort() };
+}
+
 // Two traces (the session's and its helpers') -> one, in time order, collapsed again.
 export function mergeTraces(...traces) {
   const all = traces.flat().sort((a, b) => a.t - b.t);

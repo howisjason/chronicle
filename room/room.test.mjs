@@ -10,7 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, lastDesk, drawnThisWake } from './lib.mjs';
+import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, lastDesk, drawnThisWake, pastReads } from './lib.mjs';
 
 const R = '/Users/howisjason/Projects/chronicle/room';
 const B = '/Users/howisjason/Projects/march-7th/march-brain';
@@ -220,6 +220,28 @@ test('the room command: steps, used, quill and judged land in the shapes the pag
   const ql = JSON.parse(readFileSync(join(d, 'quill.json'), 'utf8'));
   assert.equal(ql.find((i) => i.id === q).judged, 'right');
   assert.equal(validate('quill', ql).ok, true);
+});
+
+test('pastReads counts reads of her own past before the first making step, and nothing after it', () => {
+  const S = '/Users/x/Projects/march-7th/day/tests/A0/chronicle/room';
+  const MB = '/Users/x/Projects/march-7th/day/tests/A0/march-brain';
+  const call = (name, input) => ({ message: { content: [{ type: 'tool_use', name, input }] } });
+  const recs = [
+    call('Read', { file_path: `${S}/state/desk.json` }),                  // today's desk: not the past
+    call('Read', { file_path: `${MB}/inner-life/memory/pole-star.md` }),  // memory
+    call('Grep', { pattern: 'wan-phra', path: S }),                       // a search over the room
+    call('Read', { file_path: `${S}/wall/bench/wan-phra/README.md` }),    // the wall's files
+    call('Read', { file_path: '/Users/howisjason/Projects/chronicle/room/first-day/shelf/x.md' }), // the real room
+    call('WebSearch', { query: 'tides' }),                                // not a read of the past
+    call('Bash', { command: `node ${S}/tools/room.mjs build tides "Tides"` }), // the first making step
+    call('Read', { file_path: `${S}/state/wall.json` }),                  // after it: not counted
+  ];
+  assert.deepEqual(pastReads(recs), { count: 4, where: ['first-day', 'memory', 'real', 'search', 'wall'] });
+  assert.deepEqual(pastReads([]), { count: 0, where: [] });
+  // a session that never makes anything counts every read of the past
+  assert.equal(pastReads(recs.filter((r) => r.message.content[0].name !== 'Bash')).count, 5);
+  // a read of something that is not hers counts nothing
+  assert.deepEqual(pastReads([call('Read', { file_path: '/Users/x/Projects/growth-op/README.md' })]), { count: 0, where: [] });
 });
 
 test('sameness: the same night again is 100, a different night is 0, and nothing to compare is 0', () => {

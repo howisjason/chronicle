@@ -35,7 +35,7 @@ import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { homedir } from 'node:os';
-import { buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, drawnThisWake, STATE_NAMES, DOOR } from '../lib.mjs';
+import { buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, drawnThisWake, pastReads, STATE_NAMES, DOOR } from '../lib.mjs';
 
 const ROOM = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHRON = join(ROOM, '..');
@@ -130,6 +130,10 @@ const entry = {
   sameness: sameness(trace, jsonl(join(STATE, 'log.jsonl')).slice(-7).map((e) => e.trace)),
   broken,
 };
+// A scratch test (the levers plan, 13 Oct 2026) stamps its cell and the "continued"
+// count into its own log; a live wake never sets FREE_HOUR_CELL, so the public log
+// gains nothing.
+if (process.env.FREE_HOUR_CELL) { entry.cell = process.env.FREE_HOUR_CELL; entry.continued = pastReads(main); }
 
 // 4b. the "I used this" presses: the door's counts, copied into state/used.json
 // ({id: n}). A door that is down never fails the run; it is named in the problems
