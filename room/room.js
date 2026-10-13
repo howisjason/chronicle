@@ -1,5 +1,6 @@
 // room.js: draws March's room from its plain files. Reads state/*.json,
-// state/log.jsonl (desk.json is the launcher's), shelf/*.md and a build's demo.html or demo.txt; writes
+// state/log.jsonl (desk.json and wall.json are the launcher's), quill-notebook.md,
+// shelf/*.md and a build's demo.html or demo.txt; writes
 // nothing to the repo. The one thing it sends: a press of "I used this" on a bench
 // card goes to the door (POST /used), whose counts it reads back (GET /used,
 // else state/used.json, the copy log-run.mjs keeps). Every list passes through visible() first, so an item
@@ -19,8 +20,13 @@
 // seconds are squeezed into about 55: in proportion, never real time. March has
 // no legs that walk on the base yet, so she slides between spots. Then she idles
 // at the bench. Clicking a place in the picture opens the list it names below.
+//
+// TODAY AND THE WALL (the second day, J's decision 1 and 6, 13 Oct 2026): the
+// lists at the top hold what the last session left; before the next wake the
+// launcher moves them onto the wall (state/wall.json), drawn below grouped by day,
+// newest first. So the page never empties, though she wakes to an empty room.
 import { makeMarch } from '../march-base.js';
-import { visible, validate, DOOR } from './lib.mjs';
+import { visible, validate, lastDesk, DOOR } from './lib.mjs';
 
 const W = 320, H = 160, FLOOR = 140;
 const cv = document.getElementById('room');
@@ -74,8 +80,9 @@ const el = (tag, attrs = {}, ...kids) => {
 const say = (id, text, cls = 'empty') => { const box = document.getElementById(id); box.replaceChildren(el('p', { class: cls }, text)); };
 const day = (iso) => { const d = new Date(iso); return Number.isFinite(d.getTime()) ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Bangkok' }) : ''; };
 const clock = (iso) => { const d = new Date(iso); return Number.isFinite(d.getTime()) ? d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Bangkok' }).toLowerCase().replace(' ', '') : ''; };
-// a path from a state file is used only if it stays inside its own folder
-const safe = (p, folder, ext) => (typeof p === 'string' && p.startsWith(folder + '/') && !p.includes('..') && (!ext || p.endsWith(ext)) ? p : null);
+// a path from a state file is used only if it stays inside its own folder (or that
+// folder under first-day/, where the first day's things moved at the reset of 13 Oct 2026)
+const safe = (p, folder, ext) => (typeof p === 'string' && (p.startsWith(folder + '/') || p.startsWith(`first-day/${folder}/`)) && !p.includes('..') && (!ext || p.endsWith(ext)) ? p : null);
 
 // A list section: missing or broken file -> the one line, and the rest of the page carries on.
 function listOf(name, id) {
@@ -116,39 +123,65 @@ function md(text, box) {
   flush();
 }
 
+// ------------------------------------------------------------------ the cards (today's lists and the wall draw the same way)
+// Quill's newest verdict on a build, at any door but a talk
+const verdictOn = (id) => {
+  const q = S.quill && S.quill.ok ? visible(S.quill.data).filter((x) => x.subject === id && x.door !== 'talk') : [];
+  const v = q[q.length - 1];
+  return v ? ` · Quill at ${v.door}: ${v.verdict === 'no' ? 'NO' : 'yes'}` : '';
+};
+function benchCard(b) {
+  const path = safe(String(b.path || '').replace(/\/$/, ''), 'bench');
+  // "used" is the presses on the button plus the uses March typed by hand (used_by)
+  const typed = Array.isArray(b.used_by) ? b.used_by.length : 0;
+  const usedText = () => { const n = (USED[b.id] || 0) + typed; return n ? ` · used ${n}×` : ''; };
+  const usedSpan = el('span', { class: 'used' }, usedText());
+  const press = el('button', { type: 'button', class: 'usedbtn' }, 'I used this');
+  press.addEventListener('click', async () => {
+    press.disabled = true;
+    try {
+      const r = await fetch(`${DOOR}/used`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: b.id }) });
+      press.textContent = r.ok ? 'thank you' : ((await r.json().catch(() => ({}))).error || 'that did not go through');
+      await loadUsed();
+      usedSpan.textContent = usedText();
+    } catch { press.textContent = 'that did not go through'; }
+  });
+  const face = el('div');
+  const card = el('div', { class: 'card' }, el('b', {}, b.title || b.id), el('span', { class: 'tag' }, b.status || '?'), face,
+    el('div', { class: 'meta' }, `${Array.isArray(b.steps) ? b.steps.length : 0} steps`, usedSpan, verdictOn(b.id), ` · started ${day(b.started)} · `,
+      path ? el('a', { href: `https://github.com/howisjason/chronicle/tree/main/room/${path}` }, 'the files') : '', ' ', press));
+  if (path) showFace(path, face);
+  return card;
+}
+function boardCard(p) {
+  const thumb = safe(p.thumb, 'board', '.jpg');
+  const href = /^https?:\/\//.test(String(p.url)) ? p.url : null;
+  return el('div', { class: 'card' }, thumb ? el('img', { src: thumb, alt: '', loading: 'lazy' }) : el('div', { class: 'titlecard' }, p.title || ''),
+    el('b', {}, href ? el('a', { href, rel: 'noopener' }, p.title || href) : (p.title || '')), p.note || '', el('div', { class: 'dim small' }, day(p.at)));
+}
+// a page on the wall opens inside its own card
+function shelfCard(s) {
+  const path = safe(s.path, 'shelf', '.md');
+  const page = el('article', { class: 'inpage', hidden: '' });
+  const card = el('div', { class: 'card' });
+  const a = el('a', { href: path ? `#${s.id}` : undefined }, s.title || s.id);
+  if (path) a.addEventListener('click', async (ev) => {
+    ev.preventDefault();
+    if (!page.hidden) { page.hidden = true; card.classList.remove('faced'); return; }
+    const f = await get(path, 'text');
+    page.hidden = false; card.classList.add('faced');
+    if (f.ok) md(f.data, page); else page.replaceChildren(el('p', { class: 'bad' }, 'this page could not be read'));
+  });
+  card.append(el('span', { class: 'tag' }, 'page'), ' ', el('b', { style: 'display:inline' }, a), el('div', { class: 'dim small' }, day(s.at)), page);
+  return card;
+}
+
 // ------------------------------------------------------------------ the lists
 function drawLists() {
   const bench = listOf('bench', 'bench');
-  if (bench) document.getElementById('bench').replaceChildren(...bench.map((b) => {
-    const path = safe(String(b.path || '').replace(/\/$/, ''), 'bench');
-    // "used" is the presses on the button plus the uses March typed by hand (used_by)
-    const typed = Array.isArray(b.used_by) ? b.used_by.length : 0;
-    const usedText = () => { const n = (USED[b.id] || 0) + typed; return n ? ` · used ${n}×` : ''; };
-    const usedSpan = el('span', { class: 'used' }, usedText());
-    const press = el('button', { type: 'button', class: 'usedbtn' }, 'I used this');
-    press.addEventListener('click', async () => {
-      press.disabled = true;
-      try {
-        const r = await fetch(`${DOOR}/used`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: b.id }) });
-        press.textContent = r.ok ? 'thank you' : ((await r.json().catch(() => ({}))).error || 'that did not go through');
-        await loadUsed();
-        usedSpan.textContent = usedText();
-      } catch { press.textContent = 'that did not go through'; }
-    });
-    const face = el('div');
-    const card = el('div', { class: 'card' }, el('b', {}, b.title || b.id), el('span', { class: 'tag' }, b.status || '?'), face,
-      el('div', { class: 'meta' }, `${Array.isArray(b.steps) ? b.steps.length : 0} steps`, usedSpan, ` · started ${day(b.started)} · `,
-        path ? el('a', { href: `https://github.com/howisjason/chronicle/tree/main/room/${path}` }, 'the files') : '', ' ', press));
-    if (path) showFace(path, face);
-    return card;
-  }));
+  if (bench) document.getElementById('bench').replaceChildren(...bench.map(benchCard));
   const board = listOf('board', 'board');
-  if (board) document.getElementById('board').replaceChildren(...board.map((p) => {
-    const thumb = safe(p.thumb, 'board', '.jpg');
-    const href = /^https?:\/\//.test(String(p.url)) ? p.url : null;
-    return el('div', { class: 'card' }, thumb ? el('img', { src: thumb, alt: '', loading: 'lazy' }) : el('div', { class: 'titlecard' }, p.title || ''),
-      el('b', {}, href ? el('a', { href, rel: 'noopener' }, p.title || href) : (p.title || '')), p.note || '', el('div', { class: 'dim small' }, day(p.at)));
-  }));
+  if (board) document.getElementById('board').replaceChildren(...board.map(boardCard));
   const shelf = listOf('shelf', 'shelf');
   if (shelf) document.getElementById('shelf').replaceChildren(el('ul', {}, ...shelf.map((s) => {
     const path = safe(s.path, 'shelf', '.md');
@@ -171,15 +204,42 @@ function drawLists() {
       el('p', { class: 'small' }, `${right + wrong} no's judged so far: ${right} right, ${wrong} wrong.`),
       el('table', {},
         el('tr', {}, el('th', {}, 'when'), el('th', {}, 'door'), el('th', {}, 'what'), el('th', {}, 'verdict'), el('th', {}, 'why'), el('th', {}, 'judged')),
-        ...quill.map((q) => el('tr', {}, el('td', {}, day(q.at)), el('td', {}, q.door || ''), el('td', {}, q.subject || ''), el('td', {}, q.verdict === 'no' ? 'NO' : q.verdict || ''), el('td', {}, q.reason || ''), el('td', {}, q.judged && q.judged !== 'unknown' ? q.judged : '')))));
+        // a talk asks no verdict, so its row has none
+        ...quill.map((q) => el('tr', {}, el('td', {}, day(q.at)), el('td', {}, q.door || ''), el('td', {}, q.subject || ''), el('td', {}, q.door === 'talk' ? '' : q.verdict === 'no' ? 'NO' : q.verdict || ''), el('td', {}, q.reason || ''), el('td', {}, q.judged && q.judged !== 'unknown' ? q.judged : '')))));
   }
-  // the desk: what the clock put out before the newest hour, and the few before it
+  // Quill's notebook: its last three lines (the whole file is one click away)
+  const nb = S.notebook;
+  const nbLines = nb && nb.ok ? nb.data.split('\n').filter((l) => /^- /.test(l)).slice(-3) : [];
+  document.getElementById('notebook').replaceChildren(nbLines.length
+    ? el('ul', {}, ...nbLines.map((l) => el('li', {}, l.slice(2))))
+    : el('p', { class: 'empty' }, nb && nb.ok ? 'nothing written yet' : 'the notebook could not be read'),
+  el('p', { class: 'dim small' }, el('a', { href: 'quill-notebook.md' }, 'the whole notebook')));
+  // the desk: this wake's two things, how each was put out, which she took up; then the desks before
   const desk = listOf('desk', 'desk');
   if (desk) {
-    const item = (d) => { const href = /^https?:\/\//.test(String(d.url || '')) ? d.url : null; return [href ? el('a', { href, rel: 'noopener' }, d.title || href) : (d.title || ''), el('span', { class: 'dim small' }, ` · ${d.kind || ''}, ${day(d.at)}`)]; };
-    const [last, ...older] = desk.slice(-6).reverse();
-    document.getElementById('desk').replaceChildren(el('p', {}, 'On the desk last time: ', ...item(last)),
-      ...(older.length ? [el('ul', {}, ...older.map((d) => el('li', {}, ...item(d))))] : []));
+    const link = (d) => { const href = /^https?:\/\//.test(String(d.url || '')) ? d.url : null; return href ? el('a', { href, rel: 'noopener' }, d.title || href) : (d.title || ''); };
+    const shown = (d) => (d.door === 'picture' && /^https:\/\//.test(String(d.shown))
+      ? el('img', { src: d.shown, alt: d.title || '', loading: 'lazy' })
+      : el('p', { class: 'small' }, d.shown || ''));
+    const today = lastDesk(desk);
+    const older = desk.filter((d) => !today.includes(d)).slice(-8).reverse();
+    document.getElementById('desk').replaceChildren(
+      el('div', { class: 'cards' }, ...today.map((d) => el('div', { class: 'card' },
+        el('span', { class: 'tag' }, d.pool ? `${d.pool} · ${d.door}` : (d.kind || '')), d.taken ? el('span', { class: 'tag taken' }, 'taken') : '',
+        el('b', {}, link(d)), d.pool ? shown(d) : '', el('div', { class: 'dim small' }, day(d.at))))),
+      ...(older.length ? [el('p', { class: 'dim small' }, 'Before that:'), el('ul', {}, ...older.map((d) => el('li', {}, link(d),
+        el('span', { class: 'dim small' }, ` · ${d.pool ? `${d.pool}/${d.door}` : d.kind || ''}${d.taken ? ', taken' : ''}, ${day(d.at)}`))))] : []));
+  }
+  // the wall: everything ever made, grouped by the day it was made, newest first
+  const wall = listOf('wall', 'wall');
+  if (wall) {
+    const days = [];
+    for (const w of wall) { const last = days[days.length - 1]; if (last && last.day === w.day) last.items.push(w); else days.push({ day: w.day, items: [w] }); }
+    const make = { bench: benchCard, shelf: shelfCard, board: boardCard };
+    document.getElementById('wall').replaceChildren(...days.flatMap((g) => [
+      el('h3', { class: 'px' }, day(g.day)),
+      el('div', { class: 'cards' }, ...g.items.filter((w) => make[w.kind]).map((w) => make[w.kind](w))),
+    ]));
   }
   // the log: the last 14 hours, oldest first
   const log = S.log;
@@ -188,7 +248,7 @@ function drawLists() {
   else document.getElementById('log').replaceChildren(...log.data.slice(-14).map((e) => {
     const q = e.quill || {}, steps = (e.bench_steps || []).reduce((n, s) => n + (Number(s.n) || 0), 0);
     return el('li', {}, `${day(e.started)}, ${clock(e.started)}: ${Math.round((e.seconds || 0) / 60)} min, ${e.verdict || '?'}. ` +
-      `${e.pins || 0} pins, ${steps} bench steps, ${e.cloud || 0} thoughts, ${e.shelf || 0} pages, Quill ${q.yes || 0} yes / ${q.no || 0} no` +
+      `${e.pins || 0} pins, ${steps} bench steps, ${e.cloud || 0} thoughts, ${e.shelf || 0} pages, Quill ${q.yes || 0} yes / ${q.no || 0} no${q.talks ? `, ${q.talks} talks` : ''}` +
       `${e.broken && e.broken.length ? `; ${e.broken.length} file(s) did not parse` : ''}.`);
   }));
 }
@@ -365,10 +425,11 @@ function liveTick(t) {
 
 // ------------------------------------------------------------------ go
 (async () => {
-  const names = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk'];
-  const files = await Promise.all([...names.map((n) => get(`state/${n}.json`)), get('state/log.jsonl', 'jsonl')]);
+  const names = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk', 'wall'];
+  const files = await Promise.all([...names.map((n) => get(`state/${n}.json`)), get('state/log.jsonl', 'jsonl'), get('quill-notebook.md', 'text')]);
   names.forEach((n, k) => { S[n] = files[k]; });
   S.log = files[names.length];
+  S.notebook = files[names.length + 1];
   await loadUsed();
   try { drawLists(); } catch (e) { console.warn('lists', e); }
   try { await document.fonts.load('8px Silkscreen'); } catch { /* the fallback font draws the labels */ }

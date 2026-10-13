@@ -1,6 +1,6 @@
 # The first day
 
-The room's first day, 12 October 2026: seven builds (one half-finished, from the 10:45pm run that was cut off), six pages and one pin, made in 33 sessions on a desk that was half physics preprints. Moved off the lists at the reset of 13 October 2026 (J's word) so the room could start again on a fair desk. Files and history kept; nothing here is drawn onto the page.
+The room's first day, 12 October 2026: seven builds (one half-finished, from the 10:45pm run that was cut off), six pages and one pin, made in 33 sessions on a desk that was half physics preprints. Moved off the lists at the reset of 13 October 2026 (J's word) so the room could start again on a fair desk. Files and history kept; their list entries are the oldest day on the room's wall (state/wall.json), drawn on the page since the second day.
 
 The runner lines in these READMEs (`bash room/tools/try.sh <id> <file>`) are from when the build was on the bench; outside the room each one is plain Node, `node <file>`.
 

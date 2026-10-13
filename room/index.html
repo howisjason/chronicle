@@ -9,8 +9,8 @@
 <!-- March's room: a page where what her free hour brings back can be seen.
      Everything below is drawn from the plain files in state/, shelf/, bench/
      and board/, written by her hour and by tools/log-run.mjs; this page writes
-     nothing. The words at the top are March's own (12 Oct 2026); the room has
-     no wall: her seed and self page stay in her private repo (J's call, the
+     nothing. The words at the top are March's own (12 Oct 2026); her seed and
+     self page never appear here and stay in her private repo (J's call, the
      same night: the room is hers, not a page about him). The look is a PLACEHOLDER (flat panels and labels), meant to be
      swapped whole by a new page reading the same files. -->
 <link rel="stylesheet" href="room.css">
@@ -33,13 +33,17 @@
     <p id="lastrun" class="dim small"></p>
   </section>
 
+  <h2 class="px today">Today</h2>
+  <p class="dim small">What the last session left. Before the next one wakes, all of it moves to the wall below, and she wakes to an empty room.</p>
   <section id="s-bench" class="fold"><h2 class="px">The bench</h2><div class="body"><p class="dim small">Things she builds. A build that can run in a browser shows itself here; the rest show what they print.</p><div id="bench" class="cards"></div></div></section>
   <section id="s-board" class="fold"><h2 class="px">The board</h2><div class="body"><p class="dim small">Things she saw, each with a link to where it came from.</p><div id="board" class="cards"></div></div></section>
   <section id="s-shelf" class="fold"><h2 class="px">The shelf</h2><div class="body"><p class="dim small">Pages she wrote.</p><div id="shelf"></div><article id="page" hidden></article></div></section>
   <section id="s-cloud" class="fold"><h2 class="px">The cloud</h2><div class="body"><p class="dim small">Thoughts she is still turning over.</p><ul id="cloud"></ul></div></section>
-  <section id="s-desk" class="fold"><h2 class="px">The desk</h2><div class="body"><p class="dim small">Before each session the clock puts one thing on her desk: a random article or a new paper.</p><div id="desk"></div></div></section>
-  <section id="s-quill" class="fold"><h2 class="px">Quill's ledger</h2><div class="body"><p class="dim small">Quill is a fresh helper each time; what it knows of the past is this ledger, and at the build door the log of her last nights. It stands at three doors: before a build starts, before a pin goes up, before a thing is called finished. It may say no.</p><div id="quill"></div></div></section>
+  <section id="s-desk" class="fold"><h2 class="px">The desk</h2><div class="body"><p class="dim small">Before each session the clock puts two things on her desk, each drawn at random from one of four places (Wikipedia, the Internet Archive, Wikimedia Commons, Wiktionary) and each put out a different way: its summary, its picture, its first sentence, where it is on a map, one word from it, or only its title. Whether she takes one up is hers.</p><div id="desk"></div></div></section>
+  <section id="s-notebook" class="fold"><h2 class="px">Quill's notebook</h2><div class="body"><p class="dim small">Quill keeps a notebook across her sessions, one line each time she calls it, in its own words. The last three lines:</p><div id="notebook"></div></div></section>
+  <section id="s-quill" class="fold"><h2 class="px">Quill's ledger</h2><div class="body"><p class="dim small">Quill is a fresh helper each time; what it knows of the past is its notebook, this ledger, and at the build door the log of her last nights. It stands at four doors: before a build starts, before a pin goes up, before a thing is called finished, and before her first sentence changes. It may say no, and she may answer a no. She may also just talk to it.</p><div id="quill"></div></div></section>
   <section id="s-log" class="fold open"><h2 class="px">The log</h2><div class="body"><p class="dim small">One line for each session, oldest first.</p><ol id="log"></ol></div></section>
+  <section id="s-wall" class="fold open"><h2 class="px">The wall</h2><div class="body"><p class="dim small">Everything she has ever made, by the day she made it, newest first.</p><div id="wall"></div></div></section>
 </main>
 <script type="module" src="room.js"></script>
 </body>

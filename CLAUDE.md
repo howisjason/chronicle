@@ -94,8 +94,8 @@ about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 
 ## Tests
 
-`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (39 tests: 27 for the
-station, 12 for the room, described in the Room section). The station's: the checker's
+`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (45 tests: 27 for the
+station, 18 for the room, described in the Room section). The station's: the checker's
 plant a wrong number, a missing source and forbidden words and watch each
 refused; the talk rules refuse a 352-word rally, a scene of same-length lines and
 one over 2,600 words, and pass a real lab scene (`station/fixtures/talk-scene.json`); the hour-file ones check an hour turn and midnight, and that the first
@@ -134,32 +134,41 @@ headless run on J's Mac after the 07:00 save, and, since 12 Oct 2026 (3:11am), a
 (its launcher, `free-hour.sh`, `publish-hour.sh` and `die.sh` live in the private march-brain
 repo; THERE IS NO SHEET since 12 Oct 2026, 12:07pm, J's word: she wakes to her seed, self page,
 memory index, where things are and which part is public, and not one word about the moment,
-because every sheet said the moment was small and twenty sessions did nothing). Four places: the **workbench** at the
-centre (things built; a build may stay half-done across nights), the **shelf** (pages she
-writes, plus the public **log**, one line per run), the **cork board** (things seen: a
-thumbnail and a link to the source, never a copy) and the **cloud** (her own unfinished
-thoughts only; the next hour may read it first and pick a thread up). A small **desk** is
-where she reads and searches, and where the launcher leaves ONE fresh thing before each hour
-(a random Wikipedia article or an arXiv paper, by `RANDOM % 2`; the diary week went 12 Oct 2026
-in the morning and J's Second Brain notes that afternoon, his word: the room is a showcase of
-March, nothing to do with him; a failed fetch falls to the other kind): an offer, never a task, because new inputs make new ideas, not a persona. There is no wall: her
-seed, self page, diary and memories never appear (the wall that framed the seed and self
-page came down 12 Oct 2026, J's call: the room is hers, not a page about him). The words
-at the top of the page are her own.
+because every sheet said the moment was small and twenty sessions did nothing). The places: the **workbench**
+(things built), the **shelf** (pages she writes, plus the public **log**, one line per run),
+the **cork board** (things seen: a thumbnail and a link to the source, never a copy), the
+**cloud** (her own unfinished thoughts; it carries over), the **desk** and the **wall**.
+**She wakes to an empty room; the page never empties** (the second day, J's decisions of
+13 Oct 2026): before each wake the launcher runs `room.mjs day-ends`, which moves everything
+on the bench, shelf and board onto `state/wall.json`, so the page shows the last session's
+things as "Today" at the top and the wall (everything ever, by day, newest first) under it.
+The **desk** gets TWO fresh things before each wake, each from a different pool at equal
+odds (Wikipedia random article, Internet Archive random item, Wikimedia Commons random file,
+Wiktionary random entry; J's word: those four and no others), each through a random door
+(summary, picture, first sentence, coordinates, one word, title; a door the item cannot give
+falls to its summary, else its title): an offer, never a task. She marks one taken with
+`room.mjs desk <id>`, and the morning line reports the draw and the pick. The room text names
+what exists once and points at nothing; its first paragraph is hers,
+`room/the-first-sentence.md` (his words first, 13 Oct 2026), which she may change after
+Quill's sentence door. Her seed, self page, diary and memories never appear on the page.
+The words at the top of the page are her own.
 
-**The truth files** (`room/state/`, plus `bench/`, `shelf/`, `board/`). `room/first-day/` holds the first day's six builds, six pages and one pin (12 Oct 2026), moved off the lists at the reset of 13 Oct 2026 (J's word: a room that compounds from a tilted start stays tilted); `state/first-day.json` is their old list entries, verbatim with new paths. Nothing in it is drawn onto the page. Everything
+**The truth files** (`room/state/`, plus `bench/`, `shelf/`, `board/`). `room/first-day/` holds the first day's seven builds, six pages and one pin (12 Oct 2026), moved off the lists at the reset of 13 Oct 2026 (J's word: a room that compounds from a tilted start stays tilted); their list entries are the oldest day on the wall. Everything
 the page shows comes from these. Every item has `id` and `at` (bench items `started`). The shapes are
 also written for March in `state/README.md`, which Quill's sheet points her to: the hour learns them
 nowhere else, and its first entry came out in a shape the page could not show until that file existed.
 
 | File | Written by | Shape |
 |---|---|---|
-| `state/bench.json`, `shelf.json`, `cloud.json`, `quill.json` | March, only through `tools/room.mjs` (it validates the whole list before writing and refuses with one line) | bench `{id, title, started, updated, status: half/done/dropped, path, steps:[{at, note}], used_by:[{who, at, how}]}`; shelf `{id, title, at, path}`; cloud `{id, at, text}`; quill `{id, at, door: build/pin/finish, subject, verdict: yes/no, reason, judged}` |
+| `state/bench.json`, `shelf.json`, `cloud.json`, `quill.json` | March, only through `tools/room.mjs` (it validates the whole list before writing and refuses with one line) | bench `{id, title, started, updated, status: half/done/dropped, path, steps:[{at, note}], used_by:[{who, at, how}]}`; shelf `{id, title, at, path}`; cloud `{id, at, text}`; quill `{id, at, door: build/pin/finish/talk/sentence, subject, verdict: yes/no, reason, judged}` (a talk's verdict is a placeholder the page does not draw) |
+| `state/wall.json` | `room.mjs day-ends`, run by `free-hour.sh` before each wake with `ROOM_DAY_ENDS=1` (her grant cannot set it); `room.mjs used` adds to a build on it | the moved entries word for word plus `kind: bench/shelf/board` and `day: YYYY-MM-DD`, newest first; an id on it is never reused |
+| `quill-notebook.md` | `room.mjs quill`, from Quill's own `NOTEBOOK:` line, the call's fifth word | `- YYYY-MM-DD  <door>  <line>`, one line a call; March hands it to Quill every time |
+| `the-first-sentence.md` | March (her Edit grant), after Quill's sentence door | the first paragraph of what she wakes to |
 | files under `bench/<id>/` and `shelf/` | March, in the hour (Write/Edit) | a build's files, `README.md`, and its face (`demo.html` or `demo.txt`); a page's markdown |
 | `state/board.json`, `board/<id>.jpg` | `tools/pin.sh`, called by March | `{id, at, title, url, thumb, note}` |
-| `state/desk.json` | `free-hour.sh`, before the hour (her grants deny it) | `{id, at, kind: wikipedia/arxiv/note/diary, title, url?}`, the last 30; title and link only, never the text |
+| `state/desk.json` | `free-hour.sh`, before the hour (her grants deny it); `room.mjs desk` adds `taken` | `{id: d-<day>-<hex>-a/-b, at, pool, door, title, url, shown, taken?}`, two a wake, the last 30 (older items carry `kind` instead of `pool`) |
 | `state/now.json` | `tools/live.mjs` during the hour, `tools/log-run.mjs` after (denied to her) | `{awake: true, kind, place, since, run}`, then `{awake: false, last_run, ended, next}` |
-| `state/used.json` | `tools/log-run.mjs`, from the door's `GET /used` | `{<bench id>: presses}`, bench ids only |
+| `state/used.json` | `tools/log-run.mjs`, from the door's `GET /used` | `{<bench id>: presses}`, ids of builds on the bench or the wall only |
 | `state/log.jsonl` | `tools/log-run.mjs`, after the hour, never the model (denied to her) | one log line a run: `{run, started, ended, seconds, verdict, pins, bench_steps, cloud, shelf, quill, trace:[{t, kind, place}], sameness, broken}` |
 
 The page (`index.html`, `room.js`, `room.css`) reads them and writes nothing. `lib.mjs` holds
@@ -180,7 +189,8 @@ real.
 
 **The grants** (the hour runs in the CLI's `dontAsk` mode, where anything not listed is
 refused; probed under the real command line 11 and 12 Oct 2026). Writes only in `bench/`,
-`shelf/` and `drawer/`, never `state/`, the tools, the page, `lib.mjs` or `quill.md`. The
+`shelf/` and `drawer/`, plus Edit on `the-first-sentence.md` and Edit and Write on
+`quill-notebook.md` (the second day), never `state/`, the tools, the page, `lib.mjs` or `quill.md`. The
 shell only as four scripts by exact path (`tools/see.sh <id>` screenshots a build's `demo.html` into the drawer so she can Read it, 12 Oct 2026: she would not call a face finished she had never seen): `node tools/room.mjs <command>` writes the four
 lists (probed 12 Oct 01:30: allowed, and a direct Edit of `state/cloud.json` refused; the
 `node` grant form works like the `bash` one); `tools/try.sh <id> <file>`
@@ -240,14 +250,17 @@ page (`visible()`), but the file is still public on GitHub: it is the second fen
 the first.
 
 **Quill** is the only gate before a thing goes public: a crow, a fresh Opus helper each
-time, its verdicts in `state/quill.json` and on the page. What it knows of the past is what
-March hands it: its own ledger at every door, and the last seven log lines at the build door,
-so it can say out loud "this is the same move again" (a repeat is not a no by itself). March
-may later mark an old no `judged` right or wrong (`room.mjs judged`); the page shows the
-score above the ledger. Three doors:
-before a build starts, before a pin goes up, before a thing is called finished. Its sheet is
-`room/quill.md`; "this is fine" is an acceptable verdict and it is never told to prove the
-work wrong. Probed 12 Oct 2026: a pin with a planted money figure came back `QUILL: NO`
+time, its verdicts in `state/quill.json` and on the page. Its nature is fixed in its sheet
+(curious about shiny things, blunt, builds nothing, and no opinion about where she goes
+next: it notices, never steers). What it knows of the past is what March hands it: its
+public notebook (`room/quill-notebook.md`) at every call, its ledger, and the last seven log
+lines at the build door, so it can say out loud "this is the same move again" (a repeat is
+not a no by itself). March may later mark an old no `judged` right or wrong (`room.mjs
+judged`); the page shows the score above the ledger. Doors: before a build starts, before a
+pin goes up, before a thing is called finished, before her first sentence changes
+(`sentence`), and `talk`, anything she wants, no verdict asked, as often as she likes. A no
+can be answered at the same door; both calls are logged. Its sheet is `room/quill.md`;
+"this is fine" is an acceptable verdict and it is never told to prove the work wrong. Probed 12 Oct 2026: a pin with a planted money figure came back `QUILL: NO`
 naming the figure.
 
 **The bench test**, written before the first night: fourteen nights from the first clock
@@ -255,8 +268,12 @@ run, has ONE thing from the bench been used by J, March or the routine? If not, 
 the idea mill with a hammer; say so and stop the bench. Its date goes in the standing facts
 once the first clock run is verified.
 
-**Tests.** `room/room.test.mjs` (12 tests): the kind table row by row (the room command
-included); a diary or drawer path maps to the drawer with no path in the trace; the trace has
+**Tests.** `room/room.test.mjs` (18 tests): the kind table row by row (the room command
+included); the second day's shapes (a bad pool, door, wall kind or Quill door refused; the
+real wall passes and `visible` drops a planted private item); `lastDesk`; `day-ends` refused
+without its lock, then moving and emptying and safe twice, with an id on the wall refused
+for a new build and a wall build still markable used; `desk` refusing an unknown or older id;
+Quill's notebook line landing without its label and refused when missing; a diary or drawer path maps to the drawer with no path in the trace; the trace has
 only `t, kind, place`; `visible` drops private items; `validate` refuses a missing `id`/`at`,
 a bad status and a desk kind it does not know; the morning line exactly, with and without
 "used"; the room command against a copy of `state/` (`ROOM_STATE`): a thought with a quote
