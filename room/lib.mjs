@@ -97,6 +97,16 @@ export function pastReads(records) {
       if (!b || b.type !== 'tool_use') continue;
       const k = kindOf(b.name, b.input);
       if (['building', 'writing', 'pinning'].includes(k.kind)) return { count, where: [...where].sort() };
+      // read-only shell commands get through dontAsk (the grader saw `head state/wall.json`), so
+      // a Bash command that names one of the places counts too; its first making step is above
+      if (b.name === 'Bash') {
+        const c = String((b.input && b.input.command) || '');
+        const sh = PAST.find(([, frag]) => c.includes(frag) || c.includes(frag.replace(ROOM, '').replace(/^\//, '')));
+        if (!sh) continue;
+        count++; where.add(sh[0]);
+        if (REAL.some((f) => c.includes(f))) where.add('real');
+        continue;
+      }
       if (!['Read', 'Glob', 'Grep'].includes(b.name)) continue;
       const p = pathOf(b.input), pat = String((b.input && b.input.pattern) || '');
       const hit = PAST.find(([, frag]) => p.includes(frag) || (b.name === 'Glob' && pat.includes(frag.replace(ROOM, ''))));

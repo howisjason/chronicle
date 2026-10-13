@@ -184,7 +184,7 @@ switch (cmd) {
     const FILES = process.env.ROOM_KEEP_FILES ? null : process.env.ROOM_STATE ? process.env.ROOM_ROOT : ROOM;
     const carry = (rel) => {
       const r = String(rel).replace(/\/$/, '');
-      if (!FILES || !/^(bench|shelf|board)\/[A-Za-z0-9._-]+$/.test(r)) return rel;
+      if (!FILES || !/^(bench|shelf|board)\/[A-Za-z0-9._-]+$/.test(r) || /\/\.{1,2}$/.test(r)) return rel;
       const from = join(FILES, r), to = join(FILES, 'wall', r);
       if (existsSync(to)) return `wall/${r}`;
       if (!existsSync(from)) return rel;

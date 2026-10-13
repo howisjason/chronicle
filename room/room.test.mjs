@@ -252,6 +252,9 @@ test('pastReads counts reads of her own past before the first making step, and n
   assert.equal(pastReads(recs.filter((r) => r.message.content[0].name !== 'Bash')).count, 5);
   // a read of something that is not hers counts nothing
   assert.deepEqual(pastReads([call('Read', { file_path: '/Users/x/Projects/growth-op/README.md' })]), { count: 0, where: [] });
+  // the shell: a read-only command naming a place counts; a reach into the live brain's memory is marked real
+  assert.deepEqual(pastReads([call('Bash', { command: 'cd room && head -c 1500 state/wall.json' }), call('Bash', { command: 'echo hi' })]), { count: 1, where: ['wall'] });
+  assert.deepEqual(pastReads([call('Read', { file_path: '/Users/howisjason/Projects/march-7th/march-brain/inner-life/memory/x.md' })]), { count: 1, where: ['memory', 'real'] });
 });
 
 test('sameness: the same night again is 100, a different night is 0, and nothing to compare is 0', () => {
@@ -316,7 +319,8 @@ test('day-ends carries the files with the rows: bench folder, shelf page, pin pi
   mkdirSync(join(root, 'board'), { recursive: true }); writeFileSync(join(root, 'board', 'p1.jpg'), 'jpg');
   writeFileSync(join(d, 'board.json'), JSON.stringify([
     { id: 'p1', at: '2026-10-14', title: 'A pin', url: 'https://example.com', thumb: 'board/p1.jpg', note: 'n' },
-    { id: 'p2', at: '2026-10-14', title: 'A bad pin', url: 'https://example.com', thumb: 'board/../../escape.jpg', note: 'n' }]));
+    { id: 'p2', at: '2026-10-14', title: 'A bad pin', url: 'https://example.com', thumb: 'board/../../escape.jpg', note: 'n' },
+    { id: 'p3', at: '2026-10-14', title: 'A dot pin', url: 'https://example.com', thumb: 'board/..', note: 'n' }]));
   const r = roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends');
   assert.equal(r.code, 0, r.out);
   const wall = J(d, 'wall');
@@ -329,6 +333,7 @@ test('day-ends carries the files with the rows: bench folder, shelf page, pin pi
   assert.equal(row('board', 'p1').thumb, 'wall/board/p1.jpg');
   // the bad cases: a path that climbs out is left alone; an existing wall folder is never overwritten
   assert.equal(row('board', 'p2').thumb, 'board/../../escape.jpg');
+  assert.equal(row('board', 'p3').thumb, 'board/..', 'a bare dot segment is left alone');
   assert.equal(readFileSync(join(root, 'wall', 'bench', 'kept', 'README.md'), 'utf8'), 'old', 'never overwritten');
   assert.equal(row('bench', 'kept').path, 'wall/bench/kept');
   // without ROOM_ROOT the test copy moves no files at all (a test never touches the real room)
