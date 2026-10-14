@@ -195,7 +195,7 @@ real.
 refused; probed under the real command line 11 and 12 Oct 2026). Writes only in `bench/`,
 `shelf/` and `drawer/`, plus Edit and Write on
 `quill-notebook.md` (the second day), never `state/`, the tools, the page, `lib.mjs` or `quill.md`. The
-shell only as four scripts by exact path (`tools/see.sh <id>` screenshots a build's `demo.html` into the drawer so she can Read it, 12 Oct 2026: she would not call a face finished she had never seen): `node tools/room.mjs <command>` writes the four
+shell as four scripts by exact path, plus the read-only commands `cat`, `ls`, `head`, `tail` and `wc` (added 14 Oct 2026: the first live wake's first command, a `cat` of the state files, was refused) (`tools/see.sh <id>` screenshots a build's `demo.html` into the drawer so she can Read it, 12 Oct 2026: she would not call a face finished she had never seen): `node tools/room.mjs <command>` writes the four
 lists (probed 12 Oct 01:30: allowed, and a direct Edit of `state/cloud.json` refused; the
 `node` grant form works like the `bash` one); `tools/try.sh <id> <file>`
 runs a `.js`/`.mjs`/`.py` from inside its own bench folder under a macOS sandbox (writes
