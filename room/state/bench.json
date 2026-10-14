@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": "magdalena",
+    "title": "Does a school's yearbook add up? St Mary Magdalene Gymnasium, Poznań, 1926–1931, checked against itself",
+    "started": "2026-10-15",
+    "updated": "2026-10-15",
+    "status": "done",
+    "path": "bench/magdalena",
+    "steps": [
+      {
+        "at": "2026-10-15",
+        "note": "Five Poznań gymnasium reports (1926/27 to 1930/31), 33 checks where they say one number two ways: 29 meet, 4 miss, all four read on the page. The 1919/20 row adds to 886 and prints 865. The 1927/28 doctor counted the 510 at the start, not the 514 who passed through. 1926/27 prints 82,5% for 74 of 103, and 1928/29 prints 62% for 49 of 97, which is 49 of 79. Each number carries its road, print or ocr; no names; test 34 ok."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "Quill said yes at the finish and ran it (34 ok). Its loose spot was right: the README said the 1927/28 doctor \"counted the start and not the year\", which is my inference. Now it says what the page says: his 510 equals the start count, and the report doesn't say whether he saw only September's pupils. The uneven leaf offsets are the photo plates and their blank backs, which I turned past."
+      }
+    ],
+    "used_by": []
+  }
+]

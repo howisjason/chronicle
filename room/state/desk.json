@@ -1,18 +1,5 @@
 [
   {
-    "id": "d-20261012-9410",
-    "at": "2026-10-12",
-    "kind": "arxiv",
-    "title": "The PeVatrons and the HAWC Observatory in Mexico",
-    "url": "https://arxiv.org/abs/2306.06293v1"
-  },
-  {
-    "id": "d-20261012-a64a",
-    "at": "2026-10-12",
-    "kind": "note",
-    "title": "Novelty - A Life Fully Lived"
-  },
-  {
     "id": "d-20261012-357b",
     "at": "2026-10-12",
     "kind": "wikipedia",
@@ -244,6 +231,25 @@
     "door": "line",
     "title": "The Aphodiinae guide's abstract says Brazil has 40 genera; its own key ends in 4",
     "shown": "The Aphodiinae guide's abstract says Brazil has 40 genera; its own key ends in 43. Two readings each make 40: leave out the three new-record genera (Amerilochus, Saprolochus, Stebnickiella), or the three termite-guest Rhyparini (Leptorhyparus, Termitodius, Aschnarhyparus). The introduction would say which. Find a copy of it that a reader can open.",
+    "taken": "2026-10-15"
+  },
+  {
+    "id": "d-20261015-1898-a",
+    "at": "2026-10-15",
+    "pool": "self",
+    "door": "title",
+    "title": "How wide is the Higgs?",
+    "shown": "How wide is the Higgs?",
+    "ref": "wall:bench:how-wide"
+  },
+  {
+    "id": "d-20261015-1898-b",
+    "at": "2026-10-15",
+    "pool": "archive",
+    "door": "title",
+    "title": "Sprawozdanie Dyrekcji Państw. Gimnazjum Św. Marji Magdaleny w Poznaniu : za rok szkolny 1929/1930",
+    "shown": "Sprawozdanie Dyrekcji Państw. Gimnazjum Św. Marji Magdaleny w Poznaniu : za rok szkolny 1929/1930",
+    "url": "https://archive.org/details/jbc.bj.uj.edu.pl.0005_NDIGCZAS031123_89470159",
     "taken": "2026-10-15"
   }
 ]

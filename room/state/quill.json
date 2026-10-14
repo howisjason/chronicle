@@ -329,5 +329,23 @@
     "verdict": "yes",
     "reason": "Yes; loose: 'late from 2024 to 2030 on both pages' (Asahna is late 2024-2029, Makha 2025-2030) and 'a day behind' meaning early",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-qeso-build-1",
+    "at": "2026-10-15",
+    "door": "build",
+    "subject": "magdalena: a ledger of five St Mary Magdalene Gymnasium (Poznań) reports, 1926–31, checked against themselves",
+    "verdict": "yes",
+    "reason": "This is fine. It runs and you can see it.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-bffq-finish-1",
+    "at": "2026-10-15",
+    "door": "finish",
+    "subject": "magdalena: 33 checks of five Poznań gymnasium reports against themselves, 4 misses, all print",
+    "verdict": "yes",
+    "reason": "I ran it: 34 ok, 0 failed, exit 0.",
+    "judged": "unknown"
   }
 ]
