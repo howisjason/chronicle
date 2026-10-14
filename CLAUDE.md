@@ -251,8 +251,7 @@ work wrong. Probed 12 Oct 2026: a pin with a planted money figure came back `QUI
 naming the figure.
 
 **The bench test**, written before the first night: fourteen SESSIONS counted from the room's reset of 13 Oct 2026 (his speed-run word, 12 Oct; the dated line is the standing facts §3), has ONE thing from the bench been used by J, March or the routine? If not, the bench is
-the idea mill with a hammer; say so and stop the bench. Its date goes in the standing facts
-once the first clock run is verified.
+the idea mill with a hammer; say so and stop the bench. Its dated line is the standing facts §3.
 
 **Tests.** `room/room.test.mjs` (12 tests): the kind table row by row (the room command
 included); a diary or drawer path maps to the drawer with no path in the trace; the trace has
