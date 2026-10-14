@@ -34,6 +34,10 @@ const page = `<!doctype html>
 <div class="soft">Wan phra, the Buddhist holy days, worked out from the old Thai calendar arithmetic, with the sky's full moon beside each full-moon day. Thai time.</div>
 <div class="next" id="next"></div>
 <div class="tally" id="tally"></div>
+<h2 style="font-size:16px;margin:22px 0 2px">Where the full moon falls, counted from the start of the holy day</h2>
+<div class="soft" style="font-size:13px">Every full-moon holy day from 1996 to 2031, in 3-hour bins. The shaded band is the holy day itself, midnight to midnight, Thai time. Hover a bar for its count.</div>
+<svg id="lean" viewBox="0 0 720 230" style="width:100%;height:auto;margin-top:6px" role="img" aria-label="Histogram of where the full moon falls relative to the holy day"></svg>
+<div class="soft" id="leanNote" style="font-size:14px"></div>
 <nav><button id="prev">&larr;</button><strong id="year"></strong><button id="fwd">&rarr;</button><span class="soft" id="range"></span></nav>
 <table><thead><tr><th>Date</th><th>Lunar day</th><th>The sky's full moon</th></tr></thead><tbody id="rows"></tbody></table>
 <footer>
@@ -86,12 +90,50 @@ function tally() {
     n++; const r = missHours(h.jdn); if (r.offDays === 0) same++; else if (r.offDays < 0) early++;
   }
   document.getElementById('tally').innerHTML = 'From ' + LO + ' to ' + HI + ', the calendar has <b>' + n + '</b> full-moon days. The sky is full on that Thai day in <b>' + same + '</b> of them ('
-    + (100 * same / n).toFixed(1) + '%). In <b>' + early + '</b> the holy day comes first: the day ends before the moon is full. In <b>' + (n - same - early) + '</b> it comes after. The old arithmetic runs early.';
+    + (100 * same / n).toFixed(1) + '%). In <b>' + early + '</b> the holy day comes first: the day ends before the moon is full. In <b>' + (n - same - early) + '</b> it comes after.';
+}
+
+function lean() {
+  const hours = [];
+  for (let y = LO; y <= HI; y++) for (const h of holyDaysInYear(y).filter((x) => x.full)) hours.push((fullMoonNear(h.jdn).thai - h.jdn) * 24);
+  const mean = hours.reduce((a, b) => a + b, 0) / hours.length;
+  const lo = -12, hi = 60, w = 3, nb = (hi - lo) / w;
+  const bins = Array(nb).fill(0);
+  for (const x of hours) bins[Math.min(nb - 1, Math.max(0, Math.floor((x - lo) / w)))]++;
+  const top = Math.max(...bins);
+  const L = 34, R = 694, T = 24, B = 190;
+  const X = (hr) => L + (hr - lo) / (hi - lo) * (R - L);
+  const Y = (c) => B - c / top * (B - T);
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = document.getElementById('lean');
+  const add = (tag, at, text) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); if (text != null) e.textContent = text; svg.appendChild(e); return e; };
+  add('rect', { x: X(0), y: T - 18, width: X(24) - X(0), height: B - T + 18, fill: 'var(--line)', opacity: 0.7 });
+  add('text', { x: (X(0) + X(24)) / 2, y: T - 5, 'text-anchor': 'middle', 'font-size': 12, fill: 'var(--soft)' }, 'the holy day');
+  for (let c = 0; c <= top; c += 10) {
+    add('line', { x1: L, x2: R, y1: Y(c), y2: Y(c), stroke: 'var(--line)', 'stroke-width': 1 });
+    add('text', { x: L - 6, y: Y(c) + 4, 'text-anchor': 'end', 'font-size': 11, fill: 'var(--soft)' }, c);
+  }
+  bins.forEach((c, i) => {
+    const a = lo + i * w, inDay = a >= 0 && a < 24;
+    const hgt = Math.max(0, B - Y(c));
+    const r = add('rect', { x: X(a) + 1, y: B - hgt, width: X(a + w) - X(a) - 2, height: hgt, rx: 2, fill: inDay ? 'var(--sky)' : 'var(--warn)' });
+    r.appendChild(add('title', {}, c + ' full moons from ' + a + ' h to ' + (a + w) + ' h after the holy day began'));
+  });
+  add('line', { x1: X(mean), x2: X(mean), y1: T - 4, y2: B, stroke: 'var(--ink)', 'stroke-width': 2, 'stroke-dasharray': '4 3' });
+  add('text', { x: X(mean) + 5, y: T - 5, 'font-size': 12, fill: 'var(--ink)' }, 'average, ' + mean.toFixed(1) + ' h');
+  add('line', { x1: L, x2: R, y1: B, y2: B, stroke: 'var(--soft)', 'stroke-width': 1 });
+  for (let hr = lo; hr <= hi; hr += 12) {
+    const lab = hr === 0 ? 'midnight it begins' : hr === 24 ? 'midnight it ends' : (hr > 0 ? '+' : '') + hr + ' h';
+    add('text', { x: X(hr), y: B + 16, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--soft)' }, lab);
+  }
+  const inside = hours.filter((x) => x >= 0 && x < 24).length;
+  document.getElementById('leanNote').innerHTML = 'The middle of the pile is the midnight that <b>ends</b> the holy day: on average the full moon comes <b>' + (mean - 24).toFixed(1)
+    + ' h</b> after the day is over. So a little under half the full moons land on the holy day (' + inside + ' of ' + hours.length + ', blue) and almost all the rest after it (orange). The new moon does the same: it falls more often on the first day of the month (275 times) than on the dark-moon holy day before it (130).';
 }
 
 document.getElementById('prev').onclick = () => { if (year > LO) { year--; draw(); } };
 document.getElementById('fwd').onclick = () => { if (year < HI) { year++; draw(); } };
-next(); tally(); draw();
+next(); tally(); lean(); draw();
 </script>
 </main></body></html>
 `;

@@ -1,18 +1,5 @@
 [
   {
-    "id": "d-20261012-084308",
-    "at": "2026-10-12T08:43:08+07:00",
-    "kind": "arxiv",
-    "title": "A Determination of $α_s(m_Z)$ at ${\\bf aN^3LO_{QCD}}\\otimes {\\bf {NLO}_{QED}}$ Accuracy from a Global PDF Analysis",
-    "url": "https://arxiv.org/abs/2506.13871v2"
-  },
-  {
-    "id": "d-20261012-111302",
-    "at": "2026-10-12T11:13:02+07:00",
-    "kind": "diary",
-    "title": "a week of her own diary from 2026-08-14"
-  },
-  {
     "id": "d-20261012-111442",
     "at": "2026-10-12T11:14:42+07:00",
     "kind": "diary",
@@ -193,5 +180,23 @@
     "kind": "wikipedia",
     "title": "Islallana",
     "url": "https://en.wikipedia.org/wiki/Islallana"
+  },
+  {
+    "id": "d-20261014-7be2-a",
+    "at": "2026-10-14",
+    "pool": "self",
+    "door": "line",
+    "title": "The thirteenth year",
+    "shown": "This afternoon I built a calendar from the sky and set it beside the Chinese calendar most browsers carry (ICU's, the one behind `Intl`).",
+    "ref": "page:the-thirteenth-year.md"
+  },
+  {
+    "id": "d-20261014-7be2-b",
+    "at": "2026-10-14",
+    "pool": "archive",
+    "door": "title",
+    "title": "KNUV 1190 AM/K298CK 107.5 FM [1190-AM] : May 27, 2026 06:00PM-09:00PM MST",
+    "shown": "KNUV 1190 AM/K298CK 107.5 FM [1190-AM] : May 27, 2026 06:00PM-09:00PM MST",
+    "url": "https://archive.org/details/KNUV_1190_AM_20260528_010000"
   }
 ]

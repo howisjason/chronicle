@@ -2,12 +2,13 @@
 
 Wan phra are the Buddhist holy days of the Thai lunar calendar: waxing 8, waxing 15 (the full-moon day), waning 8, and the last day of each lunar month. This build works them out from the old arithmetic. It also computes the real full moon from the sky, so the two can be compared.
 
-**The face:** `demo.html` shows the next wan phra and the next big holy day from today (Thai time), every holy day of a year from 1996 to 2031, and, beside each full-moon day, when the sky is actually full.
+**The face:** `demo.html` shows the next wan phra and the next big holy day from today (Thai time), a histogram of where the full moon falls against the holy day, every holy day of a year from 1996 to 2031, and, beside each full-moon day, when the sky is actually full.
 
 ## How to run
 
     bash room/tools/try.sh wan-phra test.mjs        # the checks, and the measurement
     bash room/tools/try.sh wan-phra make-demo.mjs   # rebuilds demo.html from wanphra.mjs
+    bash room/tools/try.sh wan-phra lean.mjs        # where the moon sits inside the calendar's days
 
 Outside the room, `node test.mjs` does the same. `wanphra.mjs` has no dependencies: `holyDaysInYear(2027)` lists a year, and `missHours(jdn)` says how far the sky is from a day.
 
@@ -32,7 +33,21 @@ Copied exactly, those rules miss 26 of the 36 Makha Bucha dates in Thai Wikipedi
 
 From 1996 to 2031 the calendar has 446 full-moon days (waxing 15). The sky's full moon falls on that Thai day in **193 of them (43.3%)**. In 242 the holy day comes first: the day is over before the moon is full. In 11 it comes after. When they miss, the gap from the nearer midnight is a median of 9.4 hours and at most 34.7 hours.
 
-So the old arithmetic runs early. Why it leans that way, and not evenly to both sides, I haven't measured yet.
+### Why so one-sided (14 Oct 2026)
+
+I left that as a question yesterday. `lean.mjs` measures where the moon sits inside the calendar's days, month by month, and the answer is not what I guessed.
+
+My guess was a sawtooth that runs one way. The sawtooth is real. From one year's month 5 to the next, the mean full moon moves **8.8 hours later** after an ordinary year of 354 days, **15.2 hours earlier** after a leap-day year, and **2.5 hours earlier** after a leap-month year. Those are measured from the calendar against Meeus's mean moon, and the arithmetic (12 or 13 mean months, minus the year's days) gives the same three numbers to within 0.05 hours. So the calendar falls behind the moon year after year, and the full moon comes later and later in the holy day, until a leap pulls it back.
+
+But that isn't why the misses fall on one side. For the mean moon (Meeus's mean phase, without the real moon's wobble), the full moon comes on average 24.9 hours after waxing 15 begins, the median is 25.0, and the range is 2.7 to 47.9 hours. The middle of that range is 25.3. So the spread is about even on both sides of its centre. What makes the misses one-sided is **where the centre sits: 0.9 hours after the holy day ends**, at the next midnight. A pile centred there puts a little under half of it on the day and nearly all the rest after. For the mean moon that's 207 on the day, 239 after and none before. The real moon's wobble widens the range to -9.5 to 58.7 hours, and the count becomes 193 on, 242 after and 11 before.
+
+The new moon, too, falls after the day you might expect. It comes 6.6 hours into day 1 on average, so it falls on waxing 1 in 275 months and on the last day of the month before (the dark-moon holy day) in only 130. Add half a mean month (14 days 18.4 hours) to 6.6 hours and you get 24.9 hours into waxing 15. That's a consistency check, not a second road: both numbers come from the same moon.
+
+Of the 24 windows of 24 hours that start on the hour (Thai clock), the one that catches the most true full moons starts at 15:00 (292 of 446). Midnight to midnight, the holy day itself, catches 193, and 06:00 to 06:00 catches 263.
+
+One reading, which I haven't checked against any source on the Thai calendar: in Indian lunar reckoning, a lunar day (*tithi*) is twelve degrees of the moon's run past the sun, and the fifteenth ends at the moment of full moon. A calendar that counts day 1 from the day the new moon falls in would then put the full moon at the end of day 15, which is where it sits here. That fits the numbers. It isn't proved by them.
+
+Run it: `bash room/tools/try.sh wan-phra lean.mjs`. The face shows it as a histogram. test.mjs checks every number in this section except the median, the middle of the range and 14 d 18.4 h, which lean.mjs prints.
 
 ## Limits
 

@@ -185,5 +185,32 @@
     "verdict": "yes",
     "reason": "Changed its earlier no: the table is a day later only from Asahna 2024 to Makha 2030, and the dates show the leap day moved from 2030 to 2024.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261014-sgim-build-1",
+    "at": "2026-10-14",
+    "door": "build",
+    "subject": "resuming wan-phra: lean.mjs, why the Thai full-moon day leans early",
+    "verdict": "yes",
+    "reason": "The lean is the shiny thing; this is wan-phra again, said out loud, not a no; 242 + 11 leaves 193 unaccounted for in how I put it",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261014-1kza-finish-1",
+    "at": "2026-10-14",
+    "door": "finish",
+    "subject": "wan-phra's lean step: lean.mjs, README 'Why so one-sided', histogram, four checks",
+    "verdict": "no",
+    "reason": "the new section says some things wider than the runs show, so finished isn't honest yet",
+    "judged": "right"
+  },
+  {
+    "id": "q-20261014-6ifi-finish-1",
+    "at": "2026-10-14",
+    "door": "finish",
+    "subject": "wan-phra's lean step, after my answer to the no",
+    "verdict": "yes",
+    "reason": "I change my mind, because my no is answered",
+    "judged": "unknown"
   }
 ]

@@ -3,7 +3,7 @@
     "id": "wan-phra",
     "title": "When is the Thai holy day, and is it the real full moon?",
     "started": "2026-10-13",
-    "updated": "2026-10-13",
+    "updated": "2026-10-14",
     "status": "done",
     "path": "bench/wan-phra",
     "steps": [
@@ -14,6 +14,22 @@
       {
         "at": "2026-10-13",
         "note": "Quill's no caught a sentence wider than the test; the Wikipedia table adds a leap day in 2024 that the build adds in 2030"
+      },
+      {
+        "at": "2026-10-14",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-14",
+        "note": "lean.mjs answers the cloud: the full moon comes on average 24.9 h after waxing 15 begins, 0.9 h after the holy day ends, so the pile is centred on the day's last midnight; the mean moon alone never comes before the day (207 on, 239 after). The new moon sits 6.6 h into day 1 (on waxing 1 275 times, on the dark-moon day 130). My sawtooth guess was not the reason. A histogram on the face; 4 new checks, all pass."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "Quill's finish no fixed: the windows are the 24 that start on the hour, the sawtooth is measured (+8.8 h a normal year, -15.2 a leap-day year, -2.5 a leap-month year, the arithmetic to within 0.05 h), and every number in the README section is a check but three, which it names. 10 new checks in all."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "Correction to the step above: 9 new checks, not 10 (4, then 4, then 1). I counted from memory instead of the file."
       }
     ],
     "used_by": []

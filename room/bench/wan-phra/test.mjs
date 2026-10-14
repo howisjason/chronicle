@@ -76,6 +76,49 @@ console.log(`  the sky's full moon falls on that Thai day: ${tally.same} (${(100
 console.log(`  the day comes before the full moon: ${tally.early}; after it: ${tally.late}`);
 console.log(`  when it misses, by a median of ${misses[misses.length >> 1].toFixed(1)} h past midnight, at most ${misses[misses.length - 1].toFixed(1)} h`);
 
+// --- the lean: where the moon sits in the calendar's days (lean.mjs) ---
+const { months } = await import('./lean.mjs');
+const ms = months().filter((m) => { const y = W.ymdFromJdn(m.d15).y; return y >= 1996 && y <= 2031; });
+const avg = (f) => ms.reduce((a, m) => a + f(m), 0) / ms.length * 24;
+const fullH = avg((m) => m.full.true), newH = avg((m) => m.nw.true);
+check(ms.length === n, `lean.mjs sees the same ${n} full-moon days as the tally above (${ms.length})`);
+check(Math.abs(fullH - 24.9) < 0.05, `the full moon comes on average ${fullH.toFixed(2)} h after waxing 15 begins: ${(fullH - 24).toFixed(2)} h after it ends`);
+check(Math.abs(fullH - newH - 29.530588861 / 2 * 24 + 14 * 24) < 0.5,
+  `the new moon sits ${newH.toFixed(2)} h into day 1, and ${newH.toFixed(2)} h + half a mean month lands ${(newH + 29.530588861 / 2 * 24 - 14 * 24).toFixed(2)} h into waxing 15 (a consistency check, not a second road: both moons are Meeus's)`);
+const on1 = ms.filter((m) => m.nw.true >= 0 && m.nw.true < 1).length;
+const onLast = ms.filter((m) => m.nw.true >= -1 && m.nw.true < 0).length;
+check(on1 === 275 && onLast === 130, `the true new moon falls on day 1 ${on1} times and on the dark-moon holy day before it ${onLast}`);
+const where = (f) => [ms.filter((m) => f(m) >= 0 && f(m) < 1).length, ms.filter((m) => f(m) >= 1).length, ms.filter((m) => f(m) < 0).length];
+const trueW = where((m) => m.full.true);
+check(trueW.join() === '193,242,11' && Math.abs(newH - 6.6) < 0.05,
+  `the true full moon: on the day ${trueW[0]}, after ${trueW[1]}, before ${trueW[2]}; the true new moon on average ${newH.toFixed(2)} h into day 1`);
+const meanW = where((m) => m.full.mean);
+check(meanW.join() === '207,239,0', `the mean full moon alone (no wobble): on the day ${meanW[0]}, after ${meanW[1]}, before ${meanW[2]}`);
+const span = (f) => [Math.min(...ms.map(f)) * 24, Math.max(...ms.map(f)) * 24].map((x) => x.toFixed(1)).join(' to ');
+check(span((m) => m.full.mean) === '2.7 to 47.9' && span((m) => m.full.true) === '-9.5 to 58.7',
+  `the full moon from the start of waxing 15: mean moon ${span((m) => m.full.mean)} h, true moon ${span((m) => m.full.true)} h`);
+const catches = (s) => ms.filter((m) => m.full.true * 24 >= s && m.full.true * 24 < s + 24).length;
+const byHour = Array.from({ length: 24 }, (_, s) => catches(s));
+const bestHour = byHour.indexOf(Math.max(...byHour));
+check(byHour[0] === 193 && byHour[6] === 263 && bestHour === 15 && byHour[15] === 292,
+  `24-hour windows starting on the hour catch: 00:00 ${byHour[0]}, 06:00 ${byHour[6]}, the most at ${bestHour}:00 (${byHour[bestHour]})`);
+// The sawtooth, two ways: measured from the calendar against the mean moon, and from
+// arithmetic alone (12 or 13 mean months minus the year's days), year to year.
+const month5 = (cs) => ms.find((m) => m.cs === cs && m.label === '5');
+const lunation = 29.530588861;
+const expectStep = { A: 12 * lunation - 354, B: 12 * lunation - 355, C: 13 * lunation - 384 };
+let worstStep = 0;
+const seen = { A: new Set(), B: new Set(), C: new Set() };
+for (let cs = 1359; cs <= 1392; cs++) {
+  const a = month5(cs), b = month5(cs + 1);
+  if (!a || !b) continue;
+  const t = W.yearType(cs);
+  const step = (b.full.mean - a.full.mean) * 24;
+  seen[t].add(step.toFixed(1));
+  worstStep = Math.max(worstStep, Math.abs(step - expectStep[t] * 24));
+}
+check(worstStep < 0.05, `the sawtooth: from one year's month 5 to the next, the mean full moon moves ${[...seen.A].join('/')} h after a normal year, ${[...seen.B].join('/')} h after a leap-day year, ${[...seen.C].join('/')} h after a leap-month year; arithmetic says ${(expectStep.A * 24).toFixed(1)}, ${(expectStep.B * 24).toFixed(1)}, ${(expectStep.C * 24).toFixed(1)} (worst gap ${worstStep.toFixed(3)} h)`);
+
 // --- the face carries this file, not an older copy of it ---
 const { inlined } = await import('./make-demo.mjs');
 const { readFileSync } = await import('node:fs');
