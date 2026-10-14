@@ -243,7 +243,7 @@ run each stand down if one is running), never between 06:50 and 07:30, and its p
 while `brain-backup.sh` runs. A hit logs to `~/Library/Logs/march-die.log`; a losing tick
 prints nothing. `FORCE=1 bash scripts/die.sh` is the by-hand real trigger. Installed only on
 J's word (`cp` the plist to `~/Library/LaunchAgents/`, then `launchctl bootstrap gui/$(id -u)
-<that file>`; stop with `launchctl bootout gui/$(id -u)/com.howisjason.march-die`).
+<that file>`; stop with `launchctl bootout gui/$(id -u)/com.howisjason.march-die`). Since 14 Oct 2026 (7:47pm, J) it is also disabled, so a log-in does not reload it; `launchctl enable gui/$(id -u)/com.howisjason.march-die` comes before the bootstrap.
 
 **Publishing.** GitHub Pages serves `main` as plain files: `.nojekyll` at the root keeps Jekyll off, because Jekyll read a pair of curly braces in a markdown file as a template and failed every build for nine hours on 12 Oct 2026 while the page silently stayed old. After any push, `gh run list --limit 1` must show `success`; the page is not live until it does.
 
