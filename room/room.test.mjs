@@ -5,12 +5,12 @@
 // case fails, not only that the good case passes).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, cpSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { mkdtempSync, cpSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness } from './lib.mjs';
+import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, lastDesk, drawnThisWake, pastReads } from './lib.mjs';
 
 const R = '/Users/howisjason/Projects/chronicle/room';
 const B = '/Users/howisjason/Projects/march-7th/march-brain';
@@ -42,6 +42,7 @@ test('kindOf follows the plan table, row by row', () => {
     [['Bash', { command: `node ${R}/tools/room.mjs page on-vega "On Vega" shelf/on-vega.md` }], { kind: 'writing', place: 'shelf' }],
     [['Bash', { command: `node ${R}/tools/room.mjs quill pin "x" yes "y"` }], { kind: 'idle', place: 'none' }],
     [['Edit', { file_path: `${R}/state/quill.json` }], { kind: 'idle', place: 'none' }],
+    [['Bash', { command: `node ${R}/tools/room.mjs desk d-20261014-ab12-a` }], { kind: 'reading', place: 'desk' }],
   ];
   for (const [[name, input], want] of rows) assert.deepEqual(kindOf(name, input), want, `${name} ${JSON.stringify(input)}`);
 });
@@ -112,13 +113,71 @@ test('validate refuses a desk item with no id, no at, or a kind it does not know
 });
 
 test('the morning line, exactly', () => {
+  const desk = [{ pool: 'wikipedia', door: 'summary' }, { pool: 'commons', door: 'picture' }];
   const e = { started: '2026-10-12T07:03:10+07:00', cost_usd: 1.234, cap_usd: 4, verdict: 'clean', pins: 2,
-    bench_steps: [{ id: 'clock', n: 3, status: 'half' }], cloud: 1, shelf: 0, quill: { yes: 2, no: 1, called: 3, recorded: 3 } };
+    bench_steps: [{ id: 'clock', n: 3, status: 'half' }], cloud: 1, shelf: 0, quill: { yes: 2, no: 1, called: 3, recorded: 3 }, desk, took: 'Vega', talks: 1 };
   assert.equal(formatMorningLine(e, { clock: 'A clock that knows the moon' }),
-    '- **2026-10-12 — the room:** 2 pins, bench: "A clock that knows the moon" +3 steps (half), 1 in the cloud, 0 on the shelf, Quill: 2 yes / 1 no; $1.23 of $4 used (31%), clean.');
-  const zero = { started: '2026-10-13T07:02:00+07:00', cost_usd: 0.31, cap_usd: 4, verdict: 'clean', pins: 0, bench_steps: [], cloud: 0, shelf: 0, quill: { yes: 0, no: 0, called: 0, recorded: 0 } };
-  assert.equal(formatMorningLine(zero), '- **2026-10-13 — the room:** nothing new in the room; $0.31 of $4 used (8%), clean.');
-  assert.equal(formatMorningLine({ ...zero, used_new: 2 }), '- **2026-10-13 — the room:** 0 pins, bench: nothing new, 0 in the cloud, 0 on the shelf, Quill: 0 yes / 0 no, used: 2; $0.31 of $4 used (8%), clean.');
+    '- **2026-10-12 — the room:** 2 pins, bench: "A clock that knows the moon" +3 steps (half), 1 in the cloud, 0 on the shelf, Quill: 2 yes / 1 no, desk: wikipedia/summary, commons/picture; took "Vega"; talks: 1; $1.23 of $4 used (31%), clean.');
+  const zero = { started: '2026-10-13T07:02:00+07:00', cost_usd: 0.31, cap_usd: 4, verdict: 'clean', pins: 0, bench_steps: [], cloud: 0, shelf: 0, quill: { yes: 0, no: 0, called: 0, recorded: 0 }, desk, talks: 0 };
+  assert.equal(formatMorningLine(zero), '- **2026-10-13 — the room:** nothing new in the room, desk: wikipedia/summary, commons/picture; took neither; talks: 0; $0.31 of $4 used (8%), clean.');
+  assert.equal(formatMorningLine({ ...zero, used_new: 2 }), '- **2026-10-13 — the room:** 0 pins, bench: nothing new, 0 in the cloud, 0 on the shelf, Quill: 0 yes / 0 no, desk: wikipedia/summary, commons/picture; took neither; talks: 0, used: 2; $0.31 of $4 used (8%), clean.');
+  // a talk with Quill is something new, even with nothing else made
+  assert.match(formatMorningLine({ ...zero, talks: 2 }), /Quill: 0 yes \/ 0 no, desk: .*; talks: 2;/);
+  assert.match(formatMorningLine({ ...zero, desk: [] }), /desk: nothing drawn; took neither/);
+});
+
+test('validate: the second day\'s desk, wall and Quill doors, and the bad cases refused', () => {
+  const d = { id: 'd-20261014-ab12-a', at: '2026-10-14', pool: 'commons', door: 'picture', title: 'File:Owl.jpg', url: 'https://commons.wikimedia.org/wiki/File:Owl.jpg', shown: 'https://upload.wikimedia.org/x/Owl.jpg' };
+  assert.equal(validate('desk', [d]).ok, true);
+  assert.equal(validate('desk', [{ ...d, taken: '2026-10-14' }]).ok, true);
+  assert.equal(validate('desk', [{ ...d, pool: 'openstreetmap' }]).ok, false);
+  assert.equal(validate('desk', [{ ...d, door: 'smell' }]).ok, false);
+  assert.equal(validate('desk', [{ ...d, shown: '' }]).ok, false);
+  assert.equal(validate('desk', [{ ...d, taken: 'soon' }]).ok, false);
+  const w = { id: 'clock', title: 'A clock', started: '2026-10-12', status: 'done', path: 'bench/clock', kind: 'bench', day: '2026-10-12' };
+  assert.equal(validate('wall', [w, { ...w, kind: 'shelf', path: 'shelf/clock.md' }]).ok, true); // same id, two kinds
+  assert.equal(validate('wall', [w, w]).ok, false);
+  assert.equal(validate('wall', [{ ...w, kind: 'cloud' }]).ok, false);
+  assert.equal(validate('wall', [{ ...w, day: undefined }]).ok, false);
+  assert.equal(validate('wall', [{ ...w, path: undefined }]).ok, false);
+  assert.equal(validate('wall', [{ id: 'p', title: 't', kind: 'board', day: '2026-10-12', url: 'file:///etc/hosts' }]).ok, false);
+  const q = { id: 'q1', at: '2026-10-14', door: 'talk', subject: 'x', verdict: 'yes', reason: 'y' };
+  assert.equal(validate('quill', [q, { ...q, id: 'q2', door: 'talk' }]).ok, true);
+  assert.equal(validate('quill', [{ ...q, door: 'chat' }]).ok, false);
+});
+
+test('visible drops private items from the real wall', () => {
+  const wall = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'state/wall.json'), 'utf8'));
+  assert.equal(validate('wall', wall).ok, true);
+  const planted = [{ ...wall[0], id: 'secret', private: true }, ...wall];
+  assert.deepEqual(visible(planted).map((i) => i.id), wall.map((i) => i.id));
+});
+
+test('drawnThisWake: a wake whose draw failed reports nothing, never the wake before', () => {
+  const it = (id) => ({ id, pool: 'wikipedia', door: 'title' });
+  const desk = [it('d-20261013-1111-a'), it('d-20261013-1111-b')];
+  assert.deepEqual(drawnThisWake(desk, new Set()).map((d) => d.id), ['d-20261013-1111-a', 'd-20261013-1111-b']);
+  assert.deepEqual(drawnThisWake(desk, new Set(['d-20261013-1111-a', 'd-20261013-1111-b'])), []);
+  assert.deepEqual(drawnThisWake([{ id: 'd-20261012-084308', kind: 'arxiv' }], new Set()), []);
+  assert.match(formatMorningLine({ started: '2026-10-14T07:00:00+07:00', cost_usd: 0, cap_usd: 5, verdict: 'clean', desk: drawnThisWake(desk, new Set(desk.map((d) => d.id))) }), /desk: nothing drawn/);
+});
+
+test('lastDesk: the newest wake\'s two items, or an old lone item', () => {
+  const old = { id: 'd-20261012-084308' }, a1 = { id: 'd-20261013-1111-a' }, b1 = { id: 'd-20261013-1111-b' }, a2 = { id: 'd-20261014-2222-a' }, b2 = { id: 'd-20261014-2222-b' };
+  assert.deepEqual(lastDesk([old, a1, b1, a2, b2]), [a2, b2]);
+  assert.deepEqual(lastDesk([old, a1, b1, a2]), [a2]);
+  assert.deepEqual(lastDesk([a1, b1, old]), [old]);
+  assert.deepEqual(lastDesk([]), []);
+  // a test cell's five items are one wake; a longer id that merely starts with the base is not
+  const five = 'abcde'.split('').map((l) => ({ id: `d-20261015-3333-${l}` }));
+  assert.deepEqual(lastDesk([a2, b2, ...five]), five);
+  assert.deepEqual(lastDesk([{ id: 'd-20261015-3333-ab' }, ...five]), five);
+});
+test('validate: the test pools (self, diary, grown) and doors (note, line) pass; an unknown pool still fails', () => {
+  const it = (pool, door) => [{ id: 'd-20261015-3333-a', at: '2026-10-15', pool, door, title: 't', shown: 's' }];
+  for (const [p, d] of [['self', 'note'], ['self', 'line'], ['diary', 'summary'], ['grown', 'picture']]) assert.equal(validate('desk', it(p, d)).ok, true, p);
+  assert.equal(validate('desk', it('arxiv', 'summary')).ok, false);
+  assert.equal(validate('desk', it('self', 'smell')).ok, false);
 });
 
 // The room command, run against a COPY of state/ (ROOM_STATE), never the real lists.
@@ -151,7 +210,7 @@ test('the room command refuses a bad status and leaves the file exactly as it wa
   assert.match(r.out, /^refused: /);
   assert.equal(readFileSync(join(d, 'bench.json'), 'utf8'), before);
   assert.equal(roomCmd(d, 'build', 'Bad Id!', 'x').code, 2);
-  assert.equal(roomCmd(d, 'quill', 'door-nobody-keeps', 'x', 'yes', 'y').code, 2);
+  assert.equal(roomCmd(d, 'quill', 'door-nobody-keeps', 'x', 'yes', 'y', 'NOTEBOOK: a line').code, 2);
   assert.equal(roomCmd(d, 'page', 'escape', 'x', 'shelf/../../tools/room.mjs').code, 2);
   assert.equal(roomCmd(d, 'page', 'nothing-yet', 'x', 'shelf/not-written.md').code, 2);
 });
@@ -164,13 +223,38 @@ test('the room command: steps, used, quill and judged land in the shapes the pag
   const b = JSON.parse(readFileSync(join(d, 'bench.json'), 'utf8')).find((i) => i.id === 'moon-clock');
   assert.equal(b.steps[0].note, 'the first step');
   assert.equal(b.used_by[0].who, 'J');
-  const q = roomCmd(d, 'quill', 'build', 'moon-clock', 'no', 'too big').out.trim().replace('quill: ', '');
+  const q = roomCmd(d, 'quill', 'build', 'moon-clock', 'no', 'too big', 'NOTEBOOK: shown a clock, said too big').out.trim().replace('quill: ', '');
   assert.match(q, /^q-\d{8}-[a-z0-9]{4}-build-\d+$/);
   assert.equal(roomCmd(d, 'judged', q, 'right').code, 0);
   assert.equal(roomCmd(d, 'judged', q, 'maybe').code, 2);
   const ql = JSON.parse(readFileSync(join(d, 'quill.json'), 'utf8'));
   assert.equal(ql.find((i) => i.id === q).judged, 'right');
   assert.equal(validate('quill', ql).ok, true);
+});
+
+test('pastReads counts reads of her own past before the first making step, and nothing after it', () => {
+  const S = '/Users/x/Projects/march-7th/day/tests/A0/chronicle/room';
+  const MB = '/Users/x/Projects/march-7th/day/tests/A0/march-brain';
+  const call = (name, input) => ({ message: { content: [{ type: 'tool_use', name, input }] } });
+  const recs = [
+    call('Read', { file_path: `${S}/state/desk.json` }),                  // today's desk: not the past
+    call('Read', { file_path: `${MB}/inner-life/memory/pole-star.md` }),  // memory
+    call('Grep', { pattern: 'wan-phra', path: S }),                       // a search over the room
+    call('Read', { file_path: `${S}/wall/bench/wan-phra/README.md` }),    // the wall's files
+    call('Read', { file_path: '/Users/howisjason/Projects/chronicle/room/first-day/shelf/x.md' }), // the real room
+    call('WebSearch', { query: 'tides' }),                                // not a read of the past
+    call('Bash', { command: `node ${S}/tools/room.mjs build tides "Tides"` }), // the first making step
+    call('Read', { file_path: `${S}/state/wall.json` }),                  // after it: not counted
+  ];
+  assert.deepEqual(pastReads(recs), { count: 4, where: ['first-day', 'memory', 'real', 'search', 'wall'] });
+  assert.deepEqual(pastReads([]), { count: 0, where: [] });
+  // a session that never makes anything counts every read of the past
+  assert.equal(pastReads(recs.filter((r) => r.message.content[0].name !== 'Bash')).count, 5);
+  // a read of something that is not hers counts nothing
+  assert.deepEqual(pastReads([call('Read', { file_path: '/Users/x/Projects/growth-op/README.md' })]), { count: 0, where: [] });
+  // the shell: a read-only command naming a place counts; a reach into the live brain's memory is marked real
+  assert.deepEqual(pastReads([call('Bash', { command: 'cd room && head -c 1500 state/wall.json' }), call('Bash', { command: 'echo hi' })]), { count: 1, where: ['wall'] });
+  assert.deepEqual(pastReads([call('Read', { file_path: '/Users/howisjason/Projects/march-7th/march-brain/inner-life/memory/x.md' })]), { count: 1, where: ['memory', 'real'] });
 });
 
 test('sameness: the same night again is 100, a different night is 0, and nothing to compare is 0', () => {
@@ -180,4 +264,204 @@ test('sameness: the same night again is 100, a different night is 0, and nothing
   assert.equal(sameness(night, [other]), 0);
   assert.equal(sameness(night, []), 0);
   assert.equal(sameness(night, [other, night]), 100);
+});
+
+const roomEnv = (dir, env, ...args) => {
+  try { return { code: 0, out: execFileSync('node', [join(HERE, 'tools/room.mjs'), ...args], { env: { ...process.env, ROOM_STATE: dir, ...env }, encoding: 'utf8' }) }; }
+  catch (e) { return { code: e.status, out: String(e.stdout) }; }
+};
+const J = (d, name) => JSON.parse(readFileSync(join(d, `${name}.json`), 'utf8'));
+
+test('day-ends moves the bench, shelf and board to the front of the wall, empties them, and is safe twice', () => {
+  const d = copyState();
+  writeFileSync(join(d, 'shelf.json'), '[]\n'); writeFileSync(join(d, 'board.json'), '[]\n');
+  const wallBefore = J(d, 'wall');
+  assert.equal(roomCmd(d, 'build', 'tide-clock', 'A tide clock').code, 0);
+  mkdirSync(join(d, '..', 'shelf'), { recursive: true });
+  writeFileSync(join(d, 'board.json'), JSON.stringify([{ id: '20261014-0700-aa11', at: '2026-10-14', title: 'A pin', url: 'https://example.com', thumb: 'board/x.jpg', note: 'n' }]));
+  const benchBefore = J(d, 'bench');
+  assert.equal(roomCmd(d, 'day-ends').code, 2, 'refused without the launcher\'s word');
+  assert.deepEqual(J(d, 'bench'), benchBefore, 'and nothing moved');
+  const r = roomEnv(d, { ROOM_DAY_ENDS: '1' }, 'day-ends');
+  assert.equal(r.code, 0, r.out);
+  assert.match(r.out, new RegExp(`${benchBefore.length + 1} moved`));
+  for (const k of ['bench', 'shelf', 'board']) assert.deepEqual(J(d, k), []);
+  const wall = J(d, 'wall');
+  assert.equal(wall.length, wallBefore.length + benchBefore.length + 1);
+  const tide = wall.find((i) => i.id === 'tide-clock');
+  assert.equal(tide.kind, 'bench'); assert.match(tide.day, /^\d{4}-\d{2}-\d{2}$/); assert.equal(tide.title, 'A tide clock');
+  assert.equal(wall.find((i) => i.kind === 'board').title, 'A pin');
+  assert.deepEqual(wall.slice(-wallBefore.length), wallBefore, 'the old wall stays behind the new things, untouched');
+  assert.equal(validate('wall', wall).ok, true);
+  const again = roomEnv(d, { ROOM_DAY_ENDS: '1' }, 'day-ends');
+  assert.match(again.out, /0 moved/);
+  assert.deepEqual(J(d, 'wall'), wall);
+  // an id on the wall cannot be built again (its files moved to wall/bench/<id>/)
+  assert.equal(roomCmd(d, 'build', 'tide-clock', 'Again').code, 2);
+  // a build on the wall can still be marked used
+  assert.equal(roomCmd(d, 'used', 'tide-clock', 'March', 'read a tide').code, 0);
+  assert.equal(J(d, 'wall').find((i) => i.id === 'tide-clock').used_by[0].how, 'read a tide');
+});
+
+test('day-ends carries the files with the rows: bench folder, shelf page, pin picture; never overwrites, never climbs out', () => {
+  const root = mkdtempSync(join(tmpdir(), 'room-root-'));
+  const d = join(root, 'state');
+  cpSync(join(HERE, 'state'), d, { recursive: true });
+  for (const k of ['bench', 'shelf', 'board']) writeFileSync(join(d, `${k}.json`), '[]\n');
+  const env = { ROOM_ROOT: root };
+  assert.equal(roomEnv(d, env, 'build', 'tide-clock', 'A tide clock').code, 0);
+  assert.equal(roomEnv(d, env, 'build', 'kept', 'Its wall twin exists').code, 0);
+  mkdirSync(join(root, 'bench', 'tide-clock'), { recursive: true }); writeFileSync(join(root, 'bench', 'tide-clock', 'README.md'), 'tide');
+  mkdirSync(join(root, 'bench', 'kept'), { recursive: true }); writeFileSync(join(root, 'bench', 'kept', 'README.md'), 'new');
+  mkdirSync(join(root, 'wall', 'bench', 'kept'), { recursive: true }); writeFileSync(join(root, 'wall', 'bench', 'kept', 'README.md'), 'old');
+  mkdirSync(join(root, 'shelf'), { recursive: true }); writeFileSync(join(root, 'shelf', 'on-tides.md'), '# On tides');
+  writeFileSync(join(d, 'shelf.json'), JSON.stringify([{ id: 'on-tides', title: 'On tides', at: '2026-10-14', path: 'shelf/on-tides.md' }]));
+  mkdirSync(join(root, 'board'), { recursive: true }); writeFileSync(join(root, 'board', 'p1.jpg'), 'jpg');
+  writeFileSync(join(d, 'board.json'), JSON.stringify([
+    { id: 'p1', at: '2026-10-14', title: 'A pin', url: 'https://example.com', thumb: 'board/p1.jpg', note: 'n' },
+    { id: 'p2', at: '2026-10-14', title: 'A bad pin', url: 'https://example.com', thumb: 'board/../../escape.jpg', note: 'n' },
+    { id: 'p3', at: '2026-10-14', title: 'A dot pin', url: 'https://example.com', thumb: 'board/..', note: 'n' }]));
+  const r = roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends');
+  assert.equal(r.code, 0, r.out);
+  const wall = J(d, 'wall');
+  const row = (kind, id) => wall.find((i) => i.kind === kind && i.id === id);
+  assert.equal(row('bench', 'tide-clock').path, 'wall/bench/tide-clock');
+  assert.equal(readFileSync(join(root, 'wall', 'bench', 'tide-clock', 'README.md'), 'utf8'), 'tide');
+  assert.equal(existsSync(join(root, 'bench', 'tide-clock')), false, 'the bench folder is gone from bench/');
+  assert.equal(row('shelf', 'on-tides').path, 'wall/shelf/on-tides.md');
+  assert.equal(existsSync(join(root, 'shelf', 'on-tides.md')), false);
+  assert.equal(row('board', 'p1').thumb, 'wall/board/p1.jpg');
+  // the bad cases: a path that climbs out is left alone; an existing wall folder is never overwritten
+  assert.equal(row('board', 'p2').thumb, 'board/../../escape.jpg');
+  assert.equal(row('board', 'p3').thumb, 'board/..', 'a bare dot segment is left alone');
+  assert.equal(readFileSync(join(root, 'wall', 'bench', 'kept', 'README.md'), 'utf8'), 'old', 'never overwritten');
+  assert.equal(row('bench', 'kept').path, 'wall/bench/kept');
+  // without ROOM_ROOT the test copy moves no files at all (a test never touches the real room)
+  const d2 = copyState();
+  writeFileSync(join(d2, 'bench.json'), '[]\n');
+  assert.equal(roomCmd(d2, 'build', 'x1', 'X').code, 0);
+  assert.equal(roomEnv(d2, { ROOM_DAY_ENDS: '1' }, 'day-ends').code, 0);
+  assert.equal(J(d2, 'wall').find((i) => i.id === 'x1').path, 'bench/x1');
+});
+
+test('day-ends test switches: ROOM_KEEP_FILES leaves files where they were; ROOM_KEEP_HALF leaves a half build on the bench', () => {
+  const root = mkdtempSync(join(tmpdir(), 'room-root-'));
+  const d = join(root, 'state');
+  cpSync(join(HERE, 'state'), d, { recursive: true });
+  for (const k of ['bench', 'shelf', 'board']) writeFileSync(join(d, `${k}.json`), '[]\n');
+  const env = { ROOM_ROOT: root };
+  assert.equal(roomEnv(d, env, 'build', 'half-one', 'Half').code, 0);
+  assert.equal(roomEnv(d, env, 'build', 'done-one', 'Done').code, 0);
+  assert.equal(roomEnv(d, env, 'status', 'done-one', 'done').code, 0);
+  for (const id of ['half-one', 'done-one']) { mkdirSync(join(root, 'bench', id), { recursive: true }); writeFileSync(join(root, 'bench', id, 'a'), id); }
+  assert.equal(roomEnv(d, { ...env, ROOM_DAY_ENDS: '1', ROOM_KEEP_FILES: '1', ROOM_KEEP_HALF: '1' }, 'day-ends').code, 0);
+  assert.deepEqual(J(d, 'bench').map((i) => i.id), ['half-one'], 'the half build stays on the bench');
+  assert.equal(J(d, 'wall').find((i) => i.id === 'done-one').path, 'bench/done-one', 'its row moved, its path did not');
+  assert.equal(existsSync(join(root, 'bench', 'done-one', 'a')), true, 'and its files stayed');
+  assert.equal(J(d, 'wall').some((i) => i.id === 'half-one'), false);
+  // without the switches the half build goes too, files and all
+  assert.equal(roomEnv(d, { ...env, ROOM_DAY_ENDS: '1' }, 'day-ends').code, 0);
+  assert.deepEqual(J(d, 'bench'), []);
+  assert.equal(J(d, 'wall').find((i) => i.id === 'half-one').path, 'wall/bench/half-one');
+});
+
+test('desk marks today\'s item taken and refuses an unknown or older id', () => {
+  const d = copyState();
+  const item = (id, pool) => ({ id, at: '2026-10-14', pool, door: 'title', title: id, shown: id });
+  writeFileSync(join(d, 'desk.json'), JSON.stringify([item('d-20261013-1111-a', 'wikipedia'), item('d-20261013-1111-b', 'archive'), item('d-20261014-2222-a', 'commons'), item('d-20261014-2222-b', 'wiktionary')]));
+  assert.equal(roomCmd(d, 'desk', 'd-20261099-0000-a').code, 2);
+  assert.equal(roomCmd(d, 'desk', 'd-20261013-1111-a').code, 2, 'yesterday\'s desk is not today\'s');
+  const before = readFileSync(join(d, 'desk.json'), 'utf8');
+  assert.equal(readFileSync(join(d, 'desk.json'), 'utf8'), before);
+  assert.equal(roomCmd(d, 'desk', 'd-20261014-2222-b').code, 0);
+  const desk = J(d, 'desk');
+  assert.match(desk[3].taken, /^\d{4}-\d{2}-\d{2}$/);
+  assert.equal(desk[2].taken, undefined);
+});
+
+test('quill: the talk door, and the notebook line lands verbatim without its label', () => {
+  const d = copyState();
+  assert.equal(roomCmd(d, 'quill', 'talk', 'a question about tides', 'yes', 'Shiny.').code, 2, 'no notebook line, refused');
+  assert.equal(roomCmd(d, 'quill', 'talk', 'a question about tides', 'yes', 'Shiny.', 'NOTEBOOK: she asked about tides; second sea thing this week').code, 0);
+  const lines = readFileSync(join(d, 'quill-notebook.md'), 'utf8').trim().split('\n');
+  assert.match(lines[0], /^- \d{4}-\d{2}-\d{2}  talk  she asked about tides; second sea thing this week$/);
+  const ql = J(d, 'quill');
+  assert.deepEqual(ql.slice(-1).map((q) => q.door), ['talk']);
+});
+
+// resume (J's plan, 14 Oct 2026, step 4): a build on the wall comes back to the bench
+const roomRoot = () => {
+  const root = mkdtempSync(join(tmpdir(), 'room-root-'));
+  const d = join(root, 'state');
+  cpSync(join(HERE, 'state'), d, { recursive: true });
+  for (const k of ['bench', 'shelf', 'board']) writeFileSync(join(d, `${k}.json`), '[]\n');
+  return { root, d, env: { ROOM_ROOT: root } };
+};
+
+test('resume: a wall build comes back with the right row and its files; a second resume, a shelf id and an unknown id are refused', () => {
+  const { root, d, env } = roomRoot();
+  assert.equal(roomEnv(d, env, 'build', 'tide-clock', 'A tide clock').code, 0);
+  assert.equal(roomEnv(d, env, 'step', 'tide-clock', 'reads the tables').code, 0);
+  assert.equal(roomEnv(d, env, 'used', 'tide-clock', 'J', 'read a tide').code, 0);
+  assert.equal(roomEnv(d, env, 'status', 'tide-clock', 'done').code, 0);
+  mkdirSync(join(root, 'bench', 'tide-clock'), { recursive: true }); writeFileSync(join(root, 'bench', 'tide-clock', 'README.md'), 'tide');
+  mkdirSync(join(root, 'shelf'), { recursive: true }); writeFileSync(join(root, 'shelf', 'on-tides.md'), '# On tides');
+  writeFileSync(join(d, 'shelf.json'), JSON.stringify([{ id: 'on-tides', title: 'On tides', at: '2026-10-14', path: 'shelf/on-tides.md' }]));
+  assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
+  const wallRow = J(d, 'wall').find((i) => i.kind === 'bench' && i.id === 'tide-clock');
+  const wallLen = J(d, 'wall').length;
+  const r = roomEnv(d, env, 'resume', 'tide-clock');
+  assert.equal(r.code, 0, r.out);
+  assert.equal(r.out.trim(), 'resume: tide-clock back on the bench');
+  const b = J(d, 'bench');
+  assert.equal(b.length, 1);
+  assert.deepEqual(Object.keys(b[0]).sort(), ['id', 'path', 'started', 'status', 'steps', 'title', 'updated', 'used_by']);
+  assert.equal(b[0].status, 'half', 'a done build picked up is open again');
+  assert.equal(b[0].path, 'bench/tide-clock');
+  assert.equal(b[0].started, wallRow.started);
+  assert.match(b[0].updated, /^\d{4}-\d{2}-\d{2}$/);
+  assert.deepEqual(b[0].steps.map((s) => s.note), ['reads the tables', 'picked up from the wall']);
+  assert.equal(b[0].used_by[0].how, 'read a tide');
+  assert.equal(validate('bench', b).ok, true);
+  assert.equal(J(d, 'wall').length, wallLen - 1);
+  assert.equal(J(d, 'wall').some((i) => i.kind === 'bench' && i.id === 'tide-clock'), false, 'the row is off the wall');
+  assert.equal(readFileSync(join(root, 'bench', 'tide-clock', 'README.md'), 'utf8'), 'tide', 'the files are back on the bench');
+  assert.equal(existsSync(join(root, 'wall', 'bench', 'tide-clock')), false);
+  // the bad cases, each leaving both lists as they were
+  const before = [readFileSync(join(d, 'bench.json'), 'utf8'), readFileSync(join(d, 'wall.json'), 'utf8')];
+  assert.match(roomEnv(d, env, 'resume', 'tide-clock').out, /^refused: tide-clock is not a build on the wall/);
+  assert.equal(roomEnv(d, env, 'resume', 'on-tides').code, 2, 'a shelf id is not a build');
+  assert.equal(roomEnv(d, env, 'resume', 'never-made').code, 2);
+  assert.deepEqual([readFileSync(join(d, 'bench.json'), 'utf8'), readFileSync(join(d, 'wall.json'), 'utf8')], before);
+  // an id already on the bench is refused, even when a wall row of the same id is planted
+  const planted = [{ ...wallRow }, ...J(d, 'wall')];
+  writeFileSync(join(d, 'wall.json'), JSON.stringify(planted));
+  assert.match(roomEnv(d, env, 'resume', 'tide-clock').out, /^refused: bench already has "tide-clock"/);
+  // a first-day build comes back from first-day/bench/<id>
+  mkdirSync(join(root, 'first-day', 'bench', 'old-one'), { recursive: true }); writeFileSync(join(root, 'first-day', 'bench', 'old-one', 'README.md'), 'old');
+  writeFileSync(join(d, 'wall.json'), JSON.stringify([{ id: 'old-one', title: 'Old', started: '2026-10-12', status: 'done', path: 'first-day/bench/old-one', kind: 'bench', day: '2026-10-12' }, ...J(d, 'wall')]));
+  assert.equal(roomEnv(d, env, 'resume', 'old-one').code, 0);
+  assert.equal(readFileSync(join(root, 'bench', 'old-one', 'README.md'), 'utf8'), 'old');
+  assert.equal(existsSync(join(root, 'first-day', 'bench', 'old-one')), false);
+  // a path outside a build folder on the wall is refused
+  writeFileSync(join(d, 'wall.json'), JSON.stringify([{ id: 'bad-path', title: 'Bad', started: '2026-10-12', status: 'done', path: 'wall/bench/..', kind: 'bench', day: '2026-10-12' }, ...J(d, 'wall')]));
+  assert.match(roomEnv(d, env, 'resume', 'bad-path').out, /^refused: bad-path's path/);
+});
+
+test('resume, then day-ends: the build goes back to the wall with the extra step kept', () => {
+  const { root, d, env } = roomRoot();
+  assert.equal(roomEnv(d, env, 'build', 'moon-clock', 'A moon clock').code, 0);
+  assert.equal(roomEnv(d, env, 'step', 'moon-clock', 'the first step').code, 0);
+  mkdirSync(join(root, 'bench', 'moon-clock'), { recursive: true }); writeFileSync(join(root, 'bench', 'moon-clock', 'a.js'), 'x');
+  assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
+  assert.equal(roomEnv(d, env, 'resume', 'moon-clock').code, 0);
+  assert.equal(roomEnv(d, env, 'step', 'moon-clock', 'a step after the gap').code, 0);
+  assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
+  assert.deepEqual(J(d, 'bench'), []);
+  const row = J(d, 'wall').find((i) => i.kind === 'bench' && i.id === 'moon-clock');
+  assert.equal(row.path, 'wall/bench/moon-clock');
+  assert.deepEqual(row.steps.map((s) => s.note), ['the first step', 'picked up from the wall', 'a step after the gap']);
+  assert.equal(readFileSync(join(root, 'wall', 'bench', 'moon-clock', 'a.js'), 'utf8'), 'x');
+  assert.equal(J(d, 'wall').filter((i) => i.kind === 'bench' && i.id === 'moon-clock').length, 1, 'once on the wall, not twice');
+  assert.equal(validate('wall', J(d, 'wall')).ok, true);
 });

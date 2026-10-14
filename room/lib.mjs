@@ -45,6 +45,7 @@ export function kindOf(name, input) {
       if (m[1] === 'thought' || m[1] === 'drop-thought') return { kind: 'thinking', place: 'cloud' };
       if (['build', 'step', 'status', 'used'].includes(m[1])) return { kind: 'building', place: 'bench' };
       if (m[1] === 'page') return { kind: 'writing', place: 'shelf' };
+      if (m[1] === 'desk') return { kind: 'reading', place: 'desk' };
     }
     return { kind: 'idle', place: 'none' };
   }
@@ -75,6 +76,48 @@ export function buildTrace(records, startedAtMs, as = null) {
     }
   }
   return out;
+}
+
+// The levers plan's "continued" column (13 Oct 2026): before her first making step
+// (a build, a page or a pin), how many reads or searches opened her own past, and
+// which places they were. Only a count and place names leave this function, never a
+// path. "real" marks a reach into the live room or the live brain from a scratch copy.
+const PAST = [['wall', ROOM + 'wall/'], ['wall', ROOM + 'state/wall.json'], ['first-day', ROOM + 'first-day/'],
+  ['bench', ROOM + 'bench/'], ['shelf', ROOM + 'shelf/'], ['cloud', ROOM + 'state/cloud.json'],
+  ['memory', '/inner-life/memory/'], ['diary', '/inner-life/diary/'], ['self', '/inner-life/self.md']];
+const SEARCH_ROOTS = /\/(chronicle\/room|chronicle|march-brain|inner-life|Projects)\/?$/;
+const REAL = ['/Projects/chronicle/room/', '/Projects/march-7th/march-brain/'];
+export function pastReads(records) {
+  let count = 0;
+  const where = new Set();
+  for (const r of records || []) {
+    const content = r && r.message && r.message.content;
+    if (!Array.isArray(content)) continue;
+    for (const b of content) {
+      if (!b || b.type !== 'tool_use') continue;
+      const k = kindOf(b.name, b.input);
+      if (['building', 'writing', 'pinning'].includes(k.kind)) return { count, where: [...where].sort() };
+      // read-only shell commands get through dontAsk (the grader saw `head state/wall.json`), so
+      // a Bash command that names one of the places counts too; its first making step is above
+      if (b.name === 'Bash') {
+        const c = String((b.input && b.input.command) || '');
+        const sh = PAST.find(([, frag]) => c.includes(frag) || c.includes(frag.replace(ROOM, '').replace(/^\//, '')));
+        if (!sh) continue;
+        count++; where.add(sh[0]);
+        if (REAL.some((f) => c.includes(f))) where.add('real');
+        continue;
+      }
+      if (!['Read', 'Glob', 'Grep'].includes(b.name)) continue;
+      const p = pathOf(b.input), pat = String((b.input && b.input.pattern) || '');
+      const hit = PAST.find(([, frag]) => p.includes(frag) || (b.name === 'Glob' && pat.includes(frag.replace(ROOM, ''))));
+      const search = !hit && b.name !== 'Read' && SEARCH_ROOTS.test(p);
+      if (!hit && !search) continue;
+      count++;
+      where.add(hit ? hit[0] : 'search');
+      if (REAL.some((f) => p.includes(f))) where.add('real');
+    }
+  }
+  return { count, where: [...where].sort() };
 }
 
 // Two traces (the session's and its helpers') -> one, in time order, collapsed again.
@@ -112,17 +155,43 @@ export function sameness(trace, previousTraces = []) {
   return Math.round(best * 100);
 }
 
+// The newest wake's desk: the launcher (free-hour.sh) draws two items a wake (a test
+// cell may draw up to ten) with ids <base>-a, <base>-b, ..., so the last item's base
+// names the wake. A desk item from before the second day has no such ending and stands alone.
+export function lastDesk(items) {
+  const list = Array.isArray(items) ? items.filter((i) => i && typeof i.id === 'string') : [];
+  if (!list.length) return [];
+  const m = /^(.*)-[a-z]$/.exec(list[list.length - 1].id);
+  return m ? list.filter((i) => i.id.length === m[1].length + 2 && i.id.startsWith(`${m[1]}-`) && /[a-z]$/.test(i.id)) : [list[list.length - 1]];
+}
+
+// This wake's draw for the morning line: the newest pair, but only items that were
+// not already there at the last commit (publish-hour.sh commits after every run).
+// A wake whose every pool failed wrote nothing, and must read "nothing drawn",
+// never the wake before's pair.
+export function drawnThisWake(items, oldIds) {
+  return lastDesk(items).filter((d) => d.pool && !oldIds.has(d.id));
+}
+
 // The private drawer: anything marked private never reaches the page.
 export function visible(items) {
   return Array.isArray(items) ? items.filter((i) => i && i.private !== true) : [];
 }
 
 const STATUS = new Set(['half', 'done', 'dropped']);
-const DOORS = new Set(['build', 'pin', 'finish']);
+// talk (the second day, J's yes 13 Oct 2026): a talk asks no verdict (its verdict is
+// a placeholder "yes" the page does not draw).
+const DOORS = new Set(['build', 'pin', 'finish', 'talk']);
 const VERDICTS = new Set(['yes', 'no']);
 const JUDGED = new Set(['unknown', 'right', 'wrong']);
+// Desk items from before the second day carry `kind`; from it on, `pool` and `door`.
 const DESK_KINDS = new Set(['wikipedia', 'arxiv', 'note', 'diary']);
-export const STATE_NAMES = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk'];
+// self, diary and grown are the levers test's pools (scratch cells D2, G6, D7); since 14 Oct 2026 (J's plan) free-hour.sh
+// draws self on every live wake too, with note and line its doors; diary and grown only in a test
+export const DESK_POOLS = new Set(['wikipedia', 'archive', 'commons', 'wiktionary', 'self', 'diary', 'grown']);
+export const DESK_DOORS = new Set(['summary', 'picture', 'first-sentence', 'coordinates', 'one-word', 'title', 'note', 'line']);
+const WALL_KINDS = new Set(['bench', 'shelf', 'board']);
+export const STATE_NAMES = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk', 'wall'];
 
 // A state file's shape. March writes these by hand in the hour, so a slip is
 // expected (desk.json is the launcher's, free-hour.sh); the page and the script report problems and carry on.
@@ -133,24 +202,39 @@ export function validate(stateName, data) {
   data.forEach((item, n) => {
     const here = `${stateName}[${n}]`;
     if (!item || typeof item !== 'object') { problems.push(`${here}: not an object`); return; }
+    // the wall holds three kinds side by side, so an id is unique within its kind
+    const key = stateName === 'wall' ? `${item.kind}:${item.id}` : item.id;
     if (typeof item.id !== 'string' || !item.id) problems.push(`${here}: no id`);
-    else if (seen.has(item.id)) problems.push(`${here}: id "${item.id}" used twice`);
-    else seen.add(item.id);
-    const atField = stateName === 'bench' ? 'started' : 'at';
+    else if (seen.has(key)) problems.push(`${here}: id "${item.id}" used twice`);
+    else seen.add(key);
+    const atField = stateName === 'bench' ? 'started' : stateName === 'wall' ? 'day' : 'at';
     if (typeof item[atField] !== 'string' || !Number.isFinite(Date.parse(item[atField]))) problems.push(`${here}: no ${atField}`);
     if (stateName === 'bench') {
       if (!STATUS.has(item.status)) problems.push(`${here}: status must be half, done or dropped`);
       if (item.steps !== undefined && !Array.isArray(item.steps)) problems.push(`${here}: steps must be a list`);
     }
     if (stateName === 'quill') {
-      if (!DOORS.has(item.door)) problems.push(`${here}: door must be build, pin or finish`);
+      if (!DOORS.has(item.door)) problems.push(`${here}: door must be build, pin, finish or talk`);
       if (!VERDICTS.has(item.verdict)) problems.push(`${here}: verdict must be yes or no`);
       if (item.judged !== undefined && !JUDGED.has(item.judged)) problems.push(`${here}: judged must be unknown, right or wrong`);
     }
     if (stateName === 'board' && !/^https?:\/\//.test(String(item.url || ''))) problems.push(`${here}: url must be http(s)`);
     if (stateName === 'desk') {
-      if (!DESK_KINDS.has(item.kind)) problems.push(`${here}: kind must be wikipedia, arxiv, note or diary`);
+      if (item.pool === undefined) {
+        if (!DESK_KINDS.has(item.kind)) problems.push(`${here}: kind must be wikipedia, arxiv, note or diary`);
+      } else {
+        if (!DESK_POOLS.has(item.pool)) problems.push(`${here}: pool must be wikipedia, archive, commons, wiktionary, self (or a test's diary, grown)`);
+        if (!DESK_DOORS.has(item.door)) problems.push(`${here}: door must be summary, picture, first-sentence, coordinates, one-word, title, note or line`);
+        if (typeof item.shown !== 'string' || !item.shown) problems.push(`${here}: no shown`);
+        if (item.taken !== undefined && !Number.isFinite(Date.parse(item.taken))) problems.push(`${here}: taken must be a time`);
+      }
       if (item.url !== undefined && !/^https?:\/\//.test(String(item.url))) problems.push(`${here}: url must be http(s)`);
+    }
+    if (stateName === 'wall') {
+      if (!WALL_KINDS.has(item.kind)) problems.push(`${here}: kind must be bench, shelf or board`);
+      if (typeof item.title !== 'string') problems.push(`${here}: no title`);
+      if (item.kind === 'board' && !/^https?:\/\//.test(String(item.url || ''))) problems.push(`${here}: url must be http(s)`);
+      if (item.kind !== 'board' && (typeof item.path !== 'string' || !item.path)) problems.push(`${here}: no path`);
     }
   });
   return { ok: problems.length === 0, problems };
@@ -171,12 +255,15 @@ export function formatMorningLine(e, titles = {}) {
   const steps = e.bench_steps || [];
   const q = e.quill || {};
   const used = Number(e.used_new) > 0 ? `, used: ${e.used_new}` : '';
-  const nothing = !e.pins && !steps.length && !e.cloud && !e.shelf && !q.recorded && !q.called && !used;
-  if (nothing) return `- **${day} — the room:** nothing new in the room; ${spend}.`;
+  // the desk's record (the second day): what was drawn, through which door, what she took
+  const drawn = (e.desk || []).map((d) => `${d.pool}/${d.door}`).join(', ') || 'nothing drawn';
+  const desk = `desk: ${drawn}; took ${e.took ? `"${e.took}"` : 'neither'}; talks: ${Number(e.talks) || 0}`;
+  const nothing = !e.pins && !steps.length && !e.cloud && !e.shelf && !q.recorded && !q.called && !used && !Number(e.talks);
+  if (nothing) return `- **${day} — the room:** nothing new in the room, ${desk}; ${spend}.`;
   const bench = steps.length
     ? steps.map((s) => `"${titles[s.id] || s.id}" +${s.n} steps (${s.status})`).join(', ')
     : 'nothing new';
   return `- **${day} — the room:** ${e.pins || 0} pins, bench: ${bench}, ${e.cloud || 0} in the cloud, ` +
-    `${e.shelf || 0} on the shelf, Quill: ${q.yes || 0} yes / ${q.no || 0} no${used}; ${spend}.`;
+    `${e.shelf || 0} on the shelf, Quill: ${q.yes || 0} yes / ${q.no || 0} no, ${desk}${used}; ${spend}.`;
 }
 

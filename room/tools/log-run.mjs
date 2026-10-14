@@ -35,12 +35,14 @@ import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { homedir } from 'node:os';
-import { buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, STATE_NAMES, DOOR } from '../lib.mjs';
+import { buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, drawnThisWake, pastReads, STATE_NAMES, DOOR } from '../lib.mjs';
 
 const ROOM = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CHRON = join(ROOM, '..');
 const BRAIN = process.env.FREE_HOUR_BRAIN || '/Users/howisjason/Projects/march-7th/march-brain'; // a test in a scratch copy must not write his morning file (12 Oct 2026)
-const SESSIONS = join(homedir(), '.claude/projects/-Users-howisjason-Projects-march-7th-march-brain');
+// the CLI files a session under its cwd (the brain) with every non-alphanumeric turned into "-",
+// so a test in a scratch brain reads its own session (13 Oct 2026)
+const SESSIONS = join(homedir(), '.claude/projects', BRAIN.replace(/[^A-Za-z0-9]/g, '-'));
 // Overridable only so a test can aim them at copies (never the real file in a test).
 const LEDGER = process.env.ROOM_LEDGER || join(BRAIN, 'notes/immune/free-hour-log.tsv');
 const UNATTENDED = process.env.ROOM_UNATTENDED || join(BRAIN, 'inner-life/unattended.md');
@@ -111,17 +113,27 @@ for (const b of visible(now.bench)) {
   if (!was || n > 0 || was.status !== b.status) { benchSteps.push({ id: b.id, n: Math.max(0, n), status: b.status }); titles[b.id] = b.title; }
 }
 const newQuill = fresh('quill');
+// a talk asks no verdict (its "yes" is a placeholder), so it is counted apart
+const newVerdicts = newQuill.filter((q) => q.door !== 'talk');
+const talks = newQuill.length - newVerdicts.length;
+// the desk this wake: the two items the launcher drew and the one she took up, if any
+const desk = drawnThisWake(now.desk, ids(before('desk')));
+const took = desk.filter((d) => d.taken).map((d) => d.title).join('" and "');
 const entry = {
   run: bkk(startedMs).slice(0, 16).replace(/[-:]/g, '').replace('T', '-'),
   started: bkk(startedMs), ended: bkk(endedMs), seconds: Math.round(durationMs / 1000),
   verdict,
   pins: fresh('board').length, bench_steps: benchSteps, cloud: fresh('cloud').length, shelf: fresh('shelf').length,
-  quill: { yes: newQuill.filter((q) => q.verdict === 'yes').length, no: newQuill.filter((q) => q.verdict === 'no').length, called: quillCalled, recorded: newQuill.length },
+  quill: { yes: newVerdicts.filter((q) => q.verdict === 'yes').length, no: newVerdicts.filter((q) => q.verdict === 'no').length, called: quillCalled, recorded: newQuill.length, talks },
   trace,
   // against the last seven runs' traces, read from this same public log
   sameness: sameness(trace, jsonl(join(STATE, 'log.jsonl')).slice(-7).map((e) => e.trace)),
   broken,
 };
+// A scratch test (the levers plan, 13 Oct 2026) stamps its cell and the "continued"
+// count into its own log; a live wake never sets FREE_HOUR_CELL, so the public log
+// gains nothing.
+if (process.env.FREE_HOUR_CELL) { entry.cell = process.env.FREE_HOUR_CELL; entry.continued = pastReads(main); }
 
 // 4b. the "I used this" presses: the door's counts, copied into state/used.json
 // ({id: n}). A door that is down never fails the run; it is named in the problems
@@ -133,7 +145,8 @@ try {
   const counts = (await r.json()).counts;
   if (!r.ok || !counts || typeof counts !== 'object') throw new Error(`HTTP ${r.status}`);
   // only ids on the bench: the door counts any id anyone sends, so a made-up one never reaches the page
-  const onBench = new Set(visible(now.bench).map((i) => i.id));
+  // the wall's builds too: a build leaves the bench at the next wake and can still be used
+  const onBench = new Set([...visible(now.bench), ...visible(now.wall).filter((i) => i.kind === 'bench')].map((i) => i.id));
   const clean = Object.fromEntries(Object.entries(counts).filter(([k, v]) => onBench.has(k) && Number.isInteger(v) && v > 0));
   let old = {};
   try { old = JSON.parse(execFileSync('git', ['-C', CHRON, 'show', 'HEAD:room/state/used.json'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })); } catch { old = {}; }
@@ -153,7 +166,7 @@ writeFileSync(join(STATE, 'now.json'), JSON.stringify({ awake: false, last_run: 
 // that header at a session's start, so the line must land inside that section: at
 // the end of the file when Unreported is the last section (the normal shape), else
 // right under its header.
-const line = formatMorningLine({ ...entry, cost_usd: cost, cap_usd: CAP, used_new: usedNew }, titles);
+const line = formatMorningLine({ ...entry, cost_usd: cost, cap_usd: CAP, used_new: usedNew, desk, took, talks }, titles);
 let placed = 'not placed';
 try {
   const text = readFileSync(UNATTENDED, 'utf8');

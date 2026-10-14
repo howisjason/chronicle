@@ -53,3 +53,9 @@ th { font: 11px var(--px); color: var(--dim); }
 .card pre { white-space: pre-wrap; font-size: 12px; background: #000; border-radius: 4px; padding: 8px; margin: 8px 0 6px; max-height: 260px; overflow: auto; }
 .card .meta { color: var(--dim); font-size: 13px; }
 .usedbtn { font-size: 10px; padding: 2px 6px; margin-left: 4px; }
+/* the second day: today's heading, the wall's days, a page opened inside its card, the desk's taken mark */
+h2.today { color: var(--gold); margin-top: 28px; }
+#wall h3 { font-size: 13px; color: var(--dim); margin: 18px 0 8px; }
+.card article.inpage { margin-top: 8px; border-top: 1px solid var(--line); }
+.tag.taken { border-color: var(--pink); color: var(--pink); margin-left: 4px; }
+.card > .tag + .tag { margin-left: 4px; }

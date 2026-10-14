@@ -26,12 +26,16 @@ import { kindOf, DOOR } from '../lib.mjs';
 
 const ROOM = join(dirname(fileURLToPath(import.meta.url)), '..');
 const NOW = process.env.ROOM_NOW || join(ROOM, 'state/now.json');
-const SESSIONS = join(homedir(), '.claude/projects/-Users-howisjason-Projects-march-7th-march-brain');
+// the session folder follows the brain the launcher ran in (log-run.mjs does the same)
+const BRAIN = process.env.FREE_HOUR_BRAIN || '/Users/howisjason/Projects/march-7th/march-brain';
+const SESSIONS = join(homedir(), '.claude/projects', BRAIN.replace(/[^A-Za-z0-9]/g, '-'));
 const [sid, run, launcher] = process.argv.slice(2);
 if (!/^[0-9a-f-]{36}$/.test(sid || '')) { console.error('live: no session id'); process.exit(1); }
 const FILE = join(SESSIONS, `${sid}.jsonl`);
 let KEY = '';
 try { KEY = readFileSync(join(homedir(), '.claude/chronicle-door-key'), 'utf8').trim(); } catch { /* no key: now.json only */ }
+// a test in a scratch room (FREE_HOUR_ROOM) never tells the public page she is awake
+if (process.env.FREE_HOUR_ROOM) KEY = '';
 
 const bkk = (ms = Date.now()) => new Date(ms + 7 * 3600e3).toISOString().replace(/\.\d{3}Z$/, '+07:00');
 let state = { awake: true, kind: 'waking', place: 'desk', since: bkk(), run };
