@@ -60,6 +60,36 @@ export const WIKI_ASAHNA = {
   2026: '07-30', 2027: '07-19', 2028: '07-07', 2029: '07-26', 2030: '07-15', 2031: '08-03',
 };
 
+// Asahna Bucha 2005 (B.E. 2548), as printed at the time. Read 14 Oct 2026
+// through a page reader that summarises; each line below is one it quoted.
+//   A holiday notice filed with the Stock Exchange of Thailand, 13 Dec 2004,
+//   https://www.bafsthai.com/en/investor-relations/newsroom/set-announcements/52253/
+//     "10. วันพฤหัสบดีที่ 21 กรกฎาคม วันอาสาฬหบูชา *"
+//     "11. วันศุกร์ที่ 22 กรกฎาคม วันเข้าพรรษา"
+//   Pattaya Mail, Vol. XIII No. 28, Friday July 15 - July 21, 2005,
+//   http://www.pattayamail.com/624/news.shtml
+//     "...of the Buddhist Lunar calendar, this year equating to Thursday, July 21."
+//   MGR Online, published 20 Jul 2548 09:22, https://mgronline.com/daily/detail/9480000096611
+//     "วันที่ 21 กรกฎาคม 2548 เป็นวันขึ้น 15 ค่ำ เดือน 8 จึงเป็นวันอาสาฬหบูชา"
+//     "ในปีนี้ทั้งสองวันนี้ตรงกับวันพฤหัสบดีและวันศุกร์ จึงกลายเป็นวันหยุดราชการไปทั้งสองวัน"
+export const KEPT_2005 = { 'Asahna Bucha': ['2005-07-21', 'Thursday'], 'Khao Phansa': ['2005-07-22', 'Friday'] };
+
+// How the Asahna table's cells moved. Its wikitext is one template,
+// {{รอบปีนักษัตร|start=2539 ...}}, with three rows of twelve month-day cells:
+// 2539-2550 (1996-2007), 2551-2562 and 2563-2574 (2020-2031). Rows read from
+// action=raw of each revision, 14 Oct 2026, https://th.wikipedia.org/w/index.php?oldid=<id>&action=raw
+// The 2005 cell: 7-21 in revisions 4136746 (Jul 2012), 6096961 (Aug 2015),
+// 6484103 (May 2016), 7300984 (Nov 2017), 7421131 (Jan 2018), 7486232 (Mar 2018)
+// and 7752502 (Jul 2018); 7-20 from 7771106 (8 Aug 2018) to now.
+export const CELL_2005 = { 7752502: '07-21', 7771106: '07-20' };
+// The 2020-2031 row in three revisions, in order.
+const row = (s) => Object.fromEntries(s.split('|').map((md, i) => [2020 + i, md.split('-').map((x) => x.padStart(2, '0')).join('-')]));
+export const ROW_2020S = {
+  7752502: row('7-5|7-24|7-13|7-31|7-21|7-10|7-29|7-17|7-7|7-26|7-15|8-2'),   // to 28 Jul 2018
+  7771106: row('7-4|7-23|7-12|7-31|7-20|7-10|7-29|7-18|7-6|7-25|7-14|8-2'),   // 8 Aug 2018
+  8306984: row('7-5|7-24|7-13|8-1|7-21|7-11|7-30|7-19|7-7|7-26|7-15|8-3'),    // 21 May 2019, still live
+};
+
 // Kapook, "ปฏิทินวันพระ 2557", https://hilight.kapook.com/view/88831, read 14 Oct
 // 2026: every wan phra of 2014 (B.E. 2557), [date, day of the month (1-30),
 // month]. Sanook's list (https://www.sanook.com/horoscope/54581/) is the same

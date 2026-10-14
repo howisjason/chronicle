@@ -42,6 +42,14 @@
       {
         "at": "2026-10-14",
         "note": "Quill's seam closed: count.mjs's road check now uses the same 54 moons as test.mjs (it had dropped the ones outside 2013-2014); both print 0.0134 degrees. Quill read the files but could not run them; I ran both after the change, all passed."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-14",
+        "note": "Asahna Bucha 2005 settled: a holiday notice filed with the Thai stock exchange (Dec 2004), Pattaya Mail (15-21 Jul 2005) and MGR Online (20 Jul 2005) all say Thursday 21 July, this build's day. Thai Wikipedia's table said 21 July too, until revision 7771106 (8 Aug 2018) made it the 20th and shifted eight cells of the 2020s row. Revision 8306984 (21 May 2019) then added one day to all twelve 2020s cells. That fixed 2020-23 and 2030-31 and made 2024-29 a day late, which is the table's late stretch this build had found. Seven new checks; the face's footer says it. Quill's two loose ends fixed: the first-row claim narrowed to the one cell read, and the provincial page linked."
       }
     ],
     "used_by": []

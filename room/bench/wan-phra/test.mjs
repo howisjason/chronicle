@@ -43,14 +43,39 @@ const against = (table, name) => {
 };
 // Expected, and why: from Asahna 2024 on, the tables run a day late. Thai PBS
 // (2026), the pages' own infoboxes (2025, 2026) and Thairath (Asahna 2024 on
-// Saturday 20 July) all side with this build there. Asahna 2005 is the one row
-// I can't settle: nothing I found says which day it was.
+// Saturday 20 July) all side with this build there. Asahna 2005 is settled
+// below, against what was printed in 2004 and 2005.
 const makha = against(WIKI_MAKHA, 'Makha');
 const asahna = against(WIKI_ASAHNA, 'Asahna');
 check(makha === '2025:-1 2026:-1 2027:-1 2028:-1 2029:-1 2030:-1',
   `Makha Bucha 1996-2031, years differing from the table: ${makha}`);
 check(asahna === '2005:+1 2024:-1 2025:-1 2026:-1 2027:-1 2028:-1 2029:-1',
   `Asahna Bucha 1996-2031, years differing from the table: ${asahna}`);
+
+// --- Asahna 2005: the day that was kept, and how the table's cells moved ---
+const { KEPT_2005, CELL_2005, ROW_2020S } = await import('./data.mjs');
+const weekday = (jdn) => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][(jdn + 1) % 7];
+for (const [name, [date, wd]] of Object.entries(KEPT_2005)) {
+  const h = W.holyDaysInYear(2005).find((x) => x.name && x.name.startsWith(name));
+  check(h && W.iso(h.jdn) === date && weekday(h.jdn) === wd,
+    `2005 ${name}: this build ${h ? `${weekday(h.jdn)} ${W.iso(h.jdn)}` : 'none'}; printed at the time: ${wd} ${date}`);
+}
+check(CELL_2005[7752502] === W.iso(W.holyDaysInYear(2005).find((x) => x.name && x.name.startsWith('Asahna')).jdn).slice(5)
+  && CELL_2005[7771106] === WIKI_ASAHNA[2005],
+  `the table's 2005 cell: ${CELL_2005[7752502]} up to revision 7752502 (this build's day), ${CELL_2005[7771106]} from 7771106 on (the live table's)`);
+const changed = Object.keys(ROW_2020S[7771106]).filter((y) => ROW_2020S[7771106][y] !== ROW_2020S[7752502][y]);
+check(changed.length === 8, `revision 7771106 changed ${changed.length} of the 12 cells of the 2020-2031 row (${changed.join(' ')})`);
+const live = Object.keys(ROW_2020S[8306984]).every((y) => ROW_2020S[8306984][y] === WIKI_ASAHNA[y]);
+check(live, 'revision 8306984\'s 2020-2031 row is the live table read on 13 Oct 2026');
+const plusOne = Object.keys(ROW_2020S[7771106]).every((y) =>
+  W.jdnFromIso(`${y}-${ROW_2020S[8306984][y]}`) - W.jdnFromIso(`${y}-${ROW_2020S[7771106][y]}`) === 1);
+check(plusOne, 'revision 8306984 is revision 7771106 plus one day, in all twelve cells of the 2020-2031 row');
+const rowVsBuild = {};
+for (const rev of Object.keys(ROW_2020S)) rowVsBuild[rev] = against(ROW_2020S[rev], 'Asahna');
+check(rowVsBuild[7771106] === '2020:+1 2021:+1 2022:+1 2023:+1 2030:+1 2031:+1'
+  && rowVsBuild[8306984] === '2024:-1 2025:-1 2026:-1 2027:-1 2028:-1 2029:-1',
+  `the 2020s row against this build: 7771106 (Aug 2018) differs at ${rowVsBuild[7771106]}; 8306984 (May 2019) at ${rowVsBuild[8306984]}`);
+console.log(`  (printed, not checked) the row before Aug 2018, 7752502, differs at ${rowVsBuild[7752502] || 'none'}`);
 
 // --- the rules as pythaidate writes them, to show why this file differs ---
 W.RULE.threshold = 25; W.RULE.avoman = 'pythaidate';

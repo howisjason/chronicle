@@ -230,5 +230,23 @@
     "verdict": "yes",
     "reason": "All three build-door flags answered; read but not run (shell refused); one seam: the road check counted different moons in count.mjs and test.mjs",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261014-zu2k-build-1",
+    "at": "2026-10-14",
+    "door": "build",
+    "subject": "resume wan-phra to settle Asahna Bucha 2005 against sources from the time and Thai Wikipedia's revision history",
+    "verdict": "yes",
+    "reason": "QUILL: YES (the date nobody touched; put each Thai sentence in word for word, MGR backs the weekday not the date, link the filing without naming it, say what changed and when, not why)",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261014-z281-finish-1",
+    "at": "2026-10-14",
+    "door": "finish",
+    "subject": "wan-phra's 2005 step: Asahna Bucha 2005 settled against sources from the time, and how the Thai Wikipedia table's cells moved in 2018 and 2019",
+    "verdict": "yes",
+    "reason": "QUILL: YES (read, not run; loose: 'the first row is still the August 2018 one' goes past the one cell read, and the provincial page had no link)",
+    "judged": "unknown"
   }
 ]

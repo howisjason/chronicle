@@ -27,8 +27,8 @@ Copied exactly, those rules miss 26 of the 36 Makha Bucha dates in Thai Wikipedi
 ## What the checks say
 
 - **Thai PBS, 2026:** all 49 wan phra on [their list](https://www.thaipbs.or.th/now/content/3498), every date and every lunar label, plus Makha, Visakha and Asahna Bucha, Khao Phansa, Ok Phansa and Loy Krathong.
-- **Thai Wikipedia, 1996 to 2031** ([Makha Bucha](https://th.wikipedia.org/wiki/วันมาฆบูชา), [Asahna Bucha](https://th.wikipedia.org/wiki/วันอาสาฬหบูชา)): the tables and this build agree on every row up to Makha Bucha 2024. From Asahna Bucha 2024 to Makha Bucha 2030 (twelve rows), the tables are one day later than this build, and from Asahna Bucha 2030 they agree again. So the tables add a leap day in 2024 that this build adds in 2030. On that stretch, the pages' own infoboxes (2025, 2026), Thai PBS (2026) and Thairath (Asahna Bucha 2024 on Saturday 20 July) all agree with this build, not with the tables.
-- **The one row I can't settle: Asahna Bucha 2005.** The table says 20 July, and this build says 21 July. I found nothing that says which is right.
+- **Thai Wikipedia, 1996 to 2031** ([Makha Bucha](https://th.wikipedia.org/wiki/วันมาฆบูชา), [Asahna Bucha](https://th.wikipedia.org/wiki/วันอาสาฬหบูชา)): the tables and this build agree on every row up to Makha Bucha 2024. From Asahna Bucha 2024 to Makha Bucha 2030 (twelve rows), the tables are one day later than this build, and from Asahna Bucha 2030 they agree again. So the tables add a leap day in 2024 that this build adds in 2030. (For the Asahna table, that day came from one edit in May 2019; see "How the table got that way" below. I haven't read the Makha table's history.) On that stretch, the pages' own infoboxes (2025, 2026), Thai PBS (2026) and Thairath (Asahna Bucha 2024 on Saturday 20 July) all agree with this build, not with the tables.
+- **Asahna Bucha 2005, settled (14 Oct 2026).** The table says 20 July, and this build says Thursday 21 July. Everything printed at the time I could find says the 21st: a holiday notice filed with the Stock Exchange of Thailand in December 2004, Pattaya Mail's issue for that week, and an MGR Online column the day before. The table itself said 21 July until 2018. See "How the table got that way" below.
 
 ## What I found
 
@@ -70,6 +70,30 @@ Their total of 52 is the part I can't make. 2014 has 49 holy days here, and the 
 One row of theirs I can check exactly. They say Asahna Bucha 2557 fell on 11 July and by the sky should have been the 12th. The calendar here gives 11 July, and the sky gives 12 July at 18.4 h Thai time.
 
 The printout also gives the lunar-year rows and splits each count by kind of holy day. test.mjs checks Kapook's 49 dates, the two roads to 0.05 degrees (its run prints 0.0134), every number in the 00:00 and 06:00 rows, and the Asahna row and its hour; the 12:00 and 24:00 rows, the lunar-year rows and the 1.6 minutes are printed by count.mjs, not checked. The 2013 holy days have no list to check them against, only the Makha and Asahna rows above.
+
+### How the table got that way (14 Oct 2026, late)
+
+The one row I couldn't settle was Asahna Bucha 2005. The table said 20 July, and this build says 21 July. So I went looking for what was printed at the time.
+
+- A holiday notice filed with the Stock Exchange of Thailand on 13 December 2004 ([the filing](https://www.bafsthai.com/en/investor-relations/newsroom/set-announcements/52253/)): "10. วันพฤหัสบดีที่ 21 กรกฎาคม วันอาสาฬหบูชา *" and "11. วันศุกร์ที่ 22 กรกฎาคม วันเข้าพรรษา" (Thursday 21 July, Asahna Bucha; Friday 22 July, Khao Phansa).
+- Pattaya Mail, issue of 15 to 21 July 2005 ([the page](http://www.pattayamail.com/624/news.shtml)): "...of the Buddhist Lunar calendar, this year equating to Thursday, July 21."
+- MGR Online, a column published at 09:22 on 20 July 2005, the day before ([the page](https://mgronline.com/daily/detail/9480000096611)): "วันที่ 21 กรกฎาคม 2548 เป็นวันขึ้น 15 ค่ำ เดือน 8 จึงเป็นวันอาสาฬหบูชา" (21 July 2548 is waxing 15 of month 8, so it is Asahna Bucha).
+
+I read all three through the same summarising page reader. Each quote above is a line I asked it to give word for word, not a line I saw on the page myself.
+
+Then I asked when the table changed. Its wikitext is one template with three rows of twelve cells, and I read the 2005 cell in old revisions ([any revision's text](https://th.wikipedia.org/w/index.php?oldid=7752502&action=raw)). It says 7-21 in every revision I read from July 2012 to July 2018 (seven of them, listed in `data.mjs`). [Revision 7771106](https://th.wikipedia.org/w/index.php?diff=7771106&oldid=7752502), on 8 August 2018, changed it to 7-20. It also changed eight of the twelve cells in the 2020–2031 row. The edit gives no source and no summary beyond the section's name, so I can see what changed and when, but not why.
+
+The next revision, [8306984](https://th.wikipedia.org/w/index.php?diff=8306984&oldid=7771106) on 21 May 2019, changed the 2020–2031 row again. Each of its twelve cells is exactly one day later than before. Against this build:
+
+| The 2020–2031 row | Differs from this build at |
+|---|---|
+| before August 2018 (7752502) | 2023, 2027, 2031 a day early; 2024, 2028, 2029 a day late |
+| 7771106, August 2018 | 2020–2023 and 2030–2031 a day early; right for 2024–2029 |
+| 8306984, May 2019, still live | right for 2020–2023 and 2030–2031; 2024–2029 a day late |
+
+So the "tables run a day late from 2024" above is the May 2019 shift. It fixed six years that had been a day early and moved six that had been right. Nobody changed the 2005 cell again: it still says 7-20. A [provincial Buddhism office page](https://pre.onab.go.th/th/content/category/detail/id/73/iid/9934) dated 2021 carries the same table, with 20 July 2548 in it.
+
+test.mjs checks the 2005 date and weekday of Asahna Bucha and Khao Phansa against the printed ones, the 2005 cell's two values, that August 2018 changed eight cells of the 2020s row, that the May 2019 row is the live one I read on 13 October, that it is the August 2018 row plus one day in all twelve cells, and the middle and last lines of the table above. The first line (before August 2018) is printed, not checked. The provincial page and the seven earlier revisions are what the reader told me, not checks.
 
 ## Limits
 

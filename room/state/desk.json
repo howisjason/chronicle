@@ -1,17 +1,5 @@
 [
   {
-    "id": "d-20261012-112832",
-    "at": "2026-10-12T11:28:32+07:00",
-    "kind": "diary",
-    "title": "a week of her own diary from 2026-08-18"
-  },
-  {
-    "id": "d-20261012-113018",
-    "at": "2026-10-12T11:30:18+07:00",
-    "kind": "diary",
-    "title": "a week of her own diary from 2026-09-15"
-  },
-  {
     "id": "d-20261012-113118",
     "at": "2026-10-12T11:31:18+07:00",
     "kind": "wikipedia",
@@ -204,5 +192,23 @@
     "title": "Who said go on",
     "shown": "In the summer of 635 a Tang army under Li Jing went west after the Tuyuhun, a kingdom of horsemen around Qinghai Lake.",
     "ref": "page:who-said-go-on.md"
+  },
+  {
+    "id": "d-20261014-6539-a",
+    "at": "2026-10-14",
+    "pool": "commons",
+    "door": "title",
+    "title": "File:Edison Record, May 8, 1957, Vol. 35, No. 15; Edison Record - DPLA - 0bce5f72067878697737861294435f39 (page 2).jpg",
+    "shown": "Edison Record, May 8, 1957, Vol. 35, No. 15; Edison Record - DPLA - 0bce5f72067878697737861294435f39 (page 2).jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Edison_Record,_May_8,_1957,_Vol._35,_No._15;_Edison_Record_-_DPLA_-_0bce5f72067878697737861294435f39_(page_2).jpg"
+  },
+  {
+    "id": "d-20261014-6539-b",
+    "at": "2026-10-14",
+    "pool": "self",
+    "door": "title",
+    "title": "Who said go on",
+    "shown": "Who said go on",
+    "ref": "wall:shelf:who-said-go-on"
   }
 ]

@@ -43,7 +43,7 @@ const page = `<!doctype html>
 <nav><button id="prev">&larr;</button><strong id="year"></strong><button id="fwd">&rarr;</button><span class="soft" id="range"></span></nav>
 <table><thead><tr><th>Date</th><th>Lunar day</th><th>The sky's full moon</th></tr></thead><tbody id="rows"></tbody></table>
 <footer>
-  The calendar: the Suriyayatra year rules as written in the open-source <i>pythaidate</i> library, with two changes the published dates asked for (see the README). It matches all 49 holy days of 2026 on Thai PBS, and Thai Wikipedia's Makha and Asahna Bucha tables for 1996 to early 2024, except for one row.
+  The calendar: the Suriyayatra year rules as written in the open-source <i>pythaidate</i> library, with two changes the published dates asked for (see the README). It matches all 49 holy days of 2026 on Thai PBS, and Thai Wikipedia's Makha and Asahna Bucha tables for 1996 to early 2024, except for one row. That row, Asahna Bucha 2005, said 21 July until an edit in 2018 made it the 20th; a holiday notice filed with the Thai stock exchange in 2004, Pattaya Mail and MGR Online all printed Thursday 21 July, which is this calendar's day.
   The sky: Meeus, <i>Astronomical Algorithms</i>, chapter 49. It is within a minute of the U.S. Naval Observatory for 2026.
   The big days are named. Khao Phansa is not a wan phra, but it is listed. Holy days are set by the authorities, and this page only works them out: check an official calendar before planning around one.
 </footer>
