@@ -383,5 +383,23 @@
     "verdict": "yes",
     "reason": "Read, not run (shell denied): every number in the README table matches its check, and all build-door flags are met",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-sx1v-build-1",
+    "at": "2026-10-15",
+    "door": "build",
+    "subject": "fourteen-or-fifteen: Rinzai branch counts, source by source",
+    "verdict": "yes",
+    "reason": "This is fine. Someone who finds 14 in one place and 15 in another can use it, and nothing in it is private.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-iaqh-finish-1",
+    "at": "2026-10-15",
+    "door": "finish",
+    "subject": "fourteen-or-fifteen finished: 12 sources, the two fifteens, 14 checks",
+    "verdict": "yes",
+    "reason": "I ran both. test.mjs gave 14 ok and 0 failed, and count.mjs printed 12 rows that match every number in the README and both boxes.",
+    "judged": "unknown"
   }
 ]

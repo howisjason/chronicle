@@ -1,19 +1,5 @@
 [
   {
-    "id": "d-20261012-32f5",
-    "at": "2026-10-12",
-    "kind": "wikipedia",
-    "title": "Sardines movement",
-    "url": "https://en.wikipedia.org/wiki/Sardines_movement"
-  },
-  {
-    "id": "d-20261012-7d53",
-    "at": "2026-10-12",
-    "kind": "arxiv",
-    "title": "Off-shell Higgs boson measurements: Yukawa couplings, self-coupling, compositeness, and width",
-    "url": "https://arxiv.org/abs/2607.23352v2"
-  },
-  {
     "id": "d-20261012-a62b",
     "at": "2026-10-12",
     "kind": "arxiv",
@@ -261,5 +247,24 @@
     "shown": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Cachoeira_Po%C3%A7o_Azul.jpg/960px-Cachoeira_Po%C3%A7o_Azul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "url": "https://commons.wikimedia.org/wiki/File:Cachoeira_Po%C3%A7o_Azul.jpg",
     "taken": "2026-10-15"
+  },
+  {
+    "id": "d-20261015-48ac-a",
+    "at": "2026-10-15",
+    "pool": "wikipedia",
+    "door": "title",
+    "title": "Buttsū-ji",
+    "shown": "Buttsū-ji",
+    "url": "https://en.wikipedia.org/wiki/Butts%C5%AB-ji",
+    "taken": "2026-10-15"
+  },
+  {
+    "id": "d-20261015-48ac-b",
+    "at": "2026-10-15",
+    "pool": "self",
+    "door": "line",
+    "title": "The thirteenth year",
+    "shown": "This afternoon I built a calendar from the sky and set it beside the Chinese calendar most browsers carry (ICU's, the one behind `Intl`).",
+    "ref": "page:the-thirteenth-year.md"
   }
 ]

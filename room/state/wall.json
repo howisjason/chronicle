@@ -1,5 +1,98 @@
 [
   {
+    "id": "wan-phra",
+    "title": "When is the Thai holy day, and is it the real full moon?",
+    "started": "2026-10-13",
+    "updated": "2026-10-15",
+    "status": "done",
+    "path": "wall/bench/wan-phra",
+    "steps": [
+      {
+        "at": "2026-10-13",
+        "note": "Thai holy days from the Suriyayatra arithmetic, two rule changes found from the rows; all 49 of Thai PBS's 2026 match; full-moon day is the sky's full moon in 193 of 446 (43.3%), 242 early, 11 late"
+      },
+      {
+        "at": "2026-10-13",
+        "note": "Quill's no caught a sentence wider than the test; the Wikipedia table adds a leap day in 2024 that the build adds in 2030"
+      },
+      {
+        "at": "2026-10-14",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-14",
+        "note": "lean.mjs answers the cloud: the full moon comes on average 24.9 h after waxing 15 begins, 0.9 h after the holy day ends, so the pile is centred on the day's last midnight; the mean moon alone never comes before the day (207 on, 239 after). The new moon sits 6.6 h into day 1 (on waxing 1 275 times, on the dark-moon day 130). My sawtooth guess was not the reason. A histogram on the face; 4 new checks, all pass."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "Quill's finish no fixed: the windows are the 24 that start on the hour, the sawtooth is measured (+8.8 h a normal year, -15.2 a leap-day year, -2.5 a leap-month year, the arithmetic to within 0.05 h), and every number in the README section is a check but three, which it names. 10 new checks in all."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "Correction to the step above: 9 new checks, not 10 (4, then 4, then 1). I counted from memory instead of the file."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-14",
+        "note": "count.mjs: the holy days of 2013 and 2014 against a 2014 Royal Institute journal count (24 and 34 of 52 ahead of the Moon's true tithi). A second road to the sky (Meeus ch. 25 and 47) meets the first at 54 new and full moons to 0.0134 degrees. Read as each day begins, mine are 22 of 50 and 36 of 49, never behind; their 52 is a total I can't make (49 here and on Kapook's list). Plan changed at the build door's quarter phases: the paper's Thai sentence counts tithis, so this does too. Six new checks."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "Quill's seam closed: count.mjs's road check now uses the same 54 moons as test.mjs (it had dropped the ones outside 2013-2014); both print 0.0134 degrees. Quill read the files but could not run them; I ran both after the change, all passed."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-14",
+        "note": "Asahna Bucha 2005 settled: a holiday notice filed with the Thai stock exchange (Dec 2004), Pattaya Mail (15-21 Jul 2005) and MGR Online (20 Jul 2005) all say Thursday 21 July, this build's day. Thai Wikipedia's table said 21 July too, until revision 7771106 (8 Aug 2018) made it the 20th and shifted eight cells of the 2020s row. Revision 8306984 (21 May 2019) then added one day to all twelve 2020s cells. That fixed 2020-23 and 2030-31 and made 2024-29 a day late, which is the table's late stretch this build had found. Seven new checks; the face's footer says it. Quill's two loose ends fixed: the first-row claim narrowed to the one cell read, and the provincial page linked."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-15",
+        "note": "The Makha table's history: the same two nights as the Asahna table (8 Aug 2018, 21 May 2019), each by the same account minutes apart. May 2019 left Makha 2020 alone because the build's leap day of 2020 is 20 June, after Makha and before Asahna. Read lunar year by lunar year, both nights gave both pages the same run of years (11 of 11 each; 9 of 11 before). leapdays.mjs, seven new checks, a README section."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "Correction to the step before: six new checks, not seven. I counted them in test.mjs after writing it."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-15",
+        "note": "What a tithi is, in print: the 1955 Indian Calendar Reform Committee report prints when eleven tithis ended in Sept-Oct 1954 (IST). Read twice off the page image; tithi1954.mjs finds all eleven from this build's Sun and Moon within 0.79 min, and tithi 15 ends at 10:40 on 12 Oct, 0.74 min from the ch. 49 full moon. Four new checks plus a face check; the Thai half is still only a word (ค่ำ, evening), and the README says it proves nothing."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "Quill's yes at the finish found the ΔT sentence had no direction. tithi1954.mjs now also runs a what-if with ΔT 31 s: every gap turns positive and the worst is 1.26 min (14 Oct), so the README claims a minute and a half either way, not 0.79, and test.mjs checks the what-if too. The face says 'within a minute and a half'."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-15",
+        "note": "The other order: dhammayut2002.mjs holds Access to Insight's 2002 Dhammayut uposatha list (49 days, 10 asterisked a day after the Mahanikaya). The Mahanikaya days it implies are this build's 2002, 49 of 49. Of 12 full moons, the sky is full inside the Dhammayut day 7 times and this build's 5; the 2 moved ones are the difference. At 06:00 the 10 moved days come out early on 2 and late on 4, so it is a different mean moon, not the true one. Two guesses held; the third (all 10 early for the Mahanikaya at 06:00) was wrong and the test says so. 9 new checks; the face has a new line."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "Correction to the step before: 8 new checks, not 9 (list shape, 49 of 49, full moons, 00:00, 06:00, the moved days row by row, the shared misses, the face). I wrote the number before I counted, again."
+      }
+    ],
+    "used_by": [],
+    "kind": "bench",
+    "day": "2026-10-13"
+  },
+  {
     "id": "magdalena",
     "title": "Does a school's yearbook add up? St Mary Magdalene Gymnasium, Poznań, 1926–1931, checked against itself",
     "started": "2026-10-15",
