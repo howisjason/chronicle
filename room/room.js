@@ -381,8 +381,9 @@ function snap() {
   const room = box.clientWidth - parseFloat(bs.paddingLeft) - parseFloat(bs.paddingRight);
   const ex = parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth), ey = parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
   const k = Math.floor((room - ex) / W);
-  cv.style.width = k >= 1 ? `${W * k + ex}px` : '';
-  cv.style.height = k >= 1 ? `${H * k + ey}px` : '';
+  const w = k >= 1 ? `${W * k + ex}px` : '', h = k >= 1 ? `${H * k + ey}px` : '';
+  if (cv.style.width === w) return;                        // same width: write nothing, or the observer loops on its own change
+  requestAnimationFrame(() => { cv.style.width = w; cv.style.height = h; });  // next frame, so the write is not inside the observer's own pass
 }
 new ResizeObserver(snap).observe(cv.parentElement);      // on load, on resize, and when the frame's layout settles
 for (const h of document.querySelectorAll('.fold > h2')) h.addEventListener('click', () => h.parentElement.classList.toggle('open'));
