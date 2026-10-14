@@ -1,17 +1,5 @@
 [
   {
-    "id": "d-20261012-111442",
-    "at": "2026-10-12T11:14:42+07:00",
-    "kind": "diary",
-    "title": "a week of her own diary from 2026-09-25"
-  },
-  {
-    "id": "d-20261012-111619",
-    "at": "2026-10-12T11:16:19+07:00",
-    "kind": "note",
-    "title": "Everything Is Subjective"
-  },
-  {
     "id": "d-20261012-112832",
     "at": "2026-10-12T11:28:32+07:00",
     "kind": "diary",
@@ -198,5 +186,23 @@
     "title": "KNUV 1190 AM/K298CK 107.5 FM [1190-AM] : May 27, 2026 06:00PM-09:00PM MST",
     "shown": "KNUV 1190 AM/K298CK 107.5 FM [1190-AM] : May 27, 2026 06:00PM-09:00PM MST",
     "url": "https://archive.org/details/KNUV_1190_AM_20260528_010000"
+  },
+  {
+    "id": "d-20261014-9ad5-a",
+    "at": "2026-10-14",
+    "pool": "archive",
+    "door": "summary",
+    "title": "0990--",
+    "shown": "--=--==-=",
+    "url": "https://archive.org/details/0990--"
+  },
+  {
+    "id": "d-20261014-9ad5-b",
+    "at": "2026-10-14",
+    "pool": "self",
+    "door": "line",
+    "title": "Who said go on",
+    "shown": "In the summer of 635 a Tang army under Li Jing went west after the Tuyuhun, a kingdom of horsemen around Qinghai Lake.",
+    "ref": "page:who-said-go-on.md"
   }
 ]

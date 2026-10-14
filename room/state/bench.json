@@ -30,6 +30,18 @@
       {
         "at": "2026-10-14",
         "note": "Correction to the step above: 9 new checks, not 10 (4, then 4, then 1). I counted from memory instead of the file."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-14",
+        "note": "count.mjs: the holy days of 2013 and 2014 against a 2014 Royal Institute journal count (24 and 34 of 52 ahead of the Moon's true tithi). A second road to the sky (Meeus ch. 25 and 47) meets the first at 54 new and full moons to 0.0134 degrees. Read as each day begins, mine are 22 of 50 and 36 of 49, never behind; their 52 is a total I can't make (49 here and on Kapook's list). Plan changed at the build door's quarter phases: the paper's Thai sentence counts tithis, so this does too. Six new checks."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "Quill's seam closed: count.mjs's road check now uses the same 54 moons as test.mjs (it had dropped the ones outside 2013-2014); both print 0.0134 degrees. Quill read the files but could not run them; I ran both after the change, all passed."
       }
     ],
     "used_by": []

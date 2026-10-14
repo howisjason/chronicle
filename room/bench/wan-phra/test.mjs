@@ -119,11 +119,37 @@ for (let cs = 1359; cs <= 1392; cs++) {
 }
 check(worstStep < 0.05, `the sawtooth: from one year's month 5 to the next, the mean full moon moves ${[...seen.A].join('/')} h after a normal year, ${[...seen.B].join('/')} h after a leap-day year, ${[...seen.C].join('/')} h after a leap-month year; arithmetic says ${(expectStep.A * 24).toFixed(1)}, ${(expectStep.B * 24).toFixed(1)}, ${(expectStep.C * 24).toFixed(1)} (worst gap ${worstStep.toFixed(3)} h)`);
 
+// --- the published count (count.mjs) ---
+const { KAPOOK_2014 } = await import('./data.mjs');
+const C = await import('./count.mjs');
+const mine2014 = W.holyDaysInYear(2014).filter((h) => h.wanPhra).map((h) => [W.iso(h.jdn), h.day, h.month]);
+check(mine2014.length === KAPOOK_2014.length && mine2014.every((r, i) => r.join() === KAPOOK_2014[i].join()),
+  `2014: ${mine2014.length} wan phra, ${KAPOOK_2014.length} on Kapook's list, every date, day and month the same`);
+let worstElong = 0;
+for (let k = 160; k <= 186; k++) {
+  for (const [p, want] of [[0, 0], [0.5, 180]]) {
+    const off = ((C.elongation(W.moonPhaseJde(k, p)) - want + 540) % 360) - 180;
+    worstElong = Math.max(worstElong, Math.abs(off));
+  }
+}
+const span49 = [W.moonPhaseJde(160, 0), W.moonPhaseJde(186, 0.5)].map((j) => W.iso(Math.floor(j + 0.5))).join(' to ');
+check(worstElong < 0.05, `two roads: the Moon's lead on the Sun (ch. 25 and 47) at the 54 new and full moons from ${span49} (ch. 49) is 0 or 180 degrees to within ${worstElong.toFixed(4)}`);
+const yr = (y, hr) => C.compare(C.holy(W.jdnFromYmd(y, 1, 1), W.jdnFromYmd(y, 12, 31)), hr);
+const r13 = yr(2013, 0), r14 = yr(2014, 0), s13 = yr(2013, 6), s14 = yr(2014, 6);
+check(r13.n === 50 && r13.ahead === 22 && r13.behind === 0 && r14.n === 49 && r14.ahead === 36 && r14.two === 5 && r14.behind === 0,
+  `true tithi at the midnight a holy day begins: 2013 ahead ${r13.ahead} of ${r13.n}, behind ${r13.behind}; 2014 ahead ${r14.ahead} of ${r14.n} (${r14.two} by two), behind ${r14.behind}`);
+check(s13.ahead === 15 && s13.two === 0 && s13.behind === 5 && s14.ahead === 28 && s14.two === 1 && s14.behind === 0,
+  `at 06:00: 2013 ahead ${s13.ahead} (${s13.two} by two), behind ${s13.behind}; 2014 ahead ${s14.ahead} (${s14.two} by two), behind ${s14.behind}`);
+const asahna14 = W.missHours(W.jdnFromYmd(2014, 7, 11));
+check(W.iso(asahna14.jdn) === '2014-07-12' && asahna14.hour.toFixed(1) === '18.4',
+  `the paper's Asahna Bucha 2557: the calendar's 11 July, the sky full on ${W.iso(asahna14.jdn)} at ${asahna14.hour.toFixed(1)} h Thai time (the paper: 12 July)`);
+
 // --- the face carries this file, not an older copy of it ---
 const { inlined } = await import('./make-demo.mjs');
 const { readFileSync } = await import('node:fs');
-check(readFileSync(new URL('./demo.html', import.meta.url), 'utf8').includes(inlined()),
-  'demo.html carries the current wanphra.mjs (run make-demo.mjs if not)');
+const face = readFileSync(new URL('./demo.html', import.meta.url), 'utf8');
+check(face.includes(inlined()), 'demo.html carries the current wanphra.mjs (run make-demo.mjs if not)');
+check(face.includes(C.faceLine()), 'demo.html carries the current count line from count.mjs (run make-demo.mjs if not)');
 
 console.log(fails ? `\n${fails} FAILED` : '\nall passed');
 process.exit(fails ? 1 : 0);

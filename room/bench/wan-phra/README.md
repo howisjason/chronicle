@@ -2,13 +2,14 @@
 
 Wan phra are the Buddhist holy days of the Thai lunar calendar: waxing 8, waxing 15 (the full-moon day), waning 8, and the last day of each lunar month. This build works them out from the old arithmetic. It also computes the real full moon from the sky, so the two can be compared.
 
-**The face:** `demo.html` shows the next wan phra and the next big holy day from today (Thai time), a histogram of where the full moon falls against the holy day, every holy day of a year from 1996 to 2031, and, beside each full-moon day, when the sky is actually full.
+**The face:** `demo.html` shows the next wan phra and the next big holy day from today (Thai time), a histogram of where the full moon falls against the holy day, a paragraph on how this compares with a published count, every holy day of a year from 1996 to 2031, and, beside each full-moon day, when the sky is actually full.
 
 ## How to run
 
     bash room/tools/try.sh wan-phra test.mjs        # the checks, and the measurement
     bash room/tools/try.sh wan-phra make-demo.mjs   # rebuilds demo.html from wanphra.mjs
     bash room/tools/try.sh wan-phra lean.mjs        # where the moon sits inside the calendar's days
+    bash room/tools/try.sh wan-phra count.mjs       # the holy days of 2013 and 2014 against a published count
 
 Outside the room, `node test.mjs` does the same. `wanphra.mjs` has no dependencies: `holyDaysInYear(2027)` lists a year, and `missHours(jdn)` says how far the sky is from a day.
 
@@ -48,6 +49,27 @@ Of the 24 windows of 24 hours that start on the hour (Thai clock), the one that 
 One reading, which I haven't checked against any source on the Thai calendar: in Indian lunar reckoning, a lunar day (*tithi*) is twelve degrees of the moon's run past the sun, and the fifteenth ends at the moment of full moon. A calendar that counts day 1 from the day the new moon falls in would then put the full moon at the end of day 15, which is where it sits here. That fits the numbers. It isn't proved by them.
 
 Run it: `bash room/tools/try.sh wan-phra lean.mjs`. The face shows it as a histogram. test.mjs checks every number in this section except the median, the middle of the range and 14 d 18.4 h, which lean.mjs prints.
+
+### Against a published count (14 Oct 2026, night)
+
+Someone counted this before me. Nibondh Saibejra and Jaturong Sukonthachat, "Lunar Calendar: Effects that May Be Caused by Errors in the Thai Lunar Calendar and a Development of Lunar Data Using Astronomy Knowledge", *The Journal of the Royal Institute of Thailand* 39(2), April–June 2014 ([the issue online](https://www.orst.go.th/FILEROOM/CABROYINWEB/DRAWER004/GENERAL/DATA0000/00000617.FLP/html/41)). The English abstract says the holy days run "faster than it should be according to the true Moon's phase by about 1 day up to 24 and 34 times in the Buddhist year 2556 and 2557". The Thai text says the holy days' tithi was off from the Moon's true tithi (ดิถีจริง) on as many as 34 of the 52 holy days of B.E. 2557. I read the Thai pages through a fetching tool that summarises, and that one sentence I had it quote. I haven't seen how they chose the moment of the day, or a list of their days.
+
+`count.mjs` counts the same thing. A tithi is the Moon's lead on the Sun in steps of 12 degrees: tithi 15 ends at the full moon and tithi 30 at the new moon. A holy day's own tithi is its number in the month (8, 15, 23, and 29 or 30). The Sun comes from Meeus chapter 25 and the Moon from chapter 47 (39 terms of its longitude table, which the check below is there to vouch for). That is a new road to the sky, and it meets the old one: at the 54 new and full moons of chapter 49 from December 2012 to February 2015, the Moon's lead is 0 or 180 degrees to within 0.0134 degrees, about 1.6 minutes of the Moon's motion.
+
+| The true tithi read at | 2013 (B.E. 2556), 50 holy days | 2014 (B.E. 2557), 49 holy days |
+|---|---|---|
+| 00:00, as the day begins | ahead 22, behind 0 | ahead 36 (5 of them by two), behind 0 |
+| 06:00 | ahead 15, behind 5 | ahead 28 (1 by two), behind 0 |
+| 12:00 | ahead 7, behind 10 | ahead 19, behind 1 |
+| 24:00, as the day ends | ahead 0, behind 29 | ahead 4, behind 13 |
+
+The paper's numbers are 24 and 34. Read as each day begins, mine are 22 and 36. Read that way, every miss is the calendar ahead of the Moon, the paper's direction, and the count climbs from 2013 to 2014 as theirs does. My reading of the climb, not measured here: it is the sawtooth above. The lunar years that start in 2013 and 2014 are both ordinary, so the moon comes 8.8 hours later each year until the leap month of 2015. No row lands on both of their numbers, and I didn't move the moment around until one did.
+
+Their total of 52 is the part I can't make. 2014 has 49 holy days here, and the same 49 on Kapook's list (Sanook's list has 49 too, one of them a day off). Both lists came to me through the same summarising tool, so test.mjs checks what it gave me, not the pages themselves. The lunar years that start in 2013 and 2014 have 48 each. Fifty-two would be thirteen months of four, and neither year has a thirteenth month. That is the next thing to find: their table, if the full article has one.
+
+One row of theirs I can check exactly. They say Asahna Bucha 2557 fell on 11 July and by the sky should have been the 12th. The calendar here gives 11 July, and the sky gives 12 July at 18.4 h Thai time.
+
+The printout also gives the lunar-year rows and splits each count by kind of holy day. test.mjs checks Kapook's 49 dates, the two roads to 0.05 degrees (its run prints 0.0134), every number in the 00:00 and 06:00 rows, and the Asahna row and its hour; the 12:00 and 24:00 rows, the lunar-year rows and the 1.6 minutes are printed by count.mjs, not checked. The 2013 holy days have no list to check them against, only the Makha and Asahna rows above.
 
 ## Limits
 

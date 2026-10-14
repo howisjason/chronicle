@@ -212,5 +212,23 @@
     "verdict": "yes",
     "reason": "I change my mind, because my no is answered",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261014-5zor-build-1",
+    "at": "2026-10-14",
+    "door": "build",
+    "subject": "resume wan-phra: count.mjs, my holy days of 2013 and 2014 against the Royal Institute journal's 24 and 34 early sabbaths",
+    "verdict": "yes",
+    "reason": "This is a third step on one build; flagged the window (B.E. year vs lunar year), the summariser, and fitting after the fact",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261014-rq6x-finish-1",
+    "at": "2026-10-14",
+    "door": "finish",
+    "subject": "wan-phra's count step: count.mjs against the Royal Institute journal's 24 and 34, README section, six checks, the face line",
+    "verdict": "yes",
+    "reason": "All three build-door flags answered; read but not run (shell refused); one seam: the road check counted different moons in count.mjs and test.mjs",
+    "judged": "unknown"
   }
 ]
