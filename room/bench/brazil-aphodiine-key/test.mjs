@@ -121,5 +121,39 @@ if (m && g) {
   check('every one of the menu\'s ways lands on its genus', opts.length === 47 && landed.length === 47, `(${landed.length} of ${opts.length})`);
 }
 
+// 11. The paper's own Portuguese key (Supplementary file 1, by supp.mjs ptkey).
+// Guessed before this first ran: it leads the same way as read A at all 92 halves,
+// with one genus spelled differently (Pseudoatenius, seen once on screen).
+const PT = rows('supp1-endings.txt').map(l => { const [label, to] = l.split('|'); return { label, to }; });
+check('the Portuguese key has halves 1a..46b in order', PT.map(h => h.label).join() === labels.join(), `(${PT.length})`);
+const FOLD = { Pseudoatenius: 'Pseudataenius' };   // the one spelling folded, named here
+const ptTo = h => h.to.startsWith('->') ? h.to.slice(2) : (FOLD[h.to] || h.to);
+const ptDiff = A.filter((h, i) => ptTo(PT[i]) !== (isCouplet(h.to) ? h.to : genusName(h.to))).map(h => h.label);
+check('the Portuguese key leads where read A does, at every half', ptDiff.length === 0, ptDiff.length ? 'differ: ' + ptDiff.join(' ') : '(92 of 92)');
+const ptGenera = [...new Set(PT.filter(h => !h.to.startsWith('->')).map(ptTo))].sort();
+check('its genera are the key\'s 43, as sets, with one spelling folded', ptGenera.join() === plazi.join(), `(${ptGenera.length})`);
+const unfolded = PT.filter(h => !h.to.startsWith('->') && !plazi.includes(h.to)).map(h => h.to);
+check('the one spelling folded is used once, at 46a', unfolded.join() === 'Pseudoatenius' && PT.find(h => h.to === 'Pseudoatenius').label === '46a');
+
+// 12. The paper's bibliography sheet (Supplementary file 2, by
+// supp.mjs species): "Bibliography used as reference for compiling data of
+// species of Aphodiinae Leach, 1815 in Brazil". Guessed after one look at the
+// sheet on screen and before supp-count.mjs ran: 38 genera, the key's 43 less the
+// five below. (Before I opened it I had guessed a species list naming all 43.)
+const SP = rows('supp2.txt').map(l => l.split('|')[1]);
+check('the sheet lists 149 species, none twice', SP.length === 149 && new Set(SP).size === 149, `(${SP.length})`);
+const spGenera = [...new Set(SP.map(s => s.split(' ')[0]))].sort();
+check('the sheet\'s species fall in 38 genera, every one of them in the key', spGenera.length === 38 && spGenera.every(x => plazi.includes(x)), `(${spGenera.length})`);
+const absent = plazi.filter(x => !spGenera.includes(x));
+check('the key\'s genera with no species in the sheet are five', absent.join() === 'Amerilochus,Cartwrightia,Saprolochus,Stebnickiella,Termitodius', absent.join(', '));
+const NEW = ['Amerilochus', 'Saprolochus', 'Stebnickiella'], RHYP = ['Aschnarhyparus', 'Leptorhyparus', 'Termitodius'];
+check('all three of the abstract\'s new-record genera are among the five', NEW.every(x => absent.includes(x)));
+check('two of the three Rhyparini genera are in the sheet (Termitodius isn\'t)', RHYP.filter(x => spGenera.includes(x)).join() === 'Aschnarhyparus,Leptorhyparus');
+check('neither file counts 40 genera', ptGenera.length !== 40 && spGenera.length !== 40, `(${ptGenera.length} and ${spGenera.length})`);
+
+function rows(file) {
+  return readFileSync(new URL(file, import.meta.url), 'utf8').split('\n').filter(l => l.trim() && !l.startsWith('#'));
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);

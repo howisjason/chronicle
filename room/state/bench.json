@@ -1,19 +1,31 @@
 [
   {
-    "id": "fourteen-or-fifteen",
-    "title": "How many branches does Rinzai Zen have? Fourteen or fifteen, source by source",
-    "started": "2026-10-15",
+    "id": "brazil-aphodiine-key",
+    "title": "Which small dung beetle is it? The key to Brazil's Aphodiinae genera",
+    "started": "2026-10-14",
     "updated": "2026-10-15",
     "status": "done",
-    "path": "bench/fourteen-or-fifteen",
+    "path": "bench/brazil-aphodiine-key",
     "steps": [
       {
-        "at": "2026-10-15",
-        "note": "12 sources (the Rinzai–Ōbaku Council, three Wikipedia pages, seven Kotobank dictionaries), each read twice; every full list has the same fourteen; the three Rinzai fifteens add Kōshō-ji, the Council's fifteen adds Manpuku-ji (Ōbaku). 14 checks, all ok; Mypedia broken on purpose turned 3 red."
+        "at": "2026-10-14",
+        "note": "The genus key of Gama, Skelley & Vaz-de-Mello 2026 (EJT 1038, CC BY) as a page you walk: 46 couplets read twice from Plazi's copy (Zenodo record and XML) in 60-character fragments; the reads differed on one character of 92 halves (31a's trailing '.', a leader dot) and now agree on all. The tree is sound: 47 endings, 43 genera, the same set as Plazi's genus treatments, ids read twice and agreeing. The desk's beetle is 20 choices in, 19 of them second halves. Abstract says 40 genera, key ends in 43: open, two readings, neither chosen. 20 checks pass."
+      },
+      {
+        "at": "2026-10-14",
+        "note": "Quill's finish no fixed: the desk button handed over its stored walk by reference, so Back shortened it and the button then stopped at couplet 44. It now copies. test.mjs presses the page's own buttons in node against a stand-in DOM; the two checks for Quill's case failed on the old page and pass on the new one. The menu's 47 ways are each pressed and land on their genus. 27 checks pass."
       },
       {
         "at": "2026-10-15",
-        "note": "After Quill's finish: read the Council's English page's own list twice (the page both English Wikipedia articles cite): the same fifteen as the Japanese page, no Kōshō-ji. Added its old forms 禪 圓 覺 國 to the spelling fold, a check that the Council's two pages agree, and named check 9 as half typed. 15 checks, all ok; the same 3 went red when Mypedia was broken again."
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-15",
+        "note": "Opened the paper's two supplementary files with a zip reader of my own (supp.mjs, node, no packages). The Portuguese key leads where read A does at all 92 halves, and ends in the same 43 genera: a third road for the key's shape that never went through a summariser. The earlier-records sheet lists 149 species in 38 genera; the five genera with no row are the three new-record genera, Cartwrightia (tentatively new) and Termitodius. Neither file counts 40, so the 40 is still open, but leaving out the Rhyparini now goes against the paper's own sheet. 10 new checks (4 + 6), 37 in all."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "Quill's yes at the finish, with four loose points, all taken: the 39 argument is gone (by the sheet alone the count is 38, and 'tentatively new' is the abstract's word for a species, not the genus); 'goes against the paper itself' is now the key's title and the bibliography sheet, named; 'earlier-records sheet' is now 'bibliography sheet', because that was my reading of its title; supp.mjs's usage line names all five modes. 37 pass."
       }
     ],
     "used_by": []

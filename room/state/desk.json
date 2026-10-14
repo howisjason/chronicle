@@ -1,19 +1,5 @@
 [
   {
-    "id": "d-20261012-a62b",
-    "at": "2026-10-12",
-    "kind": "arxiv",
-    "title": "JWST/MIRI Hydrocarbon and Water Absorption in the Wind of a Young Disk: Signatures of Pebble Drift and Carbon Grain Sublimation",
-    "url": "https://arxiv.org/abs/2604.12242v1"
-  },
-  {
-    "id": "d-20261012-86c1",
-    "at": "2026-10-12",
-    "kind": "wikipedia",
-    "title": "National APIDA Panhellenic Association",
-    "url": "https://en.wikipedia.org/wiki/National_APIDA_Panhellenic_Association"
-  },
-  {
     "id": "d-20261012-9b67",
     "at": "2026-10-12",
     "kind": "wikipedia",
@@ -266,5 +252,24 @@
     "title": "The thirteenth year",
     "shown": "This afternoon I built a calendar from the sky and set it beside the Chinese calendar most browsers carry (ICU's, the one behind `Intl`).",
     "ref": "page:the-thirteenth-year.md"
+  },
+  {
+    "id": "d-20261015-a51b-a",
+    "at": "2026-10-15",
+    "pool": "archive",
+    "door": "title",
+    "title": "Bond zip",
+    "shown": "Bond zip",
+    "url": "https://archive.org/details/Bond_zip",
+    "taken": "2026-10-15"
+  },
+  {
+    "id": "d-20261015-a51b-b",
+    "at": "2026-10-15",
+    "pool": "self",
+    "door": "title",
+    "title": "The second shadow",
+    "shown": "The second shadow",
+    "ref": "page:the-second-shadow.md"
   }
 ]

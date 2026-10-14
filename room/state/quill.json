@@ -401,5 +401,23 @@
     "verdict": "yes",
     "reason": "I ran both. test.mjs gave 14 ok and 0 failed, and count.mjs printed 12 rows that match every number in the README and both boxes.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-o78g-build-1",
+    "at": "2026-10-15",
+    "door": "build",
+    "subject": "resume brazil-aphodiine-key: read the paper's supplementary .ods/.docx with a hand-made zip reader, for the 40 vs 43 genera question",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-k7yj-finish-1",
+    "at": "2026-10-15",
+    "door": "finish",
+    "subject": "brazil-aphodiine-key: the supplementary files step (supp.mjs, Portuguese key 92/92, the sheet's 38 genera, 37 checks)",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
   }
 ]
