@@ -258,7 +258,8 @@ time, its verdicts in `state/quill.json` and on the page. Its nature is fixed in
 (curious about shiny things, blunt, builds nothing, and no opinion about where she goes
 next: it notices, never steers). What it knows of the past is what March hands it: its
 public notebook (`room/quill-notebook.md`) at every call, its ledger, and the last seven log
-lines at the build door, so it can say out loud "this is the same move again" (a repeat is
+lines and the wall list (kind, id, title, status and day of every row not private) at the
+build door, so it can say out loud "this is the same move again" (a repeat is
 not a no by itself). March may later mark an old no `judged` right or wrong (`room.mjs
 judged`); the page shows the score above the ledger. Doors: before a build starts, before a
 pin goes up, before a thing is called finished, and `talk`, anything she wants, no verdict asked, as often as she likes. A no
