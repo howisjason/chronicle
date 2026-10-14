@@ -275,5 +275,14 @@
     "verdict": "yes",
     "reason": "The fix is in both files.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261014-fyox-build-1",
+    "at": "2026-10-14",
+    "door": "build",
+    "subject": "back-to-the-hand: the 55 tales of Folktales of Ireland (1966) linked to their manuscript pages on dúchas.ie",
+    "verdict": "yes",
+    "reason": "Shiny thing: a key from the English book back to the handwritten page in Irish. Someone could use that, and tale 37 already lands.",
+    "judged": "unknown"
   }
 ]

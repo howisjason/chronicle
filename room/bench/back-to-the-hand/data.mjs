@@ -1,0 +1,77 @@
+// The book's side: Seán Ó Súilleabháin, Folktales of Ireland (Chicago, 1966),
+// from the archive.org scan "folktales-of-ireland" (its OCR text, _djvu.txt).
+// Titles are the contents page's; county, year and the manuscript reference are
+// the note at the back for each tale. All of it came through a summarising page
+// reader, read twice in two different shapes (a table, then 60-character verbatim
+// fragments) from the same OCR text; the two reads agreed on every row.
+// vol and page: the first volume and first page of the tale in the Irish Folklore
+// Commission's Main Manuscript Collection (now CBÉ); null where the note gives none.
+
+export const SECTIONS = [
+  [1, 'Animals and Birds'],
+  [12, 'Kings and Warriors'],
+  [20, 'Saints and Sinners'],
+  [26, 'People of the Other World'],
+  [39, 'Magicians and Witches'],
+  [43, 'Historical Characters'],
+  [50, 'The Wise, the Foolish, and the Strong'],
+];
+
+// [number, title, county, year, vol, page, pages as printed]
+export const BOOK = [
+  [1, 'The Fox and the Heron', 'Galway', 1935, 113, 17, '17-23'],
+  [2, 'The Fox and the Eagle', 'Kerry', 1945, 962, 43, '43-47'],
+  [3, 'The Fox in Inishkea', 'Mayo', 1936, 134, 177, '177-82'],
+  [4, 'The Magpie and the Fox', 'Kerry', 1940, 702, 282, '282-84'],
+  [5, 'Two Women or Twelve Men', 'Waterford', 1934, 84, 201, '201'],
+  [6, 'The Grateful Weasel', 'Galway', null, 605, 434, '434-41'],
+  [7, 'The Man Who Swallowed the Mouse', 'Kerry', 1936, 308, 39, '39-40'],
+  [8, 'The Cat and the Dog', 'Galway', 1931, 62, 287, '287-88'],
+  [9, 'The Sow and Her Banbh', 'Waterford', 1934, 84, 250, '250'],
+  [10, 'The Old Crow Teaches the Young Crow', 'Galway', 1937, 489, 281, '281-83'],
+  [11, 'The Cold May Night', 'Galway', 1946, 1009, 289, '289-98'],
+  [12, 'The King Who Could Not Sleep', 'Donegal', 1934, 168, 1, '1-44'],
+  [13, 'Ceatach', 'Galway', 1935, 157, 215, '215-51'],
+  [14, 'Fionn in Search of His Youth', 'Kerry', 1930, 984, 227, '227-34'],
+  [15, 'The Coming of Oscar', 'Cork', 1944, 937, 418, '418-48'],
+  [16, "Cuchulainn and the Smith's Wife", 'Donegal', 1935, 142, 1312, '1312-34'],
+  [17, 'Young Conall of Howth', 'Kerry', 1946, 981, 106, '106-73'],
+  [18, 'Art, King of Leinster', 'Kerry', 1946, 980, 969, '969-92, and Vol. 981, 1-62'],
+  [19, 'The Speckled Bull', 'Donegal', 1946, 990, 558, '558-614'],
+  [20, 'The Boy Who Became Pope', 'Mayo', 1937, 277, 273, '273-79'],
+  [21, 'The Man Who Struck His Father', 'Kerry', 1937, 315, 194, '194-226'],
+  [22, 'The Friar on Errigal', 'Donegal', 1936, 224, 110, '110-22'],
+  [23, "How God's Wheel Turns", 'Kerry', 1948, 1052, 106, '106-12'],
+  [24, 'The Man Who Was Rescued from Hell', 'Kerry', 1944, 965, 659, '659-70; 966, 1-20'],
+  [25, 'The Hour of Death', 'Cork', 1933, 31, 136, '136'],
+  [26, 'The Fairy Frog', 'Galway', 1935, 155, 121, '121-25'],
+  [27, 'The Fairy Wife', 'Donegal', 1948, 1033, 246, '246-52'],
+  [28, 'Fairy Money', 'Donegal', 1946, 1034, 47, '47-51'],
+  [29, 'The Children of the Dead Woman', 'Galway', 1935, 156, 141, '141-48'],
+  [30, 'The Three Laughs of the Leipreachan', 'Galway', 1937, 451, 71, '71-78'],
+  [31, 'The Man Who Had No Story', 'Cork', 1933, 47, 8, '8-15'],
+  [32, 'Doctor Lee and Little Aran', 'Galway', 1938, 447, 376, '376-86'],
+  [33, 'The Child from the Sea', 'Galway', 1939, 589, 603, '603-604'],
+  [34, 'The Big Cat and the Big Rat', 'Galway', 1938, 388, 258, '258-67'],
+  [35, 'The March Cock and the Coffin', 'Galway', 1938, 529, 241, '241-43'],
+  [36, 'Sean na Banoige', 'Kerry', 1944, 965, 628, '628-58'],
+  [37, 'The Queen of the Planets', 'Kerry', 1930, 2, 122, '122-39'],
+  [38, "Sean Palmer's Voyage to America with the Fairies", 'Kerry', 1933, null, null, 'reprinted from R. M. Dorson'],
+  [39, 'The Sailor and the Rat', 'Galway', 1936, 160, 211, '211-13'],
+  [40, 'The Girl and the Sailor', 'Kerry', 1948, 1051, 138, '138-43'],
+  [41, 'The Four-leafed Shamrock and the Cock', 'Kerry', 1936, 272, 415, '415-19'],
+  [42, 'The Black Art', 'Donegal', 1946, 1034, 56, '56-60'],
+  [43, "Daniel O'Connell and the Trickster", 'Kerry', 1933, 12, 333, '333-35'],
+  [44, "O'Connell Wears His Hat in Parliament", 'Kerry', 1937, null, null, 'Béaloideas XI (1941), 116'],
+  [45, 'The Smell of Money for the Smell of Food', 'Kerry', 1937, null, null, 'Béaloideas XI (1941), 122-24'],
+  [46, 'The Heather Beer', 'Donegal', 1947, 1094, 87, '87-88'],
+  [47, 'The Man Who Lost His Shadow', 'Waterford', 1943, 1093, 159, '159-60'],
+  [48, 'Cromwell and the Friar', 'Galway', 1935, 157, 176, '176-83'],
+  [49, "Damer's Gold", 'Galway', 1937, 404, 147, '147-f 14 (OCR)'],
+  [50, 'Secret Tokens Prove Ownership', 'Galway', 1946, 1009, 311, '311-17'],
+  [51, 'The Cow That Ate the Piper', 'Kerry', 1940, 702, 167, '167-69'],
+  [52, 'Sean na Scuab', 'Kerry', 1932, 32, 57, '57-59'],
+  [53, 'The Great Liar', 'Donegal', 1936, 143, 2093, '2093-2104'],
+  [54, 'The Uglier Foot', 'Cork', 1936, 211, 216, '216-20'],
+  [55, 'The Blacksmith and the Horseman', 'Kerry', 1944, 966, 313, '313-16'],
+];

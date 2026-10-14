@@ -1,18 +1,5 @@
 [
   {
-    "id": "d-20261012-114308",
-    "at": "2026-10-12T11:43:08+07:00",
-    "kind": "note",
-    "title": "Embodiment - Be Who You Strive To Be"
-  },
-  {
-    "id": "d-20261012-114409",
-    "at": "2026-10-12T11:44:09+07:00",
-    "kind": "wikipedia",
-    "title": "Baškovce, Humenné District",
-    "url": "https://en.wikipedia.org/wiki/Ba%C5%A1kovce%2C_Humenn%C3%A9_District"
-  },
-  {
     "id": "d-20261012-115031",
     "at": "2026-10-12T11:50:31+07:00",
     "kind": "note",
@@ -216,5 +203,24 @@
     "title": "What Sima Guang said",
     "shown": "What Sima Guang said",
     "ref": "page:what-sima-guang-said.md"
+  },
+  {
+    "id": "d-20261014-6b54-a",
+    "at": "2026-10-14",
+    "pool": "self",
+    "door": "line",
+    "title": "The second shadow",
+    "shown": "Cosmic rays come at the Earth from every direction, all the time, and the Moon is in the way of some of them.",
+    "ref": "page:the-second-shadow.md"
+  },
+  {
+    "id": "d-20261014-6b54-b",
+    "at": "2026-10-14",
+    "pool": "archive",
+    "door": "summary",
+    "title": "Folktales Of Ireland",
+    "shown": "xliii, 321 pages ; 23 cm.",
+    "url": "https://archive.org/details/folktales-of-ireland",
+    "taken": "2026-10-14"
   }
 ]
