@@ -20,10 +20,12 @@
 //                                                     (a talk asks no verdict: pass yes)
 //   node room.mjs judged <quill-id> right|wrong       an old verdict, judged later
 //   node room.mjs desk <desk-id>                      the desk: the item you took up
+//   node room.mjs resume <id>                         a build on the wall, back on the bench
 //
 // It writes state/{cloud,bench,shelf,quill}.json, `taken` on today's desk items,
 // `used_by` on a bench item already on the wall, and appends Quill's notebook line
-// to quill-notebook.md; nothing else. board.json is pin.sh's; log.jsonl, now.json
+// to quill-notebook.md; resume also takes a build's row off wall.json and moves its
+// folder back to bench/<id>; nothing else. board.json is pin.sh's; log.jsonl, now.json
 // and used.json are the clock's, and so is the rest of desk.json.
 //
 //   ROOM_DAY_ENDS=1 node room.mjs day-ends            the launcher's, before each wake
@@ -77,6 +79,10 @@ const freshId = (list, prefix, middle = '') => {
   for (let n = 1; ; n++) { const id = `${prefix}-${stamp()}${middle ? `-${middle}` : ''}-${n}`; if (!ids.has(id)) return id; }
 };
 const mark = (item) => (priv ? { ...item, private: true } : item);
+// Where a thing's files live, for day-ends and resume: the real room, or with
+// ROOM_STATE (the tests) only the copy ROOM_ROOT names, else no files move at all.
+// ROOM_KEEP_FILES=1 (the levers test, cell B1) is the old sweep: rows move, files stay.
+const FILES = process.env.ROOM_KEEP_FILES ? null : process.env.ROOM_STATE ? process.env.ROOM_ROOT : ROOM;
 // an id already on the wall is taken for good: its files still sit at bench/<id>/ or shelf/
 const onWall = (kind, id) => read('wall').some((i) => i && i.kind === kind && i.id === id);
 
@@ -179,9 +185,7 @@ switch (cmd) {
     // and board/<id>.jpg move to wall/bench/, wall/shelf/, wall/board/, and the row's
     // path or thumb follows. Never overwrites; a stop halfway is picked up next time
     // (the file is already there, so the row is pointed at it). With ROOM_STATE (the
-    // tests) files move only when ROOM_ROOT names the copy's room folder.
-    // ROOM_KEEP_FILES=1 (the levers test, cell B1) is the old sweep: rows move, files stay.
-    const FILES = process.env.ROOM_KEEP_FILES ? null : process.env.ROOM_STATE ? process.env.ROOM_ROOT : ROOM;
+    // tests) files move only when ROOM_ROOT names the copy's room folder (FILES, above).
     const carry = (rel) => {
       const r = String(rel).replace(/\/$/, '');
       if (!FILES || !/^(bench|shelf|board)\/[A-Za-z0-9._-]+$/.test(r) || /\/\.{1,2}$/.test(r)) return rel;
@@ -203,6 +207,37 @@ switch (cmd) {
       writeFileSync(join(STATE, `${kind}.json`), JSON.stringify(keep, null, 2) + '\n');
     }
     console.log(`day-ends: ${moved.length} moved to the wall`);
+    break;
+  }
+  case 'resume': {
+    // The way back to a thing put down (J's plan, 14 Oct 2026, step 4). Her grants write
+    // only in bench/, shelf/ and drawer/, and build refuses an id already on the wall, so
+    // without this a build on the wall could be read and never worked on again. Hers,
+    // under her grant on this file; not locked like day-ends. The next day-ends sweeps it
+    // back to the wall with its steps, as it does every build.
+    const id = idOk(rest[0]);
+    const bench = read('bench'), wall = read('wall');
+    const row = wall.find((i) => i && i.kind === 'bench' && i.id === id) || refuse(`${id} is not a build on the wall`);
+    if (bench.some((i) => i && i.id === id)) refuse(`bench already has "${id}"`);
+    const from = String(row.path || '').replace(/\/$/, '');
+    if (!/^(wall|first-day)\/bench\/[A-Za-z0-9._-]+$/.test(from) || /\/\.{1,2}$/.test(from)) refuse(`${id}'s path "${row.path}" is not a build folder on the wall`);
+    if (FILES) {
+      if (!existsSync(join(FILES, from))) refuse(`${from} is missing`);
+      if (existsSync(join(FILES, 'bench', id))) refuse(`bench/${id} already exists`);
+    }
+    const at = now();
+    const { kind, day, ...kept } = row;
+    const back = { ...kept, updated: at, path: `bench/${id}`, status: 'half',
+      steps: [...(Array.isArray(row.steps) ? row.steps : []), { at, note: 'picked up from the wall' }],
+      used_by: Array.isArray(row.used_by) ? row.used_by : [] };
+    const benchNext = [...bench, back], wallNext = wall.filter((i) => i !== row);
+    for (const [name, list] of [['bench', benchNext], ['wall', wallNext]]) { const v = validate(name, list); if (!v.ok) refuse(v.problems.join('; ')); }
+    // bench first, then the files, then the wall: a stop in between leaves the build
+    // twice rather than nowhere, and the next day-ends skips a wall id it already has
+    writeFileSync(join(STATE, 'bench.json'), JSON.stringify(benchNext, null, 2) + '\n');
+    if (FILES) { mkdirSync(join(FILES, 'bench'), { recursive: true }); renameSync(join(FILES, from), join(FILES, 'bench', id)); }
+    writeFileSync(join(STATE, 'wall.json'), JSON.stringify(wallNext, null, 2) + '\n');
+    console.log(`resume: ${id} back on the bench`);
     break;
   }
   case 'judged': {

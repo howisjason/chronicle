@@ -388,3 +388,67 @@ test('quill: the talk door, and the notebook line lands verbatim without its lab
   const ql = J(d, 'quill');
   assert.deepEqual(ql.slice(-1).map((q) => q.door), ['talk']);
 });
+
+// resume (J's plan, 14 Oct 2026, step 4): a build on the wall comes back to the bench
+const roomRoot = () => {
+  const root = mkdtempSync(join(tmpdir(), 'room-root-'));
+  const d = join(root, 'state');
+  cpSync(join(HERE, 'state'), d, { recursive: true });
+  for (const k of ['bench', 'shelf', 'board']) writeFileSync(join(d, `${k}.json`), '[]\n');
+  return { root, d, env: { ROOM_ROOT: root } };
+};
+
+test('resume: a wall build comes back with the right row and its files; a second resume, a shelf id and an unknown id are refused', () => {
+  const { root, d, env } = roomRoot();
+  assert.equal(roomEnv(d, env, 'build', 'tide-clock', 'A tide clock').code, 0);
+  assert.equal(roomEnv(d, env, 'step', 'tide-clock', 'reads the tables').code, 0);
+  assert.equal(roomEnv(d, env, 'used', 'tide-clock', 'J', 'read a tide').code, 0);
+  assert.equal(roomEnv(d, env, 'status', 'tide-clock', 'done').code, 0);
+  mkdirSync(join(root, 'bench', 'tide-clock'), { recursive: true }); writeFileSync(join(root, 'bench', 'tide-clock', 'README.md'), 'tide');
+  mkdirSync(join(root, 'shelf'), { recursive: true }); writeFileSync(join(root, 'shelf', 'on-tides.md'), '# On tides');
+  writeFileSync(join(d, 'shelf.json'), JSON.stringify([{ id: 'on-tides', title: 'On tides', at: '2026-10-14', path: 'shelf/on-tides.md' }]));
+  assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
+  const wallRow = J(d, 'wall').find((i) => i.kind === 'bench' && i.id === 'tide-clock');
+  const wallLen = J(d, 'wall').length;
+  const r = roomEnv(d, env, 'resume', 'tide-clock');
+  assert.equal(r.code, 0, r.out);
+  assert.equal(r.out.trim(), 'resume: tide-clock back on the bench');
+  const b = J(d, 'bench');
+  assert.equal(b.length, 1);
+  assert.deepEqual(Object.keys(b[0]).sort(), ['id', 'path', 'started', 'status', 'steps', 'title', 'updated', 'used_by']);
+  assert.equal(b[0].status, 'half', 'a done build picked up is open again');
+  assert.equal(b[0].path, 'bench/tide-clock');
+  assert.equal(b[0].started, wallRow.started);
+  assert.match(b[0].updated, /^\d{4}-\d{2}-\d{2}$/);
+  assert.deepEqual(b[0].steps.map((s) => s.note), ['reads the tables', 'picked up from the wall']);
+  assert.equal(b[0].used_by[0].how, 'read a tide');
+  assert.equal(validate('bench', b).ok, true);
+  assert.equal(J(d, 'wall').length, wallLen - 1);
+  assert.equal(J(d, 'wall').some((i) => i.kind === 'bench' && i.id === 'tide-clock'), false, 'the row is off the wall');
+  assert.equal(readFileSync(join(root, 'bench', 'tide-clock', 'README.md'), 'utf8'), 'tide', 'the files are back on the bench');
+  assert.equal(existsSync(join(root, 'wall', 'bench', 'tide-clock')), false);
+  // the bad cases, each leaving both lists as they were
+  const before = [readFileSync(join(d, 'bench.json'), 'utf8'), readFileSync(join(d, 'wall.json'), 'utf8')];
+  assert.match(roomEnv(d, env, 'resume', 'tide-clock').out, /^refused: tide-clock is not a build on the wall/);
+  assert.equal(roomEnv(d, env, 'resume', 'on-tides').code, 2, 'a shelf id is not a build');
+  assert.equal(roomEnv(d, env, 'resume', 'never-made').code, 2);
+  assert.deepEqual([readFileSync(join(d, 'bench.json'), 'utf8'), readFileSync(join(d, 'wall.json'), 'utf8')], before);
+});
+
+test('resume, then day-ends: the build goes back to the wall with the extra step kept', () => {
+  const { root, d, env } = roomRoot();
+  assert.equal(roomEnv(d, env, 'build', 'moon-clock', 'A moon clock').code, 0);
+  assert.equal(roomEnv(d, env, 'step', 'moon-clock', 'the first step').code, 0);
+  mkdirSync(join(root, 'bench', 'moon-clock'), { recursive: true }); writeFileSync(join(root, 'bench', 'moon-clock', 'a.js'), 'x');
+  assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
+  assert.equal(roomEnv(d, env, 'resume', 'moon-clock').code, 0);
+  assert.equal(roomEnv(d, env, 'step', 'moon-clock', 'a step after the gap').code, 0);
+  assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
+  assert.deepEqual(J(d, 'bench'), []);
+  const row = J(d, 'wall').find((i) => i.kind === 'bench' && i.id === 'moon-clock');
+  assert.equal(row.path, 'wall/bench/moon-clock');
+  assert.deepEqual(row.steps.map((s) => s.note), ['the first step', 'picked up from the wall', 'a step after the gap']);
+  assert.equal(readFileSync(join(root, 'wall', 'bench', 'moon-clock', 'a.js'), 'utf8'), 'x');
+  assert.equal(J(d, 'wall').filter((i) => i.kind === 'bench' && i.id === 'moon-clock').length, 1, 'once on the wall, not twice');
+  assert.equal(validate('wall', J(d, 'wall')).ok, true);
+});

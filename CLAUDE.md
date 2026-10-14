@@ -143,6 +143,7 @@ the **cork board** (things seen: a thumbnail and a link to the source, never a c
 13 Oct 2026): before each wake the launcher runs `room.mjs day-ends`, which moves everything
 on the bench, shelf and board onto `state/wall.json`, so the page shows the last session's
 things as "Today" at the top and the wall (everything ever, by day, newest first) under it.
+A build she takes from the desk comes back to the bench with `room.mjs resume <id>`.
 The **desk** gets TWO things before each wake (J's plan, 14 Oct 2026): ONE from the world
 pools at equal odds (Wikipedia random article, Internet Archive random item, Wikimedia
 Commons random file, Wiktionary random entry; J's word: those four and no others), and ONE
@@ -165,7 +166,7 @@ nowhere else, and its first entry came out in a shape the page could not show un
 | File | Written by | Shape |
 |---|---|---|
 | `state/bench.json`, `shelf.json`, `cloud.json`, `quill.json` | March, only through `tools/room.mjs` (it validates the whole list before writing and refuses with one line) | bench `{id, title, started, updated, status: half/done/dropped, path, steps:[{at, note}], used_by:[{who, at, how}]}`; shelf `{id, title, at, path}`; cloud `{id, at, text}`; quill `{id, at, door: build/pin/finish/talk, subject, verdict: yes/no, reason, judged}` (a talk's verdict is a placeholder the page does not draw) |
-| `state/wall.json` | `room.mjs day-ends`, run by `free-hour.sh` before each wake with `ROOM_DAY_ENDS=1` (her grant cannot set it); `room.mjs used` adds to a build on it | the moved entries word for word plus `kind: bench/shelf/board` and `day: YYYY-MM-DD`, newest first; an id on it is never reused |
+| `state/wall.json` | `room.mjs day-ends`, run by `free-hour.sh` before each wake with `ROOM_DAY_ENDS=1` (her grant cannot set it); `room.mjs used` adds to a build on it; `room.mjs resume <id>` moves a build back to the bench | the moved entries word for word plus `kind: bench/shelf/board` and `day: YYYY-MM-DD`, newest first; an id on it is never reused |
 | `quill-notebook.md` | `room.mjs quill`, from Quill's own `NOTEBOOK:` line, the call's fifth word | `- YYYY-MM-DD  <door>  <line>`, one line a call; March hands it to Quill every time |
 | files under `bench/<id>/` and `shelf/` | March, in the hour (Write/Edit) | a build's files, `README.md`, and its face (`demo.html` or `demo.txt`); a page's markdown |
 | `state/board.json`, `board/<id>.jpg` | `tools/pin.sh`, called by March | `{id, at, title, url, thumb, note}` |
