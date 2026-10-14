@@ -1,0 +1,263 @@
+/* =====================================================================
+   OLIVE GARDEN · tokens
+   Only custom properties live here. Every colour, size and curve the kit
+   uses comes from this file; kit.css never writes a colour of its own.
+   Set the mode on the page:  <html data-theme="paper">  or  "night".
+   ===================================================================== */
+
+:root {
+  /* the four faces: a Roman display serif, a reading serif, a mono, and the chop's two glyphs */
+  --f-display: "Cormorant Garamond", serif;
+  --f-body: "Source Serif 4", serif;
+  --f-mono: "IBM Plex Mono", monospace;
+  --f-seal: "Noto Serif SC", serif;
+
+  /* the four sizes, and no others */
+  --t-label: 12px;     /* labels, meta, code, buttons, tags */
+  --t-body: 17px;      /* reading text, the wordmark, inputs */
+  --t-title: 32px;     /* section titles, stat numbers, the quote */
+  --t-display: 128px;  /* the one hero title */
+
+  /* the one ease, for every movement */
+  --ease: cubic-bezier(.16, 1, .3, 1);
+
+  /* spacing: the container's inner padding, the gap between parts, the space between sections */
+  --pad: 26px;
+  --gap: 14px;
+  --section: 70px;
+  --strip: 1040px;     /* the width of the content column */
+
+  /* corners: containers, small pieces, and the size of the curl device */
+  --radius: 9px;
+  --radius-sm: 4px;
+  --corner: 28px;
+
+  /* icon sizes (Lucide, inline SVG) */
+  --i-sm: 14px;
+  --i-md: 18px;
+  --i-lg: 24px;
+
+  /* the two marks, embedded so they also show on a double-clicked file. The source drawings
+     are kit/marks/curl.svg and kit/marks/leaf-pair.svg; this is a copy of J's design kit, and a mark is edited there (design-kit/kit/marks/embed.sh rewrites the block below), never here */
+  /* marks:begin (written by marks/embed.sh, do not edit by hand) */
+  --curl-tl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='black' stroke-linecap='round'%3E %3Cdefs%3E %3Cg id='corner'%3E %3Cpath stroke-width='1.25' d='M1 32V11C1 5.5 5.5 1 11 1H32'/%3E %3Cpath stroke-width='1.25' d='M23 1C16 1 11.5 5.6 11.5 11'/%3E %3Cpath stroke-width='1' d='M11.5 11C11.5 14.8 14.3 17.4 17.8 17.4C21 17.4 23.2 15 23.2 12.3'/%3E %3Cpath stroke-width='.75' d='M23.2 12.3C23.2 10.2 21.7 8.9 20 8.9'/%3E %3C/g%3E %3Cg id='end'%3E %3Cpath stroke-width='1.25' d='M160 1H14C7 1 2.5 5.6 2.5 11'/%3E %3Cpath stroke-width='1' d='M2.5 11C2.5 14.8 5.3 17.4 8.8 17.4C12 17.4 14.2 15 14.2 12.3'/%3E %3Cpath stroke-width='.75' d='M14.2 12.3C14.2 10.2 12.7 8.9 11 8.9'/%3E %3C/g%3E %3C/defs%3E %3Cuse href='%23corner'/%3E %3Cuse href='%23corner' transform='translate(40 0) matrix(-1 0 0 1 32 0)'/%3E %3Cuse href='%23corner' transform='translate(80 0) matrix(1 0 0 -1 0 32)'/%3E %3Cuse href='%23corner' transform='translate(120 0) matrix(-1 0 0 -1 32 32)'/%3E %3Cuse href='%23end' transform='translate(0 40)'/%3E %3Cuse href='%23end' transform='translate(0 60) matrix(-1 0 0 1 160 0)'/%3E %3C/svg%3E");
+  --curl-tr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 0 32 32' fill='none' stroke='black' stroke-linecap='round'%3E %3Cdefs%3E %3Cg id='corner'%3E %3Cpath stroke-width='1.25' d='M1 32V11C1 5.5 5.5 1 11 1H32'/%3E %3Cpath stroke-width='1.25' d='M23 1C16 1 11.5 5.6 11.5 11'/%3E %3Cpath stroke-width='1' d='M11.5 11C11.5 14.8 14.3 17.4 17.8 17.4C21 17.4 23.2 15 23.2 12.3'/%3E %3Cpath stroke-width='.75' d='M23.2 12.3C23.2 10.2 21.7 8.9 20 8.9'/%3E %3C/g%3E %3Cg id='end'%3E %3Cpath stroke-width='1.25' d='M160 1H14C7 1 2.5 5.6 2.5 11'/%3E %3Cpath stroke-width='1' d='M2.5 11C2.5 14.8 5.3 17.4 8.8 17.4C12 17.4 14.2 15 14.2 12.3'/%3E %3Cpath stroke-width='.75' d='M14.2 12.3C14.2 10.2 12.7 8.9 11 8.9'/%3E %3C/g%3E %3C/defs%3E %3Cuse href='%23corner'/%3E %3Cuse href='%23corner' transform='translate(40 0) matrix(-1 0 0 1 32 0)'/%3E %3Cuse href='%23corner' transform='translate(80 0) matrix(1 0 0 -1 0 32)'/%3E %3Cuse href='%23corner' transform='translate(120 0) matrix(-1 0 0 -1 32 32)'/%3E %3Cuse href='%23end' transform='translate(0 40)'/%3E %3Cuse href='%23end' transform='translate(0 60) matrix(-1 0 0 1 160 0)'/%3E %3C/svg%3E");
+  --curl-bl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='80 0 32 32' fill='none' stroke='black' stroke-linecap='round'%3E %3Cdefs%3E %3Cg id='corner'%3E %3Cpath stroke-width='1.25' d='M1 32V11C1 5.5 5.5 1 11 1H32'/%3E %3Cpath stroke-width='1.25' d='M23 1C16 1 11.5 5.6 11.5 11'/%3E %3Cpath stroke-width='1' d='M11.5 11C11.5 14.8 14.3 17.4 17.8 17.4C21 17.4 23.2 15 23.2 12.3'/%3E %3Cpath stroke-width='.75' d='M23.2 12.3C23.2 10.2 21.7 8.9 20 8.9'/%3E %3C/g%3E %3Cg id='end'%3E %3Cpath stroke-width='1.25' d='M160 1H14C7 1 2.5 5.6 2.5 11'/%3E %3Cpath stroke-width='1' d='M2.5 11C2.5 14.8 5.3 17.4 8.8 17.4C12 17.4 14.2 15 14.2 12.3'/%3E %3Cpath stroke-width='.75' d='M14.2 12.3C14.2 10.2 12.7 8.9 11 8.9'/%3E %3C/g%3E %3C/defs%3E %3Cuse href='%23corner'/%3E %3Cuse href='%23corner' transform='translate(40 0) matrix(-1 0 0 1 32 0)'/%3E %3Cuse href='%23corner' transform='translate(80 0) matrix(1 0 0 -1 0 32)'/%3E %3Cuse href='%23corner' transform='translate(120 0) matrix(-1 0 0 -1 32 32)'/%3E %3Cuse href='%23end' transform='translate(0 40)'/%3E %3Cuse href='%23end' transform='translate(0 60) matrix(-1 0 0 1 160 0)'/%3E %3C/svg%3E");
+  --curl-br: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='120 0 32 32' fill='none' stroke='black' stroke-linecap='round'%3E %3Cdefs%3E %3Cg id='corner'%3E %3Cpath stroke-width='1.25' d='M1 32V11C1 5.5 5.5 1 11 1H32'/%3E %3Cpath stroke-width='1.25' d='M23 1C16 1 11.5 5.6 11.5 11'/%3E %3Cpath stroke-width='1' d='M11.5 11C11.5 14.8 14.3 17.4 17.8 17.4C21 17.4 23.2 15 23.2 12.3'/%3E %3Cpath stroke-width='.75' d='M23.2 12.3C23.2 10.2 21.7 8.9 20 8.9'/%3E %3C/g%3E %3Cg id='end'%3E %3Cpath stroke-width='1.25' d='M160 1H14C7 1 2.5 5.6 2.5 11'/%3E %3Cpath stroke-width='1' d='M2.5 11C2.5 14.8 5.3 17.4 8.8 17.4C12 17.4 14.2 15 14.2 12.3'/%3E %3Cpath stroke-width='.75' d='M14.2 12.3C14.2 10.2 12.7 8.9 11 8.9'/%3E %3C/g%3E %3C/defs%3E %3Cuse href='%23corner'/%3E %3Cuse href='%23corner' transform='translate(40 0) matrix(-1 0 0 1 32 0)'/%3E %3Cuse href='%23corner' transform='translate(80 0) matrix(1 0 0 -1 0 32)'/%3E %3Cuse href='%23corner' transform='translate(120 0) matrix(-1 0 0 -1 32 32)'/%3E %3Cuse href='%23end' transform='translate(0 40)'/%3E %3Cuse href='%23end' transform='translate(0 60) matrix(-1 0 0 1 160 0)'/%3E %3C/svg%3E");
+  --curl-rule: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 40 160 19' fill='none' stroke='black' stroke-linecap='round'%3E %3Cdefs%3E %3Cg id='corner'%3E %3Cpath stroke-width='1.25' d='M1 32V11C1 5.5 5.5 1 11 1H32'/%3E %3Cpath stroke-width='1.25' d='M23 1C16 1 11.5 5.6 11.5 11'/%3E %3Cpath stroke-width='1' d='M11.5 11C11.5 14.8 14.3 17.4 17.8 17.4C21 17.4 23.2 15 23.2 12.3'/%3E %3Cpath stroke-width='.75' d='M23.2 12.3C23.2 10.2 21.7 8.9 20 8.9'/%3E %3C/g%3E %3Cg id='end'%3E %3Cpath stroke-width='1.25' d='M160 1H14C7 1 2.5 5.6 2.5 11'/%3E %3Cpath stroke-width='1' d='M2.5 11C2.5 14.8 5.3 17.4 8.8 17.4C12 17.4 14.2 15 14.2 12.3'/%3E %3Cpath stroke-width='.75' d='M14.2 12.3C14.2 10.2 12.7 8.9 11 8.9'/%3E %3C/g%3E %3C/defs%3E %3Cuse href='%23corner'/%3E %3Cuse href='%23corner' transform='translate(40 0) matrix(-1 0 0 1 32 0)'/%3E %3Cuse href='%23corner' transform='translate(80 0) matrix(1 0 0 -1 0 32)'/%3E %3Cuse href='%23corner' transform='translate(120 0) matrix(-1 0 0 -1 32 32)'/%3E %3Cuse href='%23end' transform='translate(0 40)'/%3E %3Cuse href='%23end' transform='translate(0 60) matrix(-1 0 0 1 160 0)'/%3E %3C/svg%3E");
+  --curl-rule-r: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 60 160 19' fill='none' stroke='black' stroke-linecap='round'%3E %3Cdefs%3E %3Cg id='corner'%3E %3Cpath stroke-width='1.25' d='M1 32V11C1 5.5 5.5 1 11 1H32'/%3E %3Cpath stroke-width='1.25' d='M23 1C16 1 11.5 5.6 11.5 11'/%3E %3Cpath stroke-width='1' d='M11.5 11C11.5 14.8 14.3 17.4 17.8 17.4C21 17.4 23.2 15 23.2 12.3'/%3E %3Cpath stroke-width='.75' d='M23.2 12.3C23.2 10.2 21.7 8.9 20 8.9'/%3E %3C/g%3E %3Cg id='end'%3E %3Cpath stroke-width='1.25' d='M160 1H14C7 1 2.5 5.6 2.5 11'/%3E %3Cpath stroke-width='1' d='M2.5 11C2.5 14.8 5.3 17.4 8.8 17.4C12 17.4 14.2 15 14.2 12.3'/%3E %3Cpath stroke-width='.75' d='M14.2 12.3C14.2 10.2 12.7 8.9 11 8.9'/%3E %3C/g%3E %3C/defs%3E %3Cuse href='%23corner'/%3E %3Cuse href='%23corner' transform='translate(40 0) matrix(-1 0 0 1 32 0)'/%3E %3Cuse href='%23corner' transform='translate(80 0) matrix(1 0 0 -1 0 32)'/%3E %3Cuse href='%23corner' transform='translate(120 0) matrix(-1 0 0 -1 32 32)'/%3E %3Cuse href='%23end' transform='translate(0 40)'/%3E %3Cuse href='%23end' transform='translate(0 60) matrix(-1 0 0 1 160 0)'/%3E %3C/svg%3E");
+  --leaf-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -2 31 20'%3E %3Cdefs%3E %3Cpath id='blade' d='M0,0 C16,-9.5 52,-10.5 100,-2.2 C62,5.6 22,7 0,0Z'/%3E %3Cpath id='vein' d='M4,0 Q48,-1.6 90,-2.4' fill='none' stroke-width='1.1' stroke-linecap='round'/%3E %3Cmask id='front-cut' maskUnits='userSpaceOnUse' x='0' y='-2' width='31' height='20'%3E %3Crect x='0' y='-2' width='31' height='20' fill='white'/%3E %3Cuse href='%23blade' fill='black' transform='translate(9.6 13.4) rotate(4) scale(0.2 -0.27)'/%3E %3Cuse href='%23vein' stroke='black' transform='translate(9.6 13.4) rotate(-38) scale(0.22 0.3)'/%3E %3C/mask%3E %3Cmask id='back-cut' maskUnits='userSpaceOnUse' x='0' y='-2' width='31' height='20'%3E %3Crect x='0' y='-2' width='31' height='20' fill='white'/%3E %3Cuse href='%23vein' stroke='black' transform='translate(9.6 13.4) rotate(4) scale(0.2 -0.27)'/%3E %3C/mask%3E %3C/defs%3E %3Cpath fill='black' fill-opacity='.67' d='M0.5,15.4 Q5,15.6 9.4,13 L9.8,13.9 Q5.2,16.8 0.6,16.6Z'/%3E %3Cg mask='url(%23front-cut)'%3E%3Cuse href='%23blade' fill='black' transform='translate(9.6 13.4) rotate(-38) scale(0.22 0.3)'/%3E%3C/g%3E %3Cg mask='url(%23back-cut)'%3E%3Cuse href='%23blade' fill='black' fill-opacity='.67' transform='translate(9.6 13.4) rotate(4) scale(0.2 -0.27)'/%3E%3C/g%3E %3C/svg%3E");
+  /* marks:end */
+}
+
+/* ---------------------------------------------------------------------
+   NIGHT · "Olivewood": deep olive bark, parchment ink, gold as the thread
+   --------------------------------------------------------------------- */
+[data-theme="night"] {
+  /* grounds, darkest to lightest */
+  --bg-0: #2a2d22;  --bg-1: #33342a;  --bg-2: #3b3e2b;  --bg-3: #4e4737;
+  /* inks, strongest to faintest */
+  --tx-1: #f3eddf;  --tx-2: #ddd0ba;  --tx-3: #a6a892;  --tx-4: #848672;   /* tx-3 one step up (14 Oct): meta inside a container reaches 4.5:1 */
+  /* gold, lightest to deepest */
+  --au-1: #f6e2a8;  --au-2: #d9b76c;  --au-3: #a98741;  --au-4: #6a5326;
+  /* green: olive, sage, and the sage velvet the night bands are poured from */
+  --gr-1: #c8ceb3;  --gr-2: #9c9e88;  --gr-3: #808c60;
+
+  /* the page and its containers */
+  --page: var(--bg-0);
+  --ground: radial-gradient(ellipse 90% 560px at 50% -80px, #48432f 0%, rgba(72, 67, 47, 0) 72%),
+            radial-gradient(ellipse 70% 420px at 50% 100%, rgba(50, 53, 42, .9), rgba(50, 53, 42, 0) 70%),
+            linear-gradient(180deg, #313127 0%, var(--bg-0) 1100px);
+  --fill: linear-gradient(180deg, rgba(78, 71, 55, .6), rgba(59, 62, 43, .55) 60%, rgba(50, 53, 42, .6));
+  --shadow: 0 1px 0 rgba(246, 226, 168, .05) inset, 0 30px 70px -40px rgba(12, 13, 8, .9);
+  --mount: none;       /* the paper page mount is off at night */
+
+  /* hairlines and the curl */
+  --hair: rgba(217, 183, 108, .25);
+  --hair-strong: rgba(217, 183, 108, .42);
+  --device: var(--au-2);
+
+  /* labels and kickers */
+  --label: var(--gr-1);
+
+  /* metal: the gold poured into things you press or watch fill */
+  --metal: linear-gradient(180deg, var(--au-1) 0%, var(--au-2) 48%, var(--au-3) 100%);
+  --metal-ink: #1a140a;
+  --title-ink: linear-gradient(180deg, #fbf8f0 0%, #efe8d8 46%, #bfb49b 100%);
+  --title-gold: linear-gradient(180deg, #fbebc0 0%, #e2c27a 42%, #b08c43 78%, #8a6a30 100%);
+  --glow: radial-gradient(ellipse 42% 52% at 50% 48%, rgba(226, 194, 122, .16), rgba(217, 183, 108, .05) 42%, transparent 72%);
+
+  /* light and shade on metal and wells */
+  --lit: rgba(255, 250, 230, .7);
+  --lit-sheen: rgba(255, 250, 230, .22);
+  --lit-track: rgba(255, 255, 240, .45);
+  --lit-chip: rgba(255, 255, 255, .08);
+  --shade: rgba(0, 0, 0, .18);
+  --shade-in: rgba(0, 0, 0, .2);
+  --shade-drop: rgba(0, 0, 0, .3);
+  --well-shade: rgba(40, 30, 10, .14);
+
+  /* the strap (a container's header band) and the table head */
+  --strap-bg: rgba(128, 140, 96, .3);
+  --strap-edge: var(--hair);
+  --strap-hem: none;
+  --strap-label: var(--label);
+  --strap-meta: var(--tx-2);   /* tx-3 drops under 3:1 on the night band */
+  --th-bg: var(--strap-bg);
+  --th-ink: var(--gr-1);
+
+  /* green pieces: the secondary button, tags, list pills, tracks */
+  --green-fill: rgba(128, 140, 96, .34);
+  --green-ink: var(--gr-1);
+  --green-line: rgba(200, 206, 179, .55);
+  --tag-solid: var(--gr-1);   --tag-solid-ink: #2a2d22;
+  --pill: var(--gr-1);        --pill-ink: #2a2d22;
+  --track: rgba(156, 166, 122, .5);
+  --toggle-on: linear-gradient(180deg, #dfe3cd 0%, #c8ceb3 45%, #9c9e88 100%);
+
+  /* fields and wells */
+  --input-bg: var(--bg-0);
+  --input-shadow: inset 0 1px 3px rgba(0, 0, 0, .18);
+  --well: color-mix(in srgb, var(--bg-0) 70%, transparent);
+  --band: transparent;          /* the quiet band under the quote: none at night */
+
+  /* the chop: a deep gold square, characters cut in white, in every mode */
+  --seal-metal: linear-gradient(180deg, #c29d55 0%, #a5823d 40%, #87692c 75%, #6e5420 100%);
+  --seal-ink: #ffffff;
+  --seal-shadow: rgba(8, 9, 4, .75);
+
+  /* the leaf pair and the icon disc */
+  --leaf: var(--gr-1);
+  --disc-ring: var(--hair-strong);
+  --disc-inner: var(--hair);
+
+  /* a green surface (.verdant): at night it is simply the ground, so every ink stays itself */
+  --verdant-bg: none;
+  --hero-shadow: none;
+  --vd-tx-1: var(--tx-1);  --vd-tx-2: var(--tx-2);  --vd-tx-3: var(--tx-3);  --vd-tx-4: var(--tx-4);
+  --vd-label: var(--label);
+  --vd-hair: var(--hair);  --vd-hair-strong: var(--hair-strong);
+  --vd-device: var(--device);
+  --vd-title-ink: var(--title-ink);  --vd-title-gold: var(--title-gold);
+  --vd-seal-metal: var(--seal-metal);  --vd-seal-shadow: var(--seal-shadow);
+  --vd-green-fill: var(--green-fill);  --vd-green-line: var(--green-line);  --vd-track: var(--track);
+  --vd-disc-ring: var(--disc-ring);  --vd-disc-inner: var(--disc-inner);
+
+  /* the specimen page prints each rung's code and name from these */
+  --hx-bg-0: "#2A2D22\A Olivewood"; --hx-bg-1: "#33342A"; --hx-bg-2: "#3B3E2B"; --hx-bg-3: "#4E4737\A Bark";
+  --hx-tx-1: "#F3EDDF\A Parchment"; --hx-tx-2: "#DDD0BA\A Sand"; --hx-tx-3: "#A6A892"; --hx-tx-4: "#848672";
+  --hx-au-1: "#F6E2A8"; --hx-au-2: "#D9B76C\A Gold"; --hx-au-3: "#A98741"; --hx-au-4: "#6A5326";
+  --hx-gr-1: "#C8CEB3\A Olive"; --hx-gr-2: "#9C9E88\A Sage"; --hx-gr-3: ""; --hx-gr-4: "";
+  --hx-seal: "#A5823D\A + white";
+}
+
+/* ---------------------------------------------------------------------
+   PAPER · "Linen & Velvet": a white page; whole surfaces are deep green
+   velvet with white type on them; gold is the trim
+   --------------------------------------------------------------------- */
+[data-theme="paper"] {
+  /* grounds: parchment, linen, near-white, page white */
+  --bg-0: #eee5d1;  --bg-1: #f6f2e9;  --bg-2: #fbfaf6;  --bg-3: #ffffff;
+  /* inks: olivewood and bark, strongest to faintest */
+  --tx-1: #23261b;  --tx-2: #46422f;  --tx-3: #66644f;  --tx-4: #8c8a78;
+  /* gold, lightest to deepest */
+  --au-1: #d9b76c;  --au-2: #a98741;  --au-3: #7d6129;  --au-4: #4f3c16;
+  /* green: leaf tint, sage velvet, forest, hosta */
+  --gr-1: #d6ddc7;  --gr-2: #68785a;  --gr-3: #3e5236;  --gr-4: #2a3a26;
+
+  /* the velvet itself: two pours and the faint pile laid over them */
+  --velvet: linear-gradient(180deg, #465a3d 0%, #3e5236 52%, #33462e 100%);
+  --velvet-deep: linear-gradient(180deg, #34472e 0%, #2e4029 60%, #2a3a26 100%);
+  --nap: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .9 0 0 0 0 .95 0 0 0 0 .8 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* the page and its containers */
+  --page: #ffffff;
+  --ground: #ffffff;
+  --fill: #ffffff;
+  --shadow: 0 30px 60px -44px rgba(30, 44, 26, .55);
+  --mount: block;      /* the double gold rule around the page */
+
+  /* hairlines and the curl */
+  --hair: rgba(125, 97, 41, .3);
+  --hair-strong: rgba(125, 97, 41, .5);
+  --device: var(--au-2);
+
+  /* labels and kickers */
+  --label: var(--gr-3);
+
+  /* metal */
+  --metal: linear-gradient(180deg, #e8cd8a 0%, var(--au-1) 30%, var(--au-2) 70%, var(--au-3) 100%);
+  --metal-ink: #20160a;
+  --title-ink: linear-gradient(180deg, var(--tx-1), var(--tx-1));
+  --title-gold: linear-gradient(180deg, #c49d52 0%, #a98741 45%, #7d6129 100%);
+  --glow: none;
+
+  /* light and shade on metal and wells */
+  --lit: rgba(255, 250, 230, .7);
+  --lit-sheen: rgba(255, 250, 230, .22);
+  --lit-track: rgba(255, 255, 240, .45);
+  --lit-chip: rgba(255, 255, 255, .08);
+  --shade: rgba(0, 0, 0, .18);
+  --shade-in: rgba(0, 0, 0, .2);
+  --shade-drop: rgba(0, 0, 0, .3);
+  --well-shade: rgba(40, 30, 10, .14);
+
+  /* the strap: a velvet band with a gold hem sewn 4px above its gold edge */
+  --strap-bg: var(--nap), var(--velvet);
+  --strap-edge: var(--au-2);
+  --strap-hem: inset 0 -3px 0 #33462e, inset 0 -4px 0 rgba(217, 183, 108, .85);
+  --strap-label: #ffffff;
+  --strap-meta: #d9dfcc;
+  --th-bg: var(--nap), var(--velvet-deep);   /* one step deeper than the strap above it */
+  --th-ink: #f3eddf;
+
+  /* green pieces */
+  --green-fill: linear-gradient(180deg, #4a5f40, #3e5236 60%, #34472e);
+  --green-ink: #ffffff;
+  --green-line: var(--gr-4);
+  --tag-solid: var(--gr-2);   --tag-solid-ink: #ffffff;
+  --pill: var(--gr-3);        --pill-ink: #ffffff;
+  --track: var(--gr-1);
+  --toggle-on: linear-gradient(180deg, #e3e8d7 0%, #d6ddc7 45%, #b9c4a6 100%);
+
+  /* fields and wells */
+  --input-bg: #ffffff;
+  --input-shadow: inset 0 1px 2px rgba(42, 58, 38, .08);
+  --well: var(--bg-0);            /* parchment: the code well */
+  --band: color-mix(in srgb, var(--bg-0) 72%, #ffffff);   /* the one quiet band, under the quote */
+
+  /* the chop: a deep gold square, characters cut in white, in every mode */
+  --seal-metal: linear-gradient(180deg, #c29d55 0%, #a5823d 40%, #87692c 75%, #6e5420 100%);
+  --seal-ink: #ffffff;
+  --seal-shadow: rgba(42, 40, 15, .45);
+
+  /* the leaf pair (it sits on velvet, so it is the light leaf) and the icon disc */
+  --leaf: var(--gr-1);
+  --disc-ring: var(--hair-strong);
+  --disc-inner: var(--hair);
+
+  /* a green surface (.verdant): velvet, and the inks turn over to white on it */
+  --verdant-bg: radial-gradient(ellipse 45% 60% at 8% 0%, rgba(232, 240, 214, .12), transparent 70%),
+                radial-gradient(ellipse 50% 60% at 85% 100%, rgba(10, 20, 8, .35), transparent 70%),
+                var(--nap), var(--velvet);
+  --hero-shadow: 0 1px 0 rgba(232, 240, 214, .18) inset, 0 40px 80px -48px rgba(30, 44, 26, .8);
+  --vd-tx-1: #ffffff;  --vd-tx-2: #faf7f0;  --vd-tx-3: #e4e9da;  --vd-tx-4: #b9c4a6;
+  --vd-label: #faf7f0;
+  --vd-hair: rgba(217, 183, 108, .38);  --vd-hair-strong: rgba(217, 183, 108, .6);
+  --vd-device: #d9b76c;   /* the curls and rules on velvet use the light gold */
+  --vd-title-ink: linear-gradient(180deg, #ffffff 0%, #f6f1e4 55%, #ddd4bd 100%);
+  --vd-title-gold: linear-gradient(180deg, #fbebc0 0%, #e2c27a 42%, #c49d52 78%, #a98741 100%);
+  --vd-seal-metal: var(--seal-metal);   /* one chop gold everywhere: the deep one, so white reads */
+  --vd-seal-shadow: rgba(10, 18, 8, .6);
+  --vd-green-fill: var(--velvet-deep);
+  --vd-green-line: rgba(217, 183, 108, .55);
+  --vd-track: rgba(214, 221, 199, .22);
+  --vd-disc-ring: rgba(255, 255, 255, .5);  --vd-disc-inner: rgba(255, 255, 255, .16);
+
+  /* the specimen page prints each rung's code and name from these */
+  --hx-bg-0: "#EEE5D1\A Parchment"; --hx-bg-1: "#F6F2E9\A Linen"; --hx-bg-2: "#FBFAF6"; --hx-bg-3: "#FFFFFF\A Page";
+  --hx-tx-1: "#23261B\A Olivewood"; --hx-tx-2: "#46422F\A Bark"; --hx-tx-3: "#66644F"; --hx-tx-4: "#8C8A78";
+  --hx-au-1: "#D9B76C"; --hx-au-2: "#A98741\A Gold"; --hx-au-3: "#7D6129"; --hx-au-4: "#4F3C16";
+  --hx-gr-1: "#D6DDC7\A Leaf"; --hx-gr-2: "#68785A\A Velvet"; --hx-gr-3: "#3E5236\A Forest"; --hx-gr-4: "#2A3A26\A Hosta";
+  --hx-seal: "#A5823D\A + white";
+}

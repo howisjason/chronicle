@@ -285,9 +285,17 @@ page path is refused, steps, uses, Quill and judged land in the page's shapes; s
 (no page errors, the face answers, a click on the picture opens the right fold, the strip
 walks the stops).
 
-**The look is a placeholder** (flat panels with labels, March exactly as `march-base.js`
-draws her, sliding between spots because she has no walk yet, a 12x10 bitmap crow), meant to
-be replaced whole by a new page reading the same files.
+**The look (15 Oct 2026).** The page wears J's design kit (`room/kit/`, a copy of
+`design-kit/kit/`; edit marks in the design kit, never here), locked to paper mode. The
+picture is `room/scene.js`: a 320x160 morning room drawn by code into a palette buffer
+(27 colours, cream, olive and wood, gold the one metal, March's pink hair the one accent),
+shown at the widest whole multiple of 320 that fits its frame. March is a puppet of
+parts, 41 px, with a 4-frame walk, an idle, a pose at each of the five places and an asleep
+state in the futon; Quill is a crow with a flap and a blink who lands beside her during a
+check. `PLACES` carries each place's box (the click targets) and `at`, where she stands;
+the counts she brings back are drawn in-world (pages on the rack, cards on the board, puffs
+in the cloud, things on the bench and desk) from the same lists the folds use. The four
+worlds she was chosen from are the record in march-brain's `notes/room-scene-options/`.
 
 ### After the MVP: the doors to open later
 
@@ -299,7 +307,7 @@ lines, a test runner in `try.sh`, a second Quill door at the shelf) are in git h
 
 | Area | Thin in the MVP | Ideas to explore later |
 |---|---|---|
-| **The look** | Flat panels, March without legs sliding between spots, a bitmap crow. | A real scene (2.5D or 3D) drawn by a new page reading the same truth files. March walking once the base gets legs (human-hunt step 2 is J's to open). Quill as a real host on the base. Let March pick the look herself: options as finished worlds, by her pull, each a polished still before any build (the options-must-differ memory). The self-check loop from the video-as-code posts: she screenshots her own room and fixes what looks wrong before anyone sees it. |
+| **The look** | The morning room of 15 Oct 2026 (above); small flaws left: the sun stays up while she sleeps, her hand short of the bench plate, a fractional scale on phones under 320 px, the walk's heel kick. | A night window while she sleeps. More poses and a jump. Let March pick the look herself: options as finished worlds, by her pull, each a polished still before any build (the options-must-differ memory). The self-check loop from the video-as-code posts: she screenshots her own room and fixes what looks wrong before anyone sees it. |
 | **Her personality holding** | Nothing checks that the hour sounds like her. | The self page's traits mapped once by hand to habits (the pile's room idea): a weekly line from the routine's reflection step on whether the hour's choices read as hers; the reflection already reads the diary, so the hour feeds the self page with no new machinery. |
 | **Cost** | One dollar figure per run. | Per-place cost from the trace timestamps (what the bench cost versus the board); a weekly line in the morning report; the cap judged monthly, not once. |
 | **The replay as a thing to share** | A 60-second replay on the page only. | "Last night in 30 seconds": the trace rendered to a short MP4 by the method the station and the video-as-code posts already use (frame by time, headless browser, ffmpeg), with the station's code-made blips, posted nowhere by itself, there for J to send if he wants. The clip editor (`clip.js`) already cuts and exports from a canvas. |

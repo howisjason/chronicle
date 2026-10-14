@@ -1,61 +1,158 @@
-/* room.css: the placeholder look of March's room. The colours and the pixel font
-   are copied from the station's style.css :root (not imported, so the station's
-   stylesheet can change without touching this page). */
-:root {
-  --bg: #0a1230; --panel: #0e1a44; --panel2: #13235a; --line: #2a3f8f; --blue: #2f5bd8;
-  --gold: #f2c14e; --red: #d8323c; --text: #e8ecff; --dim: #93a0cc; --pink: #f4a6cf;
-  --px: "Silkscreen", "Space Mono", monospace;
+/* room.css: March's room in J's design kit, Olive Garden (kit/tokens.css, kit/kit.css,
+   copied whole from design-kit/kit; the rules are design-kit/KIT.md). This file only
+   places the kit's pieces for this page: it writes no colour of its own (every colour
+   is a kit variable), and uses only the kit's four type sizes. The picture inside the
+   canvas is a guest and keeps its own pixels. */
+
+a { color: var(--tx-1); text-decoration-color: var(--hair-strong); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--device); }
+.strip { padding: 0 32px; }
+
+/* the header: the wordmark and the small chop, then her own words */
+.topbar { padding-top: 46px; }
+.intro { padding: 34px 0 30px; }
+.intro p:first-child { color: var(--tx-2); }
+.intro .meta { margin-top: 16px; }
+.intro .meta a { color: var(--tx-2); }
+
+/* the picture: a guest inside one frame */
+.stage-body { padding: 22px var(--pad) 20px; }
+.stage canvas {
+  display: block; cursor: pointer; width: 100%; aspect-ratio: 2 / 1; margin: 0 auto;  /* room.js snaps the width to whole pixels */
+  image-rendering: pixelated; image-rendering: crisp-edges;
+  background: var(--well); border: 1px solid var(--hair); border-radius: var(--radius-sm);
 }
-* { box-sizing: border-box; }
-html, body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
-a { color: var(--gold); }
-main { max-width: 980px; margin: 0 auto; padding: 24px 16px 60px; }
-.px { font-family: var(--px); letter-spacing: 0.02em; }
-.dim { color: var(--dim); }
-.small { font-size: 13px; }
-h1 { font-size: 26px; margin: 0 0 6px; }
-h2 { font-size: 16px; margin: 32px 0 4px; color: var(--pink); }
-section > p.small, .body > p.small { margin: 0 0 10px; }
-.stage canvas { display: block; cursor: pointer; width: 100%; aspect-ratio: 2 / 1; image-rendering: pixelated; background: #000; border: 4px solid var(--panel2); border-radius: 10px; }
-.under { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; gap: 12px; }
-#caption { color: var(--gold); font-size: 14px; }
-button { font: 12px var(--px); background: var(--panel2); color: var(--text); border: 1px solid var(--line); padding: 6px 10px; border-radius: 4px; cursor: pointer; }
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
-.card b { display: block; }
-.card img { display: block; width: 100%; border-radius: 4px; margin-bottom: 6px; }
-.titlecard { display: flex; align-items: center; justify-content: center; aspect-ratio: 3 / 2; background: var(--panel2); border-radius: 4px; margin-bottom: 6px; font: 12px var(--px); padding: 8px; text-align: center; }
-.tag { font: 10px var(--px); border: 1px solid var(--gold); color: var(--gold); padding: 0 5px; border-radius: 3px; }
-.empty, .bad { color: var(--dim); font-size: 13px; font-style: italic; }
-.bad { color: #ff8a8a; }
-ul, ol { padding-left: 20px; margin: 0; }
-li { margin: 3px 0; }
-table { border-collapse: collapse; width: 100%; font-size: 13px; }
-th, td { border-bottom: 1px solid var(--line); padding: 5px 6px; text-align: left; vertical-align: top; }
-th { font: 11px var(--px); color: var(--dim); }
-#page { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 16px; margin-top: 10px; }
-/* the replay strip: one dot per stop of the trace, the current one gold, and a line saying which stop this is */
-#strip { display: flex; align-items: center; gap: 10px; margin-top: 8px; min-height: 20px; }
-#dots { display: flex; gap: 3px; flex-wrap: wrap; }
-#dots i { display: block; width: 6px; height: 6px; border-radius: 1px; background: var(--line); }
-#dots i.now { background: var(--gold); }
-#dots i.past { background: var(--blue); }
-/* the lists fold: a place in the picture or its heading opens the one it names */
-.fold > h2 { cursor: pointer; user-select: none; }
-.fold > h2::before { content: "+ "; color: var(--dim); }
-.fold.open > h2::before { content: "- "; }
-.fold > .body { display: none; }
+.under { display: flex; justify-content: space-between; align-items: center; gap: var(--gap); margin-top: 16px; flex-wrap: wrap; }
+#caption { min-height: 17px; }
+.under .btn { padding: 11px 18px; }
+/* the replay strip: one dot per stop, the one now poured in metal */
+#strip { display: flex; align-items: center; gap: 12px; margin-top: 12px; min-height: 18px; flex-wrap: wrap; }
+#dots { display: flex; gap: 4px; flex-wrap: wrap; }
+#dots i { display: block; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--hair-strong); }
+#dots i.past { background: var(--gr-2); border-color: var(--gr-2); }
+#dots i.now { background: var(--metal); border-color: var(--au-3); }
+#lastrun { margin-top: 10px; max-width: none; }
+
+/* the last session in numbers: the kit's stat tiles */
+#nums { margin-top: var(--gap); }
+#nums .stat small { margin-left: .22em; }
+#nums .stat b { font-weight: inherit; margin-left: .55em; }
+
+/* Today's head */
+.section-head.today { margin: var(--section) 0 26px; }
+.section-head p.meta { margin-top: 10px; max-width: 78ch; }
+
+/* the folds: each list is a frame whose header line opens it */
+.fold { margin-top: var(--gap); }
+.fold > .strap { cursor: pointer; user-select: none; font: inherit; }
+.fold:not(.open) > .strap { border-radius: var(--radius); border-bottom-color: transparent; }
+/* a closed fold is only its header line, so its four curls are drawn smaller and never meet */
+.fold:not(.open) { --corner: 20px; }
+[data-theme="paper"] .fold:not(.open) > .strap { box-shadow: none; }
+.fold > .strap .meta { text-align: right; }
+.fold > .body { display: none; padding: 20px 0 var(--pad); }
 .fold.open > .body { display: block; }
-.fold.lit > h2 { color: var(--gold); }
-/* a build's own face, shown in place */
+.fold.lit { border-color: var(--device); box-shadow: var(--shadow), 0 0 0 3px color-mix(in srgb, var(--gr-2) 35%, transparent); }
+/* the fold's mark: a small hairline chevron that turns down when open */
+.mark {
+  flex: none; width: 8px; height: 8px; margin: 0 4px 0 2px;
+  border-right: 1.5px solid var(--strap-label); border-bottom: 1.5px solid var(--strap-label);
+  transform: rotate(-45deg); transition: transform .4s var(--ease);
+}
+.fold.open .mark { transform: rotate(45deg) translate(-2px, -2px); }
+.inset { padding-inline: var(--pad); }
+.body > p.meta { margin-bottom: 16px; max-width: 96ch; }
+.empty, .bad { font: 400 var(--t-label)/1.5 var(--f-mono); letter-spacing: .04em; color: var(--tx-3); }
+.inset > .empty, .inset > .bad { padding: 0; }
+.body > .empty, .body > .bad { padding-inline: var(--pad); }
+
+/* the cards: containers inside a fold */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--gap); }
+.card { padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card:hover { transform: none; }
 .card.faced { grid-column: 1 / -1; }
-.card iframe { display: block; width: 100%; height: 300px; border: 1px solid var(--line); border-radius: 4px; background: #000; margin: 8px 0 6px; }
-.card pre { white-space: pre-wrap; font-size: 12px; background: #000; border-radius: 4px; padding: 8px; margin: 8px 0 6px; max-height: 260px; overflow: auto; }
-.card .meta { color: var(--dim); font-size: 13px; }
-.usedbtn { font-size: 10px; padding: 2px 6px; margin-left: 4px; }
-/* the second day: today's heading, the wall's days, a page opened inside its card, the desk's taken mark */
-h2.today { color: var(--gold); margin-top: 28px; }
-#wall h3 { font-size: 13px; color: var(--dim); margin: 18px 0 8px; }
-.card article.inpage { margin-top: 8px; border-top: 1px solid var(--line); }
-.tag.taken { border-color: var(--pink); color: var(--pink); margin-left: 4px; }
-.card > .tag + .tag { margin-left: 4px; }
+.card .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.card .title { font: 600 var(--t-body)/1.4 var(--f-body); color: var(--tx-1); }
+.card .title, .card .note, #desk li { overflow-wrap: anywhere; }
+.card .title a { color: inherit; }
+.card .note { color: var(--tx-2); }
+.card img { display: block; width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--hair); }
+.card iframe { display: block; width: 100%; height: 340px; border: 1px solid var(--hair); border-radius: var(--radius-sm); background: var(--well); }
+.card pre.well { border-radius: var(--radius-sm); white-space: pre-wrap; max-height: 280px; }
+.card .acts { display: flex; align-items: center; gap: var(--gap); flex-wrap: wrap; margin-top: 4px; }
+.card .acts .btn { padding: 10px 16px; }
+.titlecard {
+  display: flex; align-items: center; justify-content: center; aspect-ratio: 3 / 2; padding: 12px; text-align: center;
+  background: var(--well); border: 1px solid var(--hair); border-radius: var(--radius-sm);
+}
+/* a page opened in place */
+.inpage, #page { border-top: 1px solid var(--hair); padding-top: 14px; overflow-wrap: anywhere; }
+#page { margin-top: 16px; }
+.inpage h2, #page h2 { font: 600 var(--t-title)/1.15 var(--f-display); color: var(--tx-1); margin: 18px 0 8px; }
+.inpage h3, #page h3 { font: 600 var(--t-body)/1.4 var(--f-body); color: var(--tx-1); margin: 16px 0 6px; }
+.inpage p, #page p { margin-top: 10px; }
+.inpage ul, #page ul { margin: 10px 0 0 20px; }
+
+/* plain lists inside a card or a fold */
+#shelf ul, #desk ul { list-style: none; }
+#shelf li, #desk li { padding: 10px 0; border-bottom: 1px solid var(--hair); }
+#shelf li:last-child, #desk li:last-child { border-bottom: 0; }
+#desk .cards { margin-bottom: 18px; }
+
+/* the cloud and the notebook: lines with a hairline between */
+.lines { list-style: none; }
+.lines li { padding: 14px var(--pad); border-top: 1px solid var(--hair); }
+.lines li .meta { display: block; margin-top: 4px; }
+.lines li .label { display: block; margin-bottom: 6px; }
+#notebook > p { padding: 14px var(--pad) 0; }
+
+/* the two tables: Quill's ledger and the log */
+.tablewrap { border-top: 1px solid var(--hair); }
+.tablewrap td { vertical-align: top; }
+.tablewrap th, .tablewrap td { padding-inline: 12px; }
+.tablewrap th:first-child, .tablewrap td:first-child { padding-left: var(--pad); }
+.tablewrap th:last-child, .tablewrap td:last-child { padding-right: var(--pad); }
+#quill td:nth-child(5) { width: 50%; }
+#quill td:nth-child(3) { min-width: 150px; }
+#quill > p { padding: 0 var(--pad) 16px; }
+.verdict-no { color: var(--tx-1); font-weight: 600; }
+/* short columns never break; the long ones take the room */
+#log td:nth-child(1), #log td:nth-child(2), #log td:nth-child(4), #log td:nth-child(5),
+#quill td:nth-child(1), #quill td:nth-child(2), #quill td:nth-child(4), #quill td:nth-child(6) { white-space: nowrap; }
+
+/* the wall: each day a section title with the dry gold rule */
+.day-head { margin: 30px 0 18px; }
+.day-head:first-child { margin-top: 6px; }
+.day-head .display { margin-top: 6px; }
+.day-head .rule { margin-top: 10px; }
+
+/* narrow screens (J reads this on an Android phone) */
+@media (max-width: 760px) {
+  :root { --pad: 16px; --section: 48px; }
+  .strap { padding-inline: 22px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stats > div:nth-child(3)::before { display: none; }
+  .stats > div:nth-child(n+3) { border-top: 1px solid var(--hair); }
+}
+@media (max-width: 560px) {
+  .strip { padding: 0 22px; }
+  .page::before { inset: 8px; }
+  .page::after { inset: 12px; }
+  .page > .curls { inset: 11px; --corner: 30px; }
+  .topbar { padding-top: 34px; }
+  .stage-body { padding: 16px 14px 16px; }
+  .card { padding: 18px 16px 16px; }
+  .card iframe { height: 420px; }
+  /* the tables turn into stacked rows: each cell a small block with its column's name above it,
+     the short ones side by side, a long one taking the whole line */
+  .stack tr:first-child { display: none; }
+  .stack tr { display: flex; flex-wrap: wrap; column-gap: 22px; padding: 12px var(--pad) 14px; border-bottom: 1px solid var(--hair); }
+  .stack tr:last-child { border-bottom: 0; }
+  .stack td, .tablewrap .stack td:first-child, .tablewrap .stack td:last-child { padding: 4px 0; border: 0; white-space: normal !important; }
+  .stack td.w { flex-basis: 100%; order: 2; }
+  .stack td:empty { display: none; }
+  .stack td::before {
+    content: attr(data-l); display: block;
+    font: 500 var(--t-label)/1.4 var(--f-mono); letter-spacing: .22em; text-transform: uppercase; color: var(--label);
+  }
+}
