@@ -223,8 +223,8 @@ export function validate(stateName, data) {
       if (item.pool === undefined) {
         if (!DESK_KINDS.has(item.kind)) problems.push(`${here}: kind must be wikipedia, arxiv, note or diary`);
       } else {
-        if (!DESK_POOLS.has(item.pool)) problems.push(`${here}: pool must be wikipedia, archive, commons, wiktionary (or a test's self, diary, grown)`);
-        if (!DESK_DOORS.has(item.door)) problems.push(`${here}: door must be summary, picture, first-sentence, coordinates, one-word, title (or a test's note, line)`);
+        if (!DESK_POOLS.has(item.pool)) problems.push(`${here}: pool must be wikipedia, archive, commons, wiktionary, self (or a test's diary, grown)`);
+        if (!DESK_DOORS.has(item.door)) problems.push(`${here}: door must be summary, picture, first-sentence, coordinates, one-word, title, note or line`);
         if (typeof item.shown !== 'string' || !item.shown) problems.push(`${here}: no shown`);
         if (item.taken !== undefined && !Number.isFinite(Date.parse(item.taken))) problems.push(`${here}: taken must be a time`);
       }

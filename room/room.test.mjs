@@ -433,6 +433,19 @@ test('resume: a wall build comes back with the right row and its files; a second
   assert.equal(roomEnv(d, env, 'resume', 'on-tides').code, 2, 'a shelf id is not a build');
   assert.equal(roomEnv(d, env, 'resume', 'never-made').code, 2);
   assert.deepEqual([readFileSync(join(d, 'bench.json'), 'utf8'), readFileSync(join(d, 'wall.json'), 'utf8')], before);
+  // an id already on the bench is refused, even when a wall row of the same id is planted
+  const planted = [{ ...wallRow }, ...J(d, 'wall')];
+  writeFileSync(join(d, 'wall.json'), JSON.stringify(planted));
+  assert.match(roomEnv(d, env, 'resume', 'tide-clock').out, /^refused: bench already has "tide-clock"/);
+  // a first-day build comes back from first-day/bench/<id>
+  mkdirSync(join(root, 'first-day', 'bench', 'old-one'), { recursive: true }); writeFileSync(join(root, 'first-day', 'bench', 'old-one', 'README.md'), 'old');
+  writeFileSync(join(d, 'wall.json'), JSON.stringify([{ id: 'old-one', title: 'Old', started: '2026-10-12', status: 'done', path: 'first-day/bench/old-one', kind: 'bench', day: '2026-10-12' }, ...J(d, 'wall')]));
+  assert.equal(roomEnv(d, env, 'resume', 'old-one').code, 0);
+  assert.equal(readFileSync(join(root, 'bench', 'old-one', 'README.md'), 'utf8'), 'old');
+  assert.equal(existsSync(join(root, 'first-day', 'bench', 'old-one')), false);
+  // a path outside a build folder on the wall is refused
+  writeFileSync(join(d, 'wall.json'), JSON.stringify([{ id: 'bad-path', title: 'Bad', started: '2026-10-12', status: 'done', path: 'wall/bench/..', kind: 'bench', day: '2026-10-12' }, ...J(d, 'wall')]));
+  assert.match(roomEnv(d, env, 'resume', 'bad-path').out, /^refused: bad-path's path/);
 });
 
 test('resume, then day-ends: the build goes back to the wall with the extra step kept', () => {
