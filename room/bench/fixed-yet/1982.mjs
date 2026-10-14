@@ -10,7 +10,7 @@
 // This asks two roads which is right: ICU itself (Intl), and seventh-night's
 // calendar built from the sun and moon.
 
-import { chineseYear, jdn, iso, icu } from "../seventh-night/seventh.mjs";
+import { chineseYear, jdn, iso, icu } from "./sky.mjs";
 
 const TESTS = [
   { n: 2040, leap: true, day: 29, expected: "1982-05-22", icuGave: "1982-06-20" },

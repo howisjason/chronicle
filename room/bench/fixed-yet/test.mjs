@@ -1,16 +1,17 @@
 // test.mjs: checks for check.mjs and its page.
 //   node test.mjs
 // The twelve days come from the Hong Kong Observatory's tables. The second road here
-// is the calendar in ../seventh-night, worked out from the sky with no table at all:
-// it should start the same twelve months on the same twelve days.
+// is the calendar in seventh-night (found by sky.mjs), worked out from the sky with no
+// table at all: it should start the same twelve months on the same twelve days.
 import { readFileSync } from "node:fs";
 import { CASES, ask } from "./check.mjs";
-import { chineseYear, iso } from "../seventh-night/seventh.mjs";
+import { chineseYear, iso, where } from "./sky.mjs";
 import { verdicts, leap4 } from "./1982.mjs";
 
 let bad = 0;
 const check = (what, ok, detail = "") => { console.log(`${ok ? "ok  " : "FAIL"}  ${what}${detail ? `  (${detail})` : ""}`); if (!ok) bad++; };
 
+check("the second road is seventh-night's own file", where.pathname.endsWith("/seventh-night/seventh.mjs"), where.pathname.split("/room/")[1]);
 check("twelve cases, one in each year", CASES.length === 12 && new Set(CASES.map((c) => c.day.slice(0, 4))).size === 12);
 
 // The sky's calendar, for the Chinese years that touch each case.

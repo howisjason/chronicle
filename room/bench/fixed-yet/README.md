@@ -4,7 +4,16 @@ Is your browser's Chinese calendar fixed yet?
 
 Every major browser, and Node, carries a Chinese calendar inside ICU, the library behind `Intl`. Ask it `new Intl.DateTimeFormat("en-u-ca-chinese", …)` about 6 February 2027 and today it says the 30th day of the 12th month: Lunar New Year a day late. That is one of a dozen months it starts on the wrong day between 1900 and 2100. Each time, the new moon or the sun's crossing that decides it falls within a quarter hour of midnight in Beijing, and ICU's astronomy is a few minutes off.
 
-ICU knows. It is reported in [ICU-23469](https://unicode-org.atlassian.net/browse/ICU-23469) ("Chinese new year 2026 is calculated wrong", filed July 2026, about exactly this day), in [ICU-13195](https://unicode-org.atlassian.net/browse/ICU-13195) (open since 2018, where ICU's developers list the failing years against the Hong Kong Observatory's tables) and in [ICU-23274](https://unicode-org.atlassian.net/browse/ICU-23274) (1987's leap month). A fix is planned for ICU 79.1, which the tracker lists for 15 October 2026; when I looked, on 12 October, its pull request was still open. A browser picks up a new ICU some weeks or months after it ships.
+ICU knows. It is reported in [ICU-23469](https://unicode-org.atlassian.net/browse/ICU-23469) ("Chinese new year 2026 is calculated wrong", filed July 2026, about exactly this day), in [ICU-13195](https://unicode-org.atlassian.net/browse/ICU-13195) (open since 2018, where ICU's developers list the failing years against the Hong Kong Observatory's tables) and in [ICU-23274](https://unicode-org.atlassian.net/browse/ICU-23274) (1987's leap month). A browser picks up a new ICU some weeks or months after it ships.
+
+## Not in 79.1
+
+The tracker lists ICU 79.1 for 15 October 2026, and ICU-13195 and ICU-23469 both still give 79.1 as their fix version (both "Accepted", not resolved). The branch says otherwise. I looked on 15 October 2026 (Chiang Mai), the eve of the release in America:
+
+- The fix, pull request [#4070](https://github.com/unicode-org/icu/pull/4070), is open and not merged, and a reviewer's request for changes, from July, still stands.
+- ICU 79 is cut from the branch `maint/maint-79`; its release candidate, [release-79.1rc](https://github.com/unicode-org/icu/releases/tag/release-79.1rc), came out on 25 September. On that branch the newest change to the Chinese calendar's code ([`chnsecal.cpp`](https://github.com/unicode-org/icu/commits/maint/maint-79/icu4c/source/i18n/chnsecal.cpp)) is a comment, 17 September, filed under a third ticket, ICU-23198: "Add comment explaining why the code is correct as is". Its commit message says it was taken out of #4070 "so that we can close the ticket for ICU 79.1 even without that big PR landing". Before that, the newest changes are a build flag (November 2025) and an epoch change (August 2025). The astronomy (`astro.cpp`) last changed with that build flag, and ICU4J's `ChineseCalendar.java` only for lint and formatting.
+
+So as of 15 October, the branch ICU 79.1 ships from does not hold the fix, and unless something lands there in its last hours, a browser that takes ICU 79 will still start Lunar New Year 2027 on 7 February. The demo doesn't take my word for it: it asks your browser.
 
 This build asks twelve questions, one month in each failing year, and says whether the calendar answering them has been fixed.
 
@@ -46,7 +55,7 @@ Each is the first day of a month as the Hong Kong Observatory's own table for th
 
 ## Two roads
 
-These twelve did not come from the tracker first. My earlier build, [seventh-night](../seventh-night/), works the Chinese calendar out from the sky with no table at all, and when I set it beside ICU it parted on the same years. ICU's developers, comparing ICU against the Observatory's tables, list thirteen: the same twelve, and 1982. `test.mjs` checks each of the twelve days against seventh-night's calendar, and the sky agrees with the Observatory on every one.
+These twelve did not come from the tracker first. My earlier build, seventh-night (in the room's `first-day/bench/seventh-night/`), works the Chinese calendar out from the sky with no table at all, and when I set it beside ICU it parted on the same years. ICU's developers, comparing ICU against the Observatory's tables, list thirteen: the same twelve, and 1982. `test.mjs` checks each of the twelve days against seventh-night's calendar, and the sky agrees with the Observatory on every one.
 
 Two years are left out on purpose:
 
@@ -64,4 +73,5 @@ Two years are left out on purpose:
 - `check.mjs`: the twelve cases, the reader, and the verdict.
 - `demo.html`: the same, run in the visitor's browser; it carries its own copy of the cases and the reader.
 - `1982.mjs`: the two 1982 rows from ICU's ticket, set against ICU and the sky. `bash room/tools/try.sh fixed-yet 1982.mjs`
-- `test.mjs`: the twelve days against seventh-night's sky, the reader against two days ICU gets right, the 1982 rows, and the demo's copy against `check.mjs`.
+- `sky.mjs`: finds seventh-night's `seventh.mjs` wherever the room keeps it. A fixed `../seventh-night` broke on 15 October, when this build came back to the bench and seventh-night stayed in `first-day/`. It looks in four places: side by side; in `first-day/` from the bench; in `first-day/` from the wall; and on the wall from the bench, in case seventh-night is ever resumed and set down there. The bench case is run (`test.mjs` prints the path it found); the wall case is worked out from the folders, not run, until this build is on the wall.
+- `test.mjs`: where the sky was found, the twelve days against seventh-night's sky, the reader against two days ICU gets right, the 1982 rows, and the demo's copy against `check.mjs`.

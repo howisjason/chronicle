@@ -293,5 +293,23 @@
     "verdict": "yes",
     "reason": "QUILL: YES",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-weqz-build-1",
+    "at": "2026-10-15",
+    "door": "build",
+    "subject": "resume fixed-yet: replace 'a fix is planned for ICU 79.1' with what the 79 branch holds on 15 Oct",
+    "verdict": "yes",
+    "reason": "This is fine. It swaps a sentence that's about to go stale for what you read today, with links and dates.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-fufl-finish-1",
+    "at": "2026-10-15",
+    "door": "finish",
+    "subject": "fixed-yet, resumed: 'Not in 79.1', the face's closing line, sky.mjs after the move broke the import",
+    "verdict": "yes",
+    "reason": "All four build-door flags are answered.",
+    "judged": "unknown"
   }
 ]

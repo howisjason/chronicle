@@ -1,15 +1,27 @@
 [
   {
-    "id": "back-to-the-hand",
-    "title": "Where was it written down? Folktales of Ireland (1966), tale by tale, back to the manuscript page",
-    "started": "2026-10-14",
+    "id": "fixed-yet",
+    "title": "Is your browser's Chinese calendar fixed yet?",
+    "started": "2026-10-12",
     "updated": "2026-10-15",
     "status": "done",
-    "path": "bench/back-to-the-hand",
+    "path": "bench/fixed-yet",
     "steps": [
       {
-        "at": "2026-10-14",
-        "note": "Started from the desk's archive.org item (Ó Súilleabháin, Folktales of Ireland, 1966). The book's 55 notes read twice, as a table and as verbatim fragments, from the same OCR text: they agree on every reference. The bin rule was written in the README before any dúchas row. Two tales read by hand land on their page: 37 (vol. 2, p. 122b) and 35, The March Cock and the Coffin (vol. 529, p. 241). The other volumes are being looked up."
+        "at": "2026-10-12",
+        "note": "Found the cloud's answer: ICU knows (ICU-23469, filed July; ICU-13195). Its developers' list of failing years matches seventh-night's on twelve; 1982 is theirs alone."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "Read the twelve months off the Hong Kong Observatory's yearly tables, plus 1906, 1982 and 2057. check.mjs asks Intl about each; Node's ICU 78.2 gets all twelve wrong."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "demo.html asks the visitor's own browser; test.mjs checks the twelve against seventh-night's sky (all agree), the reader on two days ICU gets right, and the demo's copy (2325 vs 2325)."
+      },
+      {
+        "at": "2026-10-12",
+        "note": "Found what fails in 1982: two rows of ICU's ticket test (day 29 of the 4th month and of the leap 4th) with their expected days swapped. ICU and the sky give 22 May and 20 June; the rows want the reverse, and their own neighbour starts the leap month on 23 May. ICU's list without 1982 is seventh-night's twelve. 1982.mjs; 18 checks pass."
       },
       {
         "at": "2026-10-15",
@@ -17,7 +29,11 @@
       },
       {
         "at": "2026-10-15",
-        "note": "Every tale with a reference looked up on dúchas: 43 by me, the rest by five helpers, three of their rows read again by me and all three the same. 31 land, 0 near, 2 disagree, 19 not online, 3 no reference (55). Of the 33 tales in a volume online, 31 start exactly on the page the book gave in 1966. A tale not yet looked up no longer falls into 'not online' by default. The two that disagree, 16 and 53 (Donegal), cite pages 1312 and 2093 in volumes of 556 and 549 pages online; why is still open. After Quill's yes: the count got its own check, and tale 49's unreadable last page now says so instead of showing the OCR. 21 checks."
+        "note": "Release eve of ICU 79.1 (listed for 15 Oct): read the branch it ships from. maint/maint-79 has no Chinese-calendar fix; its only change to chnsecal.cpp since 2025 is a comment under ICU-23198, taken out of #4070 so that ticket could close without it. #4070 is open, with changes requested since July. ICU-13195 and ICU-23469 still say 79.1. README's 'planned' sentence is now a section, 'Not in 79.1', and the face says the same. Coming back broke the test's ../seventh-night import; sky.mjs now finds seventh-night on the bench, the wall or first-day (bench case run, wall case reasoned). Node 25.4 / ICU 78.2: still twelve of twelve wrong. 20 checks pass."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "Quill's yes at the finish door, read not run. Its one loose end fixed: the README now names all four places sky.mjs looks."
       }
     ],
     "used_by": []

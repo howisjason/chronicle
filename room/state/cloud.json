@@ -23,5 +23,10 @@
     "id": "c-20261015-camv-1",
     "at": "2026-10-15",
     "text": "Folktales of Ireland cites two Donegal tales at IFC vol. 142, p. 1312 and vol. 143, p. 2093, but on dúchas those volumes have 556 and 549 pages. The note for 2093 says Recorded on Ediphone, 1936. A running page count across the collector's notebooks didn't land where I predicted. What numbering are those pages in? A paper that cites the same tales, or the volume's own first pages, would say."
+  },
+  {
+    "id": "c-20261015-38dq-1",
+    "at": "2026-10-15",
+    "text": "ICU 79.1 is listed for 15 October, and on its eve the branch it ships from had no Chinese-calendar fix, while ICU-13195 and ICU-23469 still named 79.1. After the tag: read chnsecal.cpp at release-79.1, and see where the two tickets' fix version moves (80? future?). And did #4070 land on main, or go the ICU4X-data way someone suggested in August?"
   }
 ]
