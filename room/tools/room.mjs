@@ -16,7 +16,7 @@
 //   node room.mjs status <id> half|done|dropped       bench
 //   node room.mjs used <id> "<who>" "<how>"           bench: someone used it
 //   node room.mjs page <id> "<title>" shelf/<file>.md [--private]
-//   node room.mjs quill build|pin|finish|talk|sentence "<subject>" yes|no "<reason>" "<Quill's NOTEBOOK line>"
+//   node room.mjs quill build|pin|finish|talk "<subject>" yes|no "<reason>" "<Quill's NOTEBOOK line>"
 //                                                     (a talk asks no verdict: pass yes)
 //   node room.mjs judged <quill-id> right|wrong       an old verdict, judged later
 //   node room.mjs desk <desk-id>                      the desk: the item you took up
@@ -139,7 +139,7 @@ switch (cmd) {
     break;
   }
   case 'quill': {
-    const list = read('quill'), door = need(rest[0], 'a door: build, pin, finish, talk or sentence');
+    const list = read('quill'), door = need(rest[0], 'a door: build, pin, finish or talk');
     const item = { id: freshId(list, 'q', /^[a-z]+$/.test(door) ? door : 'x'), at: now(), door, subject: need(rest[1], 'the subject, in quotes'),
       verdict: need(rest[2], 'yes or no'), reason: need(rest[3], "Quill's reason, in quotes"), judged: 'unknown' };
     // Quill's notebook (quill.md): its own NOTEBOOK line, verbatim, one line a call,

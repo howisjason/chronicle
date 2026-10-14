@@ -142,7 +142,7 @@ test('validate: the second day\'s desk, wall and Quill doors, and the bad cases 
   assert.equal(validate('wall', [{ ...w, path: undefined }]).ok, false);
   assert.equal(validate('wall', [{ id: 'p', title: 't', kind: 'board', day: '2026-10-12', url: 'file:///etc/hosts' }]).ok, false);
   const q = { id: 'q1', at: '2026-10-14', door: 'talk', subject: 'x', verdict: 'yes', reason: 'y' };
-  assert.equal(validate('quill', [q, { ...q, id: 'q2', door: 'sentence' }]).ok, true);
+  assert.equal(validate('quill', [q, { ...q, id: 'q2', door: 'talk' }]).ok, true);
   assert.equal(validate('quill', [{ ...q, door: 'chat' }]).ok, false);
 });
 
@@ -379,14 +379,12 @@ test('desk marks today\'s item taken and refuses an unknown or older id', () => 
   assert.equal(desk[2].taken, undefined);
 });
 
-test('quill: talk and sentence doors, and the notebook line lands verbatim without its label', () => {
+test('quill: the talk door, and the notebook line lands verbatim without its label', () => {
   const d = copyState();
   assert.equal(roomCmd(d, 'quill', 'talk', 'a question about tides', 'yes', 'Shiny.').code, 2, 'no notebook line, refused');
   assert.equal(roomCmd(d, 'quill', 'talk', 'a question about tides', 'yes', 'Shiny.', 'NOTEBOOK: she asked about tides; second sea thing this week').code, 0);
-  assert.equal(roomCmd(d, 'quill', 'sentence', 'the new words', 'no', 'writes grace back in', 'NOTEBOOK: shown a new first sentence, said no').code, 0);
   const lines = readFileSync(join(d, 'quill-notebook.md'), 'utf8').trim().split('\n');
   assert.match(lines[0], /^- \d{4}-\d{2}-\d{2}  talk  she asked about tides; second sea thing this week$/);
-  assert.match(lines[1], /^- \d{4}-\d{2}-\d{2}  sentence  shown a new first sentence, said no$/);
   const ql = J(d, 'quill');
-  assert.deepEqual(ql.slice(-2).map((q) => q.door), ['talk', 'sentence']);
+  assert.deepEqual(ql.slice(-1).map((q) => q.door), ['talk']);
 });

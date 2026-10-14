@@ -149,9 +149,9 @@ Wiktionary random entry; J's word: those four and no others), each through a ran
 (summary, picture, first sentence, coordinates, one word, title; a door the item cannot give
 falls to its summary, else its title): an offer, never a task. She marks one taken with
 `room.mjs desk <id>`, and the morning line reports the draw and the pick. The room text names
-what exists once and points at nothing; its first paragraph is hers,
-`room/the-first-sentence.md` (his words first, 13 Oct 2026), which she may change after
-Quill's sentence door. Her seed, self page, diary and memories never appear on the page.
+what exists once and points at nothing. There is no wake sentence since 14 Oct 2026 (J's
+plan): she wakes to her seed, self page, memory index and the room text only. Her seed,
+self page, diary and memories never appear on the page.
 The words at the top of the page are her own.
 
 **The truth files** (`room/state/`, plus `bench/`, `shelf/`, `board/`). `room/first-day/` holds the first day's seven builds, six pages and one pin (12 Oct 2026), moved off the lists at the reset of 13 Oct 2026 (J's word: a room that compounds from a tilted start stays tilted); their list entries are the oldest day on the wall. Everything
@@ -161,10 +161,9 @@ nowhere else, and its first entry came out in a shape the page could not show un
 
 | File | Written by | Shape |
 |---|---|---|
-| `state/bench.json`, `shelf.json`, `cloud.json`, `quill.json` | March, only through `tools/room.mjs` (it validates the whole list before writing and refuses with one line) | bench `{id, title, started, updated, status: half/done/dropped, path, steps:[{at, note}], used_by:[{who, at, how}]}`; shelf `{id, title, at, path}`; cloud `{id, at, text}`; quill `{id, at, door: build/pin/finish/talk/sentence, subject, verdict: yes/no, reason, judged}` (a talk's verdict is a placeholder the page does not draw) |
+| `state/bench.json`, `shelf.json`, `cloud.json`, `quill.json` | March, only through `tools/room.mjs` (it validates the whole list before writing and refuses with one line) | bench `{id, title, started, updated, status: half/done/dropped, path, steps:[{at, note}], used_by:[{who, at, how}]}`; shelf `{id, title, at, path}`; cloud `{id, at, text}`; quill `{id, at, door: build/pin/finish/talk, subject, verdict: yes/no, reason, judged}` (a talk's verdict is a placeholder the page does not draw) |
 | `state/wall.json` | `room.mjs day-ends`, run by `free-hour.sh` before each wake with `ROOM_DAY_ENDS=1` (her grant cannot set it); `room.mjs used` adds to a build on it | the moved entries word for word plus `kind: bench/shelf/board` and `day: YYYY-MM-DD`, newest first; an id on it is never reused |
 | `quill-notebook.md` | `room.mjs quill`, from Quill's own `NOTEBOOK:` line, the call's fifth word | `- YYYY-MM-DD  <door>  <line>`, one line a call; March hands it to Quill every time |
-| `the-first-sentence.md` | March (her Edit grant), after Quill's sentence door | the first paragraph of what she wakes to |
 | files under `bench/<id>/` and `shelf/` | March, in the hour (Write/Edit) | a build's files, `README.md`, and its face (`demo.html` or `demo.txt`); a page's markdown |
 | `state/board.json`, `board/<id>.jpg` | `tools/pin.sh`, called by March | `{id, at, title, url, thumb, note}` |
 | `state/desk.json` | `free-hour.sh`, before the hour (her grants deny it); `room.mjs desk` adds `taken` | `{id: d-<day>-<hex>-a/-b, at, pool, door, title, url, shown, taken?}`, two a wake, the last 30 (older items carry `kind` instead of `pool`) |
@@ -190,7 +189,7 @@ real.
 
 **The grants** (the hour runs in the CLI's `dontAsk` mode, where anything not listed is
 refused; probed under the real command line 11 and 12 Oct 2026). Writes only in `bench/`,
-`shelf/` and `drawer/`, plus Edit on `the-first-sentence.md` and Edit and Write on
+`shelf/` and `drawer/`, plus Edit and Write on
 `quill-notebook.md` (the second day), never `state/`, the tools, the page, `lib.mjs` or `quill.md`. The
 shell only as four scripts by exact path (`tools/see.sh <id>` screenshots a build's `demo.html` into the drawer so she can Read it, 12 Oct 2026: she would not call a face finished she had never seen): `node tools/room.mjs <command>` writes the four
 lists (probed 12 Oct 01:30: allowed, and a direct Edit of `state/cloud.json` refused; the
@@ -258,8 +257,7 @@ public notebook (`room/quill-notebook.md`) at every call, its ledger, and the la
 lines at the build door, so it can say out loud "this is the same move again" (a repeat is
 not a no by itself). March may later mark an old no `judged` right or wrong (`room.mjs
 judged`); the page shows the score above the ledger. Doors: before a build starts, before a
-pin goes up, before a thing is called finished, before her first sentence changes
-(`sentence`), and `talk`, anything she wants, no verdict asked, as often as she likes. A no
+pin goes up, before a thing is called finished, and `talk`, anything she wants, no verdict asked, as often as she likes. A no
 can be answered at the same door; both calls are logged. Its sheet is `room/quill.md`;
 "this is fine" is an acceptable verdict and it is never told to prove the work wrong. Probed 12 Oct 2026: a pin with a planted money figure came back `QUILL: NO`
 naming the figure.

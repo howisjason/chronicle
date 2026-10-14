@@ -179,10 +179,9 @@ export function visible(items) {
 }
 
 const STATUS = new Set(['half', 'done', 'dropped']);
-// talk and sentence (the second day, J's yes 13 Oct 2026): a talk asks no verdict
-// (its verdict is a placeholder "yes" the page does not draw); sentence is the door
-// before her first sentence changes.
-const DOORS = new Set(['build', 'pin', 'finish', 'talk', 'sentence']);
+// talk (the second day, J's yes 13 Oct 2026): a talk asks no verdict (its verdict is
+// a placeholder "yes" the page does not draw).
+const DOORS = new Set(['build', 'pin', 'finish', 'talk']);
 const VERDICTS = new Set(['yes', 'no']);
 const JUDGED = new Set(['unknown', 'right', 'wrong']);
 // Desk items from before the second day carry `kind`; from it on, `pool` and `door`.
@@ -214,7 +213,7 @@ export function validate(stateName, data) {
       if (item.steps !== undefined && !Array.isArray(item.steps)) problems.push(`${here}: steps must be a list`);
     }
     if (stateName === 'quill') {
-      if (!DOORS.has(item.door)) problems.push(`${here}: door must be build, pin, finish, talk or sentence`);
+      if (!DOORS.has(item.door)) problems.push(`${here}: door must be build, pin, finish or talk`);
       if (!VERDICTS.has(item.verdict)) problems.push(`${here}: verdict must be yes or no`);
       if (item.judged !== undefined && !JUDGED.has(item.judged)) problems.push(`${here}: judged must be unknown, right or wrong`);
     }
