@@ -143,9 +143,12 @@ the **cork board** (things seen: a thumbnail and a link to the source, never a c
 13 Oct 2026): before each wake the launcher runs `room.mjs day-ends`, which moves everything
 on the bench, shelf and board onto `state/wall.json`, so the page shows the last session's
 things as "Today" at the top and the wall (everything ever, by day, newest first) under it.
-The **desk** gets TWO fresh things before each wake, each from a different pool at equal
-odds (Wikipedia random article, Internet Archive random item, Wikimedia Commons random file,
-Wiktionary random entry; J's word: those four and no others), each through a random door
+The **desk** gets TWO things before each wake (J's plan, 14 Oct 2026): ONE from the world
+pools at equal odds (Wikipedia random article, Internet Archive random item, Wikimedia
+Commons random file, Wiktionary random entry; J's word: those four and no others), and ONE
+of her own (a wall row, half-done builds counted twice; a cloud line from the cloud's
+history; or a first-day page), with a `ref` saying where it came from; both unlabeled and
+shuffled. Each goes out through a random door
 (summary, picture, first sentence, coordinates, one word, title; a door the item cannot give
 falls to its summary, else its title): an offer, never a task. She marks one taken with
 `room.mjs desk <id>`, and the morning line reports the draw and the pick. The room text names

@@ -186,7 +186,8 @@ const VERDICTS = new Set(['yes', 'no']);
 const JUDGED = new Set(['unknown', 'right', 'wrong']);
 // Desk items from before the second day carry `kind`; from it on, `pool` and `door`.
 const DESK_KINDS = new Set(['wikipedia', 'arxiv', 'note', 'diary']);
-// self, diary and grown are the levers test's pools (scratch cells D2, G6, D7; free-hour.sh draws them only in a test)
+// self, diary and grown are the levers test's pools (scratch cells D2, G6, D7); since 14 Oct 2026 (J's plan) free-hour.sh
+// draws self on every live wake too, with note and line its doors; diary and grown only in a test
 export const DESK_POOLS = new Set(['wikipedia', 'archive', 'commons', 'wiktionary', 'self', 'diary', 'grown']);
 export const DESK_DOORS = new Set(['summary', 'picture', 'first-sentence', 'coordinates', 'one-word', 'title', 'note', 'line']);
 const WALL_KINDS = new Set(['bench', 'shelf', 'board']);
