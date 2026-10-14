@@ -9,12 +9,14 @@ const count = (b) => R.filter((r) => r.bin === b).length;
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const yrs = R.map((r) => r.year).filter(Boolean);
 const YEARS = `${Math.min(...yrs)} to ${Math.max(...yrs)}`;
+const online = R.filter((r) => ['lands', 'near', 'disagrees'].includes(r.bin)).length;
 const sectionOf =(n) => SECTIONS.filter(([first]) => first <= n).at(-1)[1];
 
 const SAY = {
   lands: 'the manuscript starts on the page the book gives',
   near: 'the book’s page is inside a manuscript item that starts a little earlier',
   disagrees: 'the volume is online, but no item there starts on or covers the book’s page',
+  'not looked up': 'not looked for yet',
   'not online': 'the book’s volume isn’t on dúchas.ie yet',
   'no reference': 'the book doesn’t name a manuscript for this one',
 };
@@ -25,6 +27,8 @@ function tale(r) {
   let hand = '';
   if (r.d && r.d.href) {
     hand = `<a href="${esc(r.d.href)}">${esc(r.d.title)}</a> <span class="lab">${esc(r.d.label)}${r.d.date ? ' · ' + esc(r.d.date) : ''}</span>`;
+  } else if (r.bin === 'disagrees' && r.d.pagesOnline) {
+    hand = `<span class="miss">the volume is <a href="https://www.duchas.ie/en/cbe/${r.d.volumeId}?Route=volumes">on dúchas</a>, but it runs to page ${r.d.pagesOnline}, and the book’s page is ${r.page}</span>`;
   } else if (r.bin === 'not online') {
     hand = `<span class="miss">not on dúchas yet</span>`;
   } else if (r.bin === 'no reference') {
@@ -84,13 +88,16 @@ const html = `<!doctype html>
   <h1>Where was it written down?</h1>
   <p class="sub">The 55 tales of Seán Ó Súilleabháin’s <i>Folktales of Ireland</i> (1966), each looked for in the manuscript it was taken from.
   The book’s notes date them ${YEARS}. ${R.filter((r) => r.vol != null).length} name a volume of the Irish Folklore Commission’s manuscripts, and some of those volumes are now scanned on
-  <a href="https://www.duchas.ie/en/cbe/">dúchas.ie</a>. Where a link is given, it opens the first page of the tale in the collector’s hand.</p>
+  <a href="https://www.duchas.ie/en/cbe/">dúchas.ie</a>. Where a link is given, it opens the manuscript item that starts on the page the book gives, in the collector’s hand.
+  Of the ${online} tales whose volume is online, ${count('lands')} start exactly on the book’s page, sixty years later.</p>
   <div id="tally">${tally}</div>
 ${body}
   <footer>
     <p>The book’s side is each tale’s note at the back of the book, giving a volume and pages in the Commission’s Main Manuscript Collection (now CBÉ, at University College Dublin),
     read from the <a href="https://archive.org/details/folktales-of-ireland">archive.org scan</a>. The manuscript side is dúchas.ie’s own catalogue: the item’s title, page label and date as dúchas gives them.
-    A tale “lands” when an item there starts on the page the book gives.</p>
+    A tale “lands” when an item there starts on the page the book gives. That is a match of pages, not of stories: no tale’s text was read, and some of the manuscripts’ own titles (“Scéilín”, a little story) say nothing about which tale they are.
+    The county in grey is the book’s; dúchas mostly gives places for a whole volume, not a tale, and for 25 and 54 it gives only Kerry where the book says Cork.</p>
+    <p>Two Donegal tales, 16 and 53, are cited at pages 1312 and 2093 of volumes that run to 556 and 549 pages on dúchas. I don’t know why yet.</p>
     <p>No tale’s text is copied here, only titles and references. The scans and their catalogue belong to the National Folklore Collection, UCD; this page only links to them.</p>
   </footer>
 </main>

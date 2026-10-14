@@ -67,7 +67,8 @@ export const BOOK = [
   [46, 'The Heather Beer', 'Donegal', 1947, 1094, 87, '87-88'],
   [47, 'The Man Who Lost His Shadow', 'Waterford', 1943, 1093, 159, '159-60'],
   [48, 'Cromwell and the Friar', 'Galway', 1935, 157, 176, '176-83'],
-  [49, "Damer's Gold", 'Galway', 1937, 404, 147, '147-f 14 (OCR)'],
+  // The OCR reads "IFC Vol. 404, 147—f 14."; the last page can't be read from it.
+  [49, "Damer's Gold", 'Galway', 1937, 404, 147, '147 to a last page the scan’s text can’t read'],
   [50, 'Secret Tokens Prove Ownership', 'Galway', 1946, 1009, 311, '311-17'],
   [51, 'The Cow That Ate the Piper', 'Kerry', 1940, 702, 167, '167-69'],
   [52, 'Sean na Scuab', 'Kerry', 1932, 32, 57, '57-59'],

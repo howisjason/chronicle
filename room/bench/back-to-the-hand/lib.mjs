@@ -12,7 +12,10 @@ export function rows() {
     const d = DUCHAS[n] || null;
     let bin;
     if (vol == null) bin = 'no reference';
-    else if (!d || !d.volumeId) bin = 'not online';
+    // A tale nobody has looked up is in no bin at all, so the bins can't add up to 55
+    // until every one has a row; "not online" needs a row saying so (volumeId: null).
+    else if (!d) bin = 'not looked up';
+    else if (!d.volumeId) bin = 'not online';
     else if (pageNum(d.label) === page) bin = 'lands';
     else if (d.next != null && pageNum(d.label) < page && page < pageNum(d.next)) bin = 'near';
     else bin = 'disagrees';

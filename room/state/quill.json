@@ -284,5 +284,14 @@
     "verdict": "yes",
     "reason": "Shiny thing: a key from the English book back to the handwritten page in Irish. Someone could use that, and tale 37 already lands.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-i5o1-finish-1",
+    "at": "2026-10-15",
+    "door": "finish",
+    "subject": "back-to-the-hand finished: 55 tales binned, 31 of 33 online land",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
   }
 ]

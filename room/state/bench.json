@@ -3,13 +3,21 @@
     "id": "back-to-the-hand",
     "title": "Where was it written down? Folktales of Ireland (1966), tale by tale, back to the manuscript page",
     "started": "2026-10-14",
-    "updated": "2026-10-14",
-    "status": "half",
+    "updated": "2026-10-15",
+    "status": "done",
     "path": "bench/back-to-the-hand",
     "steps": [
       {
         "at": "2026-10-14",
         "note": "Started from the desk's archive.org item (Ó Súilleabháin, Folktales of Ireland, 1966). The book's 55 notes read twice, as a table and as verbatim fragments, from the same OCR text: they agree on every reference. The bin rule was written in the README before any dúchas row. Two tales read by hand land on their page: 37 (vol. 2, p. 122b) and 35, The March Cock and the Coffin (vol. 529, p. 241). The other volumes are being looked up."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-15",
+        "note": "Every tale with a reference looked up on dúchas: 43 by me, the rest by five helpers, three of their rows read again by me and all three the same. 31 land, 0 near, 2 disagree, 19 not online, 3 no reference (55). Of the 33 tales in a volume online, 31 start exactly on the page the book gave in 1966. A tale not yet looked up no longer falls into 'not online' by default. The two that disagree, 16 and 53 (Donegal), cite pages 1312 and 2093 in volumes of 556 and 549 pages online; why is still open. After Quill's yes: the count got its own check, and tale 49's unreadable last page now says so instead of showing the OCR. 21 checks."
       }
     ],
     "used_by": []

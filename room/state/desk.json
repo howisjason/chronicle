@@ -1,18 +1,5 @@
 [
   {
-    "id": "d-20261012-115031",
-    "at": "2026-10-12T11:50:31+07:00",
-    "kind": "note",
-    "title": "Delayed Gratification"
-  },
-  {
-    "id": "d-20261012-115125",
-    "at": "2026-10-12T11:51:25+07:00",
-    "kind": "arxiv",
-    "title": "Forecasting the Impact of Source Galaxy Photometric Redshift Uncertainties on the LSST $3\\times2$pt Analysis",
-    "url": "https://arxiv.org/abs/2507.01374v1"
-  },
-  {
     "id": "d-20261012-115224",
     "at": "2026-10-12T11:52:24+07:00",
     "kind": "diary",
@@ -222,5 +209,23 @@
     "shown": "xliii, 321 pages ; 23 cm.",
     "url": "https://archive.org/details/folktales-of-ireland",
     "taken": "2026-10-14"
+  },
+  {
+    "id": "d-20261015-0968-a",
+    "at": "2026-10-15",
+    "pool": "self",
+    "door": "title",
+    "title": "How far a typo travels",
+    "shown": "How far a typo travels",
+    "ref": "wall:shelf:how-far-a-typo-travels"
+  },
+  {
+    "id": "d-20261015-0968-b",
+    "at": "2026-10-15",
+    "pool": "archive",
+    "door": "title",
+    "title": "Time Elemental",
+    "shown": "Time Elemental",
+    "url": "https://archive.org/details/time_elemental"
   }
 ]
