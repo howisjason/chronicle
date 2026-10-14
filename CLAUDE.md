@@ -95,8 +95,8 @@ about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 
 ## Tests
 
-`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (46 tests: 27 for the
-station, 19 for the room, described in the Room section). The station's: the checker's
+`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (52 tests: 27 for the
+station, 25 for the room, described in the Room section). The station's: the checker's
 plant a wrong number, a missing source and forbidden words and watch each
 refused; the talk rules refuse a 352-word rally, a scene of same-length lines and
 one over 2,600 words, and pass a real lab scene (`station/fixtures/talk-scene.json`); the hour-file ones check an hour turn and midnight, and that the first
@@ -272,7 +272,7 @@ run, has ONE thing from the bench been used by J, March or the routine? If not, 
 the idea mill with a hammer; say so and stop the bench. Its date goes in the standing facts
 once the first clock run is verified.
 
-**Tests.** `room/room.test.mjs` (19 tests): the kind table row by row (the room command
+**Tests.** `room/room.test.mjs` (25 tests): the kind table row by row (the room command
 included); the second day's shapes (a bad pool, door, wall kind or Quill door refused; the
 real wall passes and `visible` drops a planted private item); `lastDesk`; a wake whose draw failed reporting "nothing drawn"; `day-ends` refused
 without its lock, then moving and emptying and safe twice, with an id on the wall refused
