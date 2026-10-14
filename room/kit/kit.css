@@ -1,0 +1,426 @@
+/* =====================================================================
+   OLIVE GARDEN · components
+   Link tokens.css first, then this file. Every colour here is var(...);
+   the two marks (the curl, the leaf pair) are masks taken from tokens.css
+   (embedded copies of kit/marks/*.svg), so they take any token colour. Same classes in both modes.
+   ===================================================================== */
+
+/* ---------- 1. reset and base type ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--page); }
+body {
+  background: var(--ground);
+  color: var(--tx-2);
+  font: 400 var(--t-body)/1.65 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+/* the page's hidden SVG holder (the chop's #rough filter lives in one) */
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+p { max-width: 62ch; }
+p + p { margin-top: var(--gap); }
+
+/* one entrance for everything: things set down, they do not slide */
+@keyframes setdown { from { opacity: 0; transform: translateY(6px) rotate(-.4deg); } to { opacity: 1; transform: none; } }
+.enter { animation: setdown .9s var(--ease) both; }
+.enter.later { animation-delay: .08s; }
+.enter.last { animation-delay: .14s; }
+
+/* ---------- 2. the type roles ---------- */
+/* label: tiny tracked mono capitals, in the green */
+.label {
+  font: 500 var(--t-label)/1.4 var(--f-mono);
+  letter-spacing: .22em; text-transform: uppercase; color: var(--label);
+}
+.label.dim { color: var(--tx-3); }
+/* meta: the same mono, small and quiet, with even-width numbers */
+.meta {
+  font: 400 var(--t-label)/1.5 var(--f-mono);
+  letter-spacing: .04em; color: var(--tx-3);
+  font-variant-numeric: tabular-nums;
+}
+/* display: the Roman serif for titles */
+.display {
+  font: 600 var(--t-title)/1.15 var(--f-display);
+  color: var(--tx-1); letter-spacing: .005em;
+}
+/* display, hero size: ink poured as a gradient, the italic word in gold */
+.display-xl {
+  font: 700 var(--t-display)/.95 var(--f-display);
+  letter-spacing: -.005em;
+  background: var(--title-ink);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  padding: 0 .04em .06em;
+}
+.display-xl em {
+  font-style: italic; font-weight: 600;
+  background: var(--title-gold);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  padding-right: .06em;
+}
+/* stat: a number at title size */
+.stat {
+  font: 600 var(--t-title)/1 var(--f-display); color: var(--tx-1);
+  font-variant-numeric: lining-nums;
+}
+.stat small { font-size: inherit; color: var(--tx-3); }
+/* flavor: the italic serif, at title size only (legibility beats style) */
+.flavor { font: italic 600 var(--t-title)/1.25 var(--f-display); color: var(--tx-1); }
+
+/* the separator: a hollow ring */
+.sep {
+  display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+  border: 1px solid var(--tx-4); margin: 0 .9em; vertical-align: middle;
+  position: relative; top: -1px;
+}
+
+/* ---------- 3. the frame: hairline, radius, and the curl on every corner ---------- */
+.frame {
+  position: relative;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  background: var(--fill);
+  box-shadow: var(--shadow);
+  transition: border-color .5s var(--ease), transform .5s var(--ease);
+}
+.frame::before, .curls::before {
+  content: ""; position: absolute; inset: -1px; pointer-events: none;
+  background: var(--device);
+  -webkit-mask:
+    var(--curl-tl) top left / var(--corner) var(--corner) no-repeat,
+    var(--curl-tr) top right / var(--corner) var(--corner) no-repeat,
+    var(--curl-bl) bottom left / var(--corner) var(--corner) no-repeat,
+    var(--curl-br) bottom right / var(--corner) var(--corner) no-repeat;
+          mask:
+    var(--curl-tl) top left / var(--corner) var(--corner) no-repeat,
+    var(--curl-tr) top right / var(--corner) var(--corner) no-repeat,
+    var(--curl-bl) bottom left / var(--corner) var(--corner) no-repeat,
+    var(--curl-br) bottom right / var(--corner) var(--corner) no-repeat;
+}
+.frame:hover { border-color: var(--hair-strong); transform: translateY(-1px); }
+/* .curls: the corners alone, inset, for a panel that is not a frame (the hero) */
+.curls { position: absolute; inset: 12px; pointer-events: none; display: var(--mount); --corner: 40px; }
+.curls::before { inset: 0; }
+
+/* .verdant: a green surface. On paper it is velvet and every ink turns over to white;
+   at night it is simply the ground. */
+.verdant {
+  --tx-1: var(--vd-tx-1); --tx-2: var(--vd-tx-2); --tx-3: var(--vd-tx-3); --tx-4: var(--vd-tx-4);
+  --label: var(--vd-label);
+  --hair: var(--vd-hair); --hair-strong: var(--vd-hair-strong); --device: var(--vd-device);
+  --title-ink: var(--vd-title-ink); --title-gold: var(--vd-title-gold);
+  --seal-metal: var(--vd-seal-metal); --seal-shadow: var(--vd-seal-shadow);
+  --green-fill: var(--vd-green-fill); --green-line: var(--vd-green-line); --track: var(--vd-track);
+  --disc-ring: var(--vd-disc-ring); --disc-inner: var(--vd-disc-inner);
+  background: var(--verdant-bg);
+  color: var(--tx-2);   /* re-read the ink here, so plain text on velvet turns white too */
+}
+
+/* ---------- 4. the strap: a container's header line, with the leaf pair at its end ---------- */
+.strap {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px var(--pad) 15px; border-bottom: 1px solid var(--strap-edge);
+  background: var(--strap-bg); border-radius: var(--radius) var(--radius) 0 0;
+  box-shadow: var(--strap-hem);
+}
+.strap .label { color: var(--strap-label); margin-right: auto; }
+.strap .meta { color: var(--strap-meta); }
+/* the leaf pair: the kit's only foliage. 34px wide, never larger, one per header line */
+.leaves {
+  display: block; flex: none; width: 34px; height: 22px; margin: -4px 0;
+  background: var(--leaf);
+  -webkit-mask: var(--leaf-mark) center / 34px 22px no-repeat;
+          mask: var(--leaf-mark) center / 34px 22px no-repeat;
+}
+
+/* ---------- 5. icons: Lucide, inline SVG, stroke only, they take the text colour ---------- */
+.icon {
+  width: var(--i-md); height: var(--i-md); flex: none; display: inline-block; vertical-align: middle;
+  fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+}
+.icon.sm { width: var(--i-sm); height: var(--i-sm); }
+.icon.lg { width: var(--i-lg); height: var(--i-lg); }
+.label .icon { margin: -2px 8px 0 0; }
+/* the disc: an icon inside a round gold hairline with a faint inner ring */
+.disc {
+  width: 40px; height: 40px; border-radius: 50%; flex: none; position: relative;
+  display: inline-grid; place-items: center; color: var(--tx-2);
+  border: 1px solid var(--disc-ring);
+}
+.disc::after {
+  content: ""; position: absolute; inset: 3px; border-radius: 50%; pointer-events: none;
+  border: 1px solid var(--disc-inner);
+}
+
+/* ---------- 6. buttons: metal for the main one, forest for the second ---------- */
+.btn {
+  font: 500 var(--t-label)/1 var(--f-mono); letter-spacing: .2em; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 22px; border-radius: var(--radius-sm); cursor: pointer;
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+}
+.btn-primary {
+  color: var(--metal-ink); border: 1px solid var(--au-3);
+  background: var(--metal);
+  box-shadow: inset 0 1px 0 var(--lit), inset 0 -1px 0 var(--shade),
+              0 0 22px -6px color-mix(in srgb, var(--au-2) 55%, transparent);
+}
+.btn-secondary { color: var(--green-ink); background: var(--green-fill); border: 1px solid var(--green-line); }
+.btn:hover { transform: translateY(-1px); }
+.btn-secondary:hover { border-color: var(--gr-2); }
+
+/* ---------- 7. input, with an optional icon at its right end ---------- */
+.input {
+  width: 100%; font: 400 var(--t-body)/1 var(--f-body); color: var(--tx-1);
+  background: var(--input-bg); border: 1px solid var(--hair); border-radius: var(--radius-sm);
+  padding: 13px 14px; box-shadow: var(--input-shadow);
+}
+.input::placeholder { color: var(--tx-4); }
+.input:focus { outline: none; border-color: var(--gr-2); box-shadow: var(--input-shadow), 0 0 0 3px color-mix(in srgb, var(--gr-2) 35%, transparent); }
+.field { position: relative; display: block; }
+.field .input { padding-right: 42px; }
+.field .icon { position: absolute; right: 15px; top: 50%; margin-top: calc(var(--i-sm) / -2); color: var(--tx-3); pointer-events: none; }
+
+/* ---------- 8. toggle: green track when on, a gold knob ---------- */
+.toggle { display: inline-flex; align-items: center; gap: 12px; }
+.toggle i {
+  width: 44px; height: 24px; border-radius: 12px; position: relative; display: block;
+  background: var(--toggle-on); border: 1px solid var(--gr-2);
+  box-shadow: inset 0 1px 0 var(--lit-track), inset 0 -1px 2px var(--shade-in);
+}
+.toggle i::after {
+  content: ""; position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--metal); border: 1px solid var(--au-3);
+  box-shadow: 0 1px 3px var(--shade-drop), inset 0 1px 0 var(--lit);
+}
+.toggle.off i { background: var(--track); border-color: var(--green-line); box-shadow: inset 0 1px 3px var(--shade-in); }
+.toggle.off i::after { right: auto; left: 2px; border: 0; background: linear-gradient(180deg, var(--tx-4), var(--tx-3)); box-shadow: 0 1px 2px var(--shade-drop); }
+
+/* ---------- 9. progress: a green track, filled with metal ---------- */
+.progress { width: 100%; }
+.progress .track {
+  height: 10px; border-radius: 5px; background: var(--track);
+  border: 1px solid var(--green-line); box-shadow: inset 0 1px 2px var(--shade-in); overflow: hidden;
+}
+.progress .fill {
+  height: 100%; width: 64%; border-radius: 5px; background: var(--metal);
+  box-shadow: inset 0 1px 0 var(--lit), 0 0 12px color-mix(in srgb, var(--au-2) 40%, transparent);
+}
+.progress .meta { display: flex; justify-content: space-between; margin-top: 10px; }
+.progress .meta b { color: var(--tx-1); font-weight: 500; }
+
+/* ---------- 10. tags ---------- */
+.tag {
+  font: 500 var(--t-label)/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 10px 5px; border-radius: 3px;
+  border: 1px solid var(--green-line); color: var(--green-ink); background: var(--green-fill);
+}
+.tag-solid { color: var(--tag-solid-ink); border-color: var(--gr-2); background: var(--tag-solid); }
+.tag-dashed { color: var(--label); border-style: dashed; border-color: var(--green-line); background: transparent; }
+
+/* ---------- 11. table: a velvet head, hairline rows ---------- */
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left; font: 500 var(--t-label)/1 var(--f-mono); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--th-ink); padding: 16px var(--pad) 14px; border-bottom: 1px solid var(--hair-strong);
+  background: var(--th-bg);
+}
+td { padding: 14px var(--pad); border-bottom: 1px solid var(--hair); color: var(--tx-2); vertical-align: baseline; }
+tr:last-child td { border-bottom: 0; }
+td.k { color: var(--tx-1); }
+td.m { font: 400 var(--t-label)/1.4 var(--f-mono); color: var(--tx-3); font-variant-numeric: tabular-nums; }
+
+/* ---------- 12. the code well: recessed, not a slab ---------- */
+.well {
+  font: 400 var(--t-label)/1.85 var(--f-mono); color: var(--tx-2);
+  padding: 20px var(--pad) 22px; background: var(--well);
+  box-shadow: inset 0 2px 4px -1px var(--well-shade);
+  border-radius: 0 0 var(--radius) var(--radius); overflow: auto; white-space: pre;
+}
+.well .c { color: var(--tx-3); }
+.well .p { color: var(--tx-1); font-weight: 500; }
+.well .v { color: var(--tx-2); }
+
+/* ---------- 13. the chop: a gold square, 鄧正 cut in white, beside the name once ---------- */
+.chop {
+  position: relative; flex: none;
+  display: inline-grid; place-items: center;
+  width: 72px; height: 72px; border-radius: var(--radius-sm); border: 0; padding: 0 0 5px;   /* the glyphs' optical centre sits a little high */
+  background: radial-gradient(circle at 30% 22%, var(--lit-sheen), transparent 55%), var(--seal-metal);
+  box-shadow: inset 0 1px 0 var(--lit), inset 0 -1px 0 var(--shade), 0 8px 22px -10px var(--seal-shadow);
+  color: var(--seal-ink);
+  font: 900 28.5px/1 var(--f-seal);
+  writing-mode: vertical-rl; text-orientation: upright;   /* 鄧 over 正 */
+  transform: rotate(-2deg);
+  filter: url(#rough);   /* the stamped edge, if the page carries the #rough filter; a no-op otherwise */
+}
+.chop::after {   /* the cut border ring, a little in from the edge */
+  content: ""; position: absolute; inset: 4px; border-radius: 2px; pointer-events: none;
+  border: 1.2px solid color-mix(in srgb, var(--seal-ink) 85%, transparent);
+}
+button.chop { cursor: pointer; }
+/* the small chop: the two glyphs side by side, no roughening, so 鄧 stays readable */
+.chop-sm {
+  width: 52px; height: 28px; border-radius: 2px; filter: none; padding: 0;
+  font-size: 20px; letter-spacing: 1px; writing-mode: horizontal-tb;
+  box-shadow: inset 0 1px 0 var(--lit), 0 3px 8px -4px var(--seal-shadow);
+}
+.chop-sm::after { inset: 2px; border-width: .8px; border-radius: 1px; }
+
+/* ---------- 14. the dry gold rule, ending in the curl (under every section title) ---------- */
+.rule {
+  display: block; height: 17px; width: 140px;
+  background: linear-gradient(90deg, var(--device) 0%, var(--device) 30%, transparent 100%);
+  -webkit-mask: var(--curl-rule) left top / 140px 16.6px no-repeat;
+          mask: var(--curl-rule) left top / 140px 16.6px no-repeat;
+}
+.rule.r {
+  background: linear-gradient(270deg, var(--device) 0%, var(--device) 30%, transparent 100%);
+  -webkit-mask: var(--curl-rule-r) right top / 140px 16.6px no-repeat;
+          mask: var(--curl-rule-r) right top / 140px 16.6px no-repeat;
+}
+/* the divider: two rules facing a ring */
+.divider { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: 34px; }
+.divider .sep { margin: -2px 6px 0; border-color: var(--device); }
+
+/* ---------- 15. the quote: one sentence between two rules ---------- */
+.quote { text-align: center; padding: 18px 0 0; }
+.quote .line { display: flex; align-items: center; justify-content: center; gap: 26px; }
+.quote .rule { margin-top: 14px; }
+.quote > .label { margin-top: 18px; }
+[data-theme="paper"] .quote {   /* on paper it sits in the one quiet parchment band */
+  background: var(--band); border: 1px solid var(--hair); border-radius: var(--radius); padding: 40px 0 34px;
+}
+
+/* ---------- 16. the page: a centred strip; on paper, mounted in a double gold rule ---------- */
+.page { position: relative; padding: 0 0 56px; }
+.page::before, .page::after {
+  content: ""; display: var(--mount); position: absolute; pointer-events: none;
+  border: 1px solid var(--hair-strong);
+}
+.page::before { inset: 18px; }
+.page::after { inset: 23px; border-color: var(--hair); border-radius: 15px; }
+.page > .curls { inset: 22px; --corner: 48px; }
+.strip { max-width: var(--strip); margin: 0 auto; position: relative; z-index: 1; }
+
+/* ---------- 17. layout pieces: header, hero, section head, stats, columns, list, split, footer ---------- */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 46px 0 22px; border-bottom: 1px solid var(--hair);
+}
+.wordmark {
+  font: 700 var(--t-body)/1 var(--f-display);
+  letter-spacing: .24em; text-transform: uppercase; color: var(--tx-1);
+}
+.wordmark i { font-style: normal; color: var(--tx-3); }
+.nav { display: flex; align-items: center; gap: 34px; }
+.nav a.label { color: var(--tx-3); text-decoration: none; transition: color .4s var(--ease); }
+.nav a.label.on, .nav a.label:hover { color: var(--tx-1); }
+
+.hero { position: relative; text-align: center; padding: 84px 0 60px; }
+.hero::before {
+  content: ""; position: absolute; left: 50%; top: 40px; width: 1000px; height: 420px;
+  transform: translateX(-50%); background: var(--glow); pointer-events: none; z-index: -1;
+}
+.hero-title { display: inline-flex; align-items: center; gap: 30px; margin: 22px 0 18px; }
+.hero .sub { margin: 0 auto; max-width: 54ch; }
+[data-theme="paper"] .hero.verdant {   /* on paper the hero is a velvet panel */
+  margin: 30px 0 34px; padding: 70px 0 58px; border-radius: 12px; box-shadow: var(--hero-shadow);
+}
+
+.section { margin-top: var(--section); }
+.section-head { margin-bottom: 26px; }
+.section-head .display { margin-top: 12px; }
+.section-head .meta { margin-top: 10px; }
+.section-head .rule { margin-top: 16px; }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
+.stats > div { padding: 24px var(--pad) 22px; position: relative; }
+.stats > div + div::before {
+  content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 1px;
+  background: linear-gradient(180deg, transparent, var(--hair-strong), transparent);
+}
+.stats .stat { margin: 14px 0 10px; }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.cols.pair { grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: stretch; }
+.cols.pair > .frame { display: flex; flex-direction: column; }
+.cols.pair .well { flex: 1; }
+
+/* a numbered list: a green pill, the text, and a disc at the end */
+.list { list-style: none; }
+.list li {
+  display: grid; grid-template-columns: 44px 1fr 40px; gap: 8px var(--gap); align-items: center;
+  padding: 12px 22px 12px var(--pad); border-bottom: 1px solid var(--hair);
+}
+.list li:last-child { border-bottom: 0; }
+.list li > div { text-wrap: balance; }   /* two even lines, never a one-word orphan */
+.list .n {
+  font: 500 var(--t-label)/1 var(--f-mono); color: var(--pill-ink); letter-spacing: .04em;
+  justify-self: start; padding: 5px 7px 4px; border-radius: 10px; background: var(--pill);
+  position: relative; top: -1px;
+}
+.list strong { color: var(--tx-1); font-weight: 600; }
+.list .d { color: var(--tx-3); }
+
+/* a container split in two; on paper the second half can be a velvet side panel */
+.split { display: grid; grid-template-columns: 1.05fr 1fr; }
+.split > div { padding: var(--pad); }
+.split > div + div { border-left: 1px solid var(--hair); }
+[data-theme="paper"] .split { grid-template-columns: 1.2fr 1fr; }
+[data-theme="paper"] .split > .verdant { border-radius: 0 var(--radius) var(--radius) 0; border-left: 1px solid var(--au-3); }
+.row { display: flex; align-items: center; gap: var(--gap); flex-wrap: wrap; }
+.row.wide { gap: 28px; }
+.row + .row { margin-top: 24px; }
+.row > .grow { width: 100%; }
+.cap { display: block; margin-bottom: 10px; }
+
+.footbar {
+  margin-top: 66px; padding-top: 22px; border-top: 1px solid var(--hair);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footbar .left { display: flex; align-items: center; gap: var(--gap); }
+
+/* ---------- 18. the specimen: swatches that print their own code (for a style page) ---------- */
+.swatches { display: grid; grid-template-columns: repeat(15, 1fr); gap: 10px; padding: 24px var(--pad) 8px; }
+.swatches .group { grid-column: span 4; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.swatches .group.one { grid-column: span 1; grid-template-columns: 1fr; }
+.swatches .group.two { grid-column: span 2; grid-template-columns: repeat(2, 1fr); }
+.swatch { display: flex; flex-direction: column; gap: 8px; }
+.swatch b {
+  display: block; height: 46px; border-radius: var(--radius-sm);
+  border: 1px solid var(--hair); background: var(--sw);
+  box-shadow: inset 0 1px 0 var(--lit-chip);
+}
+.swatch .meta { letter-spacing: .02em; }
+.swatch .meta::after { content: var(--hx); white-space: pre; }
+.swatch .k { color: var(--tx-3); }
+.swatch.extra { display: none; }   /* the third and fourth green: paper only */
+.swatch-keys { display: grid; grid-template-columns: repeat(15, 1fr); gap: 10px; padding: 0 var(--pad) 18px; }
+.swatch-keys span { grid-column: span 4; border-top: 1px solid var(--hair); padding-top: 9px; }
+.swatch-keys span.one { grid-column: span 1; }
+.swatch-keys span.two { grid-column: span 2; }
+.fonts { padding: 15px var(--pad) 17px; border-top: 1px solid var(--hair); display: flex; justify-content: space-between; }
+.fonts .meta b { color: var(--tx-2); font-weight: 500; }
+/* paper shows four greens, so the row grows to 17 and the key sits on its own line */
+[data-theme="paper"] .swatches,
+[data-theme="paper"] .swatch-keys { grid-template-columns: repeat(17, 1fr); }
+[data-theme="paper"] .swatches { gap: 9px; padding: 24px 20px 8px; }
+[data-theme="paper"] .swatch-keys { padding: 0 20px 18px; }
+[data-theme="paper"] .swatches .group { gap: 7px; }
+[data-theme="paper"] .swatches .group.two { grid-column: span 4; grid-template-columns: repeat(4, 1fr); }
+[data-theme="paper"] .swatch-keys span.two { grid-column: span 4; }
+[data-theme="paper"] .swatch.extra { display: flex; }
+[data-theme="paper"] .swatch .k { display: block; }
+[data-theme="paper"] .swatch .meta { letter-spacing: -.03em; }
+.sw-bg-0 { --sw: var(--bg-0); --hx: var(--hx-bg-0); }  .sw-bg-1 { --sw: var(--bg-1); --hx: var(--hx-bg-1); }
+.sw-bg-2 { --sw: var(--bg-2); --hx: var(--hx-bg-2); }  .sw-bg-3 { --sw: var(--bg-3); --hx: var(--hx-bg-3); }
+.sw-tx-1 { --sw: var(--tx-1); --hx: var(--hx-tx-1); }  .sw-tx-2 { --sw: var(--tx-2); --hx: var(--hx-tx-2); }
+.sw-tx-3 { --sw: var(--tx-3); --hx: var(--hx-tx-3); }  .sw-tx-4 { --sw: var(--tx-4); --hx: var(--hx-tx-4); }
+.sw-au-1 { --sw: var(--au-1); --hx: var(--hx-au-1); }  .sw-au-2 { --sw: var(--au-2); --hx: var(--hx-au-2); }
+.sw-au-3 { --sw: var(--au-3); --hx: var(--hx-au-3); }  .sw-au-4 { --sw: var(--au-4); --hx: var(--hx-au-4); }
+.sw-gr-1 { --sw: var(--gr-1); --hx: var(--hx-gr-1); }  .sw-gr-2 { --sw: var(--gr-2); --hx: var(--hx-gr-2); }
+.sw-gr-3 { --sw: var(--gr-3); --hx: var(--hx-gr-3); }  .sw-gr-4 { --sw: var(--gr-4); --hx: var(--hx-gr-4); }
+.sw-seal { --sw: var(--seal-metal); --hx: var(--hx-seal); }
+.sw-seal b { outline: 1px solid color-mix(in srgb, var(--seal-ink) 85%, transparent); outline-offset: -5px; }

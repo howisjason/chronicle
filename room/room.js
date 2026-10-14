@@ -7,45 +7,49 @@
 // marked "private": true is never drawn (the real drawer is room/drawer/, which
 // git never publishes; the flag is the second fence).
 //
-// THE LOOK IS A PLACEHOLDER (the plan, 11 Oct 2026): flat panels with labels,
-// March exactly as march-base.js draws her, a stick-simple crow. It is meant to
-// be replaced whole by a new page that reads the same files; nothing here is a
-// design decision.
+// THE LOOK is J's design kit, Olive Garden (kit/; its rules are design-kit/KIT.md):
+// every list is a kit container (.frame) whose header line (.strap) folds it, the
+// cards are frames, the log and Quill's ledger are kit tables, in the kit's paper
+// mode. The picture inside the canvas is scene.js (the morning room in the paper
+// family, March as a puppet with a walk and a pose at each place, Quill the crow), a
+// guest in its frame; this file only says where she is and what she is doing.
 //
 // The picture: on load the page replays the last run's trace (log.jsonl's last
 // line), about a minute for the whole hour, moving March to each entry's place
 // with a one-word caption of what she was doing, and a strip under the picture
 // saying which stop this is, the real clock time that night, and the place (J,
 // 12 Oct 2026: the replay alone did not say what was going on). The hour's
-// seconds are squeezed into about 55: in proportion, never real time. March has
-// no legs that walk on the base yet, so she slides between spots. Then she idles
-// at the bench. Clicking a place in the picture opens the list it names below.
+// seconds are squeezed into about 55: in proportion, never real time. She walks
+// between places and does each place's thing there; when the replay ends and she
+// is not awake now, she is asleep in her futon. Clicking a place in the picture
+// opens the list it names below.
 //
 // TODAY AND THE WALL (the second day, J's decision 1 and 6, 13 Oct 2026): the
 // lists at the top hold what the last session left; before the next wake the
 // launcher moves them onto the wall (state/wall.json), drawn below grouped by day,
 // newest first. So the page never empties, though she wakes to an empty room.
-import { makeMarch } from '../march-base.js';
+import { draw as drawScene, PLACES, QUILL_BOX, FEET_Y } from './scene.js';
 import { visible, validate, lastDesk, DOOR } from './lib.mjs';
 
-const W = 320, H = 160, FLOOR = 140;
+const W = 320, H = 160;
 const cv = document.getElementById('room');
 const g = cv.getContext('2d');
 g.imageSmoothingEnabled = false;
 
-// Where March stands for each place (her centre line). The drawer sits under the
-// shelf, so a private moment draws as the shelf corner with the drawer shut; a
-// checking moment leaves her where she is and brings Quill to her.
-const SPOT = { shelf: 42, drawer: 42, cloud: 112, bench: 160, desk: 228, board: 284 };
+// Where March stands for each place: her centre line, the scene's own PLACES[p].at.
+// The drawer sits under the shelf, so a private moment stands her at the shelf
+// (standing still, no pose: what she does there is hers); a checking moment leaves
+// her where she is and brings Quill down to her.
+const SPOT = Object.fromEntries(Object.entries(PLACES).map(([p, b]) => [p, b.at]));
+SPOT.drawer = SPOT.shelf;
+const POSED = new Set(Object.keys(PLACES));             // places where she does the place's thing
 const CAPTION = { reading: 'reading', searching: 'searching', building: 'building', writing: 'writing',
   thinking: 'thinking', pinning: 'pinning', checking: 'checking with Quill', private: 'something private', waking: 'waking up' };
 const AT = { shelf: 'at the shelf', drawer: 'at the drawer', cloud: 'under the cloud', bench: 'at the bench', desk: 'at the desk', board: 'at the board', quill: 'with Quill' };
-// what a click on the picture opens: each place's box in the 320x160 canvas, and the section it names
-const HIT = [                                                        // Quill's perch first: it overlaps the board's top edge
-  { x: 272, y: 26, w: 20, h: 14, open: 's-quill' }, { x: 254, y: 36, w: 62, h: 64, open: 's-board' },
-  { x: 10, y: 44, w: 64, h: 96, open: 's-shelf' }, { x: 84, y: 2, w: 66, h: 46, open: 's-cloud' },
-  { x: 120, y: 96, w: 84, h: 46, open: 's-bench' }, { x: 210, y: 96, w: 38, h: 46, open: 's-desk' },
-];
+// what a click on the picture opens: each place's box in the 320x160 canvas (the
+// scene's PLACES, so the boxes are always where the things are drawn), and the
+// section it names. Quill's perch first: it sits inside the bench's box.
+const HIT = [{ ...QUILL_BOX, open: 's-quill' }, ...Object.entries(PLACES).map(([p, b]) => ({ x: b.x, y: b.y, w: b.w, h: b.h, open: `s-${p}` }))];
 
 // ------------------------------------------------------------------ the files
 const get = async (path, kind) => {
@@ -139,7 +143,7 @@ function benchCard(b) {
   const typed = Array.isArray(b.used_by) ? b.used_by.length : 0;
   const usedText = () => { const n = (USED[b.id] || 0) + typed; return n ? ` · used ${n}×` : ''; };
   const usedSpan = el('span', { class: 'used' }, usedText());
-  const press = el('button', { type: 'button', class: 'usedbtn' }, 'I used this');
+  const press = el('button', { type: 'button', class: 'btn btn-secondary usedbtn' }, 'I used this');
   press.addEventListener('click', async () => {
     press.disabled = true;
     try {
@@ -150,23 +154,24 @@ function benchCard(b) {
     } catch { press.textContent = 'that did not go through'; }
   });
   const face = el('div');
-  const card = el('div', { class: 'card' }, el('b', {}, b.title || b.id), el('span', { class: 'tag' }, b.status || '?'), face,
-    el('div', { class: 'meta' }, `${Array.isArray(b.steps) ? b.steps.length : 0} steps`, usedSpan, verdictOn(b.id), ` · started ${day(b.started)} · `,
-      path ? el('a', { href: `https://github.com/howisjason/chronicle/tree/main/room/${path}` }, 'the files') : '', ' ', press));
+  const card = el('div', { class: 'frame card' }, el('div', { class: 'tags' }, el('span', { class: 'tag' }, b.status || '?')),
+    el('div', { class: 'title' }, b.title || b.id), face,
+    el('div', { class: 'meta' }, `${Array.isArray(b.steps) ? b.steps.length : 0} steps`, usedSpan, verdictOn(b.id), ` · started ${day(b.started)}`),
+    el('div', { class: 'acts' }, press, path ? el('a', { class: 'meta', href: `https://github.com/howisjason/chronicle/tree/main/room/${path}` }, 'the files') : ''));
   if (path) showFace(path, face);
   return card;
 }
 function boardCard(p) {
   const thumb = safe(p.thumb, 'board', '.jpg');
   const href = /^https?:\/\//.test(String(p.url)) ? p.url : null;
-  return el('div', { class: 'card' }, thumb ? el('img', { src: thumb, alt: '', loading: 'lazy' }) : el('div', { class: 'titlecard' }, p.title || ''),
-    el('b', {}, href ? el('a', { href, rel: 'noopener' }, p.title || href) : (p.title || '')), p.note || '', el('div', { class: 'dim small' }, day(p.at)));
+  return el('div', { class: 'frame card' }, thumb ? el('img', { src: thumb, alt: '', loading: 'lazy' }) : el('div', { class: 'titlecard label' }, p.title || ''),
+    el('div', { class: 'title' }, href ? el('a', { href, rel: 'noopener' }, p.title || href) : (p.title || '')), p.note ? el('div', { class: 'note' }, p.note) : '', el('div', { class: 'meta' }, day(p.at)));
 }
 // a page on the wall opens inside its own card
 function shelfCard(s) {
   const path = safe(s.path, 'shelf', '.md');
   const page = el('article', { class: 'inpage', hidden: '' });
-  const card = el('div', { class: 'card' });
+  const card = el('div', { class: 'frame card' });
   const a = el('a', { href: path ? `#${s.id}` : undefined }, s.title || s.id);
   if (path) a.addEventListener('click', async (ev) => {
     ev.preventDefault();
@@ -175,17 +180,34 @@ function shelfCard(s) {
     page.hidden = false; card.classList.add('faced');
     if (f.ok) md(f.data, page); else page.replaceChildren(el('p', { class: 'bad' }, 'this page could not be read'));
   });
-  card.append(el('span', { class: 'tag' }, 'page'), ' ', el('b', { style: 'display:inline' }, a), el('div', { class: 'dim small' }, day(s.at)), page);
+  card.append(el('div', { class: 'tags' }, el('span', { class: 'tag tag-dashed' }, 'page')), el('div', { class: 'title' }, a), el('div', { class: 'meta' }, day(s.at)), page);
   return card;
 }
 
 // ------------------------------------------------------------------ the lists
+// a fold's header line says how many things are inside it, so a closed fold still tells
+const tally = (sec, n, one, many = `${one}s`) => {
+  const m = document.querySelector(`#${sec} > .strap > .meta`);
+  if (m) m.textContent = n ? `${n} ${n === 1 ? one : many}` : 'nothing yet';
+};
+// a kit table; on a phone each row stacks, every cell under its column's name (data-l)
+// (`wide` names the long columns: on a phone they take a whole line, after the short ones)
+const table = (heads, rows, wide = []) => el('div', { class: 'tablewrap' }, el('table', { class: 'stack' },
+  el('tr', {}, ...heads.map((h, k) => el('th', { class: wide.includes(k) ? 'w' : undefined }, h))),
+  ...rows.map((cells) => el('tr', {}, ...cells.map((c, k) => {
+    const td = c instanceof Node ? c : el('td', { 'data-l': heads[k] }, c);
+    if (wide.includes(k)) td.classList.add('w');
+    return td;
+  })))));
 function drawLists() {
   const bench = listOf('bench', 'bench');
+  tally('s-bench', bench ? bench.length : 0, 'build');
   if (bench) document.getElementById('bench').replaceChildren(...bench.map(benchCard));
   const board = listOf('board', 'board');
+  tally('s-board', board ? board.length : 0, 'pin');
   if (board) document.getElementById('board').replaceChildren(...board.map(boardCard));
   const shelf = listOf('shelf', 'shelf');
+  tally('s-shelf', shelf ? shelf.length : 0, 'page');
   if (shelf) document.getElementById('shelf').replaceChildren(el('ul', {}, ...shelf.map((s) => {
     const path = safe(s.path, 'shelf', '.md');
     const a = el('a', { href: path ? `#${s.id}` : undefined }, s.title || s.id);
@@ -195,65 +217,76 @@ function drawLists() {
       page.hidden = false;
       if (f.ok) md(f.data, page); else page.replaceChildren(el('p', { class: 'bad' }, 'this page could not be read'));
     });
-    return el('li', {}, a, el('span', { class: 'dim small' }, ` · ${day(s.at)}`));
+    return el('li', {}, a, el('span', { class: 'meta' }, ` · ${day(s.at)}`));
   })));
   const cloud = listOf('cloud', 'cloud');
-  if (cloud) document.getElementById('cloud').replaceChildren(...cloud.map((c) => el('li', {}, c.text || '', el('span', { class: 'dim small' }, ` · ${day(c.at)}`))));
+  tally('s-cloud', cloud ? cloud.length : 0, 'thought');
+  if (cloud) document.getElementById('cloud').replaceChildren(...cloud.map((c) => el('li', {}, c.text || '', el('span', { class: 'meta' }, day(c.at)))));
   const quill = listOf('quill', 'quill');
+  tally('s-quill', quill ? quill.length : 0, 'call');
   if (quill) {
     // Quill's score: the no's March has since judged right or wrong
     const nos = quill.filter((q) => q.verdict === 'no'), right = nos.filter((q) => q.judged === 'right').length, wrong = nos.filter((q) => q.judged === 'wrong').length;
     document.getElementById('quill').replaceChildren(
-      el('p', { class: 'small' }, `${right + wrong} no's judged so far: ${right} right, ${wrong} wrong.`),
-      el('table', {},
-        el('tr', {}, el('th', {}, 'when'), el('th', {}, 'door'), el('th', {}, 'what'), el('th', {}, 'verdict'), el('th', {}, 'why'), el('th', {}, 'judged')),
-        // a talk asks no verdict, so its row has none
-        ...quill.map((q) => el('tr', {}, el('td', {}, day(q.at)), el('td', {}, q.door || ''), el('td', {}, q.subject || ''), el('td', {}, q.door === 'talk' ? '' : q.verdict === 'no' ? 'NO' : q.verdict || ''), el('td', {}, q.reason || ''), el('td', {}, q.judged && q.judged !== 'unknown' ? q.judged : '')))));
+      el('p', { class: 'meta' }, `${right + wrong} no's judged so far: ${right} right, ${wrong} wrong.`),
+      // a talk asks no verdict, so its row has none
+      table(['when', 'door', 'what', 'verdict', 'why', 'judged'], quill.map((q) => [day(q.at), q.door || '', q.subject || '',
+        q.door === 'talk' ? '' : q.verdict === 'no' ? el('td', { 'data-l': 'verdict', class: 'verdict-no' }, 'NO') : q.verdict || '',
+        q.reason || '', q.judged && q.judged !== 'unknown' ? q.judged : '']), [2, 4]));
   }
   // Quill's notebook: its last three lines (the whole file is one click away)
   const nb = S.notebook;
-  const nbLines = nb && nb.ok ? nb.data.split('\n').filter((l) => /^- /.test(l)).slice(-3) : [];
+  const nbAll = nb && nb.ok ? nb.data.split('\n').filter((l) => /^- /.test(l)) : [];
+  const nbLines = nbAll.slice(-3);
+  tally('s-notebook', nbAll.length, 'line');
   document.getElementById('notebook').replaceChildren(nbLines.length
-    ? el('ul', {}, ...nbLines.map((l) => el('li', {}, l.slice(2))))
+    ? el('ul', { class: 'lines' }, ...nbLines.map((l) => {
+      const m = /^- (\d{4}-\d\d-\d\d)\s+(\S+)\s+(.*)$/.exec(l);
+      return m ? el('li', {}, el('span', { class: 'label' }, `${day(m[1])} · ${m[2]}`), el('div', {}, m[3])) : el('li', {}, l.slice(2));
+    }))
     : el('p', { class: 'empty' }, nb && nb.ok ? 'nothing written yet' : 'the notebook could not be read'),
-  el('p', { class: 'dim small' }, el('a', { href: 'quill-notebook.md' }, 'the whole notebook')));
+  el('p', { class: 'meta' }, el('a', { href: 'quill-notebook.md' }, 'the whole notebook')));
   // the desk: this wake's two things, how each was put out, which she took up; then the desks before
   const desk = listOf('desk', 'desk');
   if (desk) {
     const link = (d) => { const href = /^https?:\/\//.test(String(d.url || '')) ? d.url : null; return href ? el('a', { href, rel: 'noopener' }, d.title || href) : (d.title || ''); };
     const shown = (d) => (d.door === 'picture' && /^https:\/\//.test(String(d.shown))
       ? el('img', { src: d.shown, alt: d.title || '', loading: 'lazy' })
-      : el('p', { class: 'small' }, d.shown || ''));
+      : el('div', { class: 'note' }, d.shown || ''));
     const today = lastDesk(desk);
+    tally('s-desk', today.length, 'thing');
     const older = desk.filter((d) => !today.includes(d)).slice(-8).reverse();
     document.getElementById('desk').replaceChildren(
-      el('div', { class: 'cards' }, ...today.map((d) => el('div', { class: 'card' },
-        el('span', { class: 'tag' }, d.pool ? `${d.pool} · ${d.door}` : (d.kind || '')), d.taken ? el('span', { class: 'tag taken' }, 'taken') : '',
-        el('b', {}, link(d)), d.pool ? shown(d) : '', el('div', { class: 'dim small' }, day(d.at))))),
-      ...(older.length ? [el('p', { class: 'dim small' }, 'Before that:'), el('ul', {}, ...older.map((d) => el('li', {}, link(d),
-        el('span', { class: 'dim small' }, ` · ${d.pool ? `${d.pool}/${d.door}` : d.kind || ''}${d.taken ? ', taken' : ''}, ${day(d.at)}`))))] : []));
-  }
+      el('div', { class: 'cards' }, ...today.map((d) => el('div', { class: 'frame card' },
+        el('div', { class: 'tags' }, el('span', { class: 'tag' }, d.pool ? `${d.pool} · ${d.door}` : (d.kind || '')), d.taken ? el('span', { class: 'tag tag-solid' }, 'taken') : ''),
+        el('div', { class: 'title' }, link(d)), d.pool && d.shown !== d.title ? shown(d) : '', el('div', { class: 'meta' }, day(d.at))))),
+      ...(older.length ? [el('p', { class: 'label' }, 'Before that'), el('ul', {}, ...older.map((d) => el('li', {}, link(d),
+        el('span', { class: 'meta' }, ` · ${d.pool ? `${d.pool}/${d.door}` : d.kind || ''}${d.taken ? ', taken' : ''}, ${day(d.at)}`))))] : []));
+  } else tally('s-desk', 0, 'thing');
   // the wall: everything ever made, grouped by the day it was made, newest first
   const wall = listOf('wall', 'wall');
+  tally('s-wall', wall ? wall.length : 0, 'thing');
   if (wall) {
     const days = [];
     for (const w of wall) { const last = days[days.length - 1]; if (last && last.day === w.day) last.items.push(w); else days.push({ day: w.day, items: [w] }); }
     const make = { bench: benchCard, shelf: shelfCard, board: boardCard };
     document.getElementById('wall').replaceChildren(...days.flatMap((g) => [
-      el('h3', { class: 'px' }, day(g.day)),
+      el('div', { class: 'day-head' }, el('div', { class: 'label' }, `${g.items.length} ${g.items.length === 1 ? 'thing' : 'things'}`), el('h3', { class: 'display' }, day(g.day)), el('span', { class: 'rule' })),
       el('div', { class: 'cards' }, ...g.items.filter((w) => make[w.kind]).map((w) => make[w.kind](w))),
     ]));
   }
-  // the log: the last 14 hours, oldest first
+  // the log: the last 14 sessions, oldest first
   const log = S.log;
+  tally('s-log', log && log.ok ? log.data.length : 0, 'session');
   if (!log || !log.ok) say('log', 'this file could not be read', 'bad');
   else if (!log.data.length) say('log', 'no session has run yet');
-  else document.getElementById('log').replaceChildren(...log.data.slice(-14).map((e) => {
+  else document.getElementById('log').replaceChildren(table(['when', 'min', 'run', 'made', 'Quill'], log.data.slice(-14).map((e) => {
     const q = e.quill || {}, steps = (e.bench_steps || []).reduce((n, s) => n + (Number(s.n) || 0), 0);
-    return el('li', {}, `${day(e.started)}, ${clock(e.started)}: ${Math.round((e.seconds || 0) / 60)} min, ${e.verdict || '?'}. ` +
-      `${e.pins || 0} pins, ${steps} bench steps, ${e.cloud || 0} thoughts, ${e.shelf || 0} pages, Quill ${q.yes || 0} yes / ${q.no || 0} no${q.talks ? `, ${q.talks} talks` : ''}` +
-      `${e.broken && e.broken.length ? `; ${e.broken.length} file(s) did not parse` : ''}.`);
-  }));
+    return [`${day(e.started)}, ${clock(e.started)}`, String(Math.round((e.seconds || 0) / 60)),
+      `${e.verdict || '?'}${e.broken && e.broken.length ? `; ${e.broken.length} file(s) did not parse` : ''}`,
+      `${e.pins || 0} pins, ${steps} bench steps, ${e.cloud || 0} thoughts, ${e.shelf || 0} pages`,
+      `${q.yes || 0} yes / ${q.no || 0} no${q.talks ? `, ${q.talks} talks` : ''}`];
+  }), [3]));
 }
 
 // A build shows itself when it can (J, 12 Oct 2026: a showcase, not a link to
@@ -262,74 +295,30 @@ function drawLists() {
 // nothing but the link. The hour learns this from state/README.md.
 async function showFace(path, into) {
   const has = async (f) => { try { return (await fetch(`${path}/${f}`, { method: 'HEAD', cache: 'no-cache' })).ok; } catch { return false; } };
-  if (await has('demo.html')) { into.append(el('iframe', { src: `${path}/demo.html`, title: 'the build, running', loading: 'lazy' })); into.parentElement.classList.add('faced'); }
-  else if (await has('demo.txt')) { const f = await get(`${path}/demo.txt`, 'text'); if (f.ok) { into.append(el('pre', {}, f.data)); into.parentElement.classList.add('faced'); } }
+  if (await has('demo.html')) { into.append(el('iframe', { src: `${path}/demo.html`, title: 'the build, running', loading: 'lazy' })); into.closest('.card').classList.add('faced'); }
+  else if (await has('demo.txt')) { const f = await get(`${path}/demo.txt`, 'text'); if (f.ok) { into.append(el('pre', { class: 'well' }, f.data)); into.closest('.card').classList.add('faced'); } }
 }
 
 // ------------------------------------------------------------------ the picture
-const box = (c, x, y, w, h) => { g.fillStyle = c; g.fillRect(x, y, w, h); };
-const label = (t, x, y, c = '#e8ecff') => { g.fillStyle = c; g.font = '8px Silkscreen, monospace'; g.textAlign = 'center'; g.fillText(t, x, y); };
-const count = (name) => (S[name] && S[name].ok ? visible(S[name].data).length : 0);
-
-function drawSet() {
-  box('#1b2550', 0, 0, W, FLOOR); box('#2a3566', 0, FLOOR, W, H - FLOOR); box('#3a4680', 0, FLOOR, W, 1);
-  // the shelf (left), its boards filling with pages; the drawer shut beneath it
-  box('#5a4032', 14, 52, 56, 72);
-  for (let k = 0; k < 4; k++) box('#3b2a22', 16, 60 + k * 16, 52, 2);
-  const pages = Math.min(count('shelf'), 24);
-  for (let k = 0; k < pages; k++) box(['#f4a6cf', '#9ed3f1', '#f2c14e'][k % 3], 18 + (k % 8) * 6, 50 + Math.floor(k / 8) * 16 + 4, 4, 6);
-  box('#3b2a22', 18, 126, 48, 12); box('#f2c14e', 40, 131, 4, 2);
-  label('SHELF', 42, 48);
-  // the cloud (top), one dot per thought
-  g.fillStyle = '#e9e7f4';
-  for (const [cx, cy, r] of [[96, 22, 10], [110, 16, 13], [126, 20, 11], [138, 24, 8], [112, 27, 9]]) { g.beginPath(); g.arc(cx, cy, r, 0, 7); g.fill(); }
-  for (let k = 0; k < Math.min(count('cloud'), 9); k++) box('#2f5bd8', 100 + k * 4, 22, 2, 2);
-  label('CLOUD', 116, 44);
-  // the bench (centre, biggest), one block per build
-  box('#7a5a3e', 124, 112, 76, 6); box('#5a4032', 128, 118, 4, 22); box('#5a4032', 192, 118, 4, 22);
-  for (let k = 0; k < Math.min(count('bench'), 6); k++) box(['#9ed3f1', '#f4a6cf', '#f2c14e'][k % 3], 128 + k * 12, 104, 9, 8);
-  label('BENCH', 162, 100);
-  // the desk (small), a laptop on it
-  box('#5a4032', 214, 116, 30, 4); box('#3b2a22', 216, 120, 3, 20); box('#3b2a22', 239, 120, 3, 20);
-  box('#93a0cc', 222, 106, 16, 10); box('#2a3f8f', 223, 107, 14, 8); box('#93a0cc', 220, 115, 20, 1);
-  label('DESK', 229, 100);
-  // the board (right), one pin per thing seen
-  box('#6b4a2e', 258, 40, 54, 48); box('#b9875a', 260, 42, 50, 44);
-  const pins = Math.min(count('board'), 12);
-  for (let k = 0; k < pins; k++) { box('#f3eedf', 264 + (k % 4) * 11, 46 + Math.floor(k / 4) * 13, 8, 9); box('#d8323c', 267 + (k % 4) * 11, 45 + Math.floor(k / 4) * 13, 2, 2); }
-  label('BOARD', 285, 98);
-}
-
-// Quill, a placeholder crow: two 12x10 frames, perched and wings up.
-const CROW = [
-  ['...KKK......', '..KKEKK.....', '.YKKKKKK....', '..KKKKKKK...', '...KKKKKKK..', '...KKKKKKKK.', '....KKKKK.KK', '.....KKK....', '.....Y.Y....', '....YY.YY...'],
-  ['K.........K.', 'KK.KKK...KK.', '.KKKEKK.KK..', 'YKKKKKKKK...', '..KKKKKKK...', '...KKKKKK...', '....KKKKK.KK', '.....KKK....', '.....Y.Y....', '....YY.YY...'],
-];
-const CROW_COL = { K: '#15121f', E: '#f2c14e', Y: '#e0a030' };
-function drawCrow(x, y, f) {
-  CROW[f].forEach((row, j) => [...row].forEach((c, i) => { if (CROW_COL[c]) box(CROW_COL[c], Math.round(x) + i, Math.round(y) + j, 1, 1); }));
-}
-
-let eng = null, img = null, mcv = null;
-try {
-  eng = makeMarch(80, 6);
-  mcv = document.createElement('canvas'); mcv.width = eng.W; mcv.height = eng.H;
-  img = new ImageData(eng.W, eng.H);
-} catch (e) { console.warn('March could not be drawn:', e); }
-function drawMarch(x, t) {
-  if (!eng) { box('#f4a6cf', x - 6, FLOOR - 40, 12, 40); return; }
-  try {
-    img.data.set(eng.frame(t, { on: false }));
-    mcv.getContext('2d').putImageData(img, 0, 0);
-    g.drawImage(mcv, Math.round(x) - eng.CX, FLOOR - 78);
-  } catch (e) { if (!drawMarch.warned) { drawMarch.warned = true; console.warn('March:', e); } }
-}
-
 // ------------------------------------------------------------------ the replay
 // The whole trace in about a minute, each stop held at least 2.5 seconds.
-const R = { plan: [], t0: 0, x: SPOT.bench, quill: false };
-const PERCH = { x: 279, y: 30 };
-const q = { x: PERCH.x, y: PERCH.y };
+const R = { plan: [], t0: 0, x: SPOT.bench };
+// what each place holds today, from the same lists the folds draw (visible items;
+// the desk's newest pair), so the picture grows with her work
+let PLACED = {};
+function placed() {
+  const n = (name) => (S[name] && S[name].ok && Array.isArray(S[name].data) ? visible(S[name].data).length : 0);
+  const desk = S.desk && S.desk.ok && Array.isArray(S.desk.data) ? lastDesk(visible(S.desk.data)).length : 0;
+  PLACED = { shelf: { pages: n('shelf') }, board: { cards: n('board') }, cloud: { thoughts: n('cloud') }, bench: { builds: n('bench') }, desk: { items: desk } };
+}
+// one frame of the picture: walk toward the place's spot, then do its thing there
+const STEP = 1.2;                                                     // pixels a frame while walking
+function show(t, awake, place, kind) {
+  const target = SPOT[place] ?? R.x;                                  // 'quill' leaves her where she is
+  const moving = awake && Math.abs(target - R.x) > 0.5;
+  if (awake) R.x += Math.sign(target - R.x) * Math.min(Math.abs(target - R.x), STEP);
+  drawScene(g, t, { awake, march: { x: R.x, y: FEET_Y }, moving, place: kind && POSED.has(place) ? place : null, checking: kind === 'checking', places: PLACED });
+}
 function planReplay() {
   const e = S.log && S.log.ok ? S.log.data[S.log.data.length - 1] : null;
   const tr = e && Array.isArray(e.trace) ? e.trace.filter((s) => s && CAPTION[s.kind]) : [];
@@ -343,6 +332,20 @@ function planReplay() {
   document.getElementById('lastrun').textContent = e
     ? `Last session: ${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${Math.max(1, Math.round((e.seconds || 0) / 60))} min, ${e.verdict || '?'}${Number.isFinite(e.sameness) ? `, sameness ${e.sameness}% (how much it repeated the last seven)` : ''}. The replay shows where she was, never what she read or wrote.`
     : 'No session has run yet. She waits at the bench.';
+  drawNums(e);
+}
+// The last session in four tiles, from the same log line; a value the line lacks shows as a dash.
+function drawNums(e) {
+  const num = (v) => (Number.isFinite(v) ? v : '–');
+  const q = e && e.quill && typeof e.quill === 'object' ? e.quill : null;
+  const steps = e && Array.isArray(e.bench_steps) ? e.bench_steps.reduce((n, s) => n + (Number(s && s.n) || 0), 0) : NaN;
+  const tile = (label, stat, meta) => el('div', {}, el('div', { class: 'label' }, label), el('div', { class: 'stat' }, ...stat), el('div', { class: 'meta' }, meta));
+  const made = e ? [['pins', e.pins], ['thoughts', e.cloud], ['pages', e.shelf]].map(([w, v]) => `${num(v)} ${w}`).join(' · ') : '';
+  document.getElementById('nums').replaceChildren(
+    tile('Minutes', [String(e && Number.isFinite(e.seconds) ? Math.max(1, Math.round(e.seconds / 60)) : '–')], e ? `${clock(e.started) || '–'} to ${clock(e.ended) || '–'}` : 'no session yet'),
+    tile('The run', [e && e.verdict ? String(e.verdict) : '–'], e && Number.isFinite(e.sameness) ? `sameness ${e.sameness}%` : 'sameness –'),
+    tile('Quill', q ? [String(num(q.yes)), el('small', {}, 'yes'), el('b', {}, String(num(q.no))), el('small', {}, 'no')] : ['–'], q && Number.isFinite(q.talks) ? `${q.talks} talks` : ''),
+    tile('Bench steps', [String(num(steps))], made));
 }
 document.getElementById('replay').addEventListener('click', () => { R.manual = true; planReplay(); });
 
@@ -357,6 +360,7 @@ async function askNow() {
   try { const r = await fetch(`${DOOR}/now`, { cache: 'no-cache' }); if (r.ok) n = await r.json(); } catch { /* the door is down */ }
   if (!n) { const f = await get('state/now.json'); n = f.ok ? f.data : null; }
   LIVE = n && n.awake === true && CAPTION[n.kind] ? n : null;
+  document.getElementById('awake').textContent = LIVE ? `awake since ${clock(LIVE.since) || 'now'}` : 'asleep';
   if (LIVE) R.manual = false;
 }
 
@@ -369,6 +373,18 @@ const openFold = (id, scroll) => {
   sec.classList.add('open');
   if (scroll) { sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); sec.classList.add('lit'); setTimeout(() => sec.classList.remove('lit'), 1200); }
 };
+// The picture is shown at a whole number of screen pixels per picture pixel (the
+// widest that fits its frame), so every pixel draws the same width and nothing
+// blurs; a frame narrower than 320 (a phone) gets the frame's width instead.
+function snap() {
+  const box = cv.parentElement, bs = getComputedStyle(box), cs = getComputedStyle(cv);
+  const room = box.clientWidth - parseFloat(bs.paddingLeft) - parseFloat(bs.paddingRight);
+  const ex = parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth), ey = parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+  const k = Math.floor((room - ex) / W);
+  cv.style.width = k >= 1 ? `${W * k + ex}px` : '';
+  cv.style.height = k >= 1 ? `${H * k + ey}px` : '';
+}
+new ResizeObserver(snap).observe(cv.parentElement);      // on load, on resize, and when the frame's layout settles
 for (const h of document.querySelectorAll('.fold > h2')) h.addEventListener('click', () => h.parentElement.classList.toggle('open'));
 cv.addEventListener('click', (ev) => {
   const r = cv.getBoundingClientRect(), x = (ev.clientX - r.left) * W / r.width, y = (ev.clientY - r.top) * H / r.height;
@@ -393,17 +409,9 @@ function tick(ms) {
       ? (R.plan.length ? `${R.plan.length} stops in the session; press Replay to watch them again` : '')
       : `stop ${n + 1} of ${R.plan.length} · ${clock(now.when)} · ${CAPTION[now.kind]}, ${AT[now.place] || now.place}`;
   }
-  const target = SPOT[place] ?? R.x;                                   // 'quill' leaves her where she is
-  R.x += Math.sign(target - R.x) * Math.min(Math.abs(target - R.x), 1.6);
-  // Quill hops to her during a check, and back to its perch after
-  const checking = kind === 'checking';
-  const qt = checking ? { x: R.x + 12, y: FLOOR - 52 } : PERCH;
-  q.x += (qt.x - q.x) * 0.08; q.y += (qt.y - q.y) * 0.08;
-  const flying = Math.hypot(qt.x - q.x, qt.y - q.y) > 2;
-  drawSet();
-  drawMarch(R.x, t);
-  drawCrow(q.x, q.y, flying || (checking && Math.floor(t * 3) % 2) ? 1 : 0);
-  document.getElementById('caption').textContent = done ? (R.plan.length ? 'at the bench' : 'waiting for the first session') : (CAPTION[kind] || '…');
+  // the replay over (or none to play): she is asleep in her futon until the next session
+  show(t, !done, place, kind);
+  document.getElementById('caption').textContent = done ? (R.plan.length ? 'asleep' : 'asleep, waiting for the first session') : (CAPTION[kind] || '…');
   requestAnimationFrame(tick);
 }
 
@@ -414,14 +422,7 @@ function liveTick(t) {
     document.getElementById('dots').replaceChildren();
     document.getElementById('step').textContent = `since ${clock(LIVE.since)} · ${CAPTION[LIVE.kind]}, ${AT[LIVE.place] || LIVE.place}`;
   }
-  const target = SPOT[LIVE.place] ?? R.x;
-  R.x += Math.sign(target - R.x) * Math.min(Math.abs(target - R.x), 1.6);
-  const checking = LIVE.kind === 'checking';
-  const qt = checking ? { x: R.x + 12, y: FLOOR - 52 } : PERCH;
-  q.x += (qt.x - q.x) * 0.08; q.y += (qt.y - q.y) * 0.08;
-  drawSet();
-  drawMarch(R.x, t);
-  drawCrow(q.x, q.y, Math.hypot(qt.x - q.x, qt.y - q.y) > 2 || (checking && Math.floor(t * 3) % 2) ? 1 : 0);
+  show(t, true, LIVE.place, LIVE.kind);
   document.getElementById('caption').textContent = `awake now: ${CAPTION[LIVE.kind]}`;
   requestAnimationFrame(tick);
 }
@@ -435,7 +436,7 @@ function liveTick(t) {
   S.notebook = files[names.length + 1];
   await loadUsed();
   try { drawLists(); } catch (e) { console.warn('lists', e); }
-  try { await document.fonts.load('8px Silkscreen'); } catch { /* the fallback font draws the labels */ }
+  placed();
   await askNow();
   setInterval(askNow, 15000);
   planReplay();

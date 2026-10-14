@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -2 31 20">
+  <!-- The leaf pair: two olive leaves on a short stem, the kit's only foliage.
+       Drawn at 34px wide, never larger, never more than one per header line.
+       kit.css uses it as a mask, so it takes the colour of the leaf token.
+       The front leaf is solid; the back leaf (its paler underside) and the stem
+       are 67% strength, so over a green band they read as the second, darker leaf.
+       The thin vein in each leaf is cut out of the mask. -->
+  <defs>
+    <path id="blade" d="M0,0 C16,-9.5 52,-10.5 100,-2.2 C62,5.6 22,7 0,0Z"/>
+    <path id="vein" d="M4,0 Q48,-1.6 90,-2.4" fill="none" stroke-width="1.1" stroke-linecap="round"/>
+    <mask id="front-cut" maskUnits="userSpaceOnUse" x="0" y="-2" width="31" height="20">
+      <rect x="0" y="-2" width="31" height="20" fill="white"/>
+      <use href="#blade" fill="black" transform="translate(9.6 13.4) rotate(4) scale(0.2 -0.27)"/>
+      <use href="#vein" stroke="black" transform="translate(9.6 13.4) rotate(-38) scale(0.22 0.3)"/>
+    </mask>
+    <mask id="back-cut" maskUnits="userSpaceOnUse" x="0" y="-2" width="31" height="20">
+      <rect x="0" y="-2" width="31" height="20" fill="white"/>
+      <use href="#vein" stroke="black" transform="translate(9.6 13.4) rotate(4) scale(0.2 -0.27)"/>
+    </mask>
+  </defs>
+  <path fill="black" fill-opacity=".67" d="M0.5,15.4 Q5,15.6 9.4,13 L9.8,13.9 Q5.2,16.8 0.6,16.6Z"/>
+  <g mask="url(#front-cut)"><use href="#blade" fill="black" transform="translate(9.6 13.4) rotate(-38) scale(0.22 0.3)"/></g>
+  <g mask="url(#back-cut)"><use href="#blade" fill="black" fill-opacity=".67" transform="translate(9.6 13.4) rotate(4) scale(0.2 -0.27)"/></g>
+</svg>
