@@ -10,6 +10,7 @@ Wan phra are the Buddhist holy days of the Thai lunar calendar: waxing 8, waxing
     bash room/tools/try.sh wan-phra make-demo.mjs   # rebuilds demo.html from wanphra.mjs
     bash room/tools/try.sh wan-phra lean.mjs        # where the moon sits inside the calendar's days
     bash room/tools/try.sh wan-phra count.mjs       # the holy days of 2013 and 2014 against a published count
+    bash room/tools/try.sh wan-phra leapdays.mjs    # this build's leap days, and both tables' 2020s rows against them
 
 Outside the room, `node test.mjs` does the same. `wanphra.mjs` has no dependencies: `holyDaysInYear(2027)` lists a year, and `missHours(jdn)` says how far the sky is from a day.
 
@@ -27,7 +28,7 @@ Copied exactly, those rules miss 26 of the 36 Makha Bucha dates in Thai Wikipedi
 ## What the checks say
 
 - **Thai PBS, 2026:** all 49 wan phra on [their list](https://www.thaipbs.or.th/now/content/3498), every date and every lunar label, plus Makha, Visakha and Asahna Bucha, Khao Phansa, Ok Phansa and Loy Krathong.
-- **Thai Wikipedia, 1996 to 2031** ([Makha Bucha](https://th.wikipedia.org/wiki/วันมาฆบูชา), [Asahna Bucha](https://th.wikipedia.org/wiki/วันอาสาฬหบูชา)): the tables and this build agree on every row up to Makha Bucha 2024. From Asahna Bucha 2024 to Makha Bucha 2030 (twelve rows), the tables are one day later than this build, and from Asahna Bucha 2030 they agree again. So the tables add a leap day in 2024 that this build adds in 2030. (For the Asahna table, that day came from one edit in May 2019; see "How the table got that way" below. I haven't read the Makha table's history.) On that stretch, the pages' own infoboxes (2025, 2026), Thai PBS (2026) and Thairath (Asahna Bucha 2024 on Saturday 20 July) all agree with this build, not with the tables.
+- **Thai Wikipedia, 1996 to 2031** ([Makha Bucha](https://th.wikipedia.org/wiki/วันมาฆบูชา), [Asahna Bucha](https://th.wikipedia.org/wiki/วันอาสาฬหบูชา)): the tables and this build agree on every row up to Makha Bucha 2024. From Asahna Bucha 2024 to Makha Bucha 2030 (twelve rows), the tables are one day later than this build, and from Asahna Bucha 2030 they agree again. So the tables add a leap day in 2024 that this build adds in 2030. (On each page, that stretch came from one edit on 21 May 2019, and the two edits were minutes apart; see "How the table got that way" and "The Makha table, the same two nights" below.) On that stretch, the pages' own infoboxes (2025, 2026), Thai PBS (2026) and Thairath (Asahna Bucha 2024 on Saturday 20 July) all agree with this build, not with the tables.
 - **Asahna Bucha 2005, settled (14 Oct 2026).** The table says 20 July, and this build says Thursday 21 July. Everything printed at the time I could find says the 21st: a holiday notice filed with the Stock Exchange of Thailand in December 2004, Pattaya Mail's issue for that week, and an MGR Online column the day before. The table itself said 21 July until 2018. See "How the table got that way" below.
 
 ## What I found
@@ -94,6 +95,24 @@ The next revision, [8306984](https://th.wikipedia.org/w/index.php?diff=8306984&o
 So the "tables run a day late from 2024" above is the May 2019 shift. It fixed six years that had been a day early and moved six that had been right. Nobody changed the 2005 cell again: it still says 7-20. A [provincial Buddhism office page](https://pre.onab.go.th/th/content/category/detail/id/73/iid/9934) dated 2021 carries the same table, with 20 July 2548 in it.
 
 test.mjs checks the 2005 date and weekday of Asahna Bucha and Khao Phansa against the printed ones, the 2005 cell's two values, that August 2018 changed eight cells of the 2020s row, that the May 2019 row is the live one I read on 13 October, that it is the August 2018 row plus one day in all twelve cells, and the middle and last lines of the table above. The first line (before August 2018) is printed, not checked. The provincial page and the seven earlier revisions are what the reader told me, not checks.
+
+### The Makha table, the same two nights (15 Oct 2026, night)
+
+The Makha Bucha table is the same kind of template, and its revision list ([the API's](https://th.wikipedia.org/w/api.php?action=query&prop=revisions&revids=7771106|7771115|8306984|8306991&rvprop=ids|timestamp|size|comment)) has the same two nights in it. [Revision 7771115](https://th.wikipedia.org/w/index.php?diff=7771115&oldid=7764637) came 19.7 minutes after the Asahna edit of 8 August 2018, and [8306991](https://th.wikipedia.org/w/index.php?diff=8306991&oldid=8145679) came 3.5 minutes after the Asahna edit of 21 May 2019. Each pair was made by the same account, one account in 2018 and a different one in 2019. Both Makha edits have only the section's name for a summary, and neither changed the page's size by more than a byte (75943 to 75944, and 75946 to 75946), so no source went in with them.
+
+August 2018 changed six of the Makha row's twelve cells: 2021, 2022, 2025, 2029 and 2030 a day earlier, and 2028 a day later. The rows for 1996 to 2019 read the same before and after. May 2019 then added a day to eleven cells and left 2020, 8 February, alone. On the Asahna page it moved all twelve. (2028 went from 9 February to the 10th to the 11th, two days in two edits; this build says the 10th.)
+
+The 2020 cell is where the calendar shows. A leap day is the 30th of month 7, and this build's leap day for 2020 falls on 20 June 2020, after Makha Bucha (8 February) and before Asahna Bucha (5 July). A day put in at that point moves Asahna 2020 and every Makha Bucha from 2021 on, and not Makha 2020. That is exactly what the May 2019 edit did on both pages.
+
+| The Makha 2020–2031 row | Differs from this build at |
+|---|---|
+| before August 2018 (7764637) | 2023, 2024, 2028, 2031 a day early; 2025, 2029, 2030 a day late |
+| 7771115, August 2018 | 2021–2024 and 2031 a day early; right for 2020 and 2025–2030 |
+| 8306991, May 2019, still live | right for 2020–2024 and 2031; 2025–2030 a day late |
+
+Makha Bucha of year Y+1 falls in the same lunar year as Asahna Bucha of year Y. Read that way, the two pages' rows from August 2018 differ from this build the same way in all 11 lunar years from 2020 to 2030, and so do the two rows from May 2019. The rows before August 2018 agreed in 9 of the 11. So on each of the two nights, both pages got the same run of years. In August 2018 that run was missing the build's leap day of June 2020 and had one in 2024 that the build doesn't have, and from Asahna 2030 it is a day early again. In May 2019 the June 2020 day went in, and the 2024 day stayed. That is why the live tables run a day late from Asahna 2024 to Makha 2030: Asahna 2024–2029 on one page, Makha 2025–2030 on the other. What it was worked from, the edits don't say.
+
+test.mjs checks which six Makha cells August 2018 changed and by how much, that the May 2019 row is the live one, that it is August 2018's plus one day in eleven cells with 2020 left alone, the build's leap day of 20 June 2020 and that it falls between the two holy days, the last two lines of the table above, and the 11 of 11 for both nights. The first line of the table and the 9 of 11 are printed, not checked. `bash room/tools/try.sh wan-phra leapdays.mjs` prints the build's leap days from 2016 to 2032 and both pages' rows against it. The times, the accounts, the sizes and the unchanged early rows are what the API and the page reader gave me, not checks.
 
 ## Limits
 

@@ -90,6 +90,19 @@ export const ROW_2020S = {
   8306984: row('7-5|7-24|7-13|8-1|7-21|7-11|7-30|7-19|7-7|7-26|7-15|8-3'),    // 21 May 2019, still live
 };
 
+// The Makha table's 2020-2031 row, the same way, read 15 Oct 2026. Each row was
+// read twice, from index.php?oldid=<id>&action=raw and from the same with the
+// page's title in the URL, and the two readings matched character for character.
+// Its two edits are by the same account as the Asahna edit of the same day:
+// 7771115 came 19.7 minutes after 7771106, and 8306991 3.5 minutes after 8306984
+// (the API's revision list, prop=revisions&revids=...). Rows 1 and 2 (1996-2019)
+// read the same in 7764637, 7771115 and the live table.
+export const ROW_2020S_MAKHA = {
+  7764637: row('2-8|2-26|2-16|3-5|2-23|2-13|3-3|2-21|2-9|2-28|2-18|3-7'),   // to 4 Aug 2018
+  7771115: row('2-8|2-25|2-15|3-5|2-23|2-12|3-3|2-21|2-10|2-27|2-17|3-7'),  // 8 Aug 2018
+  8306991: row('2-8|2-26|2-16|3-6|2-24|2-13|3-4|2-22|2-11|2-28|2-18|3-8'),  // 21 May 2019, still live
+};
+
 // Kapook, "ปฏิทินวันพระ 2557", https://hilight.kapook.com/view/88831, read 14 Oct
 // 2026: every wan phra of 2014 (B.E. 2557), [date, day of the month (1-30),
 // month]. Sanook's list (https://www.sanook.com/horoscope/54581/) is the same

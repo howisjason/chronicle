@@ -77,6 +77,37 @@ check(rowVsBuild[7771106] === '2020:+1 2021:+1 2022:+1 2023:+1 2030:+1 2031:+1'
   `the 2020s row against this build: 7771106 (Aug 2018) differs at ${rowVsBuild[7771106]}; 8306984 (May 2019) at ${rowVsBuild[8306984]}`);
 console.log(`  (printed, not checked) the row before Aug 2018, 7752502, differs at ${rowVsBuild[7752502] || 'none'}`);
 
+// --- the Makha table's 2020s row, edited the same two nights (leapdays.mjs) ---
+const { ROW_2020S_MAKHA: M } = await import('./data.mjs');
+const L = await import('./leapdays.mjs');
+const mChanged = Object.keys(M[7771115]).filter((y) => M[7771115][y] !== M[7764637][y])
+  .map((y) => `${y}:${W.jdnFromIso(`${y}-${M[7771115][y]}`) - W.jdnFromIso(`${y}-${M[7764637][y]}`) > 0 ? '+' : ''}${W.jdnFromIso(`${y}-${M[7771115][y]}`) - W.jdnFromIso(`${y}-${M[7764637][y]}`)}`);
+check(mChanged.join(' ') === '2021:-1 2022:-1 2025:-1 2028:+1 2029:-1 2030:-1',
+  `revision 7771115 (8 Aug 2018) changed ${mChanged.length} of the 12 Makha cells, by days: ${mChanged.join(' ')}`);
+check(Object.keys(M[8306991]).every((y) => M[8306991][y] === WIKI_MAKHA[y]),
+  'revision 8306991\'s Makha 2020-2031 row is the live table read on 13 Oct 2026');
+const mStep = Object.keys(M[8306991]).map((y) => W.jdnFromIso(`${y}-${M[8306991][y]}`) - W.jdnFromIso(`${y}-${M[7771115][y]}`));
+check(mStep[0] === 0 && mStep.slice(1).every((d) => d === 1),
+  'revision 8306991 (21 May 2019) is 7771115 plus one day in 11 cells, and leaves 2020 alone');
+const leap1382 = L.leapDays(2020, 2020)[0];
+const day2020 = (n) => W.iso(W.holyDaysInYear(2020).find((x) => x.name && x.name.includes(n)).jdn);
+check(leap1382.day === '2020-06-20' && day2020('Makha') < leap1382.day && leap1382.day < day2020('Asahna'),
+  `this build's leap day of 2020 is ${leap1382.day}, after Makha Bucha (${day2020('Makha')}) and before Asahna Bucha (${day2020('Asahna')})`);
+const show = (off) => Object.entries(off).filter(([, d]) => d).map(([y, d]) => `${y}:${d > 0 ? '+' : ''}${d}`).join(' ');
+const mVs = {}, aVs = {};
+for (const rev of Object.keys(M)) mVs[rev] = L.against(M[rev], 'Makha');
+for (const rev of Object.keys(ROW_2020S)) aVs[rev] = L.against(ROW_2020S[rev], 'Asahna');
+check(show(mVs[7771115]) === '2021:+1 2022:+1 2023:+1 2024:+1 2031:+1'
+  && show(mVs[8306991]) === '2025:-1 2026:-1 2027:-1 2028:-1 2029:-1 2030:-1',
+  `the Makha 2020s row against this build: 7771115 (Aug 2018) differs at ${show(mVs[7771115])}; 8306991 (May 2019) at ${show(mVs[8306991])}`);
+// Makha Bucha of year Y+1 is in the same lunar year as Asahna Bucha of year Y,
+// so a row that counts its leap days the same way on both pages has the same
+// offset at Makha Y+1 as at Asahna Y.
+const paired = (ra, rm) => { let n = 0; for (let y = 2020; y <= 2030; y++) if (aVs[ra][y] === mVs[rm][y + 1]) n++; return n; };
+check(paired(7771106, 7771115) === 11 && paired(8306984, 8306991) === 11,
+  `lunar year by lunar year, Asahna Y against Makha Y+1 for 2020-2030: Aug 2018 agree in ${paired(7771106, 7771115)} of 11, May 2019 in ${paired(8306984, 8306991)} of 11`);
+console.log(`  (printed, not checked) before Aug 2018 the two pages agree in ${paired(7752502, 7764637)} of 11; Makha 7764637 differs at ${show(mVs[7764637])}`);
+
 // --- the rules as pythaidate writes them, to show why this file differs ---
 W.RULE.threshold = 25; W.RULE.avoman = 'pythaidate';
 const asWritten = against(WIKI_MAKHA, 'Makha').split(' ').filter(Boolean).length;

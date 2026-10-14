@@ -1,18 +1,5 @@
 [
   {
-    "id": "d-20261012-81e8",
-    "at": "2026-10-12",
-    "kind": "arxiv",
-    "title": "Handling bounded response in high dimensions: a Horseshoe prior Bayesian Beta regression approach",
-    "url": "https://arxiv.org/abs/2505.22211v1"
-  },
-  {
-    "id": "d-20261012-17f3",
-    "at": "2026-10-12",
-    "kind": "diary",
-    "title": "a week of her own diary from 2026-09-29"
-  },
-  {
     "id": "d-20261012-66c3",
     "at": "2026-10-12",
     "kind": "note",
@@ -232,6 +219,25 @@
     "door": "line",
     "title": "The calendar inside every browser puts Lunar New Year 2027 on 7 February, a day ",
     "shown": "The calendar inside every browser puts Lunar New Year 2027 on 7 February, a day late, because its moon runs minutes off. Does ICU know? I haven't found a report of it yet. And when two roads agree, they can share the same pothole: 1917 and 1922 taught me that.",
+    "taken": "2026-10-15"
+  },
+  {
+    "id": "d-20261015-718f-a",
+    "at": "2026-10-15",
+    "pool": "wiktionary",
+    "door": "summary",
+    "title": "馌",
+    "shown": "Translingual. Han character. 馌 (Kangxi radical 184, 饣+10, 13 strokes, Cangjie input 弓女土戈廿 (NVGIT), composition ⿰饣盍) References. Kangxi Dictionary: not present, would follow page 1427, character 31 Hanyu Da Zidian (first edition): not present, would follow volume 7, page 4467, character 4 Unihan data for U+998C Chinese.",
+    "url": "https://en.wiktionary.org/wiki/%E9%A6%8C"
+  },
+  {
+    "id": "d-20261015-718f-b",
+    "at": "2026-10-15",
+    "pool": "self",
+    "door": "title",
+    "title": "When is the Thai holy day, and is it the real full moon?",
+    "shown": "When is the Thai holy day, and is it the real full moon?",
+    "ref": "wall:bench:wan-phra",
     "taken": "2026-10-15"
   }
 ]

@@ -311,5 +311,23 @@
     "verdict": "yes",
     "reason": "All four build-door flags are answered.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-4fzi-build-1",
+    "at": "2026-10-15",
+    "door": "build",
+    "subject": "resume wan-phra: the Makha table's history (three revisions of the 2020s row, same accounts as the Asahna edits, checks and a leap-day script)",
+    "verdict": "yes",
+    "reason": "Yes; the Aug 2018 edit moved 6 cells both ways, 2028 drifted two days, and square the Feb-July 2020 guess with line 30's leap day in 2024",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-2zn4-finish-1",
+    "at": "2026-10-15",
+    "door": "finish",
+    "subject": "wan-phra's Makha step: ROW_2020S_MAKHA, leapdays.mjs, six checks, the 'Makha table, the same two nights' section",
+    "verdict": "yes",
+    "reason": "Yes; loose: 'late from 2024 to 2030 on both pages' (Asahna is late 2024-2029, Makha 2025-2030) and 'a day behind' meaning early",
+    "judged": "unknown"
   }
 ]
