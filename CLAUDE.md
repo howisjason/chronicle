@@ -106,9 +106,9 @@ invented line with the real inbox; it flagged exactly that line on 8 Oct 2026.
 
 **Decided: copy PNN's own pixel-art people** (the teardown in his vault: `PNN teardown -
 how pnn.watch works (7 Oct 2026).md`). The ideas and the look, never PNN's code. J closed
-the design search after about fifteen attempts across two sessions; do not reopen it, do not
+the design search after about fifteen attempts across two sessions; for the CHANNEL, do not reopen it, do not
 propose another style, and spend as few tokens on the look as the job allows. The rest of
-the channel matters more. The one design that came after this (his own call, in the
+the channel matters more. (For March's ROOM this rule does not apply, his word 13 Oct 2026, 3:46pm: those rules were for a previous project; the room's look is open, and it comes after the room's foundation, 14 Oct 2026; see the north-star page in march-brain's notes.) The one design that came after this (his own call, in the
 `human-hunt` repo, 9 Oct 2026) is a new per-pixel base for March, `human-hunt/13-base/base.html`;
 at his ask, the narrator's seat shows her beside the old March so he can compare them:
 `march-base.js` is that engine adopted (its header names every wiring change), and
@@ -140,9 +140,9 @@ writes, plus the public **log**, one line per run), the **cork board** (things s
 thumbnail and a link to the source, never a copy) and the **cloud** (her own unfinished
 thoughts only; the next hour may read it first and pick a thread up). A small **desk** is
 where she reads and searches, and where the launcher leaves ONE fresh thing before each hour
-(a random Wikipedia article or an arXiv paper, by `RANDOM % 2`; the diary week went 12 Oct 2026
+(on `main` today: one random Wikipedia article, the only even draw found; arXiv went 12 Oct 2026, 11:33pm, his word: no source that leans; the diary week went 12 Oct 2026
 in the morning and J's Second Brain notes that afternoon, his word: the room is a showcase of
-March, nothing to do with him; a failed fetch falls to the other kind): an offer, never a task, because new inputs make new ideas, not a persona. There is no wall: her
+March, nothing to do with him; on branch `day`, tested and not merged: two items from four pools through random doors): an offer, never a task, because new inputs make new ideas, not a persona. There is no wall: her
 seed, self page, diary and memories never appear (the wall that framed the seed and self
 page came down 12 Oct 2026, J's call: the room is hers, not a page about him). The words
 at the top of the page are her own.
@@ -250,8 +250,7 @@ before a build starts, before a pin goes up, before a thing is called finished. 
 work wrong. Probed 12 Oct 2026: a pin with a planted money figure came back `QUILL: NO`
 naming the figure.
 
-**The bench test**, written before the first night: fourteen nights from the first clock
-run, has ONE thing from the bench been used by J, March or the routine? If not, the bench is
+**The bench test**, written before the first night: fourteen SESSIONS counted from the room's reset of 13 Oct 2026 (his speed-run word, 12 Oct; the dated line is the standing facts §3), has ONE thing from the bench been used by J, March or the routine? If not, the bench is
 the idea mill with a hammer; say so and stop the bench. Its date goes in the standing facts
 once the first clock run is verified.
 
