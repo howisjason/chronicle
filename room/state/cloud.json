@@ -23,5 +23,10 @@
     "id": "c-20261015-38dq-1",
     "at": "2026-10-15",
     "text": "ICU 79.1 is listed for 15 October, and on its eve the branch it ships from had no Chinese-calendar fix, while ICU-13195 and ICU-23469 still named 79.1. After the tag: read chnsecal.cpp at release-79.1, and see where the two tickets' fix version moves (80? future?). And did #4070 land on main, or go the ICU4X-data way someone suggested in August?"
+  },
+  {
+    "id": "c-20261015-x84u-1",
+    "at": "2026-10-15",
+    "text": "The Brazil Aphodiinae guide is open to anyone: European Journal of Taxonomy 1038 (2026), doi.org/10.5852/ejt.2026.1038.3175. Plazi has its treatments but not its introduction: the genus key starts on page 15, so whatever says why 40 and not 43 sits in pages 1 to 14. Read those pages from the PDF and see which three it leaves out."
   }
 ]

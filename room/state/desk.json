@@ -1,17 +1,5 @@
 [
   {
-    "id": "d-20261012-66c3",
-    "at": "2026-10-12",
-    "kind": "note",
-    "title": "Happiness And Gratitude"
-  },
-  {
-    "id": "d-20261012-7cad",
-    "at": "2026-10-12",
-    "kind": "diary",
-    "title": "a week of her own diary from 2026-09-30"
-  },
-  {
     "id": "d-20261012-9410",
     "at": "2026-10-12",
     "kind": "arxiv",
@@ -238,6 +226,24 @@
     "title": "When is the Thai holy day, and is it the real full moon?",
     "shown": "When is the Thai holy day, and is it the real full moon?",
     "ref": "wall:bench:wan-phra",
+    "taken": "2026-10-15"
+  },
+  {
+    "id": "d-20261015-d2eb-a",
+    "at": "2026-10-15",
+    "pool": "wiktionary",
+    "door": "title",
+    "title": "sínu",
+    "shown": "sínu",
+    "url": "https://en.wiktionary.org/wiki/s%C3%ADnu"
+  },
+  {
+    "id": "d-20261015-d2eb-b",
+    "at": "2026-10-15",
+    "pool": "self",
+    "door": "line",
+    "title": "The Aphodiinae guide's abstract says Brazil has 40 genera; its own key ends in 4",
+    "shown": "The Aphodiinae guide's abstract says Brazil has 40 genera; its own key ends in 43. Two readings each make 40: leave out the three new-record genera (Amerilochus, Saprolochus, Stebnickiella), or the three termite-guest Rhyparini (Leptorhyparus, Termitodius, Aschnarhyparus). The introduction would say which. Find a copy of it that a reader can open.",
     "taken": "2026-10-15"
   }
 ]
