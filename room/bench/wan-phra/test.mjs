@@ -222,6 +222,36 @@ check(wGaps.every((g) => g > 0) && wWorst < 1.5 && wPh < 1,
 const worstOld = Math.max(...t54.map((r) => Math.abs(r.err)));
 check(worstOld === 5 * 60 + 38, `the old method's largest error in the table: ${Math.floor(worstOld / 60)} h ${worstOld % 60} m`);
 
+// --- the other order: Access to Insight's 2002 Dhammayut list (dhammayut2002.mjs) ---
+const D02 = await import('./dhammayut2002.mjs');
+const d02 = D02.rows();
+check(d02.length === 49 && d02.filter((r) => r.star).length === 10
+  && d02.filter((r) => r.label).length === 5 && d02.filter((r) => r.label).every((r) => r.phase === 'full moon'),
+  '2002 list: 49 days, 10 asterisks, and all 5 named festivals fall in the full-moon column');
+const ab = D02.againstBuild();
+check(ab.built === 49 && ab.off.length === 0,
+  `2002, a year the build was never checked in: the ${ab.n} Mahanikaya days the list implies (asterisk = the day before) are the build's ${ab.built}, every date and kind`);
+const fm02 = D02.fullMoons();
+const onM = fm02.filter((x) => x.missMaha === 0).length, onD = fm02.filter((x) => x.missDham === 0).length;
+const split02 = fm02.filter((x) => x.star);
+check(fm02.length === 12 && onM === 5 && onD === 7
+  && split02.map((x) => W.iso(x.dham)).join() === '2002-04-27,2002-06-25' && split02.every((x) => x.missDham === 0 && x.missMaha < 0),
+  `12 full moons: the sky is full inside the Dhammayut day ${onD} times and the build's ${onM}; the two asterisked ones (27 Apr, 25 Jun) are inside the Dhammayut day and after the Mahanikaya one`);
+const l0 = D02.lead(0), l6 = D02.lead(6);
+const tl = (rs, k) => { const v = D02.tally(rs, k); return `${v.ahead}/${v.same}/${v.behind}`; };
+const st0 = l0.filter((x) => x.star), st6 = l6.filter((x) => x.star);
+check(tl(l0, 'leadMaha') === '25/24/0' && tl(l0, 'leadDham') === '19/29/1' && tl(st0, 'leadMaha') === '8/2/0' && tl(st0, 'leadDham') === '2/7/1',
+  `true tithi at 00:00, ahead/same/behind: all 49 Mahanikaya ${tl(l0, 'leadMaha')}, Dhammayut ${tl(l0, 'leadDham')}; the 10 asterisked Mahanikaya ${tl(st0, 'leadMaha')}, Dhammayut ${tl(st0, 'leadDham')}`);
+check(tl(l6, 'leadMaha') === '16/30/3' && tl(l6, 'leadDham') === '13/29/7' && tl(st6, 'leadMaha') === '5/5/0' && tl(st6, 'leadDham') === '2/4/4',
+  `true tithi at 06:00, ahead/same/behind: all 49 Mahanikaya ${tl(l6, 'leadMaha')}, Dhammayut ${tl(l6, 'leadDham')}; the 10 asterisked Mahanikaya ${tl(st6, 'leadMaha')}, Dhammayut ${tl(st6, 'leadDham')} (my guess before the run, Mahanikaya ahead on all 10 and Dhammayut on none, was wrong)`);
+
+const mv = (h) => { const v = D02.moves(h); return `${v.fixed}/${v.stillEarly}/${v.madeLate}/${v.same}/${v.other}`; };
+check(mv(0) === '6/2/1/1/0' && mv(6) === '3/2/4/1/0',
+  `the 10 moved days, fixed/still early/made late/no change/other: at 00:00 ${mv(0)}, at 06:00 ${mv(6)}`);
+const miss02 = fm02.filter((x) => x.missDham !== 0);
+check(miss02.length === 5 && miss02.every((x) => !x.star && x.missDham < 0),
+  `the ${miss02.length} full moons the Dhammayut day misses are days both orders share, and on all of them the sky is full after the day ends`);
+
 // --- the face carries this file, not an older copy of it ---
 const { inlined } = await import('./make-demo.mjs');
 const { readFileSync } = await import('node:fs');
@@ -229,6 +259,7 @@ const face = readFileSync(new URL('./demo.html', import.meta.url), 'utf8');
 check(face.includes(inlined()), 'demo.html carries the current wanphra.mjs (run make-demo.mjs if not)');
 check(face.includes(C.faceLine()), 'demo.html carries the current count line from count.mjs (run make-demo.mjs if not)');
 check(face.includes(T54.faceLine1954()), 'demo.html carries the current 1954 line from tithi1954.mjs (run make-demo.mjs if not)');
+check(face.includes(D02.faceLine2002()), 'demo.html carries the current 2002 line from dhammayut2002.mjs (run make-demo.mjs if not)');
 
 console.log(fails ? `\n${fails} FAILED` : '\nall passed');
 process.exit(fails ? 1 : 0);

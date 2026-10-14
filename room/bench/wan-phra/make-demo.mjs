@@ -4,6 +4,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { faceLine } from './count.mjs';
 import { faceLine1954 } from './tithi1954.mjs';
+import { faceLine2002 } from './dhammayut2002.mjs';
 
 export const inlined = () => readFileSync(new URL('./wanphra.mjs', import.meta.url), 'utf8')
   .replace(/^export /gm, '');
@@ -42,6 +43,7 @@ const page = `<!doctype html>
 <div class="soft" id="leanNote" style="font-size:14px"></div>
 <div class="tally" id="count" style="font-size:14px">${'${COUNT}'}</div>
 <div class="tally" id="t1954" style="font-size:14px">${'${T54}'}</div>
+<div class="tally" id="d2002" style="font-size:14px">${'${D2002}'}</div>
 <nav><button id="prev">&larr;</button><strong id="year"></strong><button id="fwd">&rarr;</button><span class="soft" id="range"></span></nav>
 <table><thead><tr><th>Date</th><th>Lunar day</th><th>The sky's full moon</th></tr></thead><tbody id="rows"></tbody></table>
 <footer>
@@ -144,6 +146,7 @@ next(); tally(); lean(); draw();
 
 if (process.argv[1] && process.argv[1].endsWith('make-demo.mjs')) {
   writeFileSync(new URL('./demo.html', import.meta.url),
-    page.replace('${CODE}', () => inlined()).replace('${COUNT}', () => faceLine()).replace('${T54}', () => faceLine1954()));
+    page.replace('${CODE}', () => inlined()).replace('${COUNT}', () => faceLine()).replace('${T54}', () => faceLine1954())
+      .replace('${D2002}', () => faceLine2002()));
   console.log('wrote demo.html');
 }

@@ -2,7 +2,7 @@
 
 Wan phra are the Buddhist holy days of the Thai lunar calendar: waxing 8, waxing 15 (the full-moon day), waning 8, and the last day of each lunar month. This build works them out from the old arithmetic. It also computes the real full moon from the sky, so the two can be compared.
 
-**The face:** `demo.html` shows the next wan phra and the next big holy day from today (Thai time), a histogram of where the full moon falls against the holy day, a paragraph on how this compares with a published count, every holy day of a year from 1996 to 2031, and, beside each full-moon day, when the sky is actually full.
+**The face:** `demo.html` shows the next wan phra and the next big holy day from today (Thai time), a histogram of where the full moon falls against the holy day, a paragraph on how this compares with a published count, one on a 1954 table of tithis, one on the other order's holy days in 2002, every holy day of a year from 1996 to 2031, and, beside each full-moon day, when the sky is actually full.
 
 ## How to run
 
@@ -12,6 +12,7 @@ Wan phra are the Buddhist holy days of the Thai lunar calendar: waxing 8, waxing
     bash room/tools/try.sh wan-phra count.mjs       # the holy days of 2013 and 2014 against a published count
     bash room/tools/try.sh wan-phra leapdays.mjs    # this build's leap days, and both tables' 2020s rows against them
     bash room/tools/try.sh wan-phra tithi1954.mjs   # a printed 1954 table of tithi endings against this build's Sun and Moon
+    bash room/tools/try.sh wan-phra dhammayut2002.mjs  # the other order's 2002 holy days against this build and the sky
 
 Outside the room, `node test.mjs` does the same. `wanphra.mjs` has no dependencies: `holyDaysInYear(2027)` lists a year, and `missHours(jdn)` says how far the sky is from a day.
 
@@ -30,6 +31,7 @@ Copied exactly, those rules miss 26 of the 36 Makha Bucha dates in Thai Wikipedi
 
 - **Thai PBS, 2026:** all 49 wan phra on [their list](https://www.thaipbs.or.th/now/content/3498), every date and every lunar label, plus Makha, Visakha and Asahna Bucha, Khao Phansa, Ok Phansa and Loy Krathong.
 - **Thai Wikipedia, 1996 to 2031** ([Makha Bucha](https://th.wikipedia.org/wiki/วันมาฆบูชา), [Asahna Bucha](https://th.wikipedia.org/wiki/วันอาสาฬหบูชา)): the tables and this build agree on every row up to Makha Bucha 2024. From Asahna Bucha 2024 to Makha Bucha 2030 (twelve rows), the tables are one day later than this build, and from Asahna Bucha 2030 they agree again. So the tables add a leap day in 2024 that this build adds in 2030. (On each page, that stretch came from one edit on 21 May 2019, and the two edits were minutes apart; see "How the table got that way" and "The Makha table, the same two nights" below.) On that stretch, the pages' own infoboxes (2025, 2026), Thai PBS (2026) and Thairath (Asahna Bucha 2024 on Saturday 20 July) all agree with this build, not with the tables.
+- **The Mahanikaya's 2002, from the other order's list (15 Oct 2026):** all 49 days, date and kind. See "The other order" below.
 - **Asahna Bucha 2005, settled (14 Oct 2026).** The table says 20 July, and this build says Thursday 21 July. Everything printed at the time I could find says the 21st: a holiday notice filed with the Stock Exchange of Thailand in December 2004, Pattaya Mail's issue for that week, and an MGR Online column the day before. The table itself said 21 July until 2018. See "How the table got that way" below.
 
 ## What I found
@@ -144,6 +146,29 @@ What the report says about days. Page 2: "the civil day ( sāvana ), according t
 The Thai half is still only a word. In ขึ้น 15 ค่ำ, ค่ำ (*kham*) counts the lunar day, and it also means dusk, the early dark part of the night. English Wiktionary traces it to Proto-Tai *ɣamᴮ, "night". I got both Wiktionary entries through the summarising page reader, so they aren't quotes I saw. That fits a full moon sitting near the midnight after waxing 15, but it doesn't test anything. "Why so one-sided" already puts the centre 0.9 hours after the day ends, so any window centred on that midnight would win by construction. And "evening" reads both ways: if the day once began at dusk, the fifteenth evening would be the night before the civil day. Only 11 of the 446 full moons come before the civil day begins, but that night also runs into the day's first hours, and I haven't counted it. So the Indian half of the reading is now in print, and the Thai half isn't proved.
 
 test.mjs checks that all eleven rows are within a minute with the build's ΔT, that the table adds up, that tithis 15 and 30 end within a minute of the ch. 49 full and new moons, that with ΔT at 31 s every gap is positive, the worst is under a minute and a half and the moons are still within a minute, that the largest old-method error is 5 h 38 m, and that the face carries the line `tithi1954.mjs` builds. The per-row gaps in the table above are what `tithi1954.mjs` prints, not checks. To see that the checks can fail, I changed 10:40 to 10:42 once: three of the four failed.
+
+### The other order (15 Oct 2026, near dawn)
+
+Thailand has two monastic orders, and they don't always keep the same holy days. The Mahanikaya follow the civil lunar calendar, the one this build works out. The Dhammayut follow Pakkhagaṇanā, a reckoning by half-months. A description of a Thai manuscript copy of it (Wat Huai Tako, on [manuscripts.sac.or.th](https://manuscripts.sac.or.th/article-download.php?id=3)) says Rama IV devised it because the lay calendar runs off. I read that through the summarising page reader, so it's not a quote.
+
+Access to Insight used to publish the Dhammayut days each year. Its list for 2002 ([the page](https://www.accesstoinsight.org/ptf/dhamma/sila/uposatha.html), which no longer has the table; I read [a copy](https://cdn.britannica.com/primary_source/gutenberg/PGCC_classics/ptf/uposatha.html)) gives 49 days "provided by Metta Forest Monastery and Abhayagiri Buddhist Monastery", and says: "On dates marked with an asterisk, followers of the Mahanikaya sect observe the Uposatha the preceding day." Ten days have an asterisk, in three runs: 12 and 20 February, 12 April to 5 May, and 10 June to 3 July. I read the list twice through the summarising reader, once as the cells in order and once month by month, and the two readings agree. `dhammayut2002.mjs` holds it as printed.
+
+What I guessed before running it, and what came back:
+
+1. **The days the list implies for the Mahanikaya are this build's 2002, all 49, date and kind.** They are. 2002 is in the build's range, but before tonight only its Makha and Asahna Bucha had been checked.
+2. **On the two asterisked full moons, the sky is full after the Mahanikaya day ends and inside the Dhammayut day.** It is: 27 April at 10.0 h and 25 June at 4.7 h, Thai time. Of the year's 12 full moons, the sky is full inside the Dhammayut day 7 times and inside this build's day 5 times. Those two are the whole difference. On the other 5 misses, both orders keep the same day, and it is over before the moon is full.
+3. **Read at 06:00, the Mahanikaya day is early on all 10 asterisked days and the Dhammayut day on none.** Wrong. "Early" is count.mjs's "ahead": the day's number is past the Moon's true tithi.
+
+| The true tithi read at | Mahanikaya (this build), all 49 | Dhammayut, all 49 | Mahanikaya, the 10 asterisked | Dhammayut, the 10 asterisked |
+|---|---|---|---|---|
+| 00:00 | early 25, same 24, late 0 | early 19, same 29, late 1 | early 8, same 2, late 0 | early 2, same 7, late 1 |
+| 06:00 | early 16, same 30, late 3 | early 13, same 29, late 7 | early 5, same 5, late 0 | early 2, same 4, late 4 |
+
+At midnight, the Dhammayut day matches the Moon's tithi more often (29 against 24). At 06:00 it doesn't (29 against 30). Row by row on the 10 moved days: at midnight the move turned 6 early days right, left 2 early (by one tithi less), made 1 right day late, and left 1 where it was. At 06:00 it turned 3 early days right, left 2 early, made 4 right days late, and left 1 where it was. So it isn't the true moon, and nothing here says it was meant to be. pythaidate's `pakdate.py` divides the days into blocks of 16168, 1447, 251, 59 and 15, and counts 1095, 98, 17 and 4 half-months in the first four. 16168 days in 1095 half-months is 14.7653 days each, a mean moon. I read those numbers in excerpts through the summarising reader, and that arithmetic is mine, not a check.
+
+This is one year. The same site has lists for later years, and they would make it more than one. My reader couldn't reach them tonight.
+
+test.mjs checks the list's shape (49 days, 10 asterisks, all five named festivals in the full-moon column), the 49 of 49, the full-moon counts, the two dates and the 5 shared misses, every number in the table above, and the row-by-row counts after it. `bash room/tools/try.sh wan-phra dhammayut2002.mjs` prints each full moon and each asterisked row. The hours 10.0 and 4.7 are printed, not checked, and so is "by one tithi less". To see that the checks can fail, I took the asterisk off 27 April once: six of the six went red.
 
 ## Limits
 

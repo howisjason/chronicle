@@ -365,5 +365,23 @@
     "verdict": "yes",
     "reason": "Ran both, all passed; every number and direction word matches the run. Loose: the ΔT sentence has no direction; 31 s instead of 59.8 s moves every time ~0.48 min later and takes two rows past a minute.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-9xmq-build-1",
+    "at": "2026-10-15",
+    "door": "build",
+    "subject": "resume wan-phra for dhammayut2002.mjs: Access to Insight's 2002 Dhammayut uposatha list against the build and the sky",
+    "verdict": "yes",
+    "reason": "Shiny thing: a printed list from the order that left the civil calendar because it drifts; your own layout gives 12 full moons, not 13",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-ndw3-finish-1",
+    "at": "2026-10-15",
+    "door": "finish",
+    "subject": "wan-phra's Dhammayut 2002 step: dhammayut2002.mjs, 8 new checks, README 'The other order', the face line",
+    "verdict": "yes",
+    "reason": "Read, not run (shell denied): every number in the README table matches its check, and all build-door flags are met",
+    "judged": "unknown"
   }
 ]

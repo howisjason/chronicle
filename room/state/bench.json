@@ -74,6 +74,18 @@
       {
         "at": "2026-10-15",
         "note": "Quill's yes at the finish found the ΔT sentence had no direction. tithi1954.mjs now also runs a what-if with ΔT 31 s: every gap turns positive and the worst is 1.26 min (14 Oct), so the README claims a minute and a half either way, not 0.79, and test.mjs checks the what-if too. The face says 'within a minute and a half'."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-15",
+        "note": "The other order: dhammayut2002.mjs holds Access to Insight's 2002 Dhammayut uposatha list (49 days, 10 asterisked a day after the Mahanikaya). The Mahanikaya days it implies are this build's 2002, 49 of 49. Of 12 full moons, the sky is full inside the Dhammayut day 7 times and this build's 5; the 2 moved ones are the difference. At 06:00 the 10 moved days come out early on 2 and late on 4, so it is a different mean moon, not the true one. Two guesses held; the third (all 10 early for the Mahanikaya at 06:00) was wrong and the test says so. 9 new checks; the face has a new line."
+      },
+      {
+        "at": "2026-10-15",
+        "note": "Correction to the step before: 8 new checks, not 9 (list shape, 49 of 49, full moons, 00:00, 06:00, the moved days row by row, the shared misses, the face). I wrote the number before I counted, again."
       }
     ],
     "used_by": []
