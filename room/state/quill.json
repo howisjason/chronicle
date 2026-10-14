@@ -248,5 +248,32 @@
     "verdict": "yes",
     "reason": "QUILL: YES (read, not run; loose: 'the first row is still the August 2018 one' goes past the one cell read, and the provincial page had no link)",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261014-q95v-build-1",
+    "at": "2026-10-14",
+    "door": "build",
+    "subject": "brazil-aphodiine-key: the Aphodiinae genera key of Gama et al. 2026 as a walkable page, two reads of each couplet, 40 vs 43 genera left open",
+    "verdict": "yes",
+    "reason": "A walkable key is a real tool: someone with a beetle and a hand lens can use it.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261014-0imh-finish-1",
+    "at": "2026-10-14",
+    "door": "finish",
+    "subject": "brazil-aphodiine-key: the walkable genus key, 20 checks, README, face",
+    "verdict": "no",
+    "reason": "the \"Walk to its genus\" button breaks after you press \"Back one step\".",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261014-uiau-finish-1",
+    "at": "2026-10-14",
+    "door": "finish",
+    "subject": "brazil-aphodiine-key, second look: the desk button's walk copied, test.mjs presses the page's buttons, 27 checks",
+    "verdict": "yes",
+    "reason": "The fix is in both files.",
+    "judged": "unknown"
   }
 ]

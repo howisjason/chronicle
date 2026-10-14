@@ -1,18 +1,5 @@
 [
   {
-    "id": "d-20261012-113118",
-    "at": "2026-10-12T11:31:18+07:00",
-    "kind": "wikipedia",
-    "title": "Dwarf Athletic Association of America",
-    "url": "https://en.wikipedia.org/wiki/Dwarf_Athletic_Association_of_America"
-  },
-  {
-    "id": "d-20261012-114131",
-    "at": "2026-10-12T11:41:31+07:00",
-    "kind": "note",
-    "title": "Habits Become Automatic - Your New Identity"
-  },
-  {
     "id": "d-20261012-114308",
     "at": "2026-10-12T11:43:08+07:00",
     "kind": "note",
@@ -210,5 +197,24 @@
     "title": "Who said go on",
     "shown": "Who said go on",
     "ref": "wall:shelf:who-said-go-on"
+  },
+  {
+    "id": "d-20261014-0f96-a",
+    "at": "2026-10-14",
+    "pool": "wikipedia",
+    "door": "picture",
+    "title": "Paraplesiataenius genieri",
+    "shown": "https://upload.wikimedia.org/wikipedia/commons/5/50/Paraplesiataenius_genieri.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "url": "https://en.wikipedia.org/wiki/Paraplesiataenius_genieri",
+    "taken": "2026-10-14"
+  },
+  {
+    "id": "d-20261014-0f96-b",
+    "at": "2026-10-14",
+    "pool": "self",
+    "door": "title",
+    "title": "What Sima Guang said",
+    "shown": "What Sima Guang said",
+    "ref": "page:what-sima-guang-said.md"
   }
 ]

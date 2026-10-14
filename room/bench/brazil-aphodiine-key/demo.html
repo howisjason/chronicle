@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which small dung beetle is it? The key to Brazil's Aphodiinae genera</title>
+<style>
+  :root { --bg:#faf8f4; --fg:#22201c; --dim:#6b665d; --line:#ddd6ca; --card:#fff; --hi:#8a4b1c; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1b1a18; --fg:#ece7de; --dim:#a39c90; --line:#3a3731; --card:#24221f; --hi:#e0a36d; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 Georgia, 'Iowan Old Style', serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 18px 60px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .sub { color: var(--dim); margin: 0 0 20px; }
+  .label { font: 600 .8rem/1 system-ui, sans-serif; letter-spacing:.06em; text-transform:uppercase; color:var(--dim); margin: 0 0 10px; }
+  .half { display:block; width:100%; text-align:left; background:var(--card); color:var(--fg); border:1px solid var(--line);
+          border-radius:10px; padding:14px 16px; margin:0 0 10px; font:inherit; cursor:pointer; }
+  .half:hover, .half:focus-visible { border-color: var(--hi); outline: none; }
+  .to { display:block; margin-top:6px; font: .85rem system-ui, sans-serif; color: var(--dim); }
+  .end { background:var(--card); border:1px solid var(--hi); border-radius:10px; padding:16px; margin:0 0 10px; }
+  .end h2 { margin:0 0 4px; font-size:1.4rem; font-style: italic; }
+  .end p { margin: 6px 0; }
+  a { color: var(--hi); }
+  .row { display:flex; gap:8px; flex-wrap:wrap; margin: 6px 0 18px; }
+  button.small, select { font: .9rem system-ui, sans-serif; padding:6px 10px; border-radius:8px; border:1px solid var(--line);
+          background:var(--card); color:var(--fg); cursor:pointer; }
+  button.small:disabled { opacity: .4; cursor: default; }
+  ol.trail { padding-left: 0; list-style: none; margin: 0 0 18px; font-size: .92rem; }
+  ol.trail li { padding: 6px 0; border-top: 1px solid var(--line); color: var(--dim); }
+  ol.trail li b { color: var(--fg); font: 600 .85rem system-ui, sans-serif; margin-right: 6px; }
+  ol.trail li button { background:none; border:none; color:var(--hi); cursor:pointer; font: .85rem system-ui, sans-serif; padding:0 0 0 6px; }
+  footer { margin-top: 30px; border-top: 1px solid var(--line); padding-top: 14px; color: var(--dim); font-size: .88rem; }
+  footer p { margin: 6px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Which small dung beetle is it?</h1>
+  <p class="sub">The key to the 43 genera of Aphodiinae found in Brazil, from Gama, Skelley &amp; Vaz-de-Mello (2026).
+  Read both halves and choose the one that fits your beetle.</p>
+
+  <div id="now"></div>
+  <div class="row">
+    <button class="small" id="back">Back one step</button>
+    <button class="small" id="restart">Start again</button>
+    <select id="pick" aria-label="Show the couplets that lead to a genus"><option value="">Or: the way to a genus…</option></select>
+  </div>
+  <p class="label" id="trailLabel"></p>
+  <ol class="trail" id="trail"></ol>
+
+  <footer>
+    <p>The key: E.R.R. Gama, P.E. Skelley &amp; F.Z. Vaz-de-Mello, 2026. Identification guide to the Aphodiinae (Coleoptera: Scarabaeidae) of Brazil.
+    <i>European Journal of Taxonomy</i> 1038: 1–225, pp. 15–19.
+    <a href="https://doi.org/10.5852/ejt.2026.1038.3175">doi:10.5852/ejt.2026.1038.3175</a>, CC BY 4.0.
+    A Portuguese version is the paper's Supplementary file 1.</p>
+    <p>The wording is the paper's, read twice from Plazi's copy of it (once from its XML, once from its Zenodo record) and compared half by half.
+    Left out: the couplet numbers, the dash before each second half, and the leader dots. "Fig." numbers are the paper's plates: the pictures are in the paper, not here.</p>
+    <p>One thing is open. The paper's abstract says Brazil has 40 genera; its key ends in 43. I have not read the part of the paper that would say why.</p>
+    <p>This started from one picture: <i>Paraplesiataenius genieri</i>, a reddish-brown beetle about 5 mm long, taken out of leaf-cutter ant nests.
+    <button class="small" id="desk">Walk to its genus</button></p>
+  </footer>
+</main>
+<script id="key" type="application/json">[{"label":"1a","text":"Posterior margin of elytra with one to two distinctly large tubercles (Fig. 27C–F)","to":"2"},{"label":"1b","text":"Posterior margin of elytra with no tubercle or with several small tubercles","to":"5"},{"label":"2a","text":"Pronotum, anteriorly, with three evident longitudinal carinae, the middle one, posteriorly bifurcated; protibia with three distinct teeth","to":"Cartwrightia Islas, 1958 (Fig. 27F)"},{"label":"2b","text":"Pronotum with six longitudinal carinae. At least four of them interrupted by large pits; protibia, at most with two distinctly developed teeth (Fig. 27C–E)","to":"3"},{"label":"3a","text":"Pronotal and elytral longitudinal carinae distinctly elevated; all pronotal carinae medially interrupted (Fig. 27C–D)","to":"4"},{"label":"3b","text":"Pronotal and elytral longitudinal carinae weakly elevated; two medial carinae of pronotum not completely interrupted by pits","to":"Leptorhyparus Howden, 2003 (Fig. 27E)"},{"label":"4a","text":"Pronotal ridges not swollen anteriorly. Metatibia distinctly broader towards apex","to":"Aschnarhyparus Makhan, 2006 (Fig. 27C)"},{"label":"4b","text":"Pronotal ridges swollen anteriorly. Metatibia not distinctly broader towards apex","to":"Termitodius Wasmann, 1894 (Fig. 27D)"},{"label":"5a","text":"Fifth elytral interstria anteriorly elevated, tuberculate; fifth elytral stria anteriorly deeply grooved (Fig. 14B)","to":"6"},{"label":"5b","text":"Fifth interstria not elevated; fifth elytral stria anteriorly not grooved","to":"7"},{"label":"6a","text":"Lateral margins of pronotum undulated, third and fifth interstria anteriorly elevated, tuberculate, humeral region prominent, crowned by a group of setae","to":"Iarupea Martínez, 1953 (Figs 14D–F, 15A–D)"},{"label":"6b","text":"Lateral margin of pronotum straight, only fifth interstria anteriorly elevated, tuberculate, humeral region prominent, not crowned by a group of setae","to":"Arupaia Stebnicka, 1999 (Fig. 14A–C)"},{"label":"7a","text":"Mesocoxa expanded, so long it almost touches the anterior part of elytral epipleuron. Mesepimeron and metepisternum covered by epipleuron (Figs 18B, 32B)","to":"8"},{"label":"7b","text":"Mesocoxa not expanded, well separated from epipleuron. Mesepimeron and metepisternum evident (Fig. 32A)","to":"9"},{"label":"8a","text":"Lateral margins of pronotum serrated, posterior angles of pronotum acuminate","to":"Euparixoides Hinton, 1936 (Fig. 18F)"},{"label":"8b","text":"Lateral margins of pronotum not serrated, posterior angles of pronotum not acuminate","to":"Lomanoxia Martínez, 1951 (Fig. 18A–E)"},{"label":"9a","text":"Lateral margins of pronotum entirely explanate (Fig. 17E–F)","to":"10"},{"label":"9b","text":"Lateral margin of pronotum not explanate or only anterior half explanate (Fig. 17C)","to":"15"},{"label":"10a","text":"Lateral margin of pronotum with fringe of large and evident setae (Fig. 16A–F)","to":"11"},{"label":"10b","text":"Lateral margin of pronotum with fringe of small and inconspicuous setae or glabrous (Fig. 17B, E–F)","to":"13"},{"label":"11a","text":"Elytral interstriae convex, tectiform","to":"Lomanoxoides Stebnicka, 1999 (in part) (Fig. 19A–C)"},{"label":"11b","text":"Elytral interstriae flat or weakly convex","to":"12"},{"label":"12a","text":"Pronotum posterior margin with wide strigate excavation","to":"Martineziana Chalumeau & Özdikmen, 2006 (in part) (Fig. 16A–F)"},{"label":"12b","text":"Pronotum thinly margined posteriorly","to":"Selviria Stebnicka, 1999 (Fig. 17B)"},{"label":"13a","text":"Posterior margin of pronotum depressed, constricted, with at least one row of distinctly large and deep punctures","to":"Stebnickiella Skelley, 2007 (Fig. 26E)"},{"label":"13b","text":"Posterior margin of pronotum not depressed nor constricted, without row of particularly large punctures","to":"14"},{"label":"14a","text":"Elytra with interstriae tuberculate","to":"Batesiana Chalumeau, 1983 (Fig. 17E–F)"},{"label":"14b","text":"Elytra with interstriae not tuberculate","to":"Odontolytes Kozhantshikov, 1916 (in part) (Fig. 21A–F)"},{"label":"15a","text":"Apical spurs of metatibia set apart, thus allowing the basitarsomere to articulate between spurs (Fig. 6G)","to":"16"},{"label":"15b","text":"Apical spur of metatibia close, set beside metatarsal insertion, thus not allowing the basitarsomere to articulate between them (Fig. 12E)","to":"24"},{"label":"16a","text":"Mesoscutellum long, triangular, equal to or similar to 1/3 the length of elytral suture; big convex black species with elytra posteriorly lighter","to":"Neodiapterna Dellacasa, 1984 (Fig. 7B)"},{"label":"16b","text":"Mesoscutellum variably shaped, length less than 1/6 of the length of the elytral suture","to":"17"},{"label":"17a","text":"Specimens with interstriae carinate","to":"Pleuraphodius Schmidt, 1913"},{"label":"17b","text":"Specimens with interstriae flat or convex, but not carinate","to":"18"},{"label":"18a","text":"Dorsal face of protibia distinctly punctate (Fig. 4E)","to":"20"},{"label":"18b","text":"Dorsal face of protibia not punctate","to":"19"},{"label":"19a","text":"Body distinctly yellow with darkened areas on disc of pronotum, elytra and head","to":"Labarrus Mulsant & Rey, 1870 (Fig. 6A–G)"},{"label":"19b","text":"Body piceous","to":"Nialaphodius Kolbe, 1908 (Fig. 7C)"},{"label":"20a","text":"Lateral apical margin of metatibiae with fringe of setae gradually longer towards sides. Large and yellow specimens (length 4.0--8.0 mm) (Fig. 4F)","to":"21"},{"label":"20b","text":"Lateral apical margin of metatibiae with fringe of setae abruptly longer towards sides. Specimens variably colored, and somewhat smaller (length: 2.5mm--6.0mm) (Fig. 3E)","to":"22"},{"label":"21a","text":"Clypeus sinuate anteriorly. Elytra glabrous near posterior margin","to":"Trichaphodiellus Schmidt, 1913 (Fig. 4D)"},{"label":"21b","text":"Clypeus truncate. Elytra finely setaceous near posterior margin","to":"Trichaphodius Schmidt, 1913 (Fig. 7A)"},{"label":"22a","text":"Posterior angles of pronotum truncated in dorsal view, in lateral view sometimes distinctly or faintly sinuate; metatibia slightly broadening towards apex (Figs 4A–C, 5B, D)","to":"23"},{"label":"22b","text":"Posterior angles of pronotum rounded in dorsal view, in lateral view not sinuate; metatibia conspicuously broadening towards apex","to":"Blackburneus Schmidt, 1913 (Figs 2–3)"},{"label":"23a","text":"Clypeus distinctly sinuate medially","to":"Gonaphodioides Dellacasa, Dellacasa & Gordon, 2012 (Fig. 4A–C)"},{"label":"23b","text":"Clypeus not at all sinuate medially","to":"Neotrichaphodioides Dellacasa, Dellacasa & Skelley, 2010 (Fig. 5A–D)"},{"label":"24a","text":"Pronotum with two complete longitudinal ridges, odd elytral interstriae carinate; specimens with body with argillaceous coating; protibia with two teeth","to":"Amerilochus Skelley, 2007 (Fig. 26F)"},{"label":"24b","text":"Pronotum with more than two longitudinal ridges or without ridges, may have transverse and longitudinal furrows or no furrows at all","to":"25"},{"label":"25a","text":"Mesoventrite with deep V-shaped furrow parallel to lateral margin of mesocoxa, extending from mesometasternal suture to anterior margin of mesocoxa (Fig. 26B)","to":"26"},{"label":"25b","text":"Mesoventrite without deep furrow or with somewhat shallow depression","to":"27"},{"label":"26a","text":"Metaventrite with coarse punctures near lateral margins","to":"Saprolochus Stebnicka & Galante, 2007 (Fig. 26D)"},{"label":"26b","text":"Metaventrite with fine punctures only","to":"Tanyana Stebnicka, 2006 (Fig. 26A–C)"},{"label":"27a","text":"Clypeus with group of six to seven denticles on each side of median emargination","to":"Saprositellus Balthasar, 1967 (Fig. 27A–B)"},{"label":"27b","text":"Clypeus without or with only one denticle on each side of median emargination","to":"28"},{"label":"28a","text":"Body covered by long and erect setae; head with clypeus distinctly granulate","to":"Trichiopsammobius Petrovitz, 1963 (Fig. 29G)"},{"label":"28b","text":"Body without the combination of characters above. Specimens glabrous or pilose, if pilose, then clypeus never granulate","to":"29"},{"label":"29a","text":"Basal tarsomere of metatibiae posteriorly dilated, sub-triangularly shaped. Body strongly convex and oval (Fig. 29E–F)","to":"30"},{"label":"29b","text":"Basal tarsomere of metatarsus elongate, cylindrical to sub-cylindrical. Body variable, cylindrical, oval, convex or dorsoventrally flattened","to":"31"},{"label":"30a","text":"Clypeus, on each side of median emargination, with small but clearly upturned denticle","to":"Odontopsammodius Gordon & Pittino, 1992"},{"label":"30b","text":"Clypeus rounded on each side of its median emargination","to":"Leiopsammodius Rakovic, 1981 (Fig. 29E–F)"},{"label":"31a","text":"Pronotum with lateral transverse furrows, extending towards pronotal disc (Fig. 28A–D). If furrows not evident dorsally, then present as a small furrow marked by line of coarse punctures right behind the eyes (Platytomus sp.) (Figs 28D–G, 29A–D); pronotum always with posterior longitudinal furrow (Figs 28 A–G, 29A, C)","to":"32"},{"label":"31b","text":"Pronotal sculpture not as above, may present tubercles and/or fossa","to":"34"},{"label":"32a","text":"Pronotum with three or more transverse furrows interrupted by one longitudinal furrow located posteromedially (Fig. 28A–C)","to":"33"},{"label":"32b","text":"Pronotum with faint longitudinal furrows located directly behind the eyes, furrow marked by line of coarse punctures","to":"Platytomus Mulsant, 1842 (in part) (Figs 28D–G, 29A–D)"},{"label":"33a","text":"Elytral interstriae alternately carinate","to":"Neorhyssemus Gordon & Pittino, 1992 (Fig. 28B–C)"},{"label":"33b","text":"Elytral interstriae not alternately carinate","to":"Afrodiastictus Pittino & Mariani, 1986 (Fig. 28A)"},{"label":"34a","text":"Body ventrally testaceuos yellow, dorsally yellow with head, disc of pronotum and elytra darkened","to":"Aidophus Balthasar, 1963 (Fig. 1A–G)"},{"label":"34b","text":"Body piceous, reddish piceous, or black","to":"35"},{"label":"35a","text":"Ninth elytral interstria distinctly convex and expanded, forming a pseudoepipleuron. Remaining elytral interstriae flat","to":"Flechtmanniella Stebnicka, 1999 (Fig. 17C–D)"},{"label":"35b","text":"Ninth elytral interstria not particularly convex, not expanded, not forming a pseudoepipleuron. Remaining elytral interstriae either convex or not","to":"36"},{"label":"36a","text":"Apex of meso- and metatibiae with at least two dentiform processes in addition to the two apical spurs and lateral spine (Fig. 23E)","to":"37"},{"label":"36b","text":"Apex of meso- and metatibiae with at most one dentiform process in addition to the apical spurs and lateral spine","to":"39"},{"label":"37a","text":"Body cylindrical, dorso-ventrally flattened","to":"38"},{"label":"37b","text":"Body convex, oval","to":"Aphotaenius Cartwright, 1952 (Fig. 20D–F)"},{"label":"38a","text":"Abdominal ventrites medially coalesced, sutures visible only on sides; sixth ventrite with two distinguished foveae on both sides","to":"Passaliolla Balthasar, 1945 (Figs 23C–F, 24A–B)"},{"label":"38b","text":"Abdominal ventrites not coalesced, without foveae","to":"Saprosites Redtenbacher, 1858 (Figs 24C–F, 25A–F)"},{"label":"39a","text":"Anterior margin of profemur, near protibial base, with translucent ventral projection, without anterior groove (Fig. 7D)","to":"Ataeniopsis Petrovitz, 1973 (Figs 7D–F, 8A–F)"},{"label":"39b","text":"Profemur without projection, with anterior groove","to":"40"},{"label":"40a","text":"Posterior and lateral margins of pronotum with wide furrow (Fig. 17A); furrow of posterior margin strongly transversely strigate. Disc of pygidium eroded, longitudinally wrinkled, without transverse carina","to":"Martineziana Chalumeau & Özdikmen, 2006 (in part) (Fig. 17A)"},{"label":"40b","text":"Posterior and lateral margins of pronotum, if furrowed, narrowly so and not strigate. Disc of pygidium eroded, but never with longitudinal wrinkles","to":"41"},{"label":"41a","text":"Ventral surface of meso-metarsus with dense setae, if setae scarce, then mesoventrite with one or two large discal fossae","to":"Odontolytes Kozhantshikov, 1916 (in part) (Figs 21A–F, 22A–B)"},{"label":"41b","text":"Ventral surface of meso-metarsus with scarce setae; mesoventrite without discal fossae","to":"42"},{"label":"42a","text":"Clypeus with granules; pronotum with clear, although shallow, posterior longitudinal furrow","to":"Platytomus Mulsant, 1842 (in part) (Figs 28D–G, 29A–C)"},{"label":"42b","text":"Clypeus may or may not present granules; pronotum never with posterior longitudinal furrow","to":"43"},{"label":"43a","text":"Margin of clypeus, at the medial emargination, extremely thickened, 3 to 4 times as thick as the rest of clypeal margin (Fig. 19E). Specimens ovoid and with reddish elytra","to":"44"},{"label":"43b","text":"Margin not so greatly thickened, 2 times as thick as the rest of clypeal margin or not thickened at all","to":"45"},{"label":"44a","text":"Lateral spine of mesotibia large and conspicuous","to":"Lomanoxoides Stebnicka, 1999 (in part) (Fig. 19A–E)"},{"label":"44b","text":"Lateral spine of mesotibia present, but greatly reduced, inconspicuous amidst apical setae (Fig. 20C)","to":"Paraplesiataenius Chalumeau, 1992 (Fig. 20A–C)"},{"label":"45a","text":"Body robust, parallel-sided, clypeus with distinct strong transverse wrinkles, pronotum and elytra convex in lateral view. Metafemur as wide as profemur","to":"Parataenius Balthasar, 1961 (Fig. 12D–F)"},{"label":"45b","text":"Body not as robust, with or without weakly developed transverse wrinkles, pronotum and elytra weakly convex on lateral view. Metafemur thinner than profemur","to":"46"},{"label":"46a","text":"Margin of clypeus, at the emargination, not thickened. Abdominal ventrites inconspicuously strigate. Ventrites not strigate near lateral margins, extremely weakly strigate at the middle. Sixth ventrite medially weakly strigate","to":"Pseudataenius Brown, 1927 (Fig. 13A–D)"},{"label":"46b","text":"Not with the above combination of characters","to":"Ataenius Harold, 1867 (Figs 9–11, 12A–C)"}]</script>
+<script id="genera" type="application/json">[{"name":"Aidophus","id":"038D87BEFFB6FFE1FD84FCF2FA82F863"},{"name":"Blackburneus","id":"038D87BEFFB3FFE4FD9FFE94FA83F86C"},{"name":"Gonaphodioides","id":"038D87BEFF80FFD6FE71FA41FA82FE08"},{"name":"Labarrus","id":"038D87BEFF83FFD4FDE8FC73FA83F856"},{"name":"Neodiapterna","id":"038D87BEFF95FFC2FDE1FEF3FE79FCED"},{"name":"Neotrichaphodioides","id":"038D87BEFF97FFC0FE48FE94FA82FC44"},{"name":"Nialaphodius","id":"038D87BEFF90FFC6FD8FF8A0FBC2FDAC"},{"name":"Pleuraphodius","id":"038D87BEFF92FFC5FDE3F927FCDCF839"},{"name":"Trichaphodiellus","id":"038D87BEFF93FFC4FDECFBA0FBCFFA54"},{"name":"Trichaphodius","id":"038D87BEFF9DFFCAFDE3FA4AFE3DF979"},{"name":"Aphotaenius","id":"038D87BEFF9EFFC9FDE0FB59FA82F853"},{"name":"Arupaia","id":"038D87BEFF98FFCFFD81FCC8FB7DFB6F"},{"name":"Ataeniopsis","id":"038D87BEFF99FFCEFD91FD97FA9BFA6B"},{"name":"Ataenius","id":"038D87BEFFE5FFB1FDB6FD63FA83F971"},{"name":"Batesiana","id":"038D87BEFFCDFF9AFD95FDCDFA83FB19"},{"name":"Cartwrightia","id":"038D87BEFFCFFF98FDBCFE94FEE6FCF3"},{"name":"Flechtmanniella","id":"038D87BEFFC8FF9FFDF6FA38FB7DF96F"},{"name":"Euparixoides","id":"038D87BEFFC8FF9FFD93FE94FB13FD16"},{"name":"Iarupea","id":"038D87BEFFC9FF9DFDBFFB61FA83FC9A"},{"name":"Lomanoxia","id":"038D87BEFFD1FF86FD92FE22FA84FAC6"},{"name":"Lomanoxoides","id":"038D87BEFFDDFF89FDEAFB60FA82FEF5"},{"name":"Martineziana","id":"038D87BEFFD9FF8CFE38F8BBFA82FBDB"},{"name":"Odontolytes","id":"038D87BEFF27FF77FDF5FB0BFA84FB04"},{"name":"Paraplesiataenius","id":"038D87BEFF2BFF7CFDC5FE94FA84FCC2"},{"name":"Parataenius","id":"038D87BEFF34FF63FD94FD62FA9BFA50"},{"name":"Passaliolla","id":"038D87BEFF36FF61FD93FE01FA82FA9C"},{"name":"Pseudataenius","id":"038D87BEFF32FF65FD94FCD9FEE8FBE4"},{"name":"Saprosites","id":"038D87BEFF33FF64FDE6FE01FA82F9F7"},{"name":"Selviria","id":"038D87BEFF38FF6FFDBCFE01FA83FC05"},{"name":"Tanyana","id":"038D87BEFF39FF6EFD86FBB9FA82F914"},{"name":"Saprolochus","id":"038D87BEFF04FF53FE6FF988FB7AF864"},{"name":"Amerilochus","id":"038D87BEFF04FF53FDDDFED4FB07FD59"},{"name":"Saprositellus","id":"038D87BEFF05FF52FD9FFBDFFA9BF8BF"},{"name":"Stebnickiella","id":"038D87BEFF06FF57FD93F929FDC3FEC7"},{"name":"Afrodiastictus","id":"038D87BEFF00FF57FDE7FB57FAEEF96C"},{"name":"Leiopsammodius","id":"038D87BEFF01FF56FDEDFCEFFA85F85B"},{"name":"Odontopsammodius","id":"038D87BEFF0EFF59FE31FA1BFE6DF82A"},{"name":"Neorhyssemus","id":"038D87BEFF0FFF58FDD6FBFCFA86F8DF"},{"name":"Platytomus","id":"038D87BEFF09FF5DFD89FAFBFA82FDC3"},{"name":"Trichiopsammobius","id":"038D87BEFF15FF42FDC7F919FA8CF86E"},{"name":"Aschnarhyparus","id":"038D87BEFF17FF40FDE8FED6FB6AFCAB"},{"name":"Leptorhyparus","id":"038D87BEFF10FF47FDE2FCA2FBC0FABF"},{"name":"Termitodius","id":"038D87BEFF11FF46FD9BFE06FC20FCCC"}]</script>
+<script>
+const KEY = JSON.parse(document.getElementById('key').textContent);
+const GENERA = JSON.parse(document.getElementById('genera').textContent);
+const half = {}; KEY.forEach(h => half[h.label] = h);
+const isCouplet = to => /^\d+$/.test(to);
+const genusName = to => to.split(' ')[0];
+const plazi = {}; GENERA.forEach(g => plazi[g.name] = 'https://treatment.plazi.org/id/' + g.id);
+
+let trail = [];   // labels chosen, e.g. ['1b', '5b']
+const $ = id => document.getElementById(id);
+const el = (tag, text, cls) => { const e = document.createElement(tag); if (text != null) e.textContent = text; if (cls) e.className = cls; return e; };
+
+function where() {
+  if (!trail.length) return { couplet: '1' };
+  const last = half[trail[trail.length - 1]];
+  return isCouplet(last.to) ? { couplet: last.to } : { end: last.to };
+}
+
+function render() {
+  const now = $('now'); now.replaceChildren();
+  const w = where();
+  if (w.couplet) {
+    now.append(el('p', 'Couplet ' + w.couplet + ' of 46', 'label'));
+    for (const side of ['a', 'b']) {
+      const h = half[w.couplet + side];
+      const b = el('button', h.text, 'half');
+      b.append(el('span', isCouplet(h.to) ? '→ couplet ' + h.to : '→ ' + h.to, 'to'));
+      b.onclick = () => { trail.push(h.label); render(); };
+      now.append(b);
+    }
+  } else {
+    const box = el('div', null, 'end');
+    const g = genusName(w.end);
+    box.append(el('p', 'Your beetle is in the genus', 'label'), el('h2', g));
+    box.append(el('p', w.end.slice(g.length).trim()));
+    if (w.end.includes('(in part)')) box.append(el('p', '"In part": only some of its species key out here. The genus ends the key in one other place too; the menu below shows both ways.'));
+    const p = el('p'); const a = el('a', 'Its treatment in the paper, on Plazi →'); a.href = plazi[g]; p.append(a); box.append(p);
+    now.append(box);
+  }
+  $('back').disabled = !trail.length;
+  $('trailLabel').textContent = trail.length ? 'The way so far (' + trail.length + ' choices)' : '';
+  const ol = $('trail'); ol.replaceChildren();
+  trail.forEach((lab, i) => {
+    const li = el('li'); li.append(el('b', lab), document.createTextNode(half[lab].text));
+    const go = el('button', 'go back here'); go.onclick = () => { trail = trail.slice(0, i); render(); };
+    li.append(go); ol.append(li);
+  });
+}
+
+// every walk from couplet 1 to an ending
+function walks(n = '1', path = []) {
+  let out = [];
+  for (const side of ['a', 'b']) {
+    const h = half[n + side], p = [...path, h.label];
+    out = out.concat(isCouplet(h.to) ? walks(h.to, p) : [{ path: p, to: h.to }]);
+  }
+  return out;
+}
+const WALKS = walks();
+const sel = $('pick');
+[...new Set(WALKS.map(w => genusName(w.to)))].sort().forEach(g => {
+  WALKS.filter(w => genusName(w.to) === g).forEach((w, i, all) => {
+    const o = el('option', g + (all.length > 1 ? ' (way ' + (i + 1) + ' of 2)' : ''));
+    o.value = w.path.join(','); sel.append(o);
+  });
+});
+sel.onchange = () => { if (sel.value) { trail = sel.value.split(','); render(); } sel.value = ''; };
+$('back').onclick = () => { trail.pop(); render(); };
+$('restart').onclick = () => { trail = []; render(); };
+$('desk').onclick = () => { trail = [...WALKS.find(w => genusName(w.to) === 'Paraplesiataenius').path]; render(); window.scrollTo(0, 0); };
+render();
+</script>
+</body>
+</html>
