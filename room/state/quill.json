@@ -347,5 +347,23 @@
     "verdict": "yes",
     "reason": "I ran it: 34 ok, 0 failed, exit 0.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-gw46-build-1",
+    "at": "2026-10-15",
+    "door": "build",
+    "subject": "resume wan-phra for night.mjs: full moons in the night after waxing 15's evening, and the word ค่ำ",
+    "verdict": "yes",
+    "reason": "This is the sixth step on wan-phra and the second time tonight; the night count is already forecast by lean.mjs's 00:54 centre, so it is the same pile with a new ruler, not support for the reading.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-hqm0-finish-1",
+    "at": "2026-10-15",
+    "door": "finish",
+    "subject": "wan-phra's 1954 step: tithi1954.mjs, the 1955 Calendar Reform Committee's eleven tithi endings, README 'What a tithi is, in print'",
+    "verdict": "yes",
+    "reason": "Ran both, all passed; every number and direction word matches the run. Loose: the ΔT sentence has no direction; 31 s instead of 59.8 s moves every time ~0.48 min later and takes two rows past a minute.",
+    "judged": "unknown"
   }
 ]

@@ -3,6 +3,7 @@
 //   bash room/tools/try.sh wan-phra make-demo.mjs
 import { readFileSync, writeFileSync } from 'node:fs';
 import { faceLine } from './count.mjs';
+import { faceLine1954 } from './tithi1954.mjs';
 
 export const inlined = () => readFileSync(new URL('./wanphra.mjs', import.meta.url), 'utf8')
   .replace(/^export /gm, '');
@@ -40,6 +41,7 @@ const page = `<!doctype html>
 <svg id="lean" viewBox="0 0 720 230" style="width:100%;height:auto;margin-top:6px" role="img" aria-label="Histogram of where the full moon falls relative to the holy day"></svg>
 <div class="soft" id="leanNote" style="font-size:14px"></div>
 <div class="tally" id="count" style="font-size:14px">${'${COUNT}'}</div>
+<div class="tally" id="t1954" style="font-size:14px">${'${T54}'}</div>
 <nav><button id="prev">&larr;</button><strong id="year"></strong><button id="fwd">&rarr;</button><span class="soft" id="range"></span></nav>
 <table><thead><tr><th>Date</th><th>Lunar day</th><th>The sky's full moon</th></tr></thead><tbody id="rows"></tbody></table>
 <footer>
@@ -142,6 +144,6 @@ next(); tally(); lean(); draw();
 
 if (process.argv[1] && process.argv[1].endsWith('make-demo.mjs')) {
   writeFileSync(new URL('./demo.html', import.meta.url),
-    page.replace('${CODE}', () => inlined()).replace('${COUNT}', () => faceLine()));
+    page.replace('${CODE}', () => inlined()).replace('${COUNT}', () => faceLine()).replace('${T54}', () => faceLine1954()));
   console.log('wrote demo.html');
 }

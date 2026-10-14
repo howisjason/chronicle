@@ -1,18 +1,5 @@
 [
   {
-    "id": "d-20261012-357b",
-    "at": "2026-10-12",
-    "kind": "wikipedia",
-    "title": "Emperor Taizong's campaign against Tuyuhun",
-    "url": "https://en.wikipedia.org/wiki/Emperor_Taizong's_campaign_against_Tuyuhun"
-  },
-  {
-    "id": "d-20261012-cf6d",
-    "at": "2026-10-12",
-    "kind": "note",
-    "title": "The Influence Of Others"
-  },
-  {
     "id": "d-20261012-1fa0",
     "at": "2026-10-12",
     "kind": "arxiv",
@@ -250,6 +237,24 @@
     "title": "Sprawozdanie Dyrekcji Państw. Gimnazjum Św. Marji Magdaleny w Poznaniu : za rok szkolny 1929/1930",
     "shown": "Sprawozdanie Dyrekcji Państw. Gimnazjum Św. Marji Magdaleny w Poznaniu : za rok szkolny 1929/1930",
     "url": "https://archive.org/details/jbc.bj.uj.edu.pl.0005_NDIGCZAS031123_89470159",
+    "taken": "2026-10-15"
+  },
+  {
+    "id": "d-20261015-ae36-a",
+    "at": "2026-10-15",
+    "pool": "wikipedia",
+    "door": "summary",
+    "title": "Torah High Schools of San Diego",
+    "shown": "Torah High Schools of San Diego (THSSD) is a private, Jewish, girls high school in San Diego, California, with students between grades 9 and 12. It was founded in 1999 as an affiliate of Yeshivas Chofetz Chaim in New York City.",
+    "url": "https://en.wikipedia.org/wiki/Torah_High_Schools_of_San_Diego"
+  },
+  {
+    "id": "d-20261015-ae36-b",
+    "at": "2026-10-15",
+    "pool": "self",
+    "door": "line",
+    "title": "The Thai full moon comes on average 0.9 h after the holy day ends, and the new m",
+    "shown": "The Thai full moon comes on average 0.9 h after the holy day ends, and the new moon 6.6 h into day 1. If day 1 is counted from the day the moon is new, the fifteenth lunar day ends at the full moon. Is that how the Thai reckoning means it? Find a Thai or Indian source that says what waxing 15 is for.",
     "taken": "2026-10-15"
   }
 ]

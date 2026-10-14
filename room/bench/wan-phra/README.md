@@ -11,6 +11,7 @@ Wan phra are the Buddhist holy days of the Thai lunar calendar: waxing 8, waxing
     bash room/tools/try.sh wan-phra lean.mjs        # where the moon sits inside the calendar's days
     bash room/tools/try.sh wan-phra count.mjs       # the holy days of 2013 and 2014 against a published count
     bash room/tools/try.sh wan-phra leapdays.mjs    # this build's leap days, and both tables' 2020s rows against them
+    bash room/tools/try.sh wan-phra tithi1954.mjs   # a printed 1954 table of tithi endings against this build's Sun and Moon
 
 Outside the room, `node test.mjs` does the same. `wanphra.mjs` has no dependencies: `holyDaysInYear(2027)` lists a year, and `missHours(jdn)` says how far the sky is from a day.
 
@@ -47,7 +48,7 @@ The new moon, too, falls after the day you might expect. It comes 6.6 hours into
 
 Of the 24 windows of 24 hours that start on the hour (Thai clock), the one that catches the most true full moons starts at 15:00 (292 of 446). Midnight to midnight, the holy day itself, catches 193, and 06:00 to 06:00 catches 263.
 
-One reading, which I haven't checked against any source on the Thai calendar: in Indian lunar reckoning, a lunar day (*tithi*) is twelve degrees of the moon's run past the sun, and the fifteenth ends at the moment of full moon. A calendar that counts day 1 from the day the new moon falls in would then put the full moon at the end of day 15, which is where it sits here. That fits the numbers. It isn't proved by them.
+One reading, which I haven't checked against any source on the Thai calendar: in Indian lunar reckoning, a lunar day (*tithi*) is twelve degrees of the moon's run past the sun, and the fifteenth ends at the moment of full moon. A calendar that counts day 1 from the day the new moon falls in would then put the full moon at the end of day 15, which is where it sits here. That fits the numbers. It isn't proved by them. (15 Oct: the Indian half now has a printed source. See "What a tithi is, in print" below.)
 
 Run it: `bash room/tools/try.sh wan-phra lean.mjs`. The face shows it as a histogram. test.mjs checks every number in this section except the median, the middle of the range and 14 d 18.4 h, which lean.mjs prints.
 
@@ -113,6 +114,36 @@ The 2020 cell is where the calendar shows. A leap day is the 30th of month 7, an
 Makha Bucha of year Y+1 falls in the same lunar year as Asahna Bucha of year Y. Read that way, the two pages' rows from August 2018 differ from this build the same way in all 11 lunar years from 2020 to 2030, and so do the two rows from May 2019. The rows before August 2018 agreed in 9 of the 11. So on each of the two nights, both pages got the same run of years. In August 2018 that run was missing the build's leap day of June 2020 and had one in 2024 that the build doesn't have, and from Asahna 2030 it is a day early again. In May 2019 the June 2020 day went in, and the 2024 day stayed. That is why the live tables run a day late from Asahna 2024 to Makha 2030: Asahna 2024–2029 on one page, Makha 2025–2030 on the other. What it was worked from, the edits don't say.
 
 test.mjs checks which six Makha cells August 2018 changed and by how much, that the May 2019 row is the live one, that it is August 2018's plus one day in eleven cells with 2020 left alone, the build's leap day of 20 June 2020 and that it falls between the two holy days, the last two lines of the table above, and the 11 of 11 for both nights. The first line of the table and the 9 of 11 are printed, not checked. `bash room/tools/try.sh wan-phra leapdays.mjs` prints the build's leap days from 2016 to 2032 and both pages' rows against it. The times, the accounts, the sizes and the unchanged early rows are what the API and the page reader gave me, not checks.
+
+### What a tithi is, in print (15 Oct 2026, before dawn)
+
+The reading at the end of "Why so one-sided" asked whether the Thai reckoning means waxing 15 the way an Indian tithi is counted. I didn't find a Thai source that says. I found the Indian half, in print.
+
+India's Calendar Reform Committee reported to the government in 1955 ([the scan](https://archive.org/details/calendar_reform_comittee_report)). Page 3 defines the tithis by "the moments when the moon gains 12° or its integral multiple on the sun", and it prints a table, "Ending Moments of Tithis": eleven tithis from 27 September to 26 October 1954, in Indian Standard Time, with the "Modern" time (the committee says its tithis follow the Nautical Almanac) beside the "Old Method" and the old method's error. I read the table twice off the page image ([leaf n14](https://archive.org/details/calendar_reform_comittee_report/page/n14)), once whole and once zoomed, and not through OCR or a summariser. `tithi1954.mjs` holds the eleven rows as printed and finds each ending from this build's Sun and Moon (Meeus ch. 25 and 47, as in `count.mjs`). It searches the printed date and the day after, never the printed minute.
+
+| 1954 | Tithi | Printed (IST) | This build | Gap (min) |
+|---|---|---|---|---|
+| 27 Sept | 30 | 6:20 | 6:20 | +0.41 |
+| 30 Sept | 3 | 12:50 | 12:50 | −0.41 |
+| 3 Oct | 6 | 20:21 | 20:21 | +0.20 |
+| 6 Oct | 9 | 24:03 (00:03 on the 7th) | 24:03 | −0.39 |
+| 9 Oct | 12 | 20:20 | 20:20 | −0.26 |
+| 12 Oct | 15 | 10:40 | 10:40 | +0.32 |
+| 14 Oct | 18 | 23:36 | 23:37 | +0.79 |
+| 17 Oct | 21 | 15:47 | 15:47 | −0.45 |
+| 20 Oct | 24 | 13:44 | 13:45 | +0.56 |
+| 23 Oct | 27 | 16:55 | 16:55 | +0.20 |
+| 26 Oct | 30 | 23:17 | 23:17 | −0.13 |
+
+- **All eleven land within 0.79 minutes** with the build's ΔT. The page prints whole minutes. The build's ΔT formula is fitted for 2005–2050 and gives 59.8 s for 1954. If the true value then was nearer 31 s (a what-if I haven't checked), every one of my times moves about half a minute *later*: every gap turns positive, and the worst grows to 1.26 minutes (14 October). A shift that moves every row the same way can't explain gaps of both signs, so the gaps aren't ΔT. The claim is agreement within a minute and a half either way, not 0.79.
+- **The fifteenth tithi ends at the full moon, in print.** Tithi 15 ends on 12 October at 10:40 IST, and the full moon from Meeus ch. 49, a separate road from ch. 25 and 47, comes 0.74 minutes earlier with the build's ΔT (0.26 earlier with the what-if). The two tithi-30 rows are the two new moons, and all three are within 0.74 minutes under either ΔT. Before tonight, "the fifteenth ends at the full moon" was my arithmetic (15 × 12° = 180°). Now a 1954 table shows it.
+- **The old method** is the committee's name for the calculation the almanac-makers still used, which they date to 400 A.D. It is off by as much as 5 h 38 m (17 October). The error column is Old Method minus Modern in all eleven rows, so the table adds up.
+
+What the report says about days. Page 2: "the civil day ( sāvana ), according to Hindu religious practices, should start from sunrise". Page 3: "a religious festival is to be observed in a locality when the prescribed tithi is current at a particular hour of the civil day of that locality." It doesn't name the hour on these pages, and I haven't read further to see if it does elsewhere. I read both sentences on the page images myself.
+
+The Thai half is still only a word. In ขึ้น 15 ค่ำ, ค่ำ (*kham*) counts the lunar day, and it also means dusk, the early dark part of the night. English Wiktionary traces it to Proto-Tai *ɣamᴮ, "night". I got both Wiktionary entries through the summarising page reader, so they aren't quotes I saw. That fits a full moon sitting near the midnight after waxing 15, but it doesn't test anything. "Why so one-sided" already puts the centre 0.9 hours after the day ends, so any window centred on that midnight would win by construction. And "evening" reads both ways: if the day once began at dusk, the fifteenth evening would be the night before the civil day. Only 11 of the 446 full moons come before the civil day begins, but that night also runs into the day's first hours, and I haven't counted it. So the Indian half of the reading is now in print, and the Thai half isn't proved.
+
+test.mjs checks that all eleven rows are within a minute with the build's ΔT, that the table adds up, that tithis 15 and 30 end within a minute of the ch. 49 full and new moons, that with ΔT at 31 s every gap is positive, the worst is under a minute and a half and the moons are still within a minute, that the largest old-method error is 5 h 38 m, and that the face carries the line `tithi1954.mjs` builds. The per-row gaps in the table above are what `tithi1954.mjs` prints, not checks. To see that the checks can fail, I changed 10:40 to 10:42 once: three of the four failed.
 
 ## Limits
 

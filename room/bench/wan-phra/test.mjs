@@ -200,12 +200,35 @@ const asahna14 = W.missHours(W.jdnFromYmd(2014, 7, 11));
 check(W.iso(asahna14.jdn) === '2014-07-12' && asahna14.hour.toFixed(1) === '18.4',
   `the paper's Asahna Bucha 2557: the calendar's 11 July, the sky full on ${W.iso(asahna14.jdn)} at ${asahna14.hour.toFixed(1)} h Thai time (the paper: 12 July)`);
 
+// --- an Indian source for the tithi: the Calendar Reform Committee's 1954 table (tithi1954.mjs) ---
+const T54 = await import('./tithi1954.mjs');
+const t54 = T54.rows();
+const gaps = t54.map((r) => r.mine - r.printed);
+const worstGap = Math.max(...gaps.map(Math.abs));
+check(t54.length === 11 && t54.every((r) => r.mine !== null) && worstGap < 1,
+  `the 1955 report's 11 printed tithi endings (Sept-Oct 1954, IST) against this build's Sun and Moon: worst gap ${worstGap.toFixed(2)} min (the page prints whole minutes)`);
+check(t54.every((r) => r.old - r.printed === r.err),
+  'the table adds up: Old Method minus Modern is the printed error, in all 11 rows');
+const ph = t54.filter((r) => r.phase !== null);
+const worstPh = Math.max(...ph.map((r) => Math.abs(r.phase - r.printed)));
+check(ph.length === 3 && ph.find((r) => r.n === 15).printed === 10 * 60 + 40 && worstPh < 1,
+  `tithi 15 ends at the full moon and tithi 30 at the new moon: the printed 10:40 of 12 Oct and the two new moons are within ${worstPh.toFixed(2)} min of Meeus ch. 49`);
+const w54 = T54.rows(T54.WHAT_IF_DT);
+const wGaps = w54.map((r) => r.mine - r.printed);
+const wWorst = Math.max(...wGaps.map(Math.abs));
+const wPh = Math.max(...w54.filter((r) => r.phase !== null).map((r) => Math.abs(r.phase - r.printed)));
+check(wGaps.every((g) => g > 0) && wWorst < 1.5 && wPh < 1,
+  `with ΔT ${T54.WHAT_IF_DT} s instead of the build's (a what-if): every gap is positive, the worst is ${wWorst.toFixed(2)} min, and tithis 15 and 30 are still within ${wPh.toFixed(2)} min of the ch. 49 moons`);
+const worstOld = Math.max(...t54.map((r) => Math.abs(r.err)));
+check(worstOld === 5 * 60 + 38, `the old method's largest error in the table: ${Math.floor(worstOld / 60)} h ${worstOld % 60} m`);
+
 // --- the face carries this file, not an older copy of it ---
 const { inlined } = await import('./make-demo.mjs');
 const { readFileSync } = await import('node:fs');
 const face = readFileSync(new URL('./demo.html', import.meta.url), 'utf8');
 check(face.includes(inlined()), 'demo.html carries the current wanphra.mjs (run make-demo.mjs if not)');
 check(face.includes(C.faceLine()), 'demo.html carries the current count line from count.mjs (run make-demo.mjs if not)');
+check(face.includes(T54.faceLine1954()), 'demo.html carries the current 1954 line from tithi1954.mjs (run make-demo.mjs if not)');
 
 console.log(fails ? `\n${fails} FAILED` : '\nall passed');
 process.exit(fails ? 1 : 0);
