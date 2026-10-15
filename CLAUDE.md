@@ -145,11 +145,13 @@ on the bench, shelf and board onto `state/wall.json`, so the page shows the last
 things as "Today" at the top and the wall (everything ever, by day, newest first) under it.
 A build she takes from the desk comes back to the bench with `room.mjs resume <id>`.
 The **desk** gets TWO things before each wake (J's plan, 14 Oct 2026): ONE from the world
-pools at equal odds (Wikipedia random article, Internet Archive random item, Wikimedia
-Commons random file, Wiktionary random entry; J's word: those four and no others), and ONE
-of her own (a wall row, half-done builds counted twice; a cloud line from the cloud's
-history; or a first-day page), with a `ref` saying where it came from; both unlabeled and
-shuffled. Each goes out through a random door
+pools at equal odds, each drawn at random from the shelf its own site already sorted
+(since 15 Oct 2026, J's word: Wikipedia's Featured and Good articles, Wikimedia Commons'
+Featured pictures, Wiktionary's Word of the Day; the Internet Archive left that day, and
+older desk items still carry `archive`), and ONE of her own, an open thing only (a build
+from the wall, half-done builds counted twice, or a line in her live cloud; pages left
+15 Oct 2026: offered nine times in fifteen wakes and taken zero), with a `ref` saying where
+a build came from; both unlabeled and shuffled. Each goes out through a random door
 (summary, picture, first sentence, coordinates, one word, title; a door the item cannot give
 falls to its summary, else its title): an offer, never a task. She marks one taken with
 `room.mjs desk <id>`, and the morning line reports the draw and the pick. The room text names
