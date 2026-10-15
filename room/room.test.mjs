@@ -467,3 +467,15 @@ test('resume, then day-ends: the build goes back to the wall with the extra step
   assert.equal(J(d, 'wall').filter((i) => i.kind === 'bench' && i.id === 'moon-clock').length, 1, 'once on the wall, not twice');
   assert.equal(validate('wall', J(d, 'wall')).ok, true);
 });
+
+test('the season file holds one set line at most, and the notes never reach her', () => {
+  // The launcher's hers() keeps every line that is not a `#` note; the season is the one such
+  // line in inner-life/season.md (J's design, 15 Oct 2026), or nothing. A second set line would
+  // be two seasons, which the design forbids: one slot.
+  const hers = (t) => t.split('\n').filter((l) => !/^\s*#( |$)/.test(l) && l.trim() !== '');
+  const real = hers(readFileSync(`${B}/inner-life/season.md`, 'utf8'));
+  assert.equal(real.length, 1);
+  assert.match(real[0], /^\*\*Set \d{1,2} \w+ \d{4}:\*\* \S/);
+  assert.deepEqual(hers('# a note\n#\n# another\n'), []);
+  assert.equal(hers('# note\n**Set 1 Jan 2027:** one\n**Set 2 Jan 2027:** two\n').length, 2, 'two lines must be seen as two, so the real file is held to one above');
+});

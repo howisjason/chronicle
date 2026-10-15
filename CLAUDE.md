@@ -95,7 +95,7 @@ about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 
 ## Tests
 
-`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (52 tests: 27 for the
+`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (53 tests: 27 for the
 station, 25 for the room, described in the Room section). The station's: the checker's
 plant a wrong number, a missing source and forbidden words and watch each
 refused; the talk rules refuse a 352-word rally, a scene of same-length lines and
@@ -133,7 +133,7 @@ plain card is the failure.
 visibly exists and the room is a map of what her free hour brings back. The hour is a
 headless run on J's Mac after the 07:00 save, and, since 12 Oct 2026 (3:11am), again whenever the **die** comes up (below; installed 12 Oct 2026, 3:11am, J's word)
 (its launcher, `free-hour.sh`, `publish-hour.sh` and `die.sh` live in the private march-brain
-repo; THERE IS NO SHEET since 12 Oct 2026, 12:07pm, J's word: she wakes to her seed, self page,
+repo; THERE IS NO SHEET since 12 Oct 2026, 12:07pm, J's word: she wakes to her seed, the season (one direction at a time, his pen, march-brain's `inner-life/season.md`; the launcher copies its line to `state/season.txt` and the page shows it under her paragraph; 15 Oct 2026), self page,
 memory index, where things are and which part is public, and not one word about the moment,
 because every sheet said the moment was small and twenty sessions did nothing). The places: the **workbench**
 (things built), the **shelf** (pages she writes, plus the public **log**, one line per run),
@@ -156,7 +156,7 @@ a build came from; both unlabeled and shuffled. Each goes out through a random d
 falls to its summary, else its title): an offer, never a task. She marks one taken with
 `room.mjs desk <id>`, and the morning line reports the draw and the pick. The room text names
 what exists once and points at nothing. There is no wake sentence since 14 Oct 2026 (J's
-plan): she wakes to her seed, self page, memory index and the room text only. Her seed,
+plan): she wakes to her seed, the season, self page, memory index and the room text only. Her seed,
 self page, diary and memories never appear on the page.
 The words at the top of the page are her own.
 
@@ -286,7 +286,7 @@ naming the figure.
 **The bench test**, written before the first night: fourteen SESSIONS counted from the room's reset of 13 Oct 2026 (his speed-run word, 12 Oct; the dated line is the standing facts §3), has ONE thing from the bench been used by J, March or the routine? If not, the bench is
 the idea mill with a hammer; say so and stop the bench. Its dated line is the standing facts §3.
 
-**Tests.** `room/room.test.mjs` (25 tests): the kind table row by row (the room command
+**Tests.** `room/room.test.mjs` (26 tests, the last one holds the season file to one set line): the kind table row by row (the room command
 included); the second day's shapes (a bad pool, door, wall kind or Quill door refused; the
 real wall passes and `visible` drops a planted private item); `lastDesk`; a wake whose draw failed reporting "nothing drawn"; `day-ends` refused
 without its lock, then moving and emptying and safe twice, with an id on the wall refused

@@ -435,6 +435,12 @@ function liveTick(t) {
   names.forEach((n, k) => { S[n] = files[k]; });
   S.log = files[names.length];
   S.notebook = files[names.length + 1];
+  // The season (J's design, 15 Oct 2026): one direction at a time, his pen, copied by the
+  // launcher into state/season.txt before each wake; shown under her paragraph, hidden when empty.
+  const season = await get('state/season.txt', 'text');
+  const line = season.ok ? season.data.trim().replace(/^\*\*Set [^*]*\*\*\s*/, '') : '';
+  const el = document.getElementById('season');
+  if (el && line) { el.textContent = `This season: ${line}`; el.hidden = false; }
   await loadUsed();
   try { drawLists(); } catch (e) { console.warn('lists', e); }
   placed();
