@@ -124,6 +124,8 @@ test('the morning line, exactly', () => {
   // a talk with Quill is something new, even with nothing else made
   assert.match(formatMorningLine({ ...zero, talks: 2 }), /Quill: 0 yes \/ 0 no, desk: .*; talks: 2;/);
   assert.match(formatMorningLine({ ...zero, desk: [] }), /desk: nothing drawn; took neither/);
+  // helpers, when the closing record had them (the 15 Oct 2026 plan, step 4)
+  assert.match(formatMorningLine({ ...e, helpers: { started: 3, finished: 2, killed_at_end: 1 } }), /talks: 1; helpers: 3 started, 2 finished, 1 killed at the turn's end; \$1\.23/);
 });
 
 test('validate: the second day\'s desk, wall and Quill doors, and the bad cases refused', () => {

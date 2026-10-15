@@ -258,7 +258,11 @@ export function formatMorningLine(e, titles = {}) {
   const used = Number(e.used_new) > 0 ? `, used: ${e.used_new}` : '';
   // the desk's record (the second day): what was drawn, through which door, what she took
   const drawn = (e.desk || []).map((d) => `${d.pool}/${d.door}`).join(', ') || 'nothing drawn';
-  const desk = `desk: ${drawn}; took ${e.took ? `"${e.took}"` : 'neither'}; talks: ${Number(e.talks) || 0}`;
+  // helpers (the 15 Oct 2026 plan, step 4): started, finished, killed when her turn ended, Quill
+  // included, from the run's closing record; a helper still running when she ends her turn dies
+  const h = e.helpers;
+  const helpers = h ? `; helpers: ${h.started} started, ${h.finished} finished, ${h.killed_at_end} killed at the turn's end` : '';
+  const desk = `desk: ${drawn}; took ${e.took ? `"${e.took}"` : 'neither'}; talks: ${Number(e.talks) || 0}${helpers}`;
   const nothing = !e.pins && !steps.length && !e.cloud && !e.shelf && !q.recorded && !q.called && !used && !Number(e.talks);
   if (nothing) return `- **${day} — the room:** nothing new in the room, ${desk}; ${spend}.`;
   const bench = steps.length

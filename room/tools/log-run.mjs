@@ -130,6 +130,13 @@ const entry = {
   sameness: sameness(trace, jsonl(join(STATE, 'log.jsonl')).slice(-7).map((e) => e.trace)),
   broken,
 };
+// Her helpers, raw from the closing record's subagent stats, Quill included (the 15 Oct 2026
+// plan, step 4, March's pick over a sentence telling her): in wake 5 she ended her turn while
+// a helper ran, the helper died with it, the build was left half, and the only record said
+// "killed by system: 1" in a /tmp file she never reads. Now her room's log says it, beside
+// the half build, where she reads at wake. A record with no stats (an older CLI) adds nothing.
+const st = result.subagent_stats;
+if (st && typeof st === 'object') entry.helpers = { started: Number(st.spawned) || 0, finished: Number(st.completed) || 0, killed_at_end: Number(st.killed && st.killed.system) || 0 };
 // A scratch test (the levers plan, 13 Oct 2026) stamps its cell and the "continued"
 // count into its own log; a live wake never sets FREE_HOUR_CELL, so the public log
 // gains nothing.
