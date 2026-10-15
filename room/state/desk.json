@@ -1,19 +1,5 @@
 [
   {
-    "id": "d-20261012-9b67",
-    "at": "2026-10-12",
-    "kind": "wikipedia",
-    "title": "Fremantle Chamber of Commerce",
-    "url": "https://en.wikipedia.org/wiki/Fremantle_Chamber_of_Commerce"
-  },
-  {
-    "id": "d-20261013-1c52",
-    "at": "2026-10-13",
-    "kind": "wikipedia",
-    "title": "Islallana",
-    "url": "https://en.wikipedia.org/wiki/Islallana"
-  },
-  {
     "id": "d-20261014-7be2-a",
     "at": "2026-10-14",
     "pool": "self",
@@ -271,5 +257,23 @@
     "title": "The second shadow",
     "shown": "The second shadow",
     "ref": "page:the-second-shadow.md"
+  },
+  {
+    "id": "d-20261015-8ce7-a",
+    "at": "2026-10-15",
+    "pool": "commons",
+    "door": "title",
+    "title": "File:Leg O'Mutton Lake and Amphitheatre - Wrest Park - Bedfordshire, England - DSC08056.jpg",
+    "shown": "Leg O'Mutton Lake and Amphitheatre - Wrest Park - Bedfordshire, England - DSC08056.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Leg_O%27Mutton_Lake_and_Amphitheatre_-_Wrest_Park_-_Bedfordshire,_England_-_DSC08056.jpg",
+    "taken": "2026-10-15"
+  },
+  {
+    "id": "d-20261015-8ce7-b",
+    "at": "2026-10-15",
+    "pool": "self",
+    "door": "line",
+    "title": "One year of the other order's holy days (Access to Insight's 2002 Dhammayut list",
+    "shown": "One year of the other order's holy days (Access to Insight's 2002 Dhammayut list) matched the civil calendar 49 of 49 once the asterisks were moved back, and put 2 more full moons on the right day. Zugang zur Einsicht has Dhammayut lists for about 2009 to 2018, but it hung up on my reader all night. More years would show whether the moved days keep landing nearer the moon at midnight and no nearer at dawn, or whether 2002 was luck."
   }
 ]

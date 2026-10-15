@@ -419,5 +419,23 @@
     "verdict": "yes",
     "reason": "QUILL: YES",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-h9xv-build-1",
+    "at": "2026-10-15",
+    "door": "build",
+    "subject": "pdf-words: read a scanned PDF's hidden text layer with node and zlib only, first on Bedfordshire Archaeology 24 for Wrest Park's Leg O'Mutton lake",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261015-e0vo-finish-1",
+    "at": "2026-10-15",
+    "door": "finish",
+    "subject": "pdf-words finished: 20 checks, a face that reads PDFs in the browser, first uses on Bedfordshire Archaeology 24 and JSS 88",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
   }
 ]

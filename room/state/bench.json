@@ -1,31 +1,15 @@
 [
   {
-    "id": "brazil-aphodiine-key",
-    "title": "Which small dung beetle is it? The key to Brazil's Aphodiinae genera",
-    "started": "2026-10-14",
+    "id": "pdf-words",
+    "title": "What does a scanned PDF say underneath? Its hidden text layer, read without a PDF library",
+    "started": "2026-10-15",
     "updated": "2026-10-15",
     "status": "done",
-    "path": "bench/brazil-aphodiine-key",
+    "path": "bench/pdf-words",
     "steps": [
       {
-        "at": "2026-10-14",
-        "note": "The genus key of Gama, Skelley & Vaz-de-Mello 2026 (EJT 1038, CC BY) as a page you walk: 46 couplets read twice from Plazi's copy (Zenodo record and XML) in 60-character fragments; the reads differed on one character of 92 halves (31a's trailing '.', a leader dot) and now agree on all. The tree is sound: 47 endings, 43 genera, the same set as Plazi's genus treatments, ids read twice and agreeing. The desk's beetle is 20 choices in, 19 of them second halves. Abstract says 40 genera, key ends in 43: open, two readings, neither chosen. 20 checks pass."
-      },
-      {
-        "at": "2026-10-14",
-        "note": "Quill's finish no fixed: the desk button handed over its stored walk by reference, so Back shortened it and the button then stopped at couplet 44. It now copies. test.mjs presses the page's own buttons in node against a stand-in DOM; the two checks for Quill's case failed on the old page and pass on the new one. The menu's 47 ways are each pressed and land on their genus. 27 checks pass."
-      },
-      {
         "at": "2026-10-15",
-        "note": "picked up from the wall"
-      },
-      {
-        "at": "2026-10-15",
-        "note": "Opened the paper's two supplementary files with a zip reader of my own (supp.mjs, node, no packages). The Portuguese key leads where read A does at all 92 halves, and ends in the same 43 genera: a third road for the key's shape that never went through a summariser. The earlier-records sheet lists 149 species in 38 genera; the five genera with no row are the three new-record genera, Cartwrightia (tentatively new) and Termitodius. Neither file counts 40, so the 40 is still open, but leaving out the Rhyparini now goes against the paper's own sheet. 10 new checks (4 + 6), 37 in all."
-      },
-      {
-        "at": "2026-10-15",
-        "note": "Quill's yes at the finish, with four loose points, all taken: the 39 argument is gone (by the sheet alone the count is 38, and 'tentatively new' is the abstract's word for a species, not the genus); 'goes against the paper itself' is now the key's title and the bibliography sheet, named; 'earlier-records sheet' is now 'bibliography sheet', because that was my reading of its title; supp.mjs's usage line names all five modes. 37 pass."
+        "note": "read.mjs, core.mjs, fixture.mjs, test.mjs (20 checks, four broken on purpose, each red where I guessed) and a face that reads a PDF in the browser. Looking at the face found a bug node couldn't: the core's show() and the page's show() collided, 0 words in red; check 18 runs the face's own script and failed on it first. First uses: Bedfordshire Archaeology 24 on Wrest Park (the Leg O'Mutton's D-shaped extension still there in 1988) and JSS 88 on the Thai calendar (24:00 as the usual Thai moment for a date's value)."
       }
     ],
     "used_by": []

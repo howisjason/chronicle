@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does a PDF say underneath?</title>
+<style>
+  :root { --ink: #222; --soft: #666; --line: #ddd; --bg: #fbfaf7; --mark: #2f6f5e; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.5 system-ui, sans-serif; color: var(--ink); background: var(--bg); }
+  main { max-width: 760px; margin: 0 auto; padding: 22px 18px 40px; }
+  h1 { font-size: 21px; margin: 0 0 4px; }
+  .sub { color: var(--soft); margin: 0 0 16px; }
+  #drop { border: 2px dashed #bbb; border-radius: 10px; padding: 18px; text-align: center; background: #fff; }
+  #drop.over { border-color: var(--mark); background: #f1f7f4; }
+  #drop p { margin: 4px 0; }
+  button, label.btn { font: inherit; padding: 5px 12px; border: 1px solid #aaa; border-radius: 6px; background: #fff; cursor: pointer; }
+  input[type=file] { display: none; }
+  #status { margin: 14px 0 6px; color: var(--soft); min-height: 1.5em; }
+  #status.bad { color: #a33; }
+  .page { background: #fff; border: 1px solid var(--line); border-radius: 8px; margin: 10px 0; }
+  .page h2 { font-size: 13px; font-weight: 600; color: var(--soft); margin: 0; padding: 6px 12px; border-bottom: 1px solid var(--line); }
+  .page pre { margin: 0; padding: 10px 12px; white-space: pre-wrap; font: 13px/1.45 ui-monospace, Menlo, monospace; }
+  .page pre.empty { color: #aaa; font-style: italic; }
+  footer { margin-top: 22px; color: var(--soft); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>What does a PDF say underneath?</h1>
+  <p class="sub">A scanned PDF is often a picture of each page with the scanner's own reading of it hidden behind, as invisible text. This page reads that text out, page by page. It is under 500 lines of plain code with no PDF library, and your file never leaves this browser.</p>
+  <div id="drop">
+    <p><b>Drop a PDF here</b>, or <label class="btn" for="file">choose one</label> <input id="file" type="file" accept=".pdf,application/pdf"> or <button id="sample">read the sample again</button></p>
+    <p class="sub" style="margin:0">The sample is a two-page PDF made by this build's own fixture code, built into the page.</p>
+  </div>
+  <div id="status"></div>
+  <div id="out"></div>
+  <footer>Reads: compressed and uncompressed pages, object streams, ToUnicode maps, WinAnsi and /Differences, form XObjects. Refuses: locked (encrypted) PDFs. Stops any one stream at 32 MB. A page with no text layer comes out empty: that's a scan nobody read.</footer>
+</main>
+<script>
+// The core, in a scope of its own: only pdfText comes out, so none of its
+// names can meet the page's (on 15 Oct its show() and the page's collided).
+const pdfText = (() => {
+/*CORE*/
+return pdfText;
+})();
+
+// The browser's own inflate, counted as it comes so it stops at the cap.
+async function inflate(b, cap) {
+  const ds = new DecompressionStream('deflate');
+  const w = ds.writable.getWriter();
+  w.write(b).catch(() => {});
+  w.close().catch(() => {});
+  const r = ds.readable.getReader();
+  const parts = [];
+  let n = 0;
+  try {
+    for (;;) {
+      const { done, value } = await r.read();
+      if (done) break;
+      n += value.length;
+      if (n > cap) { r.cancel().catch(() => {}); throw new Error('past the cap'); }
+      parts.push(value);
+    }
+  } catch (e) {
+    if (/cap/.test(e.message)) throw e;
+    if (!parts.length) throw e; // a stream cut short keeps what came, as node's sync flush does
+  }
+  const out = new Uint8Array(n > cap ? 0 : parts.reduce((a, p) => a + p.length, 0));
+  let at = 0;
+  for (const p of parts) { out.set(p, at); at += p.length; }
+  return out;
+}
+
+const SAMPLE = "/*SAMPLE*/";
+const $ = id => document.getElementById(id);
+
+async function render(bytes, name) {
+  const status = $('status'), out = $('out');
+  status.className = '';
+  status.textContent = `Reading ${name}…`;
+  out.innerHTML = '';
+  try {
+    const { pages, notes } = await pdfText(bytes, inflate);
+    const words = pages.reduce((a, p) => a + p.split(/\s+/).filter(Boolean).length, 0);
+    status.textContent = `${name}: ${pages.length} page${pages.length === 1 ? '' : 's'}, ${words} words` + (notes.length ? ` (${notes.join('; ')})` : '');
+    pages.forEach((text, i) => {
+      const sec = document.createElement('section');
+      sec.className = 'page';
+      const h = document.createElement('h2');
+      h.textContent = `page ${i + 1}`;
+      const pre = document.createElement('pre');
+      if (text) pre.textContent = text;
+      else { pre.textContent = 'no text on this page'; pre.className = 'empty'; }
+      sec.append(h, pre);
+      out.append(sec);
+    });
+  } catch (e) {
+    status.className = 'bad';
+    status.textContent = `${name}: ${e.message}`;
+  }
+}
+
+function sampleBytes() {
+  const bin = atob(SAMPLE);
+  const b = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) b[i] = bin.charCodeAt(i);
+  return b;
+}
+
+$('sample').onclick = () => render(sampleBytes(), 'the sample');
+$('file').onchange = async e => { const f = e.target.files[0]; if (f) render(new Uint8Array(await f.arrayBuffer()), f.name); };
+const drop = $('drop');
+drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
+drop.ondragleave = () => drop.classList.remove('over');
+drop.ondrop = async e => {
+  e.preventDefault();
+  drop.classList.remove('over');
+  const f = e.dataTransfer.files[0];
+  if (f) render(new Uint8Array(await f.arrayBuffer()), f.name);
+};
+render(sampleBytes(), 'the sample');
+</script>
+</body>
+</html>
