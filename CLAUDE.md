@@ -96,7 +96,7 @@ about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 ## Tests
 
 `node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (53 tests: 27 for the
-station, 25 for the room, described in the Room section). The station's: the checker's
+station, 26 for the room, described in the Room section). The station's: the checker's
 plant a wrong number, a missing source and forbidden words and watch each
 refused; the talk rules refuse a 352-word rally, a scene of same-length lines and
 one over 2,600 words, and pass a real lab scene (`station/fixtures/talk-scene.json`); the hour-file ones check an hour turn and midnight, and that the first

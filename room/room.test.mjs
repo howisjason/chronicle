@@ -474,8 +474,8 @@ test('the season file holds one set line at most, and the notes never reach her'
   // be two seasons, which the design forbids: one slot.
   const hers = (t) => t.split('\n').filter((l) => !/^\s*#( |$)/.test(l) && l.trim() !== '');
   const real = hers(readFileSync(`${B}/inner-life/season.md`, 'utf8'));
-  assert.equal(real.length, 1);
-  assert.match(real[0], /^\*\*Set \d{1,2} \w+ \d{4}:\*\* \S/);
+  assert.ok(real.length <= 1, 'one slot: at most one set line; empty is a valid season');
+  if (real.length) assert.match(real[0], /^\*\*Set \d{1,2} \w+ \d{4}:\*\* \S/);
   assert.deepEqual(hers('# a note\n#\n# another\n'), []);
   assert.equal(hers('# note\n**Set 1 Jan 2027:** one\n**Set 2 Jan 2027:** two\n').length, 2, 'two lines must be seen as two, so the real file is held to one above');
 });
