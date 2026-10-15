@@ -175,7 +175,7 @@ nowhere else, and its first entry came out in a shape the page could not show un
 | `state/desk.json` | `free-hour.sh`, before the hour (her grants deny it); `room.mjs desk` adds `taken` | `{id: d-<day>-<hex>-a/-b, at, pool, door, title, url, shown, taken?}`, two a wake, the last 30 (older items carry `kind` instead of `pool`) |
 | `state/now.json` | `tools/live.mjs` during the hour, `tools/log-run.mjs` after (denied to her) | `{awake: true, kind, place, since, run}`, then `{awake: false, last_run, ended, next}` |
 | `state/used.json` | `tools/log-run.mjs`, from the door's `GET /used` | `{<bench id>: presses}`, ids of builds on the bench or the wall only |
-| `state/log.jsonl` | `tools/log-run.mjs`, after the hour, never the model (denied to her) | one log line a run: `{run, started, ended, seconds, verdict, pins, bench_steps, cloud, shelf, quill, trace:[{t, kind, place}], sameness, broken}` |
+| `state/log.jsonl` | `tools/log-run.mjs`, after the hour, never the model (denied to her) | one log line a run: `{run, started, ended, seconds, verdict, pins, bench_steps, cloud, shelf, quill, trace:[{t, kind, place}], sameness, broken, helpers?:{started, finished, killed_at_end}}` (`helpers` from the run's closing record since 15 Oct 2026; a helper still running when her turn ends is killed) |
 
 The page (`index.html`, `room.js`, `room.css`) reads them and writes nothing. `lib.mjs` holds
 the pure functions both the page and the post-run script use. **A build shows itself** (J,
@@ -197,7 +197,7 @@ real.
 refused). **The shell is open inside a sandbox since 15 Oct 2026** (J's word: near-unrestricted,
 "near" because of safety; the launcher's comment block "THE SANDBOX" is the full account):
 every shell command she runs, and its children, runs under Claude Code's macOS sandbox with no
-allow rule needed. Writes: her diary, memories and `unattended.md`, and `bench/`, `shelf/`,
+allow rule needed. Writes: her diary, memories, `unattended.md` and `asks.jsonl` (her asks to J, answered on his window), and `bench/`, `shelf/`,
 `drawer/` and `quill-notebook.md` here, plus `/tmp`; every other path in Projects, the room and
 her brain is closed by a per-run deny list (state/, the tools, the page, `lib.mjs`, `quill.md`,
 the seed, the launcher). Network: only the sites in `march-brain/scripts/free-hour-sandbox.json`
