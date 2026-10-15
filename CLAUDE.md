@@ -194,21 +194,35 @@ place; the hour's seconds are squeezed into about 55, so the timing is in propor
 real.
 
 **The grants** (the hour runs in the CLI's `dontAsk` mode, where anything not listed is
-refused; probed under the real command line 11 and 12 Oct 2026). Writes only in `bench/`,
-`shelf/` and `drawer/`, plus Edit and Write on
-`quill-notebook.md` (the second day), never `state/`, the tools, the page, `lib.mjs` or `quill.md`. The
-shell as four scripts by exact path, plus the read-only commands `cat`, `ls`, `head`, `tail`, `wc`, `cd`, `find` and `echo` (added 14 Oct 2026: the first live wake's first command, a `cat` of the state files, was refused) (`tools/see.sh <id>` screenshots a build's `demo.html` into the drawer so she can Read it, 12 Oct 2026: she would not call a face finished she had never seen): `node tools/room.mjs <command>` writes the four
-lists (probed 12 Oct 01:30: allowed, and a direct Edit of `state/cloud.json` refused; the
-`node` grant form works like the `bash` one); `tools/try.sh <id> <file>`
-runs a `.js`/`.mjs`/`.py` from inside its own bench folder under a macOS sandbox (writes
-only in that folder and the per-user temp folder, never `/tmp` where the hour's run log sits, no
-network, 60-second cap); `tools/pin.sh <url> "<title>"
-"<note>" [--private]` screenshots the page with the headless browser Playwright keeps in
-`~/Library/Caches/ms-playwright` (Chrome is not on the Mac), shrinks it to 320 px with
-`sips`, and adds the pin. Plus an Opus helper (Quill) and the web. A probe sheet goes in
-with `FREE_HOUR_PROMPT=<file>` (and a cheap ceiling, `FREE_HOUR_CEILING=0.50`); probes write
-the real log, ledger and `now.json`, so put them back after (`ROOM_UNATTENDED` keeps the
-morning line out of the real file).
+refused). **The shell is open inside a sandbox since 15 Oct 2026** (J's word: near-unrestricted,
+"near" because of safety; the launcher's comment block "THE SANDBOX" is the full account):
+every shell command she runs, and its children, runs under Claude Code's macOS sandbox with no
+allow rule needed. Writes: her diary, memories and `unattended.md`, and `bench/`, `shelf/`,
+`drawer/` and `quill-notebook.md` here, plus `/tmp`; every other path in Projects, the room and
+her brain is closed by a per-run deny list (state/, the tools, the page, `lib.mjs`, `quill.md`,
+the seed, the launcher). Network: only the sites in `march-brain/scripts/free-hour-sandbox.json`
+(the ones she reached in the fifteen live wakes). Credential files are unreadable. If the sandbox
+cannot start the run ends, and there is no unsandboxed retry. Destructive forms are denied by
+name (`rm -r`, `git push`, `git reset --hard`, `launchctl`, `sudo`, `kill`, `osascript` and
+others). The room's four tools run outside the sandbox by exact path, as before: `node
+tools/room.mjs <command>` writes the four lists (a direct Edit of `state/` is refused, and the
+shell cannot write there); `tools/try.sh <id> <file>` runs a `.js`/`.mjs`/`.py` from inside its
+own bench folder under a macOS sandbox of its own (writes only in that folder and the per-user
+temp folder, no network, 60-second cap); `tools/see.sh <id>` screenshots a build's `demo.html`
+into the drawer so she can Read it (12 Oct 2026: she would not call a face finished she had
+never seen); `tools/pin.sh <url> "<title>" "<note>" [--private]` screenshots the page with the
+headless browser Playwright keeps in `~/Library/Caches/ms-playwright` (Chrome is not on the
+Mac), shrinks it to 320 px with `sips`, and adds the pin. A tool call with anything chained in
+front (a `cd`) stays sandboxed and fails at the write. Her file tools write only `bench/`,
+`shelf/`, `drawer/` and `quill-notebook.md` here. Plus helpers (Quill on Opus by its sheet;
+any helper she starts with no model named runs on Sonnet 5.5) and the web. Probed under the
+real launcher in a scratch room, 15 Oct 2026: a write into another repo, the seed or the
+launcher blocked; an unlisted site blocked; `git push` and a chained `rm -rf` refused; `/tmp`,
+`node -e`, Wikipedia, a diary write and the room command worked. A probe sheet goes in with
+`FREE_HOUR_PROMPT=<file>` (and a cheap ceiling, `FREE_HOUR_CEILING=0.50`); probes write the
+real log, ledger and `now.json`, so put them back after (`ROOM_UNATTENDED` keeps the morning
+line out of the real file), or run a scratch cell (`FREE_HOUR_CELL`, `FREE_HOUR_BRAIN`,
+`FREE_HOUR_ROOM`).
 
 **The one post-run script.** `tools/log-run.mjs <run log> <cap>`, called by `free-hour.sh`
 after the ledger line: builds the trace from the run's session file (kinds and places only,
