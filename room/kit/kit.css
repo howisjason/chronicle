@@ -1,426 +1,301 @@
 /* =====================================================================
-   OLIVE GARDEN · components
-   Link tokens.css first, then this file. Every colour here is var(...);
-   the two marks (the curl, the leaf pair) are masks taken from tokens.css
-   (embedded copies of kit/marks/*.svg), so they take any token colour. Same classes in both modes.
+   MOON GATE · parts
+   Link tokens.css first, then this file. Every colour and size here is
+   var(...). Pictures come only from kit/assets/ (see SOURCES.md), and the
+   paths below are relative to this file, so copy kit/ whole.
+   Built from the approved page, drafts/round8/a3-moon-gate (18 Oct 2026).
+   ("black" in a mask is only a stencil: it marks what shows, it is never painted.)
    ===================================================================== */
 
-/* ---------- 1. reset and base type ---------- */
+/* ---------- 1. base ---------- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { background: var(--page); }
+html { background: var(--wall); }
+/* The page must scroll in any panel: never overflow:hidden on html or body.
+   overflow-x:clip trims sideways spill (a leaf over an edge) without making a scroll box. */
 body {
-  background: var(--ground);
-  color: var(--tx-2);
-  font: 400 var(--t-body)/1.65 var(--f-body);
+  position: relative; overflow-x: clip;
+  color: var(--ink); font: 400 var(--t-body)/1.65 var(--sans);
   -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
 }
-/* the page's hidden SVG holder (the chop's #rough filter lives in one) */
-.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
-p { max-width: 62ch; }
-p + p { margin-top: var(--gap); }
+header, main, footer { position: relative; }
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(var(--wrap), 100% - 48px); margin: 0 auto; position: relative; }
 
-/* one entrance for everything: things set down, they do not slide */
-@keyframes setdown { from { opacity: 0; transform: translateY(6px) rotate(-.4deg); } to { opacity: 1; transform: none; } }
-.enter { animation: setdown .9s var(--ease) both; }
-.enter.later { animation-delay: .08s; }
-.enter.last { animation-delay: .14s; }
+/* the ONE slanted old word in a headline: <span class="old">fresh</span> */
+.old { font-family: var(--old); font-style: italic; font-weight: 600; letter-spacing: -.01em; font-size: 1.18em; line-height: .9; }
+/* tracked green capitals over a title */
+.eyebrow { font-size: var(--t-label); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--leaf); }
+.lead { font-size: var(--t-lead); color: var(--ink-2); }
+.muted { color: var(--ink-2); }
 
-/* ---------- 2. the type roles ---------- */
-/* label: tiny tracked mono capitals, in the green */
-.label {
-  font: 500 var(--t-label)/1.4 var(--f-mono);
-  letter-spacing: .22em; text-transform: uppercase; color: var(--label);
-}
-.label.dim { color: var(--tx-3); }
-/* meta: the same mono, small and quiet, with even-width numbers */
-.meta {
-  font: 400 var(--t-label)/1.5 var(--f-mono);
-  letter-spacing: .04em; color: var(--tx-3);
-  font-variant-numeric: tabular-nums;
-}
-/* display: the Roman serif for titles */
-.display {
-  font: 600 var(--t-title)/1.15 var(--f-display);
-  color: var(--tx-1); letter-spacing: .005em;
-}
-/* display, hero size: ink poured as a gradient, the italic word in gold */
-.display-xl {
-  font: 700 var(--t-display)/.95 var(--f-display);
-  letter-spacing: -.005em;
-  background: var(--title-ink);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  padding: 0 .04em .06em;
-}
-.display-xl em {
-  font-style: italic; font-weight: 600;
-  background: var(--title-gold);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  padding-right: .06em;
-}
-/* stat: a number at title size */
-.stat {
-  font: 600 var(--t-title)/1 var(--f-display); color: var(--tx-1);
-  font-variant-numeric: lining-nums;
-}
-.stat small { font-size: inherit; color: var(--tx-3); }
-/* flavor: the italic serif, at title size only (legibility beats style) */
-.flavor { font: italic 600 var(--t-title)/1.25 var(--f-display); color: var(--tx-1); }
+/* Lucide icons, pasted inline: <svg class="i" ...>. They take the text colour around them. */
+svg.i { width: 1em; height: 1em; flex: none; stroke-width: 1.9; vertical-align: -.14em; }
 
-/* the separator: a hollow ring */
-.sep {
-  display: inline-block; width: 5px; height: 5px; border-radius: 50%;
-  border: 1px solid var(--tx-4); margin: 0 .9em; vertical-align: middle;
-  position: relative; top: -1px;
+/* ---------- 2. the wall: one long sunlit plaster wall under the whole page ----------
+   Put <div class="wall" aria-hidden="true"></div> as the first thing in <body>.
+   The tile is a strip of real plaster over its own mirror, so it repeats with no seam. */
+.wall {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: url("assets/plaster-tile.jpg") 50% 0 / max(1280px, 100%) auto repeat-y;
+  filter: brightness(1.12); mix-blend-mode: multiply; opacity: .4;
 }
 
-/* ---------- 3. the frame: hairline, radius, and the curl on every corner ---------- */
-.frame {
-  position: relative;
-  border: 1px solid var(--hair);
-  border-radius: var(--radius);
-  background: var(--fill);
-  box-shadow: var(--shadow);
-  transition: border-color .5s var(--ease), transform .5s var(--ease);
+/* ---------- 3. the gate: the hero, with the band, the leaf shadow and the ensō door ----------
+   Drawn for a 1280px-wide page; everything is placed from the centre line. */
+.gate { position: relative; height: 900px; overflow: hidden; background: var(--paper); }
+/* the pale green band, centred under the ensō (J, 18 Oct 2026, 8d) */
+.gate-band { position: absolute; top: 0; bottom: 0; left: calc(50% - 88px); width: 196px; background: var(--band); }
+/* the leaf shadow falling across the wall: real photo, multiplied, soft-edged */
+.gate-shadow {
+  position: absolute; left: -120px; top: -70px; width: 1760px; height: 1173px; pointer-events: none;
+  background: url("assets/leaf-shadow.jpg") 0 0 / 100% 100% no-repeat; mix-blend-mode: multiply;
 }
-.frame::before, .curls::before {
-  content: ""; position: absolute; inset: -1px; pointer-events: none;
-  background: var(--device);
-  -webkit-mask:
-    var(--curl-tl) top left / var(--corner) var(--corner) no-repeat,
-    var(--curl-tr) top right / var(--corner) var(--corner) no-repeat,
-    var(--curl-bl) bottom left / var(--corner) var(--corner) no-repeat,
-    var(--curl-br) bottom right / var(--corner) var(--corner) no-repeat;
-          mask:
-    var(--curl-tl) top left / var(--corner) var(--corner) no-repeat,
-    var(--curl-tr) top right / var(--corner) var(--corner) no-repeat,
-    var(--curl-bl) bottom left / var(--corner) var(--corner) no-repeat,
-    var(--curl-br) bottom right / var(--corner) var(--corner) no-repeat;
+.gate-shadow.soft {
+  filter: blur(2.2px) brightness(1.3) contrast(1.02) saturate(1.2); opacity: .72;
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 60% 20%, black 45%, transparent 100%);
+          mask-image: radial-gradient(ellipse 75% 70% at 60% 20%, black 45%, transparent 100%);
 }
-.frame:hover { border-color: var(--hair-strong); transform: translateY(-1px); }
-/* .curls: the corners alone, inset, for a panel that is not a frame (the hero) */
-.curls { position: absolute; inset: 12px; pointer-events: none; display: var(--mount); --corner: 40px; }
-.curls::before { inset: 0; }
+/* the live green leaves at the very top of the same photo */
+.gate-shadow.leaves {
+  filter: brightness(1.32) contrast(1.06) saturate(1.75) hue-rotate(-10deg);
+  -webkit-mask-image: radial-gradient(ellipse 34% 26% at 63% 6%, black 55%, transparent 100%);
+          mask-image: radial-gradient(ellipse 34% 26% at 63% 6%, black 55%, transparent 100%);
+}
+/* the business dose: the soft shadow only, kept to the top right corner, off the words */
+.gate-shadow.corner {
+  filter: blur(2.2px) brightness(1.3) contrast(1.02) saturate(1.2); opacity: .6;
+  -webkit-mask-image: radial-gradient(ellipse 48% 42% at 78% 4%, black 30%, transparent 100%);
+          mask-image: radial-gradient(ellipse 48% 42% at 78% 4%, black 30%, transparent 100%);
+}
+.gate-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 260px; background: linear-gradient(to bottom, var(--wall-clear), var(--wall) 92%); }
 
-/* .verdant: a green surface. On paper it is velvet and every ink turns over to white;
-   at night it is simply the ground. */
-.verdant {
-  --tx-1: var(--vd-tx-1); --tx-2: var(--vd-tx-2); --tx-3: var(--vd-tx-3); --tx-4: var(--vd-tx-4);
-  --label: var(--vd-label);
-  --hair: var(--vd-hair); --hair-strong: var(--vd-hair-strong); --device: var(--vd-device);
-  --title-ink: var(--vd-title-ink); --title-gold: var(--vd-title-gold);
-  --seal-metal: var(--vd-seal-metal); --seal-shadow: var(--vd-seal-shadow);
-  --green-fill: var(--vd-green-fill); --green-line: var(--vd-green-line); --track: var(--vd-track);
-  --disc-ring: var(--vd-disc-ring); --disc-inner: var(--vd-disc-inner);
-  background: var(--verdant-bg);
-  color: var(--tx-2);   /* re-read the ink here, so plain text on velvet turns white too */
+/* the door: a real ensō (brush circle) with spring light inside, at the true centre */
+.door { position: absolute; left: 50%; margin-left: -280px; top: 118px; width: 560px; height: 560px; }
+.door-light, .door-through { position: absolute; left: 31px; top: 16px; width: 500px; height: 500px; border-radius: 50%; }
+.door-light { background: radial-gradient(circle at 42% 38%, var(--door-1) 0%, var(--door-2) 55%, var(--door-3) 100%); }
+/* the green reaches the ink: the ring is drawn over the light (J, 8d) */
+.door-enso {
+  position: absolute; left: -108px; top: -268px; width: 772px; height: 1092px; pointer-events: none;
+  background: url("assets/enso.png") 0 0 / 100% 100% no-repeat;
+  mix-blend-mode: multiply; filter: grayscale(1) brightness(.86) contrast(2);
+}
+.door-through { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.door-through h1 { font-size: var(--t-hero); line-height: 1; font-weight: 800; letter-spacing: -.035em; margin-top: 18px; }
+.door-through .note { margin-top: 22px; font-size: var(--t-small); font-weight: 600; color: var(--ink-2); }
+/* a photo seen through the door instead of the light (the portfolio dose) */
+.door-through > img.photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.door .spark { position: absolute; right: 20px; bottom: 78px; }
+
+/* the words under the door */
+.gate-say { position: absolute; left: 50%; margin-left: -300px; width: 600px; top: 716px; text-align: center; }
+/* full ink here: the band and the leaf shadow sit behind this line, and ink-2 fell under 7:1 at their darkest */
+.gate-say .lead { color: var(--ink); }
+.gate-say .row { justify-content: center; margin-top: 24px; }
+
+/* the gold calligraphy title, to the side; it never moves the door off centre (J, 8c) */
+.gate-title { position: absolute; left: calc(50% + 350px); top: 122px; width: 222px; height: 590px; }
+/* the crop for calligraphy-profound-sincerity.jpg; another ink needs its own crop */
+.gate-title img { width: 402px; left: -92px; top: -40px; }
+/* small vertical Chinese text beside the title, like a book cover */
+.vtext { position: absolute; left: calc(50% + 582px); top: 228px; writing-mode: vertical-rl; font: 500 var(--t-body)/1.65 var(--cjk); letter-spacing: .3em; color: var(--ink); }
+.vtext small { display: block; font: 600 var(--t-label)/1.65 var(--sans); letter-spacing: .2em; color: var(--ink-2); margin-right: 7px; }
+
+/* the nav: a white pill floating on the wall */
+.topnav { position: absolute; top: 0; left: 0; right: 0; z-index: 6; }
+.topnav .wrap { display: flex; align-items: center; height: 84px; gap: 10px; }
+.brand { font-weight: 800; font-size: var(--t-lead); letter-spacing: -.01em; display: flex; align-items: center; gap: 9px; }
+.brand svg { width: 20px; height: 20px; color: var(--leaf); }
+.topnav ul { list-style: none; display: flex; gap: 2px; margin-left: auto; background: var(--paper); padding: 5px; border-radius: var(--r-pill); box-shadow: var(--sh-float); }
+.topnav li { font-size: var(--t-small); font-weight: 600; color: var(--ink-2); padding: 8px 16px; border-radius: var(--r-pill); }
+.topnav li.on { background: var(--ink); color: var(--wall); }
+
+/* ---------- 4. the ink moves ---------- */
+/* Lifted ink: a museum scan's yellowed paper turns white, so only the ink sits on the wall.
+   Bold ink lifts cleanly. Crop the scroll's mounting off with a wrapper (overflow hidden). */
+img.ink { filter: grayscale(1) brightness(1.35) contrast(2.2); mix-blend-mode: multiply; }
+/* soft grey washes fade under the full lift; start here and judge by eye */
+img.ink.wash { filter: grayscale(1) brightness(1.15) contrast(1.5); }
+
+/* Gold ink: real ink turned flat matte gold, no mask needed.
+   <div class="gold-ink"><img src="..."></div>. The ink is lifted, then a flat gold layer
+   with "lighten" turns black to gold and leaves white white; the box multiplies onto the wall. */
+.gold-ink { position: relative; overflow: hidden; isolation: isolate; mix-blend-mode: multiply; }
+.gold-ink img { position: absolute; filter: grayscale(1) brightness(1.35) contrast(2.4); }
+.gold-ink::after { content: ""; position: absolute; inset: 0; background: var(--gold); mix-blend-mode: lighten; }
+
+/* the leaf over the edge: a real banana leaf crossing a box's corner (breaking the frame).
+   Place it inside a box that has position:relative. */
+.leaf-over {
+  position: absolute; right: -70px; top: -92px; width: 300px; height: 250px; z-index: 3; pointer-events: none;
+  background: url("assets/banana-leaf.jpg") -150px -60px / 520px auto no-repeat;
+  filter: brightness(1.42) contrast(1.12) saturate(1.3); mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(ellipse 50% 44% at 52% 38%, black 60%, transparent 100%);
+          mask-image: radial-gradient(ellipse 50% 44% at 52% 38%, black 60%, transparent 100%);
 }
 
-/* ---------- 4. the strap: a container's header line, with the leaf pair at its end ---------- */
-.strap {
-  display: flex; align-items: center; gap: 12px;
-  padding: 18px var(--pad) 15px; border-bottom: 1px solid var(--strap-edge);
-  background: var(--strap-bg); border-radius: var(--radius) var(--radius) 0 0;
-  box-shadow: var(--strap-hem);
+/* the spark: the one alive thing, a tilted spring pill */
+.spark {
+  display: inline-flex; align-items: center; gap: 7px; transform: rotate(var(--tilt, -9deg));
+  background: var(--spring); color: var(--ink); font-weight: 800; font-size: var(--t-small); letter-spacing: .02em;
+  padding: 9px 18px; border-radius: var(--r-pill); box-shadow: var(--sh-spark); white-space: nowrap;
 }
-.strap .label { color: var(--strap-label); margin-right: auto; }
-.strap .meta { color: var(--strap-meta); }
-/* the leaf pair: the kit's only foliage. 34px wide, never larger, one per header line */
-.leaves {
-  display: block; flex: none; width: 34px; height: 22px; margin: -4px 0;
-  background: var(--leaf);
-  -webkit-mask: var(--leaf-mark) center / 34px 22px no-repeat;
-          mask: var(--leaf-mark) center / 34px 22px no-repeat;
-}
+.spark svg { width: var(--i-sm); height: var(--i-sm); }
+/* a spark pinned across a box's top right edge */
+.spark.edge { position: absolute; top: -16px; right: -20px; --tilt: 8deg; font-size: var(--t-label); padding: 7px 15px; }
 
-/* ---------- 5. icons: Lucide, inline SVG, stroke only, they take the text colour ---------- */
-.icon {
-  width: var(--i-md); height: var(--i-md); flex: none; display: inline-block; vertical-align: middle;
-  fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+/* ---------- 5. the seal: 鄧正, wide, both characters on one line, flat gold ink. Never red. ---------- */
+.seal {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 116px; height: 62px; gap: 6px; border-radius: var(--r-seal);
+  background: var(--gold); color: var(--seal-paper); box-shadow: var(--sh-seal);
+  font: 900 28px/1 var(--cjk);
 }
-.icon.sm { width: var(--i-sm); height: var(--i-sm); }
-.icon.lg { width: var(--i-lg); height: var(--i-lg); }
-.label .icon { margin: -2px 8px 0 0; }
-/* the disc: an icon inside a round gold hairline with a faint inner ring */
-.disc {
-  width: 40px; height: 40px; border-radius: 50%; flex: none; position: relative;
-  display: inline-grid; place-items: center; color: var(--tx-2);
-  border: 1px solid var(--disc-ring);
-}
-.disc::after {
-  content: ""; position: absolute; inset: 3px; border-radius: 50%; pointer-events: none;
-  border: 1px solid var(--disc-inner);
-}
+.seal.sm { width: 64px; height: 34px; gap: 3px; font-size: 15px; box-shadow: var(--sh-seal-sm); }
+/* the signature: the small seal beside a small date and a name, the way the artist signs */
+.sign { display: inline-flex; align-items: center; gap: 12px; }
+.sign .date { display: block; white-space: nowrap; font: 500 var(--t-label)/1.4 var(--cjk); letter-spacing: .18em; color: var(--ink); }
+.sign .who { display: block; font-size: var(--t-label); line-height: 1.4; font-weight: 700; letter-spacing: .06em; color: var(--ink); }
 
-/* ---------- 6. buttons: metal for the main one, forest for the second ---------- */
+/* ---------- 6. buttons, inputs, tags ---------- */
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.stack { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
 .btn {
-  font: 500 var(--t-label)/1 var(--f-mono); letter-spacing: .2em; text-transform: uppercase;
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 14px 22px; border-radius: var(--radius-sm); cursor: pointer;
-  transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+  display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 26px; border: 0; border-radius: var(--r-pill);
+  font: 700 var(--t-ui)/1 var(--sans); white-space: nowrap; cursor: pointer;
 }
-.btn-primary {
-  color: var(--metal-ink); border: 1px solid var(--au-3);
-  background: var(--metal);
-  box-shadow: inset 0 1px 0 var(--lit), inset 0 -1px 0 var(--shade),
-              0 0 22px -6px color-mix(in srgb, var(--au-2) 55%, transparent);
-}
-.btn-secondary { color: var(--green-ink); background: var(--green-fill); border: 1px solid var(--green-line); }
-.btn:hover { transform: translateY(-1px); }
-.btn-secondary:hover { border-color: var(--gr-2); }
+.btn svg { width: var(--i-md); height: var(--i-md); }
+.btn.go { background: var(--spring); color: var(--ink); }       /* the main action: alive */
+.btn.ink { background: var(--ink); color: var(--wall); }
+.btn.soft { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn.quiet { background: transparent; color: var(--leaf); padding: 0 6px; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1.5px; }
+.btn.sm { height: 40px; padding: 0 20px; font-size: var(--t-small); }
 
-/* ---------- 7. input, with an optional icon at its right end ---------- */
-.input {
-  width: 100%; font: 400 var(--t-body)/1 var(--f-body); color: var(--tx-1);
-  background: var(--input-bg); border: 1px solid var(--hair); border-radius: var(--radius-sm);
-  padding: 13px 14px; box-shadow: var(--input-shadow);
+.field label { display: flex; align-items: center; gap: 7px; font-size: var(--t-small); font-weight: 700; margin-bottom: 8px; }
+.field label svg { width: 16px; height: 16px; }
+.field .box {
+  height: 52px; border-radius: var(--r-pill); background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--line-2);
+  display: flex; align-items: center; gap: 10px; padding: 0 22px; font-size: var(--t-ui); color: var(--ink);
 }
-.input::placeholder { color: var(--tx-4); }
-.input:focus { outline: none; border-color: var(--gr-2); box-shadow: var(--input-shadow), 0 0 0 3px color-mix(in srgb, var(--gr-2) 35%, transparent); }
-.field { position: relative; display: block; }
-.field .input { padding-right: 42px; }
-.field .icon { position: absolute; right: 15px; top: 50%; margin-top: calc(var(--i-sm) / -2); color: var(--tx-3); pointer-events: none; }
+.field .box svg { width: var(--i-md); height: var(--i-md); color: var(--ink-2); }
+.field .box.empty { color: var(--ink-3); }
+.field .box.focus { box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 5px var(--spring-wash); }
+.field .caret { width: 1.5px; height: 22px; background: var(--ink); margin-left: -8px; }
+.field small { display: block; font-size: var(--t-small); color: var(--ink-2); margin-top: 8px; padding-left: 22px; }
+.field + .field { margin-top: 20px; }
 
-/* ---------- 8. toggle: green track when on, a gold knob ---------- */
-.toggle { display: inline-flex; align-items: center; gap: 12px; }
-.toggle i {
-  width: 44px; height: 24px; border-radius: 12px; position: relative; display: block;
-  background: var(--toggle-on); border: 1px solid var(--gr-2);
-  box-shadow: inset 0 1px 0 var(--lit-track), inset 0 -1px 2px var(--shade-in);
-}
-.toggle i::after {
-  content: ""; position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; border-radius: 50%;
-  background: var(--metal); border: 1px solid var(--au-3);
-  box-shadow: 0 1px 3px var(--shade-drop), inset 0 1px 0 var(--lit);
-}
-.toggle.off i { background: var(--track); border-color: var(--green-line); box-shadow: inset 0 1px 3px var(--shade-in); }
-.toggle.off i::after { right: auto; left: 2px; border: 0; background: linear-gradient(180deg, var(--tx-4), var(--tx-3)); box-shadow: 0 1px 2px var(--shade-drop); }
-
-/* ---------- 9. progress: a green track, filled with metal ---------- */
-.progress { width: 100%; }
-.progress .track {
-  height: 10px; border-radius: 5px; background: var(--track);
-  border: 1px solid var(--green-line); box-shadow: inset 0 1px 2px var(--shade-in); overflow: hidden;
-}
-.progress .fill {
-  height: 100%; width: 64%; border-radius: 5px; background: var(--metal);
-  box-shadow: inset 0 1px 0 var(--lit), 0 0 12px color-mix(in srgb, var(--au-2) 40%, transparent);
-}
-.progress .meta { display: flex; justify-content: space-between; margin-top: 10px; }
-.progress .meta b { color: var(--tx-1); font-weight: 500; }
-
-/* ---------- 10. tags ---------- */
 .tag {
-  font: 500 var(--t-label)/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase;
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 10px 5px; border-radius: 3px;
-  border: 1px solid var(--green-line); color: var(--green-ink); background: var(--green-fill);
+  display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 14px; border-radius: var(--r-pill);
+  font-size: var(--t-small); font-weight: 600; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); color: var(--ink); white-space: nowrap;
 }
-.tag-solid { color: var(--tag-solid-ink); border-color: var(--gr-2); background: var(--tag-solid); }
-.tag-dashed { color: var(--label); border-style: dashed; border-color: var(--green-line); background: transparent; }
+.tag i { width: 8px; height: 8px; border-radius: 50%; background: var(--spring); }   /* the live dot */
+.tag svg { width: var(--i-sm); height: var(--i-sm); }
+.tag.fill { background: var(--spring-wash); box-shadow: none; color: var(--leaf); }
+.tag.dark { background: var(--ink); color: var(--wall); box-shadow: none; }
 
-/* ---------- 11. table: a velvet head, hairline rows ---------- */
-table { width: 100%; border-collapse: collapse; }
-th {
-  text-align: left; font: 500 var(--t-label)/1 var(--f-mono); letter-spacing: .2em; text-transform: uppercase;
-  color: var(--th-ink); padding: 16px var(--pad) 14px; border-bottom: 1px solid var(--hair-strong);
-  background: var(--th-bg);
-}
-td { padding: 14px var(--pad); border-bottom: 1px solid var(--hair); color: var(--tx-2); vertical-align: baseline; }
-tr:last-child td { border-bottom: 0; }
-td.k { color: var(--tx-1); }
-td.m { font: 400 var(--t-label)/1.4 var(--f-mono); color: var(--tx-3); font-variant-numeric: tabular-nums; }
+/* ---------- 7. sections and their heads ---------- */
+.section { padding-top: var(--section); position: relative; }
+.section.tight { padding-top: 40px; }
+.section.roomy { padding-top: 120px; }
+/* the head: an icon in a white disc, the title, and a short line to the right */
+.head { display: flex; align-items: center; gap: 18px; margin-bottom: 46px; position: relative; }
+.head h2 { font-size: var(--t-title); line-height: 1.1; font-weight: 800; letter-spacing: -.03em; }
+.head p { margin-left: auto; max-width: 400px; color: var(--ink-2); font-size: var(--t-note); }
 
-/* ---------- 12. the code well: recessed, not a slab ---------- */
-.well {
-  font: 400 var(--t-label)/1.85 var(--f-mono); color: var(--tx-2);
-  padding: 20px var(--pad) 22px; background: var(--well);
-  box-shadow: inset 0 2px 4px -1px var(--well-shade);
-  border-radius: 0 0 var(--radius) var(--radius); overflow: auto; white-space: pre;
-}
-.well .c { color: var(--tx-3); }
-.well .p { color: var(--tx-1); font-weight: 500; }
-.well .v { color: var(--tx-2); }
+/* icon discs: one Lucide icon in a circle */
+.disc { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--spring-wash); color: var(--leaf); }
+.disc svg { width: 21px; height: 21px; }
+.disc.plain { width: 52px; height: 52px; background: var(--paper); color: var(--ink); box-shadow: 0 0 0 1px var(--line); }   /* section heads */
+.disc.plain svg { width: var(--i-lg); height: var(--i-lg); }
+.disc.alive { background: var(--spring); color: var(--ink); }
+.disc.sm { width: 32px; height: 32px; }
+.disc.sm svg { width: 17px; height: 17px; }
 
-/* ---------- 13. the chop: a gold square, 鄧正 cut in white, beside the name once ---------- */
-.chop {
-  position: relative; flex: none;
-  display: inline-grid; place-items: center;
-  width: 72px; height: 72px; border-radius: var(--radius-sm); border: 0; padding: 0 0 5px;   /* the glyphs' optical centre sits a little high */
-  background: radial-gradient(circle at 30% 22%, var(--lit-sheen), transparent 55%), var(--seal-metal);
-  box-shadow: inset 0 1px 0 var(--lit), inset 0 -1px 0 var(--shade), 0 8px 22px -10px var(--seal-shadow);
-  color: var(--seal-ink);
-  font: 900 28.5px/1 var(--f-seal);
-  writing-mode: vertical-rl; text-orientation: upright;   /* 鄧 over 正 */
-  transform: rotate(-2deg);
-  filter: url(#rough);   /* the stamped edge, if the page carries the #rough filter; a no-op otherwise */
-}
-.chop::after {   /* the cut border ring, a little in from the edge */
-  content: ""; position: absolute; inset: 4px; border-radius: 2px; pointer-events: none;
-  border: 1.2px solid color-mix(in srgb, var(--seal-ink) 85%, transparent);
-}
-button.chop { cursor: pointer; }
-/* the small chop: the two glyphs side by side, no roughening, so 鄧 stays readable */
-.chop-sm {
-  width: 52px; height: 28px; border-radius: 2px; filter: none; padding: 0;
-  font-size: 20px; letter-spacing: 1px; writing-mode: horizontal-tb;
-  box-shadow: inset 0 1px 0 var(--lit), 0 3px 8px -4px var(--seal-shadow);
-}
-.chop-sm::after { inset: 2px; border-width: .8px; border-radius: 1px; }
+/* fewer boxes: columns that sit on the wall, split by hairlines */
+.cols { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; }
+.cols > * { padding: 4px 40px 0; border-left: 1px solid var(--line); }
+.cols > :first-child { border-left: 0; padding-left: 0; }
+.cols > :last-child { padding-right: 0; }
+.split { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: start; }
+.grid { display: grid; gap: 40px; }
+.grid.c3 { grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+.grid.c5 { grid-template-columns: repeat(5, 1fr); }
+/* a row on the wall under a hairline */
+.ruled { margin-top: 64px; padding-top: 26px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 60px; }
+.label { font-size: var(--t-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--leaf); margin-bottom: 20px; }
 
-/* ---------- 14. the dry gold rule, ending in the curl (under every section title) ---------- */
-.rule {
-  display: block; height: 17px; width: 140px;
-  background: linear-gradient(90deg, var(--device) 0%, var(--device) 30%, transparent 100%);
-  -webkit-mask: var(--curl-rule) left top / 140px 16.6px no-repeat;
-          mask: var(--curl-rule) left top / 140px 16.6px no-repeat;
-}
-.rule.r {
-  background: linear-gradient(270deg, var(--device) 0%, var(--device) 30%, transparent 100%);
-  -webkit-mask: var(--curl-rule-r) right top / 140px 16.6px no-repeat;
-          mask: var(--curl-rule-r) right top / 140px 16.6px no-repeat;
-}
-/* the divider: two rules facing a ring */
-.divider { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: 34px; }
-.divider .sep { margin: -2px 6px 0; border-color: var(--device); }
+/* ---------- 8. round windows: every picture is seen through a round hole in the wall ---------- */
+.window { display: block; border-radius: 50%; overflow: hidden; position: relative; background: var(--paper); flex: none; }
+.window img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.window::after { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: var(--sh-window); }
+.window.sm { width: 150px; height: 150px; }
+.window.md { width: 210px; height: 210px; }
+.window.lg { width: 330px; height: 330px; }
+/* a hole pressed into the wall, filled with a colour (the swatches) */
+.hole { aspect-ratio: 1; border-radius: 50%; box-shadow: var(--sh-hole); }
 
-/* ---------- 15. the quote: one sentence between two rules ---------- */
-.quote { text-align: center; padding: 18px 0 0; }
-.quote .line { display: flex; align-items: center; justify-content: center; gap: 26px; }
-.quote .rule { margin-top: 14px; }
-.quote > .label { margin-top: 18px; }
-[data-theme="paper"] .quote {   /* on paper it sits in the one quiet parchment band */
-  background: var(--band); border: 1px solid var(--hair); border-radius: var(--radius); padding: 40px 0 34px;
-}
+/* ---------- 9. the card: the one box on the wall ---------- */
+.card { position: relative; border-radius: var(--r-card); background: var(--paper); box-shadow: var(--sh-card); padding: 26px 26px 24px; }
+.card h4 { font-size: var(--t-lead); font-weight: 800; letter-spacing: -.015em; margin-top: 14px; }
+.card p { font-size: var(--t-small); color: var(--ink-2); line-height: 1.55; margin-top: 6px; }
+.card .pin { position: absolute; left: 26px; top: 150px; height: 26px; font-size: var(--t-label); }
+.card .ft { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: var(--t-small); font-weight: 700; }
+.card .ft svg { width: var(--i-md); height: var(--i-md); color: var(--leaf); }
 
-/* ---------- 16. the page: a centred strip; on paper, mounted in a double gold rule ---------- */
-.page { position: relative; padding: 0 0 56px; }
-.page::before, .page::after {
-  content: ""; display: var(--mount); position: absolute; pointer-events: none;
-  border: 1px solid var(--hair-strong);
-}
-.page::before { inset: 18px; }
-.page::after { inset: 23px; border-color: var(--hair); border-radius: 15px; }
-.page > .curls { inset: 22px; --corner: 48px; }
-.strip { max-width: var(--strip); margin: 0 auto; position: relative; z-index: 1; }
+/* ---------- 10. the panel: a big soft box for a whole page-within-a-page ---------- */
+.panel { position: relative; background: var(--paper); border-radius: var(--r-panel); box-shadow: var(--sh-panel); }
+.panel-bar { display: flex; align-items: center; gap: 12px; padding: 22px 40px; border-bottom: 1px solid var(--line); }
+.panel-bar b { font-weight: 800; }
+.panel-bar ul { list-style: none; display: flex; gap: 26px; margin-left: auto; font-size: var(--t-small); font-weight: 600; color: var(--ink-2); align-items: center; }
+.panel-top { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; padding: 48px 56px 40px; align-items: center; }
+.panel-top h3 { font-size: var(--t-title); line-height: 1.06; font-weight: 800; letter-spacing: -.035em; margin-top: 18px; }
+.panel-top p { color: var(--ink-2); margin-top: 16px; max-width: 470px; }
+.panel-top .window { justify-self: center; }
+.panel .grid.c3 { padding: 0 56px 56px; }
+.trust { display: flex; gap: 30px; margin-top: 22px; font-size: var(--t-small); font-weight: 600; color: var(--ink-2); }
+.trust b { color: var(--ink); font-size: var(--t-lead); font-weight: 800; display: flex; align-items: center; gap: 7px; letter-spacing: -.01em; }
+.trust b svg { width: var(--i-md); height: var(--i-md); color: var(--leaf); }
 
-/* ---------- 17. layout pieces: header, hero, section head, stats, columns, list, split, footer ---------- */
-.topbar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 46px 0 22px; border-bottom: 1px solid var(--hair);
-}
-.wordmark {
-  font: 700 var(--t-body)/1 var(--f-display);
-  letter-spacing: .24em; text-transform: uppercase; color: var(--tx-1);
-}
-.wordmark i { font-style: normal; color: var(--tx-3); }
-.nav { display: flex; align-items: center; gap: 34px; }
-.nav a.label { color: var(--tx-3); text-decoration: none; transition: color .4s var(--ease); }
-.nav a.label.on, .nav a.label:hover { color: var(--tx-1); }
+/* offer tiles: soft tiles inside a panel; .pick is the one to choose */
+.offer { position: relative; border-radius: var(--r-tile); padding: 28px; background: var(--wall); box-shadow: inset 0 0 0 1px var(--line); }
+.offer.pick { background: var(--paper); box-shadow: inset 0 0 0 2px var(--ink); }
+.offer.pick .disc { background: var(--spring); color: var(--ink); }
+.offer h5 { font-size: var(--t-lead); font-weight: 800; margin-top: 18px; letter-spacing: -.015em; }
+.offer p { font-size: var(--t-small); color: var(--ink-2); line-height: 1.55; margin-top: 6px; }
+.offer .price { margin-top: 18px; font-size: var(--t-small); color: var(--ink-2); font-weight: 600; }
+.offer .price b { font-size: var(--t-lead); color: var(--ink); font-weight: 800; }
 
-.hero { position: relative; text-align: center; padding: 84px 0 60px; }
-.hero::before {
-  content: ""; position: absolute; left: 50%; top: 40px; width: 1000px; height: 420px;
-  transform: translateX(-50%); background: var(--glow); pointer-events: none; z-index: -1;
-}
-.hero-title { display: inline-flex; align-items: center; gap: 30px; margin: 22px 0 18px; }
-.hero .sub { margin: 0 auto; max-width: 54ch; }
-[data-theme="paper"] .hero.verdant {   /* on paper the hero is a velvet panel */
-  margin: 30px 0 34px; padding: 70px 0 58px; border-radius: 12px; box-shadow: var(--hero-shadow);
-}
+/* a screenshot of real work: on a business page, the brightest thing */
+.shot img { display: block; width: 100%; height: auto; border-radius: var(--r-shot); box-shadow: var(--sh-shot); }
+.shot figcaption { font-size: var(--t-small); color: var(--ink-2); margin-top: 14px; }
 
-.section { margin-top: var(--section); }
-.section-head { margin-bottom: 26px; }
-.section-head .display { margin-top: 12px; }
-.section-head .meta { margin-top: 10px; }
-.section-head .rule { margin-top: 16px; }
+/* ---------- 11. the footer ---------- */
+.foot { margin-top: 110px; }
+.foot .wrap { display: flex; align-items: center; gap: 22px; padding: 36px 0 48px; border-top: 1px solid var(--line); }
+.foot .t b { display: block; font-weight: 800; }
+.foot .t span { font-size: var(--t-small); color: var(--ink-2); }
+.foot .credits { font-size: var(--t-label); color: var(--ink-2); line-height: 1.6; margin-left: 60px; max-width: 560px; }
+.foot .sign { margin-left: auto; }
 
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 26px; }
-.stats > div { padding: 24px var(--pad) 22px; position: relative; }
-.stats > div + div::before {
-  content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 1px;
-  background: linear-gradient(180deg, transparent, var(--hair-strong), transparent);
-}
-.stats .stat { margin: 14px 0 10px; }
-
-.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-.cols.pair { grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: stretch; }
-.cols.pair > .frame { display: flex; flex-direction: column; }
-.cols.pair .well { flex: 1; }
-
-/* a numbered list: a green pill, the text, and a disc at the end */
-.list { list-style: none; }
-.list li {
-  display: grid; grid-template-columns: 44px 1fr 40px; gap: 8px var(--gap); align-items: center;
-  padding: 12px 22px 12px var(--pad); border-bottom: 1px solid var(--hair);
-}
-.list li:last-child { border-bottom: 0; }
-.list li > div { text-wrap: balance; }   /* two even lines, never a one-word orphan */
-.list .n {
-  font: 500 var(--t-label)/1 var(--f-mono); color: var(--pill-ink); letter-spacing: .04em;
-  justify-self: start; padding: 5px 7px 4px; border-radius: 10px; background: var(--pill);
-  position: relative; top: -1px;
-}
-.list strong { color: var(--tx-1); font-weight: 600; }
-.list .d { color: var(--tx-3); }
-
-/* a container split in two; on paper the second half can be a velvet side panel */
-.split { display: grid; grid-template-columns: 1.05fr 1fr; }
-.split > div { padding: var(--pad); }
-.split > div + div { border-left: 1px solid var(--hair); }
-[data-theme="paper"] .split { grid-template-columns: 1.2fr 1fr; }
-[data-theme="paper"] .split > .verdant { border-radius: 0 var(--radius) var(--radius) 0; border-left: 1px solid var(--au-3); }
-.row { display: flex; align-items: center; gap: var(--gap); flex-wrap: wrap; }
-.row.wide { gap: 28px; }
-.row + .row { margin-top: 24px; }
-.row > .grow { width: 100%; }
-.cap { display: block; margin-bottom: 10px; }
-
-.footbar {
-  margin-top: 66px; padding-top: 22px; border-top: 1px solid var(--hair);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.footbar .left { display: flex; align-items: center; gap: var(--gap); }
-
-/* ---------- 18. the specimen: swatches that print their own code (for a style page) ---------- */
-.swatches { display: grid; grid-template-columns: repeat(15, 1fr); gap: 10px; padding: 24px var(--pad) 8px; }
-.swatches .group { grid-column: span 4; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.swatches .group.one { grid-column: span 1; grid-template-columns: 1fr; }
-.swatches .group.two { grid-column: span 2; grid-template-columns: repeat(2, 1fr); }
-.swatch { display: flex; flex-direction: column; gap: 8px; }
-.swatch b {
-  display: block; height: 46px; border-radius: var(--radius-sm);
-  border: 1px solid var(--hair); background: var(--sw);
-  box-shadow: inset 0 1px 0 var(--lit-chip);
-}
-.swatch .meta { letter-spacing: .02em; }
-.swatch .meta::after { content: var(--hx); white-space: pre; }
-.swatch .k { color: var(--tx-3); }
-.swatch.extra { display: none; }   /* the third and fourth green: paper only */
-.swatch-keys { display: grid; grid-template-columns: repeat(15, 1fr); gap: 10px; padding: 0 var(--pad) 18px; }
-.swatch-keys span { grid-column: span 4; border-top: 1px solid var(--hair); padding-top: 9px; }
-.swatch-keys span.one { grid-column: span 1; }
-.swatch-keys span.two { grid-column: span 2; }
-.fonts { padding: 15px var(--pad) 17px; border-top: 1px solid var(--hair); display: flex; justify-content: space-between; }
-.fonts .meta b { color: var(--tx-2); font-weight: 500; }
-/* paper shows four greens, so the row grows to 17 and the key sits on its own line */
-[data-theme="paper"] .swatches,
-[data-theme="paper"] .swatch-keys { grid-template-columns: repeat(17, 1fr); }
-[data-theme="paper"] .swatches { gap: 9px; padding: 24px 20px 8px; }
-[data-theme="paper"] .swatch-keys { padding: 0 20px 18px; }
-[data-theme="paper"] .swatches .group { gap: 7px; }
-[data-theme="paper"] .swatches .group.two { grid-column: span 4; grid-template-columns: repeat(4, 1fr); }
-[data-theme="paper"] .swatch-keys span.two { grid-column: span 4; }
-[data-theme="paper"] .swatch.extra { display: flex; }
-[data-theme="paper"] .swatch .k { display: block; }
-[data-theme="paper"] .swatch .meta { letter-spacing: -.03em; }
-.sw-bg-0 { --sw: var(--bg-0); --hx: var(--hx-bg-0); }  .sw-bg-1 { --sw: var(--bg-1); --hx: var(--hx-bg-1); }
-.sw-bg-2 { --sw: var(--bg-2); --hx: var(--hx-bg-2); }  .sw-bg-3 { --sw: var(--bg-3); --hx: var(--hx-bg-3); }
-.sw-tx-1 { --sw: var(--tx-1); --hx: var(--hx-tx-1); }  .sw-tx-2 { --sw: var(--tx-2); --hx: var(--hx-tx-2); }
-.sw-tx-3 { --sw: var(--tx-3); --hx: var(--hx-tx-3); }  .sw-tx-4 { --sw: var(--tx-4); --hx: var(--hx-tx-4); }
-.sw-au-1 { --sw: var(--au-1); --hx: var(--hx-au-1); }  .sw-au-2 { --sw: var(--au-2); --hx: var(--hx-au-2); }
-.sw-au-3 { --sw: var(--au-3); --hx: var(--hx-au-3); }  .sw-au-4 { --sw: var(--au-4); --hx: var(--hx-au-4); }
-.sw-gr-1 { --sw: var(--gr-1); --hx: var(--hx-gr-1); }  .sw-gr-2 { --sw: var(--gr-2); --hx: var(--hx-gr-2); }
-.sw-gr-3 { --sw: var(--gr-3); --hx: var(--hx-gr-3); }  .sw-gr-4 { --sw: var(--gr-4); --hx: var(--hx-gr-4); }
-.sw-seal { --sw: var(--seal-metal); --hx: var(--hx-seal); }
-.sw-seal b { outline: 1px solid color-mix(in srgb, var(--seal-ink) 85%, transparent); outline-offset: -5px; }
+/* ---------- 12. specimen helpers, for kit pages that show the kit itself ---------- */
+.swatch .hole { margin-bottom: 18px; }
+.swatch b { display: block; font-size: var(--t-note); font-weight: 700; }
+.swatch code { font: 600 var(--t-small) var(--sans); color: var(--ink-2); letter-spacing: .02em; }
+.swatch span { display: block; font-size: var(--t-small); color: var(--ink-2); margin-top: 6px; line-height: 1.45; }
+.spec { border-top: 1.5px solid var(--ink); padding-top: 16px; }
+.spec + .spec { margin-top: 36px; }
+.spec .label { display: flex; justify-content: space-between; margin-bottom: 18px; }
+.spec .label em { font-style: normal; color: var(--ink-2); letter-spacing: .04em; text-transform: none; font-weight: 600; }
+.display { font-size: var(--t-display); line-height: .95; font-weight: 800; letter-spacing: -.045em; }
+.display.old { font-size: var(--t-display); line-height: .9; letter-spacing: -.01em; }
+.abc { margin-top: 20px; color: var(--ink-2); letter-spacing: .02em; }
+.weights { margin-top: 28px; display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 14px; }
+.sizes { display: flex; gap: 18px; margin-top: 18px; align-items: baseline; color: var(--ink-2); font-size: var(--t-label); font-weight: 600; }
+.sizes span { color: var(--ink); font-weight: 800; }
+.field + .row { margin-top: 24px; }
+.ruled .intro { max-width: 330px; }
+.ruled .intro b { display: flex; align-items: center; gap: 8px; font-size: var(--t-body); font-weight: 700; }
+.ruled .intro b svg { width: var(--i-md); height: var(--i-md); }
+.ruled .intro span { display: block; font-size: var(--t-small); color: var(--ink-2); margin-top: 6px; line-height: 1.45; }
+.ruled figure { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.ruled figure > div { height: 78px; display: flex; align-items: center; }
+.ruled figcaption { font-size: var(--t-label); font-weight: 600; color: var(--ink-2); letter-spacing: .02em; }

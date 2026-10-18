@@ -7,12 +7,13 @@
 // marked "private": true is never drawn (the real drawer is room/drawer/, which
 // git never publishes; the flag is the second fence).
 //
-// THE LOOK is J's design kit, Olive Garden (kit/; its rules are design-kit/KIT.md):
-// every list is a kit container (.frame) whose header line (.strap) folds it, the
-// cards are frames, the log and Quill's ledger are kit tables, in the kit's paper
-// mode. The picture inside the canvas is scene.js (the morning room in the paper
-// family, March as a puppet with a walk and a pose at each place, Quill the crow), a
-// guest in its frame; this file only says where she is and what she is doing.
+// THE LOOK is J's design kit, Moon Gate, at its full dose (kit/; its rules are
+// design-kit/KIT.md; the page's own placing is room.css): every list is a fold on the
+// wall whose header line (.strap) opens it, the things in it are the kit's soft cards,
+// the log and Quill's ledger are plain ruled tables. The picture inside the canvas is
+// scene.js (the morning room, March as a puppet with a walk and a pose at each place,
+// Quill the crow), a guest in the kit's panel; this file only says where she is and
+// what she is doing.
 //
 // The picture: on load the page replays the last run's trace (log.jsonl's last
 // line), about a minute for the whole hour, moving March to each entry's place
@@ -143,7 +144,7 @@ function benchCard(b) {
   const typed = Array.isArray(b.used_by) ? b.used_by.length : 0;
   const usedText = () => { const n = (USED[b.id] || 0) + typed; return n ? ` · used ${n}×` : ''; };
   const usedSpan = el('span', { class: 'used' }, usedText());
-  const press = el('button', { type: 'button', class: 'btn btn-secondary usedbtn' }, 'I used this');
+  const press = el('button', { type: 'button', class: 'btn soft sm usedbtn' }, 'I used this');
   press.addEventListener('click', async () => {
     press.disabled = true;
     try {
@@ -154,7 +155,7 @@ function benchCard(b) {
     } catch { press.textContent = 'that did not go through'; }
   });
   const face = el('div');
-  const card = el('div', { class: 'frame card' }, el('div', { class: 'tags' }, el('span', { class: 'tag' }, b.status || '?')),
+  const card = el('div', { class: 'card' }, el('div', { class: 'tags' }, el('span', { class: 'tag' }, b.status || '?')),
     el('div', { class: 'title' }, b.title || b.id), face,
     el('div', { class: 'meta' }, `${Array.isArray(b.steps) ? b.steps.length : 0} steps`, usedSpan, verdictOn(b.id), ` · started ${day(b.started)}`),
     el('div', { class: 'acts' }, press, path ? el('a', { class: 'meta', href: `https://github.com/howisjason/chronicle/tree/main/room/${path}` }, 'the files') : ''));
@@ -164,14 +165,14 @@ function benchCard(b) {
 function boardCard(p) {
   const thumb = safe(p.thumb, 'board', '.jpg');
   const href = /^https?:\/\//.test(String(p.url)) ? p.url : null;
-  return el('div', { class: 'frame card' }, thumb ? el('img', { src: thumb, alt: '', loading: 'lazy' }) : el('div', { class: 'titlecard label' }, p.title || ''),
+  return el('div', { class: 'card' }, thumb ? el('img', { src: thumb, alt: '', loading: 'lazy' }) : el('div', { class: 'titlecard label' }, p.title || ''),
     el('div', { class: 'title' }, href ? el('a', { href, rel: 'noopener' }, p.title || href) : (p.title || '')), p.note ? el('div', { class: 'note' }, p.note) : '', el('div', { class: 'meta' }, day(p.at)));
 }
 // a page on the wall opens inside its own card
 function shelfCard(s) {
   const path = safe(s.path, 'shelf', '.md');
   const page = el('article', { class: 'inpage', hidden: '' });
-  const card = el('div', { class: 'frame card' });
+  const card = el('div', { class: 'card' });
   const a = el('a', { href: path ? `#${s.id}` : undefined }, s.title || s.id);
   if (path) a.addEventListener('click', async (ev) => {
     ev.preventDefault();
@@ -180,7 +181,7 @@ function shelfCard(s) {
     page.hidden = false; card.classList.add('faced');
     if (f.ok) md(f.data, page); else page.replaceChildren(el('p', { class: 'bad' }, 'this page could not be read'));
   });
-  card.append(el('div', { class: 'tags' }, el('span', { class: 'tag tag-dashed' }, 'page')), el('div', { class: 'title' }, a), el('div', { class: 'meta' }, day(s.at)), page);
+  card.append(el('div', { class: 'tags' }, el('span', { class: 'tag' }, 'page')), el('div', { class: 'title' }, a), el('div', { class: 'meta' }, day(s.at)), page);
   return card;
 }
 
@@ -192,7 +193,7 @@ const tally = (sec, n, one, many = `${one}s`) => {
 };
 // a kit table; on a phone each row stacks, every cell under its column's name (data-l)
 // (`wide` names the long columns: on a phone they take a whole line, after the short ones)
-const table = (heads, rows, wide = []) => el('div', { class: 'tablewrap' }, el('table', { class: 'stack' },
+const table = (heads, rows, wide = []) => el('div', { class: 'tablewrap' }, el('table', { class: 'rows' },
   el('tr', {}, ...heads.map((h, k) => el('th', { class: wide.includes(k) ? 'w' : undefined }, h))),
   ...rows.map((cells) => el('tr', {}, ...cells.map((c, k) => {
     const td = c instanceof Node ? c : el('td', { 'data-l': heads[k] }, c);
@@ -257,8 +258,8 @@ function drawLists() {
     tally('s-desk', today.length, 'thing');
     const older = desk.filter((d) => !today.includes(d)).slice(-8).reverse();
     document.getElementById('desk').replaceChildren(
-      el('div', { class: 'cards' }, ...today.map((d) => el('div', { class: 'frame card' },
-        el('div', { class: 'tags' }, el('span', { class: 'tag' }, d.pool ? `${d.pool} · ${d.door}` : (d.kind || '')), d.taken ? el('span', { class: 'tag tag-solid' }, 'taken') : ''),
+      el('div', { class: 'cards' }, ...today.map((d) => el('div', { class: 'card' },
+        el('div', { class: 'tags' }, el('span', { class: 'tag' }, d.pool ? `${d.pool} · ${d.door}` : (d.kind || '')), d.taken ? el('span', { class: 'tag fill' }, 'taken') : ''),
         el('div', { class: 'title' }, link(d)), d.pool && d.shown !== d.title ? shown(d) : '', el('div', { class: 'meta' }, day(d.at))))),
       ...(older.length ? [el('p', { class: 'label' }, 'Before that'), el('ul', {}, ...older.map((d) => el('li', {}, link(d),
         el('span', { class: 'meta' }, ` · ${d.pool ? `${d.pool}/${d.door}` : d.kind || ''}${d.taken ? ', taken' : ''}, ${day(d.at)}`))))] : []));

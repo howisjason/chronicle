@@ -301,8 +301,22 @@ page path is refused, steps, uses, Quill and judged land in the page's shapes; s
 (no page errors, the face answers, a click on the picture opens the right fold, the strip
 walks the stops).
 
-**The look (15 Oct 2026).** The page wears J's design kit (`room/kit/`, a copy of
-`design-kit/kit/`; edit marks in the design kit, never here), locked to paper mode. The
+**The look (18 Oct 2026).** The page wears J's design kit, Moon Gate, at its full dose
+(`room/kit/`, a whole copy of `design-kit/kit/` with its `assets/` pictures and
+`SOURCES.md`; change the kit in the design kit and copy it over, never edit it here;
+the rules are `design-kit/KIT.md`). Daylight only, never red. `room.css` only places
+the kit's parts and writes no colour of its own. The top is the kit's gate: the plaster
+wall under the whole page, the pale green band, real leaf shadows, "March's room" inside
+the ensō door with a spring-green spark that says whether she is awake (`#awake`), the
+gold calligraphy beside it (hidden under 1240 px), and her paragraph, the season line
+and the hint under the door; on a phone the door is scaled down and the words follow
+it. The picture sits in the kit's panel with a real banana leaf over its corner; the
+last session's numbers are hairline columns on the wall; "Today" is the one huge word;
+each list is a row on the wall with a Lucide icon in a disc, opened by its header
+line; the things in it are the kit's soft cards (a build running in place is a
+soft-cornered screen, a pin's picture a round window). The small gold seal is in the
+top bar and the wide one signs the foot with the picture credits. The page's icons are
+Lucide SVGs pasted inline. The
 picture is `room/scene.js`: a 320x160 morning room drawn by code into a palette buffer
 (27 colours, cream, olive and wood, gold the one metal, March's pink hair the one accent),
 shown at the widest whole multiple of 320 that fits its frame. March is a puppet of
