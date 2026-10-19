@@ -65,6 +65,7 @@ const marchBox = () => (R.awakeNow ? { x: Math.round(R.x) - 10, y: FEET_Y - 44, 
 const boxOf = (k) => (k === 'march' ? marchBox() : BOX[k]);
 function hitAt(x, y) {
   for (const k of ORDER) {
+    if (k === 'futon' && R.awakeNow) continue;            // awake, the futon is only furniture: it opens nothing
     const b = boxOf(k);
     if (b && x >= b.x && x < b.x + b.w && y >= b.y && y < b.y + b.h) return k === 'futon' && !R.awakeNow ? 'march' : k;
   }
@@ -185,7 +186,12 @@ function glow() {
 const SKY = { sun: sunAt(), weather: { sky: 'clear', from: 'not yet asked' } };
 window.roomSky = SKY;
 setInterval(() => { SKY.sun = sunAt(); }, 60e3);
-const askWeather = async () => { let store = null; try { store = window.localStorage; } catch { /* blocked: ask every load */ } SKY.weather = await weatherNow({ store }); };
+// where the answer is kept: localStorage, so a reload inside 30 minutes asks nothing; if a
+// browser blocks it, a store in memory, so this page still asks at most once in 30 minutes
+const memory = { m: {}, getItem(k) { return this.m[k] ?? null; }, setItem(k, v) { this.m[k] = v; } };
+let store = memory;
+try { window.localStorage.getItem('room-weather'); store = window.localStorage; } catch { /* blocked: the memory store */ }
+const askWeather = async () => { SKY.weather = await weatherNow({ store }); };
 askWeather();
 setInterval(askWeather, 5 * 60e3);                         // the 30-minute rule lives in weatherNow
 
