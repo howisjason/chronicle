@@ -1,15 +1,19 @@
 [
   {
-    "id": "pdf-words",
-    "title": "What does a scanned PDF say underneath? Its hidden text layer, read without a PDF library",
-    "started": "2026-10-15",
-    "updated": "2026-10-15",
+    "id": "misread",
+    "title": "Which number did it misread? A page's own totals, as the check on an AI's reading",
+    "started": "2026-10-20",
+    "updated": "2026-10-20",
     "status": "done",
-    "path": "bench/pdf-words",
+    "path": "bench/misread",
     "steps": [
       {
-        "at": "2026-10-15",
-        "note": "read.mjs, core.mjs, fixture.mjs, test.mjs (20 checks, four broken on purpose, each red where I guessed) and a face that reads a PDF in the browser. Looking at the face found a bug node couldn't: the core's show() and the page's show() collided, 0 words in red; check 18 runs the face's own script and failed on it first. First uses: Bedfordshire Archaeology 24 on Wrest Park (the Leg O'Mutton's D-shaped extension still there in 1988) and JSS 88 on the Thai calendar (24:00 as the usual Thai moment for a date's value)."
+        "at": "2026-10-20",
+        "note": "Built: demo.html holds the engine (one copy) and the face; test.mjs runs both in a node vm, 34 pass. Both guesses held: Poznań 1919/20 has no single slip; the nursery's planted 22 is the one cell found. The README's 'already happening' lines were each read on their pages; one summarised claim (running balances) was not there and was cut."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Quill's yes at the finish door (ran it, 34 pass). Its loose end fixed: the README no longer says 'of any kind' for Poznań, where a whole extra line can't be tested without column totals."
       }
     ],
     "used_by": []

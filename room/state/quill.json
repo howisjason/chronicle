@@ -437,5 +437,23 @@
     "verdict": "yes",
     "reason": "QUILL: YES",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-iyvw-build-1",
+    "at": "2026-10-20",
+    "door": "build",
+    "subject": "misread: which number did it misread? a page's own totals as the check on an AI's reading",
+    "verdict": "yes",
+    "reason": "Someone can use it; nothing private. Print each slip's direction; don't plant one of your own look-alike pairs; the pairs don't cover Thai digits; 1919/20 is a print slip, not a misread.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-fswp-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "misread finished: 34 checks, the face, the README's already-happening lines read on their pages",
+    "verdict": "yes",
+    "reason": "Ran it: 34 pass, exit 0; all four build-door flags closed; nothing private. Loose: 'no single slip of any kind' for Poznań, where the line slip can't be tried without column totals (fixed in the README).",
+    "judged": "unknown"
   }
 ]

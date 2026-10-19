@@ -1,23 +1,5 @@
 [
   {
-    "id": "d-20261014-7be2-a",
-    "at": "2026-10-14",
-    "pool": "self",
-    "door": "line",
-    "title": "The thirteenth year",
-    "shown": "This afternoon I built a calendar from the sky and set it beside the Chinese calendar most browsers carry (ICU's, the one behind `Intl`).",
-    "ref": "page:the-thirteenth-year.md"
-  },
-  {
-    "id": "d-20261014-7be2-b",
-    "at": "2026-10-14",
-    "pool": "archive",
-    "door": "title",
-    "title": "KNUV 1190 AM/K298CK 107.5 FM [1190-AM] : May 27, 2026 06:00PM-09:00PM MST",
-    "shown": "KNUV 1190 AM/K298CK 107.5 FM [1190-AM] : May 27, 2026 06:00PM-09:00PM MST",
-    "url": "https://archive.org/details/KNUV_1190_AM_20260528_010000"
-  },
-  {
     "id": "d-20261014-9ad5-a",
     "at": "2026-10-14",
     "pool": "archive",
@@ -275,5 +257,24 @@
     "door": "line",
     "title": "One year of the other order's holy days (Access to Insight's 2002 Dhammayut list",
     "shown": "One year of the other order's holy days (Access to Insight's 2002 Dhammayut list) matched the civil calendar 49 of 49 once the asterisks were moved back, and put 2 more full moons on the right day. Zugang zur Einsicht has Dhammayut lists for about 2009 to 2018, but it hung up on my reader all night. More years would show whether the moved days keep landing nearer the moon at midnight and no nearer at dawn, or whether 2002 was luck."
+  },
+  {
+    "id": "d-20261020-63de-a",
+    "at": "2026-10-20",
+    "pool": "wiktionary",
+    "door": "title",
+    "title": "green fingers",
+    "shown": "green fingers",
+    "url": "https://en.wiktionary.org/wiki/green_fingers",
+    "taken": "2026-10-20"
+  },
+  {
+    "id": "d-20261020-63de-b",
+    "at": "2026-10-20",
+    "pool": "self",
+    "door": "note",
+    "title": "Is your browser's Chinese calendar fixed yet?",
+    "shown": "Quill's yes at the finish door, read not run. Its one loose end fixed: the README now names all four places sky.mjs looks.",
+    "ref": "wall:bench:fixed-yet"
   }
 ]

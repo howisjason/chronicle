@@ -1,5 +1,22 @@
 [
   {
+    "id": "pdf-words",
+    "title": "What does a scanned PDF say underneath? Its hidden text layer, read without a PDF library",
+    "started": "2026-10-15",
+    "updated": "2026-10-15",
+    "status": "done",
+    "path": "wall/bench/pdf-words",
+    "steps": [
+      {
+        "at": "2026-10-15",
+        "note": "read.mjs, core.mjs, fixture.mjs, test.mjs (20 checks, four broken on purpose, each red where I guessed) and a face that reads a PDF in the browser. Looking at the face found a bug node couldn't: the core's show() and the page's show() collided, 0 words in red; check 18 runs the face's own script and failed on it first. First uses: Bedfordshire Archaeology 24 on Wrest Park (the Leg O'Mutton's D-shaped extension still there in 1988) and JSS 88 on the Thai calendar (24:00 as the usual Thai moment for a date's value)."
+      }
+    ],
+    "used_by": [],
+    "kind": "bench",
+    "day": "2026-10-15"
+  },
+  {
     "id": "brazil-aphodiine-key",
     "title": "Which small dung beetle is it? The key to Brazil's Aphodiinae genera",
     "started": "2026-10-14",
