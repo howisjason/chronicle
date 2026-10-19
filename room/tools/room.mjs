@@ -22,6 +22,18 @@
 //   node room.mjs desk <desk-id>                      the desk: the item you took up
 //   node room.mjs resume <id>                         a build on the wall, back on the bench
 //
+// The room's things (the room plan of 19 Oct 2026, section 4; state/objects.json, its
+// shape and checks are lib.mjs validateObjects). A slot is one of state/slots.json's ids,
+// and a thing can only go into a FREE slot, so the room never holds more than the picture can.
+//   node room.mjs object add <id> <kind> <slot> "<why>" [--source <build id>] [--art art/<name>.mjs]
+//                                                     a new thing (source "just because" if none)
+//   node room.mjs object move <id> <slot>             to another free slot
+//   node room.mjs object grow <id>                    one more wake went into it (its size follows)
+//   node room.mjs object attic <id>                   taken down; its slot is free again
+//   node room.mjs object back <id> <slot>             down from the attic, into a free slot
+//   node room.mjs snapshot                            today's room for the album: state/days/<day>.json
+//                                                     (the things that are out; safe to run twice a day)
+//
 // It writes state/{cloud,bench,shelf,quill}.json, `taken` on today's desk items,
 // `used_by` on a bench item already on the wall, and appends Quill's notebook line
 // to quill-notebook.md; resume also takes a build's row off wall.json and moves its
@@ -39,7 +51,7 @@
 import { readFileSync, writeFileSync, appendFileSync, existsSync, realpathSync, renameSync, mkdirSync } from 'node:fs';
 import { dirname, join, resolve, relative, isAbsolute } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validate, lastDesk } from '../lib.mjs';
+import { validate, lastDesk, validateObjects, sizeStep, daySnapshot, OBJECT_ART } from '../lib.mjs';
 
 const ROOM = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const STATE = process.env.ROOM_STATE || join(ROOM, 'state');
@@ -71,6 +83,13 @@ const write = (name, list, said) => {
   if (!v.ok) refuse(v.problems.join('; '));
   writeFileSync(join(STATE, `${name}.json`), JSON.stringify(list, null, 2) + '\n');
   console.log(said);
+};
+// the fixed slots the room's things sit in; no file means no room for things yet
+const readSlots = () => {
+  const p = join(STATE, 'slots.json');
+  if (!existsSync(p)) refuse('state/slots.json is missing; there are no slots to put a thing in');
+  try { const d = JSON.parse(readFileSync(p, 'utf8')); return Array.isArray(d) ? d : refuse('slots.json is not a list'); }
+  catch { return refuse('slots.json does not parse; fix it by hand first'); }
 };
 const find = (list, id, name) => list.find((i) => i && i.id === id) || refuse(`no ${name} item "${id}"`);
 // a fresh id for an item that has none of its own: <prefix>-<stamp>[-<middle>]-<n>
@@ -245,6 +264,70 @@ switch (cmd) {
     if (!['right', 'wrong'].includes(rest[1])) refuse('judged is right or wrong');
     q.judged = rest[1];
     write('quill', list, `quill: ${q.id} judged ${rest[1]}`);
+    break;
+  }
+  case 'object': {
+    const sub = rest[0], list = read('objects'), slots = readSlots(), at = now();
+    // flags come in pairs (--source x, --art y); everything else is positional
+    const flag = (name) => { const k = rest.indexOf(`--${name}`); if (k < 0) return undefined; const v = rest[k + 1]; rest.splice(k, 2); return need(v, `a value after --${name}`); };
+    const source = flag('source'), art = flag('art');
+    const [, id, a, b, c] = rest;
+    const slotOk = (slot, self = null) => {
+      need(slot, 'a slot');
+      if (!slots.some((s) => s && s.id === slot)) refuse(`there is no slot "${slot}"; the slots are listed in state/slots.json`);
+      const holder = list.find((o) => o && o.where === 'out' && o.slot === slot && o.id !== self);
+      if (holder) refuse(`slot "${slot}" already holds "${holder.id}"; move it or send it to the attic first`);
+      return slot;
+    };
+    const thing = (where) => {
+      const o = find(list, idOk(id), 'objects');
+      if (where && o.where !== where) refuse(where === 'out' ? `"${o.id}" is in the attic; bring it back first` : `"${o.id}" is not in the attic`);
+      return o;
+    };
+    const save = (said) => {
+      const v = validateObjects(list, slots);
+      if (!v.ok) refuse(v.problems.join('; '));
+      writeFileSync(join(STATE, 'objects.json'), JSON.stringify(list, null, 2) + '\n');
+      console.log(said);
+    };
+    if (sub === 'add') {
+      idOk(id);
+      if (list.some((o) => o && o.id === id)) refuse(`there is already a thing "${id}" (in the room or the attic)`);
+      if (art !== undefined) {
+        if (!OBJECT_ART.test(art)) refuse('the art must be art/<name>.mjs');
+        if (FILES && !existsSync(join(FILES, art))) refuse(`${art} does not exist yet; draw it first`);
+      }
+      list.push({ id, kind: need(a, 'a kind (one word: build, keepsake, decor, plant, ...)'), ...(art !== undefined ? { art } : {}),
+        slot: slotOk(b), born: at, wakes: 1, touched: at, source: source ?? 'just because', why: need(c, 'a why, one line in quotes'), where: 'out' });
+      save(`object: ${id} added in ${b}`);
+    } else if (sub === 'move') {
+      const o = thing('out');
+      if (o.slot === a) refuse(`"${o.id}" is already in ${a}`);
+      o.slot = slotOk(a, o.id); o.touched = at;
+      save(`object: ${o.id} moved to ${a}`);
+    } else if (sub === 'grow') {
+      const o = thing('out');
+      o.wakes += 1; o.touched = at;
+      save(`object: ${o.id} grew (${o.wakes} wakes, size ${sizeStep(o.wakes)})`);
+    } else if (sub === 'attic') {
+      const o = thing('out');
+      o.where = 'attic'; o.slot = null; o.touched = at;
+      save(`object: ${o.id} went to the attic`);
+    } else if (sub === 'back') {
+      const o = thing('attic');
+      o.slot = slotOk(a, o.id); o.where = 'out'; o.touched = at;
+      save(`object: ${o.id} came back to ${a}`);
+    } else refuse('object is add, move, grow, attic or back');
+    break;
+  }
+  case 'snapshot': {
+    // the album's page for today (the plan's section 8); the whole objects list must pass first
+    const list = read('objects'), v = validateObjects(list, readSlots());
+    if (!v.ok) refuse(v.problems.join('; '));
+    const day = now();
+    mkdirSync(join(STATE, 'days'), { recursive: true });
+    writeFileSync(join(STATE, 'days', `${day}.json`), JSON.stringify(daySnapshot(list, day), null, 2) + '\n');
+    console.log(`snapshot: days/${day}.json`);
     break;
   }
   default:

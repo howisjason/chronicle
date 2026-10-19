@@ -272,3 +272,57 @@ export function formatMorningLine(e, titles = {}) {
     `${e.shelf || 0} on the shelf, Quill: ${q.yes || 0} yes / ${q.no || 0} no, ${desk}${used}; ${spend}.`;
 }
 
+
+// ---- the room's things: state/objects.json (the room plan of 19 Oct 2026, section 4) ----
+// One row per thing in the room, out or in the attic. A thing sits in one of a FIXED set
+// of slots (state/slots.json, about 20; the chosen style gives each slot its place on the
+// picture), so the room cannot fill up past what the picture can hold: a new thing needs a
+// free slot, and the attic keeps everything that was taken down.
+//   {id, kind, art?, slot, born, wakes, touched, source, why, where: out|attic}
+// kind is a word of hers (build, keepsake, decor, plant, ...), never a fixed list; why is
+// one public line in her words, so it may never carry a newline; an attic thing has slot null.
+const DAY = /^\d{4}-\d{2}-\d{2}$/;
+export const OBJECT_ID = /^[a-z0-9-]{1,40}$/;
+export const OBJECT_KIND = /^[a-z][a-z0-9-]{0,23}$/;
+export const OBJECT_ART = /^art\/[a-z0-9-]+\.mjs$/;
+export const WHY_MAX = 200;
+export function validateObjects(data, slots = null) {
+  const problems = [];
+  if (!Array.isArray(data)) return { ok: false, problems: ['objects: not a list'] };
+  const known = Array.isArray(slots) ? new Set(slots.map((s) => s && s.id)) : null;
+  const ids = new Set(), taken = new Map();
+  data.forEach((o, n) => {
+    const here = `objects[${n}]`;
+    if (!o || typeof o !== 'object') { problems.push(`${here}: not an object`); return; }
+    if (typeof o.id !== 'string' || !OBJECT_ID.test(o.id)) problems.push(`${here}: id must be small letters, digits and dashes`);
+    else if (ids.has(o.id)) problems.push(`${here}: id "${o.id}" used twice`);
+    else ids.add(o.id);
+    if (typeof o.kind !== 'string' || !OBJECT_KIND.test(o.kind)) problems.push(`${here}: kind must be one small word`);
+    if (o.art !== undefined && (typeof o.art !== 'string' || !OBJECT_ART.test(o.art))) problems.push(`${here}: art must be art/<name>.mjs`);
+    for (const f of ['born', 'touched']) if (typeof o[f] !== 'string' || !DAY.test(o[f])) problems.push(`${here}: ${f} must be a day, YYYY-MM-DD`);
+    if (!Number.isInteger(o.wakes) || o.wakes < 1) problems.push(`${here}: wakes must be a whole number, 1 or more`);
+    if (typeof o.source !== 'string' || !o.source.trim()) problems.push(`${here}: no source`);
+    if (typeof o.why !== 'string' || !o.why.trim()) problems.push(`${here}: no why`);
+    else if (/[\r\n]/.test(o.why)) problems.push(`${here}: why must be one line`);
+    else if (o.why.length > WHY_MAX) problems.push(`${here}: why is longer than ${WHY_MAX} letters`);
+    if (o.where === 'attic') { if (o.slot !== null) problems.push(`${here}: a thing in the attic has slot null`); }
+    else if (o.where === 'out') {
+      if (typeof o.slot !== 'string' || !o.slot) problems.push(`${here}: a thing in the room needs a slot`);
+      else if (known && !known.has(o.slot)) problems.push(`${here}: there is no slot "${o.slot}"`);
+      else if (taken.has(o.slot)) problems.push(`${here}: slot "${o.slot}" already holds "${taken.get(o.slot)}"`);
+      else taken.set(o.slot, o.id);
+    } else problems.push(`${here}: where must be out or attic`);
+  });
+  return { ok: problems.length === 0, problems };
+}
+// How big a thing is drawn, from how many wakes went into it (the plan's 1, 3, 7, 15).
+export function sizeStep(wakes) {
+  const w = Number(wakes) || 0;
+  return w >= 15 ? 4 : w >= 7 ? 3 : w >= 3 ? 2 : 1;
+}
+// One day's room for the album (state/days/YYYY-MM-DD.json): the things that were out,
+// in slot order. The attic is not in the picture, so it is not in the day.
+export function daySnapshot(objects, day) {
+  const out = (Array.isArray(objects) ? objects : []).filter((o) => o && o.where === 'out');
+  return { day, objects: out.sort((a, b) => String(a.slot).localeCompare(String(b.slot))) };
+}

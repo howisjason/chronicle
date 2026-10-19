@@ -10,7 +10,8 @@ import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, lastDesk, drawnThisWake, pastReads } from './lib.mjs';
+import { kindOf, buildTrace, mergeTraces, visible, validate, formatMorningLine, sameness, lastDesk, drawnThisWake, pastReads, validateObjects, sizeStep } from './lib.mjs';
+import { sunAt, skyFromCode, weatherNow, WEATHER_EVERY_MS } from './sky.mjs';
 
 const R = '/Users/howisjason/Projects/chronicle/room';
 const B = '/Users/howisjason/Projects/march-7th/march-brain';
@@ -478,4 +479,163 @@ test('the season file holds one set line at most, and the notes never reach her'
   if (real.length) assert.match(real[0], /^\*\*Set \d{1,2} \w+ \d{4}:\*\* \S/);
   assert.deepEqual(hers('# a note\n#\n# another\n'), []);
   assert.equal(hers('# note\n**Set 1 Jan 2027:** one\n**Set 2 Jan 2027:** two\n').length, 2, 'two lines must be seen as two, so the real file is held to one above');
+});
+
+// ---- the room's things (objects.json) and the album (days/), the room plan of 19 Oct 2026 ----
+const today = () => new Date(Date.now() + 7 * 3600e3).toISOString().slice(0, 10);
+const objs = (d) => JSON.parse(readFileSync(join(d, 'objects.json'), 'utf8'));
+
+test('object add: a thing lands in a free slot in the full shape; every bad add is refused and the file is unchanged', () => {
+  const d = copyState();
+  writeFileSync(join(d, 'objects.json'), '[]\n');
+  const r = roomCmd(d, 'object', 'add', 'kite', 'keepsake', 's03', 'for the wind I read about today', '--source', 'wan-phra');
+  assert.equal(r.code, 0, r.out);
+  const [o] = objs(d);
+  assert.deepEqual(o, { id: 'kite', kind: 'keepsake', slot: 's03', born: today(), wakes: 1, touched: today(), source: 'wan-phra', why: 'for the wind I read about today', where: 'out' });
+  assert.equal(validateObjects(objs(d)).ok, true);
+  assert.equal(objs(d).length, 1);
+  const before = readFileSync(join(d, 'objects.json'), 'utf8');
+  for (const [args, why] of [
+    [['object', 'add', 'lamp', 'decor', 's03', 'light'], /already holds "kite"/],
+    [['object', 'add', 'lamp', 'decor', 's99', 'light'], /no slot "s99"/],
+    [['object', 'add', 'kite', 'decor', 's04', 'light'], /already a thing "kite"/],
+    [['object', 'add', 'Big Lamp', 'decor', 's04', 'light'], /is not an id/],
+    [['object', 'add', 'lamp', 'Decor!', 's04', 'light'], /kind must be one small word/],
+    [['object', 'add', 'lamp', 'decor', 's04', ''], /needs a why/],
+    [['object', 'add', 'lamp', 'decor', 's04', 'one line\nand another'], /why must be one line/],
+    [['object', 'add', 'lamp', 'decor', 's04', 'x'.repeat(201)], /longer than 200/],
+    [['object', 'add', 'lamp', 'decor', 's04', 'light', '--art', '../../seed.mjs'], /art must be art/],
+    [['object', 'add', 'lamp', 'decor', 's04', 'light', '--source'], /a value after --source/],
+    [['object', 'paint', 'kite'], /add, move, grow, attic or back/],
+  ]) {
+    const bad = roomCmd(d, ...args);
+    assert.equal(bad.code, 2, `${args.join(' ')} should be refused: ${bad.out}`);
+    assert.match(bad.out, why);
+    assert.equal(readFileSync(join(d, 'objects.json'), 'utf8'), before, `${args.join(' ')} changed the file`);
+  }
+});
+
+test('object add: art must already exist in the room copy; with no slots file nothing can be added', () => {
+  const root = mkdtempSync(join(tmpdir(), 'room-root-'));
+  const d = join(root, 'state');
+  cpSync(join(HERE, 'state'), d, { recursive: true });
+  writeFileSync(join(d, 'objects.json'), '[]\n');
+  const run = (...a) => { try { return { code: 0, out: execFileSync('node', [join(HERE, 'tools/room.mjs'), ...a], { env: { ...process.env, ROOM_STATE: d, ROOM_ROOT: root }, encoding: 'utf8' }) }; } catch (e) { return { code: e.status, out: String(e.stdout) }; } };
+  assert.match(run('object', 'add', 'lamp', 'decor', 's01', 'light', '--art', 'art/lamp.mjs').out, /does not exist yet/);
+  mkdirSync(join(root, 'art')); writeFileSync(join(root, 'art', 'lamp.mjs'), 'export default 1;\n');
+  const ok = run('object', 'add', 'lamp', 'decor', 's01', 'light', '--art', 'art/lamp.mjs');
+  assert.equal(ok.code, 0, ok.out);
+  assert.equal(objs(d)[0].art, 'art/lamp.mjs');
+  const noSlots = copyState();
+  writeFileSync(join(noSlots, 'objects.json'), '[]\n');
+  execFileSync('rm', [join(noSlots, 'slots.json')]);
+  const r = roomCmd(noSlots, 'object', 'add', 'lamp', 'decor', 's01', 'light');
+  assert.equal(r.code, 2); assert.match(r.out, /slots\.json is missing/);
+});
+
+test('object move, grow, attic and back: each checks the slot and where the thing is', () => {
+  const d = copyState();
+  writeFileSync(join(d, 'objects.json'), '[]\n');
+  assert.equal(roomCmd(d, 'object', 'add', 'kite', 'keepsake', 's01', 'wind').code, 0);
+  assert.equal(roomCmd(d, 'object', 'add', 'fern', 'plant', 's02', 'green').code, 0);
+  assert.match(roomCmd(d, 'object', 'move', 'kite', 's02').out, /already holds "fern"/);
+  assert.match(roomCmd(d, 'object', 'move', 'kite', 's01').out, /already in s01/);
+  assert.match(roomCmd(d, 'object', 'move', 'ghost', 's05').out, /no objects item "ghost"/);
+  assert.equal(roomCmd(d, 'object', 'move', 'kite', 's05').code, 0);
+  assert.equal(objs(d).find((o) => o.id === 'kite').slot, 's05');
+  assert.equal(roomCmd(d, 'object', 'grow', 'fern').code, 0);
+  assert.match(roomCmd(d, 'object', 'grow', 'fern').out, /3 wakes, size 2/);
+  assert.equal(roomCmd(d, 'object', 'attic', 'fern').code, 0);
+  const fern = objs(d).find((o) => o.id === 'fern');
+  assert.equal(fern.where, 'attic'); assert.equal(fern.slot, null);
+  assert.match(roomCmd(d, 'object', 'grow', 'fern').out, /in the attic; bring it back first/);
+  assert.match(roomCmd(d, 'object', 'attic', 'fern').out, /in the attic; bring it back first/);
+  assert.match(roomCmd(d, 'object', 'back', 'kite', 's02').out, /not in the attic/);
+  // the attic freed s02, so kite may take it; then fern cannot come back into it
+  assert.equal(roomCmd(d, 'object', 'move', 'kite', 's02').code, 0);
+  assert.match(roomCmd(d, 'object', 'back', 'fern', 's02').out, /already holds "kite"/);
+  assert.equal(roomCmd(d, 'object', 'back', 'fern', 's07').code, 0);
+  const back = objs(d).find((o) => o.id === 'fern');
+  assert.equal(back.where, 'out'); assert.equal(back.slot, 's07'); assert.equal(back.wakes, 3);
+  assert.equal(validateObjects(objs(d), JSON.parse(readFileSync(join(d, 'slots.json'), 'utf8'))).ok, true);
+});
+
+test('validateObjects refuses each planted bad row; sizeStep follows 1, 3, 7, 15', () => {
+  const good = { id: 'kite', kind: 'keepsake', slot: 's01', born: '2026-10-19', wakes: 1, touched: '2026-10-19', source: 'just because', why: 'wind', where: 'out' };
+  const slots = [{ id: 's01' }, { id: 's02' }];
+  assert.equal(validateObjects([good], slots).ok, true);
+  for (const [bad, why] of [
+    [[good, { ...good, id: 'fern' }], /slot "s01" already holds "kite"/],
+    [[good, { ...good }], /used twice/],
+    [[{ ...good, where: 'attic' }], /attic has slot null/],
+    [[{ ...good, slot: null }], /needs a slot/],
+    [[{ ...good, slot: 's09' }], /no slot "s09"/],
+    [[{ ...good, wakes: 0 }], /wakes must be/],
+    [[{ ...good, wakes: 1.5 }], /wakes must be/],
+    [[{ ...good, why: 'a\nb' }], /one line/],
+    [[{ ...good, born: '19 Oct' }], /born must be a day/],
+    [[{ ...good, where: 'shelf' }], /out or attic/],
+    [[{ ...good, art: 'bench/x.js' }], /art must be/],
+    [{ not: 'a list' }, /not a list/],
+  ]) {
+    const v = validateObjects(bad, slots);
+    assert.equal(v.ok, false, JSON.stringify(bad));
+    assert.match(v.problems.join('; '), why);
+  }
+  assert.deepEqual([0, 1, 2, 3, 6, 7, 14, 15, 40].map(sizeStep), [1, 1, 1, 2, 2, 3, 3, 4, 4]);
+});
+
+test('snapshot writes today\'s album page with only the things that are out, in slot order, and refuses a broken list', () => {
+  const d = copyState();
+  writeFileSync(join(d, 'objects.json'), '[]\n');
+  roomCmd(d, 'object', 'add', 'kite', 'keepsake', 's09', 'wind');
+  roomCmd(d, 'object', 'add', 'fern', 'plant', 's02', 'green');
+  roomCmd(d, 'object', 'add', 'cup', 'decor', 's05', 'tea');
+  roomCmd(d, 'object', 'attic', 'cup');
+  const r = roomCmd(d, 'snapshot');
+  assert.equal(r.code, 0, r.out);
+  const page = JSON.parse(readFileSync(join(d, 'days', `${today()}.json`), 'utf8'));
+  assert.equal(page.day, today());
+  assert.deepEqual(page.objects.map((o) => o.id), ['fern', 'kite']);
+  assert.equal(roomCmd(d, 'snapshot').code, 0);                       // twice in a day is safe
+  writeFileSync(join(d, 'objects.json'), JSON.stringify([{ id: 'x' }]));
+  const bad = roomCmd(d, 'snapshot');
+  assert.equal(bad.code, 2); assert.match(bad.out, /refused/);
+});
+
+// ---- the real sky (sky.mjs) ----
+test('the sun over Chiang Mai: high at noon in the south, far down at midnight, near the horizon at 6am; a wrong longitude would say otherwise', () => {
+  const noon = sunAt(new Date('2026-10-19T12:15:00+07:00'));
+  assert.ok(noon.altitude > 55 && noon.altitude < 65, `noon altitude ${noon.altitude}`);
+  assert.ok(noon.azimuth > 150 && noon.azimuth < 210, `noon azimuth ${noon.azimuth}`);
+  assert.equal(noon.phase, 'day');
+  const night = sunAt(new Date('2026-10-20T00:00:00+07:00'));
+  assert.ok(night.altitude < -45, `midnight altitude ${night.altitude}`);
+  assert.equal(night.phase, 'night');
+  const early = sunAt(new Date('2026-10-19T06:05:00+07:00'));
+  assert.ok(early.altitude > -6 && early.altitude < 0, `6:05am altitude ${early.altitude}`);
+  assert.equal(early.phase, 'dawn');
+  assert.equal(sunAt(new Date('2026-10-19T18:15:00+07:00')).phase, 'dusk');
+  // the same noon seen from the wrong side of the world is night: the check can fail
+  assert.equal(sunAt(new Date('2026-10-19T12:15:00+07:00'), { lat: 18.79, lon: -98.99 }).phase, 'night');
+});
+
+test('the weather: a live answer, a failure falls back to clear, and the service is asked at most once in 30 minutes', async () => {
+  const store = { m: {}, getItem(k) { return this.m[k] ?? null; }, setItem(k, v) { this.m[k] = v; } };
+  let asked = 0;
+  const answer = (j) => async () => { asked++; return { ok: true, json: async () => j }; };
+  const t0 = Date.parse('2026-10-19T15:00:00Z');
+  const live = await weatherNow({ fetchFn: answer({ current: { weather_code: 63, cloud_cover: 90 } }), store, now: t0 });
+  assert.deepEqual([live.sky, live.from, asked], ['rain', 'live', 1]);
+  const kept = await weatherNow({ fetchFn: answer({ current: { weather_code: 0 } }), store, now: t0 + WEATHER_EVERY_MS - 1 });
+  assert.deepEqual([kept.sky, kept.from, asked], ['rain', 'kept', 1]);
+  const down = async () => { asked++; throw new Error('overloaded'); };
+  const failed = await weatherNow({ fetchFn: down, store, now: t0 + WEATHER_EVERY_MS });
+  assert.deepEqual([failed.sky, failed.from, asked], ['clear', 'fallback', 2]);
+  const again = await weatherNow({ fetchFn: down, store, now: t0 + WEATHER_EVERY_MS + 60e3 });
+  assert.deepEqual([again.from, asked], ['kept', 2]);                  // a failure is not asked again for 30 minutes either
+  const notOk = await weatherNow({ fetchFn: async () => ({ ok: false }), now: t0 });
+  assert.equal(notOk.sky, 'clear');
+  assert.deepEqual([0, 1, 2, 3, 45, 51, 80, 95, 99].map((c) => skyFromCode(c)), ['clear', 'clear', 'cloud', 'cloud', 'cloud', 'rain', 'rain', 'storm', 'storm']);
+  assert.equal(skyFromCode(undefined, 80), 'cloud');
 });
