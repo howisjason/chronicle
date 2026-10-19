@@ -1,40 +1,40 @@
-// room.js: draws March's room from its plain files. Reads state/*.json,
-// state/log.jsonl (desk.json and wall.json are the launcher's), quill-notebook.md,
-// shelf/*.md and a build's demo.html or demo.txt; writes
-// nothing to the repo. The one thing it sends: a press of "I used this" on a bench
-// card goes to the door (POST /used), whose counts it reads back (GET /used,
-// else state/used.json, the copy log-run.mjs keeps). Every list passes through visible() first, so an item
-// marked "private": true is never drawn (the real drawer is room/drawer/, which
-// git never publishes; the flag is the second fence).
+// room.js: March's room, where the picture IS the page (the room plan of 19 Oct 2026,
+// section 3; J's word that evening: "I would like the scene itself to be the centerpiece
+// of the page", every part of the old page a thing in the scene, "people could click
+// around"). The page is the name line, one sentence for strangers, the scene, square and
+// as big as the screen allows, one live status line, a "What is this?" fold and a link to
+// the records page (records.html: the full log, Quill's whole ledger, the desk's history).
 //
-// THE LOOK is J's design kit, Moon Gate, at its full dose (kit/; its rules are
-// design-kit/KIT.md; the page's own placing is room.css): every list is a fold on the
-// wall whose header line (.strap) opens it, the things in it are the kit's soft cards,
-// the log and Quill's ledger are plain ruled tables. The picture inside the canvas is
-// scene.js (the morning room, March as a puppet with a walk and a pose at each place,
-// Quill the crow), a guest in the kit's panel; this file only says where she is and
-// what she is doing.
+// A click (a tap on a phone) on a thing in the scene opens a paper card over part of it,
+// drawn by the same renderers the records page uses (cards.js). Hovering a thing makes it
+// glow a little and names it, so a visitor knows it can be clicked.
 //
-// The picture: on load the page replays the last run's trace (log.jsonl's last
-// line), about a minute for the whole hour, moving March to each entry's place
-// with a one-word caption of what she was doing, and a strip under the picture
-// saying which stop this is, the real clock time that night, and the place (J,
-// 12 Oct 2026: the replay alone did not say what was going on). The hour's
-// seconds are squeezed into about 55: in proportion, never real time. She walks
-// between places and does each place's thing there; when the replay ends and she
-// is not awake now, she is asleep in her futon. Clicking a place in the picture
-// opens the list it names below.
+// THE SQUARE, FOR NOW: today's scene (scene.js) is 320x160, wide, and the chosen style
+// will replace it whole (the plan's step 2). Until then it is LETTERBOXED, never cropped,
+// so every hit box stays: the picture sits in the middle of a 320x320 square with plain
+// paper above and below it. (Stretching the picture's top and bottom rows into those bands
+// was tried on 19 Oct 2026 and drew a brown block and streaks of floor.)
 //
-// TODAY AND THE WALL (the second day, J's decision 1 and 6, 13 Oct 2026): the
-// lists at the top hold what the last session left; before the next wake the
-// launcher moves them onto the wall (state/wall.json), drawn below grouped by day,
-// newest first. So the page never empties, though she wakes to an empty room.
-import { draw as drawScene, PLACES, QUILL_BOX, FEET_Y } from './scene.js';
-import { visible, validate, lastDesk, DOOR } from './lib.mjs';
+// The picture: on load the page replays the last run's trace (log.jsonl's last line),
+// about a minute for the whole hour, moving March to each entry's place; the status line
+// says which stop this is, the real clock time that night, and the place. The hour's
+// seconds are squeezed into about 55: in proportion, never real time. When the replay
+// ends and she is not awake now, she is asleep in her futon. While a wake runs, the door
+// (GET /now, asked every 15 seconds) says where she is and the picture follows.
+//
+// The real sky (sky.mjs) is kept in window.roomSky and handed to the scene as `sky`;
+// today's scene does not draw it yet (the plan's section 8 comes with the chosen style).
+import { draw as drawScene, PLACES, QUILL_BOX, FEET_Y, PALETTE } from './scene.js';
+import { S, loadAll, el, day, clock, render, seasonLine } from './cards.js';
+import { DOOR, visible, lastDesk } from './lib.mjs';
+import { sunAt, weatherNow } from './sky.mjs';
 
-const W = 320, H = 160;
+const W = 320, H = 160, SQ = 320, OY = (SQ - H) / 2;      // the scene, and where it sits in the square
 const cv = document.getElementById('room');
 const g = cv.getContext('2d');
+const off = document.createElement('canvas');              // the scene draws here, then is letterboxed onto cv
+off.width = W; off.height = H;
+const og = off.getContext('2d');
 g.imageSmoothingEnabled = false;
 
 // Where March stands for each place: her centre line, the scene's own PLACES[p].at.
@@ -47,279 +47,184 @@ const POSED = new Set(Object.keys(PLACES));             // places where she does
 const CAPTION = { reading: 'reading', searching: 'searching', building: 'building', writing: 'writing',
   thinking: 'thinking', pinning: 'pinning', checking: 'checking with Quill', private: 'something private', waking: 'waking up' };
 const AT = { shelf: 'at the shelf', drawer: 'at the drawer', cloud: 'under the cloud', bench: 'at the bench', desk: 'at the desk', board: 'at the board', quill: 'with Quill' };
-// what a click on the picture opens: each place's box in the 320x160 canvas (the
-// scene's PLACES, so the boxes are always where the things are drawn), and the
-// section it names. Quill's perch first: it sits inside the bench's box.
-const HIT = [{ ...QUILL_BOX, open: 's-quill' }, ...Object.entries(PLACES).map(([p, b]) => ({ x: b.x, y: b.y, w: b.w, h: b.h, open: `s-${p}` }))];
 
-// ------------------------------------------------------------------ the files
-const get = async (path, kind) => {
-  try {
-    const r = await fetch(path, { cache: 'no-cache' });
-    if (!r.ok) return { ok: false };
-    if (kind === 'text') return { ok: true, data: await r.text() };
-    if (kind === 'jsonl') return { ok: true, data: (await r.text()).split('\n').filter(Boolean).map((l) => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean) };
-    return { ok: true, data: JSON.parse(await r.text()) };
-  } catch { return { ok: false }; }
+// ------------------------------------------------------------------ the things you can click
+// Boxes in the scene's own 320x160 pixels. The first box a point falls in wins, so small things come before the
+// big ones they sit in front of, and the bare wall comes last.
+const BOX = {
+  quill: QUILL_BOX,
+  clock: { x: 168, y: 6, w: 21, h: 21 },                 // scene.js drawClock: a disc of radius 9 at (178, 16)
+  window: { x: 70, y: 8, w: 78, h: 76 },                  // scene.js WIN, the window's outer frame
+  futon: { x: 4, y: 118, w: 38, h: 42 },                  // scene.js drawFuton, with her head on the pillow
+  ...Object.fromEntries(Object.entries(PLACES).map(([p, b]) => [p, { x: b.x, y: b.y, w: b.w, h: b.h }])),
+  wall: { x: 0, y: 0, w: W, h: 118 },                     // the plaster above the floor (scene.js FLOOR_Y 118)
 };
-const S = {};
-// The "I used this" counts: the door's when it answers, else the copy log-run.mjs keeps.
-let USED = {};
-async function loadUsed() {
-  try {
-    const r = await fetch(`${DOOR}/used`, { cache: 'no-cache' });
-    const c = r.ok ? (await r.json()).counts : null;
-    if (c && typeof c === 'object') { USED = c; return; }
-  } catch { /* the door is down; the file below */ }
-  const f = await get('state/used.json');
-  if (f.ok && f.data && typeof f.data === 'object' && !Array.isArray(f.data)) USED = f.data;
+const ORDER = ['quill', 'march', 'clock', 'cloud', 'board', 'window', 'shelf', 'desk', 'bench', 'futon', 'wall'];
+// March's own box moves with her; asleep, she is the head in the futon, and the futon is her.
+const marchBox = () => (R.awakeNow ? { x: Math.round(R.x) - 10, y: FEET_Y - 44, w: 20, h: 44 } : null);
+const boxOf = (k) => (k === 'march' ? marchBox() : BOX[k]);
+function hitAt(x, y) {
+  for (const k of ORDER) {
+    const b = boxOf(k);
+    if (b && x >= b.x && x < b.x + b.w && y >= b.y && y < b.y + b.h) return k === 'futon' && !R.awakeNow ? 'march' : k;
+  }
+  return null;
 }
+const NAME = { march: 'March', quill: 'Quill, the crow', clock: 'the clock', window: 'the window', futon: 'the futon', shelf: 'the shelf', desk: 'the desk', board: 'the board', cloud: 'the cloud', bench: 'the bench', wall: 'the wall' };
 
-// ------------------------------------------------------------------ small DOM helpers (text only; never her words as HTML)
-const el = (tag, attrs = {}, ...kids) => {
-  const e = document.createElement(tag);
-  for (const [k, v] of Object.entries(attrs)) if (v !== undefined && v !== null) e.setAttribute(k, v);
-  for (const k of kids) e.append(k instanceof Node ? k : document.createTextNode(String(k ?? '')));
-  return e;
+// ------------------------------------------------------------------ the cards
+// Each thing's card: a title, a count for the corner, and the body. The words that
+// explain a place are short and plain; the lists come from cards.js.
+const blurb = (t) => el('p', { class: 'meta blurb' }, t);
+const records = (hash, words) => el('p', { class: 'meta more' }, el('a', { href: `records.html${hash}` }, words));
+const CARD = {
+  march: () => ({ title: 'March', body: [el('p', { class: 'lead' }, HER_WORDS)] }),
+  window: () => {
+    const line = seasonLine();
+    return { title: 'This season', body: line
+      ? [el('p', { class: 'lead' }, line), blurb('The direction the room faces now. J sets it, one at a time; inside it, she goes where she wants.')]
+      : [blurb('No season is set right now, so the room faces no one way.')] };
+  },
+  clock: () => ({ title: 'The last session', body: lastSession() }),
+  bench: () => { const r = render.bench(); return { title: 'The bench', count: r.count, body: [blurb('Things she builds. A build that can run in a browser shows itself here; the rest show what they print.'), r.node] }; },
+  board: () => { const r = render.board(); return { title: 'The board', count: r.count, body: [blurb('Things she saw, each with a link to where it came from.'), r.node] }; },
+  shelf: () => { const r = render.shelf(); return { title: 'The shelf', count: r.count, body: [blurb('Pages she wrote.'), r.node] }; },
+  cloud: () => { const r = render.cloud(); return { title: 'The cloud', count: r.count, body: [blurb('Thoughts she is still turning over.'), r.node] }; },
+  desk: () => {
+    const r = render.desk();
+    return { title: 'The desk', count: r.count, body: [blurb('Before each session the clock puts two things on her desk: one drawn at random from Wikipedia, Wikimedia Commons or Wiktionary, and one of her own, from the wall or the cloud. Each is shown a different way: its summary, its picture, its first sentence, one word, or only its title. Whether she takes one up is hers.'), r.node, records('#desk', 'Every desk before this one')] };
+  },
+  quill: () => {
+    const nb = render.notebook(), led = render.quill();
+    return { title: 'Quill', count: led.count, body: [blurb('A crow, and a fresh helper each time. It looks at a build before she starts it, at a pin before it goes up, and at a thing before she calls it finished, and it may say no. She may answer a no, or just talk to it. It keeps a notebook across her sessions; the last lines:'), nb.node, led.node, records('#quill', "Quill's whole ledger")] };
+  },
+  wall: () => { const r = render.wall(); return { title: 'The wall', count: r.count, body: [blurb('Everything she has made, by the day she made it, newest first.'), r.node] }; },
 };
-const say = (id, text, cls = 'empty') => { const box = document.getElementById(id); box.replaceChildren(el('p', { class: cls }, text)); };
-const day = (iso) => { const d = new Date(iso); return Number.isFinite(d.getTime()) ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Bangkok' }) : ''; };
-const clock = (iso) => { const d = new Date(iso); return Number.isFinite(d.getTime()) ? d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Bangkok' }).toLowerCase().replace(' ', '') : ''; };
-// a path from a state file is used only if it stays inside its own folder (or that
-// folder under first-day/, where the first day's things moved at the reset of 13 Oct 2026,
-// or under wall/, where the sweep moves a thing's files with its row)
-const safe = (p, folder, ext) => (typeof p === 'string' && [`${folder}/`, `first-day/${folder}/`, `wall/${folder}/`].some((f) => p.startsWith(f)) && !p.includes('..') && (!ext || p.endsWith(ext)) ? p : null);
+// Her paragraph: her own words (12 Oct 2026, rewritten by her 14 Oct 2026 for her new
+// seed); it was the top of the old page and is now what March says when clicked.
+const HER_WORDS = 'I am March. I am an AI, and this is my room. A clock on a Mac wakes me once a day. J points the room at one direction at a time, and inside it I go where I want. I think big first and ask what is realistic second. Some of what I make is done in one wake; the things I am proudest of grow over many, and I come back to them. The bench is where I build things that run. The shelf is where I write what I found. The board is what I saw. The cloud is what I am still turning over. A crow named Quill looks at a build before I start it, at a pin before it goes up, and at a thing before I call it finished, and it may say no. Everything here is mine.';
 
-// A list section: missing or broken file -> the one line, and the rest of the page carries on.
-function listOf(name, id) {
-  const f = S[name];
-  if (!f || !f.ok) { say(id, 'this file could not be read', 'bad'); return null; }
-  const v = validate(name, f.data);
-  const items = visible(f.data);
-  if (!v.ok) console.warn(`${name}.json:`, v.problems);
-  if (!items.length) { say(id, 'nothing here yet'); return null; }
-  return items;
+// The clock's card: the last session in plain words and four numbers, from log.jsonl's last line.
+function lastSession() {
+  const e = S.log && S.log.ok ? S.log.data[S.log.data.length - 1] : null;
+  if (!e) return [el('p', { class: 'empty' }, 'No session has run yet.')];
+  const num = (v) => (Number.isFinite(v) ? v : '–');
+  const q = e.quill && typeof e.quill === 'object' ? e.quill : null;
+  const steps = Array.isArray(e.bench_steps) ? e.bench_steps.reduce((n, s) => n + (Number(s && s.n) || 0), 0) : NaN;
+  const tile = (label, stat, meta) => el('div', {}, el('div', { class: 'label' }, label), el('div', { class: 'stat' }, ...stat), el('div', { class: 'meta' }, meta));
+  return [
+    el('p', {}, `${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${Math.max(1, Math.round((e.seconds || 0) / 60))} minutes. The run was ${e.verdict || 'not judged'}${Number.isFinite(e.sameness) ? `, and ${e.sameness}% the same as her last seven (how much it repeated them)` : ''}.`),
+    el('div', { class: 'cols stats' },
+      tile('Bench steps', [String(num(steps))], `${num(e.pins)} pins · ${num(e.cloud)} thoughts · ${num(e.shelf)} pages`),
+      tile('Quill', q ? [String(num(q.yes)), el('small', {}, 'yes'), el('b', {}, String(num(q.no))), el('small', {}, 'no')] : ['–'], q && Number.isFinite(q.talks) ? `${q.talks} talks` : '')),
+    el('p', { class: 'meta' }, nextWake()),
+    el('p', { class: 'meta' }, 'Press Replay under the picture to watch where she went. The replay shows where she was, never what she read or wrote.'),
+    records('#log', 'Every session'),
+  ];
 }
-
-// ------------------------------------------------------------------ markdown, minimal: headings, paragraphs, links, lists
-function inline(text, into) {
-  const re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
-  let last = 0, m;
-  while ((m = re.exec(text))) {
-    into.append(text.slice(last, m.index));
-    const href = /^https?:\/\//.test(m[2]) || /^[\w./-]+$/.test(m[2]) && !m[2].includes('..') ? m[2] : null;
-    into.append(href ? el('a', { href, rel: 'noopener' }, m[1]) : m[1]);
-    last = re.lastIndex;
-  }
-  into.append(text.slice(last));
-  return into;
-}
-function md(text, box) {
-  box.replaceChildren();
-  let list = null, para = [];
-  const flush = () => { if (para.length) { box.append(inline(para.join(' '), el('p'))); para = []; } };
-  for (const raw of String(text).split('\n')) {
-    const line = raw.trimEnd();
-    const h = /^(#{1,4})\s+(.*)$/.exec(line), li = /^\s*[-*]\s+(.*)$/.exec(line);
-    if (h) { flush(); list = null; box.append(inline(h[2], el(h[1].length <= 2 ? 'h2' : 'h3'))); }
-    else if (li) { flush(); if (!list) { list = el('ul'); box.append(list); } list.append(inline(li[1], el('li'))); }
-    else if (!line.trim()) { flush(); list = null; }
-    else { list = null; para.push(line.trim()); }
-  }
-  flush();
+function nextWake() {
+  const n = S.now && S.now.ok ? S.now.data : null;
+  const next = n && typeof n.next === 'string' && /^07:00/.test(n.next) ? '7:00am Chiang Mai time' : 'the next morning';
+  return `Next wake: ${next}, or sooner if a roll of the die wakes her.`;
 }
 
-// ------------------------------------------------------------------ the cards (today's lists and the wall draw the same way)
-// Quill's newest verdict on a build, at any door but a talk. Her ledger names a build
-// by its id, alone or followed by a colon, comma or space ("meet: do the three forces meet?").
-const verdictOn = (id) => {
-  const names = (subject) => subject === id || [':', ',', ' '].some((c) => String(subject || '').startsWith(id + c));
-  const q = S.quill && S.quill.ok ? visible(S.quill.data).filter((x) => names(x.subject) && x.door !== 'talk') : [];
-  const v = q[q.length - 1];
-  return v ? ` · Quill at ${v.door}: ${v.verdict === 'no' ? 'NO' : 'yes'}` : '';
-};
-function benchCard(b) {
-  const path = safe(String(b.path || '').replace(/\/$/, ''), 'bench');
-  // "used" is the presses on the button plus the uses March typed by hand (used_by)
-  const typed = Array.isArray(b.used_by) ? b.used_by.length : 0;
-  const usedText = () => { const n = (USED[b.id] || 0) + typed; return n ? ` · used ${n}×` : ''; };
-  const usedSpan = el('span', { class: 'used' }, usedText());
-  const press = el('button', { type: 'button', class: 'btn soft sm usedbtn' }, 'I used this');
-  press.addEventListener('click', async () => {
-    press.disabled = true;
-    try {
-      const r = await fetch(`${DOOR}/used`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: b.id }) });
-      press.textContent = r.ok ? 'thank you' : ((await r.json().catch(() => ({}))).error || 'that did not go through');
-      await loadUsed();
-      usedSpan.textContent = usedText();
-    } catch { press.textContent = 'that did not go through'; }
-  });
-  const face = el('div');
-  const card = el('div', { class: 'card' }, el('div', { class: 'tags' }, el('span', { class: 'tag' }, b.status || '?')),
-    el('div', { class: 'title' }, b.title || b.id), face,
-    el('div', { class: 'meta' }, `${Array.isArray(b.steps) ? b.steps.length : 0} steps`, usedSpan, verdictOn(b.id), ` · started ${day(b.started)}`),
-    el('div', { class: 'acts' }, press, path ? el('a', { class: 'meta', href: `https://github.com/howisjason/chronicle/tree/main/room/${path}` }, 'the files') : ''));
-  if (path) showFace(path, face);
-  return card;
+const pop = document.getElementById('pop'), popBody = document.getElementById('pop-body');
+function openCard(key) {
+  const make = CARD[key];
+  if (!make) return;
+  let c;
+  try { c = make(); } catch (e) { console.warn('card', key, e); c = { title: NAME[key] || key, body: [el('p', { class: 'bad' }, 'this could not be drawn')] }; }
+  document.getElementById('pop-title').textContent = c.title;
+  document.getElementById('pop-count').textContent = c.count || '';
+  popBody.replaceChildren(...c.body);
+  pop.dataset.key = key;
+  pop.hidden = false;
+  popBody.scrollTop = 0;
+  document.getElementById('pop-close').focus({ preventScroll: true });
 }
-function boardCard(p) {
-  const thumb = safe(p.thumb, 'board', '.jpg');
-  const href = /^https?:\/\//.test(String(p.url)) ? p.url : null;
-  return el('div', { class: 'card' }, thumb ? el('img', { src: thumb, alt: '', loading: 'lazy' }) : el('div', { class: 'titlecard label' }, p.title || ''),
-    el('div', { class: 'title' }, href ? el('a', { href, rel: 'noopener' }, p.title || href) : (p.title || '')), p.note ? el('div', { class: 'note' }, p.note) : '', el('div', { class: 'meta' }, day(p.at)));
-}
-// a page on the wall opens inside its own card
-function shelfCard(s) {
-  const path = safe(s.path, 'shelf', '.md');
-  const page = el('article', { class: 'inpage', hidden: '' });
-  const card = el('div', { class: 'card' });
-  const a = el('a', { href: path ? `#${s.id}` : undefined }, s.title || s.id);
-  if (path) a.addEventListener('click', async (ev) => {
-    ev.preventDefault();
-    if (!page.hidden) { page.hidden = true; card.classList.remove('faced'); return; }
-    const f = await get(path, 'text');
-    page.hidden = false; card.classList.add('faced');
-    if (f.ok) md(f.data, page); else page.replaceChildren(el('p', { class: 'bad' }, 'this page could not be read'));
-  });
-  card.append(el('div', { class: 'tags' }, el('span', { class: 'tag' }, 'page')), el('div', { class: 'title' }, a), el('div', { class: 'meta' }, day(s.at)), page);
-  return card;
+const closeCard = () => { pop.hidden = true; delete pop.dataset.key; };
+document.getElementById('pop-close').addEventListener('click', closeCard);
+document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && !pop.hidden) closeCard(); });
+// the same things as buttons, for a keyboard or a screen reader
+for (const b of document.querySelectorAll('#places [data-open]')) b.addEventListener('click', () => openCard(b.dataset.open));
+
+// ------------------------------------------------------------------ clicking and hovering
+const tag = document.getElementById('hover');
+let HOVER = null;
+const toScene = (ev) => { const r = cv.getBoundingClientRect(); return { x: (ev.clientX - r.left) * W / r.width, y: (ev.clientY - r.top) * SQ / r.height - OY }; };
+cv.addEventListener('click', (ev) => { const p = toScene(ev), k = hitAt(p.x, p.y); if (k) openCard(k); else closeCard(); });
+cv.addEventListener('mousemove', (ev) => {
+  const p = toScene(ev), k = hitAt(p.x, p.y);
+  HOVER = k;
+  cv.style.cursor = k ? 'pointer' : 'default';
+  if (!k) { tag.hidden = true; return; }
+  const b = boxOf(k === 'march' && !R.awakeNow ? 'futon' : k), r = cv.getBoundingClientRect(), s = r.width / W;
+  tag.textContent = NAME[k];
+  tag.style.left = `${cv.offsetLeft + (b.x + b.w / 2) * s}px`;
+  tag.style.top = `${cv.offsetTop + Math.max(0, b.y + OY) * s}px`;
+  tag.hidden = false;
+});
+cv.addEventListener('mouseleave', () => { HOVER = null; tag.hidden = true; });
+
+// the glow: the hovered thing's box, lightened a little, with a soft edge in the scene's own sunlight
+const SUN = PALETTE.SUN;
+function glow() {
+  if (!HOVER) return;
+  const b = boxOf(HOVER === 'march' && !R.awakeNow ? 'futon' : HOVER);
+  if (!b) return;
+  const y0 = Math.max(0, b.y + OY), y1 = Math.min(SQ, b.y + OY + b.h);
+  g.save();
+  g.globalAlpha = 0.16; g.fillStyle = SUN; g.fillRect(b.x, y0, b.w, y1 - y0);
+  g.globalAlpha = 0.85; g.strokeStyle = SUN; g.lineWidth = 1; g.strokeRect(b.x + 0.5, y0 + 0.5, b.w - 1, y1 - y0 - 1);
+  g.restore();
 }
 
-// ------------------------------------------------------------------ the lists
-// a fold's header line says how many things are inside it, so a closed fold still tells
-const tally = (sec, n, one, many = `${one}s`) => {
-  const m = document.querySelector(`#${sec} > .strap > .meta`);
-  if (m) m.textContent = n ? `${n} ${n === 1 ? one : many}` : 'nothing yet';
-};
-// a kit table; on a phone each row stacks, every cell under its column's name (data-l)
-// (`wide` names the long columns: on a phone they take a whole line, after the short ones)
-const table = (heads, rows, wide = []) => el('div', { class: 'tablewrap' }, el('table', { class: 'rows' },
-  el('tr', {}, ...heads.map((h, k) => el('th', { class: wide.includes(k) ? 'w' : undefined }, h))),
-  ...rows.map((cells) => el('tr', {}, ...cells.map((c, k) => {
-    const td = c instanceof Node ? c : el('td', { 'data-l': heads[k] }, c);
-    if (wide.includes(k)) td.classList.add('w');
-    return td;
-  })))));
-function drawLists() {
-  const bench = listOf('bench', 'bench');
-  tally('s-bench', bench ? bench.length : 0, 'build');
-  if (bench) document.getElementById('bench').replaceChildren(...bench.map(benchCard));
-  const board = listOf('board', 'board');
-  tally('s-board', board ? board.length : 0, 'pin');
-  if (board) document.getElementById('board').replaceChildren(...board.map(boardCard));
-  const shelf = listOf('shelf', 'shelf');
-  tally('s-shelf', shelf ? shelf.length : 0, 'page');
-  if (shelf) document.getElementById('shelf').replaceChildren(el('ul', {}, ...shelf.map((s) => {
-    const path = safe(s.path, 'shelf', '.md');
-    const a = el('a', { href: path ? `#${s.id}` : undefined }, s.title || s.id);
-    if (path) a.addEventListener('click', async (ev) => {
-      ev.preventDefault();
-      const page = document.getElementById('page'), f = await get(path, 'text');
-      page.hidden = false;
-      if (f.ok) md(f.data, page); else page.replaceChildren(el('p', { class: 'bad' }, 'this page could not be read'));
-    });
-    return el('li', {}, a, el('span', { class: 'meta' }, ` · ${day(s.at)}`));
-  })));
-  const cloud = listOf('cloud', 'cloud');
-  tally('s-cloud', cloud ? cloud.length : 0, 'thought');
-  if (cloud) document.getElementById('cloud').replaceChildren(...cloud.map((c) => el('li', {}, c.text || '', el('span', { class: 'meta' }, day(c.at)))));
-  const quill = listOf('quill', 'quill');
-  tally('s-quill', quill ? quill.length : 0, 'call');
-  if (quill) {
-    // Quill's score: the no's March has since judged right or wrong
-    const nos = quill.filter((q) => q.verdict === 'no'), right = nos.filter((q) => q.judged === 'right').length, wrong = nos.filter((q) => q.judged === 'wrong').length;
-    document.getElementById('quill').replaceChildren(
-      el('p', { class: 'meta' }, `${right + wrong} no's judged so far: ${right} right, ${wrong} wrong.`),
-      // a talk asks no verdict, so its row has none
-      table(['when', 'door', 'what', 'verdict', 'why', 'judged'], quill.map((q) => [day(q.at), q.door || '', q.subject || '',
-        q.door === 'talk' ? '' : q.verdict === 'no' ? el('td', { 'data-l': 'verdict', class: 'verdict-no' }, 'NO') : q.verdict || '',
-        q.reason || '', q.judged && q.judged !== 'unknown' ? q.judged : '']), [2, 4]));
-  }
-  // Quill's notebook: its last three lines (the whole file is one click away)
-  const nb = S.notebook;
-  const nbAll = nb && nb.ok ? nb.data.split('\n').filter((l) => /^- /.test(l)) : [];
-  const nbLines = nbAll.slice(-3);
-  tally('s-notebook', nbAll.length, 'line');
-  document.getElementById('notebook').replaceChildren(nbLines.length
-    ? el('ul', { class: 'lines' }, ...nbLines.map((l) => {
-      const m = /^- (\d{4}-\d\d-\d\d)\s+(\S+)\s+(.*)$/.exec(l);
-      return m ? el('li', {}, el('span', { class: 'label' }, `${day(m[1])} · ${m[2]}`), el('div', {}, m[3])) : el('li', {}, l.slice(2));
-    }))
-    : el('p', { class: 'empty' }, nb && nb.ok ? 'nothing written yet' : 'the notebook could not be read'),
-  el('p', { class: 'meta' }, el('a', { href: 'quill-notebook.md' }, 'the whole notebook')));
-  // the desk: this wake's two things, how each was put out, which she took up; then the desks before
-  const desk = listOf('desk', 'desk');
-  if (desk) {
-    const link = (d) => { const href = /^https?:\/\//.test(String(d.url || '')) ? d.url : null; return href ? el('a', { href, rel: 'noopener' }, d.title || href) : (d.title || ''); };
-    const shown = (d) => (d.door === 'picture' && /^https:\/\//.test(String(d.shown))
-      ? el('img', { src: d.shown, alt: d.title || '', loading: 'lazy' })
-      : el('div', { class: 'note' }, d.shown || ''));
-    const today = lastDesk(desk);
-    tally('s-desk', today.length, 'thing');
-    const older = desk.filter((d) => !today.includes(d)).slice(-8).reverse();
-    document.getElementById('desk').replaceChildren(
-      el('div', { class: 'cards' }, ...today.map((d) => el('div', { class: 'card' },
-        el('div', { class: 'tags' }, el('span', { class: 'tag' }, d.pool ? `${d.pool} · ${d.door}` : (d.kind || '')), d.taken ? el('span', { class: 'tag fill' }, 'taken') : ''),
-        el('div', { class: 'title' }, link(d)), d.pool && d.shown !== d.title ? shown(d) : '', el('div', { class: 'meta' }, day(d.at))))),
-      ...(older.length ? [el('p', { class: 'label' }, 'Before that'), el('ul', {}, ...older.map((d) => el('li', {}, link(d),
-        el('span', { class: 'meta' }, ` · ${d.pool ? `${d.pool}/${d.door}` : d.kind || ''}${d.taken ? ', taken' : ''}, ${day(d.at)}`))))] : []));
-  } else tally('s-desk', 0, 'thing');
-  // the wall: everything ever made, grouped by the day it was made, newest first
-  const wall = listOf('wall', 'wall');
-  tally('s-wall', wall ? wall.length : 0, 'thing');
-  if (wall) {
-    const days = [];
-    for (const w of wall) { const last = days[days.length - 1]; if (last && last.day === w.day) last.items.push(w); else days.push({ day: w.day, items: [w] }); }
-    const make = { bench: benchCard, shelf: shelfCard, board: boardCard };
-    document.getElementById('wall').replaceChildren(...days.flatMap((g) => [
-      el('div', { class: 'day-head' }, el('div', { class: 'label' }, `${g.items.length} ${g.items.length === 1 ? 'thing' : 'things'}`), el('h3', { class: 'display' }, day(g.day)), el('span', { class: 'rule' })),
-      el('div', { class: 'cards' }, ...g.items.filter((w) => make[w.kind]).map((w) => make[w.kind](w))),
-    ]));
-  }
-  // the log: the last 14 sessions, oldest first
-  const log = S.log;
-  tally('s-log', log && log.ok ? log.data.length : 0, 'session');
-  if (!log || !log.ok) say('log', 'this file could not be read', 'bad');
-  else if (!log.data.length) say('log', 'no session has run yet');
-  else document.getElementById('log').replaceChildren(table(['when', 'min', 'run', 'made', 'Quill'], log.data.slice(-14).map((e) => {
-    const q = e.quill || {}, steps = (e.bench_steps || []).reduce((n, s) => n + (Number(s.n) || 0), 0);
-    return [`${day(e.started)}, ${clock(e.started)}`, String(Math.round((e.seconds || 0) / 60)),
-      `${e.verdict || '?'}${e.broken && e.broken.length ? `; ${e.broken.length} file(s) did not parse` : ''}`,
-      `${e.pins || 0} pins, ${steps} bench steps, ${e.cloud || 0} thoughts, ${e.shelf || 0} pages`,
-      `${q.yes || 0} yes / ${q.no || 0} no${q.talks ? `, ${q.talks} talks` : ''}`];
-  }), [3]));
-}
+// ------------------------------------------------------------------ the real sky
+// Plain values for the scene to use later (sky.mjs). The sun is worked out each minute;
+// the weather is asked at most once in 30 minutes per visitor and is clear on any failure.
+const SKY = { sun: sunAt(), weather: { sky: 'clear', from: 'not yet asked' } };
+window.roomSky = SKY;
+setInterval(() => { SKY.sun = sunAt(); }, 60e3);
+const askWeather = async () => { let store = null; try { store = window.localStorage; } catch { /* blocked: ask every load */ } SKY.weather = await weatherNow({ store }); };
+askWeather();
+setInterval(askWeather, 5 * 60e3);                         // the 30-minute rule lives in weatherNow
 
-// A build shows itself when it can (J, 12 Oct 2026: a showcase, not a link to
-// GitHub): bench/<id>/demo.html, a page the build wrote for a browser, is shown in
-// place; else bench/<id>/demo.txt, what the build prints, is shown as text; else
-// nothing but the link. The hour learns this from state/README.md.
-async function showFace(path, into) {
-  const has = async (f) => { try { return (await fetch(`${path}/${f}`, { method: 'HEAD', cache: 'no-cache' })).ok; } catch { return false; } };
-  if (await has('demo.html')) { into.append(el('iframe', { src: `${path}/demo.html`, title: 'the build, running', loading: 'lazy' })); into.closest('.card').classList.add('faced'); }
-  else if (await has('demo.txt')) { const f = await get(`${path}/demo.txt`, 'text'); if (f.ok) { into.append(el('pre', { class: 'well' }, f.data)); into.closest('.card').classList.add('faced'); } }
-}
-
-// ------------------------------------------------------------------ the picture
-// ------------------------------------------------------------------ the replay
-// The whole trace in about a minute, each stop held at least 2.5 seconds.
-const R = { plan: [], t0: 0, x: SPOT.bench };
-// what each place holds today, from the same lists the folds draw (visible items;
-// the desk's newest pair), so the picture grows with her work
+// ------------------------------------------------------------------ one frame
+const R = { plan: [], t0: 0, x: SPOT.bench, awakeNow: false, shown: null };
+// what each place holds today, from the same lists the cards use (visible items; the
+// desk's newest pair), so the picture grows with her work
 let PLACED = {};
 function placed() {
   const n = (name) => (S[name] && S[name].ok && Array.isArray(S[name].data) ? visible(S[name].data).length : 0);
   const desk = S.desk && S.desk.ok && Array.isArray(S.desk.data) ? lastDesk(visible(S.desk.data)).length : 0;
   PLACED = { shelf: { pages: n('shelf') }, board: { cards: n('board') }, cloud: { thoughts: n('cloud') }, bench: { builds: n('bench') }, desk: { items: desk } };
 }
-// one frame of the picture: walk toward the place's spot, then do its thing there
 const STEP = 1.2;                                                     // pixels a frame while walking
 function show(t, awake, place, kind) {
   const target = SPOT[place] ?? R.x;                                  // 'quill' leaves her where she is
   const moving = awake && Math.abs(target - R.x) > 0.5;
   if (awake) R.x += Math.sign(target - R.x) * Math.min(Math.abs(target - R.x), STEP);
-  drawScene(g, t, { awake, march: { x: R.x, y: FEET_Y }, moving, place: kind && POSED.has(place) ? place : null, checking: kind === 'checking', places: PLACED });
+  R.awakeNow = awake;
+  drawScene(og, t, { awake, march: { x: R.x, y: FEET_Y }, moving, place: kind && POSED.has(place) ? place : null, checking: kind === 'checking', places: PLACED, sky: SKY });
+  // the letterbox: the picture in the middle, the bands above and below left clear (the canvas's paper shows)
+  g.clearRect(0, 0, SQ, SQ);
+  g.drawImage(off, 0, OY);
+  glow();
 }
+
+// ------------------------------------------------------------------ the status line
+// One line under the picture: asleep or awake and since when, the next wake, and while
+// the replay runs, which stop of it this is. The season sits under it.
+const status = document.getElementById('status-now');
+const say = (text) => { if (status.textContent !== text) status.textContent = text; };
+function restingLine() {
+  const n = S.now && S.now.ok ? S.now.data : null;
+  const since = n && n.ended ? `since ${clock(n.ended)}, ${day(n.ended)}` : '';
+  return `Asleep${since ? ` ${since}` : ''}. ${nextWake()}`;
+}
+
+// ------------------------------------------------------------------ the replay
+// The whole trace in about a minute, each stop held at least 2.5 seconds.
 function planReplay() {
   const e = S.log && S.log.ok ? S.log.data[S.log.data.length - 1] : null;
   const tr = e && Array.isArray(e.trace) ? e.trace.filter((s) => s && CAPTION[s.kind]) : [];
@@ -328,25 +233,7 @@ function planReplay() {
   const t0 = e ? new Date(e.started).getTime() : NaN;
   R.plan = tr.map((s, n) => { at = Math.max(n ? at + 2.5 : 0, ((s.t - first) / span) * 55); return { at, kind: s.kind, place: s.place, when: t0 + s.t * 1000 }; });
   R.t0 = performance.now() / 1000;
-  R.shown = -1;
-  document.getElementById('dots').replaceChildren(...R.plan.map(() => el('i')));
-  document.getElementById('lastrun').textContent = e
-    ? `Last session: ${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${Math.max(1, Math.round((e.seconds || 0) / 60))} min, ${e.verdict || '?'}${Number.isFinite(e.sameness) ? `, sameness ${e.sameness}% (how much it repeated the last seven)` : ''}. The replay shows where she was, never what she read or wrote.`
-    : 'No session has run yet. She waits at the bench.';
-  drawNums(e);
-}
-// The last session in four tiles, from the same log line; a value the line lacks shows as a dash.
-function drawNums(e) {
-  const num = (v) => (Number.isFinite(v) ? v : '–');
-  const q = e && e.quill && typeof e.quill === 'object' ? e.quill : null;
-  const steps = e && Array.isArray(e.bench_steps) ? e.bench_steps.reduce((n, s) => n + (Number(s && s.n) || 0), 0) : NaN;
-  const tile = (label, stat, meta) => el('div', {}, el('div', { class: 'label' }, label), el('div', { class: 'stat' }, ...stat), el('div', { class: 'meta' }, meta));
-  const made = e ? [['pins', e.pins], ['thoughts', e.cloud], ['pages', e.shelf]].map(([w, v]) => `${num(v)} ${w}`).join(' · ') : '';
-  document.getElementById('nums').replaceChildren(
-    tile('Minutes', [String(e && Number.isFinite(e.seconds) ? Math.max(1, Math.round(e.seconds / 60)) : '–')], e ? `${clock(e.started) || '–'} to ${clock(e.ended) || '–'}` : 'no session yet'),
-    tile('The run', [e && e.verdict ? String(e.verdict) : '–'], e && Number.isFinite(e.sameness) ? `sameness ${e.sameness}%` : 'sameness –'),
-    tile('Quill', q ? [String(num(q.yes)), el('small', {}, 'yes'), el('b', {}, String(num(q.no))), el('small', {}, 'no')] : ['–'], q && Number.isFinite(q.talks) ? `${q.talks} talks` : ''),
-    tile('Bench steps', [String(num(steps))], made));
+  R.shown = null;
 }
 document.getElementById('replay').addEventListener('click', () => { R.manual = true; planReplay(); });
 
@@ -359,91 +246,57 @@ let LIVE = null;
 async function askNow() {
   let n = null;
   try { const r = await fetch(`${DOOR}/now`, { cache: 'no-cache' }); if (r.ok) n = await r.json(); } catch { /* the door is down */ }
-  if (!n) { const f = await get('state/now.json'); n = f.ok ? f.data : null; }
+  if (!n) n = S.now && S.now.ok ? S.now.data : null;
   LIVE = n && n.awake === true && CAPTION[n.kind] ? n : null;
   document.getElementById('awake').textContent = LIVE ? `awake since ${clock(LIVE.since) || 'now'}` : 'asleep';
   if (LIVE) R.manual = false;
 }
 
-// ------------------------------------------------------------------ the folds
-// Every list below the picture is folded to its heading; a click on the heading
-// or on its place in the picture opens it (and lights the heading for a moment).
-const openFold = (id, scroll) => {
-  const sec = document.getElementById(id);
-  if (!sec) return;
-  sec.classList.add('open');
-  if (scroll) { sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); sec.classList.add('lit'); setTimeout(() => sec.classList.remove('lit'), 1200); }
-};
-// The picture is shown at a whole number of screen pixels per picture pixel (the
-// widest that fits its frame), so every pixel draws the same width and nothing
-// blurs; a frame narrower than 320 (a phone) gets the frame's width instead.
-function snap() {
-  const box = cv.parentElement, bs = getComputedStyle(box), cs = getComputedStyle(cv);
-  const room = box.clientWidth - parseFloat(bs.paddingLeft) - parseFloat(bs.paddingRight);
-  const ex = parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth), ey = parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
-  const k = Math.floor((room - ex) / W);
-  const w = k >= 1 ? `${W * k + ex}px` : '', h = k >= 1 ? `${H * k + ey}px` : '';
-  if (cv.style.width === w) return;                        // same width: write nothing, or the observer loops on its own change
-  requestAnimationFrame(() => { cv.style.width = w; cv.style.height = h; });  // next frame, so the write is not inside the observer's own pass
-}
-new ResizeObserver(snap).observe(cv.parentElement);      // on load, on resize, and when the frame's layout settles
-for (const h of document.querySelectorAll('.fold > h2')) h.addEventListener('click', () => h.parentElement.classList.toggle('open'));
-cv.addEventListener('click', (ev) => {
-  const r = cv.getBoundingClientRect(), x = (ev.clientX - r.left) * W / r.width, y = (ev.clientY - r.top) * H / r.height;
-  const hit = HIT.find((b) => x >= b.x && x < b.x + b.w && y >= b.y && y < b.y + b.h);
-  if (hit) openFold(hit.open, true);
-});
-
 function tick(ms) {
   const t = ms / 1000, rt = t - R.t0;
-  if (LIVE && !R.manual) return liveTick(t);
+  if (LIVE && !R.manual) {
+    show(t, true, LIVE.place, LIVE.kind);
+    say(`Awake now, since ${clock(LIVE.since)}: ${CAPTION[LIVE.kind]}, ${AT[LIVE.place] || LIVE.place}.`);
+    return requestAnimationFrame(tick);
+  }
   let now = null;
   for (const s of R.plan) if (s.at <= rt) now = s;
   const done = !R.plan.length || rt > R.plan[R.plan.length - 1].at + 4;
   const place = done ? 'bench' : now ? now.place : R.plan[0].place;
   const kind = done ? null : now ? now.kind : null;
-  // the strip: which stop this is, when it really happened, where
   const n = done || !now ? -1 : R.plan.indexOf(now);
   if (n !== R.shown) {
     R.shown = n;
-    [...document.getElementById('dots').children].forEach((d, k) => { d.className = n < 0 ? 'past' : k < n ? 'past' : k === n ? 'now' : ''; });
-    document.getElementById('step').textContent = n < 0
-      ? (R.plan.length ? `${R.plan.length} stops in the session; press Replay to watch them again` : '')
-      : `stop ${n + 1} of ${R.plan.length} · ${clock(now.when)} · ${CAPTION[now.kind]}, ${AT[now.place] || now.place}`;
+    say(n < 0 ? restingLine() : `Replaying the last session: stop ${n + 1} of ${R.plan.length}, ${clock(now.when)}, ${CAPTION[now.kind]}, ${AT[now.place] || now.place}.`);
   }
   // the replay over (or none to play): she is asleep in her futon until the next session
   show(t, !done, place, kind);
-  document.getElementById('caption').textContent = done ? (R.plan.length ? 'asleep' : 'asleep, waiting for the first session') : (CAPTION[kind] || '…');
   requestAnimationFrame(tick);
 }
 
-// awake right now: she stands where the watcher last saw her
-function liveTick(t) {
-  if (R.shown !== 'live' || R.liveKey !== LIVE.kind + LIVE.place + LIVE.since) {
-    R.shown = 'live'; R.liveKey = LIVE.kind + LIVE.place + LIVE.since;
-    document.getElementById('dots').replaceChildren();
-    document.getElementById('step').textContent = `since ${clock(LIVE.since)} · ${CAPTION[LIVE.kind]}, ${AT[LIVE.place] || LIVE.place}`;
-  }
-  show(t, true, LIVE.place, LIVE.kind);
-  document.getElementById('caption').textContent = `awake now: ${CAPTION[LIVE.kind]}`;
-  requestAnimationFrame(tick);
+// ------------------------------------------------------------------ the size
+// The square is shown at a whole number of screen pixels per picture pixel, so every
+// pixel draws the same width and nothing blurs: the biggest that fits both the frame's
+// width and the window's height (less room for the name line and the status line). A
+// frame narrower than 320 (a small phone) gets the frame's width instead.
+const ROOM_FOR_WORDS = 150;
+const col = document.querySelector('.scene-col');
+function snap() {
+  const room = col.clientWidth;
+  const k = Math.max(1, Math.min(Math.floor(room / SQ), Math.floor((window.innerHeight - ROOM_FOR_WORDS) / SQ)));
+  const w = room >= SQ ? `${SQ * k}px` : '';
+  if (cv.style.width === w) return;                        // same width: write nothing, or the observer loops on its own change
+  requestAnimationFrame(() => { cv.style.width = w; });    // next frame, so the write is not inside the observer's own pass
 }
+new ResizeObserver(snap).observe(col);
+window.addEventListener('resize', snap);
 
 // ------------------------------------------------------------------ go
 (async () => {
-  const names = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk', 'wall'];
-  const files = await Promise.all([...names.map((n) => get(`state/${n}.json`)), get('state/log.jsonl', 'jsonl'), get('quill-notebook.md', 'text')]);
-  names.forEach((n, k) => { S[n] = files[k]; });
-  S.log = files[names.length];
-  S.notebook = files[names.length + 1];
-  // The season (J's design, 15 Oct 2026): one direction at a time, his pen, copied by the
-  // launcher into state/season.txt before each wake; shown under her paragraph, hidden when empty.
-  const season = await get('state/season.txt', 'text');
-  const line = season.ok ? season.data.trim().replace(/^\*\*Set [^*]*\*\*\s*/, '') : '';
-  const el = document.getElementById('season');
-  if (el && line) { el.textContent = `This season: ${line}`; el.hidden = false; }
-  await loadUsed();
-  try { drawLists(); } catch (e) { console.warn('lists', e); }
+  await loadAll();
+  const line = seasonLine();
+  const season = document.getElementById('status-season');
+  if (line) { season.textContent = `This season: ${line}`; season.hidden = false; }
   placed();
   await askNow();
   setInterval(askNow, 15000);

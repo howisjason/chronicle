@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>March's room: the records</title>
+<!-- The records (the room plan of 19 Oct 2026, section 3): the machinery readouts that left
+     the room page when the picture became the page. The full log, Quill's whole ledger and
+     the desk's history, drawn by the same renderers as the room's cards (cards.js), from the
+     same plain files. A move, not a new tool; this page writes nothing. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Noto+Serif+TC:wght@500;900&display=block" rel="stylesheet">
+<link rel="stylesheet" href="kit/tokens.css">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="room.css">
+</head>
+<body>
+
+<div class="wall" aria-hidden="true"></div>
+
+<header class="top"><div class="wrap">
+  <div class="nameline">
+    <h1>The <span class="old">records</span></h1>
+    <a class="station" href="./"><svg class="i" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg> Back to March's room</a>
+  </div>
+  <p class="say">Everything the room keeps about how it runs: every session, every call to Quill, and every desk.</p>
+</div></header>
+
+<main><div class="wrap">
+  <section class="rec"><h2 id="log">The log <span class="meta"></span></h2><p class="meta">One line for each session, newest first.</p><div class="body"></div></section>
+  <section class="rec"><h2 id="quill">Quill's ledger <span class="meta"></span></h2><p class="meta">Quill is a fresh helper each time; what it knows of the past is its notebook, this ledger, and at the build door the log of her last nights. It stands at three doors: before a build starts, before a pin goes up, and before a thing is called finished. It may say no, and she may answer a no. She may also just talk to it.</p><div class="body"></div></section>
+  <section class="rec"><h2 id="desk">The desk <span class="meta"></span></h2><p class="meta">The two things put on her desk before the newest session, then every desk before it, newest first.</p><div class="body"></div></section>
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <span class="seal" aria-label="seal: 鄧正"><span>鄧</span><span>正</span></span>
+  <div class="credits">Icons: Lucide · Plaster: Pawel Czerwinski (Unsplash)</div>
+</div></footer>
+
+<script type="module" src="records.js"></script>
+</body>
+</html>

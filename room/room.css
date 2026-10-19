@@ -1,81 +1,90 @@
-/* room.css: March's room in J's design kit, Moon Gate, at the FULL dose (kit/tokens.css,
-   kit/kit.css and kit/assets/, copied whole from design-kit/kit; the rules are
-   design-kit/KIT.md, whose "doses" table names this room as the full-dose place).
-   This file only places the kit's parts for this page: it writes no colour of its own
-   (every colour is a kit variable) and uses only the kit's sizes. The picture inside
-   the canvas is a guest and keeps its own pixels. Daylight only; never red; never
-   overflow hidden on html or body (the page must scroll in any panel). */
+/* room.css: March's room in J's design kit, Moon Gate (kit/tokens.css, kit/kit.css and
+   kit/assets/, copied whole from design-kit/kit; the rules are design-kit/KIT.md). Since
+   19 Oct 2026 the picture is the page (the room plan of that day, section 3), so the kit is
+   kept light around it: the plaster wall, a name line with the spark, the panel with the
+   banana leaf over its corner, the seal at the foot. This file only places the kit's parts:
+   it writes no colour of its own (every colour is a kit variable) and uses only the kit's
+   sizes. The picture inside the canvas is a guest and keeps its own pixels. Daylight only;
+   never red; never overflow hidden on html or body (the page must scroll in any panel). */
 
-/* ---------- the gate: her name in the ensō door, her own words under it ---------- */
-/* her paragraph is longer than the kit's one-line lead, so the gate grows to hold it */
-.gate { height: 1110px; }
-.topnav .seal { margin-right: auto; }
-.topnav ul a { display: inline-flex; align-items: center; gap: 6px; }
-.topnav ul a:hover { color: var(--ink); }
-.door-through h1 { margin-top: 0; }
-/* the spark carries whether she is awake: the one alive thing up here */
-.door .spark { right: 34px; bottom: 70px; }
-.gate-say { width: 700px; margin-left: -350px; top: 708px; }
-.intro .lead { font-size: var(--t-body); line-height: 1.75; }
-.intro .meta { margin-top: 18px; color: var(--ink); }
-.intro #season { font-weight: 600; max-width: 600px; margin-inline: auto; }
-.intro .hint { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--leaf); }
+/* ---------- the name line and the one sentence for strangers ---------- */
+.top { position: relative; z-index: 2; padding: 26px 0 18px; }
+.nameline { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.nameline h1 { font-size: var(--t-title); line-height: 1.05; font-weight: 800; letter-spacing: -.035em; }
+/* the spark carries whether she is awake: the one alive thing on the page */
+.nameline .spark { --tilt: -6deg; }
+.nameline .station { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: var(--t-small); font-weight: 600; color: var(--ink-2); text-decoration: none; }
+.nameline .station:hover { color: var(--ink); }
+.say { margin-top: 10px; max-width: 760px; font-size: var(--t-body); color: var(--ink); line-height: 1.6; }
+.say .hint { color: var(--leaf); font-weight: 600; }
 
 /* ---------- small words ---------- */
 .meta { font-size: var(--t-small); color: var(--ink-2); line-height: 1.55; }
 .label { margin-bottom: 0; }
 a { text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
 a:hover { text-decoration-color: var(--leaf); }
-.topnav a, .btn, a.btn { text-decoration: none; }
+.btn, a.btn { text-decoration: none; }
 .empty, .bad { font-size: var(--t-small); font-weight: 600; color: var(--ink-2); }
+/* only a keyboard or a screen reader finds these: the things in the room, as buttons */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.sr:focus-within { position: static; width: auto; height: auto; clip-path: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 
-/* ---------- the picture: a guest in the kit's panel, a real leaf over its corner ---------- */
-.stage { margin-top: 10px; }
-.stage .panel-bar { padding: 18px 30px; }
-/* the caption sits beside the name, clear of the leaf over the corner */
-.stage .panel-bar #caption { margin-left: 6px; }
-.stage-body { padding: 26px 30px 26px; }
-.stage canvas {
-  display: block; cursor: pointer; width: 100%; aspect-ratio: 2 / 1; margin: 0 auto;  /* room.js snaps the width to whole pixels */
+/* ---------- the scene: square, the biggest thing, straight on the wall with a real leaf over its corner ---------- */
+/* on a computer the few words sit beside it; on a phone they follow it */
+.room-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px 48px; margin-top: 8px; align-items: start; }
+@media (min-width: 1100px) { .room-grid { grid-template-columns: minmax(0, 1fr) 380px; } .side { padding-top: 6px; } }
+.scene-col { min-width: 0; }
+.frame { position: relative; width: fit-content; max-width: 100%; }
+.frame canvas {
+  display: block; cursor: pointer; width: min(100%, 320px); aspect-ratio: 1 / 1;  /* room.js snaps the width to whole pixels */
   image-rendering: pixelated; image-rendering: crisp-edges;
-  background: var(--wall); border-radius: var(--r-shot); box-shadow: var(--sh-shot);
+  background: var(--paper); border-radius: var(--r-shot); box-shadow: var(--sh-panel);
 }
-.stage .leaf-over { right: -96px; top: -118px; }
-.under { display: flex; justify-content: space-between; align-items: center; gap: var(--gap); margin-top: 22px; flex-wrap: wrap; }
-/* the replay strip: one dot per stop, the stop now in spring */
-#strip { display: flex; align-items: center; gap: 12px; min-height: 18px; flex-wrap: wrap; }
-#dots { display: flex; gap: 5px; flex-wrap: wrap; }
-#dots i { display: block; width: 8px; height: 8px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--line-2); }
-#dots i.past { background: var(--leaf); box-shadow: none; }
-#dots i.now { background: var(--spring); box-shadow: 0 0 0 3px var(--spring-wash); }
-#lastrun { margin-top: 14px; }
+.frame .leaf-over { right: -70px; top: -30px; }
+/* the name of the thing under the mouse, just above it */
+#hover { position: absolute; z-index: 4; transform: translate(-50%, calc(-100% - 6px)); pointer-events: none; height: 28px; font-size: var(--t-label); font-weight: 700; white-space: nowrap; }
+#hover[hidden] { display: none; }
 
-/* ---------- the last session in numbers: columns on the wall, split by hairlines ---------- */
-#nums { margin-top: 70px; }
-#nums .label { color: var(--leaf); }
-#nums .stat { font-size: var(--t-title); line-height: 1.15; font-weight: 800; letter-spacing: -.03em; margin: 8px 0 4px; }
-#nums .stat small { font-size: var(--t-lead); font-weight: 700; color: var(--ink-2); letter-spacing: 0; margin-left: .22em; }
-#nums .stat b { font-weight: inherit; margin-left: .5em; }
+/* ---------- the card a click opens: a paper card over part of the scene ---------- */
+.pop {
+  position: absolute; z-index: 5; top: 20px; right: 20px; width: min(460px, 76%); max-height: calc(100% - 40px);
+  display: flex; flex-direction: column; background: var(--paper); border-radius: var(--r-card); box-shadow: var(--sh-panel);
+}
+.pop[hidden] { display: none; }
+.pop-head { display: flex; align-items: center; gap: 14px; padding: 20px 22px 14px; border-bottom: 1px solid var(--line); }
+.pop-head h2 { font-size: var(--t-lead); font-weight: 800; letter-spacing: -.015em; }
+.pop-head .meta { font-weight: 600; }
+.pop .close { margin-left: auto; width: 40px; height: 40px; border: 0; border-radius: 50%; display: grid; place-items: center; background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line-2); cursor: pointer; flex: none; }
+.pop .close:hover, .pop .close:focus { outline: none; box-shadow: inset 0 0 0 1.5px var(--ink); }
+.pop .close:focus-visible { box-shadow: inset 0 0 0 1.5px var(--ink), 0 0 0 4px var(--spring-wash); }
+.pop .close svg { width: var(--i-md); height: var(--i-md); }
+.pop-body { overflow: auto; padding: 18px 22px 24px; display: flex; flex-direction: column; gap: 16px; overscroll-behavior: contain; }
+.pop-body .lead { font-size: var(--t-body); line-height: 1.7; color: var(--ink); }
+.pop-body .blurb { max-width: 640px; }
+.pop-body .cards { grid-template-columns: 1fr; gap: 18px; }
+.pop-body .card { box-shadow: 0 0 0 1px var(--line); }
+.pop-body .more { font-weight: 600; }
+.pop-body .lines li { font-size: var(--t-small); line-height: 1.6; color: var(--ink); }
+.pop-body .stats { margin: 4px 0; }
+.pop-body .stats .label { color: var(--leaf); }
+.pop-body .stats .stat { font-size: 34px; line-height: 1.15; font-weight: 800; letter-spacing: -.03em; margin: 6px 0 2px; }
+.pop-body .stats .stat small { font-size: var(--t-lead); font-weight: 700; color: var(--ink-2); letter-spacing: 0; margin-left: .22em; }
+.pop-body .stats .stat b { font-weight: inherit; margin-left: .5em; }
 
-/* ---------- Today: the one huge word ---------- */
-.today { margin-top: 120px; position: relative; }
-.today-row { display: flex; align-items: flex-end; gap: 60px; margin-top: 10px; }
-.today-row p { max-width: 420px; margin-left: auto; padding-bottom: 14px; color: var(--ink-2); font-size: var(--t-note); }
+/* ---------- the one live status line, the season under it ---------- */
+.status { display: flex; align-items: center; gap: 10px 18px; flex-wrap: wrap; }
+.status .now { font-size: var(--t-small); font-weight: 600; color: var(--ink); flex: 1 1 320px; }
+.status .season { flex-basis: 100%; max-width: 820px; }
 
-/* ---------- the folds: each list is a row on the wall whose header line opens it ---------- */
-.folds { margin-top: 46px; border-top: 1px solid var(--line); }
-.fold { border-bottom: 1px solid var(--line); scroll-margin-top: 20px; transition: background .6s ease; border-radius: 4px; }
-.fold > .strap { display: flex; align-items: center; gap: 18px; padding: 20px 4px; cursor: pointer; user-select: none; font: inherit; }
-.fold > .strap .name { font-size: var(--t-lead); font-weight: 800; letter-spacing: -.015em; }
-.fold > .strap .meta { margin-left: auto; text-align: right; font-weight: 600; }
-.fold > .strap .mark { width: var(--i-lg); height: var(--i-lg); color: var(--ink-2); transition: transform .4s ease; }
-.fold.open > .strap .mark { transform: rotate(180deg); }
-.fold > .strap:hover .disc { background: var(--spring-wash); color: var(--leaf); box-shadow: none; }
-.fold > .body { display: none; padding: 4px 4px 44px 74px; }
-.fold.open > .body { display: block; }
-/* a click on the picture lights the fold it opens, for a moment */
-.fold.lit { background: var(--spring-wash); }
-.body > p.meta { margin-bottom: 22px; max-width: 760px; }
+/* ---------- "What is this?", closed by default ---------- */
+.what { margin-top: 26px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.what summary { display: flex; align-items: center; gap: 10px; padding: 16px 2px; cursor: pointer; font-weight: 700; list-style: none; }
+.what summary::-webkit-details-marker { display: none; }
+.what summary svg { width: var(--i-md); height: var(--i-md); color: var(--leaf); }
+.what ul { list-style: none; padding: 0 2px 18px 32px; max-width: 760px; }
+.what li { padding: 6px 0; color: var(--ink-2); }
+.records-link { margin-top: 22px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.records-link a { font-weight: 700; }
 
 /* ---------- the cards: the kit's soft box ---------- */
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 26px; }
@@ -84,7 +93,7 @@ a:hover { text-decoration-color: var(--leaf); }
 .card .tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .card .tag { height: 28px; font-size: var(--t-label); font-weight: 700; }
 .card .title { font-size: var(--t-lead); line-height: 1.35; font-weight: 800; letter-spacing: -.015em; color: var(--ink); }
-.card .title, .card .note, #desk li { overflow-wrap: anywhere; }
+.card .title, .card .note, .desk li { overflow-wrap: anywhere; }
 .card .title a { color: inherit; }
 .card .note { font-size: var(--t-small); color: var(--ink-2); line-height: 1.55; }
 /* a picture she saw is seen through a round window in the card, as the kit's card has it */
@@ -98,20 +107,18 @@ a:hover { text-decoration-color: var(--leaf); }
   background: var(--spring-wash); color: var(--leaf); font-size: var(--t-label); line-height: 1.4;
 }
 /* a page opened in place */
-.inpage, #page { border-top: 1px solid var(--line); padding-top: 16px; overflow-wrap: anywhere; }
-#page { margin-top: 18px; max-width: 760px; }
-.inpage h2, #page h2 { font-size: var(--t-lead); line-height: 1.3; font-weight: 800; color: var(--ink); margin: 20px 0 8px; }
-.inpage h3, #page h3 { font-size: var(--t-body); font-weight: 700; color: var(--ink); margin: 16px 0 6px; }
-.inpage p, #page p { margin-top: 10px; font-size: var(--t-small); color: var(--ink-2); }
-#page p { font-size: var(--t-body); }
-.inpage ul, #page ul { margin: 10px 0 0 20px; font-size: var(--t-small); }
+.inpage { border-top: 1px solid var(--line); padding-top: 16px; overflow-wrap: anywhere; }
+.inpage h2 { font-size: var(--t-lead); line-height: 1.3; font-weight: 800; color: var(--ink); margin: 20px 0 8px; }
+.inpage h3 { font-size: var(--t-body); font-weight: 700; color: var(--ink); margin: 16px 0 6px; }
+.inpage p { margin-top: 10px; font-size: var(--t-small); color: var(--ink-2); }
+.inpage ul { margin: 10px 0 0 20px; font-size: var(--t-small); }
 
-/* plain lists on the wall */
-#shelf ul, #desk ul { list-style: none; max-width: 760px; }
-#shelf li, #desk li { padding: 12px 0; border-bottom: 1px solid var(--line); }
-#shelf li:last-child, #desk li:last-child { border-bottom: 0; }
-#desk .cards { margin-bottom: 26px; }
-#desk > .label { margin: 8px 0 4px; }
+/* plain lists */
+ul.plain { list-style: none; max-width: 760px; }
+ul.plain li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+ul.plain li:last-child { border-bottom: 0; }
+.desk .cards { margin-bottom: 26px; }
+.desk > .label { margin: 8px 0 4px; }
 
 /* the cloud and the notebook: lines with a hairline between */
 .lines { list-style: none; max-width: 820px; }
@@ -119,7 +126,6 @@ a:hover { text-decoration-color: var(--leaf); }
 .lines li:first-child { border-top: 0; padding-top: 4px; }
 .lines li .meta { display: block; margin-top: 4px; }
 .lines li .label { display: block; margin-bottom: 6px; }
-#notebook > p { padding-top: 14px; }
 
 /* the two tables: Quill's ledger and the log, ruled on the wall */
 .tablewrap { overflow-x: auto; }
@@ -127,66 +133,49 @@ table.rows { width: 100%; border-collapse: collapse; font-size: var(--t-small); 
 table.rows th { text-align: left; font-size: var(--t-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--leaf); padding: 0 14px 10px 0; border-bottom: 1.5px solid var(--ink); }
 table.rows td { vertical-align: top; padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); }
 table.rows td:first-child { color: var(--ink); font-weight: 600; }
-#quill td:nth-child(5) { width: 50%; }
-#quill td:nth-child(3) { min-width: 150px; }
-#quill > p { padding-bottom: 16px; }
+.quill td:nth-child(5) { width: 50%; }
+.quill td:nth-child(3) { min-width: 150px; }
+.quill > p { padding-bottom: 16px; }
 .verdict-no { color: var(--ink) !important; font-weight: 800; }
 /* short columns never break; the long ones take the room */
-#log td:nth-child(1), #log td:nth-child(2), #log td:nth-child(4), #log td:nth-child(5),
-#quill td:nth-child(1), #quill td:nth-child(2), #quill td:nth-child(4), #quill td:nth-child(6) { white-space: nowrap; }
+.log td:nth-child(1), .log td:nth-child(2), .log td:nth-child(4), .log td:nth-child(5),
+.quill td:nth-child(1), .quill td:nth-child(2), .quill td:nth-child(4), .quill td:nth-child(6) { white-space: nowrap; }
 
 /* the wall: each day a title on a hairline */
-.day-head { margin: 44px 0 22px; padding-top: 18px; border-top: 1.5px solid var(--ink); display: flex; align-items: baseline; gap: 18px; }
-.day-head:first-child { margin-top: 6px; }
+.day-head { margin: 34px 0 18px; padding-top: 14px; border-top: 1.5px solid var(--ink); display: flex; align-items: baseline; gap: 18px; }
+.day-head:first-child { margin-top: 2px; }
 .day-head .label { order: 2; margin-left: auto; }
-.day-head .display { font-size: var(--t-title); line-height: 1.1; letter-spacing: -.03em; }
-.day-head .rule { display: none; }
+.day-head .display { font-size: 30px; line-height: 1.1; letter-spacing: -.03em; }
+
+/* ---------- the records page: plain sections on the wall ---------- */
+.rec { margin-top: 56px; }
+.rec > h2 { display: flex; align-items: center; gap: 14px; font-size: var(--t-title); line-height: 1.1; font-weight: 800; letter-spacing: -.03em; scroll-margin-top: 20px; }
+.rec > h2 .meta { margin-left: auto; font-weight: 600; letter-spacing: 0; }
+.rec > p.meta { margin: 10px 0 22px; max-width: 760px; }
 
 /* ---------- the foot: the wide gold seal signs the page ---------- */
-.foot { margin-top: 120px; }
+.foot { margin-top: 80px; }
 .foot .credits { margin-left: 0; }
-.foot .btn { margin-left: auto; }
 
-/* ---------- narrower screens: the gold title steps aside before it would leave the page ---------- */
-@media (max-width: 1240px) {
-  .gate-title, .vtext { display: none; }
-}
-
-/* ---------- a phone (J reads this on an Android phone): the gate gets its own smaller layout ---------- */
+/* ---------- a phone (J reads this on an Android phone) ---------- */
 @media (max-width: 760px) {
-  .wrap { width: calc(100% - 36px); }
-  .gate { height: auto; padding-bottom: 36px; }
-  .topnav .wrap { height: 72px; }
-  /* the door, shrunk to fit: the kit draws it 560 wide from the centre line */
-  .door { transform: scale(.6); transform-origin: 50% 0; top: 120px; }
-  .door-through h1 { font-size: 92px; }
-  .gate-band { left: calc(50% - 53px); width: 118px; }
-  .gate-shadow { left: -880px; top: -120px; }
-  .gate-say { position: relative; left: auto; margin: 0 auto; width: auto; top: auto; padding: 476px 22px 0; }
-  .intro .lead { text-align: left; }
-  .stage .panel-bar { padding: 14px 18px; }
-  .stage-body { padding: 16px 14px 18px; }
-  .stage { margin-top: 40px; }
-  .stage .leaf-over { right: -128px; top: -112px; transform: scale(.62); }
-  #nums { margin-top: 48px; grid-auto-flow: row; grid-template-columns: 1fr 1fr; row-gap: 26px; }
-  #nums > * { padding: 0 16px; border-left: 0; }
-  #nums > :nth-child(2n) { border-left: 1px solid var(--line); }
-  #nums > :nth-child(2n+1) { padding-left: 0; }
-  #nums .stat { font-size: 34px; }
-  #dots { gap: 4px; }
-  #dots i { width: 7px; height: 7px; }
-  .today { margin-top: 80px; }
-  .today .display { font-size: 76px; }
-  .today-row { flex-direction: column; align-items: flex-start; gap: 6px; }
-  .today-row p { margin-left: 0; padding-bottom: 0; }
-  .fold > .strap { gap: 12px; padding: 16px 0; }
-  .fold > .strap .disc.plain { width: 40px; height: 40px; }
-  .fold > .strap .disc.plain svg { width: var(--i-md); height: var(--i-md); }
-  .fold > .body { padding: 0 0 34px; }
+  .wrap { width: calc(100% - 28px); }
+  .top { padding: 18px 0 12px; }
+  .nameline { gap: 12px 16px; }
+  .nameline h1 { font-size: 34px; }
+  .nameline .station { order: -1; flex-basis: 100%; justify-content: flex-end; }
+  .say { font-size: var(--t-small); }
+  .frame .leaf-over { right: -120px; top: -64px; transform: scale(.62); }
+  .frame { margin: 0 auto; }
+  /* on a phone the scene is small, so the card rises from the bottom of the screen instead */
+  .pop { position: fixed; top: auto; right: 0; left: 0; bottom: 0; width: auto; max-height: 78vh; border-radius: var(--r-card) var(--r-card) 0 0; }
+  .pop-head { padding: 16px 16px 12px; }
+  .pop-body { padding: 14px 16px 22px; }
   .card { padding: 20px 18px 18px; }
   .card iframe { height: 420px; }
+  .rec > h2 { font-size: 30px; flex-wrap: wrap; }
+  .rec > h2 .meta { margin-left: 0; flex-basis: 100%; }
   .foot .wrap { flex-wrap: wrap; }
-  .foot .btn { margin-left: 0; }
 }
 @media (max-width: 560px) {
   /* the tables turn into stacked rows: each cell a small block with its column's name above it,
