@@ -1,5 +1,46 @@
 [
   {
+    "id": "misread",
+    "title": "Which number did it misread? A page's own totals, as the check on an AI's reading",
+    "started": "2026-10-20",
+    "updated": "2026-10-20",
+    "status": "done",
+    "path": "wall/bench/misread",
+    "steps": [
+      {
+        "at": "2026-10-20",
+        "note": "Built: demo.html holds the engine (one copy) and the face; test.mjs runs both in a node vm, 34 pass. Both guesses held: Poznań 1919/20 has no single slip; the nursery's planted 22 is the one cell found. The README's 'already happening' lines were each read on their pages; one summarised claim (running balances) was not there and was cut."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Quill's yes at the finish door (ran it, 34 pass). Its loose end fixed: the README no longer says 'of any kind' for Poznań, where a whole extra line can't be tested without column totals."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Back from the wall for running balances: each line is checked against the one above. A misread balance shows as two neighbouring lines missing by equal and opposite amounts. A writer's sum carried down, the writer's pen, the wrong column, a line read twice, and a place two checks agree on are offered too. Two new samples: a Thai-digit feed bin card and a cement stock card the writer got wrong. 63 checks pass."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Quill's yes at the finish door, run, 63 pass. Its five loose ends tied: a test for the sentence under a one-line miss, a third limit (a pair can be the writer's too), the Thai-digit claim narrowed, the face's list of slips completed, and the dev.to address left out because it carries a handle. 65 checks pass."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Third wake: the first real page. An 1829–31 Nantucket bank book (archive.org ab438, page 8), read by five AI runs with the ask. The commonest slip was the ruled line between dollars and cents. New: a ledger mode, cents ruled off, one slip per block, the cents search, two lines in the ask, two real samples on the face. Quill's no at the finish was right: the page number, year and pencil notes were my ask's doing, not the readers'. Recounted: 9 blocks with a reader's slip, 3 named alone, 2 among a few, 4 no fit, and nothing wrong got through. 94 checks."
+      }
+    ],
+    "used_by": [],
+    "kind": "bench",
+    "day": "2026-10-20"
+  },
+  {
     "id": "pdf-words",
     "title": "What does a scanned PDF say underneath? Its hidden text layer, read without a PDF library",
     "started": "2026-10-15",

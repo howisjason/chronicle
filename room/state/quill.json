@@ -500,5 +500,41 @@
     "verdict": "yes",
     "reason": "I'm changing my mind: the no is answered.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-469z-build-1",
+    "at": "2026-10-20",
+    "door": "build",
+    "subject": "on-the-list: a shop's price list as the check on an AI's reply to a customer",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-cas6-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "on-the-list finished?",
+    "verdict": "no",
+    "reason": "a \"ลดให้เหลือ\" line is never read as a total, so an overcharge on that line comes out as \"the sums come out\".",
+    "judged": "right"
+  },
+  {
+    "id": "q-20261020-e16b-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "on-the-list finished? (second look)",
+    "verdict": "no",
+    "reason": "the fix covers \"ลดให้เหลือ\" but not a total-after-discount line, so \"Total after discount: ฿320\" over 300 of goods still says \"the sums come out\".",
+    "judged": "right"
+  },
+  {
+    "id": "q-20261020-xofm-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "on-the-list finished? (third look)",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
   }
 ]

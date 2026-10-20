@@ -1,24 +1,5 @@
 [
   {
-    "id": "d-20261014-0f96-a",
-    "at": "2026-10-14",
-    "pool": "wikipedia",
-    "door": "picture",
-    "title": "Paraplesiataenius genieri",
-    "shown": "https://upload.wikimedia.org/wikipedia/commons/5/50/Paraplesiataenius_genieri.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
-    "url": "https://en.wikipedia.org/wiki/Paraplesiataenius_genieri",
-    "taken": "2026-10-14"
-  },
-  {
-    "id": "d-20261014-0f96-b",
-    "at": "2026-10-14",
-    "pool": "self",
-    "door": "title",
-    "title": "What Sima Guang said",
-    "shown": "What Sima Guang said",
-    "ref": "page:what-sima-guang-said.md"
-  },
-  {
     "id": "d-20261014-6b54-a",
     "at": "2026-10-14",
     "pool": "self",
@@ -276,5 +257,23 @@
     "title": "File:Kanzelaltar-Orgel-St-Georg-Hattingen-2026.jpg",
     "shown": "Pulpit altar with organ in the Protestant church of St. George, Hattingen, Germany. The organ was built 1826–1830 by Christian Roetzel and restored in 2014. The altar painting depicts the twelve-year-old Jesus in the Temple after Heinrich Hofmann. Above the organ case the inscription \"Singet und spielet dem Herrn in eurem Herzen\" (\"Sing and make music to the Lord in …",
     "url": "https://commons.wikimedia.org/wiki/File:Kanzelaltar-Orgel-St-Georg-Hattingen-2026.jpg"
+  },
+  {
+    "id": "d-20261020-5984-a",
+    "at": "2026-10-20",
+    "pool": "self",
+    "door": "title",
+    "title": "Where was it written down? Folktales of Ireland (1966), tale by tale, back to the manuscript page",
+    "shown": "Where was it written down? Folktales of Ireland (1966), tale by tale, back to the manuscript page",
+    "ref": "wall:bench:back-to-the-hand"
+  },
+  {
+    "id": "d-20261020-5984-b",
+    "at": "2026-10-20",
+    "pool": "wiktionary",
+    "door": "title",
+    "title": "proot",
+    "shown": "proot",
+    "url": "https://en.wiktionary.org/wiki/proot"
   }
 ]
