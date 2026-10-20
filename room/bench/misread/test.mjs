@@ -17,7 +17,7 @@ const check = (say, ok, seen) => {
   else { fail++; console.log('FAIL ' + say + (seen !== undefined ? '  (saw ' + JSON.stringify(seen) + ')' : '')); }
 };
 const S = M.SAMPLES;
-const run = (s) => M.check(s.text, { rowTotals: s.rowTotals, colTotals: s.colTotals });
+const run = (s) => M.check(s.text, { rowTotals: s.rowTotals, colTotals: s.colTotals, running: s.running, outFirst: s.outFirst });
 
 // 1. The nursery (made up): one planted cell, 25 read as 22; 2 and 5 are not a look-alike pair of mine.
 const n = run(S.nursery);
@@ -67,10 +67,51 @@ check('slips: 1050 can become 10.50 by the point, given room for two places', M.
 check('the ask tells the AI not to add up or correct anything', /Do not add anything up, and do not correct anything/.test(M.ASK));
 check('errors: an empty page, and a ragged grid, say so in words', !!M.check('').error && /same count/.test(M.check('a 1 2 3\nb 1 2').error));
 
-// 6. The face, against a stand-in page: its first picture, and its sample buttons.
+// 6. Running balances. The feed shop (made up, Thai digits): one balance planted, 135 read as 125, a ๓ as ๒.
+const R = (text, o = {}) => M.check(text, { running: true, ...o });
+const f = run(S.feed);
+check('feed: a running balance, nine line checks for ten lines (the first has nothing above it)', f.mode === 'running' && f.rows.length === 10 && f.checks.length === 9, f.checks.length);
+check('feed: the brought-forward line is a balance alone, its in and out left empty', f.rows[0].cells.length === 3 && f.rows[0].cells[0].empty && f.rows[0].cells[1].empty && f.rows[0].cells[2].text === '๑๒๐');
+check('feed: two neighbouring lines miss, 3 and 4, by 10 and by 10 the other way', f.misses === 2 && f.checks.filter((c) => c.gap).map((c) => c.row + ':' + f.fmt(c.gap)).join(' ') === '2:10 3:-10', f.checks.filter((c) => c.gap).map((c) => c.row + ':' + f.fmt(c.gap)));
+check('feed: exactly one slip fits, the balance on line 3, ๑๒๕ for 135, a plain digit', f.found.length === 1 && f.found[0].where === 'line 3 (๓ ต.ค.), คงเหลือ' && f.found[0].read === '๑๒๕' && f.found[0].page === '135' && f.found[0].kind === 'digit', f.found);
+check('feed: the plant is not on the look-alike list', !M.PAIRS.includes('23') && !M.PAIRS.includes('32'));
+check('feed with ๑๓๕ put back: all nine line checks meet', R(S.feed.text.replace('| ๑๒๕', '| ๑๓๕')).misses === 0);
+
+// The cement card (made up): the reading is right, and the writer wrote 46 for 64 and carried it down.
+const c = run(S.cement);
+check('cement: one line misses, line 6 (11 Oct), the lines come to 18 more than the 46 written', c.misses === 1 && c.checks.find((x) => x.gap).name === 'line 6 (11 Oct)' && c.fmt(c.checks.find((x) => x.gap).gap) === '18' && c.fmt(c.checks.find((x) => x.gap).sum) === '64');
+check('cement: no single slip of the reading closes it', c.found.length === 0, c.found);
+check("cement: the writer's own sum carried down is offered, 18 off from there on", c.notes.some((n) => n.kind === 'carried' && !n.last && c.fmt(n.gap) === '18'));
+check("cement: the writer's pen, 46 written for 64, two neighbouring digits swapped", c.notes.some((n) => n.kind === 'pen' && n.wrote === '46' && n.page === '64' && n.how === 'swap'), c.notes);
+check('cement: or a line the reading left out, between 9 and 11 Oct, that took out 18', c.notes.some((n) => n.kind === 'missing-between' && n.after === 'line 5 (9 Oct)' && c.fmt(n.value) === '-18'));
+check('cement: the gap, 18, is a multiple of 9, the old sign of a swap', c.checks.find((x) => x.gap).gap / 10 ** c.S % 9 === 0);
+
+// Quill's edges: the opening balance has no pair, so a slip there looks like a slip in the first amount.
+const ob = R('b/f | 30\nx | 10 | – | 60\ny | – | 5 | 55');
+check('edge: a misread opening balance is offered next to the first amount, the page alone cannot choose', ob.found.some((s) => s.where === 'line 1 (b/f), balance' && s.page === '50') && ob.found.some((s) => s.where === 'line 2 (x), in' && s.page === '30'), ob.found.map((s) => s.where + ' ' + s.page));
+const last = R('b/f | 50\nx | 10 | – | 60\ny | – | 5 | 58');
+check('edge: a misread last balance also has no pair: it and the last amount are both offered', last.found.some((s) => s.where === 'line 3 (y), balance') && last.found.some((s) => s.where === 'line 3 (y), out'), last.found.map((s) => s.where));
+check('edge: the last line is not offered as a line that does not belong, unless it repeats the one above', !last.found.some((s) => s.kind === 'line'));
+
+const tw2 = R('a | 100\nb | 20 | – | 120\nb | 20 | – | 120\nc | – | 30 | 90');
+check('running, read twice: both copies of line b are offered as the same as the other', tw2.found.filter((s) => s.kind === 'line').map((s) => s.r).join(',') === '1,2' && tw2.found.filter((s) => s.kind === 'line').every((s) => /same as line/.test(s.say)), tw2.found);
+const wc = R('a | 100\nb | – | 20 | 120\nc | – | 30 | 90');
+check('running, the wrong column: 20 read under out, under in on the page (the gap is twice it)', wc.found.some((s) => s.kind === 'column' && s.where === 'line 2 (b)' && s.from === 'out' && s.to === 'in'), wc.found);
+const of = R('Date | Out | In | Left\na | 100\nb | – | 20 | 120\nc | 30 | – | 90', { outFirst: true });
+check('running, out first: the columns are taken in that order and the header names them', of.misses === 0 && of.checks.length === 2 && of.header.join(',') === 'Out,In,Left');
+const two = R('a | 100\nb | 20 | 120');
+check('running, two columns: an amount and a balance', two.width === 2 && two.misses === 0 && two.checks.length === 1);
+const ot = R('a | 100\nb | 35 | – | 146\nc | – | 20 | 115');
+check('running: a balance two lines agree on, 146 for 135, is offered though no one-digit slip gets there', ot.found.length === 1 && ot.found[0].kind === 'other' && ot.found[0].page === '135' && ot.found[0].checks === 2, ot.found);
+const og = M.check('A | 10 | 47 | 45\nB | 20 | 30 | 50\nT | 30 | 65 | 95');
+check('grid: a cell its row and its column agree on, 47 for 35, is offered the same way', og.found.length === 1 && og.found[0].kind === 'other' && og.found[0].where === 'A, column 2' && og.found[0].page === '35', og.found);
+check('running: errors say so in words (one column; four; one line)', /two numbers a line/.test(R('a | 1\nb | 2').error) && /at most three/.test(R('a 1 2 3 4\nb 1 2 3 4').error) && /two lines at least/.test(R('a | 1 | 2').error));
+check('the ask tells the AI to copy every balance as written', /Copy every balance exactly as it is written/.test(M.ASK) && /Do not add anything up, and do not correct anything, even a total that looks wrong\.$/.test(M.ASK));
+
+// 7. The face, against a stand-in page: its first picture, and its sample buttons.
 const els = {};
 const el = (id) => (els[id] ||= { id, value: '', textContent: '', innerHTML: '', checked: true, on: {}, addEventListener(k, f) { this.on[k] = f; }, getAttribute(a) { return this.attrs?.[a]; } });
-const buttons = ['nursery', 'slips', 'poznan'].map((s) => Object.assign(el('b-' + s), { attrs: { 'data-sample': s } }));
+const buttons = ['nursery', 'slips', 'poznan', 'feed', 'cement'].map((s) => Object.assign(el('b-' + s), { attrs: { 'data-sample': s } }));
 const fctx = vm.createContext({ Misread: M, navigator: {}, document: { getElementById: el, querySelectorAll: () => buttons } });
 vm.runInContext(script('face'), fctx);
 check('face: opens on the nursery, marks C, Orchids, and says one slip fits', /One slip fits/.test(els.out.innerHTML) && /C, Orchids/.test(els.out.innerHTML) && /class="sus">22</.test(els.out.innerHTML));
@@ -81,9 +122,23 @@ buttons[2].on.click();
 check('face: Poznań button unticks column totals and says no single slip closes it', els.coltot.checked === false && /No single slip closes it/.test(els.out.innerHTML) && /886/.test(els.out.innerHTML) && /printing or the adding/.test(els.caption.textContent));
 buttons[1].on.click();
 check('face: the weigh-slips button finds 1102.5 and marks ๑๑,๐๒๕', /1102\.5/.test(els.out.innerHTML) && /class="sus">๑๑,๐๒๕</.test(els.out.innerHTML));
+check('face: it opens on totals, not on a running balance', els['shape-running'].checked === false && els['shape-totals'].checked === true);
+buttons[3].on.click();
+check('face: the feed button turns on the running balance and marks ๑๒๕ on line 3', els['shape-running'].checked === true && /One slip fits/.test(els.out.innerHTML) && /class="sus">๑๒๕</.test(els.out.innerHTML) && /line 3 \(๓ ต\.ค\.\): the balance above, with this line's in and out, comes to <b>135<\/b>/i.test(els.out.innerHTML), els.out.innerHTML.slice(0, 400));
+check('face: on a Thai page the answer is in Thai digits too, ๑๓๕ (135)', /if the page says <b>๑๓๕ \(135\)<\/b>/.test(els.out.innerHTML));
+buttons[4].on.click();
+check("face: the cement button says no slip closes it, and names the writer's pen, 64 and 46", /No single slip closes it/.test(els.out.innerHTML) && /it was the writer's pen and not the reading/.test(els.out.innerHTML) && /comes to <b>64<\/b>, and <b>46<\/b> is written: two neighbouring digits swapped/.test(els.out.innerHTML) && /18 less than its lines add up to/.test(els.out.innerHTML), els.out.innerHTML);
+els.page.value = 'b/f | 30\nx | 10 | – | 60\ny | – | 5 | 55'; els['shape-running'].checked = true; els['shape-totals'].checked = false; els.outfirst.checked = false;
+els.check.on.click();
+check("face: one line misses and a slip fits, so it says a writer's sum carried down would look exactly the same", /Or the reading is right and the writer's own sum was off on line 2 \(x\)/.test(els.out.innerHTML) && /looks exactly the same as the slips above/.test(els.out.innerHTML), els.out.innerHTML);
+check('face: the limits paragraph names the wrong column and the pair as a writer\'s too', /a number read into the wrong column/.test(html) && /A pair can also be the writer's/.test(html));
+buttons[0].on.click();
+check('face: back to the nursery, the running balance is off again and the page is checked by totals', els['shape-running'].checked === false && /C, Orchids/.test(els.out.innerHTML));
 els.page.value = '<b>x</b> | 1 | 2 | 4\nTotal | 1 | 2 | 4'; els.rowtot.checked = true; els.coltot.checked = true;
 els.check.on.click();
 check('face: a pasted label is escaped, never run as markup', /&lt;b&gt;x&lt;\/b&gt;/.test(els.out.innerHTML) && !/<b>x<\/b>/.test(els.out.innerHTML));
+
+check('the shipped face has no peek left in it', !/PEEK/.test(html));
 
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

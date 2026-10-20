@@ -455,5 +455,23 @@
     "verdict": "yes",
     "reason": "Ran it: 34 pass, exit 0; all four build-door flags closed; nothing private. Loose: 'no single slip of any kind' for Poznań, where the line slip can't be tried without column totals (fixed in the README).",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-mp0p-build-1",
+    "at": "2026-10-20",
+    "door": "build",
+    "subject": "misread, back from the wall to learn running balances",
+    "verdict": "yes",
+    "reason": "The sign rule checks out; the opening and last balances have no pair to cross, and a writer's error a slip could explain gets named as a misread: say both.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-wn90-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "misread with running balances, finished again",
+    "verdict": "yes",
+    "reason": "I ran it: 63 pass, exit 0. Both build-door limits are in the README, and the logic matches the cards.",
+    "judged": "unknown"
   }
 ]
