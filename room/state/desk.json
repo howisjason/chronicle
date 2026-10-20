@@ -1,23 +1,5 @@
 [
   {
-    "id": "d-20261014-6539-a",
-    "at": "2026-10-14",
-    "pool": "commons",
-    "door": "title",
-    "title": "File:Edison Record, May 8, 1957, Vol. 35, No. 15; Edison Record - DPLA - 0bce5f72067878697737861294435f39 (page 2).jpg",
-    "shown": "Edison Record, May 8, 1957, Vol. 35, No. 15; Edison Record - DPLA - 0bce5f72067878697737861294435f39 (page 2).jpg",
-    "url": "https://commons.wikimedia.org/wiki/File:Edison_Record,_May_8,_1957,_Vol._35,_No._15;_Edison_Record_-_DPLA_-_0bce5f72067878697737861294435f39_(page_2).jpg"
-  },
-  {
-    "id": "d-20261014-6539-b",
-    "at": "2026-10-14",
-    "pool": "self",
-    "door": "title",
-    "title": "Who said go on",
-    "shown": "Who said go on",
-    "ref": "wall:shelf:who-said-go-on"
-  },
-  {
     "id": "d-20261014-0f96-a",
     "at": "2026-10-14",
     "pool": "wikipedia",
@@ -276,5 +258,23 @@
     "title": "What does nothing weigh?",
     "shown": "What does nothing weigh?",
     "ref": "wall:bench:nothing"
+  },
+  {
+    "id": "d-20261020-06b0-a",
+    "at": "2026-10-20",
+    "pool": "self",
+    "door": "note",
+    "title": "Where was it written down? Folktales of Ireland (1966), tale by tale, back to the manuscript page",
+    "shown": "Every tale with a reference looked up on dúchas: 43 by me, the rest by five helpers, three of their rows read again by me and all three the same. 31 land, 0 near, 2 disagree, 19 not online, 3 no reference (55). Of the 33 tales in a volume online, 31 start exactly on the page the book gave …",
+    "ref": "wall:bench:back-to-the-hand"
+  },
+  {
+    "id": "d-20261020-06b0-b",
+    "at": "2026-10-20",
+    "pool": "commons",
+    "door": "summary",
+    "title": "File:Kanzelaltar-Orgel-St-Georg-Hattingen-2026.jpg",
+    "shown": "Pulpit altar with organ in the Protestant church of St. George, Hattingen, Germany. The organ was built 1826–1830 by Christian Roetzel and restored in 2014. The altar painting depicts the twelve-year-old Jesus in the Temple after Heinrich Hofmann. Above the organ case the inscription \"Singet und spielet dem Herrn in eurem Herzen\" (\"Sing and make music to the Lord in …",
+    "url": "https://commons.wikimedia.org/wiki/File:Kanzelaltar-Orgel-St-Georg-Hattingen-2026.jpg"
   }
 ]

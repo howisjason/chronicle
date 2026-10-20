@@ -108,10 +108,55 @@ check('grid: a cell its row and its column agree on, 47 for 35, is offered the s
 check('running: errors say so in words (one column; four; one line)', /two numbers a line/.test(R('a | 1\nb | 2').error) && /at most three/.test(R('a 1 2 3 4\nb 1 2 3 4').error) && /two lines at least/.test(R('a | 1 | 2').error));
 check('the ask tells the AI to copy every balance as written', /Copy every balance exactly as it is written/.test(M.ASK) && /Do not add anything up, and do not correct anything, even a total that looks wrong\.$/.test(M.ASK));
 
+// 6b. A ledger page, and the first real page (third wake, 20 Oct 2026). real.mjs is my key;
+// score.mjs puts the five AI readings through this engine and lines them up with the key.
+const { KEY } = await import('./real.mjs');
+const { score, READERS, reading } = await import('./score.mjs');
+const L = (t, o = {}) => M.check(t, { ledger: true, ruled: true, ...o });
+check('ruled: "7 35" is 7.35, and only with the tick and a | around it', M.token('7 35', true).digits === '735' && M.token('7 35', true).dec === 2 && M.token('7 35') === null);
+const lb = L('a | 110 | 7 35\nb | 128 | 7 35\nTotal | 14 70\nc | 2800\nd | 25\nsubtotal | 2825');
+check('ledger: the last number on a line is its amount, the folio before it is not', lb.misses === 0 && lb.checks.length === 2 && lb.rows[0].label === 'a 110');
+check('ledger: a line labelled total closes its block, and each block is checked alone', lb.checks.map((c) => c.name).join(',') === 'lines 1–2,lines 4–5');
+check('ledger: with no line labelled total it says so in words', /labelled “total”/.test(L('a | 1\nb | 2').error));
+const lt = L('a | 7 35\nb | 1830\nc | 7 35\nTotal | 14 70\nd | 19 34\ne | 500\nTotal | 2434');
+check('ledger: one slip a block, both found, each alone in its block (a year read in; 19 34 for 1934)',
+  lt.misses === 2 && lt.found.length === 2 && lt.found.some((f) => f.kind === 'line' && f.r === 1) && lt.found.some((f) => f.kind === 'point' && f.page === '1934'), lt.found);
+check('ledger: lines after the last total are in no check, and are named', L('a | 1\nTotal | 1\nx | 6.21').notes.some((n) => n.kind === 'after'));
+const lc = L('a | 7 35\nb | 7725\nc | 21945\nd | 10\nTotal | 314.05');
+check('cents: lost in two places and kept in one, the two are found, and nothing else fits', lc.notes.some((n) => n.kind === 'cents' && n.size === 2 && n.ways === 1 && n.where.map((w) => w.page).join(',') === '77.25,219.45'), lc.notes);
+check('cents: a reading no move of the cents line closes says so', L('a | 7 35\nb | 7 36\nTotal | 14 70').notes.some((n) => n.kind === 'no-cents'));
+for (const [name, b] of Object.entries(KEY)) check(`key: ${name}, ${b.lines.length} lines meet the written ${(b.total / 100).toFixed(2)}`, b.lines.reduce((s, [, c]) => s + c, 0) === b.total);
+const sc = Object.fromEntries(READERS.map((w) => [w, score(w)]));
+const tally = (w) => [sc[w].digits, sc[w].cents, sc[w].extra, sc[w].missing].join('/');
+check('real: digits, cents line, unlabelled numbers that are not amounts, left out: haiku 5/27/0/0, sonnet 0/17/0/0, opus 1/4/0/0, fable 0/1/1/0, sonnet again 1/0/1/1',
+  READERS.map(tally).join(' ') === '5/27/0/0 0/17/0/0 1/4/0/0 0/1/1/0 1/0/1/1', READERS.map(tally));
+check('real: the page number, the year and the pencil notes, where a reader labelled them so, are named and kept out of the checks',
+  sc.haiku.res.notes.find((n) => n.kind === 'aside').lines.length === 3 && sc.opus.res.notes.find((n) => n.kind === 'aside').lines.length === 2);
+check('real: no reading wrote a total it worked out; every total is one the page writes', READERS.every((w) => sc[w].res.totalRows.every((ri) => ['5145', '779983'].includes(sc[w].res.nums.find((x) => x.r === ri).k.digits))));
+const blocks = READERS.map((w) => sc[w].res.checks.filter((c) => c.gap).length);
+check('real: 11 blocks of 20 miss, the 9 the readers slipped in and 2 off only by an unlabelled year or page number; every block read right meets', blocks.join(',') === '3,2,2,2,2' && blocks.reduce((a, b) => a + b) === 11, blocks);
+const fab = sc.fable.res;
+check('real, fable: its one slip (19 34 for 1934) and its unlabelled year line (1830) each found, the only fit in its block',
+  fab.found.length === 2 && fab.found.some((f) => f.kind === 'line' && /^line 1\b/.test(f.where)) && fab.found.some((f) => f.kind === 'point' && f.read === '19 34' && f.page === '1934'), fab.found);
+const cr2 = (w) => sc[w].res.notes.find((n) => n.kind === 'cents' && n.size === 3);
+check('real, sonnet and opus: the last Cr block, the three cents lines put in where none are (19 34, 30 00, 6 00), and no other set fits',
+  ['sonnet', 'opus'].every((w) => cr2(w) && cr2(w).ways === 1 && cr2(w).where.map((x) => x.read).join(',') === '19 34,30 00,6 00'));
+const dr2 = sc.sonnet.res.notes.find((n) => n.kind === 'cents' && n.size === 14);
+check('real, sonnet: the long Dr block, 14 lost cents lines; 12 sure, and the last two a tie the page must settle (22.50 and 8.50, or 28.00 and 3.00)',
+  dr2 && dr2.ways === 2 && dr2.where.length === 12 && dr2.split.map((s) => s.map((x) => x.page).join('+')).sort().join(' | ') === '22.50+8.50 | 28.00+3.00', dr2);
+check('real, haiku: in its first block, 705 for 735 is among the six fits (and the first block meets once its page number is set aside)',
+  sc.haiku.res.found.length === 6 && sc.haiku.res.found.some((f) => f.read === '705' && f.page === '735'));
+check('real, sonnet again: the page number read in as a line is among the three fits in its block', sc.sonnet2.res.found.some((f) => f.kind === 'line' && /^line 1\b/.test(f.where)) && sc.sonnet2.res.found.length === 3);
+check('real: the public readings carry no initials', READERS.every((w) => !/[A-Z]\.?[A-Z]/.test(reading(w).replace(/Dr\.|Cr\./g, ''))));
+check('real: the two samples on the face are the readings, word for word', S.bankFable.text === reading('fable').trim() && S.bankSonnet.text === reading('sonnet').trim());
+check('the ask says how to write money ruled into two columns', /write a space where the rule is, like 7 35/.test(M.ASK));
+check('the ask says to label a number that is not an amount, and a line so labelled is set aside', /not an amount \(a page number, a year, a note in the margin\)/.test(M.ASK)
+  && L('Year | 1830\na | 5\nTotal | 5').misses === 0 && L('Balance to page 438 | 5\nTotal | 5').misses === 0 && L('Balance to page 438 | 5\nTotal | 5').checks.length === 1);
+
 // 7. The face, against a stand-in page: its first picture, and its sample buttons.
 const els = {};
 const el = (id) => (els[id] ||= { id, value: '', textContent: '', innerHTML: '', checked: true, on: {}, addEventListener(k, f) { this.on[k] = f; }, getAttribute(a) { return this.attrs?.[a]; } });
-const buttons = ['nursery', 'slips', 'poznan', 'feed', 'cement'].map((s) => Object.assign(el('b-' + s), { attrs: { 'data-sample': s } }));
+const buttons = ['nursery', 'slips', 'poznan', 'feed', 'cement', 'bankFable', 'bankSonnet'].map((s) => Object.assign(el('b-' + s), { attrs: { 'data-sample': s } }));
 const fctx = vm.createContext({ Misread: M, navigator: {}, document: { getElementById: el, querySelectorAll: () => buttons } });
 vm.runInContext(script('face'), fctx);
 check('face: opens on the nursery, marks C, Orchids, and says one slip fits', /One slip fits/.test(els.out.innerHTML) && /C, Orchids/.test(els.out.innerHTML) && /class="sus">22</.test(els.out.innerHTML));
@@ -132,7 +177,14 @@ els.page.value = 'b/f | 30\nx | 10 | – | 60\ny | – | 5 | 55'; els['shape-run
 els.check.on.click();
 check("face: one line misses and a slip fits, so it says a writer's sum carried down would look exactly the same", /Or the reading is right and the writer's own sum was off on line 2 \(x\)/.test(els.out.innerHTML) && /looks exactly the same as the slips above/.test(els.out.innerHTML), els.out.innerHTML);
 check('face: the limits paragraph names the wrong column and the pair as a writer\'s too', /a number read into the wrong column/.test(html) && /A pair can also be the writer's/.test(html));
+buttons[5].on.click();
+check('face: the 1831 button ticks the ledger and the cents rule, and marks 19 34 and the 1830 line', els['shape-ledger'].checked === true && els.ruled.checked === true &&
+  /class="sus">19 34</.test(els.out.innerHTML) && /class="sus">1830</.test(els.out.innerHTML) && /the line between dollars and cents in the wrong place/.test(els.out.innerHTML) && /public domain/.test(els.caption.textContent), els.out.innerHTML.slice(0, 600));
+check('face: on a ledger it says each block gets its own slip, and not that the page cannot choose', /each block that misses gets its own slip/.test(els.out.innerHTML) && !/The page alone can't choose/.test(els.out.innerHTML));
+buttons[6].on.click();
+check('face: the second 1831 button says the three moves, and the tie it cannot settle', /no other set of 3 or fewer does/.test(els.out.innerHTML) && /2 different sets of 14 do/.test(els.out.innerHTML) && /look at these on the paper/.test(els.out.innerHTML), els.out.innerHTML.slice(0, 900));
 buttons[0].on.click();
+check('face: back to the nursery, the ledger is off again', els['shape-ledger'].checked === false && els.ruled.checked === false && /C, Orchids/.test(els.out.innerHTML));
 check('face: back to the nursery, the running balance is off again and the page is checked by totals', els['shape-running'].checked === false && /C, Orchids/.test(els.out.innerHTML));
 els.page.value = '<b>x</b> | 1 | 2 | 4\nTotal | 1 | 2 | 4'; els.rowtot.checked = true; els.coltot.checked = true;
 els.check.on.click();

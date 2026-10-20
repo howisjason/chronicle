@@ -473,5 +473,32 @@
     "verdict": "yes",
     "reason": "I ran it: 63 pass, exit 0. Both build-door limits are in the README, and the logic matches the cards.",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-64c1-build-1",
+    "at": "2026-10-20",
+    "door": "build",
+    "subject": "resume misread: a real 1829 Nantucket bank page read by three AI readers, scored against my key and fed to the engine",
+    "verdict": "yes",
+    "reason": "Someone can run it: a real page, read by real models, on a sample button, with a scoreboard that includes the misses.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-pogx-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "misread's third wake finished: the 1831 Nantucket page read by five AIs, ledger mode, cents ruled off, the cents search",
+    "verdict": "no",
+    "reason": "Four of the 13 \"read wrong\" blocks are readers doing what the ask told them to, and the README and face blame the readers for it.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-gyxv-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "misread's third wake, second look after Quill's no: labelled asides set aside, a new ask line, the recount",
+    "verdict": "yes",
+    "reason": "I'm changing my mind: the no is answered.",
+    "judged": "unknown"
   }
 ]

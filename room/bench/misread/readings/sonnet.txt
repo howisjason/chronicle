@@ -1,0 +1,56 @@
+Header | Cr 8
+Dr side, 1830 To Amt. from Lot 64 | – | 14 70
+May 15 Cash disct | 110 | 7 35
+July 20 do | 128 | 7 35
+Sep 25 do | 147 | 7 35
+Nov 13 do | 163 | 7 35
+1831 Jan 25 do | 183 | 7 35
+(subtotal, Dr) | – | 51 45
+March 11 Cash disct | 193 | 7 35
+May 10 do | 214 | 7 35
+July 11 do | 240 | 7 35
+July 12 do · | 241 | 2046 89
+Aug 16 do · | 256 | 114 47
+Sep 6 do disct | 265 | 7 35
+Oct 28 do · | 10 | 2800
+Oct 28 ditto do · | – | 25
+Nov 1 do disct | 12 | 7 35
+Nov 2 do · | – | 7725
+Nov 4 do · | 13 | 21945
+Nov 5 do · | – | 500
+Nov 8 do · | 14 | 10
+Nov 10 do · | 14 | 50
+Nov 10 ditto do · | – | 300
+Nov 14 do · | 15 | 7163
+Nov 15 do · | 15 | 37364
+Nov 16 do · | 15 | 6693
+Nov 18 do · | 16 | 60
+Nov 18 ditto do · | 16 | 2576
+Nov 23 do · | 18 | 11250
+Nov 23 ditto do · | 18 | 12422
+Nov 24 do · | 18 | 1650
+Nov 29 do · | 19 | 18
+Nov 30 do · | 19 | 7
+Dec 2 do · | 19 | 2250
+Dec 3 do · | 20 | 9425
+Dec 5 do · | 20 | 21
+Dec 5 ditto do · | 20 | 56822
+Dec 5 ditto do · | 20 | 850
+Dec 8 do · | 22 | 11
+Dec 8 ditto do · | – | 5
+Dec 12 do · | 23 | 1337
+(total, Dr) | – | 7799.83
+Cr side, 1830 May 1 By Cash dep | 106 | 37 89
+1831 Jan 5 do | 187 | 13 56
+(subtotal, Cr) | – | 51 45
+1831 May 27 Cash dep | 221 | 14 70
+July 9 do dep | 239 | 19 34
+July 12 do dep | 240 | 148 12
+Sep 7 do | 265 | 93 94
+Oct 27 do | 10 | 30 00
+Nov 3 do | 13 | 6 00
+Nov 9 do | 14 | 1442 58
+Balance to page 438 | – | 566 49
+(total, Cr) | – | 7799.83
+Pencil note, right of Nov 13 row | 6.21
+Pencil note, right of Nov 5 row | 29.05

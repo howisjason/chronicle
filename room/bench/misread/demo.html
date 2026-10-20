@@ -46,18 +46,25 @@
   <button data-sample="poznan">A school's ten-year table, Poznań, 1928/29 (real, printed)</button>
   <button data-sample="feed">A feed shop's bin card, Thai digits (made up)</button>
   <button data-sample="cement">A stock card the writer got wrong (made up)</button>
+  <button data-sample="bankFable">A bank ledger, 1831, as an AI read it (real)</button>
+  <button data-sample="bankSonnet">The same page, as another AI read it (real)</button>
 </div>
 <textarea id="page" spellcheck="false" placeholder="One row per line. Put a label first if you like. Separate the numbers with spaces, tabs or |."></textarea>
 <div>
   <b class="note">The page checks itself with</b>
   <label><input type="radio" name="shape" id="shape-totals" checked> totals</label>
   <label><input type="radio" name="shape" id="shape-running"> a balance carried down each line</label>
+  <label><input type="radio" name="shape" id="shape-ledger"> a ledger page, a total under each block</label>
+</div>
+<div>
   <label><input type="checkbox" id="outfirst"> “out” before “in”</label>
+  <label><input type="checkbox" id="ruled"> cents ruled off, no point (7 35 is 7.35)</label>
 </div>
 <div>
   <label><input type="checkbox" id="rowtot" checked> the last number in each row is that row's total</label>
   <label><input type="checkbox" id="coltot" checked> the last row holds the column totals</label>
 </div>
+<p class="note">On a ledger page, the amount on each line is its last number (a day or a folio before it is left alone), and a line labelled total, subtotal, sum or รวม is the total of the lines since the last total. Each block is checked on its own.</p>
 <p class="note">With totals: if each line has one number, the last line is taken as the total. With a balance: each line is in, out, balance (or one amount and the balance), and a line with only a balance, like one brought forward, is fine. A label that has a digit in it, like “Bed 1” or “2 Oct”, needs a tab or | after it. A dash (–) is an empty cell. Thai digits ๐–๙ are fine.</p>
 <button class="go" id="check">Check it</button>
 <p class="caption" id="caption"></p>
@@ -69,7 +76,7 @@
 <p class="note">The last line matters most. If the AI fixes a total that doesn't add up, it erases the one thing that could catch its own mistakes.</p>
 
 <h2>What it can and can't say</h2>
-<p class="note">It tries one slip at a time: one digit misread, two neighbouring digits swapped, a digit read in that isn't there, a digit dropped, a decimal point in the wrong place, a number read into the wrong column, or a line that doesn't belong (read twice, say). Where two checks agree on one place that no single slip explains, it names that place too. A slip counts only if it makes <i>every</i> check on the page meet. If no single slip does, it says so: then there are two slips or more, or a line went missing, or the writer's own sum was off. On a running balance every line is checked against the one above it. A misread in or out makes one line miss. A misread balance makes two neighbouring lines miss by the same amount in opposite directions, so the pair points at one cell. The first and last balances have no pair, so a slip there looks like a slip in an amount. One line missing on its own looks the same whether the reading slipped or the writer's sum was off and carried down, so a writer's mistake that a one-digit slip could explain gets named as a misread. A pair can also be the writer's, a balance written wrong but carried on right. It tells you where to look, not what happened. Only the paper can settle that. The “look alike” pairs (1 and 7, 3 and 8, 5 and 6, 0 and 6, 4 and 9, 2 and 7, 0 and 8, 6 and 8, 5 and 8, 1 and 4, 0 and 9, 3 and 5, 8 and 9) are my own list for handwritten Western digits. Nobody measured them, and they say nothing about Thai digits. They only change the order of the list. Nothing here leaves your browser.</p>
+<p class="note">It tries one slip at a time: one digit misread, two neighbouring digits swapped, a digit read in that isn't there, a digit dropped, a decimal point in the wrong place, a number read into the wrong column, or a line that doesn't belong (read twice, say). Where two checks agree on one place that no single slip explains, it names that place too. A slip counts only if it makes <i>every</i> check on the page meet. If no single slip does, it says so: then there are two slips or more, or a line went missing, or the writer's own sum was off. On a running balance every line is checked against the one above it. A misread in or out makes one line miss. A misread balance makes two neighbouring lines miss by the same amount in opposite directions, so the pair points at one cell. The first and last balances have no pair, so a slip there looks like a slip in an amount. One line missing on its own looks the same whether the reading slipped or the writer's sum was off and carried down, so a writer's mistake that a one-digit slip could explain gets named as a misread. A pair can also be the writer's, a balance written wrong but carried on right. On a ledger page each block is its own check and gets its own slip. With the cents ruled off, a reader can lose the line between dollars and cents in some places and keep it in others; then it looks for the fewest places where moving that line makes the block meet, and says when more than one set of places does. It tells you where to look, not what happened. Only the paper can settle that. The “look alike” pairs (1 and 7, 3 and 8, 5 and 6, 0 and 6, 4 and 9, 2 and 7, 0 and 8, 6 and 8, 5 and 8, 1 and 4, 0 and 9, 3 and 5, 8 and 9) are my own list for handwritten Western digits. Nobody measured them, and they say nothing about Thai digits. They only change the order of the list. Nothing here leaves your browser.</p>
 </main>
 
 <script id="core">
@@ -88,12 +95,23 @@ const Misread = (() => {
     'One row of the page per line. Put the row\'s label first, then a |, then its numbers separated by |.\n' +
     'Include the totals the page itself writes, in the places it writes them.\n' +
     'Keep the page\'s own digits (Thai or Western), commas and decimal points. Write a dash for an empty cell.\n' +
+    'Put a number that is not an amount (a page number, a year, a note in the margin) on a line of its own, and say in its label what it is.\n' +
+    'If the money is ruled into two columns with no point (dollars and cents, baht and satang), write a space where the rule is, like 7 35, and nothing after an amount with the second column empty.\n' +
     'Copy every balance exactly as it is written, even one that doesn\'t follow from the line above.\n' +
     'Do not add anything up, and do not correct anything, even a total that looks wrong.';
 
-  function token(t) {
+  // A ledger with the cents ruled off writes no point: "7 35" is 7.35 (opt.ruled).
+  const RULED = /^(\d+)\s+(\d{2})$/;
+  // A line that closes a block on a ledger page, in the words the readers used.
+  const TOTAL = /total|sum|รวม/i;
+  // A number on the page that is not an amount, labelled so (the ask says how): left out of the checks.
+  const ASIDE = /\b(page|year|note|pencil|margin|header)\b|หน้า|ปี|หมายเหตุ/i;
+
+  function token(t, ruled = false) {
     const u = western(t);
     if (DASH.test(u)) return { text: t, empty: true };
+    const r = ruled && u.match(RULED);
+    if (r) return { text: t, digits: r[1] + r[2], dec: 2, ruled: true };
     const m = u.match(NUM);
     if (!m) return null;
     const ip = m[1].replace(/,/g, ''), fp = m[2] || '';
@@ -101,7 +119,7 @@ const Misread = (() => {
   }
 
   // text -> { rows: [{label, cells}], header, skipped }
-  function parse(text) {
+  function parse(text, ruled = false) {
     const rows = [], skipped = [];
     let header = null;
     for (const raw of String(text).split(/\r?\n/)) {
@@ -111,10 +129,10 @@ const Misread = (() => {
       const parts = (tabbed ? line.split(/\s*[\t|]+\s*/) : line.split(/\s+/)).filter((p) => p !== '');
       const label = [], cells = [], odd = [];
       let i = 0;
-      if (tabbed) { if (parts.length && !token(parts[0])) label.push(parts[i++]); }
+      if (tabbed) { if (parts.length && !token(parts[0], ruled)) label.push(parts[i++]); }
       else while (i < parts.length && !token(parts[i])) label.push(parts[i++]);
       for (; i < parts.length; i++) {
-        const k = token(parts[i]);
+        const k = token(parts[i], ruled && tabbed);
         if (k) cells.push(k); else odd.push(parts[i]);
       }
       if (!cells.some((c) => !c.empty)) { if (!rows.length && !header) header = parts; continue; }
@@ -160,26 +178,84 @@ const Misread = (() => {
     return [...out.values()];
   }
 
+  // On a ledger with the cents ruled off, a reader may keep the line in some places ("7 35")
+  // and lose it in others ("7725" for 77.25, or "19 34" for 1934). Each number with no point
+  // written in it can have its cents line moved: off a split one, or onto a whole one of three
+  // digits or more. Find the fewest moves that make this block meet, and how many sets of
+  // that size do (meet in the middle: each half's subsets, joined on the sum they need).
+  function cents(ch, nums, V, S) {
+    const items = [];
+    for (const p of ch.parts) {
+      const k = nums[p.i].k;
+      if (/[.,]/.test(western(k.text))) continue;
+      const dec = k.dec === 2 && k.ruled ? 0 : k.dec === 0 && k.digits.length >= 3 ? 2 : -1;
+      if (dec < 0) continue;
+      items.push({ i: p.i, d: p.k * (val(k.digits, dec, S) - V[p.i]) });
+    }
+    if (!items.length) return null;
+    if (items.length > 36) return { size: 0, tooMany: items.length, cells: [] };
+    const need = -ch.gap, h = items.length >> 1, A = items.slice(0, h), B = items.slice(h);
+    // Right half: for each sum, how many subsets of each size reach it (and one of them).
+    const right = new Map();
+    for (let m = 0; m < 1 << B.length; m++) {
+      let s = 0, n = 0;
+      for (let j = 0; j < B.length; j++) if (m >> j & 1) { s += B[j].d; n++; }
+      let o = right.get(s);
+      if (!o) right.set(s, o = []);
+      if (o[n]) { o[n].ways++; if (o[n].ms.length < 8) o[n].ms.push(m); } else o[n] = { ways: 1, ms: [m] };
+    }
+    let best = null;
+    for (let m = 0; m < 1 << A.length; m++) {
+      let s = 0, n = 0;
+      for (let j = 0; j < A.length; j++) if (m >> j & 1) { s += A[j].d; n++; }
+      const o = right.get(need - s);
+      if (o) o.forEach((x, n2) => {
+        if (!x) return;
+        const size = n + n2, sets = x.ms.map((rm) => [m, rm]);
+        if (!best || size < best.size) best = { size, ways: x.ways, sets };
+        else if (size === best.size) { best.ways += x.ways; best.sets.push(...sets); }
+        best.sets.length = Math.min(best.sets.length, 8);
+      });
+    }
+    if (!best) return null;
+    const pick = ([m, rm]) => A.filter((_, j) => m >> j & 1).concat(B.filter((_, j) => rm >> j & 1)).map((x) => x.i);
+    const sets = best.sets.map(pick);
+    // The places every fitting set agrees on, and the ones they don't.
+    // (Only when every fitting set is in hand: past eight, nothing is called sure.)
+    const sure = best.ways <= sets.length ? sets[0].filter((i) => sets.every((s) => s.includes(i))) : [];
+    return { size: best.size, ways: best.ways, cells: sets[0], sets, sure, movable: items.length };
+  }
+
   // page -> the checks the page carries, and every single slip that makes all of them meet.
   // A running balance (opt.running): the last number on each line is the balance, and the
   // one or two before it are what came in and what went out (opt.outFirst: out comes first).
   // Each line is then one check: the balance above, plus in, minus out, is this balance.
   function check(text, opt = {}) {
-    const P = parse(text);
+    const ledger = !opt.running && !!opt.ledger;
+    const P = parse(text, !!opt.ruled);
     const running = !!opt.running;
+    // A ledger page: each line's amount is its last number (a folio or a day before it is
+    // left alone), and a line whose label says total closes the block above it.
+    const asides = [];
+    if (ledger) P.rows = P.rows.map((r) => {
+      const full = r.cells.filter((c) => !c.empty);
+      return { label: [r.label, ...full.slice(0, -1).map((c) => c.text)].filter(Boolean).join(' '), cells: full.slice(-1) };
+    }).filter((r) => r.cells.length && !(ASIDE.test(r.label) && !TOTAL.test(r.label) && !/balance/i.test(r.label) && asides.push(`${r.label} (${r.cells[0].text})`)));
     if (!P.rows.length) return { error: 'There are no numbers on the page yet.' };
     const width = Math.max(...P.rows.map((r) => r.cells.length));
     // A line with only a balance (brought forward, say) has its in and out left empty.
     const R = running && width > 1 ? P.rows.map((r) => (r.cells.length !== 1 ? r
       : { label: r.label, cells: [...Array(width - 1)].map(() => ({ text: '', empty: true })).concat(r.cells) })) : P.rows;
-    const mode = running ? 'running' : width === 1 ? 'list' : 'grid';
+    const mode = running ? 'running' : ledger ? 'ledger' : width === 1 ? 'list' : 'grid';
+    const totalRows = new Set(ledger ? R.flatMap((r, ri) => (TOTAL.test(r.label) ? [ri] : [])) : []);
+    if (ledger && !totalRows.size) return { error: 'A ledger page needs a line labelled “total” (or “subtotal”, “sum”, รวม) under each block. None of the lines here says so.' };
     if (running) {
       if (width < 2) return { error: 'A running balance needs a number in or out and a balance on each line, so two numbers a line, or three.' };
       if (width > 3) return { error: `A running balance has at most three numbers a line (in, out, balance), and the widest line here has ${width}.` };
       if (R.length < 2) return { error: 'A running balance needs two lines at least: each line is checked against the one above it.' };
     }
     const rowTot = mode === 'grid' && opt.rowTotals !== false;
-    const colTot = mode === 'list' || (mode === 'grid' && opt.colTotals !== false);
+    const colTot = mode === 'list' || mode === 'ledger' || (mode === 'grid' && opt.colTotals !== false);
     if (mode !== 'list') {
       const bad = R.find((r) => r.cells.length !== width);
       if (bad && running) return { error: `Every line needs the same count of numbers (a line with only a balance is fine). “${bad.label || 'a line'}” has ${bad.cells.length}, and the widest has ${width}. Write a dash for an empty cell.` };
@@ -207,6 +283,7 @@ const Misread = (() => {
     const where = (x) => {
       if (mode === 'running') return `${lineName(x.r)}, ${colName(x.c)}`;
       if (mode === 'list') return x.r === lastR ? 'the total' : lineName(x.r);
+      if (mode === 'ledger') return totalRows.has(x.r) ? `the total on ${lineName(x.r)}` : lineName(x.r);
       const isRT = rowTot && x.c === lastC, isCT = colTot && x.r === lastR;
       if (isRT && isCT) return 'the grand total';
       if (isRT) return `${rowName(x.r)}'s total`;
@@ -217,6 +294,19 @@ const Misread = (() => {
     const checks = [];
     const body = (n, last) => [...Array(n).keys()].filter((i) => i !== last);
     if (mode === 'list') checks.push({ name: 'the lines', what: 'list', terms: body(R.length, lastR).map((r) => at[r][0]), total: at[lastR][0], rows: body(R.length, lastR) });
+    // On a ledger page each total checks the lines since the total before it.
+    const after = [];
+    if (mode === 'ledger') {
+      let start = 0;
+      R.forEach((r, ri) => {
+        if (!totalRows.has(ri)) return;
+        const rows = [...Array(ri - start).keys()].map((k) => start + k);
+        if (!rows.length) { start = ri + 1; return; }
+        checks.push({ name: `lines ${start + 1}–${ri}`, what: 'block', terms: rows.map((j) => at[j][0]), total: at[ri][0], rows, totalRow: ri });
+        start = ri + 1;
+      });
+      for (let j = start; j < R.length; j++) after.push(j);
+    }
     if (mode === 'grid' && rowTot) R.forEach((r, ri) => checks.push({ name: rowName(ri), what: 'row', terms: body(width, lastC).map((c) => at[ri][c]), total: at[ri][lastC], row: ri }));
     if (mode === 'grid' && colTot) for (let ci = 0; ci < width; ci++)
       checks.push({ name: colName(ci), what: 'column', terms: body(R.length, lastR).map((r) => at[r][ci]), total: at[lastR][ci], rows: body(R.length, lastR) });
@@ -245,7 +335,9 @@ const Misread = (() => {
       // One number changed: every check it sits in must ask for the same change, and every other check must already meet.
       nums.forEach((x, i) => {
         const mine = live.filter((ch) => ch.parts.some((p) => p.i === i));
-        if (!mine.length || misses.some((ch) => !mine.includes(ch))) return;
+        // A ledger's blocks share no number, so each block that misses gets its own one slip.
+        if (!mine.length || (mode === 'ledger' ? mine.some((ch) => !ch.gap) : misses.some((ch) => !mine.includes(ch)))) return;
+        const block = mode === 'ledger' ? mine[0].name : undefined;
         const want = new Set(mine.map((ch) => -ch.gap * ch.parts.find((p) => p.i === i).k));
         if (want.size !== 1) return;
         const delta = [...want][0];
@@ -253,7 +345,7 @@ const Misread = (() => {
         let any = false;
         for (const s of slips(x.k, S)) if (val(s.digits, s.dec, S) - x.v === delta) {
           any = true;
-          found.push({ kind: s.kind, rank: s.rank, say: s.say, where: where(x), r: x.r, c: x.c, read: x.k.text, page: show(s.digits, s.dec), delta });
+          found.push({ kind: s.kind, rank: s.rank, say: s.say, where: where(x), r: x.r, c: x.c, read: x.k.text, page: show(s.digits, s.dec), delta, block });
         }
         // Two checks or more agree on this one place, though no one-digit slip gets there.
         if (!any && mine.length >= 2 && x.v + delta >= 0)
@@ -284,8 +376,9 @@ const Misread = (() => {
       // One line that doesn't belong: take it out of every column (or the list) it was added into.
       const totalsRow = mode === 'grid' ? (colTot ? lastR : -1) : lastR;
       if (colTot) for (let ri = 0; ri < R.length; ri++) {
-        if (ri === totalsRow) continue;
-        const ok = live.every((ch) => {
+        if (ri === totalsRow || totalRows.has(ri)) continue;
+        const own = mode === 'ledger' && live.find((ch) => ch.rows && ch.rows.includes(ri));
+        const ok = mode === 'ledger' ? !!own && own.gap !== 0 && own.gap - V[at[ri][0]] === 0 : live.every((ch) => {
           if (ch.row === ri) return true;
           if (!ch.rows || !ch.rows.includes(ri)) return ch.gap === 0;
           const mineHere = ch.terms.filter((i) => nums[i].r === ri).reduce((s, i) => s + V[i], 0);
@@ -293,8 +386,9 @@ const Misread = (() => {
         });
         if (ok) {
           const same = R.findIndex((r, j) => j !== ri && j !== totalsRow && r.cells.map((c) => c.text).join('|') === R[ri].cells.map((c) => c.text).join('|'));
-          found.push({ kind: 'line', rank: RANK.line, where: mode === 'list' ? `line ${ri + 1}${R[ri].label ? ` (${R[ri].label})` : ''}` : rowName(ri), r: ri, c: -1,
-            say: same >= 0 ? `a line that doesn't belong: it is the same as ${mode === 'list' ? 'line ' + (same + 1) : rowName(same)}, so maybe it was read twice` : "a line that doesn't belong (from another page, or read twice)" });
+          const listy = mode === 'list' || mode === 'ledger';
+          found.push({ kind: 'line', rank: RANK.line, where: listy ? `line ${ri + 1}${R[ri].label ? ` (${R[ri].label})` : ''}` : rowName(ri), r: ri, c: -1, block: own ? own.name : undefined,
+            say: same >= 0 ? `a line that doesn't belong: it is the same as ${listy ? 'line ' + (same + 1) : rowName(same)}, so maybe it was read twice` : "a line that doesn't belong (from another page, read twice, or a year or a note read in as an amount)" });
         }
       }
       found.sort((a, b) => a.rank - b.rank || a.r - b.r || a.c - b.c);
@@ -303,6 +397,17 @@ const Misread = (() => {
     // A line left out can always be offered; say so only where the numbers allow it.
     const notes = [];
     if (mode === 'list' && misses.length && misses[0].gap < 0) notes.push({ kind: 'missing', value: -misses[0].gap });
+    if (mode === 'ledger') for (const ch of misses) if (ch.gap < 0) notes.push({ kind: 'missing', value: -ch.gap, block: ch.name });
+    if (after.length) notes.push({ kind: 'after', lines: after.map(lineName) });
+    if (asides.length) notes.push({ kind: 'aside', lines: asides });
+    // The cents line lost in some places and kept in others: which places, moved back, make each block meet?
+    if (mode === 'ledger' && opt.ruled) for (const ch of misses) {
+      const fit = cents(ch, nums, V, S);
+      const at1 = (i) => ({ where: where(nums[i]), read: nums[i].k.text, r: nums[i].r, c: nums[i].c, page: show(nums[i].k.digits, nums[i].k.dec ? 0 : 2) });
+      if (fit && fit.size > 1) notes.push({ kind: 'cents', block: ch.name, size: fit.size, ways: fit.ways, movable: fit.movable,
+        where: fit.sure.map(at1), split: fit.ways > 1 ? fit.sets.map((s) => s.filter((i) => !fit.sure.includes(i)).map(at1)) : [] });
+      else if (!fit) notes.push({ kind: 'no-cents', block: ch.name });
+    }
     if (mode === 'grid' && colTot && misses.length && live.every((ch) => ch.rows ? true : ch.gap === 0)) {
       const vec = [];
       for (let ci = 0; ci < width; ci++) { const ch = live.find((c) => c.rows && nums[c.total].c === ci); vec.push(ch ? -ch.gap : null); }
@@ -323,12 +428,12 @@ const Misread = (() => {
       }
     }
     const fmt = (x) => { const s = (x / 10 ** S).toFixed(maxdec); return s; };
-    return { mode, width, rows: R, nums, maxdec, S, fmt, rowTot, colTot, running,
+    return { mode, width, rows: R, nums, maxdec, S, fmt, rowTot, colTot, running, ruled: !!opt.ruled, totalRows: [...totalRows],
       checks: live.map((ch) => ({ name: ch.name, what: ch.what, sum: ch.sum, total: V[ch.total], gap: ch.gap, row: ch.row })),
       misses: misses.length, found, notes, skipped: P.skipped, header: cols };
   }
 
-  return { check, parse, slips, token, western, ASK, PAIRS, show };
+  return { check, parse, slips, token, western, cents, ASK, PAIRS, show };
 })();
 
 Misread.SAMPLES = {
@@ -394,6 +499,20 @@ Misread.SAMPLES = {
       '16 Oct | – | 21 | 10',
       '18 Oct | 40 | – | 50'].join('\n'),
   },
+  // Real: page 8 of a Nantucket bank account book, 1829–31 (Internet Archive item ab438,
+  // Public Domain Mark), read off the image by two AI models given the ask above. Every
+  // number cell is as the model gave it; the account name and initials are taken out (·).
+  // embed.mjs copies these in from readings/; test.mjs checks they still match.
+  bankFable: {
+    ledger: true, ruled: true,
+    caption: 'Real: page 8 of a Nantucket bank account book, 1829–31 (Internet Archive, item ab438, public domain), as an AI model (Fable) read it off the photograph, given the ask below. Every number is as it gave it; the account holder’s name and the initials in the rows are taken out. Read against the page itself, it got one thing wrong: it split $1,934 at the cents rule as 19 34. It also copied the year at the top, 1830, on a line of its own with no label, as the ask then said to copy every number; misread can’t tell a bare year from an amount, and names that line as one that doesn’t belong.',
+    text: /*READING:fable*/"Page 8 | 8.\n\nDr. — [name left out by March]\n1830\nTo Am' from Lot 64 | - | 14 70\nMay 15 Cash dict | 110 | 7 35\nJuly 20 Do | 128 | 7 35\nSep 25 Do | 147 | 7 35\nNov 13 Do | 163 | 7 35 | (pencil beside: 6 21)\n1831 Jany 25 Do | 183 | 7 35\nTotal | - | 51 45\n\nCr.\n1830 May 1 By Cash dep | 106 | 37 89\n1831 May 5 Do | 187 | 13 56\nTotal | - | 51 45\n\nDr. (second section)\n1831 March 11 Cash dict | 193 | 7 35\nMay 10 Do | 214 | 7 35\nJuly 11 Do | 240 | 7 35\n12 Do · | 241 | 2046 89\nAug 16 Do · | 256 | 114 47\nSep 6 Do dict | 265 | 7 35\nOct 28 Do · | 10 | 2800\n\" Do · | \" | 25\nNov 1 Do dict | 12 | 7 35\n2 Do · | \" | 77 25\n4 Do · | 13 | 219 45\n5 Do · | \" | 500 | (pencil beside: 27.05)\n8 Do · | 14 | 10\n10 Do · | \" | 50\n\" Do · | \" | 300\n14 Do · | 15 | 71 63\n15 Do · | \" | 373 64\n16 Do · | 15 | 66 93\n18 Do · | 16 | 60\n\" Do · | \" | 25 76\n23 Do · | 18 | 112 50\n\" Do · | \" | 124 22\n24 Do · | \" | 16 50\n29 Do · | 19 | 18\n30 Do · | \" | 7\nDec 2 Do · | \" | 22 50\n3 Do · | 20 | 94 25\n5 Do · | \" | 21\n\" Do · | \" | 568 22\n\" Do · | \" | 8 50\n8 Do · | 22 | 11\n\" Do · | \" | 5\n12 Do · | 23 | 13 37\nTotal | - | 7799.83\n\nCr. (second section)\n1831 May 27 Cash dep | 221 | 14 70\nJuly 9 Do dep | 239 | 19 34\n12 Do dep | 240 | 148 12\nSep 7 Do \" | 265 | 93 94\nOct 27 Do \" | 10 | 3000\nNov 3 Do \" | 13 | 600\n9 Do \" | 14 | 1442 58\nBalance to page 438 | - | 566 49\nTotal | - | 7799.83",
+  },
+  bankSonnet: {
+    ledger: true, ruled: true,
+    caption: 'Real: the same page, as a second AI model (Sonnet) read it, given the same ask. It got every digit right, but on the page the cents sit across a ruled line with no point, and it wrote that line as a space in some places (7 35), left it out in fourteen others (7725 for 77.25), and put it in three whole-dollar deposits that have none (30 00 for 3000).',
+    text: /*READING:sonnet*/"Header | Cr 8\nDr side, 1830 To Amt. from Lot 64 | – | 14 70\nMay 15 Cash disct | 110 | 7 35\nJuly 20 do | 128 | 7 35\nSep 25 do | 147 | 7 35\nNov 13 do | 163 | 7 35\n1831 Jan 25 do | 183 | 7 35\n(subtotal, Dr) | – | 51 45\nMarch 11 Cash disct | 193 | 7 35\nMay 10 do | 214 | 7 35\nJuly 11 do | 240 | 7 35\nJuly 12 do · | 241 | 2046 89\nAug 16 do · | 256 | 114 47\nSep 6 do disct | 265 | 7 35\nOct 28 do · | 10 | 2800\nOct 28 ditto do · | – | 25\nNov 1 do disct | 12 | 7 35\nNov 2 do · | – | 7725\nNov 4 do · | 13 | 21945\nNov 5 do · | – | 500\nNov 8 do · | 14 | 10\nNov 10 do · | 14 | 50\nNov 10 ditto do · | – | 300\nNov 14 do · | 15 | 7163\nNov 15 do · | 15 | 37364\nNov 16 do · | 15 | 6693\nNov 18 do · | 16 | 60\nNov 18 ditto do · | 16 | 2576\nNov 23 do · | 18 | 11250\nNov 23 ditto do · | 18 | 12422\nNov 24 do · | 18 | 1650\nNov 29 do · | 19 | 18\nNov 30 do · | 19 | 7\nDec 2 do · | 19 | 2250\nDec 3 do · | 20 | 9425\nDec 5 do · | 20 | 21\nDec 5 ditto do · | 20 | 56822\nDec 5 ditto do · | 20 | 850\nDec 8 do · | 22 | 11\nDec 8 ditto do · | – | 5\nDec 12 do · | 23 | 1337\n(total, Dr) | – | 7799.83\nCr side, 1830 May 1 By Cash dep | 106 | 37 89\n1831 Jan 5 do | 187 | 13 56\n(subtotal, Cr) | – | 51 45\n1831 May 27 Cash dep | 221 | 14 70\nJuly 9 do dep | 239 | 19 34\nJuly 12 do dep | 240 | 148 12\nSep 7 do | 265 | 93 94\nOct 27 do | 10 | 30 00\nNov 3 do | 13 | 6 00\nNov 9 do | 14 | 1442 58\nBalance to page 438 | – | 566 49\n(total, Cr) | – | 7799.83\nPencil note, right of Nov 13 row | 6.21\nPencil note, right of Nov 5 row | 29.05",
+  },
 };
 </script>
 
@@ -422,23 +541,40 @@ Misread.SAMPLES = {
       h += `<p class="verdict off">It doesn't add up. ${res.misses} of ${n} check${n === 1 ? '' : 's'} miss.</p>`;
       for (const c of res.checks) if (c.gap) h += c.what === 'line'
         ? `<p class="miss">${esc(c.name[0].toUpperCase() + c.name.slice(1))}: the balance above, with this line's in and out, comes to <b>${f(c.sum)}</b>, ${more(c.gap, f)} than the balance written here, <b>${f(c.total)}</b>.</p>`
+        : c.what === 'block' ? `<p class="miss">${esc(c.name[0].toUpperCase() + c.name.slice(1))} add up to <b>${f(c.sum)}</b>; the total written under them is <b>${f(c.total)}</b> (${more(c.gap, f)}).</p>`
         : `<p class="miss">${c.what === 'row' ? 'Row ' + esc(c.name) : c.what === 'column' ? 'Column ' + esc(c.name) : 'The lines'} add${c.what === 'list' ? '' : 's'} up to <b>${f(c.sum)}</b>; the total written on the page is <b>${f(c.total)}</b> (${more(c.gap, f)}).</p>`;
       if (res.found.length) {
         h += `<h2>${res.found.length === 1 ? 'One slip fits' : res.found.length + ' slips fit'}. Look at ${res.found.length === 1 ? 'this place' : 'these places'} on the paper</h2>`;
+        if (res.mode === 'ledger') h += `<p class="note">On a ledger page each block is its own check, so each block that misses gets its own slip.</p>`;
         for (const s of res.found.slice(0, 12)) {
-          if (s.kind === 'line') { h += `<div class="cand"><b class="n">${esc(s.where)}</b>: ${esc(s.say)}.</div>`; continue; }
+          const inb = s.block ? ` <span class="note">(${esc(s.block)})</span>` : '';
+          if (s.kind === 'point' && res.ruled) s.say = 'the line between dollars and cents in the wrong place';
+          if (s.kind === 'line') { h += `<div class="cand"><b class="n">${esc(s.where)}</b>${inb}: ${esc(s.say)}.</div>`; continue; }
           if (s.kind === 'column') { h += `<div class="cand"><b class="n">${esc(s.where)}</b>: <b>${esc(s.read)}</b> was read under “${esc(s.from)}”; if it is under “${esc(s.to)}” on the page, every check meets. That is a number read into the wrong column.</div>`; continue; }
           if (s.kind === 'other') { h += `<div class="cand"><b class="n">${esc(s.where)}</b>: read as <b>${esc(s.read)}</b>; if the page says <b>${esc(asRead(s.read, s.page))}</b>, every check meets. ${s.checks} checks point at this one place, but no one-digit slip gets there: two digits wrong, a smudge, or another number entirely.</div>`; continue; }
-          h += `<div class="cand"><b class="n">${esc(s.where)}</b>: read as <b>${esc(s.read)}</b>; if the page says <b>${esc(asRead(s.read, s.page))}</b>, every check meets. That is ${esc(s.say)}, and the page's number is ${f(Math.abs(s.delta))} ${s.delta < 0 ? 'less' : 'more'} than the reading.` +
+          h += `<div class="cand"><b class="n">${esc(s.where)}</b>${inb}: read as <b>${esc(s.read)}</b>; if the page says <b>${esc(asRead(s.read, s.page))}</b>, every check meets. That is ${esc(s.say)}, and the page's number is ${f(Math.abs(s.delta))} ${s.delta < 0 ? 'less' : 'more'} than the reading.` +
             (s.kind === 'look' ? ' <span class="look">(a pair on my look-alike list)</span>' : '') + `</div>`;
         }
         if (res.found.length > 12) h += `<p class="note">And ${res.found.length - 12} more.</p>`;
-        if (res.found.length > 1) h += `<p class="note">The page alone can't choose between these. They are in the order I'd look: look-alike digits first, then swaps, other digits, a digit too many or too few, the decimal point, the wrong column, a whole line, and last a place the checks agree on that no one-digit slip explains.</p>`;
+        const per = new Map(); for (const s of res.found) per.set(s.block, (per.get(s.block) || 0) + 1);
+        if ([...per.values()].some((n) => n > 1)) h += `<p class="note">The page alone can't choose between these. They are in the order I'd look: look-alike digits first, then swaps, other digits, a digit too many or too few, the decimal point, the wrong column, a whole line, and last a place the checks agree on that no one-digit slip explains.</p>`;
       } else {
         h += `<p class="verdict off">No single slip closes it.</p><p class="note">So there are at least two slips, or a line went missing, or the writer's own sum was off.</p>`;
       }
       for (const nt of res.notes) {
-        if (nt.kind === 'missing') h += `<p class="note">Or the reading left out a line of ${f(nt.value)}.</p>`;
+        if (nt.kind === 'missing') h += `<p class="note">Or the reading left out a line of ${f(nt.value)}${nt.block ? ` from ${esc(nt.block)}` : ''}.</p>`;
+        if (nt.kind === 'aside') h += `<p class="note">Not amounts, by their labels, so in no check: ${nt.lines.map(esc).join(', ')}.</p>`;
+        if (nt.kind === 'after') h +=`<p class="note">After the last total, not in any check: ${nt.lines.map(esc).join(', ')}.</p>`;
+        if (nt.kind === 'no-cents') h += `<p class="note">In ${esc(nt.block)}, moving the line between dollars and cents doesn't close it either, wherever it goes.</p>`;
+        if (nt.kind === 'cents') {
+          const one = (w) => `<b>${esc(w.read)}</b> as <b>${esc(w.page)}</b> (${esc(w.where)})`;
+          h += `<div class="cand"><b class="n">${esc(nt.block[0].toUpperCase() + nt.block.slice(1))}</b>: the reading may have lost the line between dollars and cents in some places and kept it in others. ` +
+            (nt.ways === 1 ? `Moving it in these ${nt.size} places makes the block meet, and no other set of ${nt.size} or fewer does: `
+              : `Moving it in ${nt.size} places makes the block meet, and ${nt.ways} different sets of ${nt.size} do. ${nt.where.length ? 'Every one of them moves it here: ' : ''}`) +
+            nt.where.map(one).join('; ') + '.' +
+            (nt.split.length ? ` They differ in the rest, so look at these on the paper: ${nt.split.map((s) => s.map(one).join(' and ')).join(', or ')}.` : '') +
+            (nt.ways > 1 && !nt.where.length ? ' Too many sets fit to name the places.' : '') + '</div>';
+        }
         if (nt.kind === 'missing-row') h += `<p class="note">Or the reading left out a whole row: ${nt.cells.map((g) => (g === null ? '–' : f(g))).join(', ')}.</p>`;
         if (nt.kind === 'missing-between') h += `<p class="note">Or the reading left out a line between ${esc(nt.after)} and ${esc(nt.before)} that ${nt.value > 0 ? 'put in' : 'took out'} ${f(Math.abs(nt.value))}.</p>`;
         if (nt.kind === 'carried') h += nt.last
@@ -448,14 +584,16 @@ Misread.SAMPLES = {
       }
     }
     // The page as read, with the places to look marked.
-    const sus = new Set(res.found.filter((s) => s.c >= 0).map((s) => s.r + ',' + s.c));
+    const sus = new Set(res.found.filter((s) => s.c >= 0).map((s) => s.r + ',' + s.c)
+      .concat(res.notes.filter((n) => n.kind === 'cents').flatMap((n) => n.where.concat(...n.split).map((w) => w.r + ',' + w.c))));
     const susRow = new Set(res.found.filter((s) => s.c < 0).map((s) => s.r));
     h += '<table class="page">';
     if (res.header) h += '<tr><th></th>' + res.header.map((x) => `<th>${esc(x)}</th>`).join('') + '</tr>';
     const missRow = new Set(res.running ? res.checks.filter((c) => c.gap).map((c) => c.row) : []);
     res.rows.forEach((r, ri) => {
       h += `<tr><th${missRow.has(ri) ? ' class="missrow"' : ''}>${esc(r.label)}</th>` + r.cells.map((c, ci) => {
-        const tot = res.running ? ci === res.width - 1 : (res.mode === 'grid' && res.rowTot && ci === res.width - 1) || (res.colTot && ri === res.rows.length - 1);
+        const tot = res.running ? ci === res.width - 1 : res.mode === 'ledger' ? res.totalRows.includes(ri)
+          : (res.mode === 'grid' && res.rowTot && ci === res.width - 1) || (res.colTot && ri === res.rows.length - 1);
         const cls = sus.has(ri + ',' + ci) || susRow.has(ri) ? 'sus' : tot ? 'tot' : '';
         return `<td class="${cls}">${esc(c.text)}</td>`;
       }).join('') + '</tr>';
@@ -467,13 +605,14 @@ Misread.SAMPLES = {
 
   function run() {
     const res = Misread.check($('page').value, { running: $('shape-running').checked, outFirst: $('outfirst').checked,
-      rowTotals: $('rowtot').checked, colTotals: $('coltot').checked });
+      rowTotals: $('rowtot').checked, colTotals: $('coltot').checked, ledger: $('shape-ledger').checked, ruled: $('ruled').checked });
     $('out').innerHTML = render(res);
   }
   function load(s) {
     $('page').value = s.text;
-    $('shape-running').checked = !!s.running; $('shape-totals').checked = !s.running; $('outfirst').checked = !!s.outFirst;
-    if (!s.running) { $('rowtot').checked = s.rowTotals; $('coltot').checked = s.colTotals; }
+    $('shape-running').checked = !!s.running; $('shape-ledger').checked = !!s.ledger; $('shape-totals').checked = !s.running && !s.ledger;
+    $('outfirst').checked = !!s.outFirst; $('ruled').checked = !!s.ruled;
+    if (!s.running && !s.ledger) { $('rowtot').checked = s.rowTotals; $('coltot').checked = s.colTotals; }
     run(); $('caption').textContent = s.caption;
   }
   $('check').addEventListener('click', () => { $('caption').textContent = ''; run(); });
