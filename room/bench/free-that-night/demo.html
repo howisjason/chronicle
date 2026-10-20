@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is that room free that night?</title>
+<style>
+  body { font: 15px/1.45 -apple-system, "Segoe UI", "Noto Sans Thai", sans-serif; margin: 0; background: #f6f7fb; color: #222; }
+  main { max-width: 860px; margin: 0 auto; padding: 18px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  p.lede { margin: 0 0 14px; color: #555; }
+  .boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .boxes .wide { grid-column: 1 / -1; }
+  label { font-weight: 600; font-size: 13px; display: block; margin-bottom: 3px; }
+  label small { font-weight: 400; color: #777; }
+  textarea { width: 100%; box-sizing: border-box; min-height: 170px; font: 14px/1.4 ui-monospace, Menlo, "Noto Sans Thai", monospace; padding: 6px; border: 1px solid #ccc; border-radius: 4px; background: #fff; }
+  .row { margin: 10px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  button { font: inherit; font-size: 13px; padding: 4px 10px; border: 1px solid #a9b0c6; background: #fff; border-radius: 4px; cursor: pointer; }
+  button.go { background: #34477a; color: #fff; border-color: #34477a; }
+  #out { margin-top: 8px; }
+  .f { padding: 6px 8px; border-left: 4px solid #bbb; margin: 4px 0; background: #fff; }
+  .f.ok { border-color: #4a8a5c; }
+  .f.wrong { border-color: #c0392b; background: #fff5f3; }
+  .f.note { border-color: #c9a227; background: #fffbea; }
+  .f q { font-family: ui-monospace, Menlo, "Noto Sans Thai", monospace; quotes: none; background: #eceef5; padding: 0 3px; display: block; margin-bottom: 2px; }
+  .sum { font-weight: 600; margin: 10px 0 4px; }
+  h2 { font-size: 15px; margin: 14px 0 2px; }
+  details { margin-top: 14px; }
+  #ask { white-space: pre-wrap; background: #fff; border: 1px dashed #a9b0c6; padding: 8px; font-size: 13px; }
+  footer { margin-top: 18px; font-size: 12px; color: #777; }
+  @media (max-width: 640px) { .boxes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+<h1>Is that room free that night?</h1>
+<p class="lede">A guesthouse's own booking book, as the check on an AI's reply to a guest. Paste the book, the guest's message if you have it, and the reply the AI drafted. It checks every weekday the reply puts next to a date (a calendar is the one part of the truth nobody has to write down), the year in Buddhist or Common reckoning, the nights from check-in to check-out, whether the room is free on each of those nights, and the price, weekend nights included. When the guest's own weekday and date don't agree, it says what the guest could have meant and whether the reply asked. It reads Thai and English dates and Thai digits.</p>
+
+<div class="row">Try one:
+  <button id="s0">A guest's slip, Sonnet's real reply</button>
+  <button id="s1">The same slip, a wrong reply</button>
+  <button id="s2">New Year, in Thai</button>
+</div>
+
+<div class="boxes">
+  <div><label for="book">The book <small>a today line, a weekend line, one room a line, one booking a line</small></label><textarea id="book"></textarea></div>
+  <div><label for="msg">The guest's message <small>optional</small></label><textarea id="msg"></textarea></div>
+  <div class="wide"><label for="reply">The AI's reply</label><textarea id="reply"></textarea></div>
+</div>
+<div class="row"><button class="go" id="go">Check the reply</button></div>
+<div id="out"></div>
+
+<details><summary>The ask to put in front of the AI, so its replies come out checkable</summary>
+<p>Put this in the AI's instructions above the book. No reply on this page was written with it.</p>
+<div id="ask"></div></details>
+
+<footer>It checks dates, nights, rooms and prices against the book. It doesn't check promises, deposits, refunds, breakfast or how many people a room sleeps. A date without a year is taken as the next one on or after the book's today line. A weekday counts as said of a date only when it stands right next to it (<q>Friday 13 Nov</q>, <q>วันศุกร์ที่ 13</q>, <q>13 Nov is a Friday</q>, <q>Saturday is the 14th</q>). Whether a reply "asked" the guest is read from its words (a question mark, which, confirm, let us know, ไหน, ยืนยัน), so it can be fooled. The quotes on the cards are the reply as the page reads it: Thai digits made Arabic, 2,000 as 2000, พ.ย. as พย. The first sample is a real reply from Sonnet, word for word; the other two are mine. The guesthouse, its rooms, rates and guests are invented.</footer>
+</main>
+
+<script id="core">
+// free-that-night: reads a guesthouse's book and checks an AI's reply to a guest against it.
+var FreeThatNight = (function () {
+  var THAI = '๐๑๒๓๔๕๖๗๘๙';
+  function norm(s) {
+    s = String(s || '').replace(/[๐-๙]/g, function (d) { return String(THAI.indexOf(d)); });
+    s = s.replace(/\r/g, '').replace(/ /g, ' ').replace(/\*\*|__|`/g, '').replace(/[–—]/g, '-');
+    while (/(\d),(\d{3})(?!\d)/.test(s)) s = s.replace(/(\d),(\d{3})(?!\d)/, '$1$2');
+    // Thai month and era abbreviations lose their dots, so that a dot only ends a sentence
+    s = s.replace(/(มี|เม|มิ|ม|ก|พ|ส|ต|ธ|ค)\.(ค|พ|ย|ศ)\.?/g, '$1$2 ');
+    s = s.replace(/\b(jan|feb|mar|apr|jun|jul|aug|sept?|oct|nov|dec|mon|tues?|wed|thur?s?|fri|sat|sun|no)\.(?=\s)/gi, '$1');
+    return s;
+  }
+
+  // ---- the calendar
+  function dn(y, m, d) { return Math.round(Date.UTC(y, m - 1, d) / 864e5); }
+  function ymd(n) { var t = new Date(n * 864e5); return { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate() }; }
+  function wdOf(n) { return ((n + 4) % 7 + 7) % 7; }
+  function valid(y, m, d) { var t = new Date(Date.UTC(y, m - 1, d)); return t.getUTCMonth() === m - 1 && t.getUTCDate() === d; }
+  var WDN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var MN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function day(n, year) { var x = ymd(n); return WDN[wdOf(n)].slice(0, 3) + ' ' + x.d + ' ' + MN[x.m - 1] + (year ? ' ' + x.y : ''); }
+  function be(y) { return y + 543; }
+
+  // ---- words
+  var WD_TH = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี|พฤหัส', 'ศุกร์', 'เสาร์'];
+  var WD_EN = ['sun(?:day)?', 'mon(?:day)?', 'tue(?:s(?:day)?)?', 'wed(?:nesday)?', 'thu(?:r(?:s(?:day)?)?)?', 'fri(?:day)?', 'sat(?:urday)?'];
+  var MON_TH = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+  var MON_AB = ['มค', 'กพ', 'มีค', 'เมย', 'พค', 'มิย', 'กค', 'สค', 'กย', 'ตค', 'พย', 'ธค'];
+  var MON_EN = ['jan(?:uary)?', 'feb(?:ruary)?', 'mar(?:ch)?', 'apr(?:il)?', 'may', 'june?', 'july?', 'aug(?:ust)?', 'sep(?:t(?:ember)?)?', 'oct(?:ober)?', 'nov(?:ember)?', 'dec(?:ember)?'];
+  function anchored(list) { return list.map(function (p) { return new RegExp('^(?:' + p + ')$', 'i'); }); }
+  function pick(res, w) { for (var i = 0; i < res.length; i++) if (res[i].test(w)) return i; return -1; }
+  var WD_TH_RE = anchored(WD_TH), WD_EN_RE = anchored(WD_EN), MON_EN_RE = anchored(MON_EN);
+  var TOK = new RegExp('((?:วัน)?(?:' + WD_TH.join('|') + '))|\\b(' + WD_EN.join('|') + ')\\b|(' + MON_TH.join('|') + '|(?:' + MON_AB.join('|') + ')(?![ก-๛]))|\\b(' + MON_EN.join('|') + ')\\b|(\\d+)(st|nd|rd|th)?(?!\\d)', 'gi');
+
+  function tokens(s) {
+    var out = [], m;
+    TOK.lastIndex = 0;
+    while ((m = TOK.exec(s))) {
+      var t = { i: m.index, e: m.index + m[0].length, raw: m[0] };
+      if (m[1]) { t.t = 'wd'; t.v = pick(WD_TH_RE, m[1].replace(/^วัน/, '')); }
+      else if (m[2]) { t.t = 'wd'; t.v = pick(WD_EN_RE, m[2]); }
+      else if (m[3]) { t.t = 'mon'; t.v = MON_TH.indexOf(m[3]) >= 0 ? MON_TH.indexOf(m[3]) + 1 : MON_AB.indexOf(m[3]) + 1; t.th = true; }
+      else if (m[4]) { t.t = 'mon'; t.v = pick(MON_EN_RE, m[4]) + 1; }
+      else { t.t = 'num'; t.v = parseInt(m[5], 10); t.ord = !!m[6]; t.len = m[5].length; }
+      out.push(t);
+    }
+    return out;
+  }
+
+  // A written year, in either reckoning. Two digits: 69 is 2569, 26 is 2026.
+  function yearOf(raw, len) {
+    if (len === 2) return raw >= 50 ? { y: 2500 + raw - 543, era: 'BE' } : { y: 2000 + raw, era: 'CE' };
+    if (raw >= 2900 && raw < 3300) return { y: raw - 1086, era: 'BE', odd: 'twice' };
+    if (raw >= 1300 && raw <= 1700) return { y: raw + 543, era: 'CE', odd: 'under' };
+    return raw >= 2400 ? { y: raw - 543, era: 'BE' } : { y: raw, era: 'CE' };
+  }
+
+  var CONNECT = /^\s*(?:-|to|until|till|ถึง|and|และ|,|&)\s*$/i;
+  // Every date in a sentence: its day number, a weekday said of it, and whether it is
+  // the date a room is "booked from".
+  function findDates(s, ctx, today) {
+    var T = tokens(s), D = [], used = {}, k, t, n, d;
+    for (k = 0; k < T.length; k++) {
+      t = T[k]; n = T[k + 1]; d = null;
+      var dayNum = t.t === 'num' && t.v >= 1 && t.v <= 31 && t.len <= 2;
+      if (dayNum && n && n.t === 'mon' && /^\s*(?:of\s+)?$/i.test(s.slice(t.e, n.i))) d = { d: t.v, m: n.v, i: t.i, e: n.e, k0: k, k1: k + 1 };
+      else if (t.t === 'mon' && !t.th && n && n.t === 'num' && n.v >= 1 && n.v <= 31 && n.len <= 2 && /^\s+$/.test(s.slice(t.e, n.i))) d = { d: n.v, m: t.v, i: t.i, e: n.e, k0: k, k1: k + 1 };
+      if (d) {
+        var y = T[d.k1 + 1];
+        // a year, unless it is money (22 Nov, 3000 baht) or a count (13 พ.ย. 20 คน)
+        if (y && y.t === 'num' && /^\s*,?\s*(?:พศ|คศ)?\s*$/i.test(s.slice(T[d.k1].e, y.i)) && (y.len === 4 || (y.len === 2 && y.v >= 20)) &&
+            !/^\s*(?:บาท|baht|thb|฿|บ\.|\.\d)/i.test(s.slice(y.e)) &&
+            !(y.len === 2 && /^\s*(?:คืน|nights?|คน|ท่าน|people|guests?|ห้อง|rooms?|:)/i.test(s.slice(y.e)))) {
+          d.yRaw = y.v; d.yLen = y.len; d.e = y.e; d.k1++;
+        }
+        D.push(d); k = d.k1; continue;
+      }
+      if (dayNum) {
+        var p = T[k - 1], before = s.slice(p ? p.e : 0, t.i);
+        var dayish = t.ord || /วันที่\s*$/.test(before) || (p && p.t === 'wd' && /^[\s,]*(?:ที่|the)?\s*$/i.test(before));
+        var runs = n && (n.t === 'num' || n.t === 'wd') && CONNECT.test(s.slice(t.e, n.i));
+        if (dayish || runs) D.push({ d: t.v, i: t.i, e: t.e, k0: k, k1: k, dayOnly: true, needsNext: !dayish });
+      }
+    }
+    // A day without a month takes the month of the date it runs into (13-15 Nov), or else
+    // the last month seen.
+    for (var j = 0; j < D.length; j++) {
+      d = D[j];
+      if (d.dayOnly) {
+        var nx = D[j + 1];
+        if (nx && !nx.dayOnly && CONNECT.test(s.slice(d.e, nx.i).replace(/(?:วัน)?(?:อาทิตย์|จันทร์|อังคาร|พุธ|พฤหัสบดี|พฤหัส|ศุกร์|เสาร์)|ที่|\b(?:the|sun|mon|tue|tues|wed|thu|thur|thurs|fri|sat)[a-z]*\b/gi, ''))) {
+          d.m = d.d > nx.d ? (nx.m === 1 ? 12 : nx.m - 1) : nx.m;
+          if (nx.yRaw) { d.yRaw = nx.yRaw - (d.d > nx.d && nx.m === 1 ? 1 : 0); d.yLen = nx.yLen; d.inherit = true; }
+        } else if (!d.needsNext && ctx.mon) d.m = ctx.mon;
+        else { D.splice(j, 1); j--; continue; }
+      }
+      ctx.mon = d.m;
+    }
+    // A weekday right before a date, or said of it just after.
+    D.forEach(function (d) {
+      var p = T[d.k0 - 1];
+      if (p && p.t === 'wd') {
+        var g = s.slice(p.e, T[d.k0].i);
+        if (/^[\s,]*(?:ที่|the)?\s*$/i.test(g) || /^\s*(?:is|was|will be|คือ|จะเป็น|เป็น|=)\s*(?:the|วันที่)?\s*$/i.test(g)) { d.wd = p.v; d.wdRaw = p.raw; d.s0 = p.i; used[d.k0 - 1] = 1; }
+      }
+      if (d.s0 == null) d.s0 = d.i;
+    });
+    D.forEach(function (d) {
+      if (d.wd != null) return;
+      var q = T[d.k1 + 1];
+      if (q && q.t === 'wd' && !used[d.k1 + 1] && /^\s*[(,]?\s*(?:(?:is|was|falls on|ตรงกับ|เป็น|คือ)\s*(?:actually|really|indeed)?\s*(?:a|an|on|on a)?)?\s*$/i.test(s.slice(T[d.k1].e, q.i))) {
+        d.wd = q.v; d.wdRaw = q.raw; d.after = true; used[d.k1 + 1] = 1;
+      }
+    });
+    D.forEach(function (d) {
+      var bm = s.slice(0, d.s0).match(/(?:booked|จอง(?:ไว้)?)\s*(?:from|on|since|for|ตั้งแต่|ไว้|แล้ว)?\s*(?:the|วันที่)?\s*$/i);
+      if (bm) { d.booked = true; d.bookedAt = bm.index; }
+      place(d, today);
+      d.text = s.slice(d.s0, d.e);
+    });
+    return D;
+  }
+
+  // Which day the date is: the year as written, or the next such date on or after today.
+  function place(d, today) {
+    var y;
+    if (d.yRaw != null) {
+      var Y = yearOf(d.yRaw, d.yLen);
+      y = Y.y; d.era = Y.era;
+      if (Y.odd) d.slip = Y.odd;
+    } else {
+      y = ymd(today).y;
+      if (valid(y, d.m, d.d) && dn(y, d.m, d.d) < today) y++;
+    }
+    if (!valid(y, d.m, d.d) && !(d.m === 2 && d.d === 29)) { d.bad = true; d.n = null; return; }
+    if (!valid(y, d.m, d.d)) { d.bad = true; d.n = null; return; }
+    d.n = dn(y, d.m, d.d);
+    if (d.yRaw != null && !d.slip && d.n < today) {
+      d.writtenN = d.n;
+      if (valid(y + 1, d.m, d.d) && dn(y + 1, d.m, d.d) >= today) { d.slip = 'behind'; d.n = dn(y + 1, d.m, d.d); }
+      else d.slip = 'past';
+    }
+  }
+
+  // ---- sentences
+  function sentences(t) {
+    var out = [];
+    norm(t).split('\n').forEach(function (line) {
+      line.replace(/([.!?])\s+/g, '$1\n').replace(/(ค่ะ|คะ|ครับ|จ้า|จ้ะ)\s+/g, '$1\n').replace(/\s+(?=แต่|เพราะ)/g, '\n')
+        .split('\n').forEach(function (p) { p = p.replace(/^[\s\-•*]+/, '').trim(); if (p) out.push(p); });
+    });
+    return out;
+  }
+
+  var NUMW = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, 'หนึ่ง': 1, 'สอง': 2, 'สาม': 3, 'สี่': 4, 'ห้า': 5, 'หก': 6, 'เจ็ด': 7, 'แปด': 8, 'เก้า': 9, 'สิบ': 10 };
+  function nightsIn(s) {
+    var out = [], m, re = /(\d+|one|two|three|four|five|six|seven|eight|nine|ten|หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า|สิบ)\s*(?:nights?\b|คืน(?!ละ))|คืนเดียว|\ba single night\b/gi;
+    while ((m = re.exec(s))) out.push({ v: m[1] ? (NUMW[m[1].toLowerCase()] || parseInt(m[1], 10)) : 1, i: m.index });
+    return out;
+  }
+
+  var OUTWORD = /(?:^|[\s,(])(?:-|to|until|till|leave|leaving|check(?:ing)?[\s-]?out|out|ถึง|ออก|เช็คเอาท์|เช็กเอาท์|เช็คเอ้าท์)\s*$/i;
+  var FROMWORD = /(?:from|arrive|arriving|arrival|check(?:ing)?[\s-]?in|ตั้งแต่|เข้าพัก|เช็คอิน|เช็กอิน)\s*(?:on|the|วันที่)?\s*$/i;
+  function cleanGap(g) { return g.replace(/\b(?:on|the)\b|วันที่|ที่|[():]/gi, ' ').replace(/\s+/g, ' '); }
+  // Stays in a sentence: check-in to check-out, nights listed, or a start and a count.
+  function staysIn(s, D, N) {
+    var out = [], placed = D.filter(function (d) { return d.n != null; });
+    for (var j = 0; j + 1 < placed.length; j++) {
+      var a = placed[j], b = placed[j + 1], g = s.slice(a.e, b.s0);
+      // "fully booked from 20 Nov to 22 Nov" is a stay, not the night a room is booked from
+      if (!b.booked && g.length <= 45 && OUTWORD.test(cleanGap(g)) && b.n > a.n && b.n - a.n <= 60) { a.booked = false; out.push({ a: a.n, b: b.n, from: a, to: b }); j++; }
+    }
+    var free = placed.filter(function (d) { return !d.booked; });
+    if (!out.length && free.length >= 2 && /(?:คืน|nights?\s+of|staying|stay|พัก)\s*(?:วันที่|the|on)?\s*$/i.test(s.slice(Math.max(0, free[0].s0 - 20), free[0].s0))) {
+      var chain = [free[0]];
+      for (var c = 1; c < free.length && /^\s*(?:,|and|และ|&)\s*$/i.test(s.slice(chain[chain.length - 1].e, free[c].s0)); c++) chain.push(free[c]);
+      if (chain.length > 1) out.push({ a: chain[0].n, b: chain[chain.length - 1].n + 1, from: chain[0], listed: true });
+    }
+    if (!out.length && free.length && N.length) {
+      var st = free.filter(function (d) { return FROMWORD.test(s.slice(Math.max(0, d.s0 - 25), d.s0)); })[0] || free[0];
+      var after = N.filter(function (x) { return x.i > st.i; })[0] || N[N.length - 1];
+      out.push({ a: st.n, b: st.n + after.v, from: st, counted: true });
+    }
+    return out;
+  }
+  function nightsNear(N, stay) {
+    if (!N.length) return null;
+    if (!stay || !stay.from) return N[0];
+    return N.filter(function (x) { return x.i > stay.from.i; })[0] || N[N.length - 1];
+  }
+
+  function readText(text, today) {
+    var ctx = { mon: null };
+    return sentences(text).map(function (s) {
+      var D = findDates(s, ctx, today), N = nightsIn(s);
+      return { s: s, D: D, N: N, stays: staysIn(s, D, N) };
+    });
+  }
+
+  // ---- the book
+  var SYN = { double: ['double', 'ดับเบิล', 'เตียงคู่', 'เตียงใหญ่'], twin: ['twin', 'ทวิน', 'เตียงแฝด', 'เตียงเดี่ยว 2 เตียง'], family: ['family', 'แฟมิลี่', 'ครอบครัว'], single: ['single', 'ซิงเกิล', 'เตียงเดี่ยว'], dorm: ['dorm', 'ดอร์ม'] };
+  function roomName(r) { return 'Room ' + r.id + (r.type ? ' (' + r.type + ')' : ''); }
+  function roomsIn(s, B) {
+    var hits = [], m, re = /(?:room|ห้อง)\s*(?:ที่|no|number|#)?\s*(\d+)(?!\s*(?:คน|ห้อง|rooms?|people|ท่าน|คืน|nights?|เตียง|beds?|\d))/gi;
+    while ((m = re.exec(s))) if (B.byId[m[1]]) hits.push({ r: B.byId[m[1]], i: m.index, e: m.index + m[0].length });
+    B.rooms.forEach(function (r) {
+      r.keys.forEach(function (k) {
+        var kre = /^[a-z]/i.test(k) ? new RegExp('\\b' + k + '\\b(?![\\s-]?check)', 'gi') : new RegExp(k, 'g'), km;
+        while ((km = kre.exec(s))) if (!/\b(?:your|my|our own)\s+$/i.test(s.slice(Math.max(0, km.index - 8), km.index))) hits.push({ r: r, i: km.index, e: km.index + km[0].length });
+      });
+    });
+    hits.sort(function (a, b) { return a.i - b.i || (b.e - b.i) - (a.e - a.i); });
+    var out = [], until = -1;
+    hits.forEach(function (h) { if (h.i >= until || out.indexOf(h.r) >= 0) { if (out.indexOf(h.r) < 0) out.push(h.r); until = Math.max(until, h.e); } });
+    return out;
+  }
+
+  function parseBook(text, todayIn) {
+    var B = { rooms: [], byId: {}, problems: [], weekend: null, today: null, said: [] };
+    var lines = norm(text).split('\n').map(function (l) { return l.trim(); });
+    lines.forEach(function (l) {
+      if (/^(?:today|วันนี้)/i.test(l)) {
+        var D = findDates(l, { mon: null }, todayIn || dn(2000, 1, 1)).filter(function (d) { return d.yRaw != null && !d.bad; });
+        if (D.length) {
+          B.today = dn(yearOf(D[0].yRaw, D[0].yLen).y, D[0].m, D[0].d);
+          if (D[0].wd != null && D[0].wd !== wdOf(B.today)) B.problems.push('The book\'s today line says ' + WDN[D[0].wd] + ', but ' + day(B.today, true).slice(4) + ' is a ' + WDN[wdOf(B.today)] + '.');
+        } else B.problems.push('The today line has no date with a year in it, so I used this computer\'s date.');
+        l.done = true;
+      }
+    });
+    if (B.today == null) {
+      B.today = todayIn != null ? todayIn : dn(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate());
+      if (!B.problems.length) B.problems.push('The book has no today line ("Today: 20 Oct 2026"), so a date without a year is placed from this computer\'s date: ' + day(B.today, true) + '.');
+    }
+    var later = [];
+    lines.forEach(function (l) {
+      if (!l || /^(?:today|วันนี้|#)/i.test(l)) return;
+      var rm = l.match(/^(?:room|ห้อง)\s*(?:ที่|no|#)?\s*(\d+)\b/i);
+      if (rm && !/book|จอง/i.test(l)) {
+        var rest = l.slice(rm[0].length);
+        var type = rest.replace(/^[\s,:\-()]+/, '').split(/[:,(\d]/)[0].replace(/\s+(?:room|ห้อง)$/i, '').trim();
+        var rate = rest.match(/(\d+(?:\.\d+)?)/);
+        var wk = rest.match(/(?:weekend|วันหยุด|สุดสัปดาห์|ศ\s*-\s*ส|ศุกร์\s*-\s*เสาร์|fri\s*-\s*sat)\D{0,15}?(\d+(?:\.\d+)?)/i);
+        if (!rate) { B.problems.push('No rate on this room line, so it isn\'t used: "' + l + '"'); return; }
+        var r = { id: rm[1], type: type, rate: parseFloat(rate[1]), wk: wk ? parseFloat(wk[1]) : null, booked: {}, keys: [] };
+        if (r.wk === r.rate) r.wk = null;
+        var low = type.toLowerCase();
+        if (low) r.keys.push(low);
+        Object.keys(SYN).forEach(function (k) { if (low.indexOf(k) >= 0 || SYN[k].indexOf(low) >= 0) SYN[k].forEach(function (w) { if (r.keys.indexOf(w) < 0) r.keys.push(w); }); });
+        r.keys = r.keys.map(function (k) { return k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); });
+        B.rooms.push(r); B.byId[r.id] = r;
+        return;
+      }
+      if (/weekend|วันหยุด|สุดสัปดาห์/i.test(l)) {
+        var w = tokens(l).filter(function (t) { return t.t === 'wd'; }).map(function (t) { return t.v; });
+        if (w.length) { B.weekend = w; return; }
+      }
+      later.push(l);
+    });
+    // Two rooms whose types share a word: a bare type then names neither.
+    later.forEach(function (l) {
+      if (/^(?:booked|จอง|ไม่ว่าง|closed|ปิด)/i.test(l)) {
+        var rs = roomsIn(l, B), D = findDates(l, { mon: null }, B.today).filter(function (d) { return d.n != null; });
+        var N = nightsIn(l);
+        if (!rs.length || !D.length) { B.problems.push('I couldn\'t read a room and a date in this booking, so it isn\'t used: "' + l + '"'); return; }
+        var a = D[0].n, b = D.length > 1 ? D[1].n : a + (N.length ? N[0].v : 1);
+        if (b <= a) { B.problems.push('This booking ends before it starts: "' + l + '"'); return; }
+        rs.forEach(function (r) { for (var x = a; x < b; x++) r.booked[x] = true; });
+        return;
+      }
+      B.problems.push('I didn\'t understand this line of the book, so it isn\'t used: "' + l + '"');
+    });
+    if (!B.weekend) {
+      if (B.rooms.some(function (r) { return r.wk != null; })) { B.weekend = [5, 6]; B.problems.push('The book has a weekend rate but no line saying which nights are the weekend, so I took Friday and Saturday nights.'); }
+      else B.weekend = [];
+    }
+    return B;
+  }
+  function rateOn(B, r, n) { return r.wk != null && B.weekend.indexOf(wdOf(n)) >= 0 ? r.wk : r.rate; }
+  function nightsList(stay) { var o = []; for (var x = stay.a; x < stay.b; x++) o.push(x); return o; }
+  function nightsWords(list) {
+    if (!list.length) return '';
+    var x = list.map(function (n) { return ymd(n); }), sameM = x.every(function (v) { return v.m === x[0].m; });
+    return 'the night' + (list.length > 1 ? 's' : '') + ' of ' + (sameM ? x.map(function (v) { return v.d; }).join(', ') + ' ' + MN[x[0].m - 1] : list.map(function (n) { return day(n).slice(4); }).join(', '));
+  }
+  function stayWords(st) { var k = st.b - st.a; return day(st.a) + ' → ' + day(st.b) + ' is ' + k + ' night' + (k > 1 ? 's' : '') + ' (' + nightsList(st).map(function (n) { return WDN[wdOf(n)].slice(0, 3); }).join(', ') + ')'; }
+  function money(v) { return String(Math.round(v * 100) / 100); }
+
+  // ---- the checks
+  var FULL = /\bfully booked\b|\bno rooms?\b|\bno vacanc|\bnot (?:available|possible|free)\b|\bunavailable\b|\b(?:isn'?t|aren'?t) (?:available|free)\b|\b(?:are|is|'re|were) booked\b|\bbooked (?:up|out|on|for)\b|\bfull\b|\bsold out\b|ไม่มีห้อง|ไม่ว่าง|เต็ม|จองแล้ว|ถูกจอง|ไม่สามารถ/i;
+  var FREE = /\b(?:available|free|vacant|vacancy|offer)\b|ว่าง/i;
+  var HAVE = /\bwe(?:'ve| have| can offer| do have)\b|มีห้อง|มี\s/i;
+  var ASKED = /\?|\bwhich\b|\bconfirm\b|let (?:me|us) know|ยืนยัน|ไหน|ไหม|หรือเปล่า|ใช่ไหม/i;
+
+  function weekdayStory(d, guestClaims) {
+    var y = ymd(d.n).y, w = d.wd, off = ((w - wdOf(d.n)) % 7 + 7) % 7;
+    var g = guestClaims.filter(function (c) { return c.n === d.n && c.wd === w; })[0];
+    if (g) return 'That\'s the guest\'s weekday, carried over: the guest wrote "' + g.text + '".';
+    var gc = guestClaims.filter(function (c) { return c.wd !== wdOf(c.n) && ((c.wd - wdOf(c.n)) % 7 + 7) % 7 === off; })[0];
+    if (gc) return 'That\'s the guest\'s calendar carried on: with ' + gc.d + ' ' + MN[gc.m - 1] + ' a ' + WDN[gc.wd] + ', ' + d.d + ' ' + MN[d.m - 1] + ' would be a ' + WDN[w] + '.';
+    if (d.writtenN != null && wdOf(d.writtenN) === w) return 'It is right for the year as written.';
+    var fits = [];
+    if (wdOf(d.n + 1) === w) fits.push(WDN[w] + ' is ' + day(d.n + 1).slice(4) + ', a day later');
+    if (wdOf(d.n - 1) === w) fits.push(WDN[w] + ' is ' + day(d.n - 1).slice(4) + ', a day earlier');
+    if (valid(y - 1, d.m, d.d) && wdOf(dn(y - 1, d.m, d.d)) === w) fits.push('it\'s the weekday of ' + d.d + ' ' + MN[d.m - 1] + ' ' + (y - 1) + ', last year\'s calendar');
+    if (valid(y + 1, d.m, d.d) && wdOf(dn(y + 1, d.m, d.d)) === w) fits.push('it\'s the weekday of ' + d.d + ' ' + MN[d.m - 1] + ' ' + (y + 1) + ', next year\'s calendar');
+    if (!fits.length) return '';
+    var t = fits.join('; or ');
+    return t.charAt(0).toUpperCase() + t.slice(1) + '.';
+  }
+
+  function dateSays(d, guestClaims, say) {
+    if (d.bad) { say('wrong', 'There is no ' + d.d + ' ' + MN[d.m - 1] + (d.yRaw ? ' ' + d.yRaw : '') + '.'); return; }
+    var x = ymd(d.n), cy = x.y;
+    if (d.slip === 'twice') say('wrong', d.yRaw + ' is ' + cy + ' with 543 added twice (' + cy + ' is ' + be(cy) + ' in the Buddhist reckoning). This page reads it as ' + cy + '.');
+    if (d.slip === 'under') say('wrong', d.yRaw + ' is ' + cy + ' with 543 taken off a year that was already Common. This page reads it as ' + cy + '.');
+    if (d.slip === 'behind' && !d.inherit) {
+      var w = ymd(d.writtenN).y;
+      var both = d.era === 'BE' ? d.yRaw + ' (' + w + ')' : String(d.yRaw);
+      say('wrong', both + ' puts ' + d.d + ' ' + MN[d.m - 1] + ' in the past: a year behind. The next ' + d.d + ' ' + MN[d.m - 1] + ' is in ' + (d.era === 'BE' ? be(cy) + ' (' + cy + ')' : cy) + ', and this page reads it so.' +
+        (d.wd != null && d.wd === wdOf(d.n) ? ' ' + WDN[d.wd] + ' is right for ' + cy + ', so the year is the slip, not the weekday.' : ''));
+    }
+    if (d.slip === 'past') say('wrong', d.text + ' is in the past.');
+    if (d.wd != null) {
+      if (d.wd === wdOf(d.n)) say('ok', WDN[d.wd] + ' ' + d.d + ' ' + MN[d.m - 1] + ' ' + cy + ': right.');
+      else {
+        var st = weekdayStory(d, guestClaims);
+        say('wrong', d.d + ' ' + MN[d.m - 1] + ' ' + cy + ' is a ' + WDN[wdOf(d.n)] + ', not a ' + WDN[d.wd] + '.' + (st ? ' ' + st : ''));
+      }
+    }
+  }
+
+  function claimSays(B, stay, rooms, full, say) {
+    var nights = nightsList(stay), k = nights.length;
+    var bookedOn = function (r) { return nights.filter(function (n) { return r.booked[n]; }); };
+    if (rooms.length) {
+      rooms.forEach(function (r) {
+        var bn = bookedOn(r);
+        if (!full) say(bn.length ? 'wrong' : 'ok', bn.length ? roomName(r) + ' is booked on ' + nightsWords(bn) + '.' : roomName(r) + ' is free on ' + nightsWords(nights) + ': right.');
+        else say(bn.length ? 'ok' : 'note', bn.length ? roomName(r) + ' is booked on ' + nightsWords(bn) + ': right.' : roomName(r) + ' is free on all ' + k + ' night' + (k > 1 ? 's' : '') + ' (' + nightsWords(nights) + '). A lost sale?');
+      });
+      return;
+    }
+    var freeRooms = B.rooms.filter(function (r) { return !bookedOn(r).length; });
+    if (!full) say(freeRooms.length ? 'ok' : 'wrong', freeRooms.length ? 'Free on ' + nightsWords(nights) + ': ' + freeRooms.map(roomName).join(', ') + '.' : 'No room is free on every one of ' + nightsWords(nights) + '.');
+    else say(freeRooms.length ? 'note' : 'ok', freeRooms.length ? freeRooms.map(roomName).join(', ') + (freeRooms.length > 1 ? ' are' : ' is') + ' free on ' + nightsWords(nights) + '. A lost sale?' : 'Every room has a booked night among ' + nightsWords(nights) + ': right.');
+  }
+
+  function swapped(a, b) {
+    var x = String(Math.round(a)), y = String(Math.round(b));
+    if (x.length !== y.length || x === y) return false;
+    for (var i = 0; i + 1 < x.length; i++) if (x.slice(0, i) + x[i + 1] + x[i] + x.slice(i + 2) === y) return true;
+    return false;
+  }
+
+  function priceSays(B, s, stay, room, say) {
+    var re = /(?:฿|THB)\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*(?:บาท|baht|thb|บ\.|฿)/gi, m, any = false;
+    var nights = nightsList(stay), rates = nights.map(function (n) { return rateOn(B, room, n); });
+    var sum = rates.reduce(function (a, b) { return a + b; }, 0), k = nights.length;
+    var weekendN = nights.filter(function (n) { return B.weekend.indexOf(wdOf(n)) >= 0; });
+    var same = rates.every(function (r) { return r === rates[0]; });
+    while ((m = re.exec(s))) {
+      any = true;
+      var v = parseFloat(m[1] || m[2]), before = s.slice(Math.max(0, m.index - 28), m.index), after = s.slice(m.index + m[0].length, m.index + m[0].length + 30);
+      var per = /(?:คืนละ|rate of|ต่อคืน)\s*$/i.test(before) || /^\s*(?:\/\s*(?:night|คืน)|per night|a night|each|ต่อคืน|nightly)/i.test(after);
+      var tot = /(?:total|รวม|ทั้งหมด|altogether|comes to|เป็นเงิน|\bso)\s*(?:is|of|:|เป็น|ทั้งหมด)?\s*$/i.test(before) || /^\s*(?:total|in total|altogether|ทั้งหมด|for (?:the |both |all )?(?:\d+ |two |three |four |five )?nights|for (?:the )?(?:whole|entire) stay)/i.test(after);
+      var name = roomName(room);
+      if (per && !tot) {
+        if (rates.indexOf(v) >= 0) say('ok', money(v) + ' a night: right for ' + name + ' on ' + nightsWords(nights.filter(function (n, i) { return rates[i] === v; })) + (same ? '' : '. ' + nightsWords(nights.filter(function (n, i) { return rates[i] !== v; })) + ' cost' + ' ' + rates.filter(function (r) { return r !== v; }).map(money).join(', ')) + '.');
+        else say('wrong', money(v) + ' a night isn\'t ' + name + '\'s rate for ' + nightsWords(nights) + ' (' + (same ? money(rates[0]) : rates.map(money).join(' + ')) + ').' + rateStory(B, room, nights, v, true));
+        continue;
+      }
+      if (v === sum) { say('ok', money(v) + ': right, ' + (k > 1 ? rates.map(money).join(' + ') + ' for ' : '') + k + ' night' + (k > 1 ? 's' : '') + ' in ' + name + '.'); continue; }
+      if (!tot && rates.indexOf(v) >= 0) { say('ok', money(v) + ': ' + name + '\'s rate for a night of this stay.'); continue; }
+      say('wrong', money(v) + (tot ? ' as the total' : '') + ' isn\'t what the book gives: ' + (k > 1 ? rates.map(money).join(' + ') + ' = ' : '') + money(sum) + ' for ' + k + ' night' + (k > 1 ? 's' : '') + ' in ' + name + '.' + rateStory(B, room, nights, v, false));
+    }
+    return any;
+  }
+  function rateStory(B, room, nights, v, per) {
+    var k = nights.length, weekendN = nights.filter(function (n) { return B.weekend.indexOf(wdOf(n)) >= 0; });
+    var sumOf = function (list) { return list.reduce(function (a, n) { return a + rateOn(B, room, n); }, 0); };
+    if (room.wk != null && weekendN.length && (per ? v === room.rate : v === room.rate * k)) return ' That\'s the weekday rate (' + money(room.rate) + ') on ' + weekendN.map(function (n) { return WDN[wdOf(n)]; }).join(' and ') + ' night' + (weekendN.length > 1 ? 's' : '') + '.';
+    if (room.wk != null && weekendN.length < k && (per ? v === room.wk : v === room.wk * k)) return ' That\'s the weekend rate (' + money(room.wk) + ') on every night, and not every night is a weekend.';
+    if (per) {
+      var o = B.rooms.filter(function (r) { return r !== room && nights.some(function (n) { return rateOn(B, r, n) === v; }); });
+      if (o.length) return ' It\'s ' + o.map(roomName).join(' or ') + '\'s rate.';
+      return '';
+    }
+    if (v === sumOf(nights) + rateOn(B, room, nights[k - 1] + 1)) return ' That\'s ' + (k + 1) + ' nights: the check-out day counted as a night.';
+    if (k > 1 && v === sumOf(nights.slice(0, k - 1))) return ' That\'s ' + (k - 1) + ' night' + (k > 2 ? 's' : '') + ': one night short.';
+    if (v === room.rate * (k + 1) || (room.wk != null && v === room.wk * (k + 1))) return ' That\'s ' + (k + 1) + ' nights at one rate: the check-out day counted as a night.';
+    var o2 = B.rooms.filter(function (r) { return r !== room && sumOf.call(null, nights) !== v && nights.reduce(function (a, n) { return a + rateOn(B, r, n); }, 0) === v; });
+    if (o2.length) return ' It\'s what ' + o2.map(roomName).join(' or ') + ' would cost.';
+    if (swapped(v, sumOf(nights))) return ' Two digits are swapped.';
+    return '';
+  }
+
+  function check(bookText, replyText, msgText, opts) {
+    var B = parseBook(bookText, opts && opts.today);
+    var out = [];
+    B.problems.forEach(function (p) { out.push({ kind: 'note', say: p }); });
+    var G = msgText ? readText(msgText, B.today) : [];
+    var guestClaims = [];
+    G.forEach(function (g) { g.D.forEach(function (d) { if (d.wd != null && d.n != null) guestClaims.push(d); }); });
+    var R = readText(replyText, B.today);
+    var stay = null, rooms = [], pending = null, replyStays = [], replyClaims = [];
+
+    R.forEach(function (x) {
+      var says = [], kind = 'ok', nw = 0;
+      var say = function (k, t) { if (says.indexOf(t) >= 0) return; says.push(t); if (k === 'wrong') nw++; if (k === 'wrong' || (k === 'note' && kind === 'ok')) kind = k; };
+      x.D.forEach(function (d) { dateSays(d, guestClaims, say); if (d.wd != null && d.n != null) replyClaims.push(d); });
+      var own = x.stays;
+      own.forEach(function (st) { if (!replyStays.some(function (o) { return o.a === st.a && o.b === st.b; })) replyStays.push(st); });
+      var S = own.length ? own[own.length - 1] : (x.D.length ? null : stay);
+      if (own.length) stay = S;
+      own.forEach(function (st) { say('ok', stayWords(st) + '.'); });
+      var Nn = nightsNear(x.N, S);
+      if (Nn && S && own.length <= 1) {
+        var k = S.b - S.a;
+        if (Nn.v === k) { if (!own.length) say('ok', Nn.v + ' night' + (k > 1 ? 's' : '') + ': right, ' + day(S.a) + ' → ' + day(S.b) + '.'); }
+        else say('wrong', 'It says ' + Nn.v + ' night' + (Nn.v > 1 ? 's' : '') + ', but ' + stayWords(S) + '.' + (Nn.v === k + 1 ? ' The check-out day was counted as a night.' : Nn.v === k - 1 ? ' One night short.' : ''));
+      }
+      // rooms and what is said of them
+      var named = roomsIn(x.s, B), s2 = x.s;
+      x.D.forEach(function (d) { if (d.booked) s2 = s2.slice(0, d.bookedAt) + ' '.repeat(d.e - d.bookedAt) + s2.slice(d.e); });
+      var those = named;
+      if (!named.length && /\bother rooms?\b|ห้องอื่น/i.test(x.s)) those = B.rooms.filter(function (r) { return rooms.indexOf(r) < 0; });
+      else if (!named.length && /\bthis room\b|\bthe room\b|ห้องนี้|\bit(?:'s| is)\b/i.test(x.s)) those = rooms;
+      x.D.forEach(function (d) {
+        if (!d.booked || d.n == null) return;
+        (those.length ? those : []).forEach(function (r) { say(r.booked[d.n] ? 'ok' : 'wrong', r.booked[d.n] ? roomName(r) + ' is booked on the night of ' + day(d.n).slice(4) + ': right.' : roomName(r) + ' is free on the night of ' + day(d.n).slice(4) + ', not booked.'); });
+      });
+      var full = FULL.test(s2), free = !full && ((FREE.test(s2) && !/feel free/i.test(s2)) || (named.length && HAVE.test(s2)));
+      if (full || free) {
+        if (S && own.length <= 1) claimSays(B, S, those, full, say);
+        else if (own.length > 1) say('note', 'Two stays in one sentence; what is said of the rooms isn\'t checked.');
+        else pending = { those: those, full: full };
+      } else if (pending && S && own.length) { claimSays(B, S, pending.those, pending.full, say); pending = null; }
+      if (named.length) rooms = named;
+      var priceRooms = named.length === 1 ? named : those.length === 1 ? those : rooms.length === 1 ? rooms : [];
+      if (S && priceRooms.length === 1) priceSays(B, x.s, S, priceRooms[0], say);
+      else if (/(?:฿|THB)\s*\d|\d\s*(?:บาท|baht|thb)/i.test(x.s)) say('note', S ? 'A price, but I can\'t tell which room it is for.' : 'A price, but I can\'t tell which stay it is for.');
+      if (says.length) out.push({ kind: kind, text: x.s.replace(/\s{2,}/g, ' ').replace(/ (?=\))/g, ''), say: says.join(' '), wrongs: nw });
+    });
+
+    // The guest's message: their weekday against their date, and their stay against the reply's.
+    var guest = [];
+    G.forEach(function (g) {
+      g.D.forEach(function (d) {
+        if (d.wd == null || d.n == null || d.wd === wdOf(d.n)) return;
+        var y = ymd(d.n).y, near = null;
+        for (var j = 1; j <= 3 && near == null; j++) { if (wdOf(d.n + j) === d.wd) near = d.n + j; else if (wdOf(d.n - j) === d.wd && d.n - j >= B.today) near = d.n - j; }
+        var yr = null;
+        for (var yy = y + 1; yy <= y + 12 && yr == null; yy++) if (valid(yy, d.m, d.d) && wdOf(dn(yy, d.m, d.d)) === d.wd) yr = yy;
+        guest.push({ kind: 'note', text: g.s, say: 'The guest\'s weekday and date don\'t agree: ' + d.d + ' ' + MN[d.m - 1] + ' ' + y + ' is a ' + WDN[wdOf(d.n)] + '. They could mean ' + day(d.n) + ' (the date as written)' + (near != null ? ', ' + day(near) + ' (the weekday)' : '') + (yr ? ', or ' + WDN[d.wd].slice(0, 3) + ' ' + d.d + ' ' + MN[d.m - 1] + ' ' + yr + ' (both, ' + (yr - y) + ' year' + (yr - y > 1 ? 's' : '') + ' out)' : '') + '.' });
+        // Naming it means giving the guest's date its true weekday ("13 Nov is a Friday");
+        // "Saturday 14 Nov" alone is a stay, not a word about the slip.
+        var namedIt = replyClaims.some(function (c) { return c.n === d.n && c.wd === wdOf(d.n); });
+        var asked = ASKED.test(norm(replyText));
+        var starts = replyStays.map(function (st) { return st.a; });
+        var tookDate = starts.indexOf(d.n) >= 0, tookDay = near != null && starts.indexOf(near) >= 0;
+        if (namedIt && asked) guest.push({ kind: 'ok', say: 'The reply says the weekday and date don\'t agree, and asks which they meant.' + (tookDate && tookDay ? ' It answers for both.' : '') });
+        else if (namedIt) guest.push({ kind: 'note', say: 'The reply says the weekday and date don\'t agree, but doesn\'t ask which they meant.' });
+        else if (tookDate && !tookDay) guest.push({ kind: 'wrong', say: 'The reply quietly took the date (' + day(d.n) + ') and dropped the weekday the guest wrote. It doesn\'t say they don\'t agree.' });
+        else if (tookDay && !tookDate) guest.push({ kind: 'wrong', say: 'The reply quietly took the weekday (' + day(near) + ') and dropped the date the guest wrote. It doesn\'t say they don\'t agree.' });
+        else guest.push({ kind: asked ? 'note' : 'wrong', say: 'The reply doesn\'t say that the weekday and date don\'t agree' + (asked ? ', though it asks a question.' : '.') });
+        d.readings = [d.n].concat(near != null ? [near] : []);
+      });
+      g.stays.forEach(function (gs) {
+        var starts = [gs.a].concat(gs.from && gs.from.readings ? gs.from.readings : []), k = gs.b - gs.a;
+        var match = replyStays.filter(function (st) { return starts.indexOf(st.a) >= 0; });
+        if (!replyStays.length) return;
+        if (!match.length) { guest.push({ kind: 'wrong', text: g.s, say: 'The guest asked for ' + stayWords(gs) + '. No stay in the reply starts on ' + starts.map(function (n) { return day(n); }).join(' or ') + '.' }); return; }
+        match.forEach(function (st) {
+          var sk = st.b - st.a;
+          if (sk === k) guest.push({ kind: 'ok', say: 'The guest asked for ' + k + ' night' + (k > 1 ? 's' : '') + '; the reply\'s ' + day(st.a) + ' → ' + day(st.b) + ' is ' + sk + '.' });
+          else guest.push({ kind: 'note', say: 'The guest asked for ' + k + ' night' + (k > 1 ? 's' : '') + '; the reply offers ' + sk + ' from ' + day(st.a) + '.' });
+        });
+      });
+    });
+
+    guest.forEach(function (f) { if (f.text) f.text = f.text.replace(/\s{2,}/g, ' ').replace(/ (?=\))/g, ''); });
+    var wrong = out.concat(guest).reduce(function (a, f) { return a + (f.wrongs != null ? f.wrongs : f.kind === 'wrong' ? 1 : 0); }, 0);
+    var checked = out.filter(function (f) { return f.text; }).length;
+    return {
+      findings: out, guest: guest, book: B, wrong: wrong,
+      summary: wrong ? wrong + ' thing' + (wrong > 1 ? 's' : '') + ' in this reply ' + (wrong > 1 ? "don't" : "doesn't") + ' match the book or the calendar.' : (checked ? 'Everything I could check in this reply matches the book and the calendar.' : 'I found no dates, rooms or prices in this reply to check.')
+    };
+  }
+
+  var ASK = 'Answer the guest from the book below and nothing else.\n' +
+    'Write every date with its weekday and year, like Friday 13 Nov 2026. Work the weekday out; don\'t guess it.\n' +
+    'If the guest\'s weekday and date don\'t agree, say so and ask which they meant. Don\'t pick one.\n' +
+    'Write each stay as check-in date to check-out date, and the number of nights.\n' +
+    'Name the room, and say whether it is free on every night of the stay.\n' +
+    'Give the price of each night (weekend nights at the weekend rate) and the total.\n\n' +
+    'ตอบลูกค้าจากสมุดจองข้างล่างนี้เท่านั้น\n' +
+    'เขียนวันที่ทุกครั้งพร้อมวันในสัปดาห์และปี เช่น วันศุกร์ที่ 13 พ.ย. 2569 คิดวันในสัปดาห์ให้ถูก อย่าเดา\n' +
+    'ถ้าวันในสัปดาห์กับวันที่ที่ลูกค้าเขียนมาไม่ตรงกัน ให้บอกลูกค้าและถามว่าหมายถึงวันไหน อย่าเลือกเอง\n' +
+    'เขียนการเข้าพักเป็นวันเช็คอินถึงวันเช็คเอาท์ และจำนวนคืน\n' +
+    'บอกชื่อห้อง และบอกว่าห้องว่างทุกคืนของการเข้าพักหรือไม่\n' +
+    'บอกราคาแต่ละคืน (คืนวันหยุดใช้ราคาวันหยุด) และยอดรวม';
+
+  var BOOK = 'Today: Tuesday 20 October 2026\nWeekend rate applies on Friday and Saturday nights.\nRoom 1, Double: 900 baht a night, weekend 1100\nRoom 2, Twin: 800 baht a night, weekend 1000\nRoom 3, Family: 1500 baht a night\nBooked: Room 1, check-in 13 Nov, check-out 15 Nov\nBooked: Room 2, check-in 15 Nov, check-out 16 Nov\nBooked: Room 3, check-in 12 Nov, check-out 16 Nov';
+  var SLIP = 'Hi! Do you have a room for two people for 2 nights from Saturday 13 November? How much would it be?';
+  var SAMPLES = [
+    { name: 'A guest\'s slip, Sonnet\'s real reply', book: BOOK, msg: SLIP,
+      reply: 'Hi! Quick check on the dates first: 13 November 2026 is a Friday, and Saturday is the 14th.\n\n- **Friday 13 Nov to Sunday 15 Nov (2 nights):** Yes, our Twin room (Room 2) is free and sleeps two. Both nights are weekend rate, 1,000 baht each, so **2,000 baht total**.\n- **Saturday 14 Nov to Monday 16 Nov (2 nights):** Sorry, we\'re fully booked for those nights.\n\nWhich dates did you mean? If it\'s the Friday check-in, I can hold the Twin room for you.' },
+    { name: 'The same slip, a wrong reply', book: BOOK, msg: SLIP,
+      reply: 'Yes! We have the Double room free from Saturday 13 November to Monday 15 November, 2 nights at 900 baht a night, so 1,800 baht in total. See you then!' },
+    { name: 'New Year, in Thai', book: BOOK, msg: 'สวัสดีค่ะ ขอจองห้อง Family คืนวันที่ ๓๐ และ ๓๑ ธ.ค. ค่ะ',
+      reply: 'ได้เลยค่ะ เช็คอินวันพุธที่ 30 ธ.ค. 2568 เช็คเอาท์วันศุกร์ที่ 1 ม.ค. 2569 ห้อง Family ว่างค่ะ\nรวม 3 คืน 4,500 บาทค่ะ' }
+  ];
+
+  return { check: check, parseBook: parseBook, readText: readText, sentences: sentences, norm: norm, dn: dn, wdOf: wdOf, ASK: ASK, SAMPLES: SAMPLES };
+})();
+</script>
+
+<script id="face">
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function h(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  var MARK = { ok: '✓', wrong: '✗', note: '?' };
+  function card(f) { return '<div class="f ' + f.kind + '">' + (f.text ? '<q>' + h(f.text) + '</q>' : '') + MARK[f.kind] + ' ' + h(f.say) + '</div>'; }
+  function run() {
+    var r = FreeThatNight.check($('book').value, $('reply').value, $('msg').value);
+    var html = '<div class="sum">' + h(r.summary) + '</div>';
+    r.findings.forEach(function (f) { html += card(f); });
+    if (r.guest.length) { html += '<h2>Against the guest\'s message</h2>'; r.guest.forEach(function (f) { html += card(f); }); }
+    $('out').innerHTML = html;
+  }
+  function load(i) {
+    var s = FreeThatNight.SAMPLES[i];
+    $('book').value = s.book; $('msg').value = s.msg; $('reply').value = s.reply;
+    run();
+  }
+  $('go').onclick = run;
+  $('s0').onclick = function () { load(0); };
+  $('s1').onclick = function () { load(1); };
+  $('s2').onclick = function () { load(2); };
+  $('ask').textContent = FreeThatNight.ASK;
+  load(1);
+})();
+</script>
+</body>
+</html>

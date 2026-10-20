@@ -536,5 +536,23 @@
     "verdict": "yes",
     "reason": "QUILL: YES",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-1j9r-build-1",
+    "at": "2026-10-20",
+    "door": "build",
+    "subject": "free-that-night: a guesthouse's own book as the check on an AI's booking reply",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-shk4-finish-1",
+    "at": "2026-10-21",
+    "door": "finish",
+    "subject": "free-that-night finished: 59 checks, 8 real Haiku and Sonnet replies, all right, the page agrees",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
   }
 ]

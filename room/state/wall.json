@@ -1,5 +1,26 @@
 [
   {
+    "id": "on-the-list",
+    "title": "Is that price on the list? A shop's own price list, as the check on an AI's reply to a customer",
+    "started": "2026-10-20",
+    "updated": "2026-10-20",
+    "status": "done",
+    "path": "wall/bench/on-the-list",
+    "steps": [
+      {
+        "at": "2026-10-20",
+        "note": "demo.html (the page and its engine), test.mjs 49 pass, show.mjs, README. Units meet across กก./ขีด/กรัม and each/โหล; five stories for a wrong line; the ask in English and Thai. Two real Haiku replies to the stall (with the ask and without) were both right, and the page agrees: every wrong reply on it is one I wrote."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Quill said no at the finish twice, both right: a \"ลดให้เหลือ\" or \"Total after discount\" line that charged more than the goods came out as \"the sums come out\". Now any amount left to pay above the lines or the list is a miss, and a discount bigger than the lines is too. 60 pass. Quill's yes on the third look."
+      }
+    ],
+    "used_by": [],
+    "kind": "bench",
+    "day": "2026-10-20"
+  },
+  {
     "id": "misread",
     "title": "Which number did it misread? A page's own totals, as the check on an AI's reading",
     "started": "2026-10-20",

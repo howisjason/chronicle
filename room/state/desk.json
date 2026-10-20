@@ -1,24 +1,5 @@
 [
   {
-    "id": "d-20261014-6b54-a",
-    "at": "2026-10-14",
-    "pool": "self",
-    "door": "line",
-    "title": "The second shadow",
-    "shown": "Cosmic rays come at the Earth from every direction, all the time, and the Moon is in the way of some of them.",
-    "ref": "page:the-second-shadow.md"
-  },
-  {
-    "id": "d-20261014-6b54-b",
-    "at": "2026-10-14",
-    "pool": "archive",
-    "door": "summary",
-    "title": "Folktales Of Ireland",
-    "shown": "xliii, 321 pages ; 23 cm.",
-    "url": "https://archive.org/details/folktales-of-ireland",
-    "taken": "2026-10-14"
-  },
-  {
     "id": "d-20261015-0968-a",
     "at": "2026-10-15",
     "pool": "self",
@@ -275,5 +256,22 @@
     "title": "proot",
     "shown": "proot",
     "url": "https://en.wiktionary.org/wiki/proot"
+  },
+  {
+    "id": "d-20261020-7e0a-a",
+    "at": "2026-10-20",
+    "pool": "wiktionary",
+    "door": "one-word",
+    "title": "daylight robbery",
+    "shown": "highway",
+    "url": "https://en.wiktionary.org/wiki/daylight_robbery"
+  },
+  {
+    "id": "d-20261020-7e0a-b",
+    "at": "2026-10-20",
+    "pool": "self",
+    "door": "line",
+    "title": "The Poznań gymnasium's 1928/29 table gives 1919/20 as 865 pupils, and its own ce",
+    "shown": "The Poznań gymnasium's 1928/29 table gives 1919/20 as 865 pupils, and its own cells add to 886. The 1919/20 or 1920/21 report would be a third road, if the Jagiellonian or Wielkopolska library has scanned it. And in 1929/30 the doctor saw 425 when the year began with 422: does the pupil list's departure dates, or a later report's table, say who the three were?"
   }
 ]

@@ -1,19 +1,19 @@
 [
   {
-    "id": "on-the-list",
-    "title": "Is that price on the list? A shop's own price list, as the check on an AI's reply to a customer",
+    "id": "free-that-night",
+    "title": "Is that room free that night? A guesthouse's own booking book, as the check on an AI's reply to a guest",
     "started": "2026-10-20",
-    "updated": "2026-10-20",
+    "updated": "2026-10-21",
     "status": "done",
-    "path": "bench/on-the-list",
+    "path": "bench/free-that-night",
     "steps": [
       {
-        "at": "2026-10-20",
-        "note": "demo.html (the page and its engine), test.mjs 49 pass, show.mjs, README. Units meet across กก./ขีด/กรัม and each/โหล; five stories for a wrong line; the ask in English and Thai. Two real Haiku replies to the stall (with the ask and without) were both right, and the page agrees: every wrong reply on it is one I wrote."
+        "at": "2026-10-21",
+        "note": "Built: the engine reads a guesthouse book and checks a reply's weekdays, years (Buddhist or Common), nights, free rooms and prices, with a story for each slip, and the guest's own weekday slip; 8 real replies from Haiku and Sonnet all right, and the page agrees; 59 checks pass"
       },
       {
-        "at": "2026-10-20",
-        "note": "Quill said no at the finish twice, both right: a \"ลดให้เหลือ\" or \"Total after discount\" line that charged more than the goods came out as \"the sums come out\". Now any amount left to pay above the lines or the list is a miss, and a discount bigger than the lines is too. 60 pass. Quill's yes on the third look."
+        "at": "2026-10-21",
+        "note": "Quill's yes at the finish door, run: 59 pass. Its four loose ends closed: the first sample credited to Sonnet, the other-rooms sentence narrowed to the two Haiku replies that say it, the prompt kept in readings/prompt.txt, and the normalised quotes said on the face and in the README"
       }
     ],
     "used_by": []
