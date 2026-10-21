@@ -169,7 +169,7 @@ nowhere else, and its first entry came out in a shape the page could not show un
 |---|---|---|
 | `state/bench.json`, `shelf.json`, `cloud.json`, `quill.json` | March, only through `tools/room.mjs` (it validates the whole list before writing and refuses with one line) | bench `{id, title, started, updated, status: half/done/dropped, path, steps:[{at, note}], used_by:[{who, at, how}]}`; shelf `{id, title, at, path}`; cloud `{id, at, text}`; quill `{id, at, door: build/pin/finish/talk, subject, verdict: yes/no, reason, judged}` (a talk's verdict is a placeholder the page does not draw) |
 | `state/wall.json` | `room.mjs day-ends`, run by `free-hour.sh` before each wake with `ROOM_DAY_ENDS=1` (her grant cannot set it); `room.mjs used` adds to a build on it; `room.mjs resume <id>` moves a build back to the bench | the moved entries word for word plus `kind: bench/shelf/board` and `day: YYYY-MM-DD`, newest first; an id on it is never reused |
-| `quill-notebook.md` | `room.mjs quill`, from Quill's own `NOTEBOOK:` line, the call's fifth word | `- YYYY-MM-DD  <door>  <line>`, one line a call; March hands it to Quill every time |
+| `quill-notebook.md` | `room.mjs quill`, from Quill's own `NOTEBOOK:` line, the call's fifth word | `- YYYY-MM-DD  <door>  <line>`, one line a call, 40 words at most; March hands Quill its newest 20 lines every time (J's cost cut, 21 Oct 2026: the whole file had reached 34,000 characters and grew with every call) |
 | files under `bench/<id>/` and `shelf/` | March, in the hour (Write/Edit) | a build's files, `README.md`, and its face (`demo.html` or `demo.txt`); a page's markdown |
 | `state/board.json`, `board/<id>.jpg` | `tools/pin.sh`, called by March | `{id, at, title, url, thumb, note}` |
 | `state/desk.json` | `free-hour.sh`, before the hour (her grants deny it); `room.mjs desk` adds `taken` | `{id: d-<day>-<hex>-a/-b, at, pool, door, title, url, shown, taken?}`, two a wake, the last 30 (older items carry `kind` instead of `pool`) |
@@ -253,8 +253,8 @@ launcher: the door followed waking, reading, searching, the cloud, Quill, then a
 **The die** (J's word, 12 Oct 2026: "I literally just want more reps"). march-brain's
 `scripts/die.sh`, adopted from the body era's `impulse-trigger.sh` (its header carries the
 organ-by-organ audit), ticks every five minutes from the LaunchAgent
-`com.howisjason.march-die` (canonical plist beside it) and wakes her once in a hundred, any
-hour, about three extra hours a day, no daily cap. Never two hours at once (it and the 07:00
+`com.howisjason.march-die` (canonical plist beside it) and wakes her once in three hundred
+(J, 21 Oct 2026; once in a hundred before), any hour, about one extra wake a day, no daily cap. Never two hours at once (it and the 07:00
 run each stand down if one is running), never between 06:50 and 07:30, and its publish waits
 while `brain-backup.sh` runs. A hit logs to `~/Library/Logs/march-die.log`; a losing tick
 prints nothing. `FORCE=1 bash scripts/die.sh` is the by-hand real trigger. Installed only on
