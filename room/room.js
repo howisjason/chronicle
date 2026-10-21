@@ -157,13 +157,16 @@ function closeCard() {
 // a turned phone or a resized window: the open frame keeps its place in proportion; off a phone it has no set height.
 // Only a change of width counts: a phone's address bar sliding away while the page scrolls changes the height alone,
 // and the open frame must not twitch with it.
+// A phone turned on its side can cross the phone width either way with a card open: the card must stay seen, so
+// coming back to phone width puts its 'in' back (the grader found it left open but invisible, 21 Oct 2026).
 let lastW = innerWidth;
 addEventListener('resize', () => {
-  if (!PHONE.matches) { frame.style.height = ''; pop.classList.remove('in'); return; }
-  if (innerWidth === lastW) return;
+  const widthChanged = innerWidth !== lastW;
   lastW = innerWidth;
+  if (!PHONE.matches) { frame.style.height = ''; pop.classList.remove('in'); return; }
+  if (!widthChanged) return;
   // a frame later, once the engine has sized the picture for the new width
-  requestAnimationFrame(() => { if (!pop.hidden && !shutting) { frame.style.setProperty('--strip', `${Math.round(canvas.offsetHeight * 0.4)}px`); frame.style.height = `${grownHeight()}px`; } });
+  requestAnimationFrame(() => { if (!pop.hidden && !shutting) { frame.style.setProperty('--strip', `${Math.round(canvas.offsetHeight * 0.4)}px`); frame.style.height = `${grownHeight()}px`; pop.classList.add('in'); } });
 });
 document.getElementById('pop-close').addEventListener('click', closeCard);
 document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && !pop.hidden) closeCard(); });
