@@ -17,8 +17,8 @@
 //
 // Live: while a wake runs, the door (GET /now, asked every 15 seconds; state/now.json
 // when the door is down) says what she is doing, and the scene's live mode shows it (at
-// the desk reading, writing or building, the glass panel showing the bench's newest
-// title; pacing by the door while thinking). Asleep, or between wakes, she is the NPC:
+// the desk reading, writing or building, the glass panel showing the title of the build
+// she touched last; pacing by the door while thinking). Asleep, or between wakes, she is the NPC:
 // her own idle life, never a recording. "Replay" walks the last session's trace through
 // the same live mode, about a minute for the whole hour (in proportion, never real time).
 //
@@ -213,10 +213,12 @@ function restingLine() {
   const since = n && n.ended ? `since ${clock(n.ended)}, ${day(n.ended)}` : '';
   return `Asleep${since ? ` ${since}` : ''}: what you see is her own life between sessions. ${nextWake()}`;
 }
-// the title the glass panel shows while she works: the newest thing on her bench
+// the title the glass panel shows while she works: the build on her bench touched last
+// (the flexible bench, 21 Oct 2026, keeps up to three open across wakes, so the newest
+// started is not always the one she is on; updated is a day, so a tie goes to the later row)
 function benchTitle() {
-  const b = S.bench && S.bench.ok && Array.isArray(S.bench.data) ? visible(S.bench.data) : [];
-  const t = b.length ? b[b.length - 1] : null;
+  const b = S.bench && S.bench.ok && Array.isArray(S.bench.data) ? visible(S.bench.data).filter((i) => i.status !== 'dropped') : [];
+  const t = b.reduce((best, i) => (!best || String(i.updated || '') >= String(best.updated || '') ? i : best), null);
   return t ? (t.title || t.id) : '';
 }
 

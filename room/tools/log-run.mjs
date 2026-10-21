@@ -152,7 +152,7 @@ try {
   const counts = (await r.json()).counts;
   if (!r.ok || !counts || typeof counts !== 'object') throw new Error(`HTTP ${r.status}`);
   // only ids on the bench: the door counts any id anyone sends, so a made-up one never reaches the page
-  // the wall's builds too: a build leaves the bench at the next wake and can still be used
+  // the wall's builds too: a dropped build leaves the bench at the next wake and can still be used
   const onBench = new Set([...visible(now.bench), ...visible(now.wall).filter((i) => i.kind === 'bench')].map((i) => i.id));
   const clean = Object.fromEntries(Object.entries(counts).filter(([k, v]) => onBench.has(k) && Number.isInteger(v) && v > 0));
   let old = {};

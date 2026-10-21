@@ -95,8 +95,8 @@ about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 
 ## Tests
 
-`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (60 tests: 27 for the
-station, 33 for the room, described in the Room section). The station's: the checker's
+`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (64 tests: 27 for the
+station, 37 for the room, described in the Room section). The station's: the checker's
 plant a wrong number, a missing source and forbidden words and watch each
 refused; the talk rules refuse a 352-word rally, a scene of same-length lines and
 one over 2,600 words, and pass a real lab scene (`station/fixtures/talk-scene.json`); the hour-file ones check an hour turn and midnight, and that the first
@@ -139,11 +139,18 @@ because every sheet said the moment was small and twenty sessions did nothing). 
 (things built), the **shelf** (pages she writes, plus the public **log**, one line per run),
 the **cork board** (things seen: a thumbnail and a link to the source, never a copy), the
 **cloud** (her own unfinished thoughts; it carries over), the **desk** and the **wall**.
-**She wakes to an empty room; the page never empties** (the second day, J's decisions of
-13 Oct 2026): before each wake the launcher runs `room.mjs day-ends`, which moves everything
-on the bench, shelf and board onto `state/wall.json`, so the page shows the last session's
-things as "Today" at the top and the wall (everything ever, by day, newest first) under it.
-A build she takes from the desk comes back to the bench with `room.mjs resume <id>`.
+**The page never empties** (the second day, J's decisions of 13 Oct 2026): before each
+wake the launcher runs `room.mjs day-ends`, which moves everything on the shelf and board,
+and every build she marked `dropped`, onto `state/wall.json`, so the page shows the bench and
+the last session's pages and pins at the top and the wall (everything ever, by day, newest
+first) under it. **The flexible bench** (J's yes, 21 Oct 2026, 8:50pm): nothing is finished.
+Every other build stays on the bench across wakes, `half` or `done`, and a done build takes
+more steps; a build leaves only when she drops it (`room.mjs status <id> dropped`). The bench
+holds three open builds at most: `build`, `resume`, or a status that takes a dropped build
+back up, is refused past three with one line naming the drop command. Why: the desk had
+offered her own old builds from the wall many times and she took that offer zero times, while
+she does return to the build from her last wake. A build she takes from the desk comes back to
+the bench with `room.mjs resume <id>`.
 The **desk** gets TWO things before each wake (J's plan, 14 Oct 2026): ONE from the world
 pools at equal odds, each drawn at random from the shelf its own site already sorted
 (since 15 Oct 2026, J's word: Wikipedia's Featured and Good articles, Wikimedia Commons'
@@ -286,11 +293,13 @@ naming the figure.
 **The bench test**, written before the first night: fourteen SESSIONS counted from the room's reset of 13 Oct 2026 (his speed-run word, 12 Oct; the dated line is the standing facts §3), has ONE thing from the bench been used by J, March or the routine? If not, the bench is
 the idea mill with a hammer; say so and stop the bench. Its dated line is the standing facts §3.
 
-**Tests.** `room/room.test.mjs` (33 tests, the last one holds the season file to one set line): the kind table row by row (the room command
+**Tests.** `room/room.test.mjs` (37 tests, the last one holds the season file to one set line): the kind table row by row (the room command
 included); the second day's shapes (a bad pool, door, wall kind or Quill door refused; the
 real wall passes and `visible` drops a planted private item); `lastDesk`; a wake whose draw failed reporting "nothing drawn"; `day-ends` refused
-without its lock, then moving and emptying and safe twice, with an id on the wall refused
-for a new build and a wall build still markable used; `desk` refusing an unknown or older id;
+without its lock, then moving a dropped build, the shelf and the board and safe twice, with an id on the wall refused
+for a new build and a wall build still markable used; the flexible bench (day-ends keeps half and
+done builds and their files and moves a dropped one; a fourth open build and a resume onto a full
+bench refused with the files unchanged; a done build takes a step after a wake); `desk` refusing an unknown or older id;
 Quill's notebook line landing without its label and refused when missing; a diary or drawer path maps to the drawer with no path in the trace; the trace has
 only `t, kind, place`; `visible` drops private items; `validate` refuses a missing `id`/`at`,
 a bad status and a desk kind it does not know; the morning line exactly, with and without

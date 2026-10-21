@@ -12,8 +12,8 @@
 //   node room.mjs thought "<text>" [--private]        cloud: a thought
 //   node room.mjs drop-thought <id>                   cloud: a thread picked up
 //   node room.mjs build <id> "<title>" [--private]    bench: a new build, status half
-//   node room.mjs step <id> "<note>"                  bench: one step
-//   node room.mjs status <id> half|done|dropped       bench
+//   node room.mjs step <id> "<note>"                  bench: one step (a done build takes steps too)
+//   node room.mjs status <id> half|done|dropped       bench (dropped: it goes to the wall at the next wake)
 //   node room.mjs used <id> "<who>" "<how>"           bench: someone used it
 //   node room.mjs page <id> "<title>" shelf/<file>.md [--private]
 //   node room.mjs quill build|pin|finish|talk "<subject>" yes|no "<reason>" "<Quill's NOTEBOOK line>"
@@ -41,9 +41,13 @@
 // and used.json are the clock's, and so is the rest of desk.json.
 //
 //   ROOM_DAY_ENDS=1 node room.mjs day-ends            the launcher's, before each wake
-// moves everything on the bench, shelf and board onto the front of wall.json, their
-// files into wall/ (the levers plan, 13 Oct 2026), and empties those three, so she wakes to an empty room and the page keeps it all
-// (J's decision 1, 13 Oct 2026). It needs ROOM_DAY_ENDS=1 because her grant names
+// moves everything on the shelf and board, and every DROPPED build on the bench, onto the
+// front of wall.json, their files into wall/ (the levers plan, 13 Oct 2026), and empties
+// the shelf and board (J's decision 1, 13 Oct 2026). Every other build stays on the bench,
+// half or done: the flexible bench (J's yes, 21 Oct 2026, 8:50pm). The desk had offered her
+// own old builds from the wall many times and she took that offer 0 times, while she does
+// return to the build from her last wake; so nothing is finished, a build leaves the bench
+// only when she drops it, and the bench holds three open builds at most. It needs ROOM_DAY_ENDS=1 because her grant names
 // this file with any words after it, and a wall-sweep in the middle of her session
 // would take her own work off "today" before the page showed it.
 // ROOM_STATE points it at a copy of state/ for the tests only (the notebook then
@@ -104,6 +108,12 @@ const mark = (item) => (priv ? { ...item, private: true } : item);
 const FILES = process.env.ROOM_KEEP_FILES ? null : process.env.ROOM_STATE ? process.env.ROOM_ROOT : ROOM;
 // an id already on the wall is taken for good: its files still sit at bench/<id>/ or shelf/
 const onWall = (kind, id) => read('wall').some((i) => i && i.kind === kind && i.id === id);
+// The flexible bench's cap: at most three builds that are not dropped. build, resume and a
+// status that takes a dropped build back up are refused past it, with the way out named.
+const roomFor = (bench) => {
+  const open = bench.filter((i) => i && i.status !== 'dropped');
+  if (open.length >= 3) refuse(`the bench holds three open builds (${open.map((i) => i.id).join(', ')}); drop one first: node /Users/howisjason/Projects/chronicle/room/tools/room.mjs status <id> dropped`);
+};
 
 switch (cmd) {
   case 'thought': {
@@ -122,6 +132,7 @@ switch (cmd) {
     const list = read('bench'), id = idOk(rest[0]);
     if (list.some((i) => i && i.id === id)) refuse(`bench already has "${id}"`);
     if (onWall('bench', id)) refuse(`"${id}" is already on the wall; pick another id`);
+    roomFor(list);
     const at = now();
     write('bench', [...list, mark({ id, title: need(rest[1], 'a title, in quotes'), started: at, updated: at, status: 'half', path: `bench/${id}`, steps: [], used_by: [] })], `bench: ${id}`);
     break;
@@ -135,6 +146,7 @@ switch (cmd) {
   }
   case 'status': {
     const list = read('bench'), b = find(list, idOk(rest[0]), 'bench');
+    if (b.status === 'dropped' && rest[1] !== 'dropped') roomFor(list);
     b.status = need(rest[1], 'half, done or dropped');
     b.updated = now();
     write('bench', list, `bench: ${b.id} is ${b.status}`);
@@ -190,8 +202,7 @@ switch (cmd) {
       // lists are appended oldest first, the wall is newest first
       for (const item of [...read(kind)].reverse()) {
         if (!item || has.has(`${kind}:${item.id}`)) continue;  // already moved by a run that stopped halfway
-        // ROOM_KEEP_HALF=1 (the levers test, cell B2): a half-done build stays on the bench
-        if (process.env.ROOM_KEEP_HALF && kind === 'bench' && item.status === 'half') continue;
+        if (kind === 'bench' && item.status !== 'dropped') continue;  // the flexible bench: it stays
         moved.push({ ...item, kind, day: String(item[when] || '').slice(0, 10) });
       }
     }
@@ -221,8 +232,10 @@ switch (cmd) {
     }
     // the wall first, then the emptying: a stop in between leaves duplicates the next run skips
     writeFileSync(join(STATE, 'wall.json'), JSON.stringify([...moved, ...wall], null, 2) + '\n');
+    // the bench keeps every build that is not dropped, unless the wall already has its id
+    // (a resume that stopped halfway: the wall row wins, as it always did)
     for (const kind of ['bench', 'shelf', 'board']) {
-      const keep = process.env.ROOM_KEEP_HALF && kind === 'bench' ? read('bench').filter((i) => i && i.status === 'half') : [];
+      const keep = kind === 'bench' ? read('bench').filter((i) => i && i.status !== 'dropped' && !has.has(`bench:${i.id}`)) : [];
       writeFileSync(join(STATE, `${kind}.json`), JSON.stringify(keep, null, 2) + '\n');
     }
     console.log(`day-ends: ${moved.length} moved to the wall`);
@@ -232,12 +245,13 @@ switch (cmd) {
     // The way back to a thing put down (J's plan, 14 Oct 2026, step 4). Her grants write
     // only in bench/, shelf/ and drawer/, and build refuses an id already on the wall, so
     // without this a build on the wall could be read and never worked on again. Hers,
-    // under her grant on this file; not locked like day-ends. The next day-ends sweeps it
-    // back to the wall with its steps, as it does every build.
+    // under her grant on this file; not locked like day-ends. It stays on the bench until
+    // she drops it (the flexible bench), and a full bench refuses it like a new build.
     const id = idOk(rest[0]);
     const bench = read('bench'), wall = read('wall');
     const row = wall.find((i) => i && i.kind === 'bench' && i.id === id) || refuse(`${id} is not a build on the wall`);
     if (bench.some((i) => i && i.id === id)) refuse(`bench already has "${id}"`);
+    roomFor(bench);
     const from = String(row.path || '').replace(/\/$/, '');
     if (!/^(wall|first-day)\/bench\/[A-Za-z0-9._-]+$/.test(from) || /\/\.{1,2}$/.test(from)) refuse(`${id}'s path "${row.path}" is not a build folder on the wall`);
     if (FILES) {

@@ -275,11 +275,12 @@ const roomEnv = (dir, env, ...args) => {
 };
 const J = (d, name) => JSON.parse(readFileSync(join(d, `${name}.json`), 'utf8'));
 
-test('day-ends moves the bench, shelf and board to the front of the wall, empties them, and is safe twice', () => {
+test('day-ends moves a dropped build, the shelf and the board to the front of the wall, empties the shelf and board, and is safe twice', () => {
   const d = copyState();
-  writeFileSync(join(d, 'shelf.json'), '[]\n'); writeFileSync(join(d, 'board.json'), '[]\n');
+  for (const k of ['bench', 'shelf', 'board']) writeFileSync(join(d, `${k}.json`), '[]\n');
   const wallBefore = J(d, 'wall');
   assert.equal(roomCmd(d, 'build', 'tide-clock', 'A tide clock').code, 0);
+  assert.equal(roomCmd(d, 'status', 'tide-clock', 'dropped').code, 0);
   mkdirSync(join(d, '..', 'shelf'), { recursive: true });
   writeFileSync(join(d, 'board.json'), JSON.stringify([{ id: '20261014-0700-aa11', at: '2026-10-14', title: 'A pin', url: 'https://example.com', thumb: 'board/x.jpg', note: 'n' }]));
   const benchBefore = J(d, 'bench');
@@ -314,6 +315,7 @@ test('day-ends carries the files with the rows: bench folder, shelf page, pin pi
   const env = { ROOM_ROOT: root };
   assert.equal(roomEnv(d, env, 'build', 'tide-clock', 'A tide clock').code, 0);
   assert.equal(roomEnv(d, env, 'build', 'kept', 'Its wall twin exists').code, 0);
+  for (const id of ['tide-clock', 'kept']) assert.equal(roomEnv(d, env, 'status', id, 'dropped').code, 0);
   mkdirSync(join(root, 'bench', 'tide-clock'), { recursive: true }); writeFileSync(join(root, 'bench', 'tide-clock', 'README.md'), 'tide');
   mkdirSync(join(root, 'bench', 'kept'), { recursive: true }); writeFileSync(join(root, 'bench', 'kept', 'README.md'), 'new');
   mkdirSync(join(root, 'wall', 'bench', 'kept'), { recursive: true }); writeFileSync(join(root, 'wall', 'bench', 'kept', 'README.md'), 'old');
@@ -343,11 +345,12 @@ test('day-ends carries the files with the rows: bench folder, shelf page, pin pi
   const d2 = copyState();
   writeFileSync(join(d2, 'bench.json'), '[]\n');
   assert.equal(roomCmd(d2, 'build', 'x1', 'X').code, 0);
+  assert.equal(roomCmd(d2, 'status', 'x1', 'dropped').code, 0);
   assert.equal(roomEnv(d2, { ROOM_DAY_ENDS: '1' }, 'day-ends').code, 0);
   assert.equal(J(d2, 'wall').find((i) => i.id === 'x1').path, 'bench/x1');
 });
 
-test('day-ends test switches: ROOM_KEEP_FILES leaves files where they were; ROOM_KEEP_HALF leaves a half build on the bench', () => {
+test('day-ends test switch: ROOM_KEEP_FILES moves a dropped build\'s row and leaves its files where they were', () => {
   const root = mkdtempSync(join(tmpdir(), 'room-root-'));
   const d = join(root, 'state');
   cpSync(join(HERE, 'state'), d, { recursive: true });
@@ -355,14 +358,15 @@ test('day-ends test switches: ROOM_KEEP_FILES leaves files where they were; ROOM
   const env = { ROOM_ROOT: root };
   assert.equal(roomEnv(d, env, 'build', 'half-one', 'Half').code, 0);
   assert.equal(roomEnv(d, env, 'build', 'done-one', 'Done').code, 0);
-  assert.equal(roomEnv(d, env, 'status', 'done-one', 'done').code, 0);
+  assert.equal(roomEnv(d, env, 'status', 'done-one', 'dropped').code, 0);
   for (const id of ['half-one', 'done-one']) { mkdirSync(join(root, 'bench', id), { recursive: true }); writeFileSync(join(root, 'bench', id, 'a'), id); }
-  assert.equal(roomEnv(d, { ...env, ROOM_DAY_ENDS: '1', ROOM_KEEP_FILES: '1', ROOM_KEEP_HALF: '1' }, 'day-ends').code, 0);
+  assert.equal(roomEnv(d, { ...env, ROOM_DAY_ENDS: '1', ROOM_KEEP_FILES: '1' }, 'day-ends').code, 0);
   assert.deepEqual(J(d, 'bench').map((i) => i.id), ['half-one'], 'the half build stays on the bench');
   assert.equal(J(d, 'wall').find((i) => i.id === 'done-one').path, 'bench/done-one', 'its row moved, its path did not');
   assert.equal(existsSync(join(root, 'bench', 'done-one', 'a')), true, 'and its files stayed');
   assert.equal(J(d, 'wall').some((i) => i.id === 'half-one'), false);
-  // without the switches the half build goes too, files and all
+  // dropped without the switch, it goes too, files and all
+  assert.equal(roomEnv(d, env, 'status', 'half-one', 'dropped').code, 0);
   assert.equal(roomEnv(d, { ...env, ROOM_DAY_ENDS: '1' }, 'day-ends').code, 0);
   assert.deepEqual(J(d, 'bench'), []);
   assert.equal(J(d, 'wall').find((i) => i.id === 'half-one').path, 'wall/bench/half-one');
@@ -406,7 +410,7 @@ test('resume: a wall build comes back with the right row and its files; a second
   assert.equal(roomEnv(d, env, 'build', 'tide-clock', 'A tide clock').code, 0);
   assert.equal(roomEnv(d, env, 'step', 'tide-clock', 'reads the tables').code, 0);
   assert.equal(roomEnv(d, env, 'used', 'tide-clock', 'J', 'read a tide').code, 0);
-  assert.equal(roomEnv(d, env, 'status', 'tide-clock', 'done').code, 0);
+  assert.equal(roomEnv(d, env, 'status', 'tide-clock', 'dropped').code, 0);
   mkdirSync(join(root, 'bench', 'tide-clock'), { recursive: true }); writeFileSync(join(root, 'bench', 'tide-clock', 'README.md'), 'tide');
   mkdirSync(join(root, 'shelf'), { recursive: true }); writeFileSync(join(root, 'shelf', 'on-tides.md'), '# On tides');
   writeFileSync(join(d, 'shelf.json'), JSON.stringify([{ id: 'on-tides', title: 'On tides', at: '2026-10-14', path: 'shelf/on-tides.md' }]));
@@ -419,7 +423,7 @@ test('resume: a wall build comes back with the right row and its files; a second
   const b = J(d, 'bench');
   assert.equal(b.length, 1);
   assert.deepEqual(Object.keys(b[0]).sort(), ['id', 'path', 'started', 'status', 'steps', 'title', 'updated', 'used_by']);
-  assert.equal(b[0].status, 'half', 'a done build picked up is open again');
+  assert.equal(b[0].status, 'half', 'a dropped build picked up is open again');
   assert.equal(b[0].path, 'bench/tide-clock');
   assert.equal(b[0].started, wallRow.started);
   assert.match(b[0].updated, /^\d{4}-\d{2}-\d{2}$/);
@@ -451,14 +455,87 @@ test('resume: a wall build comes back with the right row and its files; a second
   assert.match(roomEnv(d, env, 'resume', 'bad-path').out, /^refused: bad-path's path/);
 });
 
-test('resume, then day-ends: the build goes back to the wall with the extra step kept', () => {
+// The flexible bench (J's yes, 21 Oct 2026, 8:50pm): nothing is finished; a build leaves
+// the bench only when she drops it, and the bench holds three open builds at most.
+test('flexible bench: day-ends keeps half and done builds on the bench, files and all, and moves only a dropped one', () => {
+  const { root, d, env } = roomRoot();
+  for (const [id, status] of [['half-one', 'half'], ['done-one', 'done'], ['dropped-one', 'dropped']]) {
+    assert.equal(roomEnv(d, env, 'build', id, id).code, 0);
+    if (status !== 'half') assert.equal(roomEnv(d, env, 'status', id, status).code, 0);
+    mkdirSync(join(root, 'bench', id), { recursive: true }); writeFileSync(join(root, 'bench', id, 'a'), id);
+  }
+  const r = roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends');
+  assert.equal(r.code, 0, r.out);
+  assert.match(r.out, /day-ends: 1 moved/);
+  assert.deepEqual(J(d, 'bench').map((i) => [i.id, i.status, i.path]), [['half-one', 'half', 'bench/half-one'], ['done-one', 'done', 'bench/done-one']]);
+  assert.equal(readFileSync(join(root, 'bench', 'done-one', 'a'), 'utf8'), 'done-one', 'a kept build keeps its files on the bench');
+  const wall = J(d, 'wall');
+  assert.equal(wall.some((i) => i.id === 'half-one' || i.id === 'done-one'), false, 'a build on the bench is not also on the wall');
+  assert.equal(wall.find((i) => i.id === 'dropped-one').path, 'wall/bench/dropped-one');
+  assert.equal(existsSync(join(root, 'bench', 'dropped-one')), false);
+  // safe twice: nothing more moves, the bench stays as it is
+  const bench = J(d, 'bench');
+  assert.match(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').out, /0 moved/);
+  assert.deepEqual(J(d, 'bench'), bench);
+});
+
+test('flexible bench: a fourth open build is refused with the drop command named, and the file is unchanged; a dropped one does not count', () => {
+  const { d, env } = roomRoot();
+  for (const id of ['one', 'two', 'three']) assert.equal(roomEnv(d, env, 'build', id, id).code, 0);
+  assert.equal(roomEnv(d, env, 'status', 'two', 'done').code, 0);
+  const before = readFileSync(join(d, 'bench.json'), 'utf8');
+  const r = roomEnv(d, env, 'build', 'four', 'Four');
+  assert.equal(r.code, 2);
+  assert.match(r.out, /^refused: .*three.*node \S*room\.mjs status <id> dropped/);
+  assert.equal(r.out.trim().split('\n').length, 1, 'one plain line');
+  assert.equal(readFileSync(join(d, 'bench.json'), 'utf8'), before);
+  // a dropped build frees its place
+  assert.equal(roomEnv(d, env, 'status', 'one', 'dropped').code, 0);
+  assert.equal(roomEnv(d, env, 'build', 'four', 'Four').code, 0);
+  // and taking a dropped one back up onto a full bench is refused the same way
+  assert.match(roomEnv(d, env, 'status', 'one', 'half').out, /^refused: .*dropped/);
+});
+
+test('flexible bench: resume onto a full bench is refused, both lists unchanged', () => {
+  const { root, d, env } = roomRoot();
+  assert.equal(roomEnv(d, env, 'build', 'old-one', 'Old').code, 0);
+  assert.equal(roomEnv(d, env, 'status', 'old-one', 'dropped').code, 0);
+  mkdirSync(join(root, 'bench', 'old-one'), { recursive: true }); writeFileSync(join(root, 'bench', 'old-one', 'a'), 'x');
+  assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
+  for (const id of ['one', 'two', 'three']) assert.equal(roomEnv(d, env, 'build', id, id).code, 0);
+  const before = [readFileSync(join(d, 'bench.json'), 'utf8'), readFileSync(join(d, 'wall.json'), 'utf8')];
+  const r = roomEnv(d, env, 'resume', 'old-one');
+  assert.equal(r.code, 2);
+  assert.match(r.out, /^refused: .*three.*node \S*room\.mjs status <id> dropped/);
+  assert.deepEqual([readFileSync(join(d, 'bench.json'), 'utf8'), readFileSync(join(d, 'wall.json'), 'utf8')], before);
+  assert.equal(existsSync(join(root, 'wall', 'bench', 'old-one', 'a')), true, 'the files did not move');
+});
+
+test('flexible bench: a done build stays across a wake and takes another step, still done', () => {
+  const { d, env } = roomRoot();
+  assert.equal(roomEnv(d, env, 'build', 'tide-clock', 'A tide clock').code, 0);
+  assert.equal(roomEnv(d, env, 'status', 'tide-clock', 'done').code, 0);
+  assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
+  const r = roomEnv(d, env, 'step', 'tide-clock', 'one more thing, after it was done');
+  assert.equal(r.code, 0, r.out);
+  const b = J(d, 'bench').find((i) => i.id === 'tide-clock');
+  assert.equal(b.status, 'done');
+  assert.deepEqual(b.steps.map((s) => s.note), ['one more thing, after it was done']);
+  assert.equal(validate('bench', J(d, 'bench')).ok, true);
+});
+
+test('resume, then day-ends: the build stays on the bench, and dropped again goes back to the wall with the extra step kept', () => {
   const { root, d, env } = roomRoot();
   assert.equal(roomEnv(d, env, 'build', 'moon-clock', 'A moon clock').code, 0);
   assert.equal(roomEnv(d, env, 'step', 'moon-clock', 'the first step').code, 0);
+  assert.equal(roomEnv(d, env, 'status', 'moon-clock', 'dropped').code, 0);
   mkdirSync(join(root, 'bench', 'moon-clock'), { recursive: true }); writeFileSync(join(root, 'bench', 'moon-clock', 'a.js'), 'x');
   assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
   assert.equal(roomEnv(d, env, 'resume', 'moon-clock').code, 0);
   assert.equal(roomEnv(d, env, 'step', 'moon-clock', 'a step after the gap').code, 0);
+  assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
+  assert.deepEqual(J(d, 'bench').map((i) => i.id), ['moon-clock'], 'resumed and not dropped, it stays');
+  assert.equal(roomEnv(d, env, 'status', 'moon-clock', 'dropped').code, 0);
   assert.equal(roomEnv(d, { ROOM_DAY_ENDS: '1', ...env }, 'day-ends').code, 0);
   assert.deepEqual(J(d, 'bench'), []);
   const row = J(d, 'wall').find((i) => i.kind === 'bench' && i.id === 'moon-clock');
