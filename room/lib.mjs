@@ -278,13 +278,16 @@ export function formatMorningLine(e, titles = {}) {
 // of slots (state/slots.json, about 20; the chosen style gives each slot its place on the
 // picture), so the room cannot fill up past what the picture can hold: a new thing needs a
 // free slot, and the attic keeps everything that was taken down.
-//   {id, kind, art?, slot, born, wakes, touched, source, why, where: out|attic}
+//   {id, kind, art?, card?, slot, born, wakes, touched, source, why, where: out|attic}
+// art is its picture, a PNG in art/ drawn to the room's design kit (room/STYLE.md); card is
+// which of the page's cards a tap on it opens (OBJECT_CARDS), so a card can move onto a thing.
 // kind is a word of hers (build, keepsake, decor, plant, ...), never a fixed list; why is
 // one public line in her words, so it may never carry a newline; an attic thing has slot null.
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 export const OBJECT_ID = /^[a-z0-9-]{1,40}$/;
 export const OBJECT_KIND = /^[a-z][a-z0-9-]{0,23}$/;
-export const OBJECT_ART = /^art\/[a-z0-9-]+\.mjs$/;
+export const OBJECT_ART = /^art\/[a-z0-9-]+\.png$/;
+export const OBJECT_CARDS = new Set(['march', 'bench', 'desk', 'season', 'wall', 'shelf', 'board', 'cloud', 'quill', 'clock']);
 export const WHY_MAX = 200;
 export function validateObjects(data, slots = null) {
   const problems = [];
@@ -298,7 +301,8 @@ export function validateObjects(data, slots = null) {
     else if (ids.has(o.id)) problems.push(`${here}: id "${o.id}" used twice`);
     else ids.add(o.id);
     if (typeof o.kind !== 'string' || !OBJECT_KIND.test(o.kind)) problems.push(`${here}: kind must be one small word`);
-    if (o.art !== undefined && (typeof o.art !== 'string' || !OBJECT_ART.test(o.art))) problems.push(`${here}: art must be art/<name>.mjs`);
+    if (o.art !== undefined && (typeof o.art !== 'string' || !OBJECT_ART.test(o.art))) problems.push(`${here}: art must be art/<name>.png`);
+    if (o.card !== undefined && !OBJECT_CARDS.has(o.card)) problems.push(`${here}: card must be one of ${[...OBJECT_CARDS].join(', ')}`);
     for (const f of ['born', 'touched']) if (typeof o[f] !== 'string' || !DAY.test(o[f])) problems.push(`${here}: ${f} must be a day, YYYY-MM-DD`);
     if (!Number.isInteger(o.wakes) || o.wakes < 1) problems.push(`${here}: wakes must be a whole number, 1 or more`);
     if (typeof o.source !== 'string' || !o.source.trim()) problems.push(`${here}: no source`);

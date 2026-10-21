@@ -25,7 +25,7 @@
 // The room's things (the room plan of 19 Oct 2026, section 4; state/objects.json, its
 // shape and checks are lib.mjs validateObjects). A slot is one of state/slots.json's ids,
 // and a thing can only go into a FREE slot, so the room never holds more than the picture can.
-//   node room.mjs object add <id> <kind> <slot> "<why>" [--source <build id>] [--art art/<name>.mjs]
+//   node room.mjs object add <id> <kind> <slot> "<why>" [--source <build id>] [--art art/<name>.png] [--card <card>]
 //                                                     a new thing (source "just because" if none)
 //   node room.mjs object move <id> <slot>             to another free slot
 //   node room.mjs object grow <id>                    one more wake went into it (its size follows)
@@ -270,7 +270,7 @@ switch (cmd) {
     const sub = rest[0], list = read('objects'), slots = readSlots(), at = now();
     // flags come in pairs (--source x, --art y); everything else is positional
     const flag = (name) => { const k = rest.indexOf(`--${name}`); if (k < 0) return undefined; const v = rest[k + 1]; rest.splice(k, 2); return need(v, `a value after --${name}`); };
-    const source = flag('source'), art = flag('art');
+    const source = flag('source'), art = flag('art'), card = flag('card');
     const [, id, a, b, c] = rest;
     const slotOk = (slot, self = null) => {
       need(slot, 'a slot');
@@ -294,10 +294,10 @@ switch (cmd) {
       idOk(id);
       if (list.some((o) => o && o.id === id)) refuse(`there is already a thing "${id}" (in the room or the attic)`);
       if (art !== undefined) {
-        if (!OBJECT_ART.test(art)) refuse('the art must be art/<name>.mjs');
+        if (!OBJECT_ART.test(art)) refuse('the art must be art/<name>.png');
         if (FILES && !existsSync(join(FILES, art))) refuse(`${art} does not exist yet; draw it first`);
       }
-      list.push({ id, kind: need(a, 'a kind (one word: build, keepsake, decor, plant, ...)'), ...(art !== undefined ? { art } : {}),
+      list.push({ id, kind: need(a, 'a kind (one word: build, keepsake, decor, plant, ...)'), ...(art !== undefined ? { art } : {}), ...(card !== undefined ? { card } : {}),
         slot: slotOk(b), born: at, wakes: 1, touched: at, source: source ?? 'just because', why: need(c, 'a why, one line in quotes'), where: 'out' });
       save(`object: ${id} added in ${b}`);
     } else if (sub === 'move') {

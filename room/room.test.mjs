@@ -521,11 +521,14 @@ test('object add: art must already exist in the room copy; with no slots file no
   cpSync(join(HERE, 'state'), d, { recursive: true });
   writeFileSync(join(d, 'objects.json'), '[]\n');
   const run = (...a) => { try { return { code: 0, out: execFileSync('node', [join(HERE, 'tools/room.mjs'), ...a], { env: { ...process.env, ROOM_STATE: d, ROOM_ROOT: root }, encoding: 'utf8' }) }; } catch (e) { return { code: e.status, out: String(e.stdout) }; } };
-  assert.match(run('object', 'add', 'lamp', 'decor', 's01', 'light', '--art', 'art/lamp.mjs').out, /does not exist yet/);
-  mkdirSync(join(root, 'art')); writeFileSync(join(root, 'art', 'lamp.mjs'), 'export default 1;\n');
-  const ok = run('object', 'add', 'lamp', 'decor', 's01', 'light', '--art', 'art/lamp.mjs');
+  assert.match(run('object', 'add', 'lamp', 'decor', 's01', 'light', '--art', 'art/lamp.png').out, /does not exist yet/);
+  mkdirSync(join(root, 'art')); writeFileSync(join(root, 'art', 'lamp.png'), 'not really a png\n');
+  // a card the page does not have is refused, and the file is unchanged
+  const bad = run('object', 'add', 'lamp', 'decor', 's01', 'light', '--art', 'art/lamp.png', '--card', 'attic');
+  assert.notEqual(bad.code, 0); assert.match(bad.out, /card must be one of/); assert.deepEqual(objs(d), []);
+  const ok = run('object', 'add', 'lamp', 'decor', 's01', 'light', '--art', 'art/lamp.png', '--card', 'shelf');
   assert.equal(ok.code, 0, ok.out);
-  assert.equal(objs(d)[0].art, 'art/lamp.mjs');
+  assert.equal(objs(d)[0].art, 'art/lamp.png'); assert.equal(objs(d)[0].card, 'shelf');
   const noSlots = copyState();
   writeFileSync(join(noSlots, 'objects.json'), '[]\n');
   execFileSync('rm', [join(noSlots, 'slots.json')]);
