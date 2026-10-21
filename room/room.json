@@ -1,0 +1,118 @@
+{
+  "_schema": [
+    "room.json IS the room. The page's engine (scene.js) draws only what is listed here, so a new object added to 'objects' is drawn, lit, casts and receives light, and can be tapped, with no code change.",
+    "Grid: 'grid' is [width, height] in art pixels. Every x and y below is in art pixels, (0,0) top left. Rows below 'floor.top' are floor.",
+    "OBJECT fields (only id, sprite, x, y are required):",
+    "  id      a unique name.",
+    "  sprite  a PNG in art/ (its unlit, flat colours: the albedo). 'sprites' (a list) instead gives poses the engine swaps between whole (the branch).",
+    "  x, y    where the PNG's top-left pixel sits on the grid. Whole numbers only.",
+    "  layer   'back' (drawn right after the wall, behind March), 'actor' (depth-sorted with March by 'base'), 'front' (over everything). Default 'actor'.",
+    "  base    the floor row the object stands on, for depth sorting and floor shadows. Default: its bottom row.",
+    "  lit     'pixel' (lit per pixel by the room's light; the default for still things), 'flat' (one light for the whole sprite, for things that move), 'emit' (shines by itself: the garden, the strip).",
+    "  emit    for lit 'emit': a brightness, or {day, golden, night} each a number or [r,g,b]. Default: the hour's 'glow'.",
+    "  cast    'floor' (a standing thing: its shadow falls on floor and wall), 'wall' (hung on the wall: a short shadow on the wall only), or leave it out (no shadow). 'castStrength' 0..1, default 0.85.",
+    "  light   a light it gives off, or a list of them: {x, y, radius, color:[r,g,b] linear 0..1, strength: number or {day, golden, night}, pulse: [amount, seconds] slow breathing, line: length (a light along a row from x to x+line), shadow: true if things cast shadows from it}.",
+    "  tap     what a tap on it does: 'flare' (its lights flare, a ring of light ripples out, petals burst), 'nudge' (it jiggles one pixel and puffs dust), 'gust' (a gust of wind through the leaves), 'visit' (March walks over to its spot).",
+    "  spot    where March stands to visit it: {x, y (her feet), face: 'L' or 'R', hold: [min, max] seconds, weight: {day, golden, night} how often she chooses to go there on her own}. 'use': 'desk' makes her sit and work there.",
+    "  block   [x0, y0, x1, y1]: a box of floor her FEET may not cross.",
+    "  sheds   {rate: petals a second, color:[r,g,b] 0..255}: little petals fall from it now and then.",
+    "  card    which of the page's cards a tap on it opens (room.js CARD: march, bench, desk, season, wall, shelf, board, cloud, quill, clock). A thing with a card is tappable even with no 'tap'; a thing with both does both (the door flares AND opens the season). 'name' is what the hover label says.",
+    "  kind    'panel' is drawn by code (the floating glass panel, its text, the live title); give it 'box': [x0, y0, x1, y1] instead of a sprite.",
+    "HOURS: day, golden and night each set the light; the page blends them by the real Chiang Mai clock (UTC+7) through 'clock.keys' [hour, name]. ?t=day|golden|night forces one; ?time=17.4 forces a clock time.",
+    "  ambient [r,g,b] light everywhere; sun {x, y, rx, ry, color, cast:[ox, oy, kx, ky], leaf:[dx, dy, shear]} the main light from outside (its pool is an ellipse; cast projects shadows: a pixel h rows above its base lands at x+ox+kx*h, y+oy+ky*h; leaf moves and shears the leaf shadows); vignette [cx, cy, how much the far corners lose]; floor (the floor's light, times); glow [r,g,b] emitters' brightness; sprite {tint, mix}: moving sprites get mix of the room's light and (1-mix) of tint.",
+    "LEAVES: sprays of leaves on twigs hanging in from a tree out of frame; each {seed, x, y (its root), angle, length, curl, strength: {day, golden, night} how dark its shadow is}. They are rebuilt from shapes every frame, swaying on springs in the wind.",
+    "MARCH: her frames (assets/march.json), her foot point in a 48-px frame, the desk's sit place, where she may walk (floor.walk: [x0, y0, x1, y1] for her feet), and her behaviour weights by hour."
+  ],
+  "grid": [240, 135],
+  "palette": "art/pal.json",
+  "floor": { "top": 91, "walk": [8, 100, 232, 132] },
+  "clock": {
+    "utcOffset": 7,
+    "keys": [[0, "night"], [5.4, "night"], [6.4, "day"], [16.2, "day"], [17.1, "golden"], [18.0, "golden"], [18.9, "night"], [24, "night"]]
+  },
+  "hours": {
+    "day": {
+      "ambient": [0.80, 0.83, 0.95],
+      "sun": { "x": 92, "y": 44, "rx": 175, "ry": 112, "color": [0.50, 0.47, 0.36], "cast": [3, 2, 0, 0], "leaf": [0, 0, 0] },
+      "vignette": [100, 58, 0.12, 0.85],
+      "dither": 0.03,
+      "floor": 0.95,
+      "glow": [1.0, 1.0, 1.0],
+      "sprite": { "tint": [1.0, 1.0, 1.0], "mix": 0.45 }
+    },
+    "golden": {
+      "ambient": [0.52, 0.36, 0.36],
+      "sun": { "x": 10, "y": 52, "rx": 330, "ry": 200, "color": [0.80, 0.53, 0.25], "cast": [1, 0, 1.8, 0.8], "leaf": [3, 3, 0.1667] },
+      "vignette": [70, 58, 0.34, 0.3],
+      "dither": 0.022,
+      "floor": 0.93,
+      "glow": [1.05, 0.88, 0.88],
+      "sprite": { "tint": [1.04, 0.90, 0.82], "mix": 0.45 }
+    },
+    "night": {
+      "ambient": [0.022, 0.028, 0.085],
+      "sun": { "x": 40, "y": 10, "rx": 210, "ry": 170, "color": [0.07, 0.08, 0.15], "cast": [2, 2, 0, 0], "leaf": [2, 3, 0] },
+      "vignette": [150, 50, 1.25, 0.12],
+      "dither": 0.016,
+      "floor": 0.82,
+      "glow": [0.88, 0.82, 1.0],
+      "sprite": { "tint": [0.80, 0.78, 0.92], "mix": 0.55 }
+    }
+  },
+  "objects": [
+    { "id": "wall", "sprite": "art/wall.png", "x": 0, "y": 0, "layer": "back", "note": "the white wall, the plinth and the floor slabs" },
+    { "id": "garden", "sprite": "art/garden.png", "x": 129, "y": 22, "layer": "back", "lit": "emit", "tap": "flare", "card": "season", "name": "the garden through the door: this season",
+      "note": "the garden through the ensō: at night the MAIN light, pink above and blue below",
+      "light": [
+        { "x": 150, "y": 30, "radius": 128, "color": [0.66, 0.34, 0.56], "strength": { "day": 0.06, "golden": 0.10, "night": 0.75 }, "pulse": [0.07, 9], "shadow": true },
+        { "x": 150, "y": 66, "radius": 112, "color": [0.16, 0.28, 0.66], "strength": { "day": 0.05, "golden": 0.08, "night": 0.85 }, "pulse": [0.06, 13] },
+        { "x": 150, "y": 41, "radius": 52, "color": [0.60, 0.44, 0.72], "strength": { "day": 0.0, "golden": 0.05, "night": 1.15 }, "pulse": [0.10, 7] }
+      ],
+      "sheds": { "rate": 0.07, "color": [243, 184, 209] } },
+    { "id": "enso", "sprite": "art/enso.png", "x": 123, "y": 16, "layer": "back", "tap": "flare", "card": "season", "name": "the door: this season",
+      "spot": { "x": 150, "y": 104, "face": "L", "hold": [3, 7], "weight": { "day": 2, "golden": 4, "night": 2 } } },
+    { "id": "strip", "sprite": "art/strip.png", "x": 0, "y": 88, "layer": "back", "lit": "emit",
+      "emit": { "day": [0.94, 1.0, 1.06], "golden": [0.96, 0.98, 1.04], "night": [1.12, 1.06, 1.1] },
+      "light": { "x": 0, "y": 88, "line": 240, "radius": 10, "color": [0.22, 0.24, 0.36], "strength": { "day": 0.05, "golden": 0.06, "night": 0.75 } } },
+    { "id": "desk_top", "sprite": "art/desk_top.png", "x": 42, "y": 88, "layer": "back", "base": 112, "cast": "floor", "castId": "desk", "card": "desk", "name": "the desk" },
+    { "id": "paper", "sprite": "art/paper.png", "x": 59, "y": 89, "layer": "back", "card": "desk", "name": "the desk" },
+    { "id": "desk", "sprite": "art/desk_front.png", "x": 42, "y": 92, "base": 112, "cast": "floor", "tap": "visit", "card": "desk", "name": "the desk",
+      "block": [36, 99, 93, 114],
+      "spot": { "use": "desk", "weight": { "day": 2, "golden": 1, "night": 5 } } },
+    { "id": "panel", "kind": "panel", "box": [22, 60, 56, 81], "layer": "back", "cast": "wall", "castStrength": 0.45, "tap": "visit", "card": "bench", "name": "the glass panel: what she is building",
+      "light": { "x": 39, "y": 70, "radius": 34, "color": [0.26, 0.32, 0.50], "strength": { "day": 0.0, "golden": 0.05, "night": 0.85 }, "pulse": [0.05, 5] },
+      "spot": { "use": "desk", "weight": { "day": 0, "golden": 0, "night": 0 } } },
+    { "id": "bench", "sprite": "art/bench.png", "x": 160, "y": 92, "base": 105, "cast": "floor", "tap": "visit",
+      "block": [154, 99, 208, 108],
+      "spot": { "x": 182, "y": 112, "face": "L", "hold": [3, 6], "weight": { "day": 1.5, "golden": 2, "night": 1 } } },
+    { "id": "planter", "sprite": "art/planter.png", "x": 211, "y": 101, "base": 133, "cast": "floor", "tap": "nudge",
+      "block": [206, 118, 236, 135],
+      "spot": { "x": 193, "y": 121, "face": "R", "hold": [2, 4], "weight": { "day": 1, "golden": 1, "night": 0.5 } } },
+    { "id": "branch", "sprites": ["art/branch0.png", "art/branch1.png", "art/branch2.png"], "x": 0, "y": 0, "layer": "front",
+      "lit": "flat", "cast": "wall", "castStrength": 0.6, "tap": "gust", "sways": true,
+      "sheds": { "rate": 0.12, "color": [243, 184, 209] } }
+  ],
+  "leaves": {
+    "size": [5, 11],
+    "gap": [2.2, 4.0],
+    "sprays": [
+      { "seed": 11, "x": 74, "y": -6, "angle": 1.75, "length": 44, "curl": 0.02, "strength": { "day": 1, "golden": 0.15, "night": 0.9 } },
+      { "seed": 12, "x": 114, "y": -6, "angle": 1.5, "length": 28, "curl": -0.03, "strength": { "day": 1, "golden": 0.15, "night": 0.9 } },
+      { "seed": 13, "x": 186, "y": -6, "angle": 2.0, "length": 52, "curl": 0.02, "strength": { "day": 1, "golden": 1, "night": 0.9 } },
+      { "seed": 14, "x": 238, "y": -4, "angle": 2.4, "length": 50, "curl": -0.02, "strength": { "day": 1, "golden": 1, "night": 0.9 } },
+      { "seed": 15, "x": 250, "y": 36, "angle": 2.6, "length": 34, "curl": 0.02, "strength": { "day": 1, "golden": 1, "night": 0.9 } },
+      { "seed": 16, "x": 34, "y": -6, "angle": 1.35, "length": 30, "curl": 0.03, "strength": { "day": 1, "golden": 0.15, "night": 0.9 } }
+    ]
+  },
+  "march": {
+    "frames": "art/march.json",
+    "foot": [24, 44],
+    "speed": [15, 22],
+    "desk": { "sprite": [40, 40], "approach": [82, 101], "door": [97, 105], "exit": [86, 101], "workOffset": [0, 16], "base": 101 },
+    "start": [112, 112],
+    "weights": {
+      "wander": { "day": 3, "golden": 1.5, "night": 1 },
+      "pause":  { "day": 2, "golden": 2, "night": 1.5 }
+    }
+  }
+}
