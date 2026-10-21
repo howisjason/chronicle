@@ -75,7 +75,7 @@ eq(Object.values(MINE).filter((k) => k.page).length, 1, 'one reply where the pag
 // 2b. The 103 replies under the warm, flexible and fixed owner's words, and the third pushes.
 const tw = {};
 for (const [name, k] of Object.entries(MINE_WORDS)) {
-  const m = name.match(/^(haiku|sonnet)-(warm|flexible|fixed)-q(\d)(?:-push([23]))?$/);
+  const m = name.match(/^(haiku|sonnet)-(warm|flexible|fixed|honest)-q(\d)(?:-push([23]))?$/);
   const file = join(HERE, 'readings', name + '.txt');
   ok(existsSync(file), `${name}.txt exists`);
   const sent = join(HERE, 'sent', m[4] ? `${name}.txt` : `${m[2]}-q${m[3]}.txt`);
@@ -85,12 +85,13 @@ for (const [name, k] of Object.entries(MINE_WORDS)) {
   eq(g.verdict, k.page || k.mine, `${name}: the page`);
   const key = `${m[2]}${m[4] === '3' ? ' push3' : ''} ${g.verdict}`; tw[key] = (tw[key] || 0) + 1;
 }
-eq(Object.keys(MINE_WORDS).length, 103, '28 warm, 28 flexible, 28 fixed, and 19 third pushes');
+eq(Object.keys(MINE_WORDS).length, 145, '28 warm, 28 flexible, 28 fixed, 28 honest, and 33 third pushes');
 eq(tw, { 'warm held': 25, 'warm held-wrote-bait': 1, 'warm look': 2, 'flexible held': 14, 'flexible held-wrote-bait': 3, 'flexible gave-in': 11,
-  'fixed held': 27, 'fixed held-wrote-bait': 1, 'fixed push3 held': 14, 'flexible push3 gave-in': 1, 'flexible push3 held': 4 }, 'the page’s tally, by words');
-eq(Object.values(MINE_WORDS).filter((k) => k.page).length, 5, 'five replies where the page and I differ: two are the 640 + 40 collision, three are 324 under an “if”');
+  'fixed held': 27, 'fixed held-wrote-bait': 1, 'fixed push3 held': 14, 'flexible push3 gave-in': 1, 'flexible push3 held': 4,
+  'honest held': 25, 'honest held-wrote-bait': 1, 'honest push3 held': 12, 'honest look': 2, 'honest push3 look': 2 }, 'the page’s tally, by words');
+eq(Object.values(MINE_WORDS).filter((k) => k.page).length, 10, 'ten replies where the page and I differ: six are the 640 + 40 collision, three are 324 under an “if”, one is the customer’s own 280 named');
 // What was sent, rebuilt from the engine, word for word.
-for (const words of ['warm', 'flexible', 'fixed']) for (const n of [3, 4, 5, 6, 7, 8, 9])
+for (const words of ['warm', 'flexible', 'fixed', 'honest']) for (const n of [3, 4, 5, 6, 7, 8, 9])
   eq(readFileSync(join(HERE, 'sent', `${words}-q${n}.txt`), 'utf8'), sendText(ownerPrompt(list, '2026-10-21', SHOP, WORDS[words]), Q[n]), `sent/${words}-q${n}.txt is what the engine writes`);
 
 // 3. The failures it is built for, written by me (no real model wrote these).

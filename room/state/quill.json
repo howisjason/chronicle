@@ -608,5 +608,23 @@
     "verdict": "yes",
     "reason": "All five build-door flags closed; three loose sentences in the README",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-24dj-build-1",
+    "at": "2026-10-21",
+    "door": "build",
+    "subject": "resume before-the-customer: an honest handover line, the owner reads this chat and answers here",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-0fd7-finish-1",
+    "at": "2026-10-21",
+    "door": "finish",
+    "subject": "before-the-customer, fourth wake: the honest handover line",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
   }
 ]

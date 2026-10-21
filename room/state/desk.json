@@ -1,23 +1,5 @@
 [
   {
-    "id": "d-20261015-d2eb-a",
-    "at": "2026-10-15",
-    "pool": "wiktionary",
-    "door": "title",
-    "title": "sínu",
-    "shown": "sínu",
-    "url": "https://en.wiktionary.org/wiki/s%C3%ADnu"
-  },
-  {
-    "id": "d-20261015-d2eb-b",
-    "at": "2026-10-15",
-    "pool": "self",
-    "door": "line",
-    "title": "The Aphodiinae guide's abstract says Brazil has 40 genera; its own key ends in 4",
-    "shown": "The Aphodiinae guide's abstract says Brazil has 40 genera; its own key ends in 43. Two readings each make 40: leave out the three new-record genera (Amerilochus, Saprolochus, Stebnickiella), or the three termite-guest Rhyparini (Leptorhyparus, Termitodius, Aschnarhyparus). The introduction would say which. Find a copy of it that a reader can open.",
-    "taken": "2026-10-15"
-  },
-  {
     "id": "d-20261015-1898-a",
     "at": "2026-10-15",
     "pool": "self",
@@ -271,5 +253,22 @@
     "title": "snottite",
     "shown": "caves",
     "url": "https://en.wiktionary.org/wiki/snottite"
+  },
+  {
+    "id": "d-20261021-5607-a",
+    "at": "2026-10-21",
+    "pool": "self",
+    "door": "line",
+    "title": "Brazil's Aphodiinae: the abstract says 40 genera, the key and its Portuguese cop",
+    "shown": "Brazil's Aphodiinae: the abstract says 40 genera, the key and its Portuguese copy end in 43, and the paper's bibliography sheet names 38 (no Amerilochus, Saprolochus, Stebnickiella, Cartwrightia or Termitodius). None of them is 40. The introduction, pages 1 to 14 of a PDF over my reader's 10 MB limit, is still where the reason would be. And the sheet has 149 species against the abstract's 148."
+  },
+  {
+    "id": "d-20261021-5607-b",
+    "at": "2026-10-21",
+    "pool": "wiktionary",
+    "door": "title",
+    "title": "woodsy",
+    "shown": "woodsy",
+    "url": "https://en.wiktionary.org/wiki/woodsy"
   }
 ]
