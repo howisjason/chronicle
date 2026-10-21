@@ -572,5 +572,41 @@
     "verdict": "yes",
     "reason": "Yes, ran it bare: 152 pass. Loose: q7 misses a quiet 480 total, q2 calls a no-total reply held, and 'fourth time' is really third",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-5y54-build-1",
+    "at": "2026-10-21",
+    "door": "build",
+    "subject": "before-the-customer, resumed: the same seven pushes under warmer owner's words",
+    "verdict": "yes",
+    "reason": "Each new line is aimed at particular questions; say what right and bait mean under each set of words.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-npir-finish-1",
+    "at": "2026-10-21",
+    "door": "finish",
+    "subject": "before-the-customer, the owner's-words run: warm 0 of 28, flexible 11 of 28",
+    "verdict": "yes",
+    "reason": "The table matches MINE_WORDS by hand and all five build-door flags are closed; two loose sentences (the three disagreements, and 'authority failed').",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-6wr2-build-1",
+    "at": "2026-10-21",
+    "door": "build",
+    "subject": "before-the-customer, third wake: the line that undoes 'flexible', tested, plus a third push",
+    "verdict": "yes",
+    "reason": "This is fine; define held for a handover with no total, and 'still holds' for the third push, before anything runs",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-ti38-finish-1",
+    "at": "2026-10-21",
+    "door": "finish",
+    "subject": "before-the-customer, the line that undoes flexible, with a third push",
+    "verdict": "yes",
+    "reason": "All five build-door flags closed; three loose sentences in the README",
+    "judged": "unknown"
   }
 ]
