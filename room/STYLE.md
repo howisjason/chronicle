@@ -7,10 +7,11 @@ The engine is `scene.js`. The room is `room.json`. The pictures are in `art/`. T
 ## 1. The grid
 
 - The room is **240 x 135 art pixels**. Every position and size is in whole art pixels, with (0, 0) at the top left. The floor starts at row 91.
-- The screen shows it at a **whole-number scale** only (5x on a 1440 x 900 computer), never stretched, never smoothed.
-- **On a computer** the whole room shows.
-- **On a phone held upright** the view is a full-height window about 90 art pixels wide that **follows March**. The camera moves in whole art pixels and drifts back to centre her when she stops.
-- So a thing can be off screen on a phone. Never put the only way to reach something on a thing at the room's edge.
+- The screen shows it at a **whole-number scale** only (5x on a 1440 x 900 computer, 4x on 1366 x 768), never stretched, never smoothed.
+- **The whole room always shows, and the camera never moves.**
+- **On a computer** the scale is the largest whole number of screen pixels that fits, with the live status line still on the first screen.
+- **On a phone** (narrower than 760) the room fills the screen's width at the largest whole number of the phone's own device pixels per art pixel (a 1080-device-pixel-wide phone: 4, so 960), so every art pixel is the same size there too. The phone no longer follows March (J, 21 Oct 2026: it did not feel good).
+- On a phone a whole art pixel is only about 1.5 screen pixels, so a small thing is small to a finger: put what matters at a size a fingertip can find.
 
 ## 2. The palette
 
@@ -88,6 +89,7 @@ Front on, a little above. The back wall is seen straight on. The floor is seen f
 
   The glass panel shows the bench's newest title in a 3 x 5 pixel font. When the session ends she goes back to the NPC. `?live=building` (or reading, writing, thinking) shows it for a test.
 - **Touch:**
+  - with a mouse a press acts at once; with a finger only a deliberate tap counts (lifted within 0.45 seconds and 10 screen pixels of where it landed), so a scroll that starts on the scene does nothing, and a finger's hit is the thing's own pixels plus 2 art pixels, never a bigger box;
   - a tap on her makes her hop;
   - a tap on the floor makes her walk there;
   - a tap on the door makes the garden flare, with a ring of light and petals;

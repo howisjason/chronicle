@@ -26,9 +26,10 @@
    startRoom({ canvas, fit, onTap, onHover, room, extra }) -> { setLive, setWeather, layout, objects, addThings }
      The first frame is drawn as soon as the room's own pictures are in (nothing waits on the weather, the door or the
      state files); the canvas then fires a 'firstframe' event, and window.__room.perf.first holds when.
-     fit()            -> { w, h, follow }: the room in CSS pixels for the picture; follow: a phone, where the view is a
-                         full-height window that follows March instead of the whole room.
+     fit()            -> { w, h, phone }: the room in CSS pixels for the picture; phone: a narrow screen, where the
+                         scale is counted in the screen's own device pixels (see frameFor).
      onTap(card, ev)  a tap landed on a thing with a 'card' in room.json (or on March: 'march'); null on bare wall/floor.
+                      On a touch screen only a deliberate tap counts (see the touch section).
      onHover(card, name, [x, y]) the thing under the pointer (client coordinates of its top middle), or (null).
      extra            the things March added (state/objects.json), each { id, sprite, slot, card, name }: placed in its
                       slot (state/slots.json: box [x0, y0, x1, y1], layer, cast, base), bottom-centred; a picture bigger
@@ -37,13 +38,24 @@
    clear|cloud|rain|storm, ?beh=desk|bench|enso|planter|wander|pause, ?raw and ?raw=lit (only the palette tool).
    ============================================================================ */
 // The camera's arithmetic, shared with the page (room.js sizes the frame and its still with it before the engine has
-// loaded anything, so the picture's place on the page never jumps): the largest whole scale that fits fit()'s box, and on
-// a phone (follow) a full-height window, whole art pixels wide, centred on x where it can be.
-export function frameFor({ w: vw, h: vh, follow }, W, H, x = W / 2) {
-  const whole = Math.max(1, Math.floor(Math.min(vw / W, vh / H))), tall = Math.max(1, Math.floor(vh / H));
-  let SC = whole, VW = W;
-  if (follow && tall >= whole * 1.5) { SC = tall; VW = Math.min(W, Math.floor(vw / SC)); }
-  return { SC, VW, camX: Math.round(Math.min(Math.max(x - VW / 2, 0), W - VW)) };
+// loaded anything, so the picture's place on the page never jumps). The WHOLE room always shows; SC is CSS pixels per
+// art pixel and DS device pixels per art pixel (the canvas's backing store is the room times DS).
+// On a computer: the largest whole CSS scale that fits fit()'s box, as before.
+// On a phone (fit().phone): the largest whole scale of DEVICE pixels that fits, so a phone at devicePixelRatio 2.625
+// gets whole device pixels per art pixel (a 1080-device-pixel-wide screen: 4, so 960) and every art pixel is the same
+// size; the CSS size is that over dpr. J, 21 Oct 2026, on his phone: the window that zoomed in on March and followed
+// her "doesn't really feel super great"; the plain opposite is the whole room, still.
+// A length of device pixels in CSS pixels, rounded UP to the 1/64 px a browser lays out in: 960 / 2.625 laid out as
+// 365.703125 drew the canvas 959.97 device pixels wide, a hair under its backing store, so its art pixels slipped a row
+// here and there; a hair over rounds back to exactly 960 on screen.
+export const cssLen = (dev, dpr) => Math.ceil((dev / dpr) * 64 - 1e-6) / 64;
+export function frameFor({ w: vw, h: vh, phone }, W, H, dpr = 1) {
+  if (phone) {
+    const DS = Math.max(1, Math.floor(Math.min((vw * dpr) / W, (vh * dpr) / H)));
+    return { SC: DS / dpr, DS };
+  }
+  const SC = Math.max(1, Math.floor(Math.min(vw / W, vh / H)));
+  return { SC, DS: SC * dpr };
 }
 
 export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = () => {}, room = 'room.json', extra = [] }) {
@@ -239,17 +251,28 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
   const sctx = small.getContext('2d'), img = sctx.createImageData(W, H);
   const ctx = cv.getContext('2d');
 
-  // ---------- camera: the WHOLE room at the largest whole scale that fits the page's frame (J, 20 Oct 11:45pm: wide);
-  // on a phone (fit().follow) a full-height window, whole art pixels wide, that follows March ----------
-  let SC = 1, VW = W, camF = 0, camX = 0;
+  // ---------- camera: the WHOLE room at the largest whole scale that fits the page's frame (J, 20 Oct 11:45pm: wide;
+  // 21 Oct: on a phone too, never a window that follows her) ----------
+  let SC = 1;
   function layout() {
     const dpr = devicePixelRatio || 1;
-    ({ SC, VW } = frameFor(fit(), W, H));
-    const cw = VW * SC + 'px', ch = H * SC + 'px';
+    let DS; ({ SC, DS } = frameFor(fit(), W, H, dpr));
+    const bw = Math.round(W * DS), bh = Math.round(H * DS);
+    const cw = cssLen(bw, dpr) + 'px', ch = cssLen(bh, dpr) + 'px';
     if (cv.style.width !== cw || cv.style.height !== ch) { cv.style.width = cw; cv.style.height = ch; }
-    const bw = Math.round(VW * SC * dpr), bh = Math.round(H * SC * dpr);
     if (cv.width !== bw || cv.height !== bh) { cv.width = bw; cv.height = bh; }
-    camF = clamp(M.fx - VW / 2, 0, W - VW); camX = Math.round(camF);
+    snap();
+  }
+  // Whole device pixels on the screen too: a canvas whose corner sits between device pixels (a phone at dpr 2.625, the
+  // picture centred, the words above it a fractional height) is resampled by the browser and its art pixels blur at the
+  // edges (measured 21 Oct 2026: one block in seven on a 412-wide phone). So the canvas is nudged by under one device pixel
+  // to the nearest whole one; checked at each layout and every half second in the loop, because the words above it can move it.
+  let nudge = [0, 0];
+  function snap() {
+    const dpr = devicePixelRatio || 1, r = cv.getBoundingClientRect();
+    const x = (r.left + scrollX - nudge[0]) * dpr, y = (r.top + scrollY - nudge[1]) * dpr;   // where it sits without the nudge
+    const next = [(Math.round(x) - x) / dpr, (Math.round(y) - y) / dpr];
+    if (Math.abs(next[0] - nudge[0]) > 1e-3 || Math.abs(next[1] - nudge[1]) > 1e-3) { nudge = next; cv.style.translate = `${nudge[0]}px ${nudge[1]}px`; }
   }
 
   // ---------- the wind, and the leaves it moves ----------
@@ -806,7 +829,7 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
     }
     sctx.putImageData(img, 0, 0);
     ctx.imageSmoothingEnabled = false;
-    ctx.drawImage(small, camX, 0, VW, H, 0, 0, cv.width, cv.height);
+    ctx.drawImage(small, 0, 0, W, H, 0, 0, cv.width, cv.height);
   }
 
   // ---------- touch ----------
@@ -840,8 +863,14 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
       else { tone(660, 0.045, 0.006, 0.22, 'sine', 0, 640); tone(1320, 0.012, 0.004, 0.18); }
     } catch (e) { /* sound is optional */ }
   }
-  const toArt = ev => { const r = cv.getBoundingClientRect(); return [(ev.clientX - r.left) / SC + camX, (ev.clientY - r.top) / SC]; };
-  function hitSprite(s, sx, sy, x, y) { const i = Math.floor(x - sx), j = Math.floor(y - sy); return i >= 0 && j >= 0 && i < s.w && j < s.h && s.a[j * s.w + i]; }
+  const toArt = ev => { const r = cv.getBoundingClientRect(); return [(ev.clientX - r.left) / SC, (ev.clientY - r.top) / SC]; };
+  // pad: art pixels of margin around the drawn pixels (0 for a mouse: exactly the thing; a finger gets a small margin)
+  function hitSprite(s, sx, sy, x, y, pad = 0) {
+    const i0 = Math.floor(x - sx), j0 = Math.floor(y - sy);
+    for (let j = j0 - pad; j <= j0 + pad; j++) for (let i = i0 - pad; i <= i0 + pad; i++)
+      if (i >= 0 && j >= 0 && i < s.w && j < s.h && s.a[j * s.w + i]) return true;
+    return false;
+  }
   function stir(x, y, power, reach) {
     for (const m of MOTES) { const dx = m.x - x, dy = m.y - y, d = Math.hypot(dx, dy) + 3; if (d < reach) { m.vx += dx / d * power * (1 - d / reach); m.vy += dy / d * power * (1 - d / reach); } }
   }
@@ -850,17 +879,17 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
     RIPPLES.push({ x, y, a: 0, life: big ? 2.2 : 0.9, speed: big ? 105 : 36, w: big ? 2.6 : 1.6, I: big ? 0.55 : 0.28, c });
   }
   // what is under a point: March first, then the things front to back (only those with a tap or a card)
-  function pick(x, y) {
-    if (MS && hitSprite(MS.s, MS.x, MS.y, x, y)) return 'march';
+  function pick(x, y, pad = 0) {
+    if (MS && hitSprite(MS.s, MS.x, MS.y, x, y, pad)) return 'march';
     const order = [...OBJ.filter(o => o.layer === 'front'), ...OBJ.filter(o => o.layer === 'actor').sort((a, b) => b.base - a.base), ...OBJ.filter(o => o.layer === 'back').reverse()];
     for (const o of order) {
       if (!o.tap && !o.card) continue;
-      if (o.lit === 'panel' ? (x >= o.box[0] && x <= o.box[2] + 1 && y >= o.box[1] && y <= o.box[3] + 1) : hitSprite(o.poses[o.pose], o.x, o.y, x, y)) return o;
+      if (o.lit === 'panel' ? (x >= o.box[0] - pad && x <= o.box[2] + 1 + pad && y >= o.box[1] - pad && y <= o.box[3] + 1 + pad) : hitSprite(o.poses[o.pose], o.x, o.y, x, y, pad)) return o;
     }
     return null;
   }
-  function tap(x, y, t) {
-    const hit = pick(x, y);
+  function tap(x, y, t, pad = 0) {
+    const hit = pick(x, y, pad);
     // March first: she hops and looks toward the tap
     if (hit === 'march') {
       if (['walk', 'idle'].includes(M.st)) { M.hop = 0; if (M.st === 'idle') { M.face = x >= MS.x + MS.s.w / 2 ? 'R' : 'L'; M.dur = Math.max(M.dur, M.t + 1.5); } }
@@ -897,7 +926,24 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
     M.then = () => idle(rand(...(s.hold || [2, 5])), s.face);
   }
   let lastMove = null, HOVER = null;
-  cv.addEventListener('pointerdown', ev => { const [x, y] = toArt(ev); const card = tap(x, y, T); onTap(card, ev); });
+  // A mouse acts on the press, as it always has. A finger acts only on a DELIBERATE tap (J, 21 Oct 2026, on his phone: a tap
+  // anywhere, "even by accident", opened a card that filled the screen): the press is remembered, and only a lift within
+  // TAP_MS of it and within TAP_MOVE CSS pixels of where it landed counts; a scroll or a drag that starts on the scene
+  // (the browser then sends pointercancel) does nothing. A finger's hit is the thing's own drawn pixels plus TAP_PAD art
+  // pixels, never a bigger box.
+  const TAP_MS = 450, TAP_MOVE = 10, TAP_PAD = 2;
+  let press = null;
+  cv.addEventListener('pointerdown', ev => {
+    if (ev.pointerType === 'mouse') { const [x, y] = toArt(ev); const card = tap(x, y, T); onTap(card, ev); return; }
+    press = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, at: performance.now() };
+  });
+  cv.addEventListener('pointerup', ev => {
+    const p = press; press = null;
+    if (!p || p.id !== ev.pointerId || ev.pointerType === 'mouse') return;
+    if (performance.now() - p.at > TAP_MS || Math.hypot(ev.clientX - p.x, ev.clientY - p.y) > TAP_MOVE) return;
+    const [x, y] = toArt(ev); const card = tap(x, y, T, TAP_PAD); onTap(card, ev);
+  });
+  cv.addEventListener('pointercancel', () => { press = null; });
   cv.addEventListener('pointerleave', () => { HOVER = null; lastMove = null; cv.style.cursor = ''; onHover(null); });
   cv.addEventListener('pointermove', ev => { const [x, y] = toArt(ev);
     if (ev.pointerType === 'mouse') {               // the hover name and glow: a mouse only (a finger has no hover)
@@ -907,7 +953,7 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
         HOVER = next; cv.style.cursor = card ? 'pointer' : '';
         if (!card) onHover(null);
         else { const b = h === 'march' ? { x: MS.x + MS.s.w / 2, y: MS.y + 6 } : { x: h.x + h.w / 2, y: h.y }, r = cv.getBoundingClientRect();
-          onHover(card, h === 'march' ? 'March' : (h.name || h.id), [r.left + (b.x - camX) * SC, r.top + b.y * SC]); }
+          onHover(card, h === 'march' ? 'March' : (h.name || h.id), [r.left + b.x * SC, r.top + b.y * SC]); }
       }
     }
     if (lastMove) { const dx = x - lastMove[0], dy = y - lastMove[1];
@@ -915,15 +961,15 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
     lastMove = [x, y]; });
 
   // ---------- the loop ----------
-  let T = 0, DT = 0.016, last = performance.now();
+  let T = 0, DT = 0.016, last = performance.now(), SNAPS = 0;
   layout(); addEventListener('resize', layout);
   if (typeof ResizeObserver === 'function' && cv.parentElement) new ResizeObserver(() => layout()).observe(cv.parentElement);
   // perf.first: when the first frame was drawn (performance.now()); n, avg, worst: frame times after the first second
   const perf = { first: 0, n: 0, sum: 0, worst: 0, get avg() { return this.n ? this.sum / this.n : 0; } };
   const REC = { on: false, every: 1, i: 0, frames: [], times: [] };
   window.__room = {
-    perf, M, LIVE, get hours() { return HW; }, get cam() { return { camX, VW, SC }; }, get sky() { return SKY; },
-    toClient: (x, y) => { const r = cv.getBoundingClientRect(); return [r.left + (x - camX + 0.5) * SC, r.top + (y + 0.5) * SC]; },
+    perf, M, LIVE, get hours() { return HW; }, get cam() { return { SC, backing: [cv.width, cv.height] }; }, get sky() { return SKY; },
+    toClient: (x, y) => { const r = cv.getBoundingClientRect(); return [r.left + (x + 0.5) * SC, r.top + (y + 0.5) * SC]; },
     marchBox: () => MS && { x: MS.x, y: MS.y, w: MS.s.w, h: MS.s.h },
     record: (n, every = 1) => new Promise(res => { REC.on = true; REC.every = every; REC.i = 0; REC.frames = []; REC.times = []; REC.n = n; REC.res = res; }),
   };
@@ -933,12 +979,8 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
     HW = hourWeights();
     liveDrive(); if (LIVE.on) LIVE.since += dt;
     updateMarch(dt, T, HW); updateLife(dt, T, HW); updatePanel(dt);
-    // the camera: whole art pixels, only when she nears the edge of the window
-    // (a dead zone while she walks; once she stops, it drifts slowly back to centre her)
-    if (VW < W) { const cx = (MS && !MS.feet) ? (MD.view ?? MD.approach[0]) : M.fx, lo = camF + VW * 0.32, hi = camF + VW * 0.68; let tgt = camF, k = 4;   // seated: MD.view keeps the desk and the glass panel both in view
-      if (M.st !== 'walk') { tgt = cx - VW / 2; k = 0.8; } else { if (cx < lo) tgt = cx - VW * 0.32; if (cx > hi) tgt = cx - VW * 0.68; }
-      camF += (clamp(tgt, 0, W - VW) - camF) * (1 - Math.exp(-k * dt)); camX = Math.round(camF); } else camX = 0;
     render(T);
+    if ((SNAPS = (SNAPS + 1) % 30) === 0) snap();
     if (!perf.first) { perf.first = performance.now(); cv.dispatchEvent(new Event('firstframe')); }
     const ms = performance.now() - t0;
     if (T > 1) { perf.n++; perf.sum += ms; perf.worst = Math.max(perf.worst, ms); }
@@ -946,7 +988,7 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
       REC.frames.push(new Uint8Array(img.data.buffer.slice(0))); REC.times.push(T);
       if (REC.frames.length >= REC.n) { REC.on = false; const all = new Uint8Array(REC.frames.length * N * 4); REC.frames.forEach((f, i) => all.set(f, i * N * 4));
         let s = ''; for (let i = 0; i < all.length; i += 0x8000) s += String.fromCharCode.apply(null, all.subarray(i, i + 0x8000));
-        REC.res({ w: W, h: H, n: REC.frames.length, times: REC.times, b64: btoa(s), camX }); REC.frames = []; }
+        REC.res({ w: W, h: H, n: REC.frames.length, times: REC.times, b64: btoa(s) }); REC.frames = []; }
     }
     requestAnimationFrame(frame);
   }

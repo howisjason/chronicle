@@ -2,8 +2,8 @@
 // section 3; J's word that evening: "I would like the scene itself to be the centerpiece
 // of the page", every part of the old page a thing in the scene, "people could click
 // around"). The page (index.html, in J's Moon Gate kit) is a compact gate with her name and
-// one sentence for strangers, the scene (wide, the whole room at the largest whole scale; on
-// a phone a full-height window that follows March: J, 20 Oct 2026, 11:45pm), one live status
+// one sentence for strangers, the scene (wide, the whole room at the largest whole scale, on
+// a phone too: J, 21 Oct 2026, the window that followed March did not feel good), one live status
 // line with the season, the cards that have no thing in the room yet as round windows, a
 // "What is this?" card and a link to the records page (records.html: the full log, Quill's
 // whole ledger, the desks).
@@ -25,7 +25,7 @@
 // The real sky (sky.mjs): the scene's hour follows the real Chiang Mai clock by itself;
 // the weather (Open-Meteo, at most once in 30 minutes) dims the daylight when it is
 // cloudy or raining.
-import { startRoom, frameFor } from './scene.js';
+import { startRoom, frameFor, cssLen } from './scene.js';
 import { S, loadAll, el, day, clock, render, seasonLine, plural } from './cards.js';
 import { DOOR, visible, validateObjects } from './lib.mjs';
 import { weatherNow } from './sky.mjs';
@@ -115,28 +115,38 @@ function openCard(key) {
   document.body.classList.add('card-open');
   popBody.scrollTop = 0;
   document.getElementById('pop-close').focus({ preventScroll: true });
-  // a card opened from a round window further down the page sits over the scene, out of sight: bring the scene up
-  // (on a phone the card is a sheet fixed to the screen's foot, always in sight)
-  const r = pop.getBoundingClientRect();
-  if (getComputedStyle(pop).position !== 'fixed' && (r.top < 0 || r.bottom > innerHeight)) frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // a card opened from a round window further down the page sits over the scene, out of sight: bring the scene up.
+  // On a phone the card is a short sheet fixed to the screen's foot (never more than about 45% of it, J, 21 Oct 2026:
+  // the card that filled the screen "does not feel good"), so the scene is brought up to sit whole above it.
+  const r = pop.getBoundingClientRect(), f = frame.getBoundingClientRect();
+  if (getComputedStyle(pop).position === 'fixed') { if (f.top < 0 || f.bottom > r.top) scrollBy({ top: f.top - 8, behavior: 'smooth' }); }
+  else if (r.top < 0 || r.bottom > innerHeight) frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 const closeCard = () => { pop.hidden = true; delete pop.dataset.key; document.body.classList.remove('card-open'); };
 document.getElementById('pop-close').addEventListener('click', closeCard);
 document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && !pop.hidden) closeCard(); });
+// a tap or click anywhere outside the card closes it (a click, never a press, so a scroll does not); the scene's own taps
+// and the round windows are left to open or close cards themselves
+document.addEventListener('click', (ev) => {
+  if (pop.hidden || pop.contains(ev.target) || ev.target === canvas || (ev.target.closest && ev.target.closest('[data-open]'))) return;
+  closeCard();
+});
 // the row under the status line, and the hidden buttons for a keyboard or a screen reader
 for (const b of document.querySelectorAll('[data-open]')) b.addEventListener('click', () => openCard(b.dataset.open));
 
 // ------------------------------------------------------------------ the size
-// The engine asks the page how much room the picture has. On a computer: the whole room,
-// as wide as the window allows and short enough that the status line still shows under
-// it. On a phone held upright: a window as tall as about two thirds of the screen, which
-// follows March (the engine scales by whole numbers, so every art pixel is the same size).
-const ROOM_FOR_WORDS = 210;
+// The engine asks the page how much room the picture has; it always shows the whole room
+// (frameFor in scene.js). On a computer: as wide as the window allows and short enough that
+// the live status line still shows under it on the first screen (J, 21 Oct 2026: on a laptop
+// it sat just below), measured from where the picture starts and how tall the line is, never
+// a guessed number. On a phone (narrower than 760): the screen's full width, in whole device
+// pixels per art pixel.
 function fit() {
   const vw = document.documentElement.clientWidth, vh = window.innerHeight;
-  const follow = vw < 760 && vh > vw;
-  return follow ? { w: vw - 20, h: Math.round(vh * 0.64), follow }
-    : { w: Math.min(vw - 48, 1920), h: Math.max(270, vh - ROOM_FOR_WORDS), follow };
+  if (vw < 760) return { w: vw, h: vh, phone: true };
+  const top = frame.getBoundingClientRect().top + scrollY, st = document.querySelector('.status');
+  const below = st ? st.offsetHeight + parseFloat(getComputedStyle(st).marginTop) + 4 : 80;
+  return { w: Math.min(vw - 48, 1920), h: Math.max(270, vh - top - below), phone: false };
 }
 
 // ------------------------------------------------------------------ the hover name
@@ -257,7 +267,6 @@ function previews() {
 // anyone sees is the room, never a dark box. The engine's first frame paints over it.
 const canvas = document.getElementById('room');
 const GRID = [canvas.width, canvas.height];
-let STILL_X = GRID[0] / 2;
 // which still: the hour that leads at this Chiang Mai time, from room.json's clock keys once read; before that, the
 // midpoints of today's keys (a guess for the first few milliseconds only)
 function stillHour(keys) {
@@ -272,11 +281,11 @@ function stillHour(keys) {
 let stillOf = stillHour();
 function placeStill() {
   if (!canvas.isConnected) return;
-  const { SC, VW, camX } = frameFor(fit(), GRID[0], GRID[1], STILL_X);
-  canvas.style.width = `${VW * SC}px`; canvas.style.height = `${GRID[1] * SC}px`;
+  const dpr = devicePixelRatio || 1, { DS } = frameFor(fit(), GRID[0], GRID[1], dpr);
+  const w = `${cssLen(Math.round(GRID[0] * DS), dpr)}px`, h = `${cssLen(Math.round(GRID[1] * DS), dpr)}px`;
+  canvas.style.width = w; canvas.style.height = h;
   canvas.style.backgroundImage = `url(art/still-${stillOf}.png)`;
-  canvas.style.backgroundSize = `${GRID[0] * SC}px ${GRID[1] * SC}px`;
-  canvas.style.backgroundPosition = `${-camX * SC}px 0`;
+  canvas.style.backgroundSize = `${w} ${h}`;
 }
 placeStill();
 addEventListener('resize', () => { if (!ROOM) placeStill(); });
@@ -291,7 +300,7 @@ const engine = (async () => {
   for (let tries = 1; ; tries++) {
     try {
       const room = await (await fetch('room.json', { cache: 'no-cache' })).json();
-      stillOf = stillHour(room.clock && room.clock.keys); STILL_X = room.march.start[0]; placeStill();
+      stillOf = stillHour(room.clock && room.clock.keys); placeStill();
       return await startRoom({ canvas, fit, onHover, room,
         onTap: (card) => { if (card) openCard(card); else closeCard(); } });
     } catch (e) {

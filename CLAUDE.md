@@ -314,10 +314,13 @@ dose (`room/kit/`, copied whole from `design-kit/kit` with its pictures; the rul
 ink stays until J has seen it; the kit's real leaves are green, so the leaf shadow shows grey and the
 leaf over an edge is left out. `room.css` only places the kit's parts and writes no colour. The page is
 a compact gate (her name in a small ensō on a pink band, one sentence for strangers, the gold
-calligraphy), the scene (wide, the whole room at the largest whole scale; on a phone a window that
-follows March), one live status line with the season and Replay, the cards with no thing in the room
+calligraphy), the scene (wide, the whole room at the largest whole scale, on a phone too, in whole device
+pixels per art pixel; the camera never moves), one live status line with the season and Replay, the cards with no thing in the room
 yet as round windows, a "What is this?" card and the records link, and the seal signing the foot. A
-tap on March, the glass panel, the desk or the door does its effect in the scene and opens its card.
+tap on March, the glass panel, the desk or the door does its effect in the scene and opens its card
+(on a touch screen only a deliberate tap, never the start of a scroll); on a phone the card is a short
+sheet at the foot of the screen, at most about 45% of it, under the scene, and a tap outside any card
+closes it. Near the top, "Made by J" links to https://howisjason.com (J, 21 Oct 2026: no link to the station).
 **The room shows at once:** the engine draws its first frame as soon as the room's own pictures are
 in, never waiting on the door, the weather, the state files or Google's fonts, and until then the
 canvas shows a still of the room for the hour (`art/still-*.png`, from `room/tools/stills.mjs`).
@@ -335,7 +338,7 @@ lines, a test runner in `try.sh`, a second Quill door at the shelf) are in git h
 
 | Area | Thin in the MVP | Ideas to explore later |
 |---|---|---|
-| **The look** | The morning room of 15 Oct 2026 (above); small flaws left: the sun stays up while she sleeps, her hand short of the bench plate, a fractional scale on phones under 320 px, the walk's heel kick. | A night window while she sleeps. More poses and a jump. Let March pick the look herself: options as finished worlds, by her pull, each a polished still before any build (the options-must-differ memory). The self-check loop from the video-as-code posts: she screenshots her own room and fixes what looks wrong before anyone sees it. |
+| **The look** | The morning room of 15 Oct 2026 (above); small flaws left: the sun stays up while she sleeps, her hand short of the bench plate, the walk's heel kick. | A night window while she sleeps. More poses and a jump. Let March pick the look herself: options as finished worlds, by her pull, each a polished still before any build (the options-must-differ memory). The self-check loop from the video-as-code posts: she screenshots her own room and fixes what looks wrong before anyone sees it. |
 | **Her personality holding** | Nothing checks that the hour sounds like her. | The self page's traits mapped once by hand to habits (the pile's room idea): a weekly line from the routine's reflection step on whether the hour's choices read as hers; the reflection already reads the diary, so the hour feeds the self page with no new machinery. |
 | **Cost** | One dollar figure per run. | Per-place cost from the trace timestamps (what the bench cost versus the board); a weekly line in the morning report; the cap judged monthly, not once. |
 | **The replay as a thing to share** | A 60-second replay on the page only. | "Last night in 30 seconds": the trace rendered to a short MP4 by the method the station and the video-as-code posts already use (frame by time, headless browser, ffmpeg), with the station's code-made blips, posted nowhere by itself, there for J to send if he wants. The clip editor (`clip.js`) already cuts and exports from a canvas. |

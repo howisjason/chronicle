@@ -27,20 +27,20 @@ a.inline, .card a, .inpage a, .lines a, table.rows a { text-decoration: underlin
 /* ---------- the gate, compact: the kit's gate at a height that leaves the scene in the first screen ----------
    The door is the kit's ensō door scaled by --k (the kit draws it 560px wide); the gold calligraphy is the kit's
    crop scaled by --g (the kit's box is 590px tall). Everything else is the kit's own part. */
-.roomgate { height: auto; padding: 16px 0 12px; }
+.roomgate { height: auto; padding: 10px 0 6px; }
 .roomgate .gate-shadow.soft { left: -260px; top: -330px; filter: grayscale(1) blur(2.2px) brightness(1.3) contrast(1.02); opacity: .62; }   /* grey leaf shadow only: no green */
 .roomgate .gate-fade { height: 70px; }
 .gate-in { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; column-gap: 34px; }
 .gate-in .gate-band { left: calc(var(--k) * 280px - var(--k) * 98px); width: calc(var(--k) * 196px); top: -60px; bottom: -60px; }
-.roomgate { --k: .31; --g: .30; }
+.roomgate { --k: .255; --g: .24; }   /* sized so that on a 1440 x 900 or 1366 x 768 laptop the scene keeps 5x or 4x AND the status line under it shows on the first screen (J, 21 Oct 2026) */
 .door.mini { position: relative; left: auto; top: auto; margin: 0; width: calc(560px * var(--k)); height: calc(560px * var(--k)); }
 .door.mini .door-light { left: calc(31px * var(--k)); top: calc(16px * var(--k)); width: calc(500px * var(--k)); height: calc(500px * var(--k)); }
 .door.mini .door-through { left: calc(31px * var(--k)); top: calc(16px * var(--k)); width: calc(500px * var(--k)); height: calc(500px * var(--k)); }
 .door.mini .door-enso { left: calc(-108px * var(--k)); top: calc(-268px * var(--k)); width: calc(772px * var(--k)); height: calc(1092px * var(--k)); }
-.door.mini h1 { font-size: 29px; line-height: 1; letter-spacing: -.03em; margin: 4px 0 0; }
+.door.mini h1 { font-size: 25px; line-height: 1; letter-spacing: -.03em; margin: 4px 0 0; }
 .gate-in .gate-say { position: relative; z-index: 1; left: auto; top: auto; margin: 0; width: auto; text-align: left; max-width: 620px; }
 .gate-in .gate-say .lead { color: var(--ink); line-height: 1.55; }
-.gate-say .station { margin-top: 8px; margin-left: -4px; }
+.gate-say .made { margin-top: 8px; margin-left: -4px; }   /* the link to J's portfolio (J, 21 Oct 2026: no station) */
 .gate-in .gate-title { position: relative; left: auto; top: auto; width: calc(222px * var(--g)); height: calc(590px * var(--g)); }
 .gate-in .gate-title img { width: calc(402px * var(--g)); left: calc(-92px * var(--g)); top: calc(-40px * var(--g)); }
 .gate-in .vtext { position: static; font-size: 15px; letter-spacing: .26em; align-self: center; }
@@ -80,7 +80,7 @@ a.inline, .card a, .inpage a, .lines a, table.rows a { text-decoration: underlin
 .pop-body .stats .stat b { font-weight: inherit; margin-left: .5em; }
 
 /* ---------- the live status line and the season ---------- */
-.status { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; margin-top: 18px; }
+.status { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; margin-top: 10px; }
 .status .now { font-size: var(--t-small); font-weight: 600; color: var(--ink); flex: 1 1 300px; }
 /* asleep: a plain tag; awake: the kit's live dot, pink, with a soft pink halo */
 #state.on i { box-shadow: 0 0 0 4px var(--pink-wash); }
@@ -187,19 +187,20 @@ table.rows td:first-child { color: var(--ink); font-weight: 600; }
   .gate-in { grid-template-columns: auto minmax(0, 1fr) auto auto; column-gap: 12px; row-gap: 8px; }
   .gate-in .gate-say { grid-column: 1 / -1; grid-row: 2; max-width: none; }
   .gate-in .gate-band { bottom: auto; height: calc(560px * var(--k) + 54px); }   /* the band stays behind the door, off the sentence */
-  .roomgate .gate-shadow.soft { opacity: .4; }
   .gate-in .gate-say .lead { font-size: var(--t-ui); line-height: 1.5; }
-  .gate-say .station { margin-top: 2px; }
+  .gate-say .made { margin-top: 2px; }
   .door.mini h1 { font-size: 22px; }
   .gate-in .gate-title { grid-column: 3; }
   .gate-in .vtext { grid-column: 4; font-size: 13px; letter-spacing: .2em; }
   .gate-in .vtext small { font-size: 10.5px; margin-right: 4px; }
-  .roomgate .gate-shadow.soft { left: -620px; top: -380px; }
+  .roomgate .gate-shadow.soft { display: none; }   /* on a phone the leaf shadow showed as a heavy grey patch behind the calligraphy (J, 21 Oct 2026) */
   .frame { margin-top: 10px; }
   .frame canvas { border-radius: 12px; }
   .frame .spark.hint { right: 8px; top: -12px; font-size: 12px; --tilt: 5deg; }
-  /* on a phone the card rises from the bottom of the screen */
-  .pop { position: fixed; top: auto; right: 0; left: 0; bottom: 0; width: auto; max-height: 78vh; border-radius: var(--r-card) var(--r-card) 0 0; }
+  /* on a phone the card is a short sheet at the foot of the screen, never more than about 45% of it, so the scene stays
+     in sight above it (J, 21 Oct 2026: the card that filled the whole screen "does not feel good"); a tap outside closes it */
+  .pop { position: fixed; top: auto; right: 0; left: 0; bottom: 0; width: auto; max-height: 45vh; max-height: 45dvh; border-radius: var(--r-card) var(--r-card) 0 0; }
+  .pop .card iframe { height: 30vh; }
   .pop-head { padding: 14px 16px 10px 20px; }
   .pop-body { padding: 12px 20px 22px; }
   .cards .card { padding: 18px 16px 16px; }

@@ -108,7 +108,7 @@
     "frames": "art/march.json",
     "foot": [24, 44],
     "speed": [15, 22],
-    "desk": { "sprite": [40, 40], "approach": [82, 101], "door": [97, 105], "exit": [86, 101], "workOffset": [0, 16], "base": 101, "view": 58 },
+    "desk": { "sprite": [40, 40], "approach": [82, 101], "door": [97, 105], "exit": [86, 101], "workOffset": [0, 16], "base": 101 },
     "start": [112, 112],
     "weights": {
       "wander": { "day": 3, "golden": 1.5, "night": 1 },
