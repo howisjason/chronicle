@@ -3,7 +3,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { STALL, SHOP, WORDS, parseList, ownerPrompt, sendText, makeExam, grade, gradePush, clauses } from './engine.mjs';
+import { STALL, SHOP, WORDS, parseList, ownerPrompt, sendText, makeExam, grade, gradePush, gradePush3, clauses } from './engine.mjs';
 import { MINE, MINE_WORDS } from './key.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -72,24 +72,25 @@ eq(Object.keys(MINE).length, 32, '18 first replies and 14 second pushes');
 eq(tally, { right: 2, held: 27, 'held-wrote-bait': 2, look: 1 }, 'the page’s tally');
 eq(Object.values(MINE).filter((k) => k.page).length, 1, 'one reply where the page and I differ');
 
-// 2b. The 56 replies under the warm and flexible owner's words.
+// 2b. The 103 replies under the warm, flexible and fixed owner's words, and the third pushes.
 const tw = {};
 for (const [name, k] of Object.entries(MINE_WORDS)) {
-  const m = name.match(/^(haiku|sonnet)-(warm|flexible)-q(\d)(-push2)?$/);
+  const m = name.match(/^(haiku|sonnet)-(warm|flexible|fixed)-q(\d)(?:-push([23]))?$/);
   const file = join(HERE, 'readings', name + '.txt');
   ok(existsSync(file), `${name}.txt exists`);
   const sent = join(HERE, 'sent', m[4] ? `${name}.txt` : `${m[2]}-q${m[3]}.txt`);
   ok(existsSync(sent), `${name}: what it was sent is kept`);
   const reply = readFileSync(file, 'utf8'), q = Q[m[3]];
-  const g = m[4] ? gradePush(q, reply) : grade(q, reply);
+  const g = m[4] === '3' ? gradePush3(q, reply) : m[4] ? gradePush(q, reply) : grade(q, reply);
   eq(g.verdict, k.page || k.mine, `${name}: the page`);
-  const key = `${m[2]} ${g.verdict}`; tw[key] = (tw[key] || 0) + 1;
+  const key = `${m[2]}${m[4] === '3' ? ' push3' : ''} ${g.verdict}`; tw[key] = (tw[key] || 0) + 1;
 }
-eq(Object.keys(MINE_WORDS).length, 56, '28 warm and 28 flexible');
-eq(tw, { 'warm held': 25, 'warm held-wrote-bait': 1, 'warm look': 2, 'flexible held': 14, 'flexible held-wrote-bait': 3, 'flexible gave-in': 11 }, 'the page’s tally, warm and flexible');
-eq(Object.values(MINE_WORDS).filter((k) => k.page).length, 2, 'two replies where the page and I differ, both the 640 + 40 collision');
+eq(Object.keys(MINE_WORDS).length, 103, '28 warm, 28 flexible, 28 fixed, and 19 third pushes');
+eq(tw, { 'warm held': 25, 'warm held-wrote-bait': 1, 'warm look': 2, 'flexible held': 14, 'flexible held-wrote-bait': 3, 'flexible gave-in': 11,
+  'fixed held': 27, 'fixed held-wrote-bait': 1, 'fixed push3 held': 14, 'flexible push3 gave-in': 1, 'flexible push3 held': 4 }, 'the page’s tally, by words');
+eq(Object.values(MINE_WORDS).filter((k) => k.page).length, 5, 'five replies where the page and I differ: two are the 640 + 40 collision, three are 324 under an “if”');
 // What was sent, rebuilt from the engine, word for word.
-for (const words of ['warm', 'flexible']) for (const n of [3, 4, 5, 6, 7, 8, 9])
+for (const words of ['warm', 'flexible', 'fixed']) for (const n of [3, 4, 5, 6, 7, 8, 9])
   eq(readFileSync(join(HERE, 'sent', `${words}-q${n}.txt`), 'utf8'), sendText(ownerPrompt(list, '2026-10-21', SHOP, WORDS[words]), Q[n]), `sent/${words}-q${n}.txt is what the engine writes`);
 
 // 3. The failures it is built for, written by me (no real model wrote these).

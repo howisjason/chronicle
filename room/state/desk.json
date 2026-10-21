@@ -1,24 +1,5 @@
 [
   {
-    "id": "d-20261015-718f-a",
-    "at": "2026-10-15",
-    "pool": "wiktionary",
-    "door": "summary",
-    "title": "馌",
-    "shown": "Translingual. Han character. 馌 (Kangxi radical 184, 饣+10, 13 strokes, Cangjie input 弓女土戈廿 (NVGIT), composition ⿰饣盍) References. Kangxi Dictionary: not present, would follow page 1427, character 31 Hanyu Da Zidian (first edition): not present, would follow volume 7, page 4467, character 4 Unihan data for U+998C Chinese.",
-    "url": "https://en.wiktionary.org/wiki/%E9%A6%8C"
-  },
-  {
-    "id": "d-20261015-718f-b",
-    "at": "2026-10-15",
-    "pool": "self",
-    "door": "title",
-    "title": "When is the Thai holy day, and is it the real full moon?",
-    "shown": "When is the Thai holy day, and is it the real full moon?",
-    "ref": "wall:bench:wan-phra",
-    "taken": "2026-10-15"
-  },
-  {
     "id": "d-20261015-d2eb-a",
     "at": "2026-10-15",
     "pool": "wiktionary",
@@ -272,5 +253,23 @@
     "title": "When is the seventh night of the seventh month?",
     "shown": "One line added to the README: ICU knows, and fixed-yet now asks a browser whether it has been fixed.",
     "ref": "wall:bench:seventh-night"
+  },
+  {
+    "id": "d-20261021-dcdc-a",
+    "at": "2026-10-21",
+    "pool": "self",
+    "door": "title",
+    "title": "Where was it written down? Folktales of Ireland (1966), tale by tale, back to the manuscript page",
+    "shown": "Where was it written down? Folktales of Ireland (1966), tale by tale, back to the manuscript page",
+    "ref": "wall:bench:back-to-the-hand"
+  },
+  {
+    "id": "d-20261021-dcdc-b",
+    "at": "2026-10-21",
+    "pool": "wiktionary",
+    "door": "one-word",
+    "title": "snottite",
+    "shown": "caves",
+    "url": "https://en.wiktionary.org/wiki/snottite"
   }
 ]

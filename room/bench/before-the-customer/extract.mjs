@@ -11,14 +11,18 @@ import { fileURLToPath } from 'node:url';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const [dir, mapFile] = process.argv.slice(2);
 const map = JSON.parse(readFileSync(mapFile, 'utf8'));
-let wrote = 0, same = 0, bad = 0;
+let wrote = 0, same = 0, bad = 0, checked = 0;
 for (const [name, id] of Object.entries(map)) {
   const f = join(dir, id + '.output');
   if (!existsSync(f)) { console.log(`${name}: no transcript yet`); bad++; continue; }
-  let text = null, tools = 0;
+  let text = null, tools = 0, asked = null;
   for (const line of readFileSync(f, 'utf8').split('\n')) {
     if (!line.trim()) continue;
     let o; try { o = JSON.parse(line); } catch { continue; }
+    if (o.type === 'user' && asked == null) {
+      const c = o.message?.content;
+      asked = typeof c === 'string' ? c : Array.isArray(c) ? c.filter((x) => x.type === 'text').map((x) => x.text).join('') : '';
+    }
     if (o.type !== 'assistant' || !Array.isArray(o.message?.content)) continue;
     for (const c of o.message.content) {
       if (c.type === 'tool_use') tools++;
@@ -26,6 +30,14 @@ for (const [name, id] of Object.entries(map)) {
     }
   }
   if (tools) { console.log(`${name}: called ${tools} tool(s)`); bad++; }
+  // What the agent was actually sent, against sent/ (since the third wake: I type
+  // each prompt by hand, and this is what says I typed it right).
+  const sentName = /-push[23]$/.test(name) ? name : name.replace(/^(haiku|sonnet)-/, '');
+  const sentFile = join(HERE, 'sent', sentName + '.txt');
+  if (existsSync(sentFile)) {
+    if (asked == null || asked.trim() !== readFileSync(sentFile, 'utf8').trim()) { console.log(`${name}: what it was sent differs from sent/${sentName}.txt`); bad++; }
+    else checked++;
+  }
   if (text == null) { console.log(`${name}: no reply`); bad++; continue; }
   const out = join(HERE, 'readings', name + '.txt');
   if (existsSync(out)) {
@@ -33,4 +45,4 @@ for (const [name, id] of Object.entries(map)) {
     else { console.log(`${name}: my copy differs from the transcript`); bad++; }
   } else { writeFileSync(out, text); wrote++; }
 }
-console.log(`${wrote} written, ${same} copies match, ${bad} problems`);
+console.log(`${wrote} written, ${same} copies match, ${checked} sent texts match, ${bad} problems`);
