@@ -194,12 +194,19 @@ table.rows td:first-child { color: var(--ink); font-weight: 600; }
   .gate-in .vtext { grid-column: 4; font-size: 13px; letter-spacing: .2em; }
   .gate-in .vtext small { font-size: 10.5px; margin-right: 4px; }
   .roomgate .gate-shadow.soft { display: none; }   /* on a phone the leaf shadow showed as a heavy grey patch behind the calligraphy (J, 21 Oct 2026) */
-  .frame { margin-top: 10px; }
-  .frame canvas { border-radius: 12px; }
+  /* on a phone the card opens INSIDE the scene's frame, over the picture, as it does on a computer (J, 21 Oct 2026: the
+     sheet at the foot of the screen opened "outside of the scene ... it just doesn't feel very smooth"). The picture is
+     only about 205px tall there, so while a card is open the frame itself grows (room.js sets its height, about two
+     thirds of the screen, and --strip, how much of the picture's top stays in sight), easing open and shut; the frame
+     wears the scene's rounded corners and shadow so the picture, the strip of white under it and the card read as one
+     piece. Closed, the frame is exactly the picture's size, so it looks as before. */
+  .frame { margin-top: 10px; border-radius: 14px; background: var(--frame); box-shadow: var(--sh-scene); transition: height .34s cubic-bezier(.22, .8, .24, 1); }
+  .frame canvas { border-radius: 14px; box-shadow: none; }
   .frame .spark.hint { right: 8px; top: -12px; font-size: 12px; --tilt: 5deg; }
-  /* on a phone the card is a short sheet at the foot of the screen, never more than about 45% of it, so the scene stays
-     in sight above it (J, 21 Oct 2026: the card that filled the whole screen "does not feel good"); a tap outside closes it */
-  .pop { position: fixed; top: auto; right: 0; left: 0; bottom: 0; width: auto; max-height: 45vh; max-height: 45dvh; border-radius: var(--r-card) var(--r-card) 0 0; }
+  .pop { top: var(--strip, 84px); right: 8px; left: 8px; bottom: 8px; width: auto; max-height: none; border-radius: 22px;
+    opacity: 0; transform: translateY(14px); transition: opacity .2s ease, transform .3s cubic-bezier(.22, .8, .24, 1); }
+  .pop.in { opacity: 1; transform: none; transition-delay: .06s; }
+  .pop-body { flex: 1 1 auto; min-height: 0; }
   .pop .card iframe { height: 30vh; }
   .pop-head { padding: 14px 16px 10px 20px; }
   .pop-body { padding: 12px 20px 22px; }

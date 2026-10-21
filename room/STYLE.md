@@ -12,6 +12,7 @@ The engine is `scene.js`. The room is `room.json`. The pictures are in `art/`. T
 - **On a computer** the scale is the largest whole number of screen pixels that fits, with the live status line still on the first screen.
 - **On a phone** (narrower than 760) the room fills the screen's width at the largest whole number of the phone's own device pixels per art pixel (a 1080-device-pixel-wide phone: 4, so 960), so every art pixel is the same size there too. The phone no longer follows March (J, 21 Oct 2026: it did not feel good).
 - On a phone a whole art pixel is only about 1.5 screen pixels, so a small thing is small to a finger: put what matters at a size a fingertip can find.
+- **A card opens inside the scene's frame, on a phone too** (J, 21 Oct 2026: the sheet at the foot of the screen opened "outside of the scene"). The phone's picture is only about 205 px tall, so while a card is open the frame grows to about two thirds of the screen height in a short ease, the top 40% of the picture stays in sight above the card, and the card (the computer's card: the same header and close button) sits 8 px inside the frame's rounded edge; its body scrolls inside itself. On close the frame eases back to exactly the picture. The page stays where it was; it scrolls only as far as needed to bring the grown frame onto the screen (from a round window further down, the frame comes up to the top). A tap on the X, on the picture's strip or anywhere outside the card closes it.
 
 ## 2. The palette
 

@@ -111,18 +111,60 @@ function openCard(key) {
   document.getElementById('pop-count').textContent = c.count || '';
   popBody.replaceChildren(...c.body);
   pop.dataset.key = key;
+  clearTimeout(shutting); shutting = 0;
   pop.hidden = false;
   document.body.classList.add('card-open');
   popBody.scrollTop = 0;
   document.getElementById('pop-close').focus({ preventScroll: true });
-  // a card opened from a round window further down the page sits over the scene, out of sight: bring the scene up.
-  // On a phone the card is a short sheet fixed to the screen's foot (never more than about 45% of it, J, 21 Oct 2026:
-  // the card that filled the screen "does not feel good"), so the scene is brought up to sit whole above it.
-  const r = pop.getBoundingClientRect(), f = frame.getBoundingClientRect();
-  if (getComputedStyle(pop).position === 'fixed') { if (f.top < 0 || f.bottom > r.top) scrollBy({ top: f.top - 8, behavior: 'smooth' }); }
-  else if (r.top < 0 || r.bottom > innerHeight) frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (PHONE.matches) { openOnPhone(); return; }
+  // a card opened from a round window further down the page sits over the scene, out of sight: bring the scene up
+  const r = pop.getBoundingClientRect();
+  if (r.top < 0 || r.bottom > innerHeight) frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-const closeCard = () => { pop.hidden = true; delete pop.dataset.key; document.body.classList.remove('card-open'); };
+// On a phone the card opens inside the scene's frame, over the picture, like on a computer (J, 21 Oct 2026: the sheet
+// at the foot of the screen opened "outside of the scene", which "feels kind of disruptive"). The picture is only about
+// 205px tall there, so the frame grows to about two thirds of the screen while a card is open, keeping the top 40% of
+// the picture in sight above the card, and eases back on close (room.css). The page stays where the visitor was
+// looking: it scrolls only as far as needed to bring the grown frame onto the screen (from a round window further down,
+// the frame is off the screen, so it comes up to the top).
+const PHONE = matchMedia('(max-width: 760px)');
+let shutting = 0;
+const grownHeight = () => Math.max(canvas.offsetHeight + 160, Math.round(innerHeight * 0.66));
+function setFrameHeight(to) {
+  const from = frame.getBoundingClientRect().height;
+  frame.style.setProperty('--strip', `${Math.round(canvas.offsetHeight * 0.4)}px`);
+  if (Math.abs(from - to) < 1) { frame.style.height = `${to}px`; return; }
+  frame.style.height = `${from}px`;
+  frame.getBoundingClientRect();                             // so the browser eases from the height it has now
+  frame.style.height = `${to}px`;
+}
+function openOnPhone() {
+  const to = grownHeight(), f = frame.getBoundingClientRect();
+  setFrameHeight(to);
+  requestAnimationFrame(() => pop.classList.add('in'));
+  const room = innerHeight - 8;
+  if (f.top < 8 || f.top > room) scrollBy({ top: f.top - 8, behavior: 'smooth' });
+  else if (f.top + to > room) scrollBy({ top: f.top + to - room, behavior: 'smooth' });
+}
+function closeCard() {
+  delete pop.dataset.key; document.body.classList.remove('card-open');
+  if (!PHONE.matches || pop.hidden) { pop.hidden = true; pop.classList.remove('in'); frame.style.height = ''; return; }
+  if (shutting) return;
+  pop.classList.remove('in');
+  setFrameHeight(canvas.offsetHeight);
+  shutting = setTimeout(() => { shutting = 0; pop.hidden = true; frame.style.height = ''; }, 340);
+}
+// a turned phone or a resized window: the open frame keeps its place in proportion; off a phone it has no set height.
+// Only a change of width counts: a phone's address bar sliding away while the page scrolls changes the height alone,
+// and the open frame must not twitch with it.
+let lastW = innerWidth;
+addEventListener('resize', () => {
+  if (!PHONE.matches) { frame.style.height = ''; pop.classList.remove('in'); return; }
+  if (innerWidth === lastW) return;
+  lastW = innerWidth;
+  // a frame later, once the engine has sized the picture for the new width
+  requestAnimationFrame(() => { if (!pop.hidden && !shutting) { frame.style.setProperty('--strip', `${Math.round(canvas.offsetHeight * 0.4)}px`); frame.style.height = `${grownHeight()}px`; } });
+});
 document.getElementById('pop-close').addEventListener('click', closeCard);
 document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && !pop.hidden) closeCard(); });
 // a tap or click anywhere outside the card closes it (a click, never a press, so a scroll does not); the scene's own taps

@@ -318,9 +318,9 @@ calligraphy), the scene (wide, the whole room at the largest whole scale, on a p
 pixels per art pixel; the camera never moves), one live status line with the season and Replay, the cards with no thing in the room
 yet as round windows, a "What is this?" card and the records link, and the seal signing the foot. A
 tap on March, the glass panel, the desk or the door does its effect in the scene and opens its card
-(on a touch screen only a deliberate tap, never the start of a scroll); on a phone the card is a short
-sheet at the foot of the screen, at most about 45% of it, under the scene, and a tap outside any card
-closes it. Near the top, "Made by J" links to https://howisjason.com (J, 21 Oct 2026: no link to the station).
+(on a touch screen only a deliberate tap, never the start of a scroll); on a phone the card opens inside the
+scene's frame as on a computer, the frame easing taller (about two thirds of the screen) while it is open with the
+top of the picture still in sight, and a tap outside any card closes it (STYLE.md, section 1). Near the top, "Made by J" links to https://howisjason.com (J, 21 Oct 2026: no link to the station).
 **The room shows at once:** the engine draws its first frame as soon as the room's own pictures are
 in, never waiting on the door, the weather, the state files or Google's fonts, and until then the
 canvas shows a still of the room for the hour (`art/still-*.png`, from `room/tools/stills.mjs`).
