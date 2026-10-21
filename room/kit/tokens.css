@@ -4,35 +4,43 @@
    and only here. kit.css never writes a colour of its own.
    Daylight only: there is no night mode (J, 18 Oct 2026).
    Link this file first, then kit.css.
+
+   MARCH'S ROOM'S COPY. Every green of the kit is swapped here, and only here, for March's
+   pastel pink and pastel blue, equal partners, each a colour of the scene's own palette
+   (art/pal.json) where one fits (J, 20 Oct 2026, 7:55pm: "we keep a lot of the design
+   choices ... we switch out the green for March's colors, like a pink and soft blue").
+   Ink, Wall, Paper, Lines and Gold ink are the kit's own (J on the gold: "I have to see
+   it in order to give my verdict"). The one alive thing per screen is pink.
+   The room's own few extras (pink wash, the scene frame, the hover name) sit at the end.
    ===================================================================== */
 
 :root {
-  /* ---- colours: a white wall in sun, black ink, the green of new leaves, flat gold ink ---- */
+  /* ---- colours: a white wall in sun, black ink, March's pink and blue, flat gold ink ---- */
   --wall: #FBFAF7;         /* the page: a white wall in sun */
   --paper: #FFFFFF;        /* the one or two boxes that sit on the wall (card, panel, input) */
   --ink: #17191C;          /* titles, reading text, outlines, the door's ring */
   --ink-2: #4A4F55;        /* softer reading text: descriptions, captions, meta */
   --ink-3: #5F656B;        /* placeholders only */
-  --spring: #8CC63F;       /* the one alive thing per screen: the main button, the spark */
-  --spring-wash: #EAF4DA;  /* soft green behind icons, filled tags, the focus glow */
-  --band: #E2EFCD;         /* the pale green band behind the door */
-  --leaf: #356019;         /* green for small words: labels, links, icons on the wash */
+  --spring: #F2B2C9;       /* pastel pink (pal 242,178,201), was spring green #8CC63F: the one alive thing per screen, the spark, the live dot */
+  --spring-wash: #DCECF8;  /* pale blue (pal 220,236,248), was #EAF4DA: behind icons, filled tags, the focus glow */
+  --band: #FBE0EA;         /* pale pink (pal 251,224,234), was #E2EFCD: the band behind the door */
+  --leaf: #3D5A9C;         /* deep blue (pal 61,90,156), was leaf green #356019: small words, labels, links, icons on the wash */
   --line: #E3E4DF;         /* hairlines and box edges */
   --line-2: #D5D8D2;       /* the input's resting edge, the step connector */
   --gold: #B08D46;         /* flat matte gold ink: the seal and the calligraphy title, nothing else */
   --seal-paper: #FBF6EE;   /* the characters cut out of the gold seal */
 
-  /* the light inside the door: three steps of spring air */
-  --door-1: #F7FBEF;
-  --door-2: #E7F3D3;
-  --door-3: #D3E9B1;
+  /* the light inside the door: three steps of pale blue sky (were #F7FBEF, #E7F3D3, #D3E9B1) */
+  --door-1: #F2F8FD;       /* between the wall and pal 220,236,248 */
+  --door-2: #DCECF8;       /* pal 220,236,248 */
+  --door-3: #B2D9F7;       /* pal 178,217,247 */
 
   /* see-through versions, for fades and shadows */
   --wall-clear: rgba(251, 250, 247, 0);  /* the wall at zero, so the hero fades into it */
   --seal-ring: rgba(251, 246, 238, .85); /* the thin pale ring inside the seal's edge */
   --shade: rgba(23, 25, 28, .35);        /* ink at a third: soft shadows */
   --shade-deep: rgba(23, 25, 28, .45);   /* the inner shadow of a round window */
-  --shade-leaf: rgba(53, 96, 25, .55);   /* the green shadow under the spark */
+  --shade-leaf: rgba(156, 74, 119, .45); /* the pink shadow under the spark (pal 156,74,119), was green */
 
   /* ---- fonts ---- */
   --sans: "Plus Jakarta Sans", system-ui, sans-serif;   /* everything you read */
@@ -79,4 +87,10 @@
              0 -2px 0 rgba(23, 25, 28, .10), 0 3px 0 #fff, 0 4px 6px -2px rgba(255, 255, 255, .9);
   --sh-seal: inset 0 0 0 3px var(--gold), inset 0 0 0 5px var(--seal-ring);
   --sh-seal-sm: inset 0 0 0 2px var(--gold), inset 0 0 0 3.5px var(--seal-ring);
+
+  /* ---- March's room only ---- */
+  --pink-wash: #FBE0EA;    /* pale pink (pal 251,224,234): the live dot's halo, a hover glow */
+  --pink-deep: #9C4A77;    /* deep pink (pal 156,74,119): the awake dot, a mark only, never small words */
+  --frame: #FCFCFA;        /* the scene's own white wall (pal 252,252,250): behind the picture before its first frame */
+  --sh-scene: 0 0 0 1px rgba(23, 25, 28, .10), 0 34px 60px -34px rgba(23, 25, 28, .55);  /* the scene, softly framed on the wall */
 }
