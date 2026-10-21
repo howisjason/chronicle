@@ -95,8 +95,8 @@ about 0.6 GB a day for the old one-file day (3.7 GB before gzip).
 
 ## Tests
 
-`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (53 tests: 27 for the
-station, 26 for the room, described in the Room section). The station's: the checker's
+`node --test timing.test.mjs station/validate.test.mjs room/room.test.mjs` (60 tests: 27 for the
+station, 33 for the room, described in the Room section). The station's: the checker's
 plant a wrong number, a missing source and forbidden words and watch each
 refused; the talk rules refuse a 352-word rally, a scene of same-length lines and
 one over 2,600 words, and pass a real lab scene (`station/fixtures/talk-scene.json`); the hour-file ones check an hour turn and midnight, and that the first
@@ -286,7 +286,7 @@ naming the figure.
 **The bench test**, written before the first night: fourteen SESSIONS counted from the room's reset of 13 Oct 2026 (his speed-run word, 12 Oct; the dated line is the standing facts §3), has ONE thing from the bench been used by J, March or the routine? If not, the bench is
 the idea mill with a hammer; say so and stop the bench. Its dated line is the standing facts §3.
 
-**Tests.** `room/room.test.mjs` (26 tests, the last one holds the season file to one set line): the kind table row by row (the room command
+**Tests.** `room/room.test.mjs` (33 tests, the last one holds the season file to one set line): the kind table row by row (the room command
 included); the second day's shapes (a bad pool, door, wall kind or Quill door refused; the
 real wall passes and `visible` drops a planted private item); `lastDesk`; a wake whose draw failed reporting "nothing drawn"; `day-ends` refused
 without its lock, then moving and emptying and safe twice, with an id on the wall refused
@@ -301,31 +301,21 @@ page path is refused, steps, uses, Quill and judged land in the page's shapes; s
 (no page errors, the face answers, a click on the picture opens the right fold, the strip
 walks the stops).
 
-**The look (18 Oct 2026).** The page wears J's design kit, Moon Gate, at its full dose
-(`room/kit/`, a whole copy of `design-kit/kit/` with its `assets/` pictures and
-`SOURCES.md`; change the kit in the design kit and copy it over, never edit it here;
-the rules are `design-kit/KIT.md`). Daylight only, never red. `room.css` only places
-the kit's parts and writes no colour of its own. The top is the kit's gate: the plaster
-wall under the whole page, the pale green band, real leaf shadows, "March's room" inside
-the ensō door with a spring-green spark that says whether she is awake (`#awake`), the
-gold calligraphy beside it (hidden under 1240 px), and her paragraph, the season line
-and the hint under the door; on a phone the door is scaled down and the words follow
-it. The picture sits in the kit's panel with a real banana leaf over its corner; the
-last session's numbers are hairline columns on the wall; "Today" is the one huge word;
-each list is a row on the wall with a Lucide icon in a disc, opened by its header
-line; the things in it are the kit's soft cards (a build running in place is a
-soft-cornered screen, a pin's picture a round window). The small gold seal is in the
-top bar and the wide one signs the foot with the picture credits. The page's icons are
-Lucide SVGs pasted inline. The
-picture is `room/scene.js`: a 320x160 morning room drawn by code into a palette buffer
-(27 colours, cream, olive and wood, gold the one metal, March's pink hair the one accent),
-shown at the widest whole multiple of 320 that fits its frame. March is a puppet of
-parts, 41 px, with a 4-frame walk, an idle, a pose at each of the five places and an asleep
-state in the futon; Quill is a crow with a flap and a blink who lands beside her during a
-check. `PLACES` carries each place's box (the click targets) and `at`, where she stands;
-the counts she brings back are drawn in-world (pages on the rack, cards on the board, puffs
-in the cloud, things on the bench and desk) from the same lists the folds use. The four
-worlds she was chosen from are the record in march-brain's `notes/room-scene-options/`.
+**The look (J's final design, 21 Oct 2026).** The room's design kit is `room/STYLE.md`:
+the grid, the palette, the camera, the light, the motion rules, March, `room.json` and how
+to add one thing; read it before drawing or placing anything. The picture is `room/scene.js`,
+the live engine: `room/room.json` is the room (every thing in it, its light, its tap and its
+card), `room/art/` holds the unlit pictures and the palette, and the things March adds sit in
+the 20 slots of `state/slots.json` (`room.mjs object add ... --art art/<name>.png [--card]`;
+`tools/check_art.py` is the picture check). The page is the name line and one sentence for
+strangers, the scene (wide, the whole room at the largest whole scale; on a phone a window that
+follows March), one live status line with the season and Replay, one row of links for the cards
+with no thing in the room yet, "What is this?" and the records link. A tap on March, the glass
+panel, the desk or the door does its effect in the scene and opens its card. `room.css` holds the
+page's colours, each one from the scene's palette: white, ink navy, pastel pink and blue, no green,
+no gold. Icons are Lucide SVGs pasted inline. The worlds she was chosen from are the record in
+march-brain's `notes/room-scene-options/`, and the approved build is kept in
+`notes/room-base-2026-10-20/live/`.
 
 ### After the MVP: the doors to open later
 

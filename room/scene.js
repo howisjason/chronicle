@@ -896,7 +896,7 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
     updateMarch(dt, T, HW); updateLife(dt, T, HW); updatePanel(dt);
     // the camera: whole art pixels, only when she nears the edge of the window
     // (a dead zone while she walks; once she stops, it drifts slowly back to centre her)
-    if (VW < W) { const cx = (MS && !MS.feet) ? MD.approach[0] : M.fx, lo = camF + VW * 0.32, hi = camF + VW * 0.68; let tgt = camF, k = 4;
+    if (VW < W) { const cx = (MS && !MS.feet) ? (MD.view ?? MD.approach[0]) : M.fx, lo = camF + VW * 0.32, hi = camF + VW * 0.68; let tgt = camF, k = 4;   // seated: MD.view keeps the desk and the glass panel both in view
       if (M.st !== 'walk') { tgt = cx - VW / 2; k = 0.8; } else { if (cx < lo) tgt = cx - VW * 0.32; if (cx > hi) tgt = cx - VW * 0.68; }
       camF += (clamp(tgt, 0, W - VW) - camF) * (1 - Math.exp(-k * dt)); camX = Math.round(camF); } else camX = 0;
     render(T);
