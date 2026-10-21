@@ -30,6 +30,8 @@ import { DOOR, visible, validateObjects } from './lib.mjs';
 import { weatherNow } from './sky.mjs';
 
 const Q = new URLSearchParams(location.search);
+// a run's length in words; a run under a minute still reads "1 minute", never "1 minutes"
+const mins = s => { const n = Math.max(1, Math.round((s || 0) / 60)); return `${n} minute${n === 1 ? '' : 's'}`; };
 const CAPTION = { reading: 'reading', searching: 'searching', building: 'building', writing: 'writing',
   thinking: 'thinking', pinning: 'pinning', checking: 'checking with Quill', private: 'something private', waking: 'waking up' };
 const AT = { shelf: 'at the shelf', drawer: 'at the drawer', cloud: 'under the cloud', bench: 'at the bench', desk: 'at the desk', board: 'at the board', quill: 'with Quill' };
@@ -82,7 +84,7 @@ function lastSession() {
   const again = el('button', { type: 'button', class: 'btn soft sm' }, 'Replay it in the room');
   again.addEventListener('click', () => { closeCard(); replay(); });
   return [
-    el('p', {}, `${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${Math.max(1, Math.round((e.seconds || 0) / 60))} minutes. The run was ${e.verdict || 'not judged'}${Number.isFinite(e.sameness) ? `, and ${e.sameness}% the same as her last seven (how much it repeated them)` : ''}.`),
+    el('p', {}, `${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${mins(e.seconds)}. The run was ${e.verdict || 'not judged'}${Number.isFinite(e.sameness) ? `, and ${e.sameness}% the same as her last seven (how much it repeated them)` : ''}.`),
     el('div', { class: 'cols stats' },
       tile('Bench steps', [String(num(steps))], `${num(e.pins)} pins · ${num(e.cloud)} thoughts · ${num(e.shelf)} pages`),
       tile('Quill', q ? [String(num(q.yes)), el('small', {}, 'yes'), el('b', {}, String(num(q.no))), el('small', {}, 'no')] : ['–'], q && Number.isFinite(q.talks) ? `${q.talks} talks` : '')),
@@ -164,7 +166,7 @@ async function askNow() {
   try { const r = await fetch(`${DOOR}/now`, { cache: 'no-cache' }); if (r.ok) n = await r.json(); } catch { /* the door is down */ }
   if (!n) n = S.now && S.now.ok ? S.now.data : null;
   LIVE = n && n.awake === true && CAPTION[n.kind] ? n : null;
-  document.getElementById('awake').textContent = LIVE ? `awake since ${clock(LIVE.since) || 'now'}` : 'asleep';
+  document.getElementById('awake').textContent = Q.has('live') ? 'test view' : LIVE ? `awake since ${clock(LIVE.since) || 'now'}` : 'asleep';
   document.querySelector('.state').classList.toggle('on', !!LIVE);
   if (LIVE) RP = null;                                       // a real session outranks the replay
   show();

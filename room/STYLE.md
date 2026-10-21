@@ -142,7 +142,7 @@ March's own things do not go in `room.json`. They go through the room command, s
 
    Either way: flat-lit (no painted light or shadow), alpha 0 or 255 only, small (it must fit its slot), simple and clean. Save it as `art/<name>.png`.
 3. **Check it.** Run all four checks; every one must pass.
-   - **The picture check:** `python3 tools/check_art.py art/<name>.png <slot>`, run from this folder. It fails on a colour outside the palette, any green, half see-through pixels, or a picture bigger than its slot.
+   - **The picture check:** `/usr/local/bin/python3 tools/check_art.py art/<name>.png <slot>`, run from this folder (that Python, because it is the one on this Mac with Pillow; a plain `python3` crashes on every picture, good or bad). It fails on a colour outside the palette, any green, half see-through pixels, or a picture bigger than its slot.
    - **The green check on the room:** capture day, golden and night stills with the thing in, and count green-cast art pixels. It must be 0.
    - **The frame-difference check:** record the room with the thing in (`tools/rec.js` and `tools/motion_live.py` in the build folder). With nobody tapping there must be 0 row bands that are not on March or the thing itself, and if the thing moves, its changes must be whole-pixel shapes, never a ripple.
    - **A look:** read the day, golden and night stills yourself, and a zoomed crop of the thing. Does it belong? If not, draw it again.
