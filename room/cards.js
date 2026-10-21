@@ -27,7 +27,7 @@ export const get = async (path, kind) => {
 };
 export const S = {};
 export async function loadAll() {
-  const names = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk', 'wall'];
+  const names = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk', 'wall', 'objects', 'slots'];
   const files = await Promise.all([...names.map((n) => get(`state/${n}.json`)), get('state/log.jsonl', 'jsonl'), get('quill-notebook.md', 'text'), get('state/season.txt', 'text'), get('state/now.json')]);
   names.forEach((n, k) => { S[n] = files[k]; });
   [S.log, S.notebook, S.season, S.now] = files.slice(names.length);

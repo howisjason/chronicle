@@ -1,7 +1,8 @@
 // sky.mjs: the real sky over Chiang Mai, for the room's window (the room plan of
-// 19 Oct 2026, section 8). Plain values only, no drawing: the chosen style's scene reads
-// them later. All of it runs in the visitor's browser, so nothing private leaves and no
-// wake pays for it. The page (room.js) keeps the latest in window.roomSky.
+// 19 Oct 2026, section 8). Plain values only, no drawing. All of it runs in the visitor's
+// browser, so nothing private leaves and no wake pays for it. room.js hands the weather to
+// the scene (scene.js setWeather), which dims the daylight on a cloudy or rainy day; the
+// scene keeps its own hour from the Chiang Mai clock, so sunAt is not read by the page.
 //
 // The sun: where it stands, from the date and time alone (the usual low-precision
 // sun formulas, good to about a degree, which is plenty for a window). No service.
