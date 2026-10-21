@@ -23,7 +23,9 @@
    visit the bench or the plant), weights shifting with the hour; while a real session runs, the page hands her over
    with setLive() (room.js reads state/now.json and the door's GET /now).
 
-   startRoom({ canvas, fit, onTap, onHover }) -> { setLive, setWeather, layout, objects }
+   startRoom({ canvas, fit, onTap, onHover, room, extra }) -> { setLive, setWeather, layout, objects, addThings }
+     The first frame is drawn as soon as the room's own pictures are in (nothing waits on the weather, the door or the
+     state files); the canvas then fires a 'firstframe' event, and window.__room.perf.first holds when.
      fit()            -> { w, h, follow }: the room in CSS pixels for the picture; follow: a phone, where the view is a
                          full-height window that follows March instead of the whole room.
      onTap(card, ev)  a tap landed on a thing with a 'card' in room.json (or on March: 'march'); null on bare wall/floor.
@@ -34,10 +36,21 @@
    Test parameters: ?t=day|golden|night, ?time=17.5, ?live=reading|writing|building|thinking&title=..., ?weather=
    clear|cloud|rain|storm, ?beh=desk|bench|enso|planter|wander|pause, ?raw and ?raw=lit (only the palette tool).
    ============================================================================ */
+// The camera's arithmetic, shared with the page (room.js sizes the frame and its still with it before the engine has
+// loaded anything, so the picture's place on the page never jumps): the largest whole scale that fits fit()'s box, and on
+// a phone (follow) a full-height window, whole art pixels wide, centred on x where it can be.
+export function frameFor({ w: vw, h: vh, follow }, W, H, x = W / 2) {
+  const whole = Math.max(1, Math.floor(Math.min(vw / W, vh / H))), tall = Math.max(1, Math.floor(vh / H));
+  let SC = whole, VW = W;
+  if (follow && tall >= whole * 1.5) { SC = tall; VW = Math.min(W, Math.floor(vw / SC)); }
+  return { SC, VW, camX: Math.round(Math.min(Math.max(x - VW / 2, 0), W - VW)) };
+}
+
 export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = () => {}, room = 'room.json', extra = [] }) {
   const Q = new URLSearchParams(location.search);
   const RAW = Q.has('raw'), RAWLIT = Q.get('raw') === 'lit';                       // ?raw: skip the palette (used once, to derive the palette)
-  const ROOM = await (await fetch(room, { cache: 'no-cache' })).json();
+  // room: the room.json URL, or the room itself when the page has already read it (room.js does, to pick its still)
+  const ROOM = typeof room === 'string' ? await (await fetch(room, { cache: 'no-cache' })).json() : room;
   const [W, H] = ROOM.grid, N = W * H, FLOOR = ROOM.floor.top;
 
   // ---------- tiny helpers ----------
@@ -49,36 +62,41 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
   const lum = (r, g, b) => 0.3 * r + 0.55 * g + 0.15 * b;
 
   // ---------- the palette: one limited set of colours, every pixel snaps to it ----------
-  let PALB, LUT, QT;
+  let PALB, LUT, QT, PL, P = 0;
   const QN = 8192, DITHER = 0.032, BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+  // THE SLOW FIRST FRAME (21 Oct 2026): the table of nearest colours used to be filled whole before the first frame,
+  // 262,144 entries against every palette colour. Now each entry is worked out the first time a pixel needs it and kept
+  // (255 = not yet), with the same formula, so the picture is the same, and the first frame no longer waits for it.
+  const UNSET = 255;
   async function buildPalette() {
     let pal;
     try { pal = await (await fetch(ROOM.palette, { cache: 'no-cache' })).json(); }
     catch (e) { pal = await (await fetch('art/pal_base.json')).json(); }
-    const P = pal.length; PALB = new Uint8Array(P * 3);
-    pal.forEach((c, i) => { PALB[i * 3] = c[0]; PALB[i * 3 + 1] = c[1]; PALB[i * 3 + 2] = c[2]; });
-    // nearest palette colour in OKLab (perceptual), for every 6-bit display colour, built once
-    const ok = (r, g, b) => {
-      r = (r / 255) ** 2.2; g = (g / 255) ** 2.2; b = (b / 255) ** 2.2;
-      const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
-      const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
-      const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
-      return [0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s, 1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,
-              0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s];
-    };
-    const PL = new Float32Array(P * 3);
+    P = Math.min(pal.length, UNSET); PALB = new Uint8Array(P * 3);
+    pal.slice(0, P).forEach((c, i) => { PALB[i * 3] = c[0]; PALB[i * 3 + 1] = c[1]; PALB[i * 3 + 2] = c[2]; });
+    PL = new Float32Array(P * 3);
     for (let i = 0; i < P; i++) { const o = ok(pal[i][0], pal[i][1], pal[i][2]); PL[i * 3] = o[0]; PL[i * 3 + 1] = o[1]; PL[i * 3 + 2] = o[2]; }
-    LUT = new Uint8Array(64 * 64 * 64);
-    for (let r = 0; r < 64; r++) for (let g = 0; g < 64; g++) for (let b = 0; b < 64; b++) {
-      const o = ok((r + 0.5) * 4, (g + 0.5) * 4, (b + 0.5) * 4); let best = 0, bd = 1e9;
-      for (let i = 0; i < P; i++) {
-        const dl = o[0] - PL[i * 3], da = o[1] - PL[i * 3 + 1], db = o[2] - PL[i * 3 + 2], d = dl * dl * 1.4 + da * da + db * db;
-        if (d < bd) { bd = d; best = i; }
-      }
-      LUT[(r << 12) | (g << 6) | b] = best;
-    }
+    LUT = new Uint8Array(64 * 64 * 64).fill(UNSET);
     ditherTables(DITHER);
   }
+  // nearest palette colour in OKLab (perceptual) for one 6-bit display colour, kept in LUT once found
+  function nearest(key) {
+    const o = ok(((key >> 12) + 0.5) * 4, (((key >> 6) & 63) + 0.5) * 4, ((key & 63) + 0.5) * 4); let best = 0, bd = 1e9;
+    for (let i = 0; i < P; i++) {
+      const dl = o[0] - PL[i * 3], da = o[1] - PL[i * 3 + 1], db = o[2] - PL[i * 3 + 2], d = dl * dl * 1.4 + da * da + db * db;
+      if (d < bd) { bd = d; best = i; }
+    }
+    LUT[key] = best; return best;
+  }
+  // OKLab, a perceptual colour space, for the nearest-colour search
+  const ok = (r, g, b) => {
+    r = (r / 255) ** 2.2; g = (g / 255) ** 2.2; b = (b / 255) ** 2.2;
+    const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+    const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+    const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+    return [0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s, 1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,
+            0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s];
+  };
   // linear light -> gamma -> + Bayer offset -> 6-bit channel, one table per Bayer cell. The offset's size is the hour's
   // 'dither' (room.json): a smaller one leaves large flat walls one solid palette step, so only real light edges dither
   // (J, 21 Oct: the night wall read as a fine checker, a texture, not light).
@@ -141,17 +159,20 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
   });
 
   // ---------- load the room ----------
+  // Every picture is asked for at once (they are small and local), and nothing here waits on the network beyond this
+  // folder: the weather, the door and the state files come later, through setWeather, setLive and addThings.
   const OBJ = [];
-  for (const [n, o] of [...ROOM.objects, ...extra].entries()) {
-    const ob = Object.assign({ layer: 'actor', lit: 'pixel', idx: n, oid: n + 1, flare: 0, nudge: 0, pose: 0, poses: [] }, o);
+  let NEXT_OID = 1;
+  async function loadThing(o, oid) {
+    const ob = Object.assign({ layer: 'actor', lit: 'pixel', idx: oid - 1, oid, flare: 0, nudge: 0, pose: 0, poses: [] }, o);
     try {
       if (o.kind === 'panel') { ob.lit = 'panel'; const [x0, y0, x1, y1] = o.box; ob.x = x0; ob.y = y0; ob.w = x1 - x0 + 1; ob.h = y1 - y0 + 1; }
-      else for (const src of (o.sprites || [o.sprite])) { const d = await imageData(src); ob.poses.push(sprite(d.data, d.width, d.height)); }
-    } catch (e) { console.warn('room: could not load', o.id, e); continue; }
+      else for (const d of await Promise.all((o.sprites || [o.sprite]).map(imageData))) ob.poses.push(sprite(d.data, d.width, d.height));
+    } catch (e) { console.warn('room: could not load', o.id, e); return null; }
     if (ob.poses.length) { ob.w = ob.poses[0].w; ob.h = ob.poses[0].h; }
     if (o.slot) {                                   // one of her things: bottom-centred in its slot, never bigger than it
       const [x0, y0, x1, y1] = o.slot.box, sw = x1 - x0 + 1, sh = y1 - y0 + 1;
-      if (ob.w > sw || ob.h > sh) { console.warn(`room: ${o.id} is ${ob.w}x${ob.h}, bigger than its slot ${o.slot.id} (${sw}x${sh}); left out`); continue; }
+      if (ob.w > sw || ob.h > sh) { console.warn(`room: ${o.id} is ${ob.w}x${ob.h}, bigger than its slot ${o.slot.id} (${sw}x${sh}); left out`); return null; }
       ob.x = x0 + ((sw - ob.w) >> 1); ob.y = y1 - ob.h + 1; ob.layer = o.slot.layer || 'actor';
       if (o.slot.cast) ob.cast = o.slot.cast;
       ob.base = o.slot.base ?? y1;
@@ -159,16 +180,30 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
     }
     if (ob.base === undefined) ob.base = ob.y + ob.h - 1;
     ob.lights = o.light ? [].concat(o.light).map(l => Object.assign({ ph: Math.random() * 6.28, ph2: Math.random() * 6.28 }, l)) : [];
-    OBJ.push(ob);
+    return ob;
   }
-  for (const ob of OBJ) ob.castOid = ob.castId ? OBJ.find(o => o.id === ob.castId).oid : ob.oid;   // a part shades with its whole
+  // a list of things, loaded together and added in the list's order (the order things are drawn in)
+  async function addAll(list) {
+    const oids = list.map(() => NEXT_OID++);
+    const got = await Promise.all(list.map((o, k) => loadThing(o, oids[k])));
+    for (const ob of got) if (ob) { OBJ.push(ob); if (ob.block) BLOCKS.push(ob.block); }
+    for (const ob of OBJ) ob.castOid = ob.castId ? (OBJ.find(o => o.id === ob.castId) || ob).oid : ob.oid;   // a part shades with its whole
+    return got.filter(Boolean);
+  }
   const byId = id => OBJ.find(o => o.id === id);
-  const MJ = await (await fetch(ROOM.march.frames)).json(), MF = {};
-  for (const [set, m] of Object.entries(MJ)) {
-    const d = await imageData(m.file); MF[set] = [];
-    for (let k = 0; k < m.n; k++) MF[set].push(Object.assign(sprite(crop(d, k * m.w, 0, m.w, m.h), m.w, m.h), m.frames[k]));
-  }
-  await buildPalette();
+  const BLOCKS = [];
+  const MF = {};
+  const [MJ] = await Promise.all([
+    fetch(ROOM.march.frames).then(r => r.json()).then(async mj => {
+      await Promise.all(Object.entries(mj).map(async ([set, m]) => {
+        const d = await imageData(m.file); MF[set] = [];
+        for (let k = 0; k < m.n; k++) MF[set].push(Object.assign(sprite(crop(d, k * m.w, 0, m.w, m.h), m.w, m.h), m.frames[k]));
+      }));
+      return mj;
+    }),
+    addAll([...ROOM.objects, ...extra]),
+    buildPalette(),
+  ]);
 
   // ---------- the hours: blended by the real Chiang Mai clock ----------
   const HN = ['day', 'golden', 'night'];
@@ -204,9 +239,8 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
   // on a phone (fit().follow) a full-height window, whole art pixels wide, that follows March ----------
   let SC = 1, VW = W, camF = 0, camX = 0;
   function layout() {
-    const { w: vw, h: vh, follow } = fit(), dpr = devicePixelRatio || 1;
-    const whole = Math.max(1, Math.floor(Math.min(vw / W, vh / H))), tall = Math.max(1, Math.floor(vh / H));
-    if (follow && tall >= whole * 1.5) { SC = tall; VW = Math.min(W, Math.floor(vw / SC)); } else { SC = whole; VW = W; }
+    const dpr = devicePixelRatio || 1;
+    ({ SC, VW } = frameFor(fit(), W, H));
     const cw = VW * SC + 'px', ch = H * SC + 'px';
     if (cv.style.width !== cw || cv.style.height !== ch) { cv.style.width = cw; cv.style.height = ch; }
     const bw = Math.round(VW * SC * dpr), bh = Math.round(H * SC * dpr);
@@ -247,7 +281,6 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
   const M = { fx: ROOM.march.start[0], fy: ROOM.march.start[1], face: 'L', st: 'idle', t: 0, dur: 2, path: [], then: null,
     dist: 0, k: 0, hold: 0, blinkAt: rand(1, 4), blinkT: -1, breath: false, breathAt: rand(1, 3), hop: -1, jig: -1,
     seq: null, si: 0, sh: 0, seatMode: 'work', seatDur: 10, last: null, queue: null, speed: rand(...ROOM.march.speed), beh: 'start' };
-  const BLOCKS = OBJ.filter(o => o.block).map(o => o.block);
   const inBlock = (x, y) => BLOCKS.some(b => x >= b[0] && x <= b[2] && y >= b[1] && y <= b[3]);
   const WALK = ROOM.floor.walk;
   // Her walks are mostly SIDEWAYS: she has side-walk frames only (no front or back walk), and a long straight walk up
@@ -763,7 +796,8 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
       if (RAW && MODE[i] !== 0 && RAWLIT) { D[o] = 255; D[o + 1] = 0; D[o + 2] = 255; D[o + 3] = 255; continue; }   // ?raw=lit: only the dithered pixels, for tools/palette.py
       if (RAW || MODE[i] !== 0) { D[o] = Math.sqrt(r / QM) * 255; D[o + 1] = Math.sqrt(g / QM) * 255; D[o + 2] = Math.sqrt(b / QM) * 255; D[o + 3] = 255; continue; }
       const dd = DOX[i], base = ((((y + (dd >> 2)) & 3) << 2) | ((x + (dd & 3)) & 3)) * QN;
-      const p = LUT[(QT[base + r] << 12) | (QT[base + g] << 6) | QT[base + b]] * 3;
+      const key = (QT[base + r] << 12) | (QT[base + g] << 6) | QT[base + b], li = LUT[key];
+      const p = (li === UNSET ? nearest(key) : li) * 3;
       D[o] = PALB[p]; D[o + 1] = PALB[p + 1]; D[o + 2] = PALB[p + 2]; D[o + 3] = 255;
     }
     sctx.putImageData(img, 0, 0);
@@ -880,7 +914,8 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
   let T = 0, DT = 0.016, last = performance.now();
   layout(); addEventListener('resize', layout);
   if (typeof ResizeObserver === 'function' && cv.parentElement) new ResizeObserver(() => layout()).observe(cv.parentElement);
-  const perf = { n: 0, sum: 0, worst: 0, get avg() { return this.n ? this.sum / this.n : 0; } };
+  // perf.first: when the first frame was drawn (performance.now()); n, avg, worst: frame times after the first second
+  const perf = { first: 0, n: 0, sum: 0, worst: 0, get avg() { return this.n ? this.sum / this.n : 0; } };
   const REC = { on: false, every: 1, i: 0, frames: [], times: [] };
   window.__room = {
     perf, M, LIVE, get hours() { return HW; }, get cam() { return { camX, VW, SC }; }, get sky() { return SKY; },
@@ -900,6 +935,7 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
       if (M.st !== 'walk') { tgt = cx - VW / 2; k = 0.8; } else { if (cx < lo) tgt = cx - VW * 0.32; if (cx > hi) tgt = cx - VW * 0.68; }
       camF += (clamp(tgt, 0, W - VW) - camF) * (1 - Math.exp(-k * dt)); camX = Math.round(camF); } else camX = 0;
     render(T);
+    if (!perf.first) { perf.first = performance.now(); cv.dispatchEvent(new Event('firstframe')); }
     const ms = performance.now() - t0;
     if (T > 1) { perf.n++; perf.sum += ms; perf.worst = Math.max(perf.worst, ms); }
     if (REC.on && (REC.i++ % REC.every === 0)) {
@@ -916,5 +952,7 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
     setWeather: (sky) => { if (!Q.has('weather') && WEATHER[sky]) SKY = sky; },
     layout,
     objects: OBJ,
+    // the things March added (state/objects.json), once the page has read them: placed exactly as `extra` would have been
+    addThings: (list) => addAll(list || []),
   };
 }

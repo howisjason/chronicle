@@ -26,26 +26,31 @@ export const get = async (path, kind) => {
   } catch { return { ok: false }; }
 };
 export const S = {};
+// Only this folder's files are waited for. The door's newer "I used this" counts are asked
+// for alongside and land whenever the door answers (a slow or dead door once held the whole
+// room page back by seconds: 21 Oct 2026); until then the counts are the kept copy's.
 export async function loadAll() {
   const names = ['bench', 'shelf', 'board', 'cloud', 'quill', 'desk', 'wall', 'objects', 'slots'];
-  const files = await Promise.all([...names.map((n) => get(`state/${n}.json`)), get('state/log.jsonl', 'jsonl'), get('quill-notebook.md', 'text'), get('state/season.txt', 'text'), get('state/now.json')]);
+  const fromDoor = loadUsed();
+  const files = await Promise.all([...names.map((n) => get(`state/${n}.json`)), get('state/log.jsonl', 'jsonl'), get('quill-notebook.md', 'text'), get('state/season.txt', 'text'), get('state/now.json'), get('state/used.json')]);
   names.forEach((n, k) => { S[n] = files[k]; });
   [S.log, S.notebook, S.season, S.now] = files.slice(names.length);
-  await loadUsed();
+  const kept = files[files.length - 1];
+  if (!DOOR_COUNTS && kept.ok && kept.data && typeof kept.data === 'object' && !Array.isArray(kept.data)) USED = kept.data;
+  return { fromDoor };
 }
 // The season (J's design, 15 Oct 2026): one direction at a time, his pen, copied by the
 // launcher into state/season.txt before each wake; empty when there is none.
 export const seasonLine = () => (S.season && S.season.ok ? S.season.data.trim().replace(/^\*\*Set [^*]*\*\*\s*/, '') : '');
-// The "I used this" counts: the door's when it answers, else the copy log-run.mjs keeps.
-let USED = {};
+// The "I used this" counts: the door's when it answers, else the copy log-run.mjs keeps
+// (state/used.json, read by loadAll).
+let USED = {}, DOOR_COUNTS = false;
 export async function loadUsed() {
   try {
     const r = await fetch(`${DOOR}/used`, { cache: 'no-cache' });
     const c = r.ok ? (await r.json()).counts : null;
-    if (c && typeof c === 'object') { USED = c; return; }
-  } catch { /* the door is down; the file below */ }
-  const f = await get('state/used.json');
-  if (f.ok && f.data && typeof f.data === 'object' && !Array.isArray(f.data)) USED = f.data;
+    if (c && typeof c === 'object') { USED = c; DOOR_COUNTS = true; }
+  } catch { /* the door is down; the kept copy stands */ }
 }
 
 // ------------------------------------------------------------------ small DOM helpers (text only; never her words as HTML)
