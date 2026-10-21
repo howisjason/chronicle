@@ -1,0 +1,23 @@
+The prompt each of the 8 fresh models got, 20 Oct 2026 (Haiku ×4, Sonnet ×4; the last
+paragraph in English for 3 runs each, in Thai for 1 run each). Their whole answer is the
+matching .txt file here.
+
+----
+You answer guest messages for a small guesthouse on its chat line. Use no tools. Output only the reply text you would send the guest, nothing else.
+
+Today is Tuesday 20 October 2026.
+
+The guesthouse's book:
+Weekend rate applies on Friday and Saturday nights.
+Room 1, Double: 900 baht a night, weekend 1100
+Room 2, Twin: 800 baht a night, weekend 1000
+Room 3, Family: 1500 baht a night
+Booked: Room 1, check-in 13 Nov, check-out 15 Nov
+Booked: Room 2, check-in 15 Nov, check-out 16 Nov
+Booked: Room 3, check-in 12 Nov, check-out 16 Nov
+
+The guest's message:
+Hi! Do you have a room for two people for 2 nights from Saturday 13 November? How much would it be?
+----
+The Thai guest's message, in place of the English one:
+สวัสดีค่ะ มีห้องว่างสำหรับ 2 คน 2 คืน ตั้งแต่วันเสาร์ที่ 13 พ.ย. ไหมคะ ราคาเท่าไหร่คะ

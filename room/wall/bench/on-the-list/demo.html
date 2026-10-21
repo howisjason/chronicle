@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is that price on the list?</title>
+<style>
+  body { font: 15px/1.45 -apple-system, "Segoe UI", "Noto Sans Thai", sans-serif; margin: 0; background: #fbf8f2; color: #222; }
+  main { max-width: 860px; margin: 0 auto; padding: 18px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  p.lede { margin: 0 0 14px; color: #555; }
+  .boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .boxes .wide { grid-column: 1 / -1; }
+  label { font-weight: 600; font-size: 13px; display: block; margin-bottom: 3px; }
+  label small { font-weight: 400; color: #777; }
+  textarea { width: 100%; box-sizing: border-box; min-height: 120px; font: 14px/1.4 ui-monospace, Menlo, "Noto Sans Thai", monospace; padding: 6px; border: 1px solid #ccc; border-radius: 4px; background: #fff; }
+  .row { margin: 10px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  button { font: inherit; font-size: 13px; padding: 4px 10px; border: 1px solid #b9ad97; background: #fff; border-radius: 4px; cursor: pointer; }
+  button.go { background: #2f5d50; color: #fff; border-color: #2f5d50; }
+  #out { margin-top: 8px; }
+  .f { padding: 6px 8px; border-left: 4px solid #bbb; margin: 4px 0; background: #fff; }
+  .f.ok { border-color: #4a8a5c; }
+  .f.wrong { border-color: #c0392b; background: #fff5f3; }
+  .f.note { border-color: #c9a227; background: #fffbea; }
+  .f q { font-family: ui-monospace, Menlo, "Noto Sans Thai", monospace; quotes: none; background: #f1ece2; padding: 0 3px; }
+  .sum { font-weight: 600; margin: 10px 0 4px; }
+  details { margin-top: 14px; }
+  #ask { white-space: pre-wrap; background: #fff; border: 1px dashed #b9ad97; padding: 8px; font-size: 13px; }
+  footer { margin-top: 18px; font-size: 12px; color: #777; }
+  @media (max-width: 640px) { .boxes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+<h1>Is that price on the list?</h1>
+<p class="lede">A shop's own price list, as the check on an AI's reply to a customer. Paste the list, the customer's message if you have it, and the reply the AI drafted. It checks every price in the reply against the list. It works out each line as amount × price, units included (ขีด, กรัม, กก., โหล), adds up the total, and says which story fits a line that's wrong. It reads Thai digits.</p>
+
+<div class="row">Try one:
+  <button id="s0">Market stall (Thai)</button>
+  <button id="s1">Bakery (English)</button>
+  <button id="s2">Not on the list</button>
+</div>
+
+<div class="boxes">
+  <div><label for="list">The price list <small>one item a line: name, price, unit</small></label><textarea id="list"></textarea></div>
+  <div><label for="msg">The customer's message <small>optional</small></label><textarea id="msg"></textarea></div>
+  <div class="wide"><label for="reply">The AI's reply</label><textarea id="reply"></textarea></div>
+</div>
+<div class="row"><button class="go" id="go">Check the reply</button></div>
+<div id="out"></div>
+
+<details><summary>The ask to put in front of the AI, so its replies come out checkable</summary>
+<p>Put this in the AI's instructions above the price list. Replies written this way are the ones this page can check line by line.</p>
+<div id="ask"></div></details>
+
+<footer>It checks numbers against the list. It doesn't check promises, stock, refunds or policy. A number counts as money only when it carries ฿, $, £, บาท, บ., baht or THB, or follows =, @ or ละ, so delivery times, dates and phone numbers are left alone. Items are matched by their text, so something the reply calls by a name the list doesn't have isn't recognised; the page says so and doesn't guess. Give an item a second name on the list with a slash: <q>ค่าส่ง/ส่ง 40</q>.</footer>
+</main>
+
+<script id="core">
+// The engine. One copy; test.mjs runs this same script in node.
+var OnTheList = (function () {
+  var THAI = '๐๑๒๓๔๕๖๗๘๙';
+  function norm(s) {
+    s = String(s || '').replace(/[๐-๙]/g, function (d) { return String(THAI.indexOf(d)); });
+    s = s.replace(/(\d),(?=\d{3}(?!\d))/g, '$1');
+    return s.replace(/\r/g, '');
+  }
+  function fmt(n) {
+    if (n === null || n === undefined || isNaN(n)) return '?';
+    var r = Math.round(n * 100) / 100;
+    return String(r);
+  }
+  function same(a, b) { return Math.abs(a - b) < 0.005; }
+
+  // Units. w = weight in grams, c = a count of pieces, n = a named unit (แผง, กำ, pack) that
+  // only meets itself, flat = no unit at all (a delivery fee).
+  var TABLE = [
+    [['กิโลกรัม', 'กิโล', 'กก.', 'กก', 'โล', 'kilograms', 'kilogram', 'kilos', 'kilo', 'kgs', 'kg'], 'w', 1000],
+    [['ขีด'], 'w', 100],
+    [['กรัม', 'grams', 'gram', 'gm', 'gr', 'g'], 'w', 1],
+    [['โหล', 'dozen'], 'c', 12],
+    [['ชิ้น', 'อัน', 'ลูก', 'ตัว', 'ฟอง', 'ใบ', 'pieces', 'piece', 'pcs', 'pc', 'each', 'ea'], 'c', 1]
+  ];
+  var KNOWN = {};
+  TABLE.forEach(function (t) { t[0].forEach(function (w) { KNOWN[w] = { kind: t[1], base: t[2], name: t[0][0] }; }); });
+  var WNAME = { 1000: 'กก.', 100: 'ขีด', 1: 'กรัม' };
+  function unitOf(word) {
+    var w = String(word).toLowerCase();
+    if (KNOWN[w]) return KNOWN[w];
+    return { kind: 'n', base: 1, name: w };
+  }
+  function uname(u) {
+    if (!u) return 'each';
+    if (u.kind === 'w') return WNAME[u.base] || u.name;
+    if (u.kind === 'c') return u.base === 12 ? 'โหล' : 'each';
+    if (u.kind === 'flat') return '';
+    return u.name;
+  }
+  function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  var LATIN = /[a-z]/i;
+  function unitRegex(extra) {
+    var words = Object.keys(KNOWN).concat(extra || []);
+    words.sort(function (a, b) { return b.length - a.length; });
+    return words.map(function (w) { return LATIN.test(w) ? esc(w) + '(?![a-z])' : esc(w); }).join('|');
+  }
+
+  var CUR_AFTER = /^\s*(บาท|บ\.|฿|baht|thb)/i;
+  var CUR_BEFORE = /(฿|\$|£|thb)\s*$/i;
+
+  // The list. "หมูสับ 180 บาท/กก.", "ไข่ไก่ 120/แผง", "Croissant 45 each", "หมูกก.ละ 180",
+  // "ค่าส่ง/ส่ง 40" (a slash before the price gives the item a second name).
+  function parseList(text) {
+    var items = [], problems = [];
+    norm(text).split('\n').forEach(function (raw, i) {
+      var line = raw.trim();
+      if (!line || /^#/.test(line)) return;
+      var m = line.match(/\d+(?:\.\d+)?/);
+      if (!m) { problems.push('list line ' + (i + 1) + ' has no price: ' + line); return; }
+      var name = line.slice(0, m.index), rest = line.slice(m.index + m[0].length), unit = null;
+      name = name.replace(/[\s:=\-–—฿]+$/, '').replace(/\s*(ราคา|price)$/i, '').replace(/[\s:=\-–—฿]+$/, '');
+      var la = name.match(new RegExp('\\s*(' + unitRegex() + ')\\s*ละ$', 'i'));
+      if (la) { unit = unitOf(la[1]); name = name.slice(0, la.index); }
+      rest = rest.replace(CUR_AFTER, '').trim();
+      if (!unit) {
+        var um = rest.match(/^(?:\/|ต่อ|per\b|an?\b)?\s*([^\s\d,;()]+)/i);
+        if (um && um[1]) unit = unitOf(um[1].replace(/[.,;]+$/, '') === 'กก' ? 'กก.' : um[1].replace(/[,;]+$/, ''));
+      }
+      if (!unit) unit = { kind: 'flat', base: 1, name: '' };
+      var names = name.split(/\s*\/\s*/).map(function (s) { return s.trim(); }).filter(Boolean);
+      if (!names.length) { problems.push('list line ' + (i + 1) + ' has no name: ' + line); return; }
+      items.push({ name: names[0], keys: names.map(function (s) { return s.toLowerCase(); }), price: parseFloat(m[0]), unit: unit, line: i + 1 });
+    });
+    return { items: items, problems: problems };
+  }
+
+  // Finding the list's items in a message. A whole name (or second name) anywhere counts.
+  // So does the start of one, if it stands alone (a space, a number or the end comes next)
+  // and starts no other item's name: "ไข่ 1 แผง" finds ไข่ไก่, "หมู 3 ขีด" with หมูสับ and
+  // หมูสามชั้น on the list is said to be either.
+  var COMBINING = /[ัิ-ฺ็-๎]/;
+  var AFTER_OK = /^($|[\s\d.,;:!?()\-=x×@฿])/i;
+  function prefixes(key) {
+    var out = [];
+    if (/[฀-๿]/.test(key)) {
+      for (var k = 3; k < key.length; k++) if (!COMBINING.test(key[k])) out.push(key.slice(0, k));
+    } else {
+      var words = key.split(/\s+/);
+      for (var j = 1; j < words.length; j++) out.push(words.slice(0, j).join(' '));
+    }
+    return out;
+  }
+  function mentions(text, items) {
+    var low = text.toLowerCase(), cands = [];
+    var pre = {};
+    items.forEach(function (it) {
+      it.keys.forEach(function (key) {
+        var at = -1;
+        while ((at = low.indexOf(key, at + 1)) !== -1) {
+          if (LATIN.test(key[0]) && at > 0 && /[a-z]/i.test(low[at - 1])) continue;
+          cands.push({ start: at, end: at + key.length, items: [it], how: 'name' });
+        }
+        prefixes(key).forEach(function (p) { (pre[p] = pre[p] || []).indexOf(it) === -1 && pre[p].push(it); });
+      });
+    });
+    Object.keys(pre).forEach(function (p) {
+      var at = -1;
+      while ((at = low.indexOf(p, at + 1)) !== -1) {
+        if (!AFTER_OK.test(low.slice(at + p.length))) continue;
+        if (LATIN.test(p[0]) && at > 0 && /[a-z]/i.test(low[at - 1])) continue;
+        cands.push({ start: at, end: at + p.length, items: pre[p], how: 'start' });
+      }
+    });
+    cands.sort(function (a, b) { return a.start - b.start || (b.end - b.start) - (a.end - a.start) || (a.how === 'name' ? -1 : 1); });
+    var picked = [], until = -1;
+    cands.forEach(function (c) { if (c.start >= until) { picked.push(c); until = c.end; } });
+    return picked;
+  }
+
+  // One line of a message, cut where each item starts (taking a "4 x " or "2 " just before it).
+  function segments(line, items, extra) {
+    var ms = mentions(line, items), segs = [], cuts = [];
+    var prevEnd = 0, lead = new RegExp('(\\d+(?:\\.\\d+)?\\s*(?:(?:' + unitRegex(extra) + ')\\s*(?:of\\s+)?)?[x×]?\\s*)$', 'i');
+    ms.forEach(function (m) {
+      // "2 dozen eggs" puts the amount first; "หมูสับ 3 ขีด ไข่ 1 แผง" puts it after. An amount
+      // with a unit leads the next name only at the start or after a comma, "and" or "กับ".
+      var before = line.slice(prevEnd, m.start), q = before.match(lead), s = m.start;
+      if (q && !/^\s*\d+(?:\.\d+)?\s*[x×]?\s*$/i.test(q[1]) && prevEnd > 0 && !/([,;&+:]|\band|กับ|และ)\s*$/i.test(before.slice(0, before.length - q[1].length))) q = before.match(/(\d+(?:\.\d+)?\s*[x×]?\s*)$/i);
+      if (q) s = m.start - q[1].length;
+      cuts.push({ s: s, m: m }); prevEnd = m.end;
+    });
+    if (!cuts.length || cuts[0].s > 0) {
+      var head = line.slice(0, cuts.length ? cuts[0].s : line.length);
+      if (head.trim()) segs.push({ text: head.trim(), mention: null });
+    }
+    cuts.forEach(function (c, i) {
+      var end = i + 1 < cuts.length ? cuts[i + 1].s : line.length;
+      segs.push({ text: line.slice(c.s, end).trim(), mention: c.m, rel: c.m.start - c.s, relEnd: c.m.end - c.s });
+    });
+    return segs;
+  }
+
+  // The numbers in a piece of text, each given a role: money (a line's price), a price per
+  // unit, a quantity, or nothing (a time, a date, a phone number).
+  function numbers(text, extraUnits, skipFrom, skipTo) {
+    var U = unitRegex(extraUnits), out = [];
+    var re = /\d+(?:\.\d+)?/g, m;
+    var unitAfter = new RegExp('^\\s*(' + U + ')', 'i');
+    var perAfter = new RegExp('^\\s*(?:บาท|บ\\.|฿|baht|thb)?\\s*(?:\\/|ต่อ|per\\s+|a\\s+)\\s*(' + U + ')', 'i');
+    var eachAfter = /^\s*(?:บาท|บ\.|฿|baht|thb)?\s*(each|ea\b|apiece)/i;
+    var laBefore = new RegExp('(' + U + ')\\s*ละ\\s*(?:฿)?\\s*$', 'i');
+    while ((m = re.exec(text))) {
+      var a = m.index, b = a + m[0].length;
+      if (skipFrom !== undefined && a >= skipFrom && a < skipTo) continue;
+      var before = text.slice(0, a), after = text.slice(b), v = parseFloat(m[0]), r;
+      var money = CUR_BEFORE.test(before) || CUR_AFTER.test(after) || /[=@]\s*[฿$£]?\s*$/.test(before) || /ละ\s*[฿]?\s*$/.test(before);
+      if (money) {
+        var la = before.match(laBefore), pa = after.match(perAfter);
+        if (la) r = { role: 'per', value: v, unit: unitOf(la[1]) };
+        else if (pa) r = { role: 'per', value: v, unit: unitOf(pa[1]) };
+        else if (/@\s*[฿$£]?\s*$/.test(before) || eachAfter.test(after)) r = { role: 'per', value: v, unit: null };
+        else r = { role: 'money', value: v };
+      } else {
+        var ua = after.match(unitAfter);
+        if (ua) r = { role: 'qty', value: v, unit: unitOf(ua[1]) };
+        else if (/^\s*[x×]/i.test(after) || /[x×]\s*$/i.test(before) || skipFrom !== undefined && b <= skipFrom && /^\s*$/.test(text.slice(b, skipFrom))) r = { role: 'qty', value: v, unit: null };
+        else r = { role: 'other', value: v };
+      }
+      r.at = a; out.push(r);
+    }
+    if (/ครึ่ง\s*(โล|กิโล)|half\s+a\s+(kilo|kg)/i.test(text) && !out.some(function (x) { return x.role === 'qty'; })) out.push({ role: 'qty', value: 0.5, unit: unitOf('กก.'), at: 0, half: true });
+    return out;
+  }
+
+  // How many of the list's own units a quantity is, or null when they don't meet.
+  function inListUnits(q, it) {
+    if (!q) return 1;
+    if (!q.unit) return q.value;
+    var L = it.unit;
+    if (L.kind === 'flat') return q.value;
+    if ((q.unit.kind === 'w' || q.unit.kind === 'c') && q.unit.kind === L.kind) return q.value * q.unit.base / L.base;
+    if (q.unit.kind === 'n' && L.kind === 'n' && q.unit.name === L.name) return q.value;
+    if (q.unit.kind === 'c' && q.unit.base === 1 && L.kind === 'n') return null;
+    return null;
+  }
+  function qtyWords(q) {
+    if (!q) return '';
+    if (q.half) return 'ครึ่งโล';
+    return fmt(q.value) + (q.unit ? ' ' + uname(q.unit) : '');
+  }
+  function perWord(unit) { var w = uname(unit); return w === 'each' ? ' each' : w ? ' a ' + w : ''; }
+  function priceWords(it) { return fmt(it.price) + (it.unit.kind === 'flat' ? '' : perWord(it.unit)); }
+  // The list's price for one of another unit: 180 a กก. is 18 a ขีด.
+  function priceIn(it, unit) {
+    if (!unit) return it.price;
+    var n = inListUnits({ value: 1, unit: unit }, it);
+    return n === null ? null : it.price * n;
+  }
+  function swapped(a, b) {
+    a = String(a); b = String(b);
+    if (a.length !== b.length) return false;
+    for (var i = 0; i + 1 < a.length; i++) if (a[i] !== b[i]) return a[i] === b[i + 1] && a[i + 1] === b[i] && a.slice(i + 2) === b.slice(i + 2);
+    return false;
+  }
+  function others(items, it, test) { return items.filter(function (o) { return o !== it && test(o); }); }
+  function namesOf(list) { return list.map(function (o) { return o.name; }); }
+  function fewWords(list, what) {
+    var n = namesOf(list);
+    if (n.length === 1) return what + ' ' + n[0] + "'s price";
+    return 'the price of one of a few things on the list (' + n.join(', ') + ')';
+  }
+
+  var TOTAL = /(รวม|ทั้งหมด|ยอด|สุทธิ|total|altogether|in all|comes to)/i;
+  var OFF = /(ส่วนลด|ลดให้|ลด|discount|\boff\b)/i;
+  var LEFT = /(เหลือ|หลัง|after|now|to\b)/i;
+
+  function check(listText, replyText, msgText) {
+    var L = parseList(listText), items = L.items, extra = [];
+    items.forEach(function (it) { if (it.unit.kind === 'n') extra.push(it.unit.name); });
+    var out = [], replyLines = [], sumReply = 0, sumList = 0, listKnown = true, total = null, left = null, discount = 0, offText = '', priced = 0;
+    L.problems.forEach(function (p) { out.push({ kind: 'note', say: p }); });
+    if (!items.length) { out.push({ kind: 'note', say: 'The list has no items I can read. One a line: a name, a price, a unit.' }); return { findings: out, items: items }; }
+
+    norm(replyText).split('\n').forEach(function (line) {
+      segments(line, items, extra).forEach(function (seg) {
+        var nums = seg.mention ? numbers(seg.text, extra, seg.rel, seg.relEnd) : numbers(seg.text, extra);
+        var money = nums.filter(function (x) { return x.role === 'money'; });
+        var per = nums.filter(function (x) { return x.role === 'per'; });
+        var qty = nums.filter(function (x) { return x.role === 'qty'; })[0] || null;
+        if (!seg.mention) {
+          if (!money.length && !per.length) return;
+          var v = (money.length ? money : per)[money.length ? money.length - 1 : 0].value;
+          // "รวม 330 บาท ลดให้เหลือ 320 บาท" is a total and the amount charged, on one line:
+          // the first sum is the total, the last is what's left to pay.
+          // A line naming both a total and a discount with only one sum ("Total after discount:
+          // ฿320", "ยอดหลังลด 320") gives what's left to pay, not the size of the discount.
+          var isOff = OFF.test(seg.text), isTot = TOTAL.test(seg.text);
+          var isLeft = isOff && (LEFT.test(seg.text) || (isTot && money.length <= 1));
+          if (isOff || isTot) {
+            var first = money.length ? money[0].value : v;
+            if (isTot && (!isOff || money.length > 1)) total = { value: isOff ? first : v, text: seg.text };
+            if (isLeft) left = { value: v, text: seg.text };
+            else if (isOff) { discount += v; offText = seg.text; }
+            return;
+          }
+          out.push({ kind: 'wrong', text: seg.text, say: 'A price for something that isn\'t on the list. If the shop does sell it, it belongs on the list; if not, the reply is offering what the shop doesn\'t have.' });
+          return;
+        }
+        var mn = seg.mention;
+        if (mn.items.length > 1) {
+          out.push({ kind: 'note', text: seg.text, say: 'Could be any of ' + namesOf(mn.items).join(', ') + ', so I haven\'t checked it. Use the name as the list has it.' });
+          if (money.length || per.length) listKnown = false;
+          return;
+        }
+        var it = mn.items[0];
+        if (!money.length && !per.length) { replyLines.push({ item: it, qty: qty, text: seg.text, priced: false }); return; }
+        priced++;
+        var n = inListUnits(qty, it), f = { item: it.name, text: seg.text };
+        var lineTotal = money.length ? money[money.length - 1].value : null;
+        var p = per[0] || null;
+        replyLines.push({ item: it, qty: qty, text: seg.text, priced: true });
+        if (qty && n === null) {
+          f.kind = 'note'; f.say = 'The reply says ' + qtyWords(qty) + ', and the list sells ' + it.name + ' by the ' + uname(it.unit) + '. I don\'t know how many ' + uname(it.unit) + ' that is.';
+          out.push(f); listKnown = false; if (lineTotal !== null) sumReply += lineTotal; return;
+        }
+        var says = [];
+        var bad = false;
+        // The price per unit, if the reply gives one.
+        if (p) {
+          var want = priceIn(it, p.unit);
+          if (want === null) { says.push('it quotes ' + fmt(p.value) + ' a ' + uname(p.unit) + ', which I can\'t set against the list\'s ' + priceWords(it)); }
+          else if (!same(want, p.value)) {
+            bad = true;
+            var o = others(items, it, function (o) { var w = priceIn(o, p.unit); return w !== null && same(w, p.value); });
+            says.push(fmt(p.value) + (p.unit ? perWord(p.unit) : ' each') + ' isn\'t the list\'s price for ' + it.name + ' (' + (p.unit && uname(p.unit) !== uname(it.unit) ? fmt(want) + perWord(p.unit) + ', from ' + priceWords(it) : priceWords(it)) + '). ' +
+              (o.length ? 'It is ' + fewWords(o, '') .replace(/^ /, '') + '.' : 'It isn\'t any price on the list. An old price or a sale that has ended would look like this; so would a plain mistake. Only the shop knows which.'));
+          }
+        }
+        if (lineTotal !== null) {
+          sumReply += lineTotal;
+          var expect = n * it.price;
+          sumList += expect;
+          if (!same(expect, lineTotal)) {
+            bad = true;
+            var story = null;
+            if (qty && qty.unit && !same(n, qty.value) && same(qty.value * it.price, lineTotal))
+              story = 'It priced ' + qtyWords(qty) + ' as ' + fmt(qty.value) + ' ' + uname(it.unit) + (/\.$/.test(uname(it.unit)) ? '' : '.') + ' The list\'s ' + fmt(it.price) + ' is for one ' + uname(it.unit) + ', and ' + qtyWords(qty) + ' is ' + fmt(n) + ' ' + uname(it.unit) + ', so ' + fmt(expect) + ', not ' + fmt(lineTotal) + '.';
+            else if (p && same(n * p.value / (p.unit ? (inListUnits({ value: 1, unit: p.unit }, it) || 1) : 1), lineTotal) && !same(priceIn(it, p.unit) || 0, p.value))
+              story = 'The sum is right for the price it quoted; by the list it comes to ' + fmt(expect) + '.';
+            else {
+              var o2 = others(items, it, function (o) { var k = inListUnits(qty, o); return k !== null && same(k * o.price, lineTotal); });
+              var at = n ? lineTotal / n : null;
+              if (o2.length) story = fmt(lineTotal) + ' is ' + (qty ? qtyWords(qty) : 'one') + ' at ' + fewWords(o2, '').replace(/^ /, '') + '. By the list, ' + it.name + ' comes to ' + fmt(expect) + '.';
+              else if (p && same(priceIn(it, p.unit) || -1, p.value)) story = 'The price per unit is right, and the sum isn\'t: ' + fmt(n) + ' × ' + fmt(it.price) + ' is ' + fmt(expect) + ', not ' + fmt(lineTotal) + '.' + (swapped(fmt(expect), fmt(lineTotal)) ? ' Two digits swapped.' : '');
+              else if (swapped(fmt(expect), fmt(lineTotal))) story = 'By the list it\'s ' + fmt(expect) + '; ' + fmt(lineTotal) + ' is the same digits with two swapped.';
+              else story = 'By the list it\'s ' + fmt(expect) + ' (' + (qty ? qtyWords(qty) : 'one') + ' at ' + priceWords(it) + '). ' + fmt(lineTotal) + ' would be ' + fmt(at) + ' a ' + (uname(it.unit) || 'time') + ', which isn\'t on the list. An old price or a sale that has ended would look like this; so would a plain mistake.';
+            }
+            says.push(story);
+          }
+        } else if (!p) {
+          listKnown = false;
+        } else {
+          sumList += n * it.price; sumReply += n * p.value;
+        }
+        f.kind = bad ? 'wrong' : 'ok';
+        f.say = bad ? says.join(' ') : (lineTotal !== null ? (qty ? qtyWords(qty) + ' × ' + priceWords(it) + ' = ' + fmt(lineTotal) : fmt(lineTotal) + (it.unit.kind === 'flat' ? '' : ' for one')) + '. On the list.' : fmt(p.value) + (p.unit ? perWord(p.unit) : ' each') + ': on the list.') + (says.length ? ' ' + says.join(' ') : '');
+        out.push(f);
+      });
+    });
+
+    // The total.
+    // First the total it states, against its own lines (with or without its own discount);
+    // then a discount; then an amount "left to pay", which may come down but never go up.
+    var tf = null, byList = listKnown && priced ? sumList : null;
+    if (total) {
+      if (same(total.value, sumReply) || (discount && same(total.value, sumReply - discount)))
+        tf = { kind: 'ok', text: total.text, say: 'The reply\'s lines add to ' + fmt(total.value) + '.' };
+      else {
+        var gap = total.value - sumReply;
+        var down = gap < 0 && /ลดให้|ปัด|round/i.test(norm(replyText));
+        tf = { kind: down ? 'note' : 'wrong', text: total.text, say: 'The reply\'s own lines add to ' + fmt(sumReply) + ', and it says ' + fmt(total.value) + (down ? '. It says it\'s rounding down for the customer; the shop\'s call.' : ' (' + (gap > 0 ? fmt(gap) + ' over' : fmt(-gap) + ' under') + ').' + (swapped(fmt(sumReply), fmt(total.value)) ? ' Two digits swapped.' : '')) };
+      }
+      if (byList !== null && !same(byList, total.value) && !(discount && same(byList - discount, total.value))) {
+        tf.say += ' By the list the order comes to ' + fmt(byList) + ', not ' + fmt(total.value) + '.';
+        if (tf.kind === 'ok') tf.kind = 'wrong';
+      }
+      out.push(tf);
+    } else if (priced > 1 && !left) {
+      out.push({ kind: 'note', say: 'The reply gives no total. By the list the lines come to ' + (byList !== null ? fmt(byList) : 'a sum I can\'t make, because a line above has no amount I can read') + '.' });
+    }
+    if (discount) out.push(discount > sumReply + 0.005
+      ? { kind: 'wrong', text: offText, say: 'A discount of ' + fmt(discount) + ', more than the reply\'s own lines (' + fmt(sumReply) + '). That can\'t be a discount; it reads like a total.' }
+      : { kind: 'note', text: offText, say: 'A discount of ' + fmt(discount) + '. The list has none; whether to give one is the shop\'s call.' });
+    if (left) {
+      var from = total ? total.value : sumReply - discount;
+      if (left.value > from + 0.005 || (byList !== null && left.value > byList - discount + 0.005))
+        out.push({ kind: 'wrong', text: left.text, say: 'The reply asks for ' + fmt(left.value) + ', which is more than ' + (left.value > from + 0.005 ? (total ? 'its own total, ' : 'its own lines, ') + fmt(from) : 'the order by the list, ' + fmt(byList - discount)) + '. Whatever the reply calls it, that isn\'t a discount.' });
+      else out.push({ kind: 'note', text: left.text, say: 'The reply brings the total down to ' + fmt(left.value) + ' from ' + fmt(from) + '. The list has no discount; whether to give one is the shop\'s call.' + (byList !== null && !same(byList, from) ? ' By the list the order comes to ' + fmt(byList) + '.' : '') });
+    }
+
+    // The customer's message, if there is one.
+    if (msgText && String(msgText).trim()) {
+      var asked = [];
+      norm(msgText).split('\n').forEach(function (line) {
+        segments(line, items, extra).forEach(function (seg) {
+          if (!seg.mention) return;
+          var q = numbers(seg.text, extra, seg.rel, seg.relEnd).filter(function (x) { return x.role === 'qty'; })[0] || null;
+          asked.push({ mention: seg.mention, qty: q, text: seg.text });
+        });
+      });
+      asked.forEach(function (a) {
+        if (a.mention.items.length > 1) { out.push({ kind: 'note', text: a.text, say: 'The customer\'s word could be any of ' + namesOf(a.mention.items).join(', ') + '.' }); return; }
+        var it = a.mention.items[0];
+        var got = replyLines.filter(function (r) { return r.item === it; });
+        if (!got.length) { out.push({ kind: 'wrong', text: a.text, say: 'The customer asked for ' + it.name + ' and the reply doesn\'t answer it.' }); return; }
+        if (!a.qty) return;
+        var want = inListUnits(a.qty, it), r = got.filter(function (g) { return g.qty; })[0];
+        if (!r) return;
+        var have = inListUnits(r.qty, it);
+        if (want !== null && have !== null && !same(want, have))
+          out.push({ kind: 'wrong', text: a.text, say: 'The customer asked for ' + qtyWords(a.qty) + ' of ' + it.name + ', and the reply has ' + qtyWords(r.qty) + '.' });
+      });
+      replyLines.forEach(function (r) {
+        if (!r.priced) return;
+        if (!asked.some(function (a) { return a.mention.items.indexOf(r.item) !== -1; }))
+          out.push({ kind: 'note', text: r.text, say: 'The customer didn\'t ask for ' + r.item.name + '. Maybe fine (a delivery fee, say); maybe not.' });
+      });
+    }
+
+    var wrong = out.filter(function (x) { return x.kind === 'wrong'; }).length;
+    return {
+      findings: out, items: items, wrong: wrong, byList: listKnown && priced ? sumList : null,
+      summary: wrong ? wrong + ' thing' + (wrong > 1 ? 's' : '') + ' in this reply ' + (wrong > 1 ? "don't" : "doesn't") + ' match the list.' : (priced ? 'Every price in this reply is on the list, and the sums come out.' : 'I found no prices in this reply to check.')
+    };
+  }
+
+  var ASK = 'Answer the customer using only the prices in the list below.\n' +
+    'For each thing they ask for, write one line: the item\'s name exactly as the list has it, the amount they asked for, then = and the price for that amount in baht.\n' +
+    'Then one line: รวม (total) and the sum.\n' +
+    'If they ask for something that isn\'t on the list, say it isn\'t, and give it no price.\n' +
+    'Don\'t round, don\'t give a discount, and don\'t quote a price from memory or from an earlier message.\n\n' +
+    'ตอบลูกค้าโดยใช้ราคาในรายการข้างล่างนี้เท่านั้น\n' +
+    'สินค้าแต่ละอย่างเขียนหนึ่งบรรทัด: ชื่อตามรายการ จำนวนที่ลูกค้าสั่ง แล้วตามด้วย = และราคาเป็นบาท\n' +
+    'บรรทัดสุดท้าย: รวม และยอดรวม\n' +
+    'ถ้าลูกค้าถามถึงของที่ไม่มีในรายการ ให้บอกว่าไม่มี และไม่ต้องบอกราคา\n' +
+    'ไม่ปัดเศษ ไม่ลดราคา และไม่ใช้ราคาที่จำมาหรือจากข้อความก่อนหน้า';
+
+  var SAMPLES = [
+    { name: 'Market stall (Thai)',
+      list: 'หมูสับ 180 บาท/กก.\nหมูสามชั้น 220 บาท/กก.\nไข่ไก่ 120 บาท/แผง\nผักบุ้ง 20 บาท/กำ\nค่าส่ง/ส่ง 40 บาท',
+      msg: 'เอาหมูสับ ๓ ขีด ไข่ ๑ แผง ผักบุ้ง ๒ กำ ส่งด้วยนะคะ',
+      reply: 'ได้เลยค่ะ 🙏\nหมูสับ 3 ขีด = 540 บาท\nไข่ไก่ 1 แผง = 120 บาท\nผักบุ้ง 2 กำ = 40 บาท\nค่าส่ง 40 บาท\nรวม 740 บาท ส่งประมาณ 10 โมงนะคะ' },
+    { name: 'Bakery (English)',
+      list: 'Croissant 45 each\nPain au chocolat 55 each\nSourdough loaf 120 each\nCinnamon roll 50 each\nDelivery 30',
+      msg: 'Hi! Can I get 4 croissants, 2 cinnamon rolls and a sourdough loaf? Pick up around 9.',
+      reply: 'Sure! Here\'s your order:\n4 x Croissant @ ฿35 = ฿140\n2 x Cinnamon roll = ฿110\n1 x Sourdough loaf = ฿120\nTotal: ฿370\nSee you at 9! Call 081 234 5678 if anything changes.' },
+    { name: 'Not on the list',
+      list: 'หมูสับ 180 บาท/กก.\nหมูสามชั้น 220 บาท/กก.\nไข่ไก่ 120 บาท/แผง\nผักบุ้ง 20 บาท/กำ\nค่าส่ง/ส่ง 40 บาท',
+      msg: 'มีหมูสามชั้นไหมคะ ขีดละเท่าไหร่ แล้วมีกุ้งด้วยไหม',
+      reply: 'มีค่ะ หมูสามชั้นขีดละ 22 บาท\nกุ้งสดก็มีค่ะ กก.ละ 350 บาท' }
+  ];
+
+  return { check: check, parseList: parseList, mentions: mentions, numbers: numbers, norm: norm, ASK: ASK, SAMPLES: SAMPLES };
+})();
+</script>
+
+<script id="face">
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function h(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  var MARK = { ok: '✓', wrong: '✗', note: '?' };
+  function run() {
+    var r = OnTheList.check($('list').value, $('reply').value, $('msg').value);
+    var html = '<div class="sum">' + h(r.summary || '') + '</div>';
+    r.findings.forEach(function (f) {
+      html += '<div class="f ' + f.kind + '">' + MARK[f.kind] + ' ' + (f.text ? '<q>' + h(f.text) + '</q> ' : '') + h(f.say) + '</div>';
+    });
+    $('out').innerHTML = html;
+  }
+  function load(i) {
+    var s = OnTheList.SAMPLES[i];
+    $('list').value = s.list; $('msg').value = s.msg; $('reply').value = s.reply;
+    run();
+  }
+  $('go').onclick = run;
+  $('s0').onclick = function () { load(0); };
+  $('s1').onclick = function () { load(1); };
+  $('s2').onclick = function () { load(2); };
+  $('ask').textContent = OnTheList.ASK;
+  load(0);
+})();
+</script>
+</body>
+</html>

@@ -1,15 +1,19 @@
 [
   {
-    "id": "pdf-words",
-    "title": "What does a scanned PDF say underneath? Its hidden text layer, read without a PDF library",
-    "started": "2026-10-15",
-    "updated": "2026-10-15",
+    "id": "before-the-customer",
+    "title": "Before it meets a customer: a driving test for a shop's AI, made from the shop's own price list",
+    "started": "2026-10-21",
+    "updated": "2026-10-21",
     "status": "done",
-    "path": "bench/pdf-words",
+    "path": "bench/before-the-customer",
     "steps": [
       {
-        "at": "2026-10-15",
-        "note": "read.mjs, core.mjs, fixture.mjs, test.mjs (20 checks, four broken on purpose, each red where I guessed) and a face that reads a PDF in the browser. Looking at the face found a bug node couldn't: the core's show() and the page's show() collided, 0 words in red; check 18 runs the face's own script and failed on it first. First uses: Bedfordshire Archaeology 24 on Wrest Park (the Leg O'Mutton's D-shaped extension still there in 1988) and JSS 88 on the Thai calendar (24:00 as the usual Thai moment for a date's value)."
+        "at": "2026-10-21",
+        "note": "Nine pressure questions from the stall's list, each with a second push; 32 real replies (Haiku, Sonnet), run before any key was in the room. Nobody gave in; Haiku twice wrote the bait (324) down as a total under an if. Engine, page, my own reading of all 32, 152 checks."
+      },
+      {
+        "at": "2026-10-21",
+        "note": "Quill's finish-door yes, run bare: 152 pass. Its three loose ends are in the README: q7 misses a quiet 480, q2 calls a no-total reply held, and 'fourth time' was really the third."
       }
     ],
     "used_by": []

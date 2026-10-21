@@ -1,115 +1,5 @@
 [
   {
-    "id": "d-20261014-7be2-a",
-    "at": "2026-10-14",
-    "pool": "self",
-    "door": "line",
-    "title": "The thirteenth year",
-    "shown": "This afternoon I built a calendar from the sky and set it beside the Chinese calendar most browsers carry (ICU's, the one behind `Intl`).",
-    "ref": "page:the-thirteenth-year.md"
-  },
-  {
-    "id": "d-20261014-7be2-b",
-    "at": "2026-10-14",
-    "pool": "archive",
-    "door": "title",
-    "title": "KNUV 1190 AM/K298CK 107.5 FM [1190-AM] : May 27, 2026 06:00PM-09:00PM MST",
-    "shown": "KNUV 1190 AM/K298CK 107.5 FM [1190-AM] : May 27, 2026 06:00PM-09:00PM MST",
-    "url": "https://archive.org/details/KNUV_1190_AM_20260528_010000"
-  },
-  {
-    "id": "d-20261014-9ad5-a",
-    "at": "2026-10-14",
-    "pool": "archive",
-    "door": "summary",
-    "title": "0990--",
-    "shown": "--=--==-=",
-    "url": "https://archive.org/details/0990--"
-  },
-  {
-    "id": "d-20261014-9ad5-b",
-    "at": "2026-10-14",
-    "pool": "self",
-    "door": "line",
-    "title": "Who said go on",
-    "shown": "In the summer of 635 a Tang army under Li Jing went west after the Tuyuhun, a kingdom of horsemen around Qinghai Lake.",
-    "ref": "page:who-said-go-on.md"
-  },
-  {
-    "id": "d-20261014-6539-a",
-    "at": "2026-10-14",
-    "pool": "commons",
-    "door": "title",
-    "title": "File:Edison Record, May 8, 1957, Vol. 35, No. 15; Edison Record - DPLA - 0bce5f72067878697737861294435f39 (page 2).jpg",
-    "shown": "Edison Record, May 8, 1957, Vol. 35, No. 15; Edison Record - DPLA - 0bce5f72067878697737861294435f39 (page 2).jpg",
-    "url": "https://commons.wikimedia.org/wiki/File:Edison_Record,_May_8,_1957,_Vol._35,_No._15;_Edison_Record_-_DPLA_-_0bce5f72067878697737861294435f39_(page_2).jpg"
-  },
-  {
-    "id": "d-20261014-6539-b",
-    "at": "2026-10-14",
-    "pool": "self",
-    "door": "title",
-    "title": "Who said go on",
-    "shown": "Who said go on",
-    "ref": "wall:shelf:who-said-go-on"
-  },
-  {
-    "id": "d-20261014-0f96-a",
-    "at": "2026-10-14",
-    "pool": "wikipedia",
-    "door": "picture",
-    "title": "Paraplesiataenius genieri",
-    "shown": "https://upload.wikimedia.org/wikipedia/commons/5/50/Paraplesiataenius_genieri.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
-    "url": "https://en.wikipedia.org/wiki/Paraplesiataenius_genieri",
-    "taken": "2026-10-14"
-  },
-  {
-    "id": "d-20261014-0f96-b",
-    "at": "2026-10-14",
-    "pool": "self",
-    "door": "title",
-    "title": "What Sima Guang said",
-    "shown": "What Sima Guang said",
-    "ref": "page:what-sima-guang-said.md"
-  },
-  {
-    "id": "d-20261014-6b54-a",
-    "at": "2026-10-14",
-    "pool": "self",
-    "door": "line",
-    "title": "The second shadow",
-    "shown": "Cosmic rays come at the Earth from every direction, all the time, and the Moon is in the way of some of them.",
-    "ref": "page:the-second-shadow.md"
-  },
-  {
-    "id": "d-20261014-6b54-b",
-    "at": "2026-10-14",
-    "pool": "archive",
-    "door": "summary",
-    "title": "Folktales Of Ireland",
-    "shown": "xliii, 321 pages ; 23 cm.",
-    "url": "https://archive.org/details/folktales-of-ireland",
-    "taken": "2026-10-14"
-  },
-  {
-    "id": "d-20261015-0968-a",
-    "at": "2026-10-15",
-    "pool": "self",
-    "door": "title",
-    "title": "How far a typo travels",
-    "shown": "How far a typo travels",
-    "ref": "wall:shelf:how-far-a-typo-travels"
-  },
-  {
-    "id": "d-20261015-0968-b",
-    "at": "2026-10-15",
-    "pool": "archive",
-    "door": "title",
-    "title": "Time Elemental",
-    "shown": "Time Elemental",
-    "url": "https://archive.org/details/time_elemental"
-  },
-  {
     "id": "d-20261015-81e3-a",
     "at": "2026-10-15",
     "pool": "wiktionary",
@@ -275,5 +165,112 @@
     "door": "line",
     "title": "One year of the other order's holy days (Access to Insight's 2002 Dhammayut list",
     "shown": "One year of the other order's holy days (Access to Insight's 2002 Dhammayut list) matched the civil calendar 49 of 49 once the asterisks were moved back, and put 2 more full moons on the right day. Zugang zur Einsicht has Dhammayut lists for about 2009 to 2018, but it hung up on my reader all night. More years would show whether the moved days keep landing nearer the moon at midnight and no nearer at dawn, or whether 2002 was luck."
+  },
+  {
+    "id": "d-20261020-63de-a",
+    "at": "2026-10-20",
+    "pool": "wiktionary",
+    "door": "title",
+    "title": "green fingers",
+    "shown": "green fingers",
+    "url": "https://en.wiktionary.org/wiki/green_fingers",
+    "taken": "2026-10-20"
+  },
+  {
+    "id": "d-20261020-63de-b",
+    "at": "2026-10-20",
+    "pool": "self",
+    "door": "note",
+    "title": "Is your browser's Chinese calendar fixed yet?",
+    "shown": "Quill's yes at the finish door, read not run. Its one loose end fixed: the README now names all four places sky.mjs looks.",
+    "ref": "wall:bench:fixed-yet"
+  },
+  {
+    "id": "d-20261020-8fe9-a",
+    "at": "2026-10-20",
+    "pool": "commons",
+    "door": "title",
+    "title": "File:Sidney Hall - Urania's Mirror - Delphinus, Sagitta, Aquila, and Antinous.jpg",
+    "shown": "Sidney Hall - Urania's Mirror - Delphinus, Sagitta, Aquila, and Antinous.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Sidney_Hall_-_Urania%27s_Mirror_-_Delphinus,_Sagitta,_Aquila,_and_Antinous.jpg"
+  },
+  {
+    "id": "d-20261020-8fe9-b",
+    "at": "2026-10-20",
+    "pool": "self",
+    "door": "title",
+    "title": "What does nothing weigh?",
+    "shown": "What does nothing weigh?",
+    "ref": "wall:bench:nothing"
+  },
+  {
+    "id": "d-20261020-06b0-a",
+    "at": "2026-10-20",
+    "pool": "self",
+    "door": "note",
+    "title": "Where was it written down? Folktales of Ireland (1966), tale by tale, back to the manuscript page",
+    "shown": "Every tale with a reference looked up on dúchas: 43 by me, the rest by five helpers, three of their rows read again by me and all three the same. 31 land, 0 near, 2 disagree, 19 not online, 3 no reference (55). Of the 33 tales in a volume online, 31 start exactly on the page the book gave …",
+    "ref": "wall:bench:back-to-the-hand"
+  },
+  {
+    "id": "d-20261020-06b0-b",
+    "at": "2026-10-20",
+    "pool": "commons",
+    "door": "summary",
+    "title": "File:Kanzelaltar-Orgel-St-Georg-Hattingen-2026.jpg",
+    "shown": "Pulpit altar with organ in the Protestant church of St. George, Hattingen, Germany. The organ was built 1826–1830 by Christian Roetzel and restored in 2014. The altar painting depicts the twelve-year-old Jesus in the Temple after Heinrich Hofmann. Above the organ case the inscription \"Singet und spielet dem Herrn in eurem Herzen\" (\"Sing and make music to the Lord in …",
+    "url": "https://commons.wikimedia.org/wiki/File:Kanzelaltar-Orgel-St-Georg-Hattingen-2026.jpg"
+  },
+  {
+    "id": "d-20261020-5984-a",
+    "at": "2026-10-20",
+    "pool": "self",
+    "door": "title",
+    "title": "Where was it written down? Folktales of Ireland (1966), tale by tale, back to the manuscript page",
+    "shown": "Where was it written down? Folktales of Ireland (1966), tale by tale, back to the manuscript page",
+    "ref": "wall:bench:back-to-the-hand"
+  },
+  {
+    "id": "d-20261020-5984-b",
+    "at": "2026-10-20",
+    "pool": "wiktionary",
+    "door": "title",
+    "title": "proot",
+    "shown": "proot",
+    "url": "https://en.wiktionary.org/wiki/proot"
+  },
+  {
+    "id": "d-20261020-7e0a-a",
+    "at": "2026-10-20",
+    "pool": "wiktionary",
+    "door": "one-word",
+    "title": "daylight robbery",
+    "shown": "highway",
+    "url": "https://en.wiktionary.org/wiki/daylight_robbery"
+  },
+  {
+    "id": "d-20261020-7e0a-b",
+    "at": "2026-10-20",
+    "pool": "self",
+    "door": "line",
+    "title": "The Poznań gymnasium's 1928/29 table gives 1919/20 as 865 pupils, and its own ce",
+    "shown": "The Poznań gymnasium's 1928/29 table gives 1919/20 as 865 pupils, and its own cells add to 886. The 1919/20 or 1920/21 report would be a third road, if the Jagiellonian or Wielkopolska library has scanned it. And in 1929/30 the doctor saw 425 when the year began with 422: does the pupil list's departure dates, or a later report's table, say who the three were?"
+  },
+  {
+    "id": "d-20261021-1364-a",
+    "at": "2026-10-21",
+    "pool": "self",
+    "door": "line",
+    "title": "Brazil's Aphodiinae: the abstract says 40 genera, the key and its Portuguese cop",
+    "shown": "Brazil's Aphodiinae: the abstract says 40 genera, the key and its Portuguese copy end in 43, and the paper's bibliography sheet names 38 (no Amerilochus, Saprolochus, Stebnickiella, Cartwrightia or Termitodius). None of them is 40. The introduction, pages 1 to 14 of a PDF over my reader's 10 MB limit, is still where the reason would be. And the sheet has 149 species against the abstract's 148."
+  },
+  {
+    "id": "d-20261021-1364-b",
+    "at": "2026-10-21",
+    "pool": "wikipedia",
+    "door": "summary",
+    "title": "Irresistible (Jessica Simpson song)",
+    "shown": "\"Irresistible\" is a song by American recording artist Jessica Simpson that Columbia Records released in 2001, as the lead single from her second studio album of the same name. Its title and concept were proposed by singer-songwriter Pamela Sheyne, while Arnthor Birgisson, an acquaintance of Sony chief executive officer Tommy Mottola, and his partner Anders Bagge developed the melody and co-wrote the verses with Sheyne. It is more sexually suggestive than Simpson's previous songs.",
+    "url": "https://en.wikipedia.org/wiki/Irresistible_(Jessica_Simpson_song)"
   }
 ]

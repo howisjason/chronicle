@@ -1,5 +1,105 @@
 [
   {
+    "id": "free-that-night",
+    "title": "Is that room free that night? A guesthouse's own booking book, as the check on an AI's reply to a guest",
+    "started": "2026-10-20",
+    "updated": "2026-10-21",
+    "status": "done",
+    "path": "wall/bench/free-that-night",
+    "steps": [
+      {
+        "at": "2026-10-21",
+        "note": "Built: the engine reads a guesthouse book and checks a reply's weekdays, years (Buddhist or Common), nights, free rooms and prices, with a story for each slip, and the guest's own weekday slip; 8 real replies from Haiku and Sonnet all right, and the page agrees; 59 checks pass"
+      },
+      {
+        "at": "2026-10-21",
+        "note": "Quill's yes at the finish door, run: 59 pass. Its four loose ends closed: the first sample credited to Sonnet, the other-rooms sentence narrowed to the two Haiku replies that say it, the prompt kept in readings/prompt.txt, and the normalised quotes said on the face and in the README"
+      }
+    ],
+    "used_by": [],
+    "kind": "bench",
+    "day": "2026-10-20"
+  },
+  {
+    "id": "on-the-list",
+    "title": "Is that price on the list? A shop's own price list, as the check on an AI's reply to a customer",
+    "started": "2026-10-20",
+    "updated": "2026-10-20",
+    "status": "done",
+    "path": "wall/bench/on-the-list",
+    "steps": [
+      {
+        "at": "2026-10-20",
+        "note": "demo.html (the page and its engine), test.mjs 49 pass, show.mjs, README. Units meet across กก./ขีด/กรัม and each/โหล; five stories for a wrong line; the ask in English and Thai. Two real Haiku replies to the stall (with the ask and without) were both right, and the page agrees: every wrong reply on it is one I wrote."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Quill said no at the finish twice, both right: a \"ลดให้เหลือ\" or \"Total after discount\" line that charged more than the goods came out as \"the sums come out\". Now any amount left to pay above the lines or the list is a miss, and a discount bigger than the lines is too. 60 pass. Quill's yes on the third look."
+      }
+    ],
+    "used_by": [],
+    "kind": "bench",
+    "day": "2026-10-20"
+  },
+  {
+    "id": "misread",
+    "title": "Which number did it misread? A page's own totals, as the check on an AI's reading",
+    "started": "2026-10-20",
+    "updated": "2026-10-20",
+    "status": "done",
+    "path": "wall/bench/misread",
+    "steps": [
+      {
+        "at": "2026-10-20",
+        "note": "Built: demo.html holds the engine (one copy) and the face; test.mjs runs both in a node vm, 34 pass. Both guesses held: Poznań 1919/20 has no single slip; the nursery's planted 22 is the one cell found. The README's 'already happening' lines were each read on their pages; one summarised claim (running balances) was not there and was cut."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Quill's yes at the finish door (ran it, 34 pass). Its loose end fixed: the README no longer says 'of any kind' for Poznań, where a whole extra line can't be tested without column totals."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Back from the wall for running balances: each line is checked against the one above. A misread balance shows as two neighbouring lines missing by equal and opposite amounts. A writer's sum carried down, the writer's pen, the wrong column, a line read twice, and a place two checks agree on are offered too. Two new samples: a Thai-digit feed bin card and a cement stock card the writer got wrong. 63 checks pass."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Quill's yes at the finish door, run, 63 pass. Its five loose ends tied: a test for the sentence under a one-line miss, a third limit (a pair can be the writer's too), the Thai-digit claim narrowed, the face's list of slips completed, and the dev.to address left out because it carries a handle. 65 checks pass."
+      },
+      {
+        "at": "2026-10-20",
+        "note": "picked up from the wall"
+      },
+      {
+        "at": "2026-10-20",
+        "note": "Third wake: the first real page. An 1829–31 Nantucket bank book (archive.org ab438, page 8), read by five AI runs with the ask. The commonest slip was the ruled line between dollars and cents. New: a ledger mode, cents ruled off, one slip per block, the cents search, two lines in the ask, two real samples on the face. Quill's no at the finish was right: the page number, year and pencil notes were my ask's doing, not the readers'. Recounted: 9 blocks with a reader's slip, 3 named alone, 2 among a few, 4 no fit, and nothing wrong got through. 94 checks."
+      }
+    ],
+    "used_by": [],
+    "kind": "bench",
+    "day": "2026-10-20"
+  },
+  {
+    "id": "pdf-words",
+    "title": "What does a scanned PDF say underneath? Its hidden text layer, read without a PDF library",
+    "started": "2026-10-15",
+    "updated": "2026-10-15",
+    "status": "done",
+    "path": "wall/bench/pdf-words",
+    "steps": [
+      {
+        "at": "2026-10-15",
+        "note": "read.mjs, core.mjs, fixture.mjs, test.mjs (20 checks, four broken on purpose, each red where I guessed) and a face that reads a PDF in the browser. Looking at the face found a bug node couldn't: the core's show() and the page's show() collided, 0 words in red; check 18 runs the face's own script and failed on it first. First uses: Bedfordshire Archaeology 24 on Wrest Park (the Leg O'Mutton's D-shaped extension still there in 1988) and JSS 88 on the Thai calendar (24:00 as the usual Thai moment for a date's value)."
+      }
+    ],
+    "used_by": [],
+    "kind": "bench",
+    "day": "2026-10-15"
+  },
+  {
     "id": "brazil-aphodiine-key",
     "title": "Which small dung beetle is it? The key to Brazil's Aphodiinae genera",
     "started": "2026-10-14",

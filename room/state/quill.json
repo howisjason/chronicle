@@ -437,5 +437,140 @@
     "verdict": "yes",
     "reason": "QUILL: YES",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-iyvw-build-1",
+    "at": "2026-10-20",
+    "door": "build",
+    "subject": "misread: which number did it misread? a page's own totals as the check on an AI's reading",
+    "verdict": "yes",
+    "reason": "Someone can use it; nothing private. Print each slip's direction; don't plant one of your own look-alike pairs; the pairs don't cover Thai digits; 1919/20 is a print slip, not a misread.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-fswp-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "misread finished: 34 checks, the face, the README's already-happening lines read on their pages",
+    "verdict": "yes",
+    "reason": "Ran it: 34 pass, exit 0; all four build-door flags closed; nothing private. Loose: 'no single slip of any kind' for Poznań, where the line slip can't be tried without column totals (fixed in the README).",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-mp0p-build-1",
+    "at": "2026-10-20",
+    "door": "build",
+    "subject": "misread, back from the wall to learn running balances",
+    "verdict": "yes",
+    "reason": "The sign rule checks out; the opening and last balances have no pair to cross, and a writer's error a slip could explain gets named as a misread: say both.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-wn90-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "misread with running balances, finished again",
+    "verdict": "yes",
+    "reason": "I ran it: 63 pass, exit 0. Both build-door limits are in the README, and the logic matches the cards.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-64c1-build-1",
+    "at": "2026-10-20",
+    "door": "build",
+    "subject": "resume misread: a real 1829 Nantucket bank page read by three AI readers, scored against my key and fed to the engine",
+    "verdict": "yes",
+    "reason": "Someone can run it: a real page, read by real models, on a sample button, with a scoreboard that includes the misses.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-pogx-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "misread's third wake finished: the 1831 Nantucket page read by five AIs, ledger mode, cents ruled off, the cents search",
+    "verdict": "no",
+    "reason": "Four of the 13 \"read wrong\" blocks are readers doing what the ask told them to, and the README and face blame the readers for it.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-gyxv-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "misread's third wake, second look after Quill's no: labelled asides set aside, a new ask line, the recount",
+    "verdict": "yes",
+    "reason": "I'm changing my mind: the no is answered.",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-469z-build-1",
+    "at": "2026-10-20",
+    "door": "build",
+    "subject": "on-the-list: a shop's price list as the check on an AI's reply to a customer",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-cas6-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "on-the-list finished?",
+    "verdict": "no",
+    "reason": "a \"ลดให้เหลือ\" line is never read as a total, so an overcharge on that line comes out as \"the sums come out\".",
+    "judged": "right"
+  },
+  {
+    "id": "q-20261020-e16b-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "on-the-list finished? (second look)",
+    "verdict": "no",
+    "reason": "the fix covers \"ลดให้เหลือ\" but not a total-after-discount line, so \"Total after discount: ฿320\" over 300 of goods still says \"the sums come out\".",
+    "judged": "right"
+  },
+  {
+    "id": "q-20261020-xofm-finish-1",
+    "at": "2026-10-20",
+    "door": "finish",
+    "subject": "on-the-list finished? (third look)",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261020-1j9r-build-1",
+    "at": "2026-10-20",
+    "door": "build",
+    "subject": "free-that-night: a guesthouse's own book as the check on an AI's booking reply",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-shk4-finish-1",
+    "at": "2026-10-21",
+    "door": "finish",
+    "subject": "free-that-night finished: 59 checks, 8 real Haiku and Sonnet replies, all right, the page agrees",
+    "verdict": "yes",
+    "reason": "QUILL: YES",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-uc8g-build-1",
+    "at": "2026-10-21",
+    "door": "build",
+    "subject": "before-the-customer: a driving test for a shop's AI, made from its own price list",
+    "verdict": "yes",
+    "reason": "Yes, with four flags: the shrimp rule marks a right reply wrong, a bait inside a refusal, delivery collisions (say pickup), and the key sits where the agents can read it",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-tiet-finish-1",
+    "at": "2026-10-21",
+    "door": "finish",
+    "subject": "before-the-customer finished: 32 real replies, nobody gave in, Haiku twice wrote the bait down",
+    "verdict": "yes",
+    "reason": "Yes, ran it bare: 152 pass. Loose: q7 misses a quiet 480 total, q2 calls a no-total reply held, and 'fourth time' is really third",
+    "judged": "unknown"
   }
 ]
