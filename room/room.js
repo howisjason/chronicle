@@ -1,18 +1,19 @@
 // room.js: March's room, where the picture IS the page (the room plan of 19 Oct 2026,
 // section 3; J's word that evening: "I would like the scene itself to be the centerpiece
 // of the page", every part of the old page a thing in the scene, "people could click
-// around"). The page is the name line, one sentence for strangers, the scene (wide, the
-// whole room at the largest whole scale; on a phone a full-height window that follows
-// March: J, 20 Oct 2026, 11:45pm), one live status line with the season, one quiet row of
-// links for the cards that have no thing in the room yet, a "What is this?" fold and a
-// link to the records page (records.html: the full log, Quill's whole ledger, the desks).
+// around"). The page (index.html, in J's Moon Gate kit) is a compact gate with her name and
+// one sentence for strangers, the scene (wide, the whole room at the largest whole scale; on
+// a phone a full-height window that follows March: J, 20 Oct 2026, 11:45pm), one live status
+// line with the season, the cards that have no thing in the room yet as round windows, a
+// "What is this?" card and a link to the records page (records.html: the full log, Quill's
+// whole ledger, the desks).
 //
 // The scene is scene.js (the live engine; its design kit is STYLE.md). A tap on a thing
 // in it does the thing's own effect there (the door flares, she walks to the desk) AND
 // opens that thing's card, a paper card over part of the scene, drawn by the same
 // renderers the records page uses (cards.js). Which card a thing opens is its 'card' in
 // room.json; a thing March adds later (state/objects.json, with --card) carries its own,
-// and that card's link leaves the row, because the thing in the room now opens it.
+// and that card's window leaves the row, because the thing in the room now opens it.
 //
 // Live: while a wake runs, the door (GET /now, asked every 15 seconds; state/now.json
 // when the door is down) says what she is doing, and the scene's live mode shows it (at
@@ -24,7 +25,7 @@
 // The real sky (sky.mjs): the scene's hour follows the real Chiang Mai clock by itself;
 // the weather (Open-Meteo, at most once in 30 minutes) dims the daylight when it is
 // cloudy or raining.
-import { startRoom } from './scene.js';
+import { startRoom, frameFor } from './scene.js';
 import { S, loadAll, el, day, clock, render, seasonLine } from './cards.js';
 import { DOOR, visible, validateObjects } from './lib.mjs';
 import { weatherNow } from './sky.mjs';
@@ -113,6 +114,10 @@ function openCard(key) {
   pop.hidden = false;
   popBody.scrollTop = 0;
   document.getElementById('pop-close').focus({ preventScroll: true });
+  // a card opened from a round window further down the page sits over the scene, out of sight: bring the scene up
+  // (on a phone the card is a sheet fixed to the screen's foot, always in sight)
+  const r = pop.getBoundingClientRect();
+  if (getComputedStyle(pop).position !== 'fixed' && (r.top < 0 || r.bottom > innerHeight)) frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 const closeCard = () => { pop.hidden = true; delete pop.dataset.key; };
 document.getElementById('pop-close').addEventListener('click', closeCard);
@@ -166,10 +171,15 @@ async function askNow() {
   try { const r = await fetch(`${DOOR}/now`, { cache: 'no-cache' }); if (r.ok) n = await r.json(); } catch { /* the door is down */ }
   if (!n) n = S.now && S.now.ok ? S.now.data : null;
   LIVE = n && n.awake === true && CAPTION[n.kind] ? n : null;
-  document.getElementById('awake').textContent = Q.has('live') ? 'test view' : LIVE ? `awake since ${clock(LIVE.since) || 'now'}` : 'asleep';
-  document.querySelector('.state').classList.toggle('on', !!LIVE);
+  setState();
   if (LIVE) RP = null;                                       // a real session outranks the replay
   show();
+}
+// the tag before the status line: 'asleep', or the kit's live dot and 'awake since ...'
+function setState() {
+  document.getElementById('awake').textContent = Q.has('live') ? 'test view' : LIVE ? `awake since ${clock(LIVE.since) || 'now'}` : 'asleep';
+  const tag = document.getElementById('state');
+  tag.classList.toggle('on', !!LIVE); tag.querySelector('i').hidden = !LIVE;
 }
 function show() {
   if (!ROOM) return;
@@ -226,22 +236,94 @@ const memory = { m: {}, getItem(k) { return this.m[k] ?? null; }, setItem(k, v) 
 let store = memory, SKY = null;
 try { window.localStorage.getItem('room-weather'); store = window.localStorage; } catch { /* blocked: the memory store */ }
 
+// ------------------------------------------------------------------ the round windows' previews
+// Each window shows one live thing from its card: a count, or for the last session its day and time.
+const short = (iso) => { const d = new Date(iso); return Number.isFinite(d.getTime()) ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'Asia/Bangkok' }) : ''; };
+function previews() {
+  const count = (name) => (S[name] && S[name].ok && Array.isArray(S[name].data) ? visible(S[name].data).length : null);
+  const put = (key, big, small) => { const b = document.querySelector(`[data-pv="${key}"]`); if (b) b.replaceChildren(String(big), el('small', {}, small)); };
+  const num = (key, n, one, more = `${one}s`) => { if (n !== null) put(key, n, n === 1 ? one : more); };
+  num('wall', count('wall'), 'thing'); num('shelf', count('shelf'), 'page'); num('board', count('board'), 'pin');
+  num('cloud', count('cloud'), 'thought'); num('quill', count('quill'), 'call');
+  const e = S.log && S.log.ok ? S.log.data[S.log.data.length - 1] : null;
+  if (e) put('clock', short(e.started), clock(e.started)); else put('clock', '–', 'none yet');
+}
+
+// ------------------------------------------------------------------ the still: the room at once
+// Before the engine has loaded anything, the canvas is sized by the engine's own arithmetic (frameFor, with the
+// grid from the canvas's width and height) and shows a still of the room for the hour (art/still-<hour>.png, made
+// from the engine by tools/stills.mjs) as its background, so the picture's place never jumps and the first thing
+// anyone sees is the room, never a dark box. The engine's first frame paints over it.
+const canvas = document.getElementById('room');
+const GRID = [canvas.width, canvas.height];
+let STILL_X = GRID[0] / 2;
+// which still: the hour that leads at this Chiang Mai time, from room.json's clock keys once read; before that, the
+// midpoints of today's keys (a guess for the first few milliseconds only)
+function stillHour(keys) {
+  const f = Q.get('t'); if (['day', 'golden', 'night'].includes(f)) return f;
+  const hr = Q.has('time') ? parseFloat(Q.get('time')) : ((Date.now() / 3600000 + 7) % 24 + 24) % 24;
+  if (!keys) return hr < 5.9 || hr >= 18.45 ? 'night' : hr >= 16.65 ? 'golden' : 'day';
+  for (let i = 0; i < keys.length - 1; i++) if (hr >= keys[i][0] && hr <= keys[i + 1][0]) {
+    const u = (hr - keys[i][0]) / (keys[i + 1][0] - keys[i][0] || 1); return u < 0.5 ? keys[i][1] : keys[i + 1][1];
+  }
+  return 'night';
+}
+let stillOf = stillHour();
+function placeStill() {
+  if (!canvas.isConnected) return;
+  const { SC, VW, camX } = frameFor(fit(), GRID[0], GRID[1], STILL_X);
+  canvas.style.width = `${VW * SC}px`; canvas.style.height = `${GRID[1] * SC}px`;
+  canvas.style.backgroundImage = `url(art/still-${stillOf}.png)`;
+  canvas.style.backgroundSize = `${GRID[0] * SC}px ${GRID[1] * SC}px`;
+  canvas.style.backgroundPosition = `${-camX * SC}px 0`;
+}
+placeStill();
+addEventListener('resize', () => { if (!ROOM) placeStill(); });
+
 // ------------------------------------------------------------------ go
-(async () => {
-  await loadAll();
+// The engine starts at once with the room's own pictures; the state files, the door and the weather each land when
+// they land, and none of them holds the picture back (21 Oct 2026: J saw a dark box while they answered).
+const files = loadAll();
+// A file of the room's own that fails to arrive (a dropped connection on a phone) is asked for again, up to three
+// times, half a second apart; the still stays on show meanwhile.
+const engine = (async () => {
+  for (let tries = 1; ; tries++) {
+    try {
+      const room = await (await fetch('room.json', { cache: 'no-cache' })).json();
+      stillOf = stillHour(room.clock && room.clock.keys); STILL_X = room.march.start[0]; placeStill();
+      return await startRoom({ canvas, fit, onHover, room,
+        onTap: (card) => { if (card) openCard(card); else closeCard(); } });
+    } catch (e) {
+      if (tries >= 3) throw e;
+      console.warn('room: the scene could not start, trying again', e);
+      await new Promise((r) => setTimeout(r, 500));
+    }
+  }
+})();
+// the words above and under the picture line up with its edges: the column is as wide as the picture
+new ResizeObserver(() => { const w = canvas.getBoundingClientRect().width; if (w) document.documentElement.style.setProperty('--scene-w', `${Math.round(w)}px`); }).observe(canvas);
+
+files.then(() => {
   const line = seasonLine();
   const season = document.getElementById('status-season');
-  if (line) { season.textContent = `This season: ${line}`; season.hidden = false; }
-  const canvas = document.getElementById('room');
-  // the words above and under the picture line up with its edges: the column is as wide as the picture
-  new ResizeObserver(() => { const w = canvas.getBoundingClientRect().width; if (w) document.documentElement.style.setProperty('--scene-w', `${Math.round(w)}px`); }).observe(canvas);
-  ROOM = await startRoom({ canvas, fit, onHover, extra: added(),
-    onTap: (card) => { if (card) openCard(card); else closeCard(); } });
-  // a card that now has a thing in the room leaves the row: the thing opens it
-  const inRoom = new Set(ROOM.objects.map((o) => o.card).filter(Boolean));
-  for (const a of document.querySelectorAll('.also [data-open]')) if (inRoom.has(a.dataset.open)) a.hidden = true;
+  if (line) { season.querySelector('.text').textContent = line; season.hidden = false; }
+  previews();
+  // the first status line from the kept now.json, before the door is asked
+  const n = S.now && S.now.ok ? S.now.data : null;
+  LIVE = n && n.awake === true && CAPTION[n.kind] ? n : null;
+  setState(); if (!ROOM) say(LIVE ? `Awake now, since ${clock(LIVE.since)}: ${CAPTION[LIVE.kind]}, ${AT[LIVE.place] || LIVE.place}.` : restingLine()); else show();
+});
+
+(async () => {
+  ROOM = await engine;
+  show();
   const ask = async () => { try { SKY = await weatherNow({ store }); ROOM.setWeather(SKY.sky); } catch { /* clear */ } };
   ask(); setInterval(ask, 5 * 60e3);                          // the 30-minute rule lives in weatherNow
-  await askNow();
-  setInterval(askNow, 15000);
+  askNow(); setInterval(askNow, 15000);
+  await files;
+  // her things, placed once the list is read; a card that now has a thing in the room leaves the windows: the thing opens it
+  await ROOM.addThings(added());
+  const inRoom = new Set(ROOM.objects.map((o) => o.card).filter(Boolean));
+  for (const a of document.querySelectorAll('.windows [data-open]')) if (inRoom.has(a.dataset.open)) a.hidden = true;
+  show();
 })();

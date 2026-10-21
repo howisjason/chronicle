@@ -2,7 +2,7 @@
 
 This is how the room looks and moves, for anyone who adds to it, March included when she adds one thing a day on her own. The scene J accepted as the final design (21 Oct 2026) is the standard. Every new thing must look like it was always there.
 
-The engine is `scene.js`. The room is `room.json`. The pictures are in `art/`. The page around the scene is `index.html`, `room.js` and `room.css`.
+The engine is `scene.js`. The room is `room.json`. The pictures are in `art/`. The page around the scene is `index.html`, `room.js` and `room.css`. Until the engine's first frame (a fraction of a second), the page shows `art/still-day.png`, `still-golden.png` or `still-night.png`, real frames of the engine made by `tools/stills.mjs`; rerun it when the room's look changes, so the still matches (a still without a new thing only shows for that moment).
 
 ## 1. The grid
 
@@ -21,7 +21,7 @@ The engine is `scene.js`. The room is `room.json`. The pictures are in `art/`. T
 - **Ink navy** (2, 7, 34) is the outline and the darkest dark: one pixel, every shape.
 - **Pastel pink** (242, 178, 201) and **pastel blue** (169, 205, 240) are the two accents, **equal**. Neither one leads.
 - **No green, ever.** A pixel whose green stands above both its red and its blue by more than 6 is a fault. Leaves are powder blue, blue-grey or navy.
-- The page around the scene uses the same colours (`room.css` names each one).
+- The page around the scene is J's design kit, Moon Gate (`kit/`), with its greens swapped for this pink and blue in `kit/tokens.css`, the only place a page colour is written. Its gold ink (the calligraphy and the seal) waits on J's verdict.
 
 ## 3. The camera
 
@@ -121,7 +121,7 @@ Today these things have cards:
 | the desk | `desk` |
 | the door and garden | `season` |
 
-The other cards sit in one row of links under the status line. **When a thing in the room gets a card, its link leaves the row by itself.**
+The other cards sit in a row of round windows under the status line. **When a thing in the room gets a card, its window leaves the row by itself.**
 
 `hours`, `clock`, `leaves` and `march` hold the light, the time keys, the leaf sprays and her settings.
 

@@ -7,18 +7,23 @@
 <!-- The records (the room plan of 19 Oct 2026, section 3): the machinery readouts that left
      the room page when the picture became the page. The full log, Quill's whole ledger and
      the desk's history, drawn by the same renderers as the room's cards (cards.js), from the
-     same plain files, in the room's own look (room.css). A move, not a new tool; this page writes nothing. -->
+     same plain files, in the room page's look (J's Moon Gate kit in March's pink and blue: kit/, then room.css).
+     A move, not a new tool; this page writes nothing. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Noto+Serif+TC:wght@500;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kit/tokens.css">
+<link rel="stylesheet" href="kit/kit.css">
 <link rel="stylesheet" href="room.css">
 </head>
 <body>
 
+<div class="wall" aria-hidden="true"></div>
+
 <header class="top"><div class="wrap">
   <div class="nameline">
     <h1>The records</h1>
-    <a class="station" href="./"><svg class="i" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg> Back to March's room</a>
+    <a class="station btn quiet sm" href="./"><svg class="i" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg> Back to March's room</a>
   </div>
   <p class="say">Everything the room keeps about how it runs: every session, every call to Quill, and every desk.</p>
 </div></header>
@@ -29,7 +34,11 @@
   <section class="rec"><h2 id="desk">The desk <span class="meta"></span></h2><p class="meta">The two things put on her desk before the newest session, then every desk before it, newest first.</p><div class="body"></div></section>
 </div></main>
 
-<footer class="foot"><div class="wrap"><span class="meta">Icons: Lucide</span></div></footer>
+<footer class="foot"><div class="wrap">
+  <div class="t"><b>March's room</b><span>The records</span></div>
+  <div class="credits">Icons: Lucide · Plaster: Pawel Czerwinski (Unsplash)</div>
+  <span class="sign"><span class="seal sm" aria-label="seal: 鄧正"><span>鄧</span><span>正</span></span><span><span class="date">二〇二六 · 十月</span><span class="who">MARCH'S ROOM</span></span></span>
+</div></footer>
 
 <script type="module" src="records.js"></script>
 </body>

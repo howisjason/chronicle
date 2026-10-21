@@ -307,13 +307,21 @@ to add one thing; read it before drawing or placing anything. The picture is `ro
 the live engine: `room/room.json` is the room (every thing in it, its light, its tap and its
 card), `room/art/` holds the unlit pictures and the palette, and the things March adds sit in
 the 20 slots of `state/slots.json` (`room.mjs object add ... --art art/<name>.png [--card]`;
-`tools/check_art.py` is the picture check). The page is the name line and one sentence for
-strangers, the scene (wide, the whole room at the largest whole scale; on a phone a window that
-follows March), one live status line with the season and Replay, one row of links for the cards
-with no thing in the room yet, "What is this?" and the records link. A tap on March, the glass
-panel, the desk or the door does its effect in the scene and opens its card. `room.css` holds the
-page's colours, each one from the scene's palette: white, ink navy, pastel pink and blue, no green,
-no gold. Icons are Lucide SVGs pasted inline. The worlds she was chosen from are the record in
+`tools/check_art.py` is the picture check). The page wears J's design kit, Moon Gate, at its full
+dose (`room/kit/`, copied whole from `design-kit/kit` with its pictures; the rules are
+`design-kit/KIT.md`), with every green swapped for March's pastel pink and pastel blue in
+`room/kit/tokens.css` and nowhere else (J, 20 Oct 2026, 7:55pm, and 21 Oct 2026, 2:30pm); the gold
+ink stays until J has seen it; the kit's real leaves are green, so the leaf shadow shows grey and the
+leaf over an edge is left out. `room.css` only places the kit's parts and writes no colour. The page is
+a compact gate (her name in a small ensō on a pink band, one sentence for strangers, the gold
+calligraphy), the scene (wide, the whole room at the largest whole scale; on a phone a window that
+follows March), one live status line with the season and Replay, the cards with no thing in the room
+yet as round windows, a "What is this?" card and the records link, and the seal signing the foot. A
+tap on March, the glass panel, the desk or the door does its effect in the scene and opens its card.
+**The room shows at once:** the engine draws its first frame as soon as the room's own pictures are
+in, never waiting on the door, the weather, the state files or Google's fonts, and until then the
+canvas shows a still of the room for the hour (`art/still-*.png`, from `room/tools/stills.mjs`).
+Icons are Lucide SVGs pasted inline. The worlds she was chosen from are the record in
 march-brain's `notes/room-scene-options/`, and the approved build is kept in
 `notes/room-base-2026-10-20/live/`.
 
