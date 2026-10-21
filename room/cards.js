@@ -181,6 +181,9 @@ const table = (heads, rows, wide = []) => el('div', { class: 'tablewrap' }, el('
     return td;
   })))));
 const many = (n, one, more = `${one}s`) => (n ? `${n} ${n === 1 ? one : more}` : 'nothing yet');
+// the same, but zero reads "0 pins", for a row where every number is shown
+export const plural = (n, one) => `${num(n)} ${num(n) === 1 ? one : `${one}s`}`;
+const num = (n) => Number(n) || 0;
 
 // ------------------------------------------------------------------ the renderers: each returns { count, node }
 export const render = {
@@ -267,7 +270,7 @@ export const render = {
       const q = e.quill || {}, steps = (e.bench_steps || []).reduce((n, s) => n + (Number(s.n) || 0), 0);
       return [`${day(e.started)}, ${clock(e.started)}`, String(Math.round((e.seconds || 0) / 60)),
         `${e.verdict || '?'}${e.broken && e.broken.length ? `; ${e.broken.length} file(s) did not parse` : ''}`,
-        `${e.pins || 0} pins, ${steps} bench steps, ${e.cloud || 0} thoughts, ${e.shelf || 0} pages`,
+        [[e.pins, 'pin'], [steps, 'bench step'], [e.cloud, 'thought'], [e.shelf, 'page']].map(([n, w]) => plural(n, w)).join(', '),
         `${q.yes || 0} yes / ${q.no || 0} no${q.talks ? `, ${q.talks} talks` : ''}`];
     }), [3])) };
   },

@@ -163,11 +163,15 @@ export async function startRoom({ canvas: cv, fit, onTap = () => {}, onHover = (
   // folder: the weather, the door and the state files come later, through setWeather, setLive and addThings.
   const OBJ = [];
   let NEXT_OID = 1;
+  // one picture, asked for again twice, half a second apart: a dropped file must not leave a thing out until reload
+  async function again(src) {
+    for (let k = 0; ; k++) { try { return await imageData(src); } catch (e) { if (k >= 2) throw e; await new Promise(r => setTimeout(r, 500)); } }
+  }
   async function loadThing(o, oid) {
     const ob = Object.assign({ layer: 'actor', lit: 'pixel', idx: oid - 1, oid, flare: 0, nudge: 0, pose: 0, poses: [] }, o);
     try {
       if (o.kind === 'panel') { ob.lit = 'panel'; const [x0, y0, x1, y1] = o.box; ob.x = x0; ob.y = y0; ob.w = x1 - x0 + 1; ob.h = y1 - y0 + 1; }
-      else for (const d of await Promise.all((o.sprites || [o.sprite]).map(imageData))) ob.poses.push(sprite(d.data, d.width, d.height));
+      else for (const d of await Promise.all((o.sprites || [o.sprite]).map(again))) ob.poses.push(sprite(d.data, d.width, d.height));
     } catch (e) { console.warn('room: could not load', o.id, e); return null; }
     if (ob.poses.length) { ob.w = ob.poses[0].w; ob.h = ob.poses[0].h; }
     if (o.slot) {                                   // one of her things: bottom-centred in its slot, never bigger than it

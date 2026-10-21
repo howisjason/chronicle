@@ -51,7 +51,8 @@ a.inline, .card a, .inpage a, .lines a, table.rows a { text-decoration: underlin
    so nobody ever sees a dark box */
 .frame canvas { display: block; image-rendering: pixelated; image-rendering: crisp-edges; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none;
   background-color: var(--frame); background-repeat: no-repeat; border-radius: var(--r-shot); box-shadow: var(--sh-scene); }
-.frame .spark.hint { z-index: 3; pointer-events: none; top: -15px; right: 210px; }
+.frame .spark.hint { z-index: 3; pointer-events: none; top: -15px; right: 210px; transition: opacity .2s; }
+.card-open .frame .spark.hint { opacity: 0; }   /* an open card would cut it in half */
 /* the name of the thing under the mouse, just above it */
 #hover { position: absolute; z-index: 4; transform: translate(-50%, calc(-100% - 6px)); pointer-events: none; }
 #hover[hidden] { display: none; }

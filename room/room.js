@@ -26,7 +26,7 @@
 // the weather (Open-Meteo, at most once in 30 minutes) dims the daylight when it is
 // cloudy or raining.
 import { startRoom, frameFor } from './scene.js';
-import { S, loadAll, el, day, clock, render, seasonLine } from './cards.js';
+import { S, loadAll, el, day, clock, render, seasonLine, plural } from './cards.js';
 import { DOOR, visible, validateObjects } from './lib.mjs';
 import { weatherNow } from './sky.mjs';
 
@@ -87,7 +87,7 @@ function lastSession() {
   return [
     el('p', {}, `${day(e.started)}, ${clock(e.started)} to ${clock(e.ended)}, ${mins(e.seconds)}. The run was ${e.verdict || 'not judged'}${Number.isFinite(e.sameness) ? `, and ${e.sameness}% the same as her last seven (how much it repeated them)` : ''}.`),
     el('div', { class: 'cols stats' },
-      tile('Bench steps', [String(num(steps))], `${num(e.pins)} pins · ${num(e.cloud)} thoughts · ${num(e.shelf)} pages`),
+      tile('Bench steps', [String(num(steps))], `${plural(e.pins, 'pin')} · ${plural(e.cloud, 'thought')} · ${plural(e.shelf, 'page')}`),
       tile('Quill', q ? [String(num(q.yes)), el('small', {}, 'yes'), el('b', {}, String(num(q.no))), el('small', {}, 'no')] : ['–'], q && Number.isFinite(q.talks) ? `${q.talks} talks` : '')),
     el('p', { class: 'meta' }, nextWake()),
     el('p', { class: 'meta' }, 'The replay shows where she was and what kind of thing she was doing, never what she read or wrote.'),
@@ -112,6 +112,7 @@ function openCard(key) {
   popBody.replaceChildren(...c.body);
   pop.dataset.key = key;
   pop.hidden = false;
+  document.body.classList.add('card-open');
   popBody.scrollTop = 0;
   document.getElementById('pop-close').focus({ preventScroll: true });
   // a card opened from a round window further down the page sits over the scene, out of sight: bring the scene up
@@ -119,7 +120,7 @@ function openCard(key) {
   const r = pop.getBoundingClientRect();
   if (getComputedStyle(pop).position !== 'fixed' && (r.top < 0 || r.bottom > innerHeight)) frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-const closeCard = () => { pop.hidden = true; delete pop.dataset.key; };
+const closeCard = () => { pop.hidden = true; delete pop.dataset.key; document.body.classList.remove('card-open'); };
 document.getElementById('pop-close').addEventListener('click', closeCard);
 document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && !pop.hidden) closeCard(); });
 // the row under the status line, and the hidden buttons for a keyboard or a screen reader
