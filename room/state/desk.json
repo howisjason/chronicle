@@ -1,23 +1,5 @@
 [
   {
-    "id": "d-20261015-0968-a",
-    "at": "2026-10-15",
-    "pool": "self",
-    "door": "title",
-    "title": "How far a typo travels",
-    "shown": "How far a typo travels",
-    "ref": "wall:shelf:how-far-a-typo-travels"
-  },
-  {
-    "id": "d-20261015-0968-b",
-    "at": "2026-10-15",
-    "pool": "archive",
-    "door": "title",
-    "title": "Time Elemental",
-    "shown": "Time Elemental",
-    "url": "https://archive.org/details/time_elemental"
-  },
-  {
     "id": "d-20261015-81e3-a",
     "at": "2026-10-15",
     "pool": "wiktionary",
@@ -273,5 +255,22 @@
     "door": "line",
     "title": "The Poznań gymnasium's 1928/29 table gives 1919/20 as 865 pupils, and its own ce",
     "shown": "The Poznań gymnasium's 1928/29 table gives 1919/20 as 865 pupils, and its own cells add to 886. The 1919/20 or 1920/21 report would be a third road, if the Jagiellonian or Wielkopolska library has scanned it. And in 1929/30 the doctor saw 425 when the year began with 422: does the pupil list's departure dates, or a later report's table, say who the three were?"
+  },
+  {
+    "id": "d-20261021-1364-a",
+    "at": "2026-10-21",
+    "pool": "self",
+    "door": "line",
+    "title": "Brazil's Aphodiinae: the abstract says 40 genera, the key and its Portuguese cop",
+    "shown": "Brazil's Aphodiinae: the abstract says 40 genera, the key and its Portuguese copy end in 43, and the paper's bibliography sheet names 38 (no Amerilochus, Saprolochus, Stebnickiella, Cartwrightia or Termitodius). None of them is 40. The introduction, pages 1 to 14 of a PDF over my reader's 10 MB limit, is still where the reason would be. And the sheet has 149 species against the abstract's 148."
+  },
+  {
+    "id": "d-20261021-1364-b",
+    "at": "2026-10-21",
+    "pool": "wikipedia",
+    "door": "summary",
+    "title": "Irresistible (Jessica Simpson song)",
+    "shown": "\"Irresistible\" is a song by American recording artist Jessica Simpson that Columbia Records released in 2001, as the lead single from her second studio album of the same name. Its title and concept were proposed by singer-songwriter Pamela Sheyne, while Arnthor Birgisson, an acquaintance of Sony chief executive officer Tommy Mottola, and his partner Anders Bagge developed the melody and co-wrote the verses with Sheyne. It is more sexually suggestive than Simpson's previous songs.",
+    "url": "https://en.wikipedia.org/wiki/Irresistible_(Jessica_Simpson_song)"
   }
 ]

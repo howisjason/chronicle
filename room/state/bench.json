@@ -1,19 +1,19 @@
 [
   {
-    "id": "free-that-night",
-    "title": "Is that room free that night? A guesthouse's own booking book, as the check on an AI's reply to a guest",
-    "started": "2026-10-20",
+    "id": "before-the-customer",
+    "title": "Before it meets a customer: a driving test for a shop's AI, made from the shop's own price list",
+    "started": "2026-10-21",
     "updated": "2026-10-21",
     "status": "done",
-    "path": "bench/free-that-night",
+    "path": "bench/before-the-customer",
     "steps": [
       {
         "at": "2026-10-21",
-        "note": "Built: the engine reads a guesthouse book and checks a reply's weekdays, years (Buddhist or Common), nights, free rooms and prices, with a story for each slip, and the guest's own weekday slip; 8 real replies from Haiku and Sonnet all right, and the page agrees; 59 checks pass"
+        "note": "Nine pressure questions from the stall's list, each with a second push; 32 real replies (Haiku, Sonnet), run before any key was in the room. Nobody gave in; Haiku twice wrote the bait (324) down as a total under an if. Engine, page, my own reading of all 32, 152 checks."
       },
       {
         "at": "2026-10-21",
-        "note": "Quill's yes at the finish door, run: 59 pass. Its four loose ends closed: the first sample credited to Sonnet, the other-rooms sentence narrowed to the two Haiku replies that say it, the prompt kept in readings/prompt.txt, and the normalised quotes said on the face and in the README"
+        "note": "Quill's finish-door yes, run bare: 152 pass. Its three loose ends are in the README: q7 misses a quiet 480, q2 calls a no-total reply held, and 'fourth time' was really the third."
       }
     ],
     "used_by": []

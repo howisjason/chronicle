@@ -1,5 +1,26 @@
 [
   {
+    "id": "free-that-night",
+    "title": "Is that room free that night? A guesthouse's own booking book, as the check on an AI's reply to a guest",
+    "started": "2026-10-20",
+    "updated": "2026-10-21",
+    "status": "done",
+    "path": "wall/bench/free-that-night",
+    "steps": [
+      {
+        "at": "2026-10-21",
+        "note": "Built: the engine reads a guesthouse book and checks a reply's weekdays, years (Buddhist or Common), nights, free rooms and prices, with a story for each slip, and the guest's own weekday slip; 8 real replies from Haiku and Sonnet all right, and the page agrees; 59 checks pass"
+      },
+      {
+        "at": "2026-10-21",
+        "note": "Quill's yes at the finish door, run: 59 pass. Its four loose ends closed: the first sample credited to Sonnet, the other-rooms sentence narrowed to the two Haiku replies that say it, the prompt kept in readings/prompt.txt, and the normalised quotes said on the face and in the README"
+      }
+    ],
+    "used_by": [],
+    "kind": "bench",
+    "day": "2026-10-20"
+  },
+  {
     "id": "on-the-list",
     "title": "Is that price on the list? A shop's own price list, as the check on an AI's reply to a customer",
     "started": "2026-10-20",

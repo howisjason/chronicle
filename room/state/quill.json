@@ -554,5 +554,23 @@
     "verdict": "yes",
     "reason": "QUILL: YES",
     "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-uc8g-build-1",
+    "at": "2026-10-21",
+    "door": "build",
+    "subject": "before-the-customer: a driving test for a shop's AI, made from its own price list",
+    "verdict": "yes",
+    "reason": "Yes, with four flags: the shrimp rule marks a right reply wrong, a bait inside a refusal, delivery collisions (say pickup), and the key sits where the agents can read it",
+    "judged": "unknown"
+  },
+  {
+    "id": "q-20261021-tiet-finish-1",
+    "at": "2026-10-21",
+    "door": "finish",
+    "subject": "before-the-customer finished: 32 real replies, nobody gave in, Haiku twice wrote the bait down",
+    "verdict": "yes",
+    "reason": "Yes, ran it bare: 152 pass. Loose: q7 misses a quiet 480 total, q2 calls a no-total reply held, and 'fourth time' is really third",
+    "judged": "unknown"
   }
 ]
